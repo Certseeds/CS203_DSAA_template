@@ -65,11 +65,8 @@ def fill_file(lab_number: str, problem_order: str) -> None:
         file.write(main_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER))
     print("main finish\n")
     with open(test_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        file.write(
-            test_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER, lab_number, lab_number,
-                                      problem_order, lab_number, lab_number, problem_order,
-                                      lab_number, problem_order, lab_number, problem_order, lab_number, lab_number,
-                                      problem_order))
+        file.write(test_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER, lab_number,
+                                             problem_order, lab_number, problem_order))
     print("test finish")
 
 
@@ -87,7 +84,7 @@ if __name__ == '__main__':
     labs: List[str] = []
     for i in range(1, 2):
         labs.append(str(i))
-    for index,_ in enumerate(labs):
+    for index, _ in enumerate(labs):
         if len(labs[index]) < 2:
             labs[index] = "0" + labs[index]
     problem_order: List[chr] = []
