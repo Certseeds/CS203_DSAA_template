@@ -1,9 +1,9 @@
 /**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
+ * @Github: https://github.com/{}/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:44:06
- * @LastEditors: nanoseeds
+ * @Author: {}
+ * @Date: {}
+ * @LastEditors: {}
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template 
 
-Copyright (C) 2020  nanoseeds
+Copyright (C) {} {}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,30 +31,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_H
+#ifndef CS203_DSAA_TEST_MACRO
+#define CS203_DSAA_TEST_MACRO
 
-#include <string>
-#include <cassert>
-#include <fstream>
+#include <tuple>
+#include <vector>
 #include <iostream>
-#include "CS203_helper.hpp"
-#include "CS203_timer.hpp"
+#include "catch_main.hpp"
+#include "lab_{}_{}.cpp"
 
-using std::ios;
+using std::tie;
 using std::cin;
 using std::cout;
-CS203_timer timer{};
+using std::tuple;
+using std::vector;
 
-static int faster_streams = []() {
-    srand(time(0)); 
-    // use time to init the random seed
-    std::ios::sync_with_stdio(false);
-    std::istream::sync_with_stdio(false);
-    std::ostream::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
-    return 0;
-}();
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_H
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
+
+TEST_CASE("test case 1", "[test {} {}]") {{
+    auto output = cal(std::make_tuple(114, 514));
+    CHECK(output == 628);
+    CHECK(1 + 2 == 3);
+    vector <int32_t> vec{{2, 7, 11, 15}};
+    SECTION("CHECK_THAT 1") {{
+        CHECK_THAT(vec, Contains<int>({{2}}));
+    }}SECTION("vec matcher") {{
+        CHECK_THAT(vec, UnorderedEquals<int>({{15, 11, 7, 2}}));
+    }}
+}}
+
+#endif //CS203_DSAA_TEST_MACRO

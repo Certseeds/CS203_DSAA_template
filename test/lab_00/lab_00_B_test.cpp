@@ -1,9 +1,9 @@
 /**
- * @Github: https://github.com/{}/CS203_DSAA_template
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {}
- * @Date: {}
- * @LastEditors: {}
+ * @Author: nanoseds
+ * @Date: 2020-07-17 22:57:42
+ * @LastEditors: nanoseds
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template 
 
-Copyright (C) {} {}
+Copyright (C) 2020 nanoseds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -34,22 +34,32 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
 
+
+#include <tuple>
+#include <vector>
+#include <iostream>
 #include "catch_main.hpp"
-#include "lab_{}_{}.cpp"
+#include "lab_00_B.cpp"
+
+using std::tie;
+using std::cin;
+using std::cout;
+using std::tuple;
+using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-TEST_CASE("test case 1", "[test {} {}]") {{
+TEST_CASE("test case 1", "[test 00 B]") {
     auto output = cal(std::make_tuple(114, 514));
     CHECK(output == 628);
     CHECK(1 + 2 == 3);
-    vector <int32_t> vec{{2, 7, 11, 15}};
-    SECTION("CHECK_THAT 1") {{
-        CHECK_THAT(vec, Contains<int>({{2}}));
-    }}SECTION("vec matcher") {{
-        CHECK_THAT(vec, UnorderedEquals<int>({{15, 11, 7, 2}}));
-    }}
-}}
+    vector <int32_t> vec{2, 7, 11, 15};
+    SECTION("CHECK_THAT 1") {
+        CHECK_THAT(vec, Contains<int>({2}));
+    }SECTION("vec matcher") {
+        CHECK_THAT(vec, UnorderedEquals<int>({15, 11, 7, 2}));
+    }
+}
 
 #endif //CS203_DSAA_TEST_MACRO

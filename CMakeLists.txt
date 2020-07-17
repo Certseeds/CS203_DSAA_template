@@ -5,10 +5,11 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O0")
 
 
-set(lab_number 01)
-set(problem_order A)
+set(lab_number 00)
+set(problem_order B)
 
 include_directories(./includes)
+include_directories(./thrid_party)
 include_directories(./source/lab_${lab_number})
 include_directories(./test/lab_${lab_number})
 

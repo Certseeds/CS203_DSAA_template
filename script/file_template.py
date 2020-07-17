@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding=utf-8
 """
-@Github: https://github.com/${GITHUB_USER}/CS203_DSAA_template
+@Github: https://github.com/Certseeds/CS203_DSAA_template
 @Organization: SUSTech
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09 
@@ -33,11 +33,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
+
 import os
 import string
 import time
 from typing import List
-
 main_code_template: str
 test_code_template: str
 GITHUB_USER: str = "Certseeds"
@@ -58,16 +58,13 @@ def read_file(file_name: str) -> str:
 def fill_file(lab_number: str, problem_order: str) -> None:
     temp = main_code_template
     with open(source_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        print(type(GITHUB_USER))
-        print(type(USER))
-        print(type(create_time))
-        print(type(year))
-        file.write(main_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER))
+        file.write(main_code_template.format(
+            GITHUB_USER, USER, create_time, USER, year, USER))
     print("main finish\n")
     with open(test_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
         file.write(test_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER, lab_number,
                                              problem_order, lab_number, problem_order))
-    print("test finish")
+    print('test finish')
 
 
 def try_mkdir(lab_number: str) -> None:
@@ -81,18 +78,12 @@ def try_mkdir(lab_number: str) -> None:
 if __name__ == '__main__':
     main_code_template: str = read_file("cpp_template.txt")
     test_code_template: str = read_file("cpp_test_template.txt")
-    labs: List[str] = []
-    for i in range(1, 2):
-        labs.append(str(i))
-    for index, _ in enumerate(labs):
-        if len(labs[index]) < 2:
-            labs[index] = "0" + labs[index]
-    problem_order: List[chr] = []
-    for i in string.ascii_uppercase[0:10]:
-        a = str(i)
-        problem_order.append(a)
-        print(a)
+    labs: List[str] = ['01', '02', '03', '04', '05', '06', '07',
+                       '08', '09', '10', '11', '12', '13', '14', '15']
+    problem_order: List[chr] = ['A', 'B', 'C','D', 'E', 'F', 'G','H','I','J']
     for i in labs:
-        try_mkdir(i)
+        try_mkdir(i)  # 准备文件夹
         for j in problem_order:
-            fill_file(i, j)
+            fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
+    print('produce files finish')
+    print(str(len(labs)*len(problem_order)*2)+' files is produced')
