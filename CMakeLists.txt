@@ -19,3 +19,5 @@ add_executable(${PROJECT_NAME}
 add_executable(${PROJECT_NAME}_test
         ./includes/catch_main.hpp
         ./test/lab_${lab_number}/lab_${lab_number}_${problem_order}_test.cpp)
+
+add_subdirectory(./algorithm)

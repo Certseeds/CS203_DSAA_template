@@ -51,15 +51,18 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 TEST_CASE("test case 1", "[test 00 B]") {
-    auto output = cal(std::make_tuple(114, 514));
-    CHECK(output == 628);
-    CHECK(1 + 2 == 3);
-    vector <int32_t> vec{2, 7, 11, 15};
-    SECTION("CHECK_THAT 1") {
-        CHECK_THAT(vec, Contains<int>({2}));
-    }SECTION("vec matcher") {
-        CHECK_THAT(vec, UnorderedEquals<int>({15, 11, 7, 2}));
+    auto vec1 = vector<uint64_t>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
+    for (const auto &i:vec1) {
+        CHECK(cal(i) == brute_force(i));
     }
+}
+
+TEST_CASE("test case 2", "[test 00 B]") {
+    auto vec1 = vector<uint64_t>{1, 2, 3, 4, 5, 6, 7, 1100000};
+    auto result = cal_warpper(vec1);
+    auto what_we_want = vector<uint64_t>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
+    CHECK_THAT(result, Equals<uint64_t>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
+    CHECK_THAT(result, Equals(what_we_want));
 }
 
 #endif //CS203_DSAA_TEST_MACRO

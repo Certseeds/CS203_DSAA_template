@@ -89,7 +89,7 @@ inline input_data read() {{
     int32_t b{{0}};
     std::cin >> a >> b;
     return std::make_tuple(a, b);
-    }}
+}}
 
 result_data cal(input_data &&data) {{
     int32_t a{{0}};
@@ -97,7 +97,7 @@ result_data cal(input_data &&data) {{
     tie(a, b) = data;
     int32_t c = a + b;
     return c;
-    }}
+}}
 
 void output(const result_data &data)  {{
     std::cout << data << end;

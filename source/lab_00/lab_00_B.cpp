@@ -31,74 +31,78 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+// id: 1250
 #include <list>
-#include <array>
 #include <deque>
-#include <queue>
-#include <stack>
-#include <tuple>
 #include <string>
 #include <vector>
-#include <vector>
-#include <numeric>
 #include <iostream>
-#include <algorithm>
-#include <unordered_map>
-#include <unordered_set>
 
 using std::cin;
-using std::tie;
 using std::cout;
-using std::list;
-using std::sort;
-using std::array;
-using std::deque;
-using std::queue;
-using std::stack;
-using std::tuple;
 using std::string;
 using std::vector;
-using std::unordered_map;
-using std::unordered_set;
-using std::priority_queue;
 const std::string end = "\n";
 
+using num_type = uint64_t;
+using input_format = vector<num_type>;
+using output_format = vector<num_type>;
 
-using input_data = tuple<int32_t, int32_t>;
-using result_data = int32_t;
+inline input_format read();
 
-inline input_data read();
+output_format cal_warpper(const input_format &input);
 
-result_data cal(input_data &&data);
+num_type cal(num_type data);
 
-void output(const result_data &data);
+num_type brute_force(num_type data);
+
+void output(const output_format &data);
 
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
-    auto result_data = cal(read());
+    input_format input_data = read();
+    output_format result_data = cal_warpper(input_data);
     output(result_data);
     return 0;
 }
 
 #endif // !CS203_DSAA_TEST_MACRO
 
-inline input_data read() {
-    int32_t a{0};
-    int32_t b{0};
-    std::cin >> a >> b;
-    return std::make_tuple(a, b);
+inline input_format read() {
+    int32_t number{0};
+    std::cin >> number;
+    input_format will_return(number, 0);
+    for (auto &item : will_return) {
+        std::cin >> item;
     }
+    return will_return;
+}
 
-result_data cal(input_data &&data) {
-    int32_t a{0};
-    int32_t b{0};
-    tie(a, b) = data;
-    int32_t c = a + b;
-    return c;
+output_format cal_warpper(const input_format &input) {
+    output_format will_return(input.size(), 0);
+    for (size_t i = 0; i < input.size(); ++i) {
+        will_return[i] = cal(input[i]);
     }
+    return will_return;
+}
 
-void output(const result_data &data)  {
-    std::cout << data << end;
+inline num_type cal(num_type data) {
+    num_type will_return = data * (data + 1) * (data + 2) / 6;
+    return will_return;
+}
+
+num_type brute_force(num_type data) {
+    num_type will_return{0};
+    for (num_type i = 1; i <= data; ++i) {
+        will_return += i * (i + 1) / 2;
+    }
+    return will_return;
+}
+
+void output(const vector<num_type> &data) {
+    for (const auto &num : data) {
+        std::cout << num << end;
+    }
 }
