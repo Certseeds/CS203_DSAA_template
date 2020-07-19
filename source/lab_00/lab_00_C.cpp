@@ -1,0 +1,147 @@
+/**
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
+ * @Organization: SUSTech
+ * @Author: nanoseds
+ * @Date: 2020-07-19 19:37:58
+ * @LastEditors: nanoseds
+ * @LICENSE: MIT
+ */
+/*
+MIT License
+
+CS203_DSAA_template 
+
+Copyright (C) 2020 nanoseds
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+#include <list>
+#include <queue>
+#include <string>
+#include <vector>
+#include <iostream>
+/*
+给定一个无向图 graph,当这个图为二分图时返回 true.
+ 
+如果我们能将一个图的节点集合分割成两个独立的子集 A 和 B,
+并使图中的每一条边的两个节点一个来自 A 集合,一个来自 B 集合,我们就将这个图称为二分图.
+ 
+每个节点都是一个在 0 到 graph.length-1 之间的整数.
+图中没有自环和平行边： graph[i] 中不存在 i,并且 graph[i] 中没有重复的值.
+
+输入格式:
+The ﬁrst line contains a single integer N([1,10^6]) —— the number of the nodes in graph
+
+Then there will have N lines of number:
+
+each line the first is a single integer X-- the number of connect nodes of node xi
+then there will be X unrepeated numbers ∈ [0,N-1]
+
+ 输出格式:
+如果是二分图,输出 "PÖSSiBLE"
+如果不是二分图,输出 "lMP0SSlBLE"
+
+来源：Leetcode-cn
+链接：https://leetcode-cn.com/problems/is-graph-bipartite
+著作权归领扣网络所有
+*/
+/* leetcode
+// id: 785
+// Graph
+// 判断二分图*/
+using std::cin;
+using std::cout;
+using std::queue;
+using std::string;
+using std::vector;
+const std::string end = "\n";
+enum class Color {
+    uncolor = -1,
+    red = 0,
+    black = 1
+};
+
+using input_data = vector<vector<int32_t>>;
+using result_data = bool;
+
+inline input_data read();
+
+result_data isBipartite(const input_data &&data);
+
+void output(const result_data &data);
+
+#ifndef CS203_DSAA_TEST_MACRO
+#define CS203_DSAA_TEST_MACRO
+
+int main() {
+    auto result_data = isBipartite(read());
+    output(result_data);
+    return 0;
+}
+
+#endif // !CS203_DSAA_TEST_MACRO
+
+inline input_data read() {
+    int32_t N{0};
+    std::cin >> N;
+    vector<vector<int32_t>> will_return(N);
+    for (int32_t i = 0; i < N; i++) {
+        int32_t X{0};
+        std::cin >> X;
+        will_return[i].resize(X);
+        for (auto &j: will_return[i]) {
+            std::cin >> j;
+        }
+    }
+    return will_return;
+}
+
+result_data isBipartite(const input_data &&graph) {
+    int32_t node_number = graph.size();
+    vector<Color> color_vec(node_number, Color::uncolor);
+    for (int32_t i = 0; i < node_number; i++) {
+        if (!graph[i].empty() && color_vec[i] == Color::uncolor) {
+            color_vec[i] = Color::red;
+            queue<int32_t> que;
+            que.push(i);
+            while (!que.empty()) {
+                int32_t head = que.front();
+                que.pop();
+                Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
+                for (const auto &j: graph[head]) {
+                    if (color_vec[j] == Color::uncolor) {
+                        color_vec[j] = next_color;
+                        que.push(j);
+                    } else if (color_vec[j] == color_vec[head]) {
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
+
+void output(const result_data &data) {
+    if (data) {
+        std::cout << "\"PÖSSiBLE\"" << end;
+    } else {
+        std::cout << "\"lMP0SSlBLE\"" << end;
+    }
+}

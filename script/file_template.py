@@ -35,9 +35,9 @@ SOFTWARE.
 """
 
 import os
-import string
 import time
 from typing import List
+
 main_code_template: str
 test_code_template: str
 GITHUB_USER: str = "Certseeds"
@@ -80,10 +80,10 @@ if __name__ == '__main__':
     test_code_template: str = read_file("cpp_test_template.txt")
     labs: List[str] = ['01', '02', '03', '04', '05', '06', '07',
                        '08', '09', '10', '11', '12', '13', '14', '15']
-    problem_order: List[chr] = ['A', 'B', 'C','D', 'E', 'F', 'G','H','I','J']
+    problem_order: List[chr] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     for i in labs:
         try_mkdir(i)  # 准备文件夹
         for j in problem_order:
             fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
     print('produce files finish')
-    print(str(len(labs)*len(problem_order)*2)+' files is produced')
+    print(str(len(labs) * len(problem_order) * 2) + ' files is produced')

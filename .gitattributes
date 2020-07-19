@@ -14,6 +14,7 @@
 *.md            text
 *.LICENSE       text
 *.template text diff=text
+*.in text eol=lf
 
 # scripts
 *.sh text eol=lf
@@ -80,15 +81,15 @@
 
 # c & cpp  
 # Sources
-*.c     text diff=c
-*.h     text diff=c
-*.cc    text diff=cpp
-*.cxx   text diff=cpp
-*.cpp   text diff=cpp
-*.c++   text diff=cpp
-*.hpp   text diff=cpp
-*.h++   text diff=cpp
-*.hh    text diff=cpp
+*.c     text diff=c eol=lf
+*.h     text diff=c eol=lf
+*.cc    text diff=cpp eol=lf
+*.cxx   text diff=cpp eol=lf
+*.cpp   text diff=cpp eol=lf
+*.c++   text diff=cpp eol=lf
+*.hpp   text diff=cpp eol=lf
+*.h++   text diff=cpp eol=lf
+*.hh    text diff=cpp eol=lf
 
 # Compiled Object files
 *.slo   binary
