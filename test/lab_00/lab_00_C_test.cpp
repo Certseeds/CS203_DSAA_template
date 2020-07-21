@@ -57,7 +57,7 @@ TEST_CASE("test case 1", "[test 00 C]") {
     auto result_data = isBipartite(read());
     // 重定向结束
     cin.rdbuf(backup);
-    CHECK(result_data == 0);
+    CHECK_FALSE(result_data);
 }
 
 TEST_CASE("test case 2", "[test 00 C]") {
@@ -90,7 +90,7 @@ TEST_CASE("test case 4", "[test 00 C]") {
     cin.rdbuf(fin.rdbuf());
     auto result_data = isBipartite(read());
     cin.rdbuf(backup);
-    CHECK(result_data == 0);
+    CHECK_FALSE(result_data);
 }
 
 TEST_CASE("test case 5", "[test 00 C]") {
@@ -101,7 +101,7 @@ TEST_CASE("test case 5", "[test 00 C]") {
     cin.rdbuf(fin.rdbuf());
     auto result_data = isBipartite(read());
     cin.rdbuf(backup);
-    CHECK(result_data == 0);
+    CHECK_FALSE(result_data);
 }
 
 TEST_CASE("test case in loop", "[test 00 C]") {

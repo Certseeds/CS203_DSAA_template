@@ -58,7 +58,7 @@ using std::vector;
 TEST_CASE("test case 1", "[test 00 A]") {
     auto output1 = cal(std::make_tuple(0, 0));
     auto output2 = cal(std::make_tuple(100000, 100000));
-    CHECK(output1 == 0);
+    CHECK_FALSE(output1);
     CHECK(output2 == 200000);
 }
 

@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:52:04
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-21 00:10:38
+ * @LastEditTime: 2020-07-21 23:54:35
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -112,7 +112,29 @@
     + PS2: 文件重定向输出不说了,因为输出就两个,保证数据正确和格式正确,数据正确完全可以通过读取*.data.out之后来判断,
     格式正确主要是看output函数.
 
-4. TODO: 介绍为什么要将 `读取` `数据处理` `输出` 分开,以及这样做有什么好处　
+4. 文本的输出重定向:
+    + 一般来说,题目的输出不会太复杂,但是反例也不是没有.:比如专门考输出的[立体图](./source/lab_00/lab_00_D.cpp)
+    + 这种情况下,使用c++的重定向输出就可以较为方便的对输入进行处理,同时保存输出方便调试.
+    ```c++
+    std::streambuf *strmin_buf = cin.rdbuf();
+    std::streambuf *strmout_buf = cout.rdbuf();
+    std::ifstream file_in;
+    std::ofstream file_out;
+    file_in.open("./../test/lab_00/lab_00_D_data/01.data.in"); // input path
+    file_out.open("./../test/lab_00/lab_00_D_data/01.test.out"); // output path
+    cin.rdbuf(file_in.rdbuf());
+    cout.rdbuf(file_out.rdbuf());
+    cal(read());
+    cin.rdbuf(strmin_buf);
+    ```
+    这样就将标准输出重定向到了01.test.out中.
+    + 至于比较文件之间的差异,就需要用bash脚本了.
+
+5. 为什么要将 `读取` `数据处理` `输出` 分开?
+    + 便于理清思路,读完题目之后,不管别的,先把数据读入,输出的函数写好,方便后续写作.
+    + 交流代码逻辑的时候不会受到无关逻辑的影响
+    + 可以互相分享少量代码而不触及核心逻辑,方便协作.    
+    + 便于使用测试.
   
 TODO: 为什么要选择C++做题.   
 TODO: 介绍一些神秘操作.比如手动开优化等.   

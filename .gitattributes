@@ -4,7 +4,7 @@
  # @Author: nanoseeds
  # @Date: 2020-07-15 23:48:29
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-07-15 23:48:29
+ # @LastEditTime: 2020-07-21 21:51:12
 ### 
 * text=auto
 
@@ -15,6 +15,7 @@
 *.LICENSE       text
 *.template text diff=text
 *.in text eol=lf
+*.out text eol=lf
 
 # scripts
 *.sh text eol=lf
@@ -114,7 +115,7 @@
 
 # Executables
 *.exe   binary
-*.out   binary
+#*.out   binary
 *.app   binary
 
 # Visual Studio
