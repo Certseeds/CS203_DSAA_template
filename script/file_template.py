@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 # coding=utf-8
-"""
+'''
 @Github: https://github.com/Certseeds/CS203_DSAA_template
 @Organization: SUSTech
 @Author: nanoseeds
-@Date: 2020-07-15 21:47:09 
+@Date: 2020-07-15 21:47:09
 @LastEditors: nanoseeds
+@LastEditTime: 2020-07-22 00:13:31
 @LICENSE: MIT
-"""
+'''
 """
 MIT License
 
@@ -41,7 +42,7 @@ from typing import List
 main_code_template: str
 test_code_template: str
 GITHUB_USER: str = "Certseeds"
-USER: str = "nanoseds"
+USER: str = "nanoseeds"
 year: str = time.strftime("%Y", time.localtime())
 create_time: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 source_path: str = "./../source/lab_{}/lab_{}_{}.cpp"

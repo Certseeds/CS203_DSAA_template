@@ -34,12 +34,9 @@ SOFTWARE.
 
 #include <vector>
 #include <iostream>
-#include "catch_main.hpp"
+#include "sort_wrapper.hpp"
 
 using std::vector;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 void quick_sort(vector<int> &nums);
 
@@ -49,42 +46,8 @@ void rec_quicksort(vector<int> &nums, int left, int right);
 
 int partition(vector<int> &nums, int left, int right, int pivotIndex);
 
-TEST_CASE("basic test", "[quick_sort]") {
-    vector<int> nums{3, 2, 1, 5, 6, 4};
-    vector<int> nums_result{3, 2, 1, 5, 6, 4};
+void sort_warpper(vector<int32_t> &nums) {
     quick_sort(nums);
-    std::sort(nums_result.begin(), nums_result.end());
-    CHECK_THAT(nums, Equals(nums_result));
-}
-
-TEST_CASE("basic test 2", "[quick_sort]") {
-    vector<int> nums{3, 2, 3, 1, 2, 4, 5, 5, 6};
-    vector<int> nums_result{3, 2, 3, 1, 2, 4, 5, 5, 6};
-    quick_sort(nums);
-    std::sort(nums_result.begin(), nums_result.end());
-    CHECK_THAT(nums, Equals(nums_result));
-}
-
-TEST_CASE("empty", "[quick sort]") {
-    vector<int> nums{};
-    vector<int> nums_result{};
-    quick_sort(nums);
-    std::sort(nums_result.begin(), nums_result.end());
-    CHECK_THAT(nums, Equals(nums_result));
-}
-
-TEST_CASE("random test", "[quick sort]") {
-    vector<int> nums{};
-    vector<int> nums_result{};
-    nums.reserve(1145);
-    nums_result.reserve(1145);
-    for (int i = 0; i < 1145; ++i) {
-        nums.push_back(rand() % 114514);
-        nums_result.push_back(nums.back());
-    }
-    quick_sort(nums);
-    std::sort(nums_result.begin(), nums_result.end());
-    CHECK_THAT(nums, Equals(nums_result));
 }
 
 void quick_sort(vector<int> &nums) {

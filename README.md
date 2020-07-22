@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:52:04
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-21 23:54:35
+ * @LastEditTime: 2020-07-22 22:20:53
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -135,10 +135,60 @@
     + 交流代码逻辑的时候不会受到无关逻辑的影响
     + 可以互相分享少量代码而不触及核心逻辑,方便协作.    
     + 便于使用测试.
-  
-TODO: 为什么要选择C++做题.   
-TODO: 介绍一些神秘操作.比如手动开优化等.   
-TODO: 为什么要选择Catch2,而不是google test等.
+
+### 为什么要选择C++做题.
+1. C++是dalao们的选择
+直接去
+[dalao1](https://acm.sustech.edu.cn/onlinejudge/status.php?user_id=11710724&jresult=4)
+[dalao2](https://acm.sustech.edu.cn/onlinejudge/status.php?user_id=11612908&jresult=4)
+[dalao3](https://acm.sustech.edu.cn/onlinejudge/status.php?user_id=11712510&jresult=4)
+等等dalao的解题页面看看,会发现在排行榜榜首的人,绝大多数题目使用的都是C++.
+
+2. 速度.
+  + oj内一般java的最大运行时间都会是c++的2倍,显然是暗示速度之间的差别.
+  + 其次,C++可以通过一些魔法操作,比如下文的优化等操作再获取一些时间上的优势.
+
+3. 对数据结构的友好性
+DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数据结构,这类数据结构使用C++写,比较方便理解.
+
+4. 对算法的友好性能:
+我写树和图相关的题目时,最头疼的就是Java的爆栈,有一段时间只要用递归就爆栈,逼得人手动递归改循环.
+
+1. 相关资源的丰富程度
+不管怎么说,c++是dalao的选择,所以在网络上搜索题目,得到的大多数答案都是C/C++,java的数量很少.
+
+### 如何手动开优化
+1. 将[magic_optimize](./includes/magic_macro.hpp)内的内容粘贴到代码最上方.
+2. 将
+```cpp
+static int faster_streams = []() {
+    srand(time(0)); 
+    // use time to init the random seed
+    std::ios::sync_with_stdio(false);
+    std::istream::sync_with_stdio(false);
+    std::ostream::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
+    return 0;
+}();
+```
+放在上面的magic_optimize下方,代码上方.
+3. 通常情况下,可以将运行时间缩短到1/2甚至更少.
+
+### Why choose Catch?
+1. 先来看可选项有哪些
+
+|        FrameWork         | Catch2 | Google Test | CPPUnit | Boost.Test | CTest |    Microsoft 单元测试框架    |
+| :----------------------: | :----: | :---------: | :-----: | :--------: | :---: | :--------------------------: |
+|          跨平台          |   √    |      √      |    √    |     √      |   √   |              X               |
+| 是否需要提前在系统内安装 |   X    |      √      |    √    |     √      |   X   | √(and visual studio make it) |
+|           语法           |  简单  |    简单     |  复杂   |    简单    | 愚蠢  |           Unknown            |
+
+先筛选跨平台,去掉了Microsoft,  
+再筛选不需要安装,只剩Catch2和CTest,  
+再把语法傻逼的CTest去掉.齐活.
+
 TODO: 介绍使用Cyaron 生成数据.
 
 [![MIT](https://img.shields.io/badge/License-MIT-orange)][MIT_Link]
