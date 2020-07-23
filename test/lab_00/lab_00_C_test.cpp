@@ -46,11 +46,12 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
+const string test_file_path = "./../test/lab_00/lab_00_C_data/";
 
 TEST_CASE("test case 1", "[test 00 C]") {
     std::streambuf *backup;
     std::ifstream fin;
-    fin.open("./../test/lab_00/lab_00_C_data/01.data.in");
+    fin.open(test_file_path + "01.data.in");
     backup = cin.rdbuf();
     cin.rdbuf(fin.rdbuf());
     // 重定向开始,开始run
@@ -63,7 +64,7 @@ TEST_CASE("test case 1", "[test 00 C]") {
 TEST_CASE("test case 2", "[test 00 C]") {
     std::streambuf *backup;
     std::ifstream fin;
-    fin.open("./../test/lab_00/lab_00_C_data/02.data.in");
+    fin.open(test_file_path + "02.data.in");
     backup = cin.rdbuf();
     cin.rdbuf(fin.rdbuf());
     auto result_data = isBipartite(read());
@@ -74,7 +75,7 @@ TEST_CASE("test case 2", "[test 00 C]") {
 TEST_CASE("test case 3", "[test 00 C]") {
     std::streambuf *backup;
     std::ifstream fin;
-    fin.open("./../test/lab_00/lab_00_C_data/03.data.in");
+    fin.open(test_file_path + "03.data.in");
     backup = cin.rdbuf();
     cin.rdbuf(fin.rdbuf());
     auto result_data = isBipartite(read());
@@ -85,7 +86,7 @@ TEST_CASE("test case 3", "[test 00 C]") {
 TEST_CASE("test case 4", "[test 00 C]") {
     std::streambuf *backup;
     std::ifstream fin;
-    fin.open("./../test/lab_00/lab_00_C_data/04.data.in");
+    fin.open(test_file_path + "04.data.in");
     backup = cin.rdbuf();
     cin.rdbuf(fin.rdbuf());
     auto result_data = isBipartite(read());
@@ -96,7 +97,7 @@ TEST_CASE("test case 4", "[test 00 C]") {
 TEST_CASE("test case 5", "[test 00 C]") {
     std::streambuf *backup;
     std::ifstream fin;
-    fin.open("./../test/lab_00/lab_00_C_data/05.data.in");
+    fin.open(test_file_path + "05.data.in");
     backup = cin.rdbuf();
     cin.rdbuf(fin.rdbuf());
     auto result_data = isBipartite(read());
@@ -106,11 +107,11 @@ TEST_CASE("test case 5", "[test 00 C]") {
 
 TEST_CASE("test case in loop", "[test 00 C]") {
     const vector<string> strs{
-            "./../test/lab_00/lab_00_C_data/01.data.in",
-            "./../test/lab_00/lab_00_C_data/02.data.in",
-            "./../test/lab_00/lab_00_C_data/03.data.in",
-            "./../test/lab_00/lab_00_C_data/04.data.in",
-            "./../test/lab_00/lab_00_C_data/05.data.in"
+            test_file_path + "01.data.in",
+            test_file_path + "02.data.in",
+            test_file_path + "03.data.in",
+            test_file_path + "04.data.in",
+            test_file_path + "05.data.in"
     };
     const vector<uint8_t> result{false, true, true, false, false};
     for (int i = 0; i < 5; ++i) {
@@ -127,11 +128,11 @@ TEST_CASE("test case in loop", "[test 00 C]") {
 
 TEST_CASE("test case with tuple", "[test 00 C]") {
     const vector<std::tuple<string, result_data>> input_result{
-            {"./../test/lab_00/lab_00_C_data/01.data.in", false},
-            {"./../test/lab_00/lab_00_C_data/02.data.in", true},
-            {"./../test/lab_00/lab_00_C_data/03.data.in", true},
-            {"./../test/lab_00/lab_00_C_data/04.data.in", false},
-            {"./../test/lab_00/lab_00_C_data/05.data.in", false}
+            {test_file_path + "01.data.in", false},
+            {test_file_path + "02.data.in", true},
+            {test_file_path + "03.data.in", true},
+            {test_file_path + "04.data.in", false},
+            {test_file_path + "05.data.in", false}
     };
     for (const auto &tup : input_result) {
         string path;

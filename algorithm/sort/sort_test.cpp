@@ -92,7 +92,6 @@ TEST_CASE("random test", "[sort]") {
         nums.push_back(rand() % 114514);
     }
     vector<int> nums_result(nums);
-
     sort_warpper(nums);
     std::sort(nums_result.begin(), nums_result.end());
     CHECK_THAT(nums, Equals(nums_result));

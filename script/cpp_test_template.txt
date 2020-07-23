@@ -49,6 +49,7 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
+const string test_file_path = "./../test/lab_{}/lab_{}_{}_data/";
 
 TEST_CASE("test case 1", "[test {} {}]") {{
     auto output = cal(std::make_tuple(114, 514));

@@ -38,7 +38,6 @@ SOFTWARE.
 #include <iostream>
 #include <string>
 #include <vector>
-
 using std::cin;
 using std::cout;
 using std::string;
@@ -52,8 +51,7 @@ const vector<std::pair<int32_t, string>> spis{
         {0, "+---+ |"},
         {0, "|   | +"},
         {0, "|   |/"},
-        {0, "+---+"}
-};
+        {0, "+---+"}};
 
 using input_data = vector<vector<int32_t>>;
 using result_data = vector<vector<char>>;

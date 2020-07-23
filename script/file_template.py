@@ -41,8 +41,8 @@ from typing import List
 
 main_code_template: str
 test_code_template: str
-GITHUB_USER: str = "Certseeds"
-USER: str = "nanoseeds"
+GITHUB_USER: str = "YOUR_GITHUB_NAME"  # example: Certseeds
+USER: str = "YOUR_USER_NAME"  # example: nanoseeds
 year: str = time.strftime("%Y", time.localtime())
 create_time: str = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
 source_path: str = "./../source/lab_{}/lab_{}_{}.cpp"
@@ -63,8 +63,8 @@ def fill_file(lab_number: str, problem_order: str) -> None:
             GITHUB_USER, USER, create_time, USER, year, USER))
     print("main finish\n")
     with open(test_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        file.write(test_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER, lab_number,
-                                             problem_order, lab_number, problem_order))
+        file.write(test_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER, lab_number, lab_number,
+                                             problem_order, lab_number, problem_order, lab_number, problem_order))
     print('test finish')
 
 

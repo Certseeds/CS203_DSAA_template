@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:52:04
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-22 22:20:53
+ * @LastEditTime: 2020-07-24 00:11:26
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -109,13 +109,12 @@
     + PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_C_data/01.data.in`,
     而是编译出的文件相对于测试数据的相对路径.
     在样例中,编译出的文件在`CS203_DSAA_template/cmake-build-debug`下,所以需要加`./../`
-    + PS2: 文件重定向输出不说了,因为输出就两个,保证数据正确和格式正确,数据正确完全可以通过读取*.data.out之后来判断,
-    格式正确主要是看output函数.
+    + PS2: 文件重定向输出在下面.
 
 4. 文本的输出重定向:
     + 一般来说,题目的输出不会太复杂,但是反例也不是没有.:比如专门考输出的[立体图](./source/lab_00/lab_00_D.cpp)
     + 这种情况下,使用c++的重定向输出就可以较为方便的对输入进行处理,同时保存输出方便调试.
-    ```c++
+    ``` c++
     std::streambuf *strmin_buf = cin.rdbuf();
     std::streambuf *strmout_buf = cout.rdbuf();
     std::ifstream file_in;
@@ -128,7 +127,8 @@
     cin.rdbuf(strmin_buf);
     ```
     这样就将标准输出重定向到了01.test.out中.
-    + 至于比较文件之间的差异,就需要用bash脚本了.
+    + 至于比较文件之间的差异,可以使用内置的`compareFiles(const string& path1,const string& path2)`函数进行比较.
+    参考[文本比对_test_case_2](./test/lab_00/lab_00_D_test.cpp)
 
 5. 为什么要将 `读取` `数据处理` `输出` 分开?
     + 便于理清思路,读完题目之后,不管别的,先把数据读入,输出的函数写好,方便后续写作.
