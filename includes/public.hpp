@@ -44,6 +44,7 @@ SOFTWARE.
 #include <algorithm>
 #include "CS203_helper.hpp"
 #include "CS203_timer.hpp"
+#include "CS203_redirect.hpp"
 
 using std::ios;
 using std::cin;
@@ -69,6 +70,7 @@ bool compareFiles(const std::string &p1, const std::string &p2) {
     if (f1.fail() || f2.fail()) {
         return false; //file problem
     }
+    std::cout << f1.tellg() << " " << f2.tellg() << " \n";
     if (f1.tellg() != f2.tellg()) {
         return false; //size mismatch
     }

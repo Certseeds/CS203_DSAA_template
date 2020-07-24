@@ -51,31 +51,16 @@ using Catch::Matchers::Contains;
 const string test_file_path = "./../test/lab_00/lab_00_D_data/";
 
 TEST_CASE("test case 1", "[test 00 D]") {
-    std::streambuf *backup;
-    std::ifstream fin;
-    fin.open(test_file_path + "01.data.in");
-    backup = cin.rdbuf();
-    cin.rdbuf(fin.rdbuf());
+    CS203_redirect cr{test_file_path + "01.data.in", ""};
     // 重定向开始,开始run
     cal(read());
     // 重定向结束
-    cin.rdbuf(backup);
 }
 
 TEST_CASE("test case 2", "[test 00 C]") {
     SECTION("do") {
-        std::streambuf *strmin_buf = cin.rdbuf();
-        std::streambuf *strmout_buf = cout.rdbuf();
-        std::ifstream file_in;
-        std::ofstream file_out;
-        file_in.open(test_file_path + "01.data.in");
-        file_out.open(test_file_path + "01.test.out");
-        cin.rdbuf(file_in.rdbuf());
-        cout.rdbuf(file_out.rdbuf());
+        CS203_redirect cr{test_file_path + "01.data.in", test_file_path + "01.test.out"};
         cal(read());
-        cin.rdbuf(strmin_buf);
-        cout.rdbuf(strmout_buf);
-        cout.flush();
     }SECTION("compare files") {
         CHECK(compareFiles(test_file_path + "01.test.out", test_file_path + "01.data.out"));
     }

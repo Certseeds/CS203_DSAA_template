@@ -2,7 +2,7 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36 
+ * @Date: 2020-07-25 01:56:19 
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template 
 
-Copyright (C) 2020 nanoseeds
+Copyright (C) 2020  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,38 +31,49 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
+#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
+#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
 
 #include <iostream>
-#include <chrono>
+#include <string>
 
-std::chrono::milliseconds get_ms() {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::system_clock::now().time_since_epoch());
-}
+using std::cin;
+using std::cout;
+using std::string;
 
-class CS203_timer {
+class CS203_redirect {
 private:
-    std::chrono::milliseconds ms;
+    std::streambuf *strmin_buf;
+    std::streambuf *strmout_buf;
+    std::ifstream file_in = std::ifstream();
+    std::ofstream file_out = std::ofstream();
 public:
-    explicit CS203_timer() {
-        std::cout << "complier in " << __DATE__ << " " << __TIME__ << std::endl;
-        ms = get_ms();
+    // default path1 is input and path2 is output
+    explicit CS203_redirect(string path1, string path2) {
+        this->strmin_buf = std::cin.rdbuf();
+        this->strmout_buf = std::cout.rdbuf();
+        file_in.open(path1);
+        std::cin.rdbuf(file_in.rdbuf());
+        if (!path2.empty()) {
+            file_out.open(path2);
+            std::cout.rdbuf(file_out.rdbuf());
+        }
     }
 
-    CS203_timer(const CS203_timer &timer) = delete;
+    CS203_redirect(const CS203_redirect &redirect) = delete;
 
-    CS203_timer(CS203_timer &&timer) = delete;
+    CS203_redirect(CS203_redirect &&redirect) = delete;
 
-    CS203_timer &operator=(const CS203_timer &timer) = delete;
+    CS203_redirect &operator=(const CS203_redirect &redirect) = delete;
 
-    CS203_timer &operator=(CS203_timer &&mat) = delete;
+    CS203_redirect &operator=(CS203_redirect &&mat) = delete;
 
-    ~CS203_timer() {
-        std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
+    ~CS203_redirect() {
+        std::cin.rdbuf(strmin_buf);
+        std::cout.rdbuf(strmout_buf);
+        std::cout.flush();
     }
 
 };
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
+#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H

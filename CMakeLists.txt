@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O0")
 
 
 set(lab_number 00)
-set(problem_order C)
+set(problem_order D)
 
 include_directories(./includes)
 include_directories(./thrid_party)
