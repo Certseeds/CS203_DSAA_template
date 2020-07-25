@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:52:04
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-24 00:11:26
+ * @LastEditTime: 2020-07-26 11:00:02
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -89,18 +89,16 @@
 3. 将文件重定向到标准输出中:
     + 常见于tree,graph类的问题,debug需要的数据集都比较大,不方便直接写在代码中.
     + 比如[判断二分图](./source/lab_00/lab_00_C.cpp),一张图可以有几十上百个node,写在内部占用空间太大.
-    + 而在这里,使用文件的重定向输入,便可以省去手动输入的方式.
-    ```c++
-        // begin prepare
-        std::streambuf *backup;
-        std::ifstream fin;
-        fin.open(path); // 打开path(一个代表路径的string)作为读入的数据源.
-        backup = cin.rdbuf();
-        cin.rdbuf(fin.rdbuf());
-        // 开始重定向,此时可以read
-        auto result_data = isBipartite(read());
-        // read结束,将输入恢复.
-        cin.rdbuf(backup);
+    + 而在这里,使用`CS203_redirect`对象,便可以省去手动输入的方式.
+    ``` cpp
+        const string test_file_path = "./../test/lab_00/lab_00_C_data/";
+        TEST_CASE("test case 1", "[test 00 C]") {
+            CS203_redirect cr{test_file_path + "01.data.in", ""};
+            // 重定向开始,开始run
+            auto result_data = isBipartite(read());
+            // 重定向结束
+            CHECK_FALSE(result_data);
+        }
     ```
     只需要准备好输入的数据与结果,就可以从文件中读取,执行后判断结果是否符合预期.   
     + test case 1-5为最简单的逐个判断,最简单,代码量最大.
@@ -114,19 +112,18 @@
 4. 文本的输出重定向:
     + 一般来说,题目的输出不会太复杂,但是反例也不是没有.:比如专门考输出的[立体图](./source/lab_00/lab_00_D.cpp)
     + 这种情况下,使用c++的重定向输出就可以较为方便的对输入进行处理,同时保存输出方便调试.
-    ``` c++
-    std::streambuf *strmin_buf = cin.rdbuf();
-    std::streambuf *strmout_buf = cout.rdbuf();
-    std::ifstream file_in;
-    std::ofstream file_out;
-    file_in.open("./../test/lab_00/lab_00_D_data/01.data.in"); // input path
-    file_out.open("./../test/lab_00/lab_00_D_data/01.test.out"); // output path
-    cin.rdbuf(file_in.rdbuf());
-    cout.rdbuf(file_out.rdbuf());
-    cal(read());
-    cin.rdbuf(strmin_buf);
+    ``` cpp
+        const string test_file_path = "./../test/lab_00/lab_00_D_data/";
+        TEST_CASE("test case 2", "[test 00 C]") {
+            SECTION("do") {
+                CS203_redirect cr{test_file_path + "01.data.in", test_file_path + "01.test.out"};
+                cal(read());
+            }SECTION("compare files") {
+                CHECK(compareFiles(test_file_path + "01.test.out", test_file_path + "01.data.out"));
+            }
+        }
     ```
-    这样就将标准输出重定向到了01.test.out中.
+    这样就将标准输出重定向到了01.test.out中,并与01.data.out比对.
     + 至于比较文件之间的差异,可以使用内置的`compareFiles(const string& path1,const string& path2)`函数进行比较.
     参考[文本比对_test_case_2](./test/lab_00/lab_00_D_test.cpp)
 

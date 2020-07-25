@@ -101,6 +101,8 @@
     "files.associations": {
         "sshd_config": "bat",
         "tuple": "cpp",
-        "limits": "cpp"
-    }
+        "limits": "cpp",
+        "fstream": "cpp"
+    },
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

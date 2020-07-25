@@ -49,59 +49,33 @@ using Catch::Matchers::Contains;
 const string test_file_path = "./../test/lab_00/lab_00_C_data/";
 
 TEST_CASE("test case 1", "[test 00 C]") {
-    std::streambuf *backup;
-    std::ifstream fin;
-    fin.open(test_file_path + "01.data.in");
-    backup = cin.rdbuf();
-    cin.rdbuf(fin.rdbuf());
+    CS203_redirect cr{test_file_path + "01.data.in", ""};
     // 重定向开始,开始run
     auto result_data = isBipartite(read());
     // 重定向结束
-    cin.rdbuf(backup);
     CHECK_FALSE(result_data);
 }
 
 TEST_CASE("test case 2", "[test 00 C]") {
-    std::streambuf *backup;
-    std::ifstream fin;
-    fin.open(test_file_path + "02.data.in");
-    backup = cin.rdbuf();
-    cin.rdbuf(fin.rdbuf());
+    CS203_redirect cr{test_file_path + "02.data.in", ""};
     auto result_data = isBipartite(read());
-    cin.rdbuf(backup);
     CHECK(result_data);
 }
 
 TEST_CASE("test case 3", "[test 00 C]") {
-    std::streambuf *backup;
-    std::ifstream fin;
-    fin.open(test_file_path + "03.data.in");
-    backup = cin.rdbuf();
-    cin.rdbuf(fin.rdbuf());
+    CS203_redirect cr{test_file_path + "03.data.in", ""};
     auto result_data = isBipartite(read());
-    cin.rdbuf(backup);
     CHECK(result_data);
 }
 
 TEST_CASE("test case 4", "[test 00 C]") {
-    std::streambuf *backup;
-    std::ifstream fin;
-    fin.open(test_file_path + "04.data.in");
-    backup = cin.rdbuf();
-    cin.rdbuf(fin.rdbuf());
+    CS203_redirect cr{test_file_path + "04.data.in", ""};
     auto result_data = isBipartite(read());
-    cin.rdbuf(backup);
     CHECK_FALSE(result_data);
 }
-
 TEST_CASE("test case 5", "[test 00 C]") {
-    std::streambuf *backup;
-    std::ifstream fin;
-    fin.open(test_file_path + "05.data.in");
-    backup = cin.rdbuf();
-    cin.rdbuf(fin.rdbuf());
+    CS203_redirect cr{test_file_path + "05.data.in", ""};
     auto result_data = isBipartite(read());
-    cin.rdbuf(backup);
     CHECK_FALSE(result_data);
 }
 
@@ -115,13 +89,8 @@ TEST_CASE("test case in loop", "[test 00 C]") {
     };
     const vector<uint8_t> result{false, true, true, false, false};
     for (int i = 0; i < 5; ++i) {
-        std::streambuf *backup;
-        std::ifstream fin;
-        fin.open(strs[i]);
-        backup = cin.rdbuf();
-        cin.rdbuf(fin.rdbuf());
+        CS203_redirect cr{strs[i], ""};
         auto result_data = isBipartite(read());
-        cin.rdbuf(backup);
         CHECK(result_data == result[i]);
     }
 }
@@ -138,13 +107,8 @@ TEST_CASE("test case with tuple", "[test 00 C]") {
         string path;
         result_data result;
         tie(path, result) = tup;
-        std::streambuf *backup;
-        std::ifstream fin;
-        fin.open(path);
-        backup = cin.rdbuf();
-        cin.rdbuf(fin.rdbuf());
+        CS203_redirect cr{path, ""};
         auto result_data = isBipartite(read());
-        cin.rdbuf(backup);
         CHECK(result_data == result);
     }
 }

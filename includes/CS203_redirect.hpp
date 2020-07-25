@@ -2,7 +2,7 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-25 01:56:19 
+ * @Date: 2020-07-24 01:56:19 
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
@@ -49,13 +49,13 @@ private:
     std::ofstream file_out = std::ofstream();
 public:
     // default path1 is input and path2 is output
-    explicit CS203_redirect(string path1, string path2) {
+    explicit CS203_redirect(const string& path1, const string& path2) {
         this->strmin_buf = std::cin.rdbuf();
         this->strmout_buf = std::cout.rdbuf();
-        file_in.open(path1);
+        this->file_in.open(path1);
         std::cin.rdbuf(file_in.rdbuf());
         if (!path2.empty()) {
-            file_out.open(path2);
+            this->file_out.open(path2);
             std::cout.rdbuf(file_out.rdbuf());
         }
     }
@@ -69,8 +69,8 @@ public:
     CS203_redirect &operator=(CS203_redirect &&mat) = delete;
 
     ~CS203_redirect() {
-        std::cin.rdbuf(strmin_buf);
         std::cout.rdbuf(strmout_buf);
+        std::cin.rdbuf(strmin_buf);
         std::cout.flush();
     }
 
