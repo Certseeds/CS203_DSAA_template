@@ -1,0 +1,63 @@
+# @Github: https://github.com/Certseeds/CS203_DSAA_template
+# @Organization: SUSTech
+# @Author: nanoseeds
+# @Date: 2020-07-26 19:08:22
+# @LastEditors: nanoseeds
+#  @LastEditTime: 2020-07-26 19:08:34 
+
+name: test
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: checkout code
+      uses: actions/checkout@v2
+
+    # ensure the path and files of project
+    - name: ensure the path and files of project
+      run: |
+          echo Hello, world!
+          echo $(pwd)
+          ls -la
+
+    - name: Setup cmake
+      uses: jwlawson/actions-setup-cmake@v1.3
+      with:
+        cmake-version: '3.10.2'          
+    
+    - name: Use cmake
+      run: cmake --version
+    
+    - name: mkdir for build
+      run:  mkdir ./cmake_build
+    
+    - name: build the project
+      working-directory: ./cmake_build
+      run: |
+          cmake .. 
+          make
+
+    - name: run the test
+      working-directory: ./cmake_build
+      run: ./CS203_DSAA_template_test
+
+    - name: Run a multi-line script
+      run: |
+          echo $(pwd)
+          ls -la
