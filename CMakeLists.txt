@@ -9,7 +9,7 @@ set(lab_number 00)
 set(problem_order C)
 
 include_directories(./includes)
-include_directories(./thrid_party)
+include_directories(./third_party)
 include_directories(./source/lab_${lab_number})
 include_directories(./test/lab_${lab_number})
 

@@ -1,0 +1,83 @@
+# @Github: https://github.com/Certseeds/CS203_DSAA_template
+# @Organization: SUSTech
+# @Author: nanoseeds
+# @Date: 2020-07-26 16:36:10
+# @LastEditors: nanoseeds
+#@LastEditTime: 2020-07-26 16:43:03
+# This is a basic workflow to help you get started with Actions
+
+name: publish_release
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on: 
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    if: github.repository == 'Certseeds/CS203_DSAA_template'
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: checkout code
+      uses: actions/checkout@v2
+
+    # ensure the path and files of project
+    - name: ensure the path and files of project
+      run: |
+          echo Hello, world!
+          echo $(pwd)
+          ls -la
+          
+    - name: run script
+      working-directory: ./script
+      run: python3 file_template.py
+    
+    - name: zip the packet
+      working-directory: ./../
+      run: |
+          echo $(pwd)
+          zip -r script_no_need.zip ./CS203_DSAA_template -x "./.git/*"
+          echo $(pwd)
+          
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: 0.0.6.2
+        release_name: 0.0.6.2
+        draft: false
+        prerelease: false
+
+    - name: Upload Release Asset
+      id: upload-release-asset 
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          # This pulls from the CREATE RELEASE step above, 
+          # referencing it's ID to get its outputs object, 
+          # which include a `upload_url`. 
+          #See this blog post for more info: 
+          #https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+        asset_path: ./../script_no_need.zip
+        asset_name: script_no_need.zip
+        asset_content_type: application/zip
+    
+    # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+          echo $(pwd)
+          ls -la

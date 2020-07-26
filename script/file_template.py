@@ -57,22 +57,19 @@ def read_file(file_name: str) -> str:
 
 
 def fill_file(lab_number: str, problem_order: str) -> None:
-    temp = main_code_template
     with open(source_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        file.write(main_code_template.format(
-            GITHUB_USER, USER, create_time, USER, year, USER))
+        file.write(main_code_template.format(GITHUB_USER, USER, create_time, year))
     print("main finish\n")
     with open(test_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        file.write(test_code_template.format(GITHUB_USER, USER, create_time, USER, year, USER, lab_number, lab_number,
-                                             problem_order, lab_number, problem_order, lab_number, problem_order))
+        file.write(test_code_template.format(GITHUB_USER, USER, create_time, year, lab_number, problem_order))
     print('test finish')
 
 
 def try_mkdir(lab_number: str) -> None:
-    if not os.path.exists("./../source/lab_{}".format(lab_number)):
-        os.mkdir("./../source/lab_{}".format(lab_number))
-    if not os.path.exists("./../test/lab_{}".format(lab_number)):
-        os.mkdir("./../test/lab_{}".format(lab_number))
+    if not os.path.exists("./../source/lab_{0}".format(lab_number)):
+        os.mkdir("./../source/lab_{0}".format(lab_number))
+    if not os.path.exists("./../test/lab_{0}".format(lab_number)):
+        os.mkdir("./../test/lab_{0}".format(lab_number))
 
 
 # range in [begin,end)

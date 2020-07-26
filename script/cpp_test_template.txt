@@ -1,9 +1,9 @@
 /**
- * @Github: https://github.com/{}/CS203_DSAA_template
+ * @Github: https://github.com/{0}/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {}
- * @Date: {}
- * @LastEditors: {}
+ * @Author: {1}
+ * @Date: {2}
+ * @LastEditors: {1}
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template 
 
-Copyright (C) {} {}
+Copyright (C) {3} {1}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -38,7 +38,7 @@ SOFTWARE.
 #include <vector>
 #include <iostream>
 #include "catch_main.hpp"
-#include "lab_{}_{}.cpp"
+#include "lab_{4}_{5}.cpp"
 
 using std::tie;
 using std::cin;
@@ -49,9 +49,9 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-const string test_file_path = "./../test/lab_{}/lab_{}_{}_data/";
+const string test_file_path = "./../test/lab_{4}/lab_{4}_{5}_data/";
 
-TEST_CASE("test case 1", "[test {} {}]") {{
+TEST_CASE("test case 1", "[test {4} {5}]") {{
     auto output = cal(std::make_tuple(114, 514));
     CHECK(output == 628);
     CHECK(1 + 2 == 3);

@@ -51,7 +51,7 @@ using Catch::Matchers::Contains;
 const string test_file_path = "./../test/lab_00/lab_00_D_data/";
 
 TEST_CASE("test case 1", "[test 00 D]") {
-    CS203_redirect cr{test_file_path + "01.data.in", ""};
+    CS203_redirect cr{test_file_path + "01.data.in"};
     // 重定向开始,开始run
     cal(read());
     // 重定向结束

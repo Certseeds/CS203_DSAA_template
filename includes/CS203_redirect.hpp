@@ -49,7 +49,7 @@ private:
     std::ofstream file_out = std::ofstream();
 public:
     // default path1 is input and path2 is output
-    explicit CS203_redirect(const string& path1, const string& path2) {
+    explicit CS203_redirect(const string &path1, const string &path2 = "") {
         this->strmin_buf = std::cin.rdbuf();
         this->strmout_buf = std::cout.rdbuf();
         this->file_in.open(path1);
