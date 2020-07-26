@@ -1,12 +1,3 @@
-<!--
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-26 16:27:50
- * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-26 16:29:39
- * @License: CC-BY-NC-SA_V4_0 or any later version 
- -->
 ---
 name: Bug report
 about: Create an issue that documents a bug
