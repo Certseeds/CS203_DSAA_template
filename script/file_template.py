@@ -41,6 +41,7 @@ from typing import List
 
 main_code_template: str
 test_code_template: str
+file_header_template: str
 GITHUB_USER: str = "YOUR_GITHUB_NAME"  # example: Certseeds
 USER: str = "YOUR_USER_NAME"  # example: nanoseeds
 year: str = time.strftime("%Y", time.localtime())
@@ -58,10 +59,12 @@ def read_file(file_name: str) -> str:
 
 def fill_file(lab_number: str, problem_order: str) -> None:
     with open(source_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        file.write(main_code_template.format(GITHUB_USER, USER, create_time, year))
-    print("main finish\n")
+        file.write(file_header_template.format(GITHUB_USER, USER, create_time, year))
+        file.write(main_code_template)
+    print("main finish")
     with open(test_path.format(lab_number, lab_number, problem_order), mode='a+', encoding="UTF-8") as file:
-        file.write(test_code_template.format(GITHUB_USER, USER, create_time, year, lab_number, problem_order))
+        file.write(file_header_template.format(GITHUB_USER, USER, create_time, year))
+        file.write(test_code_template.format(lab_number, problem_order))
     print('test finish')
 
 
@@ -74,8 +77,9 @@ def try_mkdir(lab_number: str) -> None:
 
 # range in [begin,end)
 if __name__ == '__main__':
-    main_code_template: str = read_file("cpp_template.txt")
-    test_code_template: str = read_file("cpp_test_template.txt")
+    file_header_template = read_file("file_header.txt")
+    main_code_template = read_file("cpp_template.txt")
+    test_code_template = read_file("cpp_test_template.txt")
     labs: List[str] = ['01', '02', '03', '04', '05', '06', '07',
                        '08', '09', '10', '11', '12', '13', '14', '15']
     problem_order: List[chr] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
