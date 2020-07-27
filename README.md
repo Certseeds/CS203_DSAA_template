@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:52:04
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-26 11:00:02
+ * @LastEditTime: 2020-07-26 20:56:27
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -32,8 +32,8 @@
     + 同时会提供一些基本的算法框架.
 
 ### 如何使用本repo:
-+ 首先请到[release_latest](https://github.com/Certseeds/CS203_DSAA_template/releases/latest)下载source.zip.
-+ 将其解压,放到某处,把文件夹名内的版本号去掉.
++ 首先请到[release_latest](https://github.com/Certseeds/CS203_DSAA_template/releases/latest)下载script_no_need.zip.
++ 将其解压,放到某处.
 + 将脚本创建的版权声明中的所有者替换成自己: 
     1. `.idea`中的`#set( ${GITHUB_USER} = "Certseeds")` -> `#set( ${GITHUB_USER} = "YOUR_GITHUB_NAME")`
     2. `.vscode/settings.json`中的`"Github": "https://github.com/Certseeds/CS203_DSAA_template"` -> `"Github": "https://github.com/YOUR_GITHUB_NAME/YOUR_REPO_NAME"`
@@ -48,12 +48,14 @@
         USER: str = "YOUR_USER_NAME"
         #下面这个和上面这个相同也行,不同也行,不重要.
         ```
-+ 使用脚本产生文件:
+- 可选项: 使用脚本产生自定义的文件(适合source.zip或者有bonuslab):
     + 使用命令行,进入`./script`下,`python3 ./file_template.py`,出现`produce files finish`提示,即为创建成功.
-      默认产生lab01-lab15十五个lab,每个lab下A-J10个问题,每个问题一个source文件,一个test文件.
-    + 一共15*10*2 = 300个文件.(全都默认为`https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1000`的对应代码与测试).
+      默认产生lab01-lab15十五个lab,  
+      每个lab下A-J10个问题,  
+      每个问题一个source文件,一个test文件.  
+    + 一共15 \* 10 \* 2 = 300个文件.(全都默认为`https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1000`的对应代码与测试).
     + 如果有bonus等情况,直接到`script\file_template.py`中修改`labs`,`problem_order`,便可修改产生的lab数,lab名与每道题对应的名字.
-     + PS:  就像下面的修改,增加了两个Bonus_Lab,同时给每个Lab中的C拆分成了C1 && C2
+      + PS:  就像下面的修改,增加了两个Bonus_Lab,同时给每个Lab中的C拆分成了C1 && C2
         ```  python
         labs: List[str] = ['01', '02', '03', '03Bouns', '04', '05', '06', '07','07Bouns','08', '09']
         problem_order: List[chr] = ['A', 'B', 'C1', 'C2','D', 'E', 'F', 'G']
@@ -66,9 +68,9 @@
     set(problem_order C1)
     ``` 
     为对应题号,比如上面的配置对应lab_07的C1题.
-    + `CS203_DSAA_template`将调用`source\lab_07\lab_07_C1.cpp`.  
-    + `CS203_DSAA_template_test`将调用`test\lab_07\lab_07_C1_test.cpp`,对`source\lab_07\lab_07_C1.cpp`进行测试.    
-    + 需要提交的是`source\lab_07\lab_07_C1.cpp`,`test\lab_07\lab_07_C1_test.cpp`可以方便测试,分享测试用例.
+    + `CS203_DSAA_template`将调用`source\lab_07\lab_07_C1.cpp`,为将要提交的源文件.  
+    + `CS203_DSAA_template_test`将调用`test\lab_07\lab_07_C1_test.cpp`,对其进行测试.    
+    + `test\lab_*\lab_*_*_test.cpp`目的为方便测试,同时便于分享测试用例.
 
 ### 实际场景:
 1. A+B: lab_00_A ,测试样例
@@ -79,7 +81,7 @@
       比如,我们有四组数据,第一组,第二组测试边界值,第三组使用随机数测试对偶性与正确性,第四组测试几个手动的随机值.
       参见[test_for_lab00_A](./test/lab_00/lab_00_A_test.cpp).
     + 这样一来,我们只需要每次修改完主文件之后,run `CS203_DSAA_template_test`, 对其进行调用,就能验证其在所有的测试用例上的正确性.
-      测试的结果也会出现在run完的输出中.
+      测试的结果也会出现在输出中.
 2. 多个输出值的检查:`Catch::Matchers`
     + 上面的例子里,输出值只是一个值,所以手动检查的难度不大,但是如果目标输出是一个数组,那么手动检查的难度就非常大了.
     + 举例:[Crzay Plan](https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1250),输入可能有1.1*10^6个.  
@@ -145,13 +147,13 @@
   + oj内一般java的最大运行时间都会是c++的2倍,显然是暗示速度之间的差别.
   + 其次,C++可以通过一些魔法操作,比如下文的优化等操作再获取一些时间上的优势.
 
-3. 对数据结构的友好性
+3. 对数据结构的友好性  
 DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数据结构,这类数据结构使用C++写,比较方便理解.
 
-4. 对算法的友好性能:
-我写树和图相关的题目时,最头疼的就是Java的爆栈,有一段时间只要用递归就爆栈,逼得人手动递归改循环.
+4. 对算法友好的性能:  
+我写树和图相关的题目时,最头疼的就是Java的爆栈,有一段时间只要用递归就爆栈,相同算法修改为C++之后问题就消失了.
 
-1. 相关资源的丰富程度
+1. 相关资源的丰富程度  
 不管怎么说,c++是dalao的选择,所以在网络上搜索题目,得到的大多数答案都是C/C++,java的数量很少.
 
 ### 如何手动开优化
@@ -170,7 +172,7 @@ static int faster_streams = []() {
     return 0;
 }();
 ```
-放在上面的magic_optimize下方,代码上方.
+放在上面的magic_optimize下方,代码上方.  
 3. 通常情况下,可以将运行时间缩短到1/2甚至更少.
 
 ### Why choose Catch?
