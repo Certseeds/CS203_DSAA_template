@@ -61,6 +61,10 @@ jobs:
     - name: run the algorithm_sort_test
       working-directory: ./cmake_build_path/algorithm/sort
       run: ./basic_algorithms_sort
+    
+    - name: run the binary_search test
+      working-directory: ./cmake_build_path/algorithm/binary_search
+      run: ./basic_algorithms_binary_search
 
     - name: Run a multi-line script
       run: |

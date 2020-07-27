@@ -40,10 +40,6 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-static int srand_get = []() {
-    srand(time(0));
-    return 0;
-}();
 
 TEST_CASE("empty", "[sort]") {
     vector<int> nums{};
