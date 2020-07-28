@@ -31,9 +31,8 @@ jobs:
     # ensure the path and files of project
     - name: ensure the path and files of project
       run: |
-          echo Hello, world!
-          echo $(pwd)
-          ls -la
+          sudo apt install tree
+          tree
 
     - name: Setup cmake
       uses: jwlawson/actions-setup-cmake@v1.3
@@ -43,12 +42,6 @@ jobs:
     - name: Use cmake
       run: cmake --version
     
-    - name: mkdir for build
-      run:  mkdir ./cmake_build_path
-    
-    - name: build the project
-      working-directory: ./cmake_build_path
-      run: cmake .. ; make
     - name: prepare permission
       working-directory: ./script
       run: chmod 0755 ./test.sh
@@ -57,9 +50,7 @@ jobs:
       working-directory: ./script
       run: ./test.sh
 
-    - name: Run a multi-line script
-      run: |
-          echo $(pwd)
-          ls -la
+    - name: tree 
+      run: tree
   # This workflow contains a single job called "build"
  
