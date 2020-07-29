@@ -6,10 +6,16 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-07-28 14:23:01
+ # @LastEditTime: 2020-07-29 10:28:08
 ###
-main() {
-    old_env=$(pwd)
+function cmake_make() {
+    mkdir ./cmake_build_path
+    cd ./cmake_build_path
+    cmake ..
+    make
+    # now at ./../cmake_build_path
+}
+function main() {
     prefix="basic_algorithms"
     ./CS203_DSAA_template_test
     cd ./algorithm
@@ -26,22 +32,12 @@ main() {
     cd ..
     # now at ./../cmake_build_path
 }
-try_mkdir() {
-    cd ./..
-    if [ ! -d "cmake_build_path" ]; then
-        mkdir ./cmake_build_path
-    fi
-    cd ./cmake_build_path
-    cmake ..
-    make
-    # now at ./../cmake_build_path
-}
-clear(){
-    cd ..
-    rm -rf "cmake_build_path"
-    # now at ./../
+function finish() {
+    rm -rf "$scratch"
 }
 # now in ./
-try_mkdir
+cd ..
+scratch="$(pwd)"/cmake_build_path
+cmake_make
 main
-clear
+trap finish EXIT
