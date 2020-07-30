@@ -6,7 +6,7 @@ set -eoux pipefail
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-07-29 10:28:08
+ # @LastEditTime: 2020-07-30 18:19:45
 ###
 function cmake_make() {
     mkdir ./cmake_build_path
@@ -27,6 +27,11 @@ function main() {
     {
         cd ./binary_search
         ./${prefix}_binary_search
+        cd ..
+    }
+    {
+        cd ./tree
+        ./${prefix}_tree
         cd ..
     }
     cd ..
