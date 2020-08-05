@@ -45,43 +45,43 @@ using std::vector;
 const std::string end = "\n";
 
 using num_type = uint64_t;
-using input_format = vector<num_type>;
-using output_format = vector<num_type>;
+using input_type = vector<num_type>;
+using output_type = vector<num_type>;
 
-inline input_format read();
+inline input_type read();
 
-output_format cal_warpper(const input_format &input);
+output_type cal_warpper(const input_type &input);
 
 num_type cal(num_type data);
 
 num_type brute_force(num_type data);
 
-void output(const output_format &data);
+void output(const output_type &data);
 
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
-    input_format input_data = read();
-    output_format result_data = cal_warpper(input_data);
-    output(result_data);
+    input_type input_data = read();
+    output_type output_data = cal_warpper(input_data);
+    output(output_data);
     return 0;
 }
 
 #endif // !CS203_DSAA_TEST_MACRO
 
-inline input_format read() {
+inline input_type read() {
     int32_t number{0};
     std::cin >> number;
-    input_format will_return(number, 0);
+    input_type will_return(number, 0);
     for (auto &item : will_return) {
         std::cin >> item;
     }
     return will_return;
 }
 
-output_format cal_warpper(const input_format &input) {
-    output_format will_return(input.size(), 0);
+output_type cal_warpper(const input_type &input) {
+    output_type will_return(input.size(), 0);
     for (size_t i = 0; i < input.size(); ++i) {
         will_return[i] = cal(input[i]);
     }

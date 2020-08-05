@@ -48,21 +48,23 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-const string test_file_path = "./../test/lab_00/lab_00_D_data/";
+string CS203_redirect::file_paths = "./../test/lab_00/lab_00_D_data/";
 
 TEST_CASE("test case 1", "[test 00 D]") {
-    CS203_redirect cr{test_file_path + "01.data.in"};
+    CS203_redirect cr{"01.data.in"};
     // 重定向开始,开始run
-    cal(read());
+    auto input_data = read();
+    cal(input_data);
     // 重定向结束
 }
 
-TEST_CASE("test case 2", "[test 00 C]") {
+TEST_CASE("test case 2", "[test 00 D]") {
     SECTION("do") {
-        CS203_redirect cr{test_file_path + "01.data.in", test_file_path + "01.test.out"};
-        cal(read());
+        CS203_redirect cr{"01.data.in", "01.test.out"};
+        auto input_data = read();
+        cal(input_data);
     }SECTION("compare files") {
-        CHECK(compareFiles(test_file_path + "01.test.out", test_file_path + "01.data.out"));
+        CHECK(compareFiles("01.test.out", "01.data.out"));
     }
 }
 

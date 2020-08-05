@@ -5,8 +5,8 @@ set -eoux pipefail
 # @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
- # @LastEditors: nanoseeds
- # @LastEditTime: 2020-07-30 18:19:45
+# @LastEditors: nanoseeds
+# @LastEditTime: 2020-07-30 18:19:45
 ###
 function cmake_make() {
     mkdir ./cmake_build_path
@@ -38,11 +38,11 @@ function main() {
     # now at ./../cmake_build_path
 }
 function finish() {
-    rm -rf "$scratch"
+    rm -rf "${scratch}"
 }
 # now in ./
 cd ..
 scratch="$(pwd)"/cmake_build_path
+trap finish EXIT
 cmake_make
 main
-trap finish EXIT

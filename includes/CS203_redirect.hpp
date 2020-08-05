@@ -48,13 +48,18 @@ private:
     std::ifstream file_in = std::ifstream();
     std::ofstream file_out = std::ofstream();
 public:
+    static string file_paths;
+
     // default path1 is input and path2 is output
-    explicit CS203_redirect(const string &path1, const string &path2 = "") {
+    explicit CS203_redirect(string path1, string path2 = "") {
+        string old_path2 = path2;
+        path1 = file_paths + path1;
+        path2 = file_paths + path2;
         this->strmin_buf = std::cin.rdbuf();
         this->strmout_buf = std::cout.rdbuf();
         this->file_in.open(path1);
         std::cin.rdbuf(file_in.rdbuf());
-        if (!path2.empty()) {
+        if (!old_path2.empty()) {
             this->file_out.open(path2);
             std::cout.rdbuf(file_out.rdbuf());
         }
@@ -73,7 +78,15 @@ public:
         std::cin.rdbuf(strmin_buf);
         std::cout.flush();
     }
-
 };
+
+#ifndef CS203_DSAA_TEST_MACRO
+#define CS203_DSAA_TEST_MACRO
+/* if in this macro, it means it do not belong to ./test/lab_${number}/${x}_test.cpp
+   so, it need define file_paths although it maybe do not need that
+   to avoid file_paths do not be define before use.
+*/
+string CS203_redirect::file_paths = "";
+#endif //CS203_DSAA_TEST_MACRO
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H

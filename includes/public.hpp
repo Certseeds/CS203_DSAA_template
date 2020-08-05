@@ -50,7 +50,6 @@ using std::ios;
 using std::cin;
 using std::cout;
 CS203_timer timer{};
-
 static int faster_streams = []() {
     srand(time(0));
     // use time to init the random seed
@@ -63,7 +62,9 @@ static int faster_streams = []() {
     return 0;
 }();
 
-bool compareFiles(const std::string &p1, const std::string &p2) {
+bool compareFiles(std::string p1, std::string p2) {
+    p1 = CS203_redirect::file_paths + p1;
+    p2 = CS203_redirect::file_paths + p2;
     // get from https://stackoverflow.com/questions/6163611/compare-two-files
     std::ifstream f1(p1, std::ifstream::binary | std::ifstream::ate);
     std::ifstream f2(p2, std::ifstream::binary | std::ifstream::ate);
@@ -71,7 +72,7 @@ bool compareFiles(const std::string &p1, const std::string &p2) {
         return false; //file problem
     }
     if (f1.tellg() != f2.tellg()) {
-        std::cout << p1 << " not match " << p2 <<'\n';
+        std::cout << p1 << " not match " << p2 << '\n';
         std::cout << f1.tellg() << " " << f2.tellg() << '\n';
         return false; //size mismatch
     }
