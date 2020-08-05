@@ -42,34 +42,35 @@ using std::tuple;
 using std::vector;
 const std::string end = "\n";
 
-using input_data = tuple<int32_t, int32_t>;
-using result_data = int32_t;
+using input_type = tuple<int32_t, int32_t>;
+using output_type = int32_t;
 
-inline input_data read();
+inline input_type read();
 
-result_data cal(input_data &&data);
+output_type cal(input_type data);
 
-void output(const result_data &data);
+void output(const output_type &data);
 
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
-    auto result_data = cal(read());
-    output(result_data);
+    auto input_data = read();
+    auto output_data = cal(input_data);
+    output(output_data);
     return 0;
 }
 
 #endif // !CS203_DSAA_TEST_MACRO
 
-inline input_data read() {
+inline input_type read() {
     int32_t a{0};
     int32_t b{0};
     std::cin >> a >> b;
     return std::make_tuple(a, b);
 }
 
-result_data cal(input_data &&data) {
+output_type cal(input_type data) {
     int32_t a{0};
     int32_t b{0};
     tie(a, b) = data;
@@ -77,6 +78,6 @@ result_data cal(input_data &&data) {
     return c;
 }
 
-void output(const result_data &data) {
+void output(const output_type &data) {
     std::cout << data << end;
 }

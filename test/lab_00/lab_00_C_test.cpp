@@ -46,70 +46,69 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-const string test_file_path = "./../test/lab_00/lab_00_C_data/";
+string CS203_redirect::file_paths = "./../test/lab_00/lab_00_C_data/";
 
 TEST_CASE("test case 1", "[test 00 C]") {
-    CS203_redirect cr{test_file_path + "01.data.in", ""};
+    CS203_redirect cr{"01.data.in", ""};
     // 重定向开始,开始run
-    auto result_data = isBipartite(read());
+    auto output_data = isBipartite(read());
     // 重定向结束
-    CHECK_FALSE(result_data);
+    CHECK_FALSE(output_data);
 }
 
 TEST_CASE("test case 2", "[test 00 C]") {
-    CS203_redirect cr{test_file_path + "02.data.in"};
-    auto result_data = isBipartite(read());
-    CHECK(result_data);
+    CS203_redirect cr{"02.data.in"};
+    auto output_data = isBipartite(read());
+    CHECK(output_data);
 }
 
 TEST_CASE("test case 3", "[test 00 C]") {
-    CS203_redirect cr{test_file_path + "03.data.in"};
-    auto result_data = isBipartite(read());
-    CHECK(result_data);
+    CS203_redirect cr{"03.data.in"};
+    auto output_data = isBipartite(read());
+    CHECK(output_data);
 }
 
 TEST_CASE("test case 4", "[test 00 C]") {
-    CS203_redirect cr{test_file_path + "04.data.in"};
-    auto result_data = isBipartite(read());
-    CHECK_FALSE(result_data);
+    CS203_redirect cr{"04.data.in"};
+    auto output_data = isBipartite(read());
+    CHECK_FALSE(output_data);
 }
+
 TEST_CASE("test case 5", "[test 00 C]") {
-    CS203_redirect cr{test_file_path + "05.data.in"};
-    auto result_data = isBipartite(read());
-    CHECK_FALSE(result_data);
+    CS203_redirect cr{"05.data.in"};
+    auto output_data = isBipartite(read());
+    CHECK_FALSE(output_data);
 }
 
 TEST_CASE("test case in loop", "[test 00 C]") {
     const vector<string> strs{
-            test_file_path + "01.data.in",
-            test_file_path + "02.data.in",
-            test_file_path + "03.data.in",
-            test_file_path + "04.data.in",
-            test_file_path + "05.data.in"
+            "01.data.in", "02.data.in",
+            "03.data.in", "04.data.in",
+            "05.data.in"
     };
     const vector<uint8_t> result{false, true, true, false, false};
     for (int i = 0; i < 5; ++i) {
         CS203_redirect cr{strs[i]};
-        auto result_data = isBipartite(read());
-        CHECK(result_data == result[i]);
+        auto output_data = isBipartite(read());
+        CHECK(output_data == result[i]);
     }
 }
 
 TEST_CASE("test case with tuple", "[test 00 C]") {
-    const vector<std::tuple<string, result_data>> input_result{
-            {test_file_path + "01.data.in", false},
-            {test_file_path + "02.data.in", true},
-            {test_file_path + "03.data.in", true},
-            {test_file_path + "04.data.in", false},
-            {test_file_path + "05.data.in", false}
+    const vector<std::tuple<string, output_type>> input_result{
+            {"01.data.in", false},
+            {"02.data.in", true},
+            {"03.data.in", true},
+            {"04.data.in", false},
+            {"05.data.in", false}
     };
     for (const auto &tup : input_result) {
         string path;
-        result_data result;
+        output_type result;
         tie(path, result) = tup;
         CS203_redirect cr{path};
-        auto result_data = isBipartite(read());
-        CHECK(result_data == result);
+        auto output_data = isBipartite(read());
+        CHECK(output_data == result);
     }
 }
 

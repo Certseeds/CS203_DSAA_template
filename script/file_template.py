@@ -6,7 +6,7 @@
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09
 @LastEditors: nanoseeds
-@LastEditTime: 2020-07-27 15:32:22
+@LastEditTime: 2020-07-31 22:51:49
 @LICENSE: MIT
 '''
 '''
@@ -85,7 +85,9 @@ if __name__ == '__main__':
     test_code_template = read_file('cpp_test_template.txt')
     labs: List[str] = ['01', '02', '03', '04', '05', '06', '07',
                        '08', '09', '10', '11', '12', '13', '14', '15']
-    problem_order: List[chr] = ['A', 'B', 'C','D', 'E', 'F', 'G', 'H', 'I', 'J']
+    problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+    # labs: List[str] = ['01']
+    # problem_order: List[str] = ['A']
     for i in labs:
         try_mkdir(i)  # 准备文件夹
         for j in problem_order:

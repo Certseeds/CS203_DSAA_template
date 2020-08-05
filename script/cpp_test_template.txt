@@ -16,11 +16,11 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-const string test_file_path = "./../test/lab_{0}/lab_{0}_{1}_data/";
+string CS203_redirect::file_paths = "./../test/lab_{0}/lab_{0}_{1}_data/";
 
 TEST_CASE("test case 1", "[test {0} {1}]") {{
-    auto output = cal(std::make_tuple(114, 514));
-    CHECK(output == 628);
+    auto output_data = cal(std::make_tuple(114, 514));
+    CHECK(output_data == 628);
     CHECK(1 + 2 == 3);
     vector <int32_t> vec{{2, 7, 11, 15}};
     SECTION("CHECK_THAT 1") {{

@@ -1,11 +1,3 @@
-/*
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-15 22:13:18
- * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-17 23:26:32
- */
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
@@ -54,6 +46,7 @@ using std::cout;
 using std::tie;
 using std::tuple;
 using std::vector;
+string CS203_redirect::file_paths = "./../test/lab_00/lab_00_A_data/";
 
 TEST_CASE("test case 1", "[test 00 A]") {
     auto output1 = cal(std::make_tuple(0, 0));

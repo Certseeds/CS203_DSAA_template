@@ -77,27 +77,28 @@ enum class Color {
     black = 1
 };
 
-using input_data = vector<vector<int32_t>>;
-using result_data = bool;
+using input_type = vector<vector<int32_t>>;
+using output_type = bool;
 
-inline input_data read();
+inline input_type read();
 
-result_data isBipartite(const input_data &&data);
+output_type isBipartite(const input_type &data);
 
-void output(const result_data &data);
+void output(const output_type &data);
 
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
-    auto result_data = isBipartite(read());
-    output(result_data);
+    auto input_data = read();
+    auto output_data = isBipartite(input_data);
+    output(output_data);
     return 0;
 }
 
 #endif // !CS203_DSAA_TEST_MACRO
 
-inline input_data read() {
+inline input_type read() {
     int32_t N{0};
     std::cin >> N;
     vector<vector<int32_t>> will_return(N);
@@ -112,7 +113,7 @@ inline input_data read() {
     return will_return;
 }
 
-result_data isBipartite(const input_data &&graph) {
+output_type isBipartite(const input_type &graph) {
     int32_t node_number = graph.size();
     vector<Color> color_vec(node_number, Color::uncolor);
     for (int32_t i = 0; i < node_number; i++) {
@@ -138,7 +139,7 @@ result_data isBipartite(const input_data &&graph) {
     return true;
 }
 
-void output(const result_data &data) {
+void output(const output_type &data) {
     if (data) {
         std::cout << "\"PÖSSiBLE\"" << end;
     } else {

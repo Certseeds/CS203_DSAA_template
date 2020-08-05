@@ -58,7 +58,7 @@
       + PS:  就像下面的修改,增加了两个Bonus_Lab,同时给每个Lab中的C拆分成了C1 && C2
         ```  python
         labs: List[str] = ['01', '02', '03', '03Bouns', '04', '05', '06', '07','07Bouns','08', '09']
-        problem_order: List[chr] = ['A', 'B', 'C1', 'C2','D', 'E', 'F', 'G']
+        problem_order: List[str] = ['A', 'B', 'C1', 'C2','D', 'E', 'F', 'G']
         ```  
 + 执行代码和测试:
     + 使用clion打开文件夹,配置好C++环境的基础上,会自动识别`CmakeList.txt`.产生`CS203_DSAA_template`,`CS203_DSAA_template_test`两个可以运行的可选项.
@@ -93,13 +93,13 @@
     + 比如[判断二分图](./source/lab_00/lab_00_C.cpp),一张图可以有几十上百个node,写在内部占用空间太大.
     + 而在这里,使用`CS203_redirect`对象,便可以省去手动输入的方式.
     ``` cpp
-        const string test_file_path = "./../test/lab_00/lab_00_C_data/";
         TEST_CASE("test case 1", "[test 00 C]") {
-            CS203_redirect cr{test_file_path + "01.data.in", ""};
+            CS203_redirect cr{"01.data.in", ""};
             // 重定向开始,开始run
-            auto result_data = isBipartite(read());
+            // or CS203_redirect cr{"01.data.in"};
+            auto output_data = isBipartite(read());
             // 重定向结束
-            CHECK_FALSE(result_data);
+            CHECK_FALSE(output_data);
         }
     ```
     只需要准备好输入的数据与结果,就可以从文件中读取,执行后判断结果是否符合预期.   
@@ -115,18 +115,18 @@
     + 一般来说,题目的输出不会太复杂,但是反例也不是没有.:比如专门考输出的[立体图](./source/lab_00/lab_00_D.cpp)
     + 这种情况下,使用c++的重定向输出就可以较为方便的对输入进行处理,同时保存输出方便调试.
     ``` cpp
-        const string test_file_path = "./../test/lab_00/lab_00_D_data/";
-        TEST_CASE("test case 2", "[test 00 C]") {
+        TEST_CASE("test case 2", "[test 00 D]") {
             SECTION("do") {
-                CS203_redirect cr{test_file_path + "01.data.in", test_file_path + "01.test.out"};
-                cal(read());
+                CS203_redirect cr{"01.data.in", "01.test.out"};
+                auto input_data = read();
+                cal(input_data);
             }SECTION("compare files") {
-                CHECK(compareFiles(test_file_path + "01.test.out", test_file_path + "01.data.out"));
+                CHECK(compareFiles("01.test.out", "01.data.out"));
             }
         }
     ```
     这样就将标准输出重定向到了01.test.out中,并与01.data.out比对.
-    + 至于比较文件之间的差异,可以使用内置的`compareFiles(const string& path1,const string& path2)`函数进行比较.
+    + 至于比较文件之间的差异,可以使用内置的`compareFiles(string path1,string path2)`函数进行比较.
     参考[文本比对_test_case_2](./test/lab_00/lab_00_D_test.cpp)
 
 5. 为什么要将 `读取` `数据处理` `输出` 分开?

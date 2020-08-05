@@ -53,35 +53,35 @@ const vector<std::pair<int32_t, string>> spis{
         {0, "|   |/"},
         {0, "+---+"}};
 
-using input_data = vector<vector<int32_t>>;
-using result_data = vector<vector<char>>;
+using input_type = vector<vector<int32_t>>;
+using output_type = vector<vector<char>>;
 
-inline input_data read();
+inline input_type read();
 
-//result_data cal(input_data &&data);
-void cal(input_data &&hi);
+void cal(input_type &hi);
 
-void output(const result_data &map, int high, int wide);
+void output(const output_type &map, int high, int wide);
 
-void print(result_data &map, int a, int b);
+void print(output_type &map, int a, int b);
 
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
-    cal(read());
-    // auto result_data = cal(read());
-    // output(result_data);
+    auto input_data = read();
+    cal(input_data);
+    // auto output_type = cal(read());
+    // output(output_type);
     return 0;
 }
 
 #endif  // !CS203_DSAA_TEST_MACRO
 
-inline input_data read() {
+inline input_type read() {
     int32_t m{0};
     int32_t n{0};
     std::cin >> m >> n;
-    input_data mat(m + 1, vector<int32_t>(n + 1, -0x3f3f));
+    input_type mat(m + 1, vector<int32_t>(n + 1, -0x3f3f));
     for (int k = 1; k <= m; ++k) {
         for (int i = 1; i <= n; ++i) {
             std::cin >> mat[k][i];
@@ -90,7 +90,7 @@ inline input_data read() {
     return mat;
 }
 
-void print(result_data &map, int a, int b) {
+void print(output_type &map, int a, int b) {
     for (int i = 0; i < static_cast<int>(spis.size()); i++) {
         for (int j = 0; j < static_cast<int>(spis[i].second.size()); j++) {
             map[a - 1 + i][b + j + spis[i].first] = spis[i].second[j];
@@ -99,7 +99,7 @@ void print(result_data &map, int a, int b) {
     return;
 }
 
-void cal(input_data &&hi) {
+void cal(input_type &hi) {
     vector<vector<char>> out(302, vector<char>(301, '.'));
     int m = static_cast<int>(hi.size()) - 1;
     int n = static_cast<int>(hi.front().size()) - 1;
@@ -122,7 +122,7 @@ void cal(input_data &&hi) {
     output(out, h, wide);
 }
 
-void output(const result_data &map, int high, int wide) {
+void output(const output_type &map, int high, int wide) {
     for (int i = 0; i < high; i++) {
         for (int j = 1; j <= wide; j++) {
             cout << map[i][j];

@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 21:44:06
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-23 23:40:10
+ * @LastEditTime: 2020-07-30 11:27:06
  * @LICENSE: MIT
  */
 /*
@@ -50,7 +50,6 @@ using std::ios;
 using std::cin;
 using std::cout;
 CS203_timer timer{};
-
 static int faster_streams = []() {
     srand(time(0));
     // use time to init the random seed
@@ -63,15 +62,18 @@ static int faster_streams = []() {
     return 0;
 }();
 
-bool compareFiles(const std::string &p1, const std::string &p2) {
+bool compareFiles(std::string p1, std::string p2) {
+    p1 = CS203_redirect::file_paths + p1;
+    p2 = CS203_redirect::file_paths + p2;
     // get from https://stackoverflow.com/questions/6163611/compare-two-files
     std::ifstream f1(p1, std::ifstream::binary | std::ifstream::ate);
     std::ifstream f2(p2, std::ifstream::binary | std::ifstream::ate);
     if (f1.fail() || f2.fail()) {
         return false; //file problem
     }
-    std::cout << f1.tellg() << " " << f2.tellg() << " \n";
     if (f1.tellg() != f2.tellg()) {
+        std::cout << p1 << " not match " << p2 << '\n';
+        std::cout << f1.tellg() << " " << f2.tellg() << '\n';
         return false; //size mismatch
     }
     //seek back to beginning and use std::equal to compare contents

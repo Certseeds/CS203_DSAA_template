@@ -73,9 +73,9 @@
     },
     "git.ignoreLimitWarning": true,
     "shellcheck.enable": true, // 安装以后默认就是激活的
-    "shellcheck.executablePath": "/usr/bin/shellcheck", // 也可以是shellcheck
+    "shellcheck.executablePath": "/usr/local/bin/shellcheck", // 也可以是shellcheck
     "shellcheck.run": "onType", // "onType"敲击键盘的时候检查，onSave是保存文件时候检查
-    "shellcheck.useWSL": true,
+    //"shellcheck.useWSL": true,
     "shellcheck.enableQuickFix": true,
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
     "todo-tree.general.tags": [
@@ -173,7 +173,8 @@
         "typeinfo": "cpp",
         "unordered_map": "cpp",
         "utility": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "__functional_03": "cpp"
     },
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools"
 }

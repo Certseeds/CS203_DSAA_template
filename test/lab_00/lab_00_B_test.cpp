@@ -49,19 +49,20 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
+string CS203_redirect::file_paths = "./../test/lab_00/lab_00_B_data/";
 
 TEST_CASE("test case 1", "[test 00 B]") {
-    auto vec1 = vector<uint64_t>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
+    auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
     for (const auto &i:vec1) {
         CHECK(cal(i) == brute_force(i));
     }
 }
 
 TEST_CASE("test case 2", "[test 00 B]") {
-    auto vec1 = vector<uint64_t>{1, 2, 3, 4, 5, 6, 7, 1100000};
+    auto vec1 = vector<num_type>{1, 2, 3, 4, 5, 6, 7, 1100000};
     auto result = cal_warpper(vec1);
-    auto what_we_want = vector<uint64_t>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
-    CHECK_THAT(result, Equals<uint64_t>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
+    auto what_we_want = vector<num_type>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
+    CHECK_THAT(result, Equals<num_type>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
     CHECK_THAT(result, Equals(what_we_want));
 }
 
