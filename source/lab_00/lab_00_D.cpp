@@ -38,6 +38,7 @@ SOFTWARE.
 #include <iostream>
 #include <string>
 #include <vector>
+
 using std::cin;
 using std::cout;
 using std::string;
@@ -56,6 +57,8 @@ const vector<std::pair<int32_t, string>> spis{
 using input_type = vector<vector<int32_t>>;
 using output_type = vector<vector<char>>;
 
+inline int main2();
+
 inline input_type read();
 
 void cal(input_type &hi);
@@ -68,14 +71,18 @@ void print(output_type &map, int a, int b);
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
+    return main2();
+}
+
+#endif  // !CS203_DSAA_TEST_MACRO
+
+inline int main2() {
     auto input_data = read();
     cal(input_data);
     // auto output_type = cal(read());
     // output(output_type);
     return 0;
 }
-
-#endif  // !CS203_DSAA_TEST_MACRO
 
 inline input_type read() {
     int32_t m{0};

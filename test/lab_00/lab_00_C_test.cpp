@@ -47,7 +47,11 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 string CS203_redirect::file_paths = "./../test/lab_00/lab_00_C_data/";
-
+/*
+ * Test case 1 -> Test case 5
+ * 目的是为了展示只使用CS203_redirect的情况下
+ * 应该如何只重定向输入,不重定向输出.
+ * */
 TEST_CASE("test case 1", "[test 00 C]") {
     CS203_redirect cr{"01.data.in", ""};
     // 重定向开始,开始run
@@ -79,7 +83,7 @@ TEST_CASE("test case 5", "[test 00 C]") {
     auto output_data = isBipartite(read());
     CHECK_FALSE(output_data);
 }
-
+/*目的在于展示,使用循环来精简Test case1~5中的工作量*/
 TEST_CASE("test case in loop", "[test 00 C]") {
     const vector<string> strs{
             "01.data.in", "02.data.in",
@@ -93,7 +97,7 @@ TEST_CASE("test case in loop", "[test 00 C]") {
         CHECK(output_data == result[i]);
     }
 }
-
+/*目的在于展示,std::tuple的打包能力*/
 TEST_CASE("test case with tuple", "[test 00 C]") {
     const vector<std::tuple<string, output_type>> input_result{
             {"01.data.in", false},
@@ -111,5 +115,29 @@ TEST_CASE("test case with tuple", "[test 00 C]") {
         CHECK(output_data == result);
     }
 }
+/* 目的在于展示 CS203_sequence 生成重定向相关文件名的能力
+ * */
+TEST_CASE("test case with sequence", "[test 00 C]") {
+
+    CS203_sequence sequence(1, 5, 2);
+    // 前缀被默认设定为 空串 ""
+    sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
+    sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
+    sequence.set_postfix_of_testout("test.out"); // 测试输出数据后缀,默认为 test.out
+    const auto files_name = sequence.get_files(true);
+    // 获取一个std::tuple<string,string,string> ,
+    // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
+    for (const auto &filesName : files_name) {
+        string datain, dataout, testout; // 声明
+        tie(datain, dataout, testout) = filesName; // 解包
+        {
+            CS203_redirect cr{datain, testout}; // 重定向输入,输出
+            main2();
+            // 用括号括住是为了让CS203_redirect在这里被析构,停止重定向
+        }
+        CHECK(compareFiles(testout, dataout));
+    }
+}
+
 
 #endif //CS203_DSAA_TEST_MACRO

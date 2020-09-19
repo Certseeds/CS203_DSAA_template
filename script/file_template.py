@@ -35,16 +35,19 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-
 import os
 import time
 from typing import List
+
 main_code_template: str
 test_code_template: str
 file_header_template: str
-GITHUB_USER: str = 'YOUR_GITHUB_NAME'  # example: Certseeds
-USER: str = 'YOUR_USER_NAME'  # example: nanoseeds
-REPO_NAME: str = 'YOUR_REPO_NAME'
+GITHUB_USER: str = 'YOUR_GITHUB_NAME'  # replace it with your github name
+GITHUB_USER: str = 'Certseeds'  # example: Certseeds
+USER: str = 'YOUR_USER_NAME'  # replace it with your user name
+USER: str = 'nanoseeds'  # example: nanoseeds
+REPO_NAME: str = 'YOUR_REPO_NAME'  # replace it with your github repo name
+REPO_NAME: str = 'CS203_DSAA_template'  # example: CS203_DSAA_template
 year: str = time.strftime('%Y', time.localtime())
 create_time: str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 source_path: str = './../source/lab_{}/lab_{}_{}.cpp'
@@ -87,7 +90,7 @@ if __name__ == '__main__':
                        '08', '09', '10', '11', '12', '13', '14', '15']
     problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     # labs: List[str] = ['01']
-    # problem_order: List[str] = ['A']
+    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     for i in labs:
         try_mkdir(i)  # 准备文件夹
         for j in problem_order:

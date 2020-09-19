@@ -45,6 +45,7 @@ SOFTWARE.
 #include "CS203_helper.hpp"
 #include "CS203_timer.hpp"
 #include "CS203_redirect.hpp"
+#include "CS203_sequence.hpp"
 
 using std::ios;
 using std::cin;

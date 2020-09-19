@@ -48,6 +48,8 @@ using num_type = uint64_t;
 using input_type = vector<num_type>;
 using output_type = vector<num_type>;
 
+inline int main2();
+
 inline input_type read();
 
 output_type cal_warpper(const input_type &input);
@@ -62,13 +64,17 @@ void output(const output_type &data);
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
+    return main2();
+}
+
+#endif // !CS203_DSAA_TEST_MACRO
+
+inline int main2() {
     input_type input_data = read();
     output_type output_data = cal_warpper(input_data);
     output(output_data);
     return 0;
 }
-
-#endif // !CS203_DSAA_TEST_MACRO
 
 inline input_type read() {
     int32_t number{0};

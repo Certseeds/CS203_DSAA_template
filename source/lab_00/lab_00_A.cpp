@@ -45,6 +45,8 @@ const std::string end = "\n";
 using input_type = tuple<int32_t, int32_t>;
 using output_type = int32_t;
 
+inline int main2();
+
 inline input_type read();
 
 output_type cal(input_type data);
@@ -55,13 +57,17 @@ void output(const output_type &data);
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
+    return main2();
+}
+
+#endif // !CS203_DSAA_TEST_MACRO
+
+inline int main2() {
     auto input_data = read();
     auto output_data = cal(input_data);
     output(output_data);
     return 0;
 }
-
-#endif // !CS203_DSAA_TEST_MACRO
 
 inline input_type read() {
     int32_t a{0};

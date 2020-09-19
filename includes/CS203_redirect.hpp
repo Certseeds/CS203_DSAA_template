@@ -34,6 +34,7 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
 #define CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
 
+#include <fstream>
 #include <iostream>
 #include <string>
 
@@ -50,17 +51,17 @@ private:
 public:
     static string file_paths;
 
-    // default path1 is input and path2 is output
-    explicit CS203_redirect(string path1, string path2 = "") {
-        string old_path2 = path2;
-        path1 = file_paths + path1;
-        path2 = file_paths + path2;
+    // default datain is input and testout is output
+    explicit CS203_redirect(string datain, string testout = "") {
+        string old_path2 = testout;
+        datain = file_paths + datain;
+        testout = file_paths + testout;
         this->strmin_buf = std::cin.rdbuf();
         this->strmout_buf = std::cout.rdbuf();
-        this->file_in.open(path1);
+        this->file_in.open(datain);
         std::cin.rdbuf(file_in.rdbuf());
         if (!old_path2.empty()) {
-            this->file_out.open(path2);
+            this->file_out.open(testout);
             std::cout.rdbuf(file_out.rdbuf());
         }
     }

@@ -80,6 +80,8 @@ enum class Color {
 using input_type = vector<vector<int32_t>>;
 using output_type = bool;
 
+inline int main2();
+
 inline input_type read();
 
 output_type isBipartite(const input_type &data);
@@ -90,13 +92,17 @@ void output(const output_type &data);
 #define CS203_DSAA_TEST_MACRO
 
 int main() {
+    return main2();
+}
+
+#endif // !CS203_DSAA_TEST_MACRO
+
+inline int main2() {
     auto input_data = read();
     auto output_data = isBipartite(input_data);
     output(output_data);
     return 0;
 }
-
-#endif // !CS203_DSAA_TEST_MACRO
 
 inline input_type read() {
     int32_t N{0};
