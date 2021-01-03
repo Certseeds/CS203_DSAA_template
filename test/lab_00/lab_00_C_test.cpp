@@ -9,7 +9,7 @@
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020 nanoseds
 
@@ -46,7 +46,7 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-string CS203_redirect::file_paths = "./../test/lab_00/lab_00_C_data/";
+string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_C_data/";
 /*
  * Test case 1 -> Test case 5
  * 目的是为了展示只使用CS203_redirect的情况下

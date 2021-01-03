@@ -7,7 +7,8 @@
  * @LastEditTime: 2020-07-26 16:35:14
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
-## Contributing
+
+# Contributing
 
 Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
 

@@ -33,11 +33,6 @@ jobs:
     - name: ensure the path and files of project
       run: sudo apt install tree; tree
 
-    - name: Setup cmake
-      uses: jwlawson/actions-setup-cmake@v1.3
-      with:
-        cmake-version: '3.10.2'          
-
     - name: Use cmake
       run: cmake --version
     

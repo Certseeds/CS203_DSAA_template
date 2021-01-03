@@ -5,44 +5,28 @@ set -eoux pipefail
 # @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
-# @LastEditors: nanoseeds
-# @LastEditTime: 2020-07-30 18:19:45
+ # @LastEditors: nanoseeds
+ # @LastEditTime: 2021-01-04 00:32:11
 ###
+cmake_path="cmake_build_path"
 function cmake_make() {
-    mkdir ./cmake_build_path
-    cd ./cmake_build_path
+    mkdir -p ./"${cmake_path}"
+    cd ./"${cmake_path}"
     cmake ..
-    make
+    make -j"$(nproc)"
     # now at ./../cmake_build_path
 }
 function main() {
-    prefix="basic_algorithms"
-    ./CS203_DSAA_template_test
-    cd ./algorithm
-    {
-        cd ./sort
-        ./${prefix}_sort
-        cd ..
-    }
-    {
-        cd ./binary_search
-        ./${prefix}_binary_search
-        cd ..
-    }
-    {
-        cd ./tree
-        ./${prefix}_tree
-        cd ..
-    }
+    make test
     cd ..
-    # now at ./../cmake_build_path
+    # now at ./../
 }
 function finish() {
     rm -rf "${scratch}"
 }
 # now in ./
 cd ..
-scratch="$(pwd)"/cmake_build_path
+scratch="$(pwd)/${cmake_path}"
 trap finish EXIT
 cmake_make
 main

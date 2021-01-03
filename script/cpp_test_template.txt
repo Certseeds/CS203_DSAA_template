@@ -16,7 +16,7 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-string CS203_redirect::file_paths = "./../test/lab_{0}/lab_{0}_{1}_data/";
+string CS203_redirect::file_paths = "./../../../test/lab_{0}/lab_{0}_{1}_data/";
 
 TEST_CASE("test case 1", "[test {0} {1}]") {{
     auto output_data = cal(std::make_tuple(114, 514));
