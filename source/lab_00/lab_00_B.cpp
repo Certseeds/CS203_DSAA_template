@@ -9,7 +9,7 @@
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020 nanoseds
 
@@ -112,3 +112,14 @@ void output(const vector<num_type> &data) {
         std::cout << num << end;
     }
 }
+static int faster_streams = [] {
+    srand(time(0));
+    // use time to init the random seed
+    std::ios::sync_with_stdio(false);
+    std::istream::sync_with_stdio(false);
+    std::ostream::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
+    return 0;
+}();

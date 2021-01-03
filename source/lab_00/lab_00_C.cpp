@@ -9,7 +9,7 @@
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020 nanoseds
 
@@ -38,10 +38,10 @@ SOFTWARE.
 #include <iostream>
 /*
 给定一个无向图 graph,当这个图为二分图时返回 true.
- 
+
 如果我们能将一个图的节点集合分割成两个独立的子集 A 和 B,
 并使图中的每一条边的两个节点一个来自 A 集合,一个来自 B 集合,我们就将这个图称为二分图.
- 
+
 每个节点都是一个在 0 到 graph.length-1 之间的整数.
 图中没有自环和平行边： graph[i] 中不存在 i,并且 graph[i] 中没有重复的值.
 
@@ -152,3 +152,14 @@ void output(const output_type &data) {
         std::cout << "\"lMP0SSlBLE\"" << end;
     }
 }
+static int faster_streams = [] {
+    srand(time(0));
+    // use time to init the random seed
+    std::ios::sync_with_stdio(false);
+    std::istream::sync_with_stdio(false);
+    std::ostream::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
+    return 0;
+}();
