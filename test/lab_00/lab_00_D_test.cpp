@@ -1,9 +1,9 @@
-/**
+/*
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseds
+ * @Author: nanoseeds
  * @Date: 2020-07-21 21:44:25
- * @LastEditors: nanoseds
+ * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020 nanoseds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -51,7 +51,7 @@ using Catch::Matchers::Contains;
 string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_D_data/";
 
 TEST_CASE("test case 1", "[test 00 D]") {
-    CS203_redirect cr{"01.data.in"};
+    const CS203_redirect cr{"01.data.in"};
     // 重定向开始,开始run
     auto input_data = read();
     cal(input_data);
@@ -60,7 +60,7 @@ TEST_CASE("test case 1", "[test 00 D]") {
 
 TEST_CASE("test case 2", "[test 00 D]") {
     SECTION("do") {
-        CS203_redirect cr{"01.data.in", "01.test.out"};
+        const CS203_redirect cr{"01.data.in", "01.test.out"};
         auto input_data = read();
         cal(input_data);
     }SECTION("compare files") {

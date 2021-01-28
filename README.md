@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:52:04
  * @LastEditors: nanoseeds
- * @LastEditTime: 2021-01-04 00:41:41
+ * @LastEditTime: 2021-01-28 17:02:29
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
 
@@ -172,11 +172,11 @@ DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数�
 ## 如何手动开优化
 
 1. 将[magic_optimize](./includes/magic_macro.hpp)内的内容粘贴到代码最上方.
-2. 将
+2. 关闭同步,
 
 ```cpp
 static int faster_streams = []() {
-    srand(time(0)); 
+    srand(time(nullptr)); 
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
     std::istream::sync_with_stdio(false);

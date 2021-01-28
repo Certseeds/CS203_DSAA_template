@@ -21,6 +21,6 @@ foreach (elementName IN LISTS dependencies)
     add_subdirectory(./source/lab_${elementName})
     add_subdirectory(./test/lab_${elementName})
 endforeach ()
-unset(dependenciesOfMain)
+unset(dependencies)
 
 
