@@ -1,9 +1,9 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseds
+ * @Author: nanoseeds
  * @Date: 2020-07-19 19:37:58
- * @LastEditors: nanoseds
+ * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020 nanoseds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include <iostream>
 #include <list>
 #include <queue>
 #include <string>
 #include <vector>
-#include <iostream>
 /*
 给定一个无向图 graph,当这个图为二分图时返回 true.
 
@@ -95,7 +95,7 @@ int main() {
     return main2();
 }
 
-#endif // !CS203_DSAA_TEST_MACRO
+#endif  // !CS203_DSAA_TEST_MACRO
 
 inline int main2() {
     auto input_data = read();
@@ -112,7 +112,7 @@ inline input_type read() {
         int32_t X{0};
         std::cin >> X;
         will_return[i].resize(X);
-        for (auto &j: will_return[i]) {
+        for (auto &j : will_return[i]) {
             std::cin >> j;
         }
     }
@@ -131,7 +131,7 @@ output_type isBipartite(const input_type &graph) {
                 int32_t head = que.front();
                 que.pop();
                 Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
-                for (const auto &j: graph[head]) {
+                for (const auto &j : graph[head]) {
                     if (color_vec[j] == Color::uncolor) {
                         color_vec[j] = next_color;
                         que.push(j);
@@ -147,13 +147,14 @@ output_type isBipartite(const input_type &graph) {
 
 void output(const output_type &data) {
     if (data) {
-        std::cout << "\"PÖSSiBLE\"" << end;
-    } else {
-        std::cout << "\"lMP0SSlBLE\"" << end;
+        std::cout << R"("PÖSSiBLE")" << end;
+        // feature in c++11 which named `raw string literals`
+    } else{ 
+        std::cout << R"("lMP0SSlBLE")" << end;
     }
 }
 static int faster_streams = [] {
-    srand(time(0));
+    srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
     std::istream::sync_with_stdio(false);

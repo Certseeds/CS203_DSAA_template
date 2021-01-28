@@ -4,7 +4,7 @@
  # @Author: nanoseeds
  # @Date: 2020-07-15 23:48:29
  # @LastEditors: nanoseeds
- # @LastEditTime: 2020-09-19 12:04:53
+ # @LastEditTime: 2021-01-28 16:50:10
 ### 
 * text=auto
 
@@ -16,7 +16,6 @@
 *.template text diff=text
 *.in text eol=lf
 *.out text eol=lf
-third_party/* linguist-vendored
 
 # scripts
 *.sh text eol=lf

@@ -11,5 +11,5 @@ foreach (elementName IN LISTS dependencies)
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName})
 endforeach ()
-unset(dependenciesOfMain)
+unset(dependencies)
 

@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020  nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -89,7 +89,7 @@ void output(const output_type &data) {
 }
 
 static int faster_streams = [] {
-    srand(time(0));
+    srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
     std::istream::sync_with_stdio(false);

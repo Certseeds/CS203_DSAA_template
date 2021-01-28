@@ -1,9 +1,9 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseds
+ * @Author: nanoseeds
  * @Date: 2020-07-17 22:57:42
- * @LastEditors: nanoseds
+ * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020 nanoseds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -113,7 +113,7 @@ void output(const vector<num_type> &data) {
     }
 }
 static int faster_streams = [] {
-    srand(time(0));
+    srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
     std::istream::sync_with_stdio(false);

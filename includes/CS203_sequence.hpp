@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020 nanoseeds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
