@@ -4,15 +4,15 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 21:44:06
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-30 11:27:06
+ * @LastEditTime: 2021-01-03 21:46:26
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
-Copyright (C) 2020  nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,8 +32,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_H
+#ifndef CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_HPP
 
 #include <string>
 #include <fstream>
@@ -51,17 +51,6 @@ using std::ios;
 using std::cin;
 using std::cout;
 CS203_timer timer{};
-static int faster_streams = []() {
-    srand(time(0));
-    // use time to init the random seed
-    std::ios::sync_with_stdio(false);
-    std::istream::sync_with_stdio(false);
-    std::ostream::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
-    return 0;
-}();
 
 bool compareFiles(std::string p1, std::string p2) {
     p1 = CS203_redirect::file_paths + p1;
@@ -85,4 +74,4 @@ bool compareFiles(std::string p1, std::string p2) {
                       std::istreambuf_iterator<char>(f2.rdbuf()));
 }
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_H
+#endif //CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_HPP

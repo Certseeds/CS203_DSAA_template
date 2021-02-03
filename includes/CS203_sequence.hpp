@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020 nanoseeds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -46,13 +46,13 @@ using std::vector;
 
 class CS203_sequence {
 private:
-    std::string prefix_of_file_name = "";
-    std::string postfix_of_testout = "test.out";
-    std::string postfix_of_datain = "data.in";
-    std::string postfix_of_dataout = "data.out";
+    std::string prefix_of_file_name{""};
+    std::string postfix_of_testout{"test.out"};
+    std::string postfix_of_datain{"data.in"};
+    std::string postfix_of_dataout{"data.out"};
     int32_t begin;
     int32_t end;
-    int32_t max_length = -1;
+    int32_t max_length{-1};
 public:
     static string file_paths;
 

@@ -4,10 +4,11 @@
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:53:26
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-17 22:02:45
+ * @LastEditTime: 2021-01-28 17:16:43
  * @License: CC-BY-NC-SA_V4_0 or any later version 
  -->
-Copyright (C) 2020 Certseeds
+
+# Copyright (C) 2020-2021 Certseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

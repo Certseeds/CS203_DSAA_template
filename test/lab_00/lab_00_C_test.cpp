@@ -1,17 +1,17 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseds
+ * @Author: nanoseeds
  * @Date: 2020-07-19 19:37:58
- * @LastEditors: nanoseds
+ * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
-Copyright (C) 2020 nanoseds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -46,7 +46,7 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-string CS203_redirect::file_paths = "./../test/lab_00/lab_00_C_data/";
+string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_C_data/";
 /*
  * Test case 1 -> Test case 5
  * 目的是为了展示只使用CS203_redirect的情况下
@@ -55,32 +55,32 @@ string CS203_redirect::file_paths = "./../test/lab_00/lab_00_C_data/";
 TEST_CASE("test case 1", "[test 00 C]") {
     CS203_redirect cr{"01.data.in", ""};
     // 重定向开始,开始run
-    auto output_data = isBipartite(read());
+    const auto output_data = isBipartite(read());
     // 重定向结束
     CHECK_FALSE(output_data);
 }
 
 TEST_CASE("test case 2", "[test 00 C]") {
     CS203_redirect cr{"02.data.in"};
-    auto output_data = isBipartite(read());
+    const auto output_data = isBipartite(read());
     CHECK(output_data);
 }
 
 TEST_CASE("test case 3", "[test 00 C]") {
     CS203_redirect cr{"03.data.in"};
-    auto output_data = isBipartite(read());
+    const auto output_data = isBipartite(read());
     CHECK(output_data);
 }
 
 TEST_CASE("test case 4", "[test 00 C]") {
     CS203_redirect cr{"04.data.in"};
-    auto output_data = isBipartite(read());
+    const auto output_data = isBipartite(read());
     CHECK_FALSE(output_data);
 }
 
 TEST_CASE("test case 5", "[test 00 C]") {
     CS203_redirect cr{"05.data.in"};
-    auto output_data = isBipartite(read());
+    const auto output_data = isBipartite(read());
     CHECK_FALSE(output_data);
 }
 /*目的在于展示,使用循环来精简Test case1~5中的工作量*/
@@ -93,7 +93,7 @@ TEST_CASE("test case in loop", "[test 00 C]") {
     const vector<uint8_t> result{false, true, true, false, false};
     for (int i = 0; i < 5; ++i) {
         CS203_redirect cr{strs[i]};
-        auto output_data = isBipartite(read());
+        const auto output_data = isBipartite(read());
         CHECK(output_data == result[i]);
     }
 }
@@ -110,8 +110,8 @@ TEST_CASE("test case with tuple", "[test 00 C]") {
         string path;
         output_type result;
         tie(path, result) = tup;
-        CS203_redirect cr{path};
-        auto output_data = isBipartite(read());
+        const CS203_redirect cr{path};
+        const auto output_data = isBipartite(read());
         CHECK(output_data == result);
     }
 }
@@ -119,7 +119,7 @@ TEST_CASE("test case with tuple", "[test 00 C]") {
  * */
 TEST_CASE("test case with sequence", "[test 00 C]") {
 
-    CS203_sequence sequence(1, 5, 2);
+    CS203_sequence sequence{1, 5, 2};
     // 前缀被默认设定为 空串 ""
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
@@ -127,9 +127,9 @@ TEST_CASE("test case with sequence", "[test 00 C]") {
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &filesName : files_name) {
+    for (const auto &file_name : files_name) {
         string datain, dataout, testout; // 声明
-        tie(datain, dataout, testout) = filesName; // 解包
+        tie(datain, dataout, testout) = file_name; // 解包
         {
             CS203_redirect cr{datain, testout}; // 重定向输入,输出
             main2();

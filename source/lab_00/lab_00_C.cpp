@@ -1,17 +1,17 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseds
+ * @Author: nanoseeds
  * @Date: 2020-07-19 19:37:58
- * @LastEditors: nanoseds
+ * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
-Copyright (C) 2020 nanoseds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,17 +31,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include <iostream>
 #include <list>
 #include <queue>
 #include <string>
 #include <vector>
-#include <iostream>
 /*
 给定一个无向图 graph,当这个图为二分图时返回 true.
- 
+
 如果我们能将一个图的节点集合分割成两个独立的子集 A 和 B,
 并使图中的每一条边的两个节点一个来自 A 集合,一个来自 B 集合,我们就将这个图称为二分图.
- 
+
 每个节点都是一个在 0 到 graph.length-1 之间的整数.
 图中没有自环和平行边： graph[i] 中不存在 i,并且 graph[i] 中没有重复的值.
 
@@ -95,7 +95,7 @@ int main() {
     return main2();
 }
 
-#endif // !CS203_DSAA_TEST_MACRO
+#endif  // !CS203_DSAA_TEST_MACRO
 
 inline int main2() {
     auto input_data = read();
@@ -112,7 +112,7 @@ inline input_type read() {
         int32_t X{0};
         std::cin >> X;
         will_return[i].resize(X);
-        for (auto &j: will_return[i]) {
+        for (auto &j : will_return[i]) {
             std::cin >> j;
         }
     }
@@ -131,7 +131,7 @@ output_type isBipartite(const input_type &graph) {
                 int32_t head = que.front();
                 que.pop();
                 Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
-                for (const auto &j: graph[head]) {
+                for (const auto &j : graph[head]) {
                     if (color_vec[j] == Color::uncolor) {
                         color_vec[j] = next_color;
                         que.push(j);
@@ -147,8 +147,20 @@ output_type isBipartite(const input_type &graph) {
 
 void output(const output_type &data) {
     if (data) {
-        std::cout << "\"PÖSSiBLE\"" << end;
-    } else {
-        std::cout << "\"lMP0SSlBLE\"" << end;
+        std::cout << R"("PÖSSiBLE")" << end;
+        // feature in c++11 which named `raw string literals`
+    } else{ 
+        std::cout << R"("lMP0SSlBLE")" << end;
     }
 }
+static int faster_streams = [] {
+    srand(time(nullptr));
+    // use time to init the random seed
+    std::ios::sync_with_stdio(false);
+    std::istream::sync_with_stdio(false);
+    std::ostream::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
+    return 0;
+}();

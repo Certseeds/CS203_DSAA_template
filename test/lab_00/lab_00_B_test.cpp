@@ -1,17 +1,17 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseds
+ * @Author: nanoseeds
  * @Date: 2020-07-17 22:57:42
- * @LastEditors: nanoseds
+ * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
-Copyright (C) 2020 nanoseds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -49,7 +49,7 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-string CS203_redirect::file_paths = "./../test/lab_00/lab_00_B_data/";
+string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_B_data/";
 
 TEST_CASE("test case 1", "[test 00 B]") {
     auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};

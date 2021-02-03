@@ -2,16 +2,16 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36 
+ * @Date: 2020-07-15 21:42:36
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
-Copyright (C) 2020 nanoseeds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -44,12 +44,9 @@ std::chrono::milliseconds get_ms() {
 
 class CS203_timer {
 private:
-    std::chrono::milliseconds ms;
+    std::chrono::milliseconds ms{get_ms()};
 public:
-    explicit CS203_timer() {
-        std::cout << "complier in " << __DATE__ << " " << __TIME__ << std::endl;
-        ms = get_ms();
-    }
+    CS203_timer() = default;
 
     CS203_timer(const CS203_timer &timer) = delete;
 

@@ -2,22 +2,25 @@ cmake_minimum_required(VERSION 3.10.2)
 project(CS203_DSAA_template)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -O0")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -O0")
+set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
+set(CMAKE_VERBOSE_MAKEFILE ON)
+
+string(TIMESTAMP time_str "%Y/%m/%d \n %y:%m:%S")
+MESSAGE("Compiler In ${time_str}")
+
+include_directories(${CMAKE_SOURCE_DIR}/includes)
+include_directories(${CMAKE_SOURCE_DIR}/third_party)
+
+add_subdirectory(${CMAKE_SOURCE_DIR}/algorithm)
+
+enable_testing()
+set(dependencies 00)
+foreach (elementName IN LISTS dependencies)
+    add_subdirectory(./source/lab_${elementName})
+    add_subdirectory(./test/lab_${elementName})
+endforeach ()
+unset(dependencies)
 
 
-set(lab_number 00)
-set(problem_order C)
-
-include_directories(./includes)
-include_directories(./third_party)
-include_directories(./source/lab_${lab_number})
-include_directories(./test/lab_${lab_number})
-
-add_executable(${PROJECT_NAME}
-        ./source/lab_${lab_number}/lab_${lab_number}_${problem_order}.cpp)
-
-add_executable(${PROJECT_NAME}_test
-        ./includes/catch_main.hpp
-        ./test/lab_${lab_number}/lab_${lab_number}_${problem_order}_test.cpp)
-
-add_subdirectory(./algorithm)

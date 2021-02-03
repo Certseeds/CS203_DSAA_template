@@ -4,10 +4,10 @@
  * @Author: nanoseeds
  * @Date: 2020-07-30 10:34:16
  * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-30 11:01:19
+ * @LastEditTime: 2021-01-03 21:01:19
  */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_H
+#ifndef CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP
 
 #include <vector>
 
@@ -15,25 +15,26 @@ using std::vector;
 constexpr int No = -100000;
 
 class TreeNode {
-   public:
+public:
     int32_t val;
     TreeNode *left;
     TreeNode *right;
 
-    explicit TreeNode(int x = 0) : val(x), left(nullptr), right(nullptr){};
+    explicit TreeNode(int x = 0) : TreeNode(x, nullptr, nullptr) {};
 
-    TreeNode(int x, TreeNode *le, TreeNode *rig) : val(x), left(le), right(rig){};
+    TreeNode(int x, TreeNode *le, TreeNode *rig) : val(x), left(le), right(rig) {};
 
     TreeNode(const TreeNode &obj) {
         this->val = obj.val;
         this->left = obj.left;
         this->right = obj.right;
     }
-    TreeNode &operator=(const TreeNode &timer) = delete;
 
-    TreeNode(TreeNode &&timer) = delete;
+    TreeNode &operator=(const TreeNode &node) = delete;
 
-    TreeNode &operator=(TreeNode &&mat) = delete;
+    TreeNode(TreeNode &&node) = delete;
+
+    TreeNode &operator=(TreeNode &&node) = delete;
 
     ~TreeNode() {
         this->val = 0;
@@ -49,6 +50,7 @@ class TreeNode {
         TreeNode::organize(will_return);
         return will_return;
     }
+
     static void organize(vector<TreeNode *> Tree) {
         int32_t tree_size = Tree.size();
         for (int i = 0; i < tree_size; i++) {
@@ -60,4 +62,4 @@ class TreeNode {
     }
 };
 
-#endif  //CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_H
+#endif  //CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP

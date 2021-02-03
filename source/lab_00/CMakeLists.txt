@@ -1,0 +1,14 @@
+cmake_minimum_required(VERSION 3.10.2)
+set(PROJECT_ORDER lab_00)
+project(CS203_${PROJECT_ORDER})
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+
+
+set(dependencies A B C D)
+foreach (elementName IN LISTS dependencies)
+    add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp)
+    MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp")
+endforeach ()
+unset(dependencies)

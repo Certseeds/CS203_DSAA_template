@@ -2,16 +2,18 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-15 21:48:30 
+ * @Date: 2020-07-15 21:48:30
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
+ * @LastEditTime: 2021-01-03 21:45:55
  */
 /*
 MIT License
 
-CS203_DSAA_template 
 
-Copyright (C) 2020  nanoseeds
+CS203_DSAA_template
+
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,14 +35,14 @@ SOFTWARE.
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-constexpr double eps = 0.00000001;
-constexpr double neps = -0.00000001;
+static constexpr double eps = 0.00000001;
+static constexpr double neps = -eps;
 
-inline int32_t sign(int32_t x) {
+constexpr inline int32_t sign(int32_t x) {
     return ((x > 0) - (x < 0));
 }
 
-inline int32_t sign(double x) {
+constexpr inline int32_t sign(double x) {
     return ((x < neps) ? -1 : (x > neps));
 }
 
