@@ -14,4 +14,4 @@ foreach (elementName IN LISTS dependencies)
 endforeach ()
 unset(dependencies)
 
-add_subdirectory(./RBTree)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/RBTree)

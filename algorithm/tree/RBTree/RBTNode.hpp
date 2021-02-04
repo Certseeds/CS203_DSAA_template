@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020  nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -78,11 +78,11 @@ public:
         this->color = RBTColor::Red;
     }
 
-    inline bool isRed() const {
+    [[nodiscard]] inline bool isRed() const {
         return this->color == RBTColor::Red;
     }
 
-    inline bool isBlack() const {
+    [[nodiscard]] inline bool isBlack() const {
         return this->color == RBTColor::Black;
     }
 
@@ -116,6 +116,7 @@ public:
                this->left != nullptr && left == *this->left &&
                this->right != nullptr && right == *this->right;
     }
+
 };
 
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP

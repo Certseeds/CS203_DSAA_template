@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020  nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,6 +31,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include <random>
 #include <vector>
 #include "catch_main.hpp"
 #include "RBTree.hpp"
@@ -112,20 +113,39 @@ SCENARIO("insert tree value", "[RBTree]") {
             CHECK(temp.root->left->isRed());
             CHECK(temp.root->right->isRed());
             temp.pre_order();
-        }THEN("test size"){
+        }THEN("test size") {
             REQUIRE(temp.size == 3);
-        }THEN(" self check"){
+        }THEN(" self check") {
             temp.check();
         }
     }
+}
+
+TEST_CASE("insert test for 11 node", "[RBTree]") {
+    auto initilist = {1, 3, 4, 6, 7, 8, 10, 13, 14};
+    auto vec_list = vector<int32_t>(initilist);
+    const auto temp = std::make_unique<RBTree<int32_t>>(initilist);
+    CHECK(*temp->root == vec_list[3]);
+    CHECK(*temp->root->left == vec_list[1]);
+    CHECK(*temp->root->right == vec_list[5]);
+
+    CHECK(*temp->root->left->left == vec_list[0]);
+    CHECK(*temp->root->left->right == vec_list[2]);
+    CHECK(*temp->root->right->left == vec_list[4]);
+    CHECK(*temp->root->right->right == vec_list[7]);
+
+    CHECK(*temp->root->right->right->left == vec_list[6]);
+    CHECK(*temp->root->right->right->right == vec_list[8]);
+    temp->check();
 }
 
 TEST_CASE("~ function", "[RBTree]") {
     auto initilist = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     const auto temp = std::make_unique<RBTree<int32_t>>(initilist);
     temp->pre_order();
+    temp->check();
     REQUIRE(temp->size == initilist.size());
-    THEN(" self check"){
+    THEN(" self check") {
         temp->check();
     }
 }

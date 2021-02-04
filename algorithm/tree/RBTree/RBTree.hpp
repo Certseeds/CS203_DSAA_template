@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020  nanoseeds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -37,6 +37,7 @@ SOFTWARE.
 #include "RBTNode.hpp"
 #include <iostream>
 #include <stack>
+#include <map>
 
 using std::cout;
 using std::endl;
@@ -45,7 +46,12 @@ using std::initializer_list;
 
 template<typename T>
 class RBTree {
+public:
+    using Node_t = RBTNode<T>;
 private:
+    static constexpr const RBTNode<T> nilObject{0x11451419, RBTColor::Black, nullptr, nullptr, nullptr};
+    static constexpr auto *const nil = const_cast<RBTNode<T> *>(&nilObject);
+
     inline bool check_law2() {
         return nil == this->root ||
                this->root->isBlack();
@@ -55,7 +61,7 @@ private:
         if (nil == this->root) {
             return true;
         }
-        stack<RBTNode_t *> sta;
+        stack<Node_t *> sta;
         sta.push(this->root);
         while (!sta.empty()) {
             const auto node = sta.top();
@@ -77,7 +83,7 @@ private:
         if (this->root == nil) {
             return true;
         }
-        stack<RBTNode_t *> sta;
+        stack<Node_t *> sta;
         sta.push(this->root);
         while (!sta.empty()) {
             const auto node = sta.top();
@@ -100,11 +106,22 @@ private:
         return true;
     }
 
+    void insert_case1(Node_t *node);
+
+    void insert_case2(Node_t *node);
+
+    void insert_case3(Node_t *node);
+
+    void insert_case4(Node_t *node);
+
+    void insert_case5(Node_t *node);
+
+    void removeNode(Node_t *node);
+
+    void removeNodeResetColor(Node_t *node);
+
 public:
-    using RBTNode_t = RBTNode<T>;
-    static constexpr RBTNode_t nilObject{0x11451419, RBTColor::Black, nullptr, nullptr, nullptr};
-    static constexpr auto *nil = const_cast<RBTNode_t *>(&nilObject);
-    RBTNode_t *root{nil};
+    Node_t *root{nil};
     size_t size{0};
 
     RBTree() = default;
@@ -115,7 +132,7 @@ public:
 
     ~RBTree() {
         if (this->root != nil) {
-            stack<RBTNode_t *> sta;
+            stack<Node_t *> sta;
             sta.push(this->root);
             while (!sta.empty()) {
                 const auto node = sta.top();
@@ -133,21 +150,25 @@ public:
 
     void check() {
         if (!this->check_law2()) {
-            std::cout << " law 2" << std::endl;
+            throw std::logic_error("law 2 error");
         }
         if (!this->check_law3()) {
-            std::cout << " law 3" << std::endl;
+            throw std::logic_error("law 3 error");
         }
         if (!this->check_law4()) {
-            std::cout << " law 4" << std::endl;
+            throw std::logic_error("law 4 error");
         }
     }
 
-    void pre_order();
+    static bool isLeaf(RBTNode<T> *node) {
+        return node->left == nil && node->right == nil;
+    }
 
-    void in_order();
+    void pre_order() const;
 
-    void pos_order();
+    void in_order() const;
+
+    void pos_order() const;
 
     void insert(T key);
 
@@ -157,30 +178,26 @@ public:
         }
     }
 
-    void insert_case1(RBTNode_t *node);
+    bool find(T key) const;
 
-    void insert_case2(RBTNode_t *node);
+    bool contains(T key) const { return this->find(std::move(key)); }
 
-    void insert_case3(RBTNode_t *node);
+    void remove(T key);
 
-    void insert_case4(RBTNode_t *node);
+    void rorate_left(Node_t *node);
 
-    void insert_case5(RBTNode_t *node);
+    void rorate_right(Node_t *node);
 
-    void rorate_left(RBTNode_t *node);
+    Node_t *rec_search(T key);
 
-    void rorate_right(RBTNode_t *node);
-
-    RBTNode_t *rec_search(T key);
-
-    RBTNode_t *iter_search(T key);
+    Node_t *iter_search(T key);
 
 };
 
 template<typename T>
 void RBTree<T>::insert(T key) {
-    auto *const node = new RBTNode_t(key, RBTColor::Red, nil, nil, nil);
-    RBTNode_t *temp = root;
+    auto *const node = new Node_t(key, RBTColor::Red, nil, nil, nil);
+    Node_t *temp = root;
     while (temp != nil) {
         if (temp->key > key) {
             if (temp->left == nil) {
@@ -204,7 +221,7 @@ void RBTree<T>::insert(T key) {
 }
 
 template<typename T>
-void RBTree<T>::insert_case1(RBTNode_t *node) {
+void RBTree<T>::insert_case1(Node_t *node) {
     if (node->parent == nil) {
         this->root = node;
         node->set_black();
@@ -215,7 +232,7 @@ void RBTree<T>::insert_case1(RBTNode_t *node) {
 }
 
 template<typename T>
-void RBTree<T>::insert_case2(RBTNode_t *node) {
+void RBTree<T>::insert_case2(Node_t *node) {
     assert(node->parent != nil);
     if (node->parent->isBlack()) {
         return;
@@ -224,7 +241,7 @@ void RBTree<T>::insert_case2(RBTNode_t *node) {
 }
 
 template<typename T>
-void RBTree<T>::insert_case3(RBTNode_t *node) {
+void RBTree<T>::insert_case3(Node_t *node) {
     auto *const parent = node->parent;
     auto *const uncle = node->get_uncle();
     if (parent->isRed() && uncle != nil && uncle->isRed()) {
@@ -244,7 +261,7 @@ void RBTree<T>::insert_case3(RBTNode_t *node) {
 }
 
 template<typename T>
-void RBTree<T>::insert_case4(RBTNode_t *node) {
+void RBTree<T>::insert_case4(Node_t *node) {
     auto *const parent = node->parent;
     auto *const uncle = node->get_uncle();
     //cout << "insert 4" << endl;
@@ -262,7 +279,7 @@ void RBTree<T>::insert_case4(RBTNode_t *node) {
 }
 
 template<typename T>
-void RBTree<T>::insert_case5(RBTNode_t *node) {
+void RBTree<T>::insert_case5(Node_t *node) {
     //cout << "insert 5" << endl;
     auto *const parent = node->parent;
     auto *const p_parent = node->get_grandparent();
@@ -276,9 +293,9 @@ void RBTree<T>::insert_case5(RBTNode_t *node) {
 }
 
 template<typename T>
-void RBTree<T>::rorate_left(RBTNode_t *node) {
-    RBTNode_t *const p_parent = node->get_grandparent();
-    RBTNode_t *const parent = node->parent;
+void RBTree<T>::rorate_left(Node_t *node) {
+    Node_t *const p_parent = node->get_grandparent();
+    Node_t *const parent = node->parent;
     if (p_parent != nil) {
         if (p_parent->left == parent) {
             p_parent->set_left(node);
@@ -299,7 +316,7 @@ void RBTree<T>::rorate_left(RBTNode_t *node) {
 }
 
 template<typename T>
-void RBTree<T>::rorate_right(RBTNode_t *node) {
+void RBTree<T>::rorate_right(Node_t *node) {
     auto *const p_parent = node->get_grandparent();
     auto *const parent = node->parent;
     if (p_parent != nil) {
@@ -321,6 +338,156 @@ void RBTree<T>::rorate_right(RBTNode_t *node) {
     }
 }
 
+template<typename T>
+void RBTree<T>::remove(T key) {
+    Node_t *temp = root;
+    while (temp != nil) {
+        if (temp->key > key) {
+            if (temp->left == nil) {
+                return;
+            }
+            temp = temp->left;
+        } else if (temp->key < key) {
+            if (temp->right == nil) {
+                return;
+            }
+            temp = temp->right;
+        } else {
+            if (temp->right == nil) {
+                removeNode(temp);
+                return;
+            }
+            Node_t *right_min = temp->right;
+            while (right_min->right != nil) {
+                right_min = right_min->right;
+            }
+            std::swap(temp->key,right_min->key);
+            removeNode(temp);
+        }
+    }
+}
+
+template<typename T>
+void RBTree<T>::removeNode(RBTree::Node_t *node) {
+    auto *const parent = node->parent;
+    if (node->left != nil && node->right != nil) {
+        const auto *right_min = node->right;
+        while (right_min->right != nil) {
+            right_min = right_min->left;
+        }
+        node->key = right_min->key;
+        removeNode(right_min);
+        return;
+    }
+    auto son_number = static_cast<uint8_t>(node->left != nil) + static_cast<uint8_t>(node->right != nil);
+    if (0 == son_number) {
+        if (parent->left == node) {
+            parent->left = nil;
+        } else {
+            parent->right = nil;
+        }
+    } else if (1 == son_number) {
+        auto *const son_node = (node->left == nil ? node->left : node->right);
+        if (node->isRed()) {
+            // if a node is red, then it is a leaf node, or it have two subnode,
+            if (parent->left == node) {
+                parent->left = son_node;
+            } else {
+                parent->right = son_node;
+            }
+            son_node->parent = parent;
+        } else if (node->isBlack() && son_node->isRed()) {
+            if (parent->left == node) {
+                parent->left = son_node;
+            } else {
+                parent->right = son_node;
+            }
+            son_node->parent = parent;
+            son_node->set_black();
+        }
+    } else if (2 == son_number) {
+
+    }
+//
+//    switch (son_number) {
+//        case 0: {
+//            if (parent->left == node) {
+//                parent->left = nil;
+//            } else {
+//                parent->right = nil;
+//            }
+//            delete node;
+//            return;
+//        }
+//        case 1: {
+//            auto *const son_node = (node->left == nil ? node->left : node->right);
+//            if (parent->left == node) {
+//                parent->left = son_node;
+//            } else {
+//                parent->right = son_node;
+//            }
+//            son_node->parent = parent;
+//            delete node;
+//            node = son_node;
+//            removeNodeResetColor(node);
+//            break;
+//        }
+//        case 2: {
+//            Node_t *right_min = node->right;
+//            while (right_min->right != nil) {
+//                right_min = right_min->right;
+//            }
+//            node->key = right_min->key;
+//            removeNode(right_min);
+//
+//            break;
+//        }
+//        default: {
+//            throw std::logic_error("why a binary tree's node can have more than 2 son node?");
+//        }
+//    }
+
+//    if (!this->isLeaf(node->left) && !this->isLeaf(node->right)) {
+//        // can choose left's max or right's min
+//        // i choose left's max here
+//    }
+//    // then it must just have one son node
+//    auto *const son_node = (node->left == nil ? node->left : node->right);
+//    if (node->isRed()) {
+//        if (parent->left == node) {
+//            parent->left = son_node;
+//        } else {
+//            parent->right = son_node;
+//        }
+//        son_node->parent = parent;
+//        delete node;
+//        return;
+//    }
+//    if (node->isBlack() && son_node->isRed()) {
+//        auto *const parent = node->parent;
+//        if (parent->left == node) {
+//            parent->left = son_node;
+//        } else {
+//            parent->right = son_node;
+//        }
+//        son_node->parent = parent;
+//        son_node->set_black();
+//        delete node;
+//        return;
+//    }
+//    if (node->isBlack() && node->left != nil && node->right != nil && node->left->isBlack() && node->right->isBlack()) {
+//
+//    }
+}
+
+
+template<typename T>
+void RBTree<T>::removeNodeResetColor(RBTree::Node_t *node) {
+    if (node->isRed()) {
+
+    }
+}
+
 static const auto print = [](auto p) {
     int distance = p.first;
     const auto *node = p.second;
@@ -331,11 +498,11 @@ static const auto print = [](auto p) {
 static constexpr const int32_t plusNumber = 2;
 
 template<typename T>
-void RBTree<T>::pre_order() {
+void RBTree<T>::pre_order() const {
     if (this->root == nil) {
         return;
     }
-    stack<std::pair<int, RBTNode_t *>> sta;
+    stack<std::pair<int, Node_t *>> sta;
     sta.push(std::make_pair(0, this->root));
     while (!sta.empty()) {
         const auto head = sta.top();
@@ -350,5 +517,26 @@ void RBTree<T>::pre_order() {
         }
     }
 }
+
+template<typename T>
+bool RBTree<T>::find(T key) const {
+    Node_t *temp = root;
+    while (temp != nil) {
+        if (temp->key > key) {
+            if (temp->left == nil) {
+                return false;
+            }
+            temp = temp->left;
+        } else if (temp->key < key) {
+            if (temp->right == nil) {
+                return false;
+            }
+            temp = temp->right;
+        } else {
+            return true;
+        }
+    }
+}
+
 
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTREE_HPP
