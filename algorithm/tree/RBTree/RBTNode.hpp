@@ -42,22 +42,15 @@ template<typename T>
 class RBTNode {
 public:
     T key;
-    RBTColor color;
-    RBTNode *parent;
-    RBTNode *left;
-    RBTNode *right;
+    RBTColor color{RBTColor::Black};
+    RBTNode *parent{nullptr};
+    RBTNode *left{nullptr};
+    RBTNode *right{nullptr};
 
-    RBTNode(T value, RBTColor c, RBTNode *p = nullptr, RBTNode *l = nullptr, RBTNode *r = nullptr) :
+    constexpr RBTNode(T value, RBTColor c, RBTNode *p = nullptr, RBTNode *l = nullptr, RBTNode *r = nullptr) :
             key(value), color(c), parent(p), left(l), right(r) {}
 
-    ~RBTNode() {
-        if (nullptr != left) {
-            delete left;
-        }
-        if (nullptr != right) {
-            delete right;
-        }
-    }
+    ~RBTNode() = default;
 
     inline RBTNode *get_grandparent() {
         if (this->parent == nullptr) {
@@ -123,8 +116,6 @@ public:
                this->left != nullptr && left == *this->left &&
                this->right != nullptr && right == *this->right;
     }
-
-
 };
 
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP

@@ -39,7 +39,7 @@ using std::cout;
 using std::endl;
 
 TEST_CASE("bulit node", "[RBNode]") {
-    auto temp = RBTNode<int>(1, RBTColor::Red, nullptr, nullptr, nullptr);
+    auto temp = RBTNode<int>(1, RBTColor::Red);
 }
 
 TEST_CASE("bulit node pointer", "[RBNode]") {
@@ -48,12 +48,12 @@ TEST_CASE("bulit node pointer", "[RBNode]") {
 
 TEST_CASE("bulit tree", "[RBTree]") {
     const auto temp = RBTree<int32_t>();
-    REQUIRE(temp.root == nullptr);
+    REQUIRE(temp.root->isBlack());
 }
 
 TEST_CASE("auto pointer tree", "[RBTree]") {
     const auto temp = std::make_unique<RBTree<int32_t>>();
-    REQUIRE(temp->root == nullptr);
+    REQUIRE(temp->root->isBlack());
 }
 
 TEST_CASE("bulit tree pointer", "[RBTree]") {
@@ -64,17 +64,13 @@ TEST_CASE("bulit tree pointer", "[RBTree]") {
 SCENARIO("insert tree value", "[RBTree]") {
     RBTree<int32_t> temp;
     WHEN("initial zero point") {
-        REQUIRE(temp.root == nullptr);
+        REQUIRE(temp.size == 0);
     }
 
     WHEN("one node") {
         temp.insert(1);
         THEN("the values") {
             CHECK(*temp.root == 1);
-        }THEN("the nodes connections") {
-            CHECK(temp.root->right == nullptr);
-            CHECK(temp.root->left == nullptr);
-            CHECK(temp.root->parent == nullptr);
         }THEN("test colors") {
             CHECK(temp.root->isBlack());
         }
@@ -87,11 +83,11 @@ SCENARIO("insert tree value", "[RBTree]") {
             CHECK(*temp.root->right == 2);
         }THEN("the needs connections") {
             CHECK(*temp.root->right == 2);
-            CHECK(temp.root->left == nullptr);
-            CHECK(temp.root->parent == nullptr);
+            CHECK(temp.root->left->isBlack());
+            CHECK(temp.root->parent->isBlack());
 
-            CHECK((temp.root->right)->left == nullptr);
-            CHECK((temp.root->right)->right == nullptr);
+            CHECK((temp.root->right)->left->isBlack());
+            CHECK((temp.root->right)->right->isBlack());
             CHECK(*temp.root->right->parent == 1);
         }THEN("test colors") {
             CHECK(temp.root->isBlack());
@@ -104,12 +100,12 @@ SCENARIO("insert tree value", "[RBTree]") {
         THEN("the head is 2") {
             CHECK(*temp.root == std::make_tuple(2, 1, 3));
         }THEN("the needs connections") {
-            CHECK(temp.root->parent == nullptr);
-            CHECK(temp.root->right->left == nullptr);
-            CHECK(temp.root->right->right == nullptr);
+            CHECK(temp.root->parent->isBlack());
+            CHECK(temp.root->right->left->isBlack());
+            CHECK(temp.root->right->right->isBlack());
             CHECK(*temp.root->right->parent == 2);
-            CHECK(temp.root->left->left == nullptr);
-            CHECK(temp.root->left->right == nullptr);
+            CHECK(temp.root->left->left->isBlack());
+            CHECK(temp.root->left->right->isBlack());
             CHECK(*temp.root->left->parent == 2);
         }THEN("test colors") {
             CHECK(temp.root->isBlack());

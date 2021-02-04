@@ -47,26 +47,26 @@ template<typename T>
 class RBTree {
 private:
     inline bool check_law2() {
-        return nullptr == this->root ||
+        return nil == this->root ||
                this->root->isBlack();
     }
 
     inline bool check_law3() {
-        if (nullptr == this->root) {
+        if (nil == this->root) {
             return true;
         }
         stack<RBTNode_t *> sta;
-        sta.push( this->root);
+        sta.push(this->root);
         while (!sta.empty()) {
             const auto node = sta.top();
             sta.pop();
-            if (nullptr == node->left && nullptr == node->right && node->isRed()) {
+            if (node->left == nullptr && node->right == nullptr && node->isRed()) {
                 return false;
             }
-            if (node->right != nullptr) {
+            if (node->right != nil) {
                 sta.push(node->right);
             }
-            if (node->left != nullptr) {
+            if (node->left != nil) {
                 sta.push(node->left);
             }
         }
@@ -74,7 +74,7 @@ private:
     }
 
     inline bool check_law4() {
-        if (nullptr == this->root) {
+        if (this->root == nil) {
             return true;
         }
         stack<RBTNode_t *> sta;
@@ -83,17 +83,17 @@ private:
             const auto node = sta.top();
             sta.pop();
             if (node->isRed()) {
-                if (nullptr != node->left && node->left->isRed()) {
+                if (node->left != nil && node->left->isRed()) {
                     return false;
                 }
-                if (nullptr != node->right && node->right->isRed()) {
+                if (node->right != nil && node->right->isRed()) {
                     return false;
                 }
             }
-            if (node->right != nullptr) {
+            if (node->right != nil) {
                 sta.push(node->right);
             }
-            if (node->left != nullptr) {
+            if (node->left != nil) {
                 sta.push(node->left);
             }
         }
@@ -102,8 +102,9 @@ private:
 
 public:
     using RBTNode_t = RBTNode<T>;
-    static const RBTNode_t * const nil{-1,RBTColor::Black};
-    RBTNode_t *root{nullptr};
+    static constexpr RBTNode_t nilObject{0x11451419, RBTColor::Black, nullptr, nullptr, nullptr};
+    static constexpr auto *nil = const_cast<RBTNode_t *>(&nilObject);
+    RBTNode_t *root{nil};
     size_t size{0};
 
     RBTree() = default;
@@ -113,17 +114,31 @@ public:
     }
 
     ~RBTree() {
-        delete this->root;
+        if (this->root != nil) {
+            stack<RBTNode_t *> sta;
+            sta.push(this->root);
+            while (!sta.empty()) {
+                const auto node = sta.top();
+                sta.pop();
+                if (node->right != nil) {
+                    sta.push(node->right);
+                }
+                if (node->left != nil) {
+                    sta.push(node->left);
+                }
+                delete node;
+            }
+        }
     }
 
     void check() {
-        if(!this->check_law2()){
+        if (!this->check_law2()) {
             std::cout << " law 2" << std::endl;
         }
-        if(!this->check_law3()){
+        if (!this->check_law3()) {
             std::cout << " law 3" << std::endl;
         }
-        if(!this->check_law4()){
+        if (!this->check_law4()) {
             std::cout << " law 4" << std::endl;
         }
     }
@@ -164,11 +179,11 @@ public:
 
 template<typename T>
 void RBTree<T>::insert(T key) {
-    auto *const node = new RBTNode_t(key, RBTColor::Red);
+    auto *const node = new RBTNode_t(key, RBTColor::Red, nil, nil, nil);
     RBTNode_t *temp = root;
-    while (temp != nullptr) {
+    while (temp != nil) {
         if (temp->key > key) {
-            if (temp->left == nullptr) {
+            if (temp->left == nil) {
                 temp->set_left(node);
                 node->set_partent(temp);
                 ++size;
@@ -176,7 +191,7 @@ void RBTree<T>::insert(T key) {
             }
             temp = temp->left;
         } else if (temp->key < key) {
-            if (temp->right == nullptr) {
+            if (temp->right == nil) {
                 temp->set_right(node);
                 node->set_partent(temp);
                 ++size;
@@ -190,7 +205,7 @@ void RBTree<T>::insert(T key) {
 
 template<typename T>
 void RBTree<T>::insert_case1(RBTNode_t *node) {
-    if (nullptr == node->parent) {
+    if (node->parent == nil) {
         this->root = node;
         node->set_black();
         ++size;
@@ -201,7 +216,7 @@ void RBTree<T>::insert_case1(RBTNode_t *node) {
 
 template<typename T>
 void RBTree<T>::insert_case2(RBTNode_t *node) {
-    assert(nullptr != node->parent);
+    assert(node->parent != nil);
     if (node->parent->isBlack()) {
         return;
     }
@@ -212,14 +227,14 @@ template<typename T>
 void RBTree<T>::insert_case3(RBTNode_t *node) {
     auto *const parent = node->parent;
     auto *const uncle = node->get_uncle();
-    if (parent->isRed() && nullptr != uncle && uncle->isRed()) {
+    if (parent->isRed() && uncle != nil && uncle->isRed()) {
         auto *const p_parent = node->get_grandparent();
         // because parent is Red, so, parent can not be root( which must be Black)
         // so, it have p_parent node and no not need check
         parent->set_black();
         uncle->set_black();
         p_parent->set_red();
-        if (nullptr == p_parent->parent) {
+        if (p_parent->parent == nil) {
             --size;
         }
         insert_case1(p_parent);
@@ -233,7 +248,7 @@ void RBTree<T>::insert_case4(RBTNode_t *node) {
     auto *const parent = node->parent;
     auto *const uncle = node->get_uncle();
     //cout << "insert 4" << endl;
-    if (parent->isRed() && (nullptr == uncle || uncle->isBlack())) {
+    if (parent->isRed() && (nil == uncle || uncle->isBlack())) {
         auto *const p_parent = node->get_grandparent();
         if (node == parent->right && parent == p_parent->left) {
             rorate_left(node);
@@ -264,21 +279,21 @@ template<typename T>
 void RBTree<T>::rorate_left(RBTNode_t *node) {
     RBTNode_t *const p_parent = node->get_grandparent();
     RBTNode_t *const parent = node->parent;
-    if (p_parent != nullptr) {
+    if (p_parent != nil) {
         if (p_parent->left == parent) {
             p_parent->set_left(node);
         } else {
             p_parent->set_right(node);
         }
     }
-    if (node->left != nullptr) {
+    if (node->left != nil) {
         node->left->set_partent(parent);
     }
     parent->set_right(node->left);
     parent->set_partent(node);
     node->set_partent(p_parent);
     node->set_left(parent);
-    if (node->parent == nullptr) {
+    if (node->parent == nil) {
         this->root = node;
     }
 }
@@ -287,21 +302,21 @@ template<typename T>
 void RBTree<T>::rorate_right(RBTNode_t *node) {
     auto *const p_parent = node->get_grandparent();
     auto *const parent = node->parent;
-    if (p_parent != nullptr) {
+    if (p_parent != nil) {
         if (p_parent->left == parent) {
             p_parent->set_left(node);
         } else {
             p_parent->set_right(node);
         }
     }
-    if (node->right != nullptr) {
+    if (node->right != nil) {
         node->right->set_partent(parent);
     }
     parent->set_left(node->right);
     parent->set_partent(node);
     node->set_partent(p_parent);
     node->set_right(parent);
-    if (node->parent == nullptr) {
+    if (node->parent == nil) {
         this->root = node;
     }
 }
@@ -317,7 +332,7 @@ static constexpr const int32_t plusNumber = 2;
 
 template<typename T>
 void RBTree<T>::pre_order() {
-    if (nullptr == this->root) {
+    if (this->root == nil) {
         return;
     }
     stack<std::pair<int, RBTNode_t *>> sta;
@@ -327,10 +342,10 @@ void RBTree<T>::pre_order() {
         const auto&[distance, node] = head;
         sta.pop();
         print(head);
-        if (node->right != nullptr) {
+        if (node->right != nil) {
             sta.push(std::make_pair(distance + plusNumber, node->right));
         }
-        if (node->left != nullptr) {
+        if (node->left != nil) {
             sta.push(std::make_pair(distance + plusNumber, node->left));
         }
     }
