@@ -2,14 +2,14 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-08-06 22:40:40 
+ * @Date: 2020-08-06 22:40:40
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020  nanoseeds
 
@@ -38,126 +38,93 @@ enum class RBTColor : bool {
     Red = true
 };
 
-template<class T>
+template<typename T>
 class RBTNode {
-private:
+public:
     T key;
     RBTColor color;
     RBTNode *parent;
     RBTNode *left;
     RBTNode *right;
-public:
+
     RBTNode(T value, RBTColor c, RBTNode *p = nullptr, RBTNode *l = nullptr, RBTNode *r = nullptr) :
             key(value), color(c), parent(p), left(l), right(r) {}
 
-    static void rec_remove(RBTNode *node);
+    ~RBTNode() {
+        if (nullptr != left) {
+            delete left;
+        }
+        if (nullptr != right) {
+            delete right;
+        }
+    }
 
-    RBTColor get_color();
+    inline RBTNode *get_grandparent() {
+        if (this->parent == nullptr) {
+            return nullptr;
+        }
+        return this->parent->parent;
+    }
 
-    T get_key();
+    inline RBTNode *get_uncle() {
+        RBTNode *const grand_parent = this->get_grandparent();
+        if (nullptr == grand_parent) {
+            return nullptr;
+        }
+        if (this->parent == grand_parent->left) {
+            return grand_parent->right;
+        }
+        return grand_parent->left;
+    }
 
-    RBTNode *get_left();
+    inline void set_black() {
+        this->color = RBTColor::Black;
+    }
 
-    RBTNode *get_right();
+    inline void set_red() {
+        this->color = RBTColor::Red;
+    }
 
-    RBTNode *get_parent();
+    inline bool isRed() const {
+        return this->color == RBTColor::Red;
+    }
 
-    /* RBTNode* get_grandparent(RBTNode<T>* node);
-     RBTNode* get_uncle(RBTNode<T>* node);*/
-    RBTNode *get_grandparent();
+    inline bool isBlack() const {
+        return this->color == RBTColor::Black;
+    }
 
-    RBTNode *get_uncle();
+    inline void set_left(RBTNode *l) {
+        this->left = l;
+    }
 
-    void set_color(RBTColor c);
+    inline void set_right(RBTNode *r) {
+        this->right = r;
+    }
 
-    void set_key(T val);
+    inline void set_partent(RBTNode *p) {
+        this->parent = p;
+    }
 
-    void set_left(RBTNode *l);
+    friend bool operator==(const RBTNode<T> &v, const RBTNode<T> &rbtNode) {
+        return rbtNode == v;
+    }
 
-    void set_right(RBTNode *r);
+    bool operator==(const T &v) const {
+        return this->key == v;
+    }
 
-    void set_partent(RBTNode *p);
+    friend bool operator==(const T &v, const RBTNode<T> &rbtNode) {
+        return rbtNode == v;
+    }
+
+    bool operator==(const std::tuple<T, T, T> &v) const {
+        const auto&[key, left, right] = v;
+        return key == this->key &&
+               this->left != nullptr && left == *this->left &&
+               this->right != nullptr && right == *this->right;
+    }
 
 
 };
-
-template<class T>
-void RBTNode<T>::rec_remove(RBTNode *node) {
-    if (node == nullptr) {
-        return;
-    }
-    rec_remove(node->left);
-    rec_remove(node->right);
-    delete node;
-}
-
-template<class T>
-inline RBTColor RBTNode<T>::get_color() {
-    return this->color;
-}
-
-template<class T>
-inline T RBTNode<T>::get_key() {
-    return this->key;
-}
-
-template<class T>
-inline RBTNode<T> *RBTNode<T>::get_left() {
-    return this->left;
-}
-
-template<class T>
-inline RBTNode<T> *RBTNode<T>::get_right() {
-    return this->right;
-}
-
-template<class T>
-inline RBTNode<T> *RBTNode<T>::get_parent() {
-    return this->parent;
-}
-
-template<class T>
-inline RBTNode<T> *RBTNode<T>::get_grandparent() {
-    if (this->parent == nullptr) {
-        return nullptr;
-    }
-    return this->parent->parent;
-}
-
-template<class T>
-inline RBTNode<T> *RBTNode<T>::get_uncle() {
-    if (this->get_grandparent() == nullptr) {
-        return nullptr;
-    }
-    if (this->parent == this->get_grandparent()->left) {
-        return this->get_grandparent()->right;
-    }
-    return this->get_grandparent()->left;
-}
-
-template<class T>
-inline void RBTNode<T>::set_color(RBTColor c) {
-    this->color = c;
-}
-
-template<class T>
-inline void RBTNode<T>::set_key(T val) {
-    this - key = val;
-}
-
-template<class T>
-inline void RBTNode<T>::set_left(RBTNode *l) {
-    this->left = l;
-}
-
-template<class T>
-inline void RBTNode<T>::set_right(RBTNode *r) {
-    this->right = r;
-}
-
-template<class T>
-inline void RBTNode<T>::set_partent(RBTNode *p) {
-    this->parent = p;
-}
 
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP

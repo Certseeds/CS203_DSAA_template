@@ -2,14 +2,14 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-08-06 22:42:27 
+ * @Date: 2020-08-06 22:42:27
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020  nanoseeds
 
@@ -43,23 +43,26 @@ TEST_CASE("bulit node", "[RBNode]") {
 }
 
 TEST_CASE("bulit node pointer", "[RBNode]") {
-    auto *temp = new RBTNode<int>(1, RBTColor::Black, nullptr, nullptr, nullptr);
-    delete temp;
+    const auto temp = std::make_unique<RBTNode<int32_t>>(1, RBTColor::Black);
 }
 
 TEST_CASE("bulit tree", "[RBTree]") {
-    RBTree<int> temp;
+    const auto temp = RBTree<int32_t>();
     REQUIRE(temp.root == nullptr);
 }
 
+TEST_CASE("auto pointer tree", "[RBTree]") {
+    const auto temp = std::make_unique<RBTree<int32_t>>();
+    REQUIRE(temp->root == nullptr);
+}
+
 TEST_CASE("bulit tree pointer", "[RBTree]") {
-    auto *temp = new RBTree<int>();
+    const auto *const temp = new RBTree<int>();
     delete temp;
 }
 
-//TODO unfinish, still need fix.
 SCENARIO("insert tree value", "[RBTree]") {
-    RBTree<int> temp;
+    RBTree<int32_t> temp;
     WHEN("initial zero point") {
         REQUIRE(temp.root == nullptr);
     }
@@ -67,57 +70,66 @@ SCENARIO("insert tree value", "[RBTree]") {
     WHEN("one node") {
         temp.insert(1);
         THEN("the values") {
-            CHECK(temp.root->get_key() == 1);
+            CHECK(*temp.root == 1);
         }THEN("the nodes connections") {
-            CHECK(temp.root->get_right() == nullptr);
-            CHECK(temp.root->get_left() == nullptr);
-            CHECK(temp.root->get_parent() == nullptr);
+            CHECK(temp.root->right == nullptr);
+            CHECK(temp.root->left == nullptr);
+            CHECK(temp.root->parent == nullptr);
         }THEN("test colors") {
-            CHECK(temp.root->get_color() == RBTColor::Black);
+            CHECK(temp.root->isBlack());
         }
     }
 
     WHEN("two node") {
         temp.insert({1, 2});
         THEN("the head is still 1") {
-            CHECK(temp.root->get_key() == 1);
-            CHECK(temp.root->get_right()->get_key() == 2);
+            CHECK(*temp.root == 1);
+            CHECK(*temp.root->right == 2);
         }THEN("the needs connections") {
-            CHECK(temp.root->get_right()->get_key() == 2);
-            CHECK(temp.root->get_left() == nullptr);
-            CHECK(temp.root->get_parent() == nullptr);
+            CHECK(*temp.root->right == 2);
+            CHECK(temp.root->left == nullptr);
+            CHECK(temp.root->parent == nullptr);
 
-            CHECK((temp.root->get_right())->get_left() == nullptr);
-            CHECK((temp.root->get_right())->get_right() == nullptr);
-            CHECK(temp.root->get_right()->get_parent()->get_key() == 1);
+            CHECK((temp.root->right)->left == nullptr);
+            CHECK((temp.root->right)->right == nullptr);
+            CHECK(*temp.root->right->parent == 1);
         }THEN("test colors") {
-            CHECK(temp.root->get_color() == RBTColor::Black);
-            CHECK(temp.root->get_right()->get_color() == RBTColor::Red);
+            CHECK(temp.root->isBlack());
+            CHECK(temp.root->right->isRed());
         }
     }
 
     WHEN("three node") {
         temp.insert({1, 2, 3});
-        THEN("the head is still 1") {
-            CHECK(temp.root->get_key() == 2);
-            CHECK(temp.root->get_left()->get_key() == 1);
-            CHECK(temp.root->get_right()->get_key() == 3);
+        THEN("the head is 2") {
+            CHECK(*temp.root == std::make_tuple(2, 1, 3));
         }THEN("the needs connections") {
-            CHECK(temp.root->get_left()->get_key() == 1);
-            CHECK(temp.root->get_right()->get_key() == 3);
-            CHECK(temp.root->get_parent() == nullptr);
-
-            CHECK(temp.root->get_right()->get_left() == nullptr);
-            CHECK(temp.root->get_right()->get_right() == nullptr);
-            CHECK(temp.root->get_right()->get_parent()->get_key() == 2);
-
-            CHECK(temp.root->get_left()->get_left() == nullptr);
-            CHECK(temp.root->get_left()->get_right() == nullptr);
-            CHECK(temp.root->get_left()->get_parent()->get_key() == 2);
+            CHECK(temp.root->parent == nullptr);
+            CHECK(temp.root->right->left == nullptr);
+            CHECK(temp.root->right->right == nullptr);
+            CHECK(*temp.root->right->parent == 2);
+            CHECK(temp.root->left->left == nullptr);
+            CHECK(temp.root->left->right == nullptr);
+            CHECK(*temp.root->left->parent == 2);
         }THEN("test colors") {
-            CHECK(temp.root->get_color() == RBTColor::Black);
-            CHECK(temp.root->get_left()->get_color() == RBTColor::Red);
-            CHECK(temp.root->get_right()->get_color() == RBTColor::Red);
+            CHECK(temp.root->isBlack());
+            CHECK(temp.root->left->isRed());
+            CHECK(temp.root->right->isRed());
+            temp.pre_order();
+        }THEN("test size"){
+            REQUIRE(temp.size == 3);
+        }THEN(" self check"){
+            temp.check();
         }
+    }
+}
+
+TEST_CASE("~ function", "[RBTree]") {
+    auto initilist = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    const auto temp = std::make_unique<RBTree<int32_t>>(initilist);
+    temp->pre_order();
+    REQUIRE(temp->size == initilist.size());
+    THEN(" self check"){
+        temp->check();
     }
 }

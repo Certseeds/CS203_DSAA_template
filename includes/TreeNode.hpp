@@ -12,7 +12,7 @@
 #include <vector>
 
 using std::vector;
-constexpr int No = -100000;
+static constexpr const int32_t No = -100000;
 
 class TreeNode {
 public:

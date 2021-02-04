@@ -2,14 +2,14 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-08-06 22:41:41 
+ * @Date: 2020-08-06 22:41:41
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020  nanoseeds
 
@@ -36,21 +36,97 @@ SOFTWARE.
 
 #include "RBTNode.hpp"
 #include <iostream>
+#include <stack>
 
 using std::cout;
 using std::endl;
+using std::stack;
 using std::initializer_list;
 
-template<class T>
+template<typename T>
 class RBTree {
 private:
+    inline bool check_law2() {
+        return nullptr == this->root ||
+               this->root->isBlack();
+    }
+
+    inline bool check_law3() {
+        if (nullptr == this->root) {
+            return true;
+        }
+        stack<RBTNode_t *> sta;
+        sta.push( this->root);
+        while (!sta.empty()) {
+            const auto node = sta.top();
+            sta.pop();
+            if (nullptr == node->left && nullptr == node->right && node->isRed()) {
+                return false;
+            }
+            if (node->right != nullptr) {
+                sta.push(node->right);
+            }
+            if (node->left != nullptr) {
+                sta.push(node->left);
+            }
+        }
+        return true;
+    }
+
+    inline bool check_law4() {
+        if (nullptr == this->root) {
+            return true;
+        }
+        stack<RBTNode_t *> sta;
+        sta.push(this->root);
+        while (!sta.empty()) {
+            const auto node = sta.top();
+            sta.pop();
+            if (node->isRed()) {
+                if (nullptr != node->left && node->left->isRed()) {
+                    return false;
+                }
+                if (nullptr != node->right && node->right->isRed()) {
+                    return false;
+                }
+            }
+            if (node->right != nullptr) {
+                sta.push(node->right);
+            }
+            if (node->left != nullptr) {
+                sta.push(node->left);
+            }
+        }
+        return true;
+    }
 
 public:
-    RBTNode<T> *root;
+    using RBTNode_t = RBTNode<T>;
+    static const RBTNode_t * const nil{-1,RBTColor::Black};
+    RBTNode_t *root{nullptr};
+    size_t size{0};
 
-    RBTree();
+    RBTree() = default;
 
-    ~RBTree();
+    RBTree(initializer_list<T> list) {
+        this->insert(list);
+    }
+
+    ~RBTree() {
+        delete this->root;
+    }
+
+    void check() {
+        if(!this->check_law2()){
+            std::cout << " law 2" << std::endl;
+        }
+        if(!this->check_law3()){
+            std::cout << " law 3" << std::endl;
+        }
+        if(!this->check_law4()){
+            std::cout << " law 4" << std::endl;
+        }
+    }
 
     void pre_order();
 
@@ -60,187 +136,204 @@ public:
 
     void insert(T key);
 
-    void insert(std::initializer_list<T> key);
+    void insert(std::initializer_list<T> key) {
+        for (const auto &item : key) {
+            RBTree<T>::insert(item);
+        }
+    }
 
-    void insert_1(RBTNode<T> *node);
+    void insert_case1(RBTNode_t *node);
 
-    void insert_2(RBTNode<T> *node);
+    void insert_case2(RBTNode_t *node);
 
-    void insert_3(RBTNode<T> *node);
+    void insert_case3(RBTNode_t *node);
 
-    void insert_4(RBTNode<T> *node);
+    void insert_case4(RBTNode_t *node);
 
-    void insert_5(RBTNode<T> *node);
+    void insert_case5(RBTNode_t *node);
 
-    void rorate_left(RBTNode<T> *node);
+    void rorate_left(RBTNode_t *node);
 
-    void rorate_right(RBTNode<T> *node);
+    void rorate_right(RBTNode_t *node);
 
-    RBTNode<T> *rec_search(T key);
+    RBTNode_t *rec_search(T key);
 
-    RBTNode<T> *iter_search(T key);
+    RBTNode_t *iter_search(T key);
+
 };
 
-template<class T>
-RBTree<T>::RBTree() {
-    this->root = nullptr;
-}
-
-template<class T>
-RBTree<T>::~RBTree() {
-    RBTNode<T>::rec_remove(this->root);
-}
-
-template<class T>
-void RBTree<T>::insert(std::initializer_list<T> key) {
-    for (const auto &item : key) {
-        RBTree<T>::insert(item);
-    }
-}
-
-template<class T>
+template<typename T>
 void RBTree<T>::insert(T key) {
-    //cout << "insert " << endl;
-    auto *node = new RBTNode<T>(key, RBTColor::Red, nullptr, nullptr, nullptr);
-    RBTNode<T> *temp = root;
+    auto *const node = new RBTNode_t(key, RBTColor::Red);
+    RBTNode_t *temp = root;
     while (temp != nullptr) {
-        if (temp->get_key() > key) {
-            if (temp->get_left() == nullptr) {
+        if (temp->key > key) {
+            if (temp->left == nullptr) {
                 temp->set_left(node);
                 node->set_partent(temp);
-                temp = temp->get_left();
+                ++size;
                 break;
             }
-            temp = temp->get_left();
-        } else if (temp->get_key() < key) {
-            if (temp->get_right() == nullptr) {
+            temp = temp->left;
+        } else if (temp->key < key) {
+            if (temp->right == nullptr) {
                 temp->set_right(node);
                 node->set_partent(temp);
-                temp = temp->get_right();
+                ++size;
                 break;
             }
-            temp = temp->get_right();
+            temp = temp->right;
         }
     }
-    insert_1(node);
+    insert_case1(node);
 }
 
-template<class T>
-void RBTree<T>::insert_1(RBTNode<T> *node) {
-    if (node->get_parent() == nullptr) {
+template<typename T>
+void RBTree<T>::insert_case1(RBTNode_t *node) {
+    if (nullptr == node->parent) {
         this->root = node;
-        node->set_color(RBTColor::Black);
+        node->set_black();
+        ++size;
         return;
     }
-    insert_2(node);
+    insert_case2(node);
 }
 
-template<class T>
-void RBTree<T>::insert_2(RBTNode<T> *node) {
-    if (node->get_parent()->get_color() == RBTColor::Black) {
+template<typename T>
+void RBTree<T>::insert_case2(RBTNode_t *node) {
+    assert(nullptr != node->parent);
+    if (node->parent->isBlack()) {
         return;
     }
-    insert_3(node);
+    insert_case3(node);
 }
 
-template<class T>
-void RBTree<T>::insert_3(RBTNode<T> *node) {
-    //cout << "insert 3" << endl;
-    if ((node->get_parent()->get_color() == RBTColor::Red) &&
-        (node->get_uncle() != nullptr &&
-         node->get_uncle()->get_color() == RBTColor::Red)) {
-        node->get_parent()->set_color(RBTColor::Black);
-        node->get_uncle()->set_color(RBTColor::Black);
-        node->get_grandparent()->set_color(RBTColor::Red);
-        RBTree<T>::insert_1(node->get_grandparent());
+template<typename T>
+void RBTree<T>::insert_case3(RBTNode_t *node) {
+    auto *const parent = node->parent;
+    auto *const uncle = node->get_uncle();
+    if (parent->isRed() && nullptr != uncle && uncle->isRed()) {
+        auto *const p_parent = node->get_grandparent();
+        // because parent is Red, so, parent can not be root( which must be Black)
+        // so, it have p_parent node and no not need check
+        parent->set_black();
+        uncle->set_black();
+        p_parent->set_red();
+        if (nullptr == p_parent->parent) {
+            --size;
+        }
+        insert_case1(p_parent);
         return;
     }
-    insert_4(node);
+    insert_case4(node);
 }
 
-template<class T>
-void RBTree<T>::insert_4(RBTNode<T> *node) {
+template<typename T>
+void RBTree<T>::insert_case4(RBTNode_t *node) {
+    auto *const parent = node->parent;
+    auto *const uncle = node->get_uncle();
     //cout << "insert 4" << endl;
-    if ((node->get_parent()->get_color() == RBTColor::Red) &&
-        (node->get_uncle() == nullptr ||
-         node->get_uncle()->get_color() == RBTColor::Black)) {
-        if (node == node->get_parent()->get_left() &&
-            node->get_parent() == node->get_grandparent()->get_right()) {
-            rorate_right(node);
-            node = node->get_right();
-        } else if (node == node->get_parent()->get_right() &&
-                   node->get_parent() == node->get_grandparent()->get_left()) {
+    if (parent->isRed() && (nullptr == uncle || uncle->isBlack())) {
+        auto *const p_parent = node->get_grandparent();
+        if (node == parent->right && parent == p_parent->left) {
             rorate_left(node);
-            node = node->get_left();
+            node = node->left;
+        } else if (node == parent->left && parent == p_parent->right) {
+            rorate_right(node);
+            node = node->right;
         }
     }
-    insert_5(node);
+    insert_case5(node);
 }
 
-template<class T>
-void RBTree<T>::insert_5(RBTNode<T> *node) {
+template<typename T>
+void RBTree<T>::insert_case5(RBTNode_t *node) {
     //cout << "insert 5" << endl;
-    node->get_parent()->set_color(RBTColor::Black);
-    node->get_grandparent()->set_color(RBTColor::Red);
-    if (node->get_parent()->get_left() == node &&
-        node->get_grandparent()->get_left() == node->get_parent()) {
-        rorate_right(node->get_parent());
-    } else {
-        rorate_left(node->get_parent());
+    auto *const parent = node->parent;
+    auto *const p_parent = node->get_grandparent();
+    parent->set_black();
+    p_parent->set_red();
+    if (node == parent->left && p_parent->left == parent) {
+        rorate_right(node->parent);
+    } else if (node == parent->right && parent == p_parent->right) {
+        rorate_left(node->parent);
     }
 }
 
-template<class T>
-void RBTree<T>::rorate_left(RBTNode<T> *node) {
-    RBTNode<T> *gp = node->get_grandparent();
-    RBTNode<T> *fa = node->get_parent();
-    if (gp != nullptr) {
-        if (gp->get_left() == fa) {
-            gp->set_left(node);
+template<typename T>
+void RBTree<T>::rorate_left(RBTNode_t *node) {
+    RBTNode_t *const p_parent = node->get_grandparent();
+    RBTNode_t *const parent = node->parent;
+    if (p_parent != nullptr) {
+        if (p_parent->left == parent) {
+            p_parent->set_left(node);
         } else {
-            gp->set_right(node);
+            p_parent->set_right(node);
         }
     }
-    if (node->get_left() != nullptr) {
-        node->get_left()->set_partent(fa);
+    if (node->left != nullptr) {
+        node->left->set_partent(parent);
     }
-    fa->set_right(node->get_left());
-    fa->set_partent(node);
-    node->set_partent(gp);
-    node->set_left(fa);
-    if (node->get_parent() == nullptr) {
-        this->root = node;
-    }
-    /*RBTNode<T>* temp = gp->get_parent();
-    gp->set_partent(node->get_parent());
-    node->get_parent()->set_partent(temp);
-    gp->set_right(node);
-    node->get_parent()->set_left(gp);
-    node->set_partent(gp);*/
-}
-
-template<class T>
-void RBTree<T>::rorate_right(RBTNode<T> *node) {
-    RBTNode<T> *gp = node->get_grandparent();
-    RBTNode<T> *fa = node->get_parent();
-    if (gp != nullptr) {
-        if (gp->get_left() == fa) {
-            gp->set_left(node);
-        } else {
-            gp->set_right(node);
-        }
-    }
-    if (node->get_right() != nullptr) {
-        node->get_right()->set_partent(fa);
-    }
-    fa->set_left(node->get_right());
-    fa->set_partent(node);
-    node->set_partent(gp);
-    node->set_right(fa);
-    if (node->get_parent() == nullptr) {
+    parent->set_right(node->left);
+    parent->set_partent(node);
+    node->set_partent(p_parent);
+    node->set_left(parent);
+    if (node->parent == nullptr) {
         this->root = node;
     }
 }
 
+template<typename T>
+void RBTree<T>::rorate_right(RBTNode_t *node) {
+    auto *const p_parent = node->get_grandparent();
+    auto *const parent = node->parent;
+    if (p_parent != nullptr) {
+        if (p_parent->left == parent) {
+            p_parent->set_left(node);
+        } else {
+            p_parent->set_right(node);
+        }
+    }
+    if (node->right != nullptr) {
+        node->right->set_partent(parent);
+    }
+    parent->set_left(node->right);
+    parent->set_partent(node);
+    node->set_partent(p_parent);
+    node->set_right(parent);
+    if (node->parent == nullptr) {
+        this->root = node;
+    }
+}
+
+static const auto print = [](auto p) {
+    int distance = p.first;
+    const auto *node = p.second;
+    std::cout << std::string(distance, ' ');
+    std::cout << (node->isRed() ? 'R' : 'B') << ':';
+    std::cout << node->key << '\n';
+};
+static constexpr const int32_t plusNumber = 2;
+
+template<typename T>
+void RBTree<T>::pre_order() {
+    if (nullptr == this->root) {
+        return;
+    }
+    stack<std::pair<int, RBTNode_t *>> sta;
+    sta.push(std::make_pair(0, this->root));
+    while (!sta.empty()) {
+        const auto head = sta.top();
+        const auto&[distance, node] = head;
+        sta.pop();
+        print(head);
+        if (node->right != nullptr) {
+            sta.push(std::make_pair(distance + plusNumber, node->right));
+        }
+        if (node->left != nullptr) {
+            sta.push(std::make_pair(distance + plusNumber, node->left));
+        }
+    }
+}
 
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTREE_HPP
