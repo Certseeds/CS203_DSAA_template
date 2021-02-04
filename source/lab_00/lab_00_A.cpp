@@ -40,10 +40,11 @@ using std::cin;
 using std::cout;
 using std::tuple;
 using std::vector;
-const std::string end = "\n";
+static constexpr const char end{'\n'};
 
-using input_type = tuple<int32_t, int32_t>;
-using output_type = int32_t;
+using num_t = int32_t;
+using input_type = tuple<num_t, num_t>;
+using output_type = num_t;
 
 inline int main2();
 
@@ -70,17 +71,15 @@ inline int main2() {
 }
 
 inline input_type read() {
-    int32_t a{0};
-    int32_t b{0};
+    num_t a{0}, b{0};
     std::cin >> a >> b;
     return std::make_tuple(a, b);
 }
 
 output_type cal(input_type data) {
-    int32_t a{0};
-    int32_t b{0};
+    num_t a{0}, b{0};
     tie(a, b) = data;
-    int32_t c = a + b;
+    num_t c = a + b;
     return c;
 }
 
@@ -88,7 +87,7 @@ void output(const output_type &data) {
     std::cout << data << end;
 }
 
-static int faster_streams = [] {
+static auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);

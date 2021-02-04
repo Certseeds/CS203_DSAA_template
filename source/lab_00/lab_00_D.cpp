@@ -44,9 +44,14 @@ using std::cout;
 using std::string;
 using std::tuple;
 using std::vector;
-const std::string end = "\n";
+static constexpr const char end{'\n'};
 
-const vector<std::pair<int32_t, string>> spis{
+
+using num_t = int32_t;
+using input_type = vector<vector<num_t>>;
+using output_type = vector<vector<char>>;
+
+const vector<std::pair<num_t, string>> spis{
         {2, "+---+"},
         {1, "/   /|"},
         {0, "+---+ |"},
@@ -54,18 +59,15 @@ const vector<std::pair<int32_t, string>> spis{
         {0, "|   |/"},
         {0, "+---+"}};
 
-using input_type = vector<vector<int32_t>>;
-using output_type = vector<vector<char>>;
-
 inline int main2();
 
 inline input_type read();
 
 void cal(input_type &hi);
 
-void output(const output_type &map, int high, int wide);
+void output(const output_type &map, num_t high, num_t wide);
 
-void print(output_type &map, int a, int b);
+void print(output_type &map, num_t a, num_t b);
 
 #ifndef CS203_DSAA_TEST_MACRO
 #define CS203_DSAA_TEST_MACRO
@@ -85,21 +87,20 @@ inline int main2() {
 }
 
 inline input_type read() {
-    int32_t m{0};
-    int32_t n{0};
+    num_t m{0}, n{0};
     std::cin >> m >> n;
-    input_type mat(m + 1, vector<int32_t>(n + 1, -0x3f3f));
-    for (int k = 1; k <= m; ++k) {
-        for (int i = 1; i <= n; ++i) {
+    input_type mat(m + 1, vector<num_t>(n + 1, -0x3f3f));
+    for (num_t k = 1; k <= m; ++k) {
+        for (num_t i = 1; i <= n; ++i) {
             std::cin >> mat[k][i];
         }
     }
     return mat;
 }
 
-void print(output_type &map, int a, int b) {
-    for (int i = 0; i < static_cast<int>(spis.size()); i++) {
-        for (int j = 0; j < static_cast<int>(spis[i].second.size()); j++) {
+void print(output_type &map, num_t a, num_t b) {
+    for (auto i = 0; i < static_cast<num_t>(spis.size()); i++) {
+        for (auto j = 0; j < static_cast<num_t>(spis[i].second.size()); j++) {
             map[a - 1 + i][b + j + spis[i].first] = spis[i].second[j];
         }
     }
@@ -108,20 +109,20 @@ void print(output_type &map, int a, int b) {
 
 void cal(input_type &hi) {
     vector<vector<char>> out(302, vector<char>(301, '.'));
-    int m = static_cast<int>(hi.size()) - 1;
-    int n = static_cast<int>(hi.front().size()) - 1;
-    int wide = 4 * n + 2 * m + 1;
-    int h = -0x3f3f;
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= n; j++) {
+    auto m = static_cast<num_t>(hi.size()) - 1;
+    auto n = static_cast<num_t>(hi.front().size()) - 1;
+    num_t wide = 4 * n + 2 * m + 1;
+    num_t h = -0x3f3f;
+    for (auto i = 1; i <= m; i++) {
+        for (auto j = 1; j <= n; j++) {
             h = std::max(h, hi[i][j] * 3 + 2 * (m - i + 1) + 1);
         }
     }
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= n; j++) {
-            for (int k = 0; k < hi[i][j]; k++) {
-                int x = h - 3 * (k + 2) - 2 * (m - i) + 1;
-                int y = 4 * j + 2 * (m - i - 1) - 1;
+    for (auto i = 1; i <= m; i++) {
+        for (auto j = 1; j <= n; j++) {
+            for (auto k = 0; k < hi[i][j]; k++) {
+                num_t x = h - 3 * (k + 2) - 2 * (m - i) + 1;
+                num_t y = 4 * j + 2 * (m - i - 1) - 1;
                 print(out, x, y);
             }
         }
@@ -129,16 +130,16 @@ void cal(input_type &hi) {
     output(out, h, wide);
 }
 
-void output(const output_type &map, int high, int wide) {
-    for (int i = 0; i < high; i++) {
-        for (int j = 1; j <= wide; j++) {
+void output(const output_type &map, num_t high, num_t wide) {
+    for (auto i = 0; i < high; i++) {
+        for (num_t j = 1; j <= wide; j++) {
             cout << map[i][j];
         }
         cout << end;
     }
 }
 
-static int faster_streams = [] {
+static auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);

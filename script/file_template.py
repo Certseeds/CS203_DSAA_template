@@ -35,10 +35,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 '''
 
-
 import os
 import time
 from typing import List
+
 main_code_template: str
 test_code_template: str
 file_header_template: str
@@ -51,7 +51,7 @@ USER: str = 'YOUR_USER_NAME'  # replace it with your user name
 USER: str = 'nanoseeds'  # example: nanoseeds
 REPO_NAME: str = 'YOUR_REPO_NAME'  # replace it with your github repo name
 REPO_NAME: str = 'CS203_DSAA_template'  # example: CS203_DSAA_template
-year: str = time.strftime('%Y', time.localtime())
+year: str = time.strftime('2020-%Y', time.localtime())
 create_time: str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 source_path: str = './../source/lab_{0}/lab_{0}_{1}.cpp'
 test_path: str = './../test/lab_{0}/lab_{0}_{1}_test.cpp'
@@ -105,14 +105,14 @@ def main() -> None:
     labs_list_str: str = " ".join(labs)
     problem_order_list_str: str = " ".join(problem_order)
     with open(main_cmake_path, mode='w+', encoding='UTF-8') as file:
-        file.write(main_cmake_template.format('00 '+labs_list_str))
+        file.write(main_cmake_template.format('00 ' + labs_list_str))
     for i in labs:
         try_mkdir(i)  # 准备文件夹
         copy_cmakeLists(i, problem_order_list_str)  # prepare CMakeLists
         for j in problem_order:
             fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
     print('produce files finish')
-    print(str(len(labs) * (len(problem_order)+1) * 2) + ' files is produced')
+    print(str(len(labs) * (len(problem_order) + 1) * 2) + ' files is produced')
 
 
 # range in [begin,end)

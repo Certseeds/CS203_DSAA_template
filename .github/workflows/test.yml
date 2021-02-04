@@ -10,9 +10,9 @@ name: test for dev
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on: 
+on:
   push:
-    branches: [ dev ]
+    branches: [ dev,dev_rbtree ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: checkout code
       uses: actions/checkout@v2
@@ -36,7 +36,7 @@ jobs:
 
     - name: Use cmake
       run: cmake --version
-    
+
     - name: prepare permission
       working-directory: ./script
       run: chmod 0755 ./test.sh
@@ -45,7 +45,6 @@ jobs:
       working-directory: ./script
       run: ./test.sh
 
-    - name: tree 
+    - name: tree
       run: tree
   # This workflow contains a single job called "build"
- 

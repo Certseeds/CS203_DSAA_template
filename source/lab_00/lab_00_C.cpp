@@ -70,14 +70,15 @@ using std::cout;
 using std::queue;
 using std::string;
 using std::vector;
-const std::string end = "\n";
-enum class Color {
+static constexpr const char end{'\n'};
+
+enum class Color : int32_t {
     uncolor = -1,
     red = 0,
     black = 1
 };
-
-using input_type = vector<vector<int32_t>>;
+using num_t = int32_t;
+using input_type = vector<vector<num_t>>;
 using output_type = bool;
 
 inline int main2();
@@ -105,11 +106,11 @@ inline int main2() {
 }
 
 inline input_type read() {
-    int32_t N{0};
+    num_t N{0};
     std::cin >> N;
-    vector<vector<int32_t>> will_return(N);
-    for (int32_t i = 0; i < N; i++) {
-        int32_t X{0};
+    vector<vector<num_t>> will_return(N);
+    for (auto i = 0; i < N; i++) {
+        num_t X{0};
         std::cin >> X;
         will_return[i].resize(X);
         for (auto &j : will_return[i]) {
@@ -120,15 +121,15 @@ inline input_type read() {
 }
 
 output_type isBipartite(const input_type &graph) {
-    int32_t node_number = graph.size();
+    auto node_number = graph.size();
     vector<Color> color_vec(node_number, Color::uncolor);
-    for (int32_t i = 0; i < node_number; i++) {
+    for (decltype(node_number) i = 0; i < node_number; i++) {
         if (!graph[i].empty() && color_vec[i] == Color::uncolor) {
             color_vec[i] = Color::red;
-            queue<int32_t> que;
+            queue<num_t> que;
             que.push(i);
             while (!que.empty()) {
-                int32_t head = que.front();
+                num_t head = que.front();
                 que.pop();
                 Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
                 for (const auto &j : graph[head]) {
@@ -149,11 +150,12 @@ void output(const output_type &data) {
     if (data) {
         std::cout << R"("PÖSSiBLE")" << end;
         // feature in c++11 which named `raw string literals`
-    } else{ 
+    } else {
         std::cout << R"("lMP0SSlBLE")" << end;
     }
 }
-static int faster_streams = [] {
+
+static auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
