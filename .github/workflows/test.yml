@@ -32,13 +32,17 @@ jobs:
     - name: ensure the path and files of project
       run: sudo apt install tree ;tree
 
-    - name: hardwares
-      run: |
-      nproc
-      uname -a
-      cat /proc/cpuinfo | grep model\ name
-      cat /proc/meminfo | grep MemTotal
-      df -lh
+    - name: system
+      run: uname -a
+
+    - name: hardwares - cpu
+      run: nproc; cat /proc/cpuinfo
+
+    - name: hardwares - memory
+      run:  cat /proc/meminfo | grep MemTotal
+
+    - name: hardwares - disk
+      run:  df -lh
 
     - name: Use cmake
       run: cmake --version
