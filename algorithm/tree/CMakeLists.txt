@@ -13,3 +13,5 @@ foreach (elementName IN LISTS dependencies)
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName})
 endforeach ()
 unset(dependencies)
+
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/RBTree)

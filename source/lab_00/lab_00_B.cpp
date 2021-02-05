@@ -42,7 +42,7 @@ using std::cin;
 using std::cout;
 using std::string;
 using std::vector;
-const std::string end = "\n";
+static constexpr const char end{'\n'};
 
 using num_type = uint64_t;
 using input_type = vector<num_type>;
@@ -70,8 +70,8 @@ int main() {
 #endif // !CS203_DSAA_TEST_MACRO
 
 inline int main2() {
-    input_type input_data = read();
-    output_type output_data = cal_warpper(input_data);
+    auto input_data = read();
+    auto output_data = cal_warpper(input_data);
     output(output_data);
     return 0;
 }
@@ -112,7 +112,8 @@ void output(const vector<num_type> &data) {
         std::cout << num << end;
     }
 }
-static int faster_streams = [] {
+
+static const auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
