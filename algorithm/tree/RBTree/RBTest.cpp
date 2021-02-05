@@ -288,7 +288,7 @@ TEST_CASE("insert delete size 5 function", "[RBTree]") { //passed
     }
 }
 
-TEST_CASE("insert delete size 6 function", "[RBTree]") { //passed
+TEST_CASE("insert delete size 6 function", "[RBTree][.]") { //passed
     auto initilist = {1, 2, 3, 4, 5, 6};
     vector<int32_t> out_list(initilist);
     vector<int32_t> in_list(initilist);

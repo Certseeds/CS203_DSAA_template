@@ -53,7 +53,6 @@ private:
         return nullptr == this->root || this->root->isBlack();
     }
 
-
     inline bool check_law4() {
         if (this->root == nullptr) {
             return true;
@@ -156,11 +155,18 @@ private:
 
     void remove_case6(Node_t *node, Node_t *brother, Node_t *parent, bool isLeft);
 
+    void rorate_left(Node_t *node);
+
+    void rorate_right(Node_t *node);
+
+    const std::function<int(const T &t1, const T &t2)> comp = std::less<T>();
 public:
     Node_t *root{nullptr};
     size_t size{0};
 
     RBTree() = default;
+
+    explicit RBTree(std::function<int(const T &t1, const T &t2)> comp_) : comp(std::move(comp_)) {}
 
     RBTree(initializer_list<T> list) {
         this->insert(list);
@@ -226,10 +232,6 @@ public:
 
     void remove(T key);
 
-    void rorate_left(Node_t *node);
-
-    void rorate_right(Node_t *node);
-
 };
 
 template<typename T>
@@ -237,7 +239,9 @@ void RBTree<T>::insert(T key) {
     auto *const node = new Node_t(key, RBTColor::Red, nullptr, nullptr, nullptr);
     Node_t *temp = root;
     while (temp != nullptr) {
-        if (temp->key > key) {
+        int32_t comp_val_one = this->comp(temp->key, key);
+        int32_t comp_val_two = this->comp(key, temp->key);
+        if (comp_val_two) {
             if (temp->left == nullptr) {
                 temp->set_left(node);
                 node->set_partent(temp);
@@ -245,7 +249,7 @@ void RBTree<T>::insert(T key) {
                 break;
             }
             temp = temp->left;
-        } else if (temp->key < key) {
+        } else if (comp_val_one) {
             if (temp->right == nullptr) {
                 temp->set_right(node);
                 node->set_partent(temp);
@@ -384,12 +388,14 @@ template<typename T>
 void RBTree<T>::remove(T key) {
     Node_t *temp = root;
     while (temp != nullptr) {
-        if (temp->key > key) {
+        int32_t comp_val_one = this->comp(temp->key, key);
+        int32_t comp_val_two = this->comp(key, temp->key);
+        if (comp_val_two) {
             if (temp->left == nullptr) {
                 goto unfind;
             }
             temp = temp->left;
-        } else if (temp->key < key) {
+        } else if (comp_val_one) {
             if (temp->right == nullptr) {
                 goto unfind;
             }
@@ -589,8 +595,8 @@ void RBTree<T>::pre_order() const {
             sta.push(std::make_pair(distance + plusNumber, node->left));
         }
         count++;
-        if(count > 1000){
-            count +=2;
+        if (count > 1000) {
+            count += 2;
         }
     }
 }
@@ -614,6 +620,5 @@ bool RBTree<T>::find(T key) const {
         }
     }
 }
-
 
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTREE_HPP
