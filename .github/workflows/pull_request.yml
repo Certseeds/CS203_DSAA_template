@@ -10,7 +10,7 @@ name: test for pull_request
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on: 
+on:
   pull_request:
     branches: [ master ]
   push:
@@ -24,7 +24,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: checkout code
       uses: actions/checkout@v2
@@ -35,16 +35,16 @@ jobs:
 
     - name: Use cmake
       run: cmake --version
-    
+
     - name: prepare permission
       working-directory: ./script
       run: chmod 0755 ./test.sh
-    
+
     - name: run the test script
       working-directory: ./script
       run: ./test.sh
 
-    - name: tree 
+    - name: tree
       run: tree
 
   # This workflow contains a single job called "build"
@@ -56,7 +56,7 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-    
+
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - name: checkout code
       uses: actions/checkout@v2
@@ -68,7 +68,7 @@ jobs:
     - name: run script
       working-directory: ./script
       run: python3 file_template.py
-    
+
     - name: tree the packet
       run: tree
 

@@ -5,28 +5,33 @@ set -eoux pipefail
 # @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
- # @LastEditors: nanoseeds
- # @LastEditTime: 2021-01-04 00:32:11
+# @LastEditors: nanoseeds
+# @LastEditTime: 2021-02-04 19:11:53
 ###
 cmake_path="cmake_build_path"
+scratch=""
 function cmake_make() {
-    mkdir -p ./"${cmake_path}"
-    cd ./"${cmake_path}"
-    cmake ..
-    make -j"$(nproc)"
-    # now at ./../cmake_build_path
+  mkdir -p ./"${cmake_path}"
+  cd ./"${cmake_path}"
+  cmake ..
+  make -j"$(nproc)"
+  # now at ./../cmake_build_path
+}
+function set_scratch() {
+  cd ..
+  scratch="$(pwd)/${cmake_path}"
+  trap finish EXIT
 }
 function main() {
-    make test
-    cd ..
-    # now at ./../
+  set_scratch
+  cmake_make
+  make test
+  cd ..
+  # now at ./../
 }
 function finish() {
-    rm -rf "${scratch}"
+  rm -rf "${scratch}"
 }
 # now in ./
-cd ..
-scratch="$(pwd)/${cmake_path}"
-trap finish EXIT
-cmake_make
+
 main
