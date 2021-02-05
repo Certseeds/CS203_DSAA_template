@@ -503,7 +503,7 @@ TEST_CASE("insert delete size 8 function order 2", "[RBTree]") { //passed
     //}
 }
 
-TEST_CASE("insert delete size 9 function order 1", "[RBTree]") { //passed
+TEST_CASE("insert delete size 9 function order 1", "[RBTree][.]") { //passed
     auto initilist = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     vector<int32_t> out_list(initilist);
     vector<int32_t> in_list(initilist);
@@ -531,7 +531,7 @@ TEST_CASE("insert delete size 9 function order 1", "[RBTree]") { //passed
     }
 }
 
-TEST_CASE("insert delete size 9 function order 2", "[RBTree]") { //passed
+TEST_CASE("insert delete size 9 function order 2", "[RBTree][.]") { //passed
     auto initilist = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     vector<int32_t> out_list(initilist);
     vector<int32_t> in_list(initilist);
@@ -559,7 +559,7 @@ TEST_CASE("insert delete size 9 function order 2", "[RBTree]") { //passed
     //}
 }
 
-TEST_CASE("insert delete size 10 function order 1", "[RBTree]") { //passed
+TEST_CASE("insert delete size 10 function order 1", "[RBTree][.]") { //passed
     auto initilist = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     vector<int32_t> out_list(initilist);
     vector<int32_t> in_list(initilist);
@@ -587,7 +587,7 @@ TEST_CASE("insert delete size 10 function order 1", "[RBTree]") { //passed
     }
 }
 
-TEST_CASE("insert delete size 10 function order 2", "[RBTree]") { //passed
+TEST_CASE("insert delete size 10 function order 2", "[RBTree][.]") { //passed
     auto initilist = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
     vector<int32_t> out_list(initilist);
     vector<int32_t> in_list(initilist);
