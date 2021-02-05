@@ -139,7 +139,7 @@ void output(const output_type &map, num_t high, num_t wide) {
     }
 }
 
-static auto faster_streams = [] {
+static const auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed
     std::ios::sync_with_stdio(false);

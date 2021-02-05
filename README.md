@@ -175,7 +175,7 @@ DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数�
 2. 关闭同步,
 
 ```cpp
-static auto faster_streams = [] {
+static const auto faster_streams = [] {
     srand(time(nullptr)); 
     // use time to init the random seed
     std::ios::sync_with_stdio(false);
