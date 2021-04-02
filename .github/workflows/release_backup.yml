@@ -1,0 +1,90 @@
+# @Github: https://github.com/Certseeds/CS203_DSAA_template
+# @Organization: SUSTech
+# @Author: nanoseeds
+# @Date: 2020-07-26 16:36:10
+# @LastEditors: nanoseeds
+#@LastEditTime: 2020-07-26 16:43:03
+# This is a basic workflow to help you get started with Actions
+
+name: test and release
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  push:
+    branches: []
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test:
+    name: test for release
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: checkout code
+      uses: actions/checkout@v2
+
+    # ensure the path and files of project
+    - name: ensure the path and files of project
+      run: sudo apt install tree; tree
+
+    - name: Use cmake
+      run: cmake --version
+
+    - name: prepare permission
+      working-directory: ./script
+      run: chmod 0755 ./test.sh
+
+    - name: run the test script
+      working-directory: ./script
+      run: ./test.sh
+
+    - name: tree
+      run: tree
+
+  # This workflow contains a single job called "build"
+  build:
+    name: publish release
+    if: github.repository == 'Certseeds/CS203_DSAA_template'
+    needs: test
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - name: checkout code
+      uses: actions/checkout@v2
+
+    # ensure the path and files of project
+    - name: ensure the path and files of project
+      run: sudo apt install tree; tree
+
+    - name: run script
+      working-directory: ./script
+      run: python3 file_template.py
+
+    - name: zip the packet
+      working-directory: ./../
+      run: |
+          zip -r script_no_need.zip ./CS203_DSAA_template -x "*/.git/*"
+          tree
+          cp ./script_no_need.zip ./CS203_DSAA_template/script_no_need.zip
+
+    - name: Create Release
+      uses: "marvinpinto/action-automatic-releases@latest"
+      with:
+        repo_token: "${{ secrets.GITHUB_TOKEN }}"
+        automatic_release_tag: "0.1.2"
+        prerelease: false
+        title: "0.1.2"
+        files: ./script_no_need.zip
+
+    - name: tree
+      run: tree
+
