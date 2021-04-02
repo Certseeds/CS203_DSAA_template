@@ -11,10 +11,10 @@ set -eoux pipefail
 cmake_path="cmake_build_path"
 scratch=""
 function cmake_make() {
-  mkdir -p ./"${cmake_path}"
+  cmake -E make_directory ./"${cmake_path}"
   cd ./"${cmake_path}"
-  cmake ..
-  make -j"$(nproc)"
+  cmake .. -DCMAKE_BUILD_TYPE=DEBUG
+  cmake --build . --config DEBUG --parallel $(nproc)
   # now at ./../cmake_build_path
 }
 function set_scratch() {
@@ -24,8 +24,8 @@ function set_scratch() {
 }
 function main() {
   set_scratch
-  cmake_make
-  make test
+  cmake
+  ctest # or make test
   cd ..
   # now at ./../
 }

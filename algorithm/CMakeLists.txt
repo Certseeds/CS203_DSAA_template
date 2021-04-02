@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies sort binary_search tree)
+set(dependencies sort binary_search tree string_search)
 foreach (elementName IN LISTS dependencies)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${elementName})
 endforeach ()

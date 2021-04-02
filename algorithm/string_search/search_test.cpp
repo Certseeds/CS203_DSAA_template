@@ -1,17 +1,17 @@
 /**
- * @Github: https://github.com/{0}/{1}
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {2}
- * @Date: {3}
- * @LastEditors: {2}
+ * @Author: nanos
+ * @Date: 2021-04-02 10:19:18
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-{1}
+CS203_DSAA_template
 
-Copyright (C) 2020-{4} {2}
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,3 +31,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include <vector>
+#include <iostream>
+#include "catch_main.hpp"
+#include "string_search.hpp"
+
+using std::vector;
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
+
+TEST_CASE("1 [string search]", "[string search]") {
+    CHECK(strStr("hello", "ll") == 2);
+    CHECK(strStr("aaaaa", "bba") == -1);
+    CHECK(strStr("aaaaa", "") == 0);
+    CHECK(strStr("a", "a") == 0);
+    CHECK(strStr("mississippi", "issi") == 1);
+    CHECK(strStr("mississippi", "issip") == 4);
+}
