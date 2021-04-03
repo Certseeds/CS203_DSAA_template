@@ -6,7 +6,7 @@
 #@LastEditTime: 2020-07-26 16:43:03
 # This is a basic workflow to help you get started with Actions
 
-name: test and release
+name: test and release Backup
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
