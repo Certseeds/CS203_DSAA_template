@@ -4,7 +4,7 @@ project(basic_algorithms_sort LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-add_library(${PROJECT_NAME}_CATCH2 ${CMAKE_CURRENT_SOURCE_DIR}/sort_test.cpp)
+add_library(${PROJECT_NAME}_CATCH2 SHARED ${CMAKE_CURRENT_SOURCE_DIR}/sort_test.cpp)
 
 enable_testing()
 set(dependencies insert bubble selection merge heap quick)

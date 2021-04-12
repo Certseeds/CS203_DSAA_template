@@ -4,7 +4,7 @@ project(basic_algorithms_string_search LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-add_library(${PROJECT_NAME}_CATCH2 ${CMAKE_CURRENT_SOURCE_DIR}/search_test.cpp)
+add_library(${PROJECT_NAME}_CATCH2 SHARED ${CMAKE_CURRENT_SOURCE_DIR}/search_test.cpp)
 enable_testing()
 set(dependencies kmp)
 foreach (elementName IN LISTS dependencies)
