@@ -1,17 +1,17 @@
 /**
- * @Github: https://github.com/{0}/{1}
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {2}
- * @Date: {3}
- * @LastEditors: {2}
+ * @Author: nanos
+ * @Date: 2021-04-03 10:15:42
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-{1}
+CS203_DSAA_template
 
-Copyright (C) 2020-{4} {2}
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,3 +31,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LCS_1143_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LCS_1143_HPP
+
+#include <string>
+#include <vector>
+
+namespace lcs_1143 {
+using std::string;
+using std::vector;
+
+struct lcs_1143 {
+    static int32_t longestCommonSubsequence(const string &text1, const string &text2);
+};
+}
+
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LCS_1143_HPP

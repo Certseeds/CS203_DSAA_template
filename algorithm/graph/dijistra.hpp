@@ -1,17 +1,17 @@
 /**
- * @Github: https://github.com/{0}/{1}
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {2}
- * @Date: {3}
- * @LastEditors: {2}
+ * @Author: nanos
+ * @Date: 2021-04-12 23:56:04
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-{1}
+CS203_DSAA_template
 
-Copyright (C) 2020-{4} {2}
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,3 +31,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA
+
+#include <cassert>
+#include <queue>
+#include "build_graph.hpp"
+
+namespace graph {
+using std::vector;
+using std::priority_queue;
+
+vector<int32_t> dijkstra(const vector<vector<int32_t>> &input, int32_t node_num, int32_t begin_node);
+}
+#endif // CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA

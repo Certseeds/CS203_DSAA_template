@@ -50,9 +50,9 @@ SOFTWARE.
 using std::ios;
 using std::cin;
 using std::cout;
-CS203_timer timer{};
+const CS203_timer timer{};
 
-bool compareFiles(std::string p1, std::string p2) {
+inline bool compareFiles(std::string p1, std::string p2) {
     p1 = CS203_redirect::file_paths + p1;
     p2 = CS203_redirect::file_paths + p2;
     // get from https://stackoverflow.com/questions/6163611/compare-two-files

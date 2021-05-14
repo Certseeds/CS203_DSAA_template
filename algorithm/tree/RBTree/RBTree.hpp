@@ -115,7 +115,7 @@ private:
         }
         stack<Node_t *> sta;
         sta.push(this->root);
-        int32_t count = 0;
+        size_t count{0};
         while (!sta.empty()) {
             const auto node = sta.top();
             sta.pop();

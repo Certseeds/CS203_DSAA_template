@@ -9,7 +9,7 @@
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020-2021  nanoseeds
 
@@ -45,8 +45,8 @@ using std::cout;
 using std::stack;
 using std::vector;
 using action = const std::function<void(const TreeNode *)> &;
-constexpr char end = '\n';
-constexpr char space = ' ';
+static constexpr char end{'\n'};
+static constexpr char space{' '};
 
 //auto func1 = [](const TreeNode* tn) -> void { cout << tn->val << space; };
 void pre_rec(const TreeNode *root, action func) {

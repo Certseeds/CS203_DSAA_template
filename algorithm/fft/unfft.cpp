@@ -1,17 +1,17 @@
 /**
- * @Github: https://github.com/{0}/{1}
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {2}
- * @Date: {3}
- * @LastEditors: {2}
+ * @Author: nanos
+ * @Date: 2021-05-13 20:29:37
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-{1}
+CS203_DSAA_template
 
-Copyright (C) 2020-{4} {2}
+Copyright (C) 2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,3 +31,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#include "fft.hpp"
+
+namespace fft {
+    vector<int32_t> multiply(const vector<int32_t> &one, const vector<int32_t> &sec) {
+        size_t length = std::max(one.size(), sec.size());
+        vector<int32_t> will_return(length << 1, 0);
+        for (size_t i{0}; i < one.size(); ++i) {
+            for (size_t j{0}; j < sec.size(); ++j) {
+                will_return[i + j] += one[i] * sec[j];
+            }
+        }
+        for (size_t i{1}; i < will_return.size(); ++i) {
+            will_return[i] += will_return[i - 1] / base;
+            will_return[i - 1] %= base;
+        }
+        return will_return;
+    }
+}

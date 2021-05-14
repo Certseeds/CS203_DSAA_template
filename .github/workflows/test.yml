@@ -6,13 +6,11 @@
 # @LastEditors: nanoseeds
 # @LastEditTime: 2020-07-27 22:10:08
 
-name: test for dev
+name: output for config
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on:
-  push:
-    branches: [ dev,dev_rbtree ]
+on: [ push, pull_request ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -24,37 +22,29 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout code
-      uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
 
-    # ensure the path and files of project
-    - name: ensure the path and files of project
-      run: sudo apt install tree ;tree
+      # ensure the path and files of project
+      - name: ensure the path and files of project
+        run: sudo apt install tree ;tree
 
-    - name: system
-      run: uname -a
+      - name: system
+        run: uname -a
 
-    - name: hardwares - cpu
-      run: nproc; cat /proc/cpuinfo
+      - name: hardwares - cpu
+        run: nproc; cat /proc/cpuinfo
 
-    - name: hardwares - memory
-      run:  cat /proc/meminfo | grep MemTotal
+      - name: hardwares - memory
+        run: cat /proc/meminfo | grep MemTotal
 
-    - name: hardwares - disk
-      run:  df -lh
+      - name: hardwares - disk
+        run: df -lh
 
-    - name: Use cmake
-      run: cmake --version
+      - name: Use cmake
+        run: cmake --version
 
-    - name: prepare permission
-      working-directory: ./script
-      run: chmod 0755 ./test.sh
-
-    - name: run the test script
-      working-directory: ./script
-      run: ./test.sh
-
-    - name: tree
-      run: tree
+      - name: tree
+        run: tree
   # This workflow contains a single job called "build"

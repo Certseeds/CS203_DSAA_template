@@ -1,9 +1,9 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-22 22:51:11
- * @LastEditors: nanoseeds
+ * @Author: nanos
+ * @Date: 2021-04-12 23:56:04
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,25 +31,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <vector>
-#include <iostream>
-#include "sort_wrapper.hpp"
+#include "dijistra.hpp"
 
+namespace graph {
 using std::vector;
+using std::priority_queue;
 
-void bubble_sort(vector<int32_t> &nums);
-
-void sort_warpper(vector<int32_t> &nums) {
-    bubble_sort(nums);
-}
-
-void bubble_sort(vector<int32_t> &nums) {
-    size_t nums_size = nums.size();
-    for (size_t i = 0; i < nums_size; i++) {
-        for (size_t j = 0; j < nums_size - i - 1; j++) {
-            if (nums[j] > nums[j + 1]) {
-                std::swap(nums[j], nums[j + 1]);
+vector<int32_t> dijkstra(const vector<vector<int32_t>> &input, int32_t node_num, int32_t begin_node) {
+    check_graph_cost_all_positive(input);
+    adjacent_table graph = build_adjacent_table(input, node_num);
+    begin_node -= 1;
+    vector<int32_t> results(node_num, 0x3f3f3f3f);
+    results[begin_node] = 0;
+    // PS: in this part,if begin_node count from 1, begin_node should -= 1
+    const auto cmp{
+            [](const link &v1, const link &v2) {
+                return v1.cost > v2.cost;
+            }
+    };
+    priority_queue<link, vector<link>, decltype(cmp)> priorityQueue{cmp};
+    priorityQueue.push(link(begin_node, -1));
+    while (!priorityQueue.empty()) {
+        auto head = priorityQueue.top();
+        priorityQueue.pop();
+        for (auto &i: graph[head.end]) {
+            const auto val = results[head.end] + i.cost;
+            if (results[i.end] >= val) {
+                results[i.end] = val;
+                priorityQueue.push(i);
             }
         }
     }
+    // then, in result is the distance from begin_node to i
+    return results;
+}
 }

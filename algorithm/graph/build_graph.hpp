@@ -1,17 +1,17 @@
 /**
- * @Github: https://github.com/{0}/{1}
+ * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: {2}
- * @Date: {3}
- * @LastEditors: {2}
+ * @Author: nanos
+ * @Date: 2021-04-12 23:57:10
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-{1}
+CS203_DSAA_template
 
-Copyright (C) 2020-{4} {2}
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,3 +31,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_PATH_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_PATH_HPP
+
+#include <cstdint>
+#include <vector>
+
+namespace graph {
+using std::vector;
+
+struct link {
+    int32_t end, cost;
+
+    link(int32_t end_, int32_t cost_) : end(end_), cost(cost_) {}
+};
+
+using adjacent_table = vector<vector<link>>;
+
+// build should not be all empty but each vector is empty,
+adjacent_table build_adjacent_table(const vector<vector<int32_t>> &input, int32_t node_num);
+
+bool check_graph_cost_all_positive(const vector<vector<int32_t>> &input);
+}
+
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_PATH_HPP
