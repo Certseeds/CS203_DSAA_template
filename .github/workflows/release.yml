@@ -50,9 +50,6 @@ jobs:
         run: ctest  --parallel $(nproc)
         if: ${{matrix.os != 'windows-latest'}}
 
-      - name: tree
-        run: tree
-
   # This workflow contains a single job called "build"
   build:
     name: publish release
@@ -96,7 +93,7 @@ jobs:
           zip -r script_no_need.zip ./CS203_DSAA_template -x "*/.git/*"
           tree
 
-      - name: release 
+      - name: release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
