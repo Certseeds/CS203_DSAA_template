@@ -20,32 +20,43 @@ jobs:
   test:
     name: test for pull_request
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-18.04, ubuntu-latest,windows-latest ]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout code
-      uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
 
-    # ensure the path and files of project
-    - name: ensure the path and files of project
-      run: sudo apt install tree; tree
+      # ensure the path and files of project
+      - name: ensure the path and files of project
+        run: sudo apt install tree; tree
+        if: ${{matrix.os != 'windows-latest'}}
 
-    - name: Use cmake
-      run: cmake --version
+      - name: Use cmake
+        run: cmake --version
 
-    - name: prepare permission
-      working-directory: ./script
-      run: chmod 0755 ./test.sh
+      - name: prepare folder
+        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
 
-    - name: run the test script
-      working-directory: ./script
-      run: ./test.sh
+      - name: cmake prepare for compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG
 
-    - name: tree
-      run: tree
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake test
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: ctest  --parallel $(nproc)
+        if: ${{matrix.os != 'windows-latest'}}
+
+      - name: tree
+        run: tree
 
   # This workflow contains a single job called "build"
   build:
@@ -57,18 +68,18 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout code
-      uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
 
-    # ensure the path and files of project
-    - name: ensure the path and files of project
-      run: sudo apt install tree; tree
+      # ensure the path and files of project
+      - name: ensure the path and files of project
+        run: sudo apt install tree; tree
 
-    - name: run script
-      working-directory: ./script
-      run: python3 file_template.py
+      - name: run script
+        working-directory: ./script
+        run: python3 file_template.py
 
-    - name: tree the packet
-      run: tree
+      - name: tree the packet
+        run: tree
 

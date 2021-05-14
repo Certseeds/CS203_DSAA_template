@@ -12,39 +12,46 @@ name: test and release
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    tags:
+      - "*"
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
     name: test for release
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
-
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-18.04, ubuntu-latest,windows-latest ]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout code
-      uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
 
-    # ensure the path and files of project
-    - name: ensure the path and files of project
-      run: sudo apt install tree; tree
+      - name: Use cmake
+        run: cmake --version
 
-    - name: Use cmake
-      run: cmake --version
+      - name: prepare folder
+        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
 
-    - name: prepare permission
-      working-directory: ./script
-      run: chmod 0755 ./test.sh
+      - name: cmake prepare for compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG
 
-    - name: run the test script
-      working-directory: ./script
-      run: ./test.sh
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake --build . --config DEBUG --parallel
 
-    - name: tree
-      run: tree
+      - name: cmake test
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: ctest  --parallel $(nproc)
+        if: ${{matrix.os != 'windows-latest'}}
+
+      - name: tree
+        run: tree
 
   # This workflow contains a single job called "build"
   build:
@@ -57,51 +64,47 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - name: checkout code
-      uses: actions/checkout@v2
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
 
-    # ensure the path and files of project
-    - name: ensure the path and files of project
-      run: sudo apt install tree; tree
+      - name: Branch name
+        id: branch_name
+        run: |
+          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
+          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
+          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+      - name: tag name output
+        run: |
+          echo ${SOURCE_NAME};echo ${SOURCE_BRANCH};echo ${SOURCE_TAG}
+        env:
+          SOURCE_NAME: ${{ steps.branch_name.outputs.SOURCE_NAME }}
+          SOURCE_BRANCH: ${{ steps.branch_name.outputs.SOURCE_BRANCH }}
+          SOURCE_TAG: ${{ steps.branch_name.outputs.SOURCE_TAG }}
 
-    - name: run script
-      working-directory: ./script
-      run: python3 file_template.py
+      # ensure the path and files of project
+      - name: ensure the path and files of project
+        run: sudo apt install tree; tree
 
-    - name: zip the packet
-      working-directory: ./../
-      run: |
+      - name: run script
+        working-directory: ./script
+        run: python3 file_template.py
+
+      - name: zip the packet
+        working-directory: ./../
+        run: |
           zip -r script_no_need.zip ./CS203_DSAA_template -x "*/.git/*"
           tree
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: 0.1.1
-        release_name: 0.1.1
-        draft: false
-        prerelease: false
+      - name: release 
+        uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "${{steps.branch_name.outputs.SOURCE_TAG}}"
+          prerelease: false
+          title: "${{steps.branch_name.outputs.SOURCE_TAG}}"
+          files: ./../script_no_need.zip
 
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-          # This pulls from the CREATE RELEASE step above,
-          # referencing it's ID to get its outputs object,
-          # which include a `upload_url`.
-          #See this blog post for more info:
-          #https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./../script_no_need.zip
-        asset_name: script_no_need.zip
-        asset_content_type: application/zip
-
-    - name: tree
-      run: tree
+      - name: tree
+        run: tree
 
