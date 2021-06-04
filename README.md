@@ -34,39 +34,19 @@
 
 ## 如何使用本repo
 
-+ 首先请到[release_latest](https://github.com/Certseeds/CS203_DSAA_template/releases/latest)下载script_no_need.zip.
-+ 将其解压,放到某处.
-+ 将脚本创建的版权声明中的所有者替换成自己: 
-    1. `.idea`中的`#set( ${GITHUB_USER} = "Certseeds")` -> `#set( ${GITHUB_USER} = "YOUR_GITHUB_NAME")`
-    2. `.vscode/settings.json`中的`"Github": "https://github.com/Certseeds/CS203_DSAA_template"` -> `"Github": "https://github.com/YOUR_GITHUB_NAME/YOUR_REPO_NAME"`
-    3. `./script/file_template.py`中
+1. 方法1 下载Release中的[压缩包](https://github.com/Certseeds/CS203_DSAA_template/releases/latest/download/script_no_need.zip),
+   或者[另一个压缩包](https://github.com/Certseeds/CS203_DSAA_template/archive/refs/heads/release.zip),之后解压使用
+2. 方法2 使用绿色按钮[Use This Template](https://github.com/Certseeds/CS203_DSAA_template/generate),生成仓库,clone下来使用.
+3. 方法3 fork this repo,clone下来使用.
 
-        ``` python
-        GITHUB_USER: str = "Certseeds"
-        USER: str = "nanoseeds"
-        ```
-
-        ->
-
-        ``` python
-        GITHUB_USER: str = "YOUR_GITHUB_NAME"
-        USER: str = "YOUR_USER_NAME"
-        #下面这个和上面这个相同也行,不同也行,不重要.
-        ```
-
-- 可选项: 使用脚本产生自定义的文件(适合source.zip或者有bonuslab):
-  + 使用命令行,进入`./script`下,`python3 ./file_template.py`,出现`produce files finish`提示,即为创建成功.
-    默认产生lab01-lab15十五个lab,  
-    每个lab下A-J10个问题,  
-    每个问题一个source文件,一个test文件.  
-  + 一共15 \* 10 \* 2 = 300个文件.(全都默认为`https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1000`的对应代码与测试).
-    + 如果有bonus等情况,直接到`script\file_template.py`中修改`labs`,`problem_order`,便可修改产生的lab数,lab名与每道题对应的名字.
-    + PS:  就像下面的修改,增加了两个Bonus_Lab,同时给每个Lab中的C拆分成了C1 && C2
-
-        ```  python
-        labs: List[str] = ['01', '02', '03', '03Bouns', '04', '05', '06', '07','07Bouns','08', '09']
-        problem_order: List[str] = ['A', 'B', 'C1', 'C2','D', 'E', 'F', 'G']
-        ``` 
+- 可选项: 
+    + 将脚本创建的版权声明中的所有者替换成自己:
+      1. `.idea`中的`#set( ${GITHUB_USER} = "Certseeds")` -> `#set( ${GITHUB_USER} = "YOUR_GITHUB_NAME")`
+      2. `.vscode/settings.json`中的`"Github": "https://github.com/Certseeds/CS203_DSAA_template"` -> `"Github": "https://github.com/YOUR_GITHUB_NAME/YOUR_REPO_NAME"`+
+      3. `Certseeds` to `YOUR_GITHUB_NAME`,`nanoseeds` to `YOUR_USER_NAME`,
+    + 使用脚本产生自定义的文件(适合source.zip或者有bonuslab):
+      使用命令行,进入`./script`下,编辑`file_template`的`labs` & `problem_orders`,
+      `python3 ./file_template.py`,出现`produce files finish`提示,即为创建成功.
 
 + 执行代码和测试:
   + 使用clion打开文件夹,配置好C++环境的基础上,会自动识别`CmakeList.txt`.产生`CS203_lab${order}_${ques_Order}`,`CS203_lab${order}_${ques_Order}_test` 复数个可以运行的可选项.
