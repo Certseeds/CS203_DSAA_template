@@ -1,0 +1,17 @@
+cmake_minimum_required(VERSION 3.10.2)
+set(PROJECT_ORDER lab_14)
+project(CS203_${PROJECT_ORDER})
+
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+
+enable_testing()
+set(dependencies A B C D E F G H I J)
+foreach (elementName IN LISTS dependencies)
+    add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp)
+    add_executable(${PROJECT_NAME}_${elementName}_test ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}_test.cpp)
+    target_compile_definitions(${PROJECT_NAME}_${elementName}_test PRIVATE CS203_DSAA_TEST_MACRO)
+    MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp")
+    add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName}_test)
+endforeach ()
+unset(dependencies)
