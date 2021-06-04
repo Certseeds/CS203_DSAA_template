@@ -31,8 +31,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
+#ifdef CS203_DSAA_TEST_MACRO
 
 
 #include <tuple>
@@ -41,6 +40,9 @@ SOFTWARE.
 #include "catch_main.hpp"
 #include "lab_00_B.cpp"
 
+string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_B_data/";
+
+namespace lab_00_B {
 using std::tie;
 using std::cin;
 using std::cout;
@@ -49,7 +51,6 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_B_data/";
 
 TEST_CASE("test case 1", "[test 00 B]") {
     auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
@@ -65,5 +66,5 @@ TEST_CASE("test case 2", "[test 00 B]") {
     CHECK_THAT(result, Equals<num_type>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
     CHECK_THAT(result, Equals(what_we_want));
 }
-
+}
 #endif //CS203_DSAA_TEST_MACRO

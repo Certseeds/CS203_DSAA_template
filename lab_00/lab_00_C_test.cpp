@@ -31,13 +31,15 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
+#ifdef CS203_DSAA_TEST_MACRO
 
 #include <vector>
 #include <iostream>
 #include "catch_main.hpp"
 #include "lab_00_C.cpp"
+string CS203_redirect::file_paths = "./../../lab_00/lab_00_C_data/";
+
+namespace lab_00_C {
 
 using std::cin;
 using std::cout;
@@ -46,7 +48,6 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
-string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_C_data/";
 /*
  * Test case 1 -> Test case 5
  * 目的是为了展示只使用CS203_redirect的情况下
@@ -132,12 +133,11 @@ TEST_CASE("test case with sequence", "[test 00 C]") {
         tie(datain, dataout, testout) = file_name; // 解包
         {
             CS203_redirect cr{datain, testout}; // 重定向输入,输出
-            main2();
+            main();
             // 用括号括住是为了让CS203_redirect在这里被析构,停止重定向
         }
         CHECK(compareFiles(testout, dataout));
     }
 }
-
-
+}
 #endif //CS203_DSAA_TEST_MACRO

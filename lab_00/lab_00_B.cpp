@@ -37,7 +37,9 @@ SOFTWARE.
 #include <string>
 #include <vector>
 #include <iostream>
-
+#ifdef CS203_DSAA_TEST_MACRO
+namespace lab_00_B{
+#endif
 using std::cin;
 using std::cout;
 using std::string;
@@ -60,16 +62,7 @@ num_type brute_force(num_type data);
 
 void output(const output_type &data);
 
-#ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
-
 int main() {
-    return main2();
-}
-
-#endif // !CS203_DSAA_TEST_MACRO
-
-inline int main2() {
     auto input_data = read();
     auto output_data = cal_warpper(input_data);
     output(output_data);
@@ -124,3 +117,6 @@ static const auto faster_streams = [] {
     // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
     return 0;
 }();
+#ifdef CS203_DSAA_TEST_MACRO
+}
+#endif
