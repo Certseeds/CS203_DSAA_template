@@ -44,7 +44,6 @@ test_code_template: str
 file_header_template: str
 source_cmake_template: str
 test_cmake_template: str
-main_cmake_template: str
 GITHUB_USER: str = 'YOUR_GITHUB_NAME'  # replace it with your github name
 GITHUB_USER: str = 'Certseeds'  # example: Certseeds
 USER: str = 'YOUR_USER_NAME'  # replace it with your user name
@@ -53,10 +52,9 @@ REPO_NAME: str = 'YOUR_REPO_NAME'  # replace it with your github repo name
 REPO_NAME: str = 'CS203_DSAA_template'  # example: CS203_DSAA_template
 year: str = time.strftime('%Y', time.localtime())
 create_time: str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-source_path: str = './../source/lab_{0}/lab_{0}_{1}.cpp'
-test_path: str = './../test/lab_{0}/lab_{0}_{1}_test.cpp'
-source_cmake_path: str = './../source/lab_{0}/CMakeLists.txt'
-test_cmake_path: str = './../test/lab_{0}/CMakeLists.txt'
+source_path: str = './../lab_{0}/lab_{0}_{1}.cpp'
+test_path: str = './../lab_{0}/lab_{0}_{1}_test.cpp'
+source_cmake_path: str = './../lab_{0}/CMakeLists.txt'
 main_cmake_path: str = './../CMakeLists.txt'
 
 
@@ -71,7 +69,7 @@ def fill_file(lab_number: str, problem_order: str) -> None:
     with open(source_path.format(lab_number, problem_order), mode='a+', encoding='UTF-8') as file:
         file.write(file_header_template.format(
             GITHUB_USER, REPO_NAME, USER, create_time, year))
-        file.write(main_code_template)
+        file.write(main_code_template.format(lab_number,problem_order))
     print('main finish')
     with open(test_path.format(lab_number, problem_order), mode='a+', encoding='UTF-8') as file:
         file.write(file_header_template.format(
@@ -81,17 +79,13 @@ def fill_file(lab_number: str, problem_order: str) -> None:
 
 
 def try_mkdir(lab_number: str) -> None:
-    if not os.path.exists('./../source/lab_{0}'.format(lab_number)):
-        os.mkdir('./../source/lab_{0}'.format(lab_number))
-    if not os.path.exists('./../test/lab_{0}'.format(lab_number)):
-        os.mkdir('./../test/lab_{0}'.format(lab_number))
+    if not os.path.exists('./../lab_{0}'.format(lab_number)):
+        os.mkdir('./../lab_{0}'.format(lab_number))
 
 
 def copy_cmakeLists(lab_number: str, problem_list: str) -> None:
     with open(source_cmake_path.format(lab_number), mode='a+', encoding='UTF-8') as file:
         file.write(source_cmake_template.format(lab_number, problem_list))
-    with open(test_cmake_path.format(lab_number), mode='a+', encoding='UTF-8') as file:
-        file.write(test_cmake_template.format(lab_number, problem_list))
     return
 
 
@@ -100,12 +94,9 @@ def main() -> None:
                        '08', '09', '10', '11', '12', '13', '14', '15']
     problem_order: List[str] = ['A', 'B', 'C',
                                 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-    # labs: List[str] = ['01']
-    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-    labs_list_str: str = " ".join(labs)
+    labs: List[str] = ['01']
+    problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     problem_order_list_str: str = " ".join(problem_order)
-    with open(main_cmake_path, mode='w+', encoding='UTF-8') as file:
-        file.write(main_cmake_template.format('00 ' + labs_list_str))
     for i in labs:
         try_mkdir(i)  # 准备文件夹
         copy_cmakeLists(i, problem_order_list_str)  # prepare CMakeLists
@@ -121,6 +112,4 @@ if __name__ == '__main__':
     main_code_template = read_file('cpp_template.txt')
     test_code_template = read_file('cpp_test_template.txt')
     source_cmake_template = read_file('CMakeLists_template.txt')
-    test_cmake_template = read_file('CMakeLists_test_template.txt')
-    main_cmake_template = read_file('CMakeLists_main_template.txt')
     main()

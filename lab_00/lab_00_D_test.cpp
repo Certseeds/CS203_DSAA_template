@@ -1,8 +1,8 @@
-/**
+/*
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-15 22:05:02
+ * @Date: 2020-07-21 21:44:25
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,70 +31,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#ifdef CS203_DSAA_TEST_MACRO
+
 #include <tuple>
-#include <vector>
 #include <iostream>
+#include "catch_main.hpp"
+#include "lab_00_D.cpp"
+
+string CS203_redirect::file_paths = "./../../lab_00/lab_00_D_data/";
+namespace lab_00_D {
 
 using std::tie;
 using std::cin;
 using std::cout;
 using std::tuple;
 using std::vector;
-static constexpr const char end{'\n'};
 
-using num_t = int32_t;
-using input_type = tuple<num_t, num_t>;
-using output_type = num_t;
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
 
-inline int main2();
-
-inline input_type read();
-
-output_type cal(input_type data);
-
-void output(const output_type &data);
-
-#ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
-
-int main() {
-    return main2();
-}
-
-#endif // !CS203_DSAA_TEST_MACRO
-
-inline int main2() {
+TEST_CASE("test case 1", "[test 00 D]") {
+    const CS203_redirect cr{"01.data.in"};
+    // 重定向开始,开始run
     auto input_data = read();
-    auto output_data = cal(input_data);
-    output(output_data);
-    return 0;
+    cal(input_data);
+    // 重定向结束
 }
 
-inline input_type read() {
-    num_t a{0}, b{0};
-    std::cin >> a >> b;
-    return std::make_tuple(a, b);
+TEST_CASE("test case 2", "[test 00 D]") {
+    SECTION("do") {
+        const CS203_redirect cr{"01.data.in", "01.test.out"};
+        auto input_data = read();
+        cal(input_data);
+    }SECTION("compare files") {
+        CHECK(compareFiles("01.test.out", "01.data.out"));
+    }
+}
 }
 
-output_type cal(input_type data) {
-    num_t a{0}, b{0};
-    tie(a, b) = data;
-    num_t c = a + b;
-    return c;
-}
-
-void output(const output_type &data) {
-    std::cout << data << end;
-}
-
-static const auto faster_streams = [] {
-    srand(time(nullptr));
-    // use time to init the random seed
-    std::ios::sync_with_stdio(false);
-    std::istream::sync_with_stdio(false);
-    std::ostream::sync_with_stdio(false);
-    std::cin.tie(nullptr);
-    std::cout.tie(nullptr);
-    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
-    return 0;
-}();
+#endif //CS203_DSAA_TEST_MACRO

@@ -31,22 +31,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
+#ifdef CS203_DSAA_TEST_MACRO
 
 #include <iostream>
 #include <tuple>
 #include <vector>
 
-#include "catch_main.hpp"
+#include <catch_main.hpp>
 #include "lab_00_A.cpp"
+string CS203_redirect::file_paths = "./../../test/lab_00/lab_00_A_data/";
 
+namespace lab_00_A {
 using std::cin;
 using std::cout;
 using std::tie;
 using std::tuple;
 using std::vector;
-string CS203_redirect::file_paths = "./../../../test/lab_00/lab_00_A_data/";
 
 TEST_CASE("test case 1", "[test 00 A]") {
     auto output1 = cal(std::make_tuple(0, 0));
@@ -63,7 +63,7 @@ TEST_CASE("test case 2", "[test 00 A]") {
 }
 
 TEST_CASE("test case 3", "[test 00 A]") {
-    std::random_device rd;
+    std::random_device rd{};
     std::mt19937 gen = std::mt19937(rd());
     std::uniform_real_distribution<> dis(0, 100000);
     auto randfun = std::bind(dis, gen); // 产生一个函数,返回0-10000的随机数
@@ -79,5 +79,5 @@ TEST_CASE("test case 4", "[test 00 A]") {
     auto output = cal(std::make_tuple(100, 1000));
     CHECK(output == 1100);
 }
-
+}
 #endif  //CS203_DSAA_TEST_MACRO

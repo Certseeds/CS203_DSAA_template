@@ -9,17 +9,14 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/parallel.cmake)
 string(TIMESTAMP time_str "%Y/%m/%d  %y:%m:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
 
-include_directories(${CMAKE_SOURCE_DIR}/includes)
-include_directories(${CMAKE_SOURCE_DIR}/third_party)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
-add_subdirectory(${CMAKE_SOURCE_DIR}/algorithm)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/algorithm)
 
 enable_testing()
-set(dependencies 00)
-foreach (elementName IN LISTS dependencies)
-    add_subdirectory(${CMAKE_SOURCE_DIR}/source/lab_${elementName})
-    add_subdirectory(${CMAKE_SOURCE_DIR}/test/lab_${elementName})
-endforeach ()
-unset(dependencies)
-
-
+file(GLOB USER_LIBS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lab_*) # regex to find libs, more flexibility
+foreach(elementName IN LISTS USER_LIBS_PATH)
+    add_subdirectory(${elementName})
+endforeach()
+unset(USER_LIBS_PATH)

@@ -38,7 +38,9 @@ SOFTWARE.
 #include <iostream>
 #include <string>
 #include <vector>
-
+#ifdef CS203_DSAA_TEST_MACRO
+namespace lab_00_D{
+#endif
 using std::cin;
 using std::cout;
 using std::string;
@@ -69,20 +71,9 @@ void output(const output_type &map, num_t high, num_t wide);
 
 void print(output_type &map, num_t a, num_t b);
 
-#ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
-
 int main() {
-    return main2();
-}
-
-#endif  // !CS203_DSAA_TEST_MACRO
-
-inline int main2() {
     auto input_data = read();
     cal(input_data);
-    // auto output_type = cal(read());
-    // output(output_type);
     return 0;
 }
 
@@ -150,3 +141,6 @@ static const auto faster_streams = [] {
     // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
     return 0;
 }();
+#ifdef CS203_DSAA_TEST_MACRO
+}
+#endif

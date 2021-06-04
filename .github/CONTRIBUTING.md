@@ -10,20 +10,22 @@
 
 # Contributing
 
-Hi there! We're thrilled that you'd like to contribute to this project. Your help is essential for keeping it great.
+欢迎向本Project贡献代码.
 
-Contributions to this project are [released](https://help.github.com/articles/github-terms-of-service/#6-contributions-under-repository-license) to the public under the project's open source license.
+请确认本Project使用的MIT协议与CC-BY-NC-SA-4.0(or any later version)协议符合预期.
 
-Please note that this project is released with a Contributor Code of Conduct. By participating in this project you agree to abide by its terms.
+## What we want to Contribute
+
+主要是algorithm方面,等待加入更多算法与测试用例.
 
 ## Submitting a pull request
 
-0. Fork and clone the repository
-1. Make sure the tests pass on your machine.
-2. Create a new branch: `git checkout -b my-branch-name`
-3. Make your change, add tests, and make sure the tests still pass
-4. Push to your fork and submit a pull request
-5. Pat your self on the back and wait for your pull request to be reviewed and merged.
+0. Fork and clone the repository,Fork本仓库
+1. Make sure the tests pass on your machine,确认在本地可运行所有测试用例
+2. Create a new branch: `git checkout -b my-branch-name`,在新分支提交
+3. Make your change, add tests, and make sure the tests still pass,新提交确保可以通过测试
+4. Push to your fork and submit a pull request,发布pull_request至主仓库
+5. Pat your self on the back and wait for your pull request to be reviewed and merged,等待合入主干.
 
 Here are a few things you can do that will increase the likelihood of your pull request being accepted:
 
