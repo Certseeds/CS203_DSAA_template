@@ -35,6 +35,7 @@ SOFTWARE.
 #include <string>
 #include <vector>
 
+namespace string_search {
 using std::vector;
 using std::string;
 
@@ -83,4 +84,5 @@ vector<int32_t> get_next(const string &h) {
         }
     }
     return will_return;
+}
 }

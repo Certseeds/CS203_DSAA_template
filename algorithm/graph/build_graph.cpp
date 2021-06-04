@@ -39,7 +39,7 @@ namespace graph {
 adjacent_table build_adjacent_table(const vector<vector<int32_t>> &input, int32_t node_num) {
     adjacent_table graph(node_num, vector<link>{});
     for (const auto &item: input) {
-        graph[item[0]-1].emplace_back(item[1]-1, item[2]);
+        graph[item[0] - 1].emplace_back(item[1] - 1, item[2]);
         // 这里注意,如果input格式是从1开始对节点计数,则需要对item[0],item[1]各减一
     }
     return graph;

@@ -19,7 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest,windows-latest ]
+        os: [ubuntu-18.04, ubuntu-latest]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -30,7 +30,6 @@ jobs:
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt install tree; tree
-        if: ${{matrix.os != 'windows-latest'}}
 
       - name: Use cmake
         run: cmake --version
@@ -49,11 +48,9 @@ jobs:
       - name: cmake test
         working-directory: ./CMAKE_DEBUG_PATH
         run: ctest  --parallel $(nproc)
-        if: ${{matrix.os != 'windows-latest'}}
 
       - name: tree
         run: tree
-        if: ${{matrix.os != 'windows-latest'}}
 
   # This workflow contains a single job called "build"
   build:
@@ -63,7 +60,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest,windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -75,7 +72,6 @@ jobs:
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt install tree; tree
-        if: ${{matrix.os != 'windows-latest'}}
 
       - name: run script
         working-directory: ./script
@@ -83,5 +79,4 @@ jobs:
 
       - name: tree the packet
         run: tree
-        if: ${{matrix.os != 'windows-latest'}}
 

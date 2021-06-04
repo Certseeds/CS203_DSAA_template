@@ -2,14 +2,14 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-15 21:41:03 
+ * @Date: 2020-07-15 21:41:03
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020-2021  nanoseeds
 
@@ -33,9 +33,9 @@ SOFTWARE.
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
 #define CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-#define CATCH_CONFIG_MAIN
+//#define CATCH_CONFIG_MAIN
 
-#include <catch.hpp>
+#include <catch_amalgamated.hpp>
 #include "public.hpp"
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
