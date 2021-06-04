@@ -71,30 +71,30 @@
 + 执行代码和测试:
   + 使用clion打开文件夹,配置好C++环境的基础上,会自动识别`CmakeList.txt`.产生`CS203_lab${order}_${ques_Order}`,`CS203_lab${order}_${ques_Order}_test` 复数个可以运行的可选项.
     `lab${order}_${ques_Order}`为对应题号,比如`lab07_01`对应lab_07的C1题.
-    + `CS203_lab07_01`将调用`source\lab_07\lab_07_C1.cpp`,为将要提交的源文件.  
-    + `CS203_lab07_01_test`将调用`test\lab_07\lab_07_C1_test.cpp`,对其进行测试.  
-    + `test\lab_*\lab_*_*_test.cpp`目的为方便测试,同时便于分享测试用例.
+    + `CS203_lab07_01`将调用`lab_07\lab_07_C1.cpp`,为将要提交的源文件.  
+    + `CS203_lab07_01_test`将调用`lab_07\lab_07_C1_test.cpp`,对其进行测试.  
+    + `lab_*\lab_*_*_test.cpp`目的为方便测试,同时便于分享测试用例.
 
 ## 实际场景
 
 1. A+B: lab_00_A ,测试样例
-    + 这个问题较为简单,见[A+B](lab_00/lab_00_A.cpp).解决起来不复杂.
+    + 这个问题较为简单,见[A+B](./lab_00/lab_00_A.cpp).解决起来不复杂.
     + 虽然手工一个一个输入,然后肉眼观察输出.但是如果我们希望严谨的测试,要100组测试数据,难道每次出新版本都要手动输入100次吗?
       显然,有更好的解决方式:使用测试框架.
     + 在本repo,使用`Catch2`测试框架.
       比如,我们有四组数据,第一组,第二组测试边界值,第三组使用随机数测试对偶性与正确性,第四组测试几个手动的随机值.
-      参见[test_for_lab00_A](lab_00/lab_00_A_test.cpp).
+      参见[test_for_lab00_A](./lab_00/lab_00_A_test.cpp).
     + 这样一来,我们只需要每次修改完主文件之后,run `CS203_DSAA_template_test`, 对其进行调用,就能验证其在所有的测试用例上的正确性.
       测试的结果也会出现在输出中.
 2. 多个输出值的检查:`Catch::Matchers`
     + 上面的例子里,输出值只是一个值,所以手动检查的难度不大,但是如果目标输出是一个数组,那么手动检查的难度就非常大了.
     + 举例:[Crzay Plan](https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1250),输入可能有1.1*10^6个.  
       这种情况下对这么多值进行直接的观察就很难,所以我们预先将期望的值直接写在测试文件里,用Catch2内置的Matcher比较.
-      见[test_for_lab00_B](lab_00/lab_00_B_test.cpp)的`CHECK_THAT()`部分.
+      见[test_for_lab00_B](./lab_00/lab_00_B_test.cpp)的`CHECK_THAT()`部分.
     + 当然,这种情况也只适用于规模比较小的情况,规模再大的话,直接由人手动写在测试文件里也太占空间了.
 3. 输入输出重定向-1:
     + 常见于tree,graph类的问题,debug需要的数据集都比较大,不方便直接写在代码中.
-    + 比如[判断二分图](lab_00/lab_00_C.cpp),一张图可以有几十上百个node,写在内部占用空间太大.
+    + 比如[判断二分图](./lab_00/lab_00_C.cpp),一张图可以有几十上百个node,写在内部占用空间太大.
     + 而在这里,使用`CS203_redirect`对象,便可以省去手动输入的方式.
 
     ``` cpp
@@ -174,7 +174,7 @@ DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数�
 1. 将[magic_optimize](./includes/magic_macro.hpp)内的内容粘贴到代码最上方.
 2. 关闭同步,
 
-```cpp
+``` cpp
 static const auto faster_streams = [] {
     srand(time(nullptr)); 
     // use time to init the random seed

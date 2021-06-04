@@ -36,8 +36,9 @@ SOFTWARE.
 '''
 
 import os
-import time
 from typing import List
+
+import time
 
 main_code_template: str
 test_code_template: str
@@ -69,7 +70,7 @@ def fill_file(lab_number: str, problem_order: str) -> None:
     with open(source_path.format(lab_number, problem_order), mode='a+', encoding='UTF-8') as file:
         file.write(file_header_template.format(
             GITHUB_USER, REPO_NAME, USER, create_time, year))
-        file.write(main_code_template.format(lab_number,problem_order))
+        file.write(main_code_template.format(lab_number, problem_order))
     print('main finish')
     with open(test_path.format(lab_number, problem_order), mode='a+', encoding='UTF-8') as file:
         file.write(file_header_template.format(
@@ -94,8 +95,8 @@ def main() -> None:
                        '08', '09', '10', '11', '12', '13', '14', '15']
     problem_order: List[str] = ['A', 'B', 'C',
                                 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-    labs: List[str] = ['01']
-    problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    # labs: List[str] = ['01']
+    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
     problem_order_list_str: str = " ".join(problem_order)
     for i in labs:
         try_mkdir(i)  # 准备文件夹
@@ -103,8 +104,7 @@ def main() -> None:
         for j in problem_order:
             fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
     print('produce files finish')
-    print(str(len(labs) * (len(problem_order) + 1) * 2) + ' files is produced')
-
+    print(f"{len(labs) * (len(problem_order) + 1) * 2} files is produced")
 
 # range in [begin,end)
 if __name__ == '__main__':
