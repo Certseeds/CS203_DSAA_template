@@ -9,7 +9,6 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/parallel.cmake)
 string(TIMESTAMP time_str "%Y/%m/%d  %y:%m:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party/include)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/algorithm)

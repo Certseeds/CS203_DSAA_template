@@ -37,6 +37,7 @@ SOFTWARE.
 #include <string>
 #include <vector>
 #include <iostream>
+
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_00_B{
 #endif

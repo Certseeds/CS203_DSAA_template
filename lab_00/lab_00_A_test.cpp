@@ -39,6 +39,7 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include "lab_00_A.cpp"
+
 string CS203_redirect::file_paths = "./../../test/lab_00/lab_00_A_data/";
 
 namespace lab_00_A {

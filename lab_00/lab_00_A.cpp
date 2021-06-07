@@ -34,6 +34,7 @@ SOFTWARE.
 #include <tuple>
 #include <vector>
 #include <iostream>
+
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_00_A{
 #endif

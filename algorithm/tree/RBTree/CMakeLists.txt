@@ -7,6 +7,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 enable_testing()
 
 add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/RBTest.cpp)
-target_link_libraries(${PROJECT_NAME}  CS203_CATCH2_LIB)
+target_link_libraries(${PROJECT_NAME} CS203_CATCH2_LIB)
 
 #add_test(${PROJECT_NAME}_CTEST ${PROJECT_NAME})
