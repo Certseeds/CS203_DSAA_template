@@ -84,8 +84,6 @@ using num_t = int32_t;
 using input_type = vector<vector<num_t>>;
 using output_type = bool;
 
-inline int main2();
-
 inline input_type read();
 
 output_type isBipartite(const input_type &graph);
@@ -94,7 +92,7 @@ void output(const output_type &data);
 
 int main() {
     auto input_data = read();
-    auto output_data = isBipartite(input_data);
+    const auto output_data = isBipartite(input_data);
     output(output_data);
     return 0;
 }

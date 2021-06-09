@@ -41,17 +41,16 @@ namespace graph {
 using std::vector;
 
 struct link {
-    int32_t end, cost;
+    int32_t end{-1}, cost{-1};
 
     link(int32_t end_, int32_t cost_) : end(end_), cost(cost_) {}
 };
 
-using adjacent_table = vector<vector<link>>;
+using adjlist = vector<vector<link>>;
 
 // build should not be all empty but each vector is empty,
-adjacent_table build_adjacent_table(const vector<vector<int32_t>> &input, int32_t node_num);
+adjlist build_adjlist(const vector<vector<int32_t>> &input, int32_t node_num);
 
 bool check_graph_cost_all_positive(const vector<vector<int32_t>> &input);
 }
-
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_GRAPH_HPP

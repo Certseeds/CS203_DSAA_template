@@ -62,8 +62,6 @@ const vector<std::pair<num_t, string>> spis{
         {0, "|   |/"},
         {0, "+---+"}};
 
-inline int main2();
-
 inline input_type read();
 
 void cal(input_type &hi);

@@ -2,7 +2,7 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanos
- * @Date: 2021-04-12 23:57:10
+ * @Date: 2021-06-08 20:26:06
  * @LastEditors: nanos
  * @LICENSE: MIT
  */
@@ -31,27 +31,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <cassert>
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_FLOW_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_FLOW_HPP
+
 #include "build_graph.hpp"
 
-namespace graph {
-/**
- * 这里注意,默认input格式是从1开始对节点计数,所以对item[0],item[1]各减一
-**/
-adjlist build_adjlist(const vector<vector<int32_t>> &input, int32_t node_num) {
-    check_graph_cost_all_positive(input);
-    adjlist graph(node_num, vector<link>{});
-    for (const auto &item: input) {
-        graph[item[0] - 1].emplace_back(item[1] - 1, item[2]);
-    }
-    return graph;
+namespace graph::flow {
+
+struct flink : public link {
+    int32_t flow{-1};
+
+    flink(int32_t end_, int32_t cost_, int32_t flow_) : link(end_, cost_), flow(flow_) {}
+};
+
+using f_adjlist = vector<vector<flink>>;
+
+f_adjlist build_f_adjlist(const adjlist &table);
+
+class flow {
+public:
+    f_adjlist table; // graph本身
+    int32_t Sn{-1};// 源点
+    int32_t Tn{-1};// 汇点
+    int32_t result{0}; // 结果
+    flow(const adjlist &table_, int32_t Sn_, int32_t Tn_);
+
+    void maxflow_ek(); //求取最大流结果
+};
 }
 
-bool check_graph_cost_all_positive(const vector<vector<int32_t>> &input) {
-    for (const auto &item: input) {
-        assert(item.size() == 3);
-        assert(item[2] >= 0);
-    }
-    return false;
-}
-}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_FLOW_HPP
