@@ -72,10 +72,10 @@ void flow::maxflow_ek() {
         if (flows[this->Tn] == 0) {
             break;
         }
-        const auto search = [*this](int begin, int end) {
-            for (size_t i{0}; i < this->table[begin].size(); i++) {
+        const auto search = [this](int begin, int end) {
+            for (int32_t i{0}; i < this->table[begin].size(); i++) {
                 if (this->table[begin][i].end == end) {
-                    return static_cast<int32_t>(i);
+                    return i;
                 }
             }
             return -1;
