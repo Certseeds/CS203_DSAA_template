@@ -16,7 +16,7 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
 enable_testing()
 file(GLOB USER_LIBS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lab_*) # regex to find libs, more flexibility
-foreach(elementName IN LISTS USER_LIBS_PATH)
+foreach (elementName IN LISTS USER_LIBS_PATH)
     add_subdirectory(${elementName})
-endforeach()
+endforeach ()
 unset(USER_LIBS_PATH)
