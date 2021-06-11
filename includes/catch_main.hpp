@@ -35,7 +35,7 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
 //#define CATCH_CONFIG_MAIN
 
-#include <catch_amalgamated.hpp>
+#include "catch_amalgamated.hpp"
 #include "public.hpp"
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
