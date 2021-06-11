@@ -40,12 +40,12 @@ num_t lower_bound(vector<num_t> &nums, num_t first, num_t last, num_t value) {
 TEST_CASE("lower_bound", "[test basic binary search]") {
     vector<num_t> vec{1, 1, 2, 3, 4, 4, 4, 5, 5, 6};
     vector<tuple<num_t, num_t>> input_result = {
-        {1, 0},
-        {2, 2},
-        {3, 3},
-        {4, 4},
-        {5, 7},
-        {6, 9}};
+            {1, 0},
+            {2, 2},
+            {3, 3},
+            {4, 4},
+            {5, 7},
+            {6, 9}};
     for (const auto &i : input_result) {
         num_t input{0};
         num_t output{0};
@@ -73,12 +73,12 @@ num_t any_equal(vector<num_t> &nums, num_t first, num_t last, num_t value) {
 TEST_CASE("any_equal", "[test basic binary search]") {
     vector<num_t> vec{1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6};
     vector<tuple<num_t, num_t, num_t>> input_result = {
-        {1, 0, 1},
-        {2, 1, 3},
-        {3, 3, 6},
-        {4, 6, 10},
-        {5, 10, 15},
-        {6, 15, 16}};
+            {1, 0,  1},
+            {2, 1,  3},
+            {3, 3,  6},
+            {4, 6,  10},
+            {5, 10, 15},
+            {6, 15, 16}};
     // 0 2 4 8 12 15
     for (const auto &i : input_result) {
         num_t input{0};
@@ -107,12 +107,12 @@ num_t upper_bound(vector<num_t> &nums, num_t first, num_t last, num_t value) {
 TEST_CASE("upper_bound", "[test basic binary search]") {
     vector<num_t> vec{1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5, 6};
     vector<tuple<num_t, num_t>> input_result = {
-        {1, 1},
-        {2, 3},
-        {3, 6},
-        {4, 10},
-        {5, 15},
-        {6, 16}};
+            {1, 1},
+            {2, 3},
+            {3, 6},
+            {4, 10},
+            {5, 15},
+            {6, 16}};
     for (const auto &i : input_result) {
         num_t input{0};
         num_t output{0};
@@ -129,12 +129,12 @@ num_t lower_bound_warpper(vector<num_t> &nums, num_t first, num_t last, num_t va
 TEST_CASE("lower_bound_warpper", "[test basic binary search]") {
     vector<num_t> vec{1, 1, 2, 3, 4, 4, 4, 5, 5, 6};
     vector<tuple<num_t, num_t>> input_result = {
-        {1, -1},
-        {2, 1},
-        {3, 2},
-        {4, 3},
-        {5, 6},
-        {6, 8}};
+            {1, -1},
+            {2, 1},
+            {3, 2},
+            {4, 3},
+            {5, 6},
+            {6, 8}};
     for (const auto &i : input_result) {
         num_t input{0};
         num_t output{0};
@@ -151,12 +151,12 @@ num_t upper_bound_warpper(vector<num_t> &nums, num_t first, num_t last, num_t va
 TEST_CASE("upper_bound_warpper", "[test basic binary search]") {
     vector<num_t> vec{1, 1, 2, 3, 4, 4, 4, 5, 5, 6};
     vector<tuple<num_t, num_t>> input_result = {
-        {1, 1},
-        {2, 2},
-        {3, 3},
-        {4, 6},
-        {5, 8},
-        {6, 9}};
+            {1, 1},
+            {2, 2},
+            {3, 3},
+            {4, 6},
+            {5, 8},
+            {6, 9}};
     for (const auto &i : input_result) {
         num_t input{0};
         num_t output{0};

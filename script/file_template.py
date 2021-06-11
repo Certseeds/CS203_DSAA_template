@@ -6,7 +6,7 @@
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09
 LastEditors: nanoseeds
-LastEditTime: 2021-01-04 00:33:42
+LastEditTime: 2021-06-11 10:45:12
 @LICENSE: MIT
 '''
 '''
@@ -67,12 +67,12 @@ def read_file(file_name: str) -> str:
 
 
 def fill_file(lab_number: str, problem_order: str) -> None:
-    with open(source_path.format(lab_number, problem_order), mode='a+', encoding='UTF-8') as file:
+    with open(source_path.format(lab_number, problem_order), mode='w+', encoding='UTF-8') as file:
         file.write(file_header_template.format(
             GITHUB_USER, REPO_NAME, USER, create_time, year))
         file.write(main_code_template.format(lab_number, problem_order))
     print('main finish')
-    with open(test_path.format(lab_number, problem_order), mode='a+', encoding='UTF-8') as file:
+    with open(test_path.format(lab_number, problem_order), mode='w+', encoding='UTF-8') as file:
         file.write(file_header_template.format(
             GITHUB_USER, REPO_NAME, USER, create_time, year))
         file.write(test_code_template.format(lab_number, problem_order))
@@ -85,7 +85,7 @@ def try_mkdir(lab_number: str) -> None:
 
 
 def copy_cmakeLists(lab_number: str, problem_list: str) -> None:
-    with open(source_cmake_path.format(lab_number), mode='a+', encoding='UTF-8') as file:
+    with open(source_cmake_path.format(lab_number), mode='w+', encoding='UTF-8') as file:
         file.write(source_cmake_template.format(lab_number, problem_list))
     return
 
@@ -103,6 +103,8 @@ def main() -> None:
         copy_cmakeLists(i, problem_order_list_str)  # prepare CMakeLists
         for j in problem_order:
             fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
+        with open(".gitattributes", mode='w+', encoding='UTF-8') as attr:
+            attr.write("* linguist-vendored")
     print('produce files finish')
     print(f"{len(labs) * (len(problem_order) + 1) * 2} files is produced")
 

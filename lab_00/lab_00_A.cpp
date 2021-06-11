@@ -34,6 +34,7 @@ SOFTWARE.
 #include <tuple>
 #include <vector>
 #include <iostream>
+
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_00_A{
 #endif
@@ -47,8 +48,6 @@ static constexpr const char end{'\n'};
 using num_t = int32_t;
 using input_type = tuple<num_t, num_t>;
 using output_type = num_t;
-
-inline int main2();
 
 inline input_type read();
 

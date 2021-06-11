@@ -37,14 +37,12 @@ namespace graph {
 using std::vector;
 using std::priority_queue;
 
-vector<int32_t> dijkstra(const vector<vector<int32_t>> &input, int32_t node_num, int32_t begin_node) {
-    check_graph_cost_all_positive(input);
-    adjacent_table graph = build_adjacent_table(input, node_num);
+vector<int32_t> dijkstra(const adjlist &input, int32_t begin_node) {
     begin_node -= 1;
-    vector<int32_t> results(node_num, 0x3f3f3f3f);
+    vector<int32_t> results(input.size(), 0x3f3f3f3f);
     results[begin_node] = 0;
     // PS: in this part,if begin_node count from 1, begin_node should -= 1
-    const auto cmp{
+    static constexpr auto cmp{
             [](const link &v1, const link &v2) {
                 return v1.cost > v2.cost;
             }
@@ -54,7 +52,7 @@ vector<int32_t> dijkstra(const vector<vector<int32_t>> &input, int32_t node_num,
     while (!priorityQueue.empty()) {
         auto head = priorityQueue.top();
         priorityQueue.pop();
-        for (auto &i: graph[head.end]) {
+        for (auto &i: input.at(head.end)) {
             const auto val = results[head.end] + i.cost;
             if (results[i.end] >= val) {
                 results[i.end] = val;

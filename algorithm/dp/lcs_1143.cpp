@@ -33,7 +33,7 @@ SOFTWARE.
 */
 #include "lcs_1143.hpp"
 
-namespace lcs_1143{
+namespace lcs_1143 {
 int32_t lcs_1143::longestCommonSubsequence(const string &text1, const string &text2) {
     vector<vector<int32_t>> dp(text1.size() + 1, vector<int32_t>(text2.size() + 1, 0));
     // init vector for 0 can except init [0][...],[...][0] to 0

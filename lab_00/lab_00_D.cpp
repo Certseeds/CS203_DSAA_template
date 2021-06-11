@@ -38,6 +38,7 @@ SOFTWARE.
 #include <iostream>
 #include <string>
 #include <vector>
+
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_00_D{
 #endif
@@ -60,8 +61,6 @@ const vector<std::pair<num_t, string>> spis{
         {0, "|   | +"},
         {0, "|   |/"},
         {0, "+---+"}};
-
-inline int main2();
 
 inline input_type read();
 

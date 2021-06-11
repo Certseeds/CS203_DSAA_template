@@ -1,9 +1,9 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:41:03
- * @LastEditors: nanoseeds
+ * @Author: nanos
+ * @Date: 2021-04-02 10:12:44
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,20 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-//#define CATCH_CONFIG_MAIN
+#include "kmp.hpp"
+#include "catch_main.hpp"
 
-#include "catch_amalgamated.hpp"
-#include "public.hpp"
+namespace string_search {
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
+TEST_CASE("1 [string search]", "[string search]") {
+    CHECK(strStr("hello", "ll") == 2);
+    CHECK(strStr("aaaaa", "bba") == -1);
+    CHECK(strStr("aaaaa", "") == 0);
+    CHECK(strStr("a", "a") == 0);
+    CHECK(strStr("mississippi", "issi") == 1);
+    CHECK(strStr("mississippi", "issip") == 4);
+}
+}

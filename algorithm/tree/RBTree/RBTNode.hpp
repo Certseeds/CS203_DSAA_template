@@ -69,6 +69,7 @@ public:
         }
         return grand_parent->left;
     }
+
     inline RBTNode *get_brother() {
         RBTNode *const p_node = this->parent;
         if (nullptr == p_node) {
@@ -80,9 +81,10 @@ public:
         return p_node->left;
     }
 
-    inline void isLeaf(){
+    inline void isLeaf() {
         return this->left == nullptr && this->right == nullptr;
     }
+
     inline void set_black() {
         this->color = RBTColor::Black;
     }

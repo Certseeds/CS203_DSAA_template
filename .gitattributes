@@ -1,11 +1,11 @@
-### 
+###
  # @Github: https://github.com/Certseeds/leetcode
  # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-07-15 23:48:29
  # @LastEditors: nanoseeds
  # @LastEditTime: 2021-01-28 16:50:10
-### 
+###
 * text=auto
 
 # itself
@@ -24,7 +24,7 @@
 # Audio
 *.wav -text
 
-# java 
+# java
 # Java sources
 *.java          text diff=java eol=lf
 *.gradle        text diff=java
@@ -80,7 +80,7 @@
 # ``shelve``, ``marshal``, ``anydbm``, & ``bsddb``
 # (among others).
 
-# c & cpp  
+# c & cpp
 # Sources
 *.c     text diff=c eol=lf
 *.h     text diff=c eol=lf

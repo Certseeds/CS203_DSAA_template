@@ -2,7 +2,7 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanos
- * @Date: 2021-04-02 10:19:18
+ * @Date: 2021-06-08 20:26:06
  * @LastEditors: nanos
  * @LICENSE: MIT
  */
@@ -31,21 +31,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <vector>
-#include <iostream>
-#include "catch_main.hpp"
-#include "string_search.hpp"
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_FLOW_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_FLOW_HPP
 
-using std::vector;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
+#include "build_graph.hpp"
 
-TEST_CASE("1 [string search]", "[string search]") {
-    CHECK(strStr("hello", "ll") == 2);
-    CHECK(strStr("aaaaa", "bba") == -1);
-    CHECK(strStr("aaaaa", "") == 0);
-    CHECK(strStr("a", "a") == 0);
-    CHECK(strStr("mississippi", "issi") == 1);
-    CHECK(strStr("mississippi", "issip") == 4);
+namespace graph::flow {
+
+struct flink : public link {
+    int32_t flow{-1};
+
+    flink(int32_t end_, int32_t cost_, int32_t flow_) : link(end_, cost_), flow(flow_) {}
+};
+
+using f_adjlist = vector<vector<flink>>;
+
+f_adjlist build_f_adjlist(const adjlist &table);
+
+class flow {
+public:
+    f_adjlist table; // graph本身
+    int32_t Sn{-1};// 源点
+    int32_t Tn{-1};// 汇点
+    int32_t result{0}; // 结果
+    flow(const adjlist &table_, int32_t Sn_, int32_t Tn_);
+
+    void maxflow_ek(); //求取最大流结果
+};
 }
+
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_FLOW_HPP

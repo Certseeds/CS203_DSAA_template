@@ -42,6 +42,6 @@ namespace graph {
 using std::vector;
 using std::priority_queue;
 
-vector<int32_t> dijkstra(const vector<vector<int32_t>> &input, int32_t node_num, int32_t begin_node);
+vector<int32_t> dijkstra(const adjlist &input, int32_t begin_node);
 }
 #endif // CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA
