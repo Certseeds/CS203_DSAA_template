@@ -31,12 +31,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "string_search.hpp"
-#include <string>
-#include <vector>
+#include "kmp.hpp"
 
-using std::vector;
-using std::string;
+namespace string_search {
 
 int strStr_kmp(const string &h, const string &n);
 
@@ -83,4 +80,5 @@ vector<int32_t> get_next(const string &h) {
         }
     }
     return will_return;
+}
 }

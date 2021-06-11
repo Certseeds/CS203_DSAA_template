@@ -37,6 +37,7 @@ SOFTWARE.
 #include <string>
 #include <vector>
 #include <iostream>
+
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_00_B{
 #endif
@@ -50,8 +51,6 @@ using num_type = uint64_t;
 using input_type = vector<num_type>;
 using output_type = vector<num_type>;
 
-inline int main2();
-
 inline input_type read();
 
 output_type cal_warpper(const input_type &input);
@@ -64,7 +63,7 @@ void output(const output_type &data);
 
 int main() {
     auto input_data = read();
-    auto output_data = cal_warpper(input_data);
+    const auto output_data = cal_warpper(input_data);
     output(output_data);
     return 0;
 }

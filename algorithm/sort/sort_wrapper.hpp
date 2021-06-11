@@ -2,14 +2,14 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-22 22:33:32 
+ * @Date: 2020-07-22 22:33:32
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020-2021  nanoseeds
 
@@ -35,6 +35,7 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_SORT_SORT_WRAPPER_HPP
 
 #include <vector>
+#include <iostream>
 
 void sort_warpper(std::vector<int32_t> &nums);
 

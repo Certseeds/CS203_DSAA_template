@@ -6,7 +6,7 @@
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09
 LastEditors: nanoseeds
-LastEditTime: 2021-01-04 00:33:42
+LastEditTime: 2021-06-11 09:59:59
 @LICENSE: MIT
 '''
 '''
@@ -103,6 +103,8 @@ def main() -> None:
         copy_cmakeLists(i, problem_order_list_str)  # prepare CMakeLists
         for j in problem_order:
             fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
+        with open(".gitattributes", mode='a+', encoding='UTF-8') as attr:
+            attr.write("* linguist-vendored")
     print('produce files finish')
     print(f"{len(labs) * (len(problem_order) + 1) * 2} files is produced")
 

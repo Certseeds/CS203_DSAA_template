@@ -10,13 +10,13 @@ string(TIMESTAMP time_str "%Y/%m/%d  %y:%m:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes)
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/algorithm)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
 enable_testing()
 file(GLOB USER_LIBS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lab_*) # regex to find libs, more flexibility
-foreach(elementName IN LISTS USER_LIBS_PATH)
+foreach (elementName IN LISTS USER_LIBS_PATH)
     add_subdirectory(${elementName})
-endforeach()
+endforeach ()
 unset(USER_LIBS_PATH)
