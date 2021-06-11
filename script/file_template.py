@@ -6,7 +6,7 @@
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09
 LastEditors: nanoseeds
-LastEditTime: 2021-06-11 09:59:59
+LastEditTime: 2021-06-11 11:26:38
 @LICENSE: MIT
 '''
 '''
@@ -56,6 +56,7 @@ create_time: str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 source_path: str = './../lab_{0}/lab_{0}_{1}.cpp'
 test_path: str = './../lab_{0}/lab_{0}_{1}_test.cpp'
 source_cmake_path: str = './../lab_{0}/CMakeLists.txt'
+attributes_path:str = './../lab_{0}/.gitattributes'
 main_cmake_path: str = './../CMakeLists.txt'
 
 
@@ -103,7 +104,7 @@ def main() -> None:
         copy_cmakeLists(i, problem_order_list_str)  # prepare CMakeLists
         for j in problem_order:
             fill_file(i, j)  # 为 lab_${i}/lab_${i}_${j} 创建文件
-        with open(".gitattributes", mode='a+', encoding='UTF-8') as attr:
+        with open(attributes_path.format(i), mode='a+', encoding='UTF-8') as attr:
             attr.write("* linguist-vendored")
     print('produce files finish')
     print(f"{len(labs) * (len(problem_order) + 1) * 2} files is produced")

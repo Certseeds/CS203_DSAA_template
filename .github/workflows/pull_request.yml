@@ -10,16 +10,22 @@ name: test for pull_request
 
 # Controls when the action will run. Triggers the workflow on push or pull request
 # events but only for the master branch
-on: [ pull_request,push ]
+on:
+  push:
+    branches-ignore:
+      - 'release'
+  pull_request:
+    branches-ignore:
+      - 'release'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test:
+  test-ubuntu:
     name: test for pull_request
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest,windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest]
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -30,7 +36,6 @@ jobs:
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt install tree; tree
-        if: ${{matrix.os != 'windows-latest'}}
 
       - name: Use cmake
         run: cmake --version
@@ -49,16 +54,34 @@ jobs:
       - name: cmake test
         working-directory: ./CMAKE_DEBUG_PATH
         run: ctest  --parallel $(nproc)
-        if: ${{matrix.os != 'windows-latest'}}
 
       - name: tree
         run: tree
-        if: ${{matrix.os != 'windows-latest'}}
+  test-windows:
+    name: test for pull_request
+    runs-on: windows-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: Use cmake
+        run: cmake --version
+
+      - name: prepare folder
+        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
+
+      - name: cmake prepare for compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake --build . --config DEBUG --parallel
 
   # This workflow contains a single job called "build"
   build:
     name: test for the release script
-    needs: test
+    needs: [test-ubuntu,test-windows]
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
     strategy:
