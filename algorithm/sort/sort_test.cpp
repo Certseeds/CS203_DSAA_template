@@ -4,7 +4,7 @@
  * @Author: nanoseeds
  * @Date: 2021-06-07 13:51:09
  * @LastEditors: nanoseeds
- * @LastEditTime: 2021-06-07 13:52:39
+ * @LastEditTime: 2021-06-11 10:07:15
  */
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
@@ -39,9 +39,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_SORT_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_SORT_TEST_HPP
-
 #include <vector>
 #include <iostream>
 #include "sort_wrapper.hpp"
@@ -103,5 +100,3 @@ TEST_CASE("random test", "[sort]") {
     std::sort(nums_result.begin(), nums_result.end());
     CHECK_THAT(nums, Equals(nums_result));
 }
-
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_SORT_TEST_HPP
