@@ -31,30 +31,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_STRING_SEARCH_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_STRING_SEARCH_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_KMP_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_KMP_HPP
 
 #include <string>
 #include <vector>
-#include <iostream>
-#include "catch_main.hpp"
-#include "string_search.hpp"
 
 namespace string_search {
-int strStr(const std::string &h, const std::string &n);
-
 using std::vector;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
+using std::string;
 
-TEST_CASE("1 [string search]", "[string search]") {
-    CHECK(strStr("hello", "ll") == 2);
-    CHECK(strStr("aaaaa", "bba") == -1);
-    CHECK(strStr("aaaaa", "") == 0);
-    CHECK(strStr("a", "a") == 0);
-    CHECK(strStr("mississippi", "issi") == 1);
-    CHECK(strStr("mississippi", "issip") == 4);
+int strStr(const std::string &h, const std::string &n);
 }
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_STRING_SEARCH_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_KMP_HPP

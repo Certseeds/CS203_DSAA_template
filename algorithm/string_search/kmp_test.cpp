@@ -2,7 +2,7 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanos
- * @Date: 2021-04-02 09:50:56
+ * @Date: 2021-04-02 10:12:44
  * @LastEditors: nanos
  * @LICENSE: MIT
  */
@@ -31,54 +31,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_STRING_SEARCH_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_STRING_SEARCH_HPP
+
 #include "kmp.hpp"
+#include "catch_main.hpp"
 
 namespace string_search {
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
 
-int strStr_kmp(const string &h, const string &n);
-
-vector<int32_t> get_next(const string &h);
-
-int strStr(const std::string &h, const std::string &n) {
-    return strStr_kmp(h, n);
-}
-
-int strStr_kmp(const string &h, const string &n) {
-    if (n.empty()) {
-        return 0;
-    } else if (h.size() < n.size()) {
-        return -1;
-    }
-    int32_t x{0}, y{0};
-    int32_t hsize{static_cast<int32_t>(h.size())}, nsize{static_cast<int32_t>(n.size())};
-    vector<int32_t> next = get_next(n);
-    while ((x < hsize) && (y < nsize)) {
-        if (y == -1 || h[x] == n[y]) {
-            x++;
-            y++;
-        } else {
-            y = next[y];
-        }
-    }
-    if (y == nsize) {
-        return x - y;
-    }
-    return -1;
-}
-
-vector<int32_t> get_next(const string &h) {
-    vector<int32_t> will_return(h.size(), -1);
-    int64_t x = -1;
-    size_t y = 0;
-    while (y < h.size() - 1) {
-        if (x == -1 || h[x] == h[y]) {
-            x++;
-            y++;
-            will_return[y] = x;
-        } else {
-            x = will_return[x];
-        }
-    }
-    return will_return;
+TEST_CASE("1 [string search]", "[string search]") {
+    CHECK(strStr("hello", "ll") == 2);
+    CHECK(strStr("aaaaa", "bba") == -1);
+    CHECK(strStr("aaaaa", "") == 0);
+    CHECK(strStr("a", "a") == 0);
+    CHECK(strStr("mississippi", "issi") == 1);
+    CHECK(strStr("mississippi", "issip") == 4);
 }
 }
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_STRING_SEARCH_HPP
