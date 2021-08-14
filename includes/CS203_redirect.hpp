@@ -2,14 +2,14 @@
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
  * @Author: nanoseeds
- * @Date: 2020-07-24 01:56:19 
+ * @Date: 2020-07-24 01:56:19
  * @LastEditors: nanoseeds
  * @LICENSE: MIT
  */
 /*
 MIT License
 
-CS203_DSAA_template 
+CS203_DSAA_template
 
 Copyright (C) 2020-2021  nanoseeds
 
@@ -82,7 +82,6 @@ public:
 };
 
 #ifndef CS203_DSAA_TEST_MACRO
-#define CS203_DSAA_TEST_MACRO
 /* if in this macro, it means it do not belong to ./test/lab_${number}/${x}_test.cpp
    so, it need define file_paths although it maybe do not need that
    to avoid file_paths do not be define before use.

@@ -65,12 +65,12 @@ TEST_CASE("test case 2", "[test 00 A]") {
 
 TEST_CASE("test case 3", "[test 00 A]") {
     std::random_device rd{};
-    std::mt19937 gen = std::mt19937(rd());
-    std::uniform_real_distribution<> dis(0, 100000);
+    auto gen = std::mt19937{rd()};
+    std::uniform_real_distribution<> dis{0, 100000};
     auto randfun = std::bind(dis, gen); // 产生一个函数,返回0-10000的随机数
     for (int i = 0; i < 20; i++) {
-        int a = randfun();
-        int b = randfun();
+        const int a = randfun();
+        const int b = randfun();
         CHECK(cal(std::make_tuple(a, b)) == cal(std::make_tuple(b, a))); // 确认对偶性
         CHECK(a + b == cal(std::make_tuple(a, b))); // 确认正确性
     }
