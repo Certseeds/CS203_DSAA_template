@@ -38,8 +38,9 @@ SOFTWARE.
 #include "catch_main.hpp"
 #include "lab_00_C.cpp"
 
-string CS203_redirect::file_paths = "./../../lab_00/lab_00_C_data/";
-
+std::string getFilePath() noexcept {
+    return "./../../lab_00/lab_00_C_data/";
+}
 namespace lab_00_C {
 
 using std::cin;

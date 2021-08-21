@@ -7,7 +7,9 @@
 
 #include "lab_{0}_{1}.cpp"
 
-string CS203_redirect::file_paths = "./../../lab_{0}/lab_{0}_{1}_data/";
+std::string getFilePath() noexcept {
+    return "./../../lab_{0}/lab_{0}_{1}_data/";
+}
 
 namespace lab_{0}_{1}{{
 
