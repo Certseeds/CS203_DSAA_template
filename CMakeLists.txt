@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.2)
-project(CS203_DSAA_template)
+project(CS203_DSAA_template VERSION 0.2.2)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_VERBOSE_MAKEFILE ON)
