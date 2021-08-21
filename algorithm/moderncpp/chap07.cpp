@@ -37,7 +37,6 @@ SOFTWARE.
 #include <mutex>
 #include <thread>
 
-
 namespace moderncpp::chap07 {
 using std::cout, std::thread;
 
@@ -46,10 +45,6 @@ private:
     int max{0};
 public:
     explicit ThreadPool(int32_t v);
-
-    // enqueue new thread task
-    template<typename F, typename ... Args>
-    decltype(auto) enqueue(F &&f, Args &&... args);
 
     // destroy thread pool and all created threads
     ~ThreadPool() = default;

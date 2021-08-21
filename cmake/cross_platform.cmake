@@ -15,3 +15,5 @@ ELSEIF (UNIX)
     set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
     MESSAGE(STATUS "Now is UNIX-like OS's. Including Apple os x and CygWin")
 ENDIF ()
+set(THREADS_PREFER_PTHREAD_FLAG ON)
+find_package(Threads REQUIRED) # instead of pthread
