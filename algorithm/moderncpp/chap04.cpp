@@ -1,9 +1,9 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
  * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-17 22:57:42
- * @LastEditors: nanoseeds
+ * @Author: nanos
+ * @Date: 2021-08-14 17:38:35
+ * @LastEditors: nanos
  * @LICENSE: MIT
  */
 /*
@@ -11,7 +11,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,41 +31,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifdef CS203_DSAA_TEST_MACRO
-
-
-#include <tuple>
-#include <vector>
+#include <algorithm>
+#include <array>
+#include <forward_list>
 #include <iostream>
-#include "catch_main.hpp"
-#include "lab_00_B.cpp"
 
-std::string getFilePath() noexcept {
-    return "./../../lab_00/lab_00_B_data/";
-}
-namespace lab_00_B {
-using std::tie;
-using std::cin;
-using std::cout;
-using std::tuple;
-using std::vector;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
+namespace moderncpp::chap04 {
+using std::cout, std::endl;
 
-TEST_CASE("test case 1", "[test 00 B]") {
-    auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
-    for (const auto &i:vec1) {
-        CHECK(cal(i) == brute_force(i));
+int32_t main() {
+    std::array<int32_t, 13> arr{1, 1, 4, 5, 1, 4, 1, 9, 1, 9, 8, 1, 0};
+    // 必须手动填长度,有点难受,不知道什么时候会出自动推导长度的版本
+    std::sort(arr.begin(), arr.end());
+    std::forward_list<int32_t> flist{};
+    for (auto &&v:arr) {
+        flist.push_front(v);
     }
+    return 0;
 }
 
-TEST_CASE("test case 2", "[test 00 B]") {
-    auto vec1 = vector<num_type>{1, 2, 3, 4, 5, 6, 7, 1100000};
-    auto result = cal_warpper(vec1);
-    auto what_we_want = vector<num_type>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
-    CHECK_THAT(result, Equals<num_type>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
-    CHECK_THAT(result, Equals(what_we_want));
 }
+
+int32_t main() {
+    return moderncpp::chap04::main();
 }
-#endif //CS203_DSAA_TEST_MACRO
