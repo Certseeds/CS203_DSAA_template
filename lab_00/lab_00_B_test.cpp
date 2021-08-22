@@ -43,6 +43,7 @@ SOFTWARE.
 std::string getFilePath() noexcept {
     return "./../../lab_00/lab_00_B_data/";
 }
+
 namespace lab_00_B {
 using std::tie;
 using std::cin;

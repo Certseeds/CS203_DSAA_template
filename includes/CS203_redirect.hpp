@@ -37,6 +37,7 @@ SOFTWARE.
 #include <fstream>
 #include <iostream>
 #include <string>
+
 std::string getFilePath() noexcept;
 
 using std::cin;
@@ -81,6 +82,7 @@ public:
         std::cout.flush();
     }
 };
+
 const std::string CS203_redirect::file_paths = getFilePath();
 
 #ifndef CS203_DSAA_TEST_MACRO

@@ -41,6 +41,7 @@ SOFTWARE.
 std::string getFilePath() noexcept {
     return "./../../lab_00/lab_00_C_data/";
 }
+
 namespace lab_00_C {
 
 using std::cin;

@@ -56,7 +56,7 @@ create_time: str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 source_path: str = './../lab_{0}/lab_{0}_{1}.cpp'
 test_path: str = './../lab_{0}/lab_{0}_{1}_test.cpp'
 source_cmake_path: str = './../lab_{0}/CMakeLists.txt'
-attributes_path:str = './../lab_{0}/.gitattributes'
+attributes_path: str = './../lab_{0}/.gitattributes'
 main_cmake_path: str = './../CMakeLists.txt'
 
 
@@ -108,6 +108,7 @@ def main() -> None:
             attr.write("* linguist-vendored")
     print('produce files finish')
     print(f"{len(labs) * (len(problem_order) + 1) * 2} files is produced")
+
 
 # range in [begin,end)
 if __name__ == '__main__':

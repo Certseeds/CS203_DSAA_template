@@ -6,9 +6,6 @@
     </Objective-C>
     <Objective-C-extensions>
       <extensions>
-        <pair source="cpp" header="h" fileNamingConvention="NONE" />
-        <pair source="c" header="h" fileNamingConvention="NONE" />
-        <pair source="cu" header="cuh" fileNamingConvention="NONE" />
         <pair source="cpp" header="hpp" fileNamingConvention="SNAKE_CASE" />
       </extensions>
     </Objective-C-extensions>
