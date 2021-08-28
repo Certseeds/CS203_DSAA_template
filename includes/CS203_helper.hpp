@@ -35,8 +35,8 @@ SOFTWARE.
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-static constexpr double eps = 0.00000001;
-static constexpr double neps = -eps;
+static constexpr double eps{0.00000001};
+static constexpr double neps{-eps};
 
 constexpr inline int32_t sign(int32_t x) {
     return ((x > 0) - (x < 0));

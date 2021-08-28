@@ -1,11 +1,3 @@
-#
-# @Github: https://github.com/Certseeds/CS203_DSAA_template
-# @Organization: SUSTech
-# @Author: nanoseeds
-# @Date: 2020-07-27 22:08:31
-# @LastEditors: nanoseeds
-# @LastEditTime: 2020-07-27 22:10:08
-
 name: output for config
 
 # Controls when the action will run. Triggers the workflow on push or pull request
