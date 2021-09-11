@@ -57,7 +57,7 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 TEST_CASE("test case 1", "[test welcome A]") {
-    const auto output_data = cal(std::make_tuple(std::unordered_set{2, 3, 999999, 1}, std::vector{3, 99}));
+    const auto output_data = cal(std::make_tuple(std::unordered_set<int32_t>{2, 3, 999999, 1}, std::vector<int32_t>{3, 99}));
     CHECK_THAT(output_data,Equals<TRUE_FALSE>({TRUE_FALSE::YES,TRUE_FALSE::NO}));
 }
 // 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
