@@ -96,8 +96,8 @@ def main() -> None:
                        '08', '09', '10', '11', '12', '13', '14', '15']
     problem_order: List[str] = ['A', 'B', 'C',
                                 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-    # labs: List[str] = ['01']
-    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    labs: List[str] = ['welcome']
+    problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
     problem_order_list_str: str = " ".join(problem_order)
     for i in labs:
         try_mkdir(i)  # 准备文件夹

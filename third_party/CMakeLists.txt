@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10.2)
-project(CS203_CATCH2_LIB)
+project(CS203_CATCH2_LIB VERSION 3.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
