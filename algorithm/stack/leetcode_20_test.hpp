@@ -1,11 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanos
- * @Date: 2021-04-03 10:15:42
- * @LastEditors: nanos
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -33,8 +25,8 @@ SOFTWARE.
 */
 //@Tag stack
 //@Tag 栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_20_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_20_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
 
 #include <stack>
 #include <string>
@@ -71,4 +63,4 @@ TEST_CASE("test case 2-2 [test 20]", "[test 20][.]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_20_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP

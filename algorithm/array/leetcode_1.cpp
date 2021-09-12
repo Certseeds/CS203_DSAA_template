@@ -23,32 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_32_test.hpp"
+#include "leetcode_1_test.hpp"
 
-namespace leetcode_32 {
-int32_t leetcode_32::longestValidParentheses(const string &s) {
-    const auto s_size = s.size();
-    if (s_size <= 1) {
-        return 0;
-    }
-    vector<int32_t> DP(s_size, 0);
-    for (std::remove_const<decltype(s_size)>::type i = 1; i < s_size; i++) {
-        if (s[i] == ')') {
-            if (s[i - 1] == '(') {
-                DP[i] = 2;
-                if (i >= 2) {
-                    DP[i] += DP[i - 2];
-                }
-            } else if (i - DP[i - 1] > 0 && s[i - DP[i - 1] - 1] == '(') {
-                DP[i] = DP[i - 1] + 2;
-                if (static_cast<int32_t>(i) >= DP[i - 1] + 2) {
-                    DP[i] += DP[i - DP[i - 1] - 2];
-                }
-            }
+namespace leetcode_1 {
+
+vector<int> leetcode_1::twoSum(const vector<int> &nums, int target) {
+    const auto nums_size = static_cast<int32_t>(nums.size());
+    unordered_map<int32_t, int32_t> umaps;
+    for (int32_t i = 0; i < nums_size; i++) {
+        if (umaps.find(target - nums[i]) != std::end(umaps)) {
+            return vector<int32_t>{i, umaps[target - nums[i]] - 1};
         }
+        umaps[nums[i]] = i + 1;
     }
-    // dp[0] is always 0
-    return *std::max_element(DP.cbegin()+1, DP.cend());
+    return vector<int32_t>{};
 }
-
+/*
+if the number is not so big, it's better to use brute force,
+if number > 50,choose hashmap.
+ */
 }

@@ -23,32 +23,50 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_32_test.hpp"
+#include "leetcode_2_test.hpp"
 
-namespace leetcode_32 {
-int32_t leetcode_32::longestValidParentheses(const string &s) {
-    const auto s_size = s.size();
-    if (s_size <= 1) {
+namespace leetcode_2 {
+int get_depth(ListNode *node) {
+    if (node == nullptr) {
         return 0;
     }
-    vector<int32_t> DP(s_size, 0);
-    for (std::remove_const<decltype(s_size)>::type i = 1; i < s_size; i++) {
-        if (s[i] == ')') {
-            if (s[i - 1] == '(') {
-                DP[i] = 2;
-                if (i >= 2) {
-                    DP[i] += DP[i - 2];
-                }
-            } else if (i - DP[i - 1] > 0 && s[i - DP[i - 1] - 1] == '(') {
-                DP[i] = DP[i - 1] + 2;
-                if (static_cast<int32_t>(i) >= DP[i - 1] + 2) {
-                    DP[i] += DP[i - DP[i - 1] - 2];
-                }
-            }
-        }
+    int will_return = 0;
+    while (node != nullptr) {
+        will_return++;
+        node = node->next;
     }
-    // dp[0] is always 0
-    return *std::max_element(DP.cbegin()+1, DP.cend());
+    return will_return;
 }
+
+ListNode *leetcode_2::addTwoNumbers(ListNode *l1_in, ListNode *l2_in) {
+    ListNode *l1 = l1_in;
+    ListNode *l2 = l2_in;
+    if (get_depth(l2) > get_depth(l1)) {
+        std::swap(l1, l2);
+    }
+    ListNode will_return{0};
+    ListNode *head = &will_return;
+    int32_t add_in = 0;
+    while (l1 != nullptr && l2 != nullptr) {
+        int32_t sum = (l1->val + l2->val + add_in);
+        head->next = new ListNode(sum % 10);
+        add_in = sum / 10;
+        l1 = l1->next;
+        l2 = l2->next;
+        head = head->next;
+    }
+    while (l1 != nullptr) {
+        int32_t sum = (l1->val + add_in);
+        head->next = new ListNode{sum % 10};
+        add_in = sum / 10;
+        l1 = l1->next;
+        head = head->next;
+    }
+    if (add_in != 0) {
+        head->next = new ListNode{add_in};
+    }
+    return will_return.next;
+}
+
 
 }
