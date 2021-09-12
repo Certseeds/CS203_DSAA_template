@@ -114,7 +114,7 @@ static const array<num_t, max_circle> &calcaute() {
     return will_return;
 }
 
-static const array<num_t, max_circle> CIRCLE_NUMBERS=calcaute();
+static const auto CIRCLE_NUMBERS=calcaute();
 
 std::string cal_detail(num_t num) {
     stack<char> bits;
