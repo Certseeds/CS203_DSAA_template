@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
 set(dependencies dp fft sort tree binary_search string_search graph moderncpp 2021F)
+LIST(APPEND dependencies stack)
 foreach (elementName IN LISTS dependencies)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${elementName})
 endforeach ()
