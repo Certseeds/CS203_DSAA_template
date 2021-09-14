@@ -6,6 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
 set(dependencies basic triple_search rotate_array lc35)
+LIST(APPEND dependencies leetcode_4)
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} PRIVATE CS203_CATCH2_LIB)
