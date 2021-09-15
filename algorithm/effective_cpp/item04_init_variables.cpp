@@ -44,7 +44,7 @@ public:
 
     explicit people(bool male_) : male(male_), schools() {}
 
-    static people &永生者() {
+    static people & always() {
         static people emp{true, {"social"}};
         return emp;
     }
@@ -53,7 +53,7 @@ public:
 typedef people people1;
 
 int main() {
-    for (auto &&var: people1::永生者().schools) {
+    for (auto &&var: people1::always().schools) {
         std::cout << var << std::endl;
     }
 }
