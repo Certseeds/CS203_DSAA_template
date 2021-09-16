@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.10.2)
-project(${PROJECT_NAME}_string LANGUAGES CXX)
+project(${PROJECT_NAME}_trie LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies leetcode_3)
-LIST(APPEND dependencies leetcode_6)
+set(dependencies leetcode_208)
+LIST(APPEND dependencies leetcode_212)
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_CATCH2_LIB)
