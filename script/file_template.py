@@ -6,7 +6,7 @@
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09
 LastEditors: nanoseeds
-LastEditTime: 2021-06-11 11:26:38
+LastEditTime: 2021-09-17 23:58:53
 @LICENSE: MIT
 '''
 '''
@@ -96,8 +96,8 @@ def main() -> None:
                        '08', '09', '10', '11', '12', '13', '14', '15']
     problem_order: List[str] = ['A', 'B', 'C',
                                 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-    labs: List[str] = ['welcome']
-    problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
+    # labs: List[str] = ['01']
+    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
     problem_order_list_str: str = " ".join(problem_order)
     for i in labs:
         try_mkdir(i)  # 准备文件夹

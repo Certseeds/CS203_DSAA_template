@@ -25,11 +25,6 @@ SOFTWARE.
 */
 #include "leetcode_6_test.hpp"
 
-/*
-Given a string,
-find the length of the longest substring without repeating characters.
-greedy to get the max-length,if meet a repeat character,then throw the last one.
-*/
 namespace leetcode_6 {
 string leetcode_6::convert(const string &s, int numRows) {
     const auto s_size{s.size()}, numRows_size{static_cast<size_t>(numRows)};

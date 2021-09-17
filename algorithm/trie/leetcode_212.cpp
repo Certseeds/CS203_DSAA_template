@@ -26,7 +26,7 @@ SOFTWARE.
 
 #include "leetcode_212_test.hpp"
 
-#ifndef    NDEBUG
+#if 0
 #pragma GCC optimize(2)
 #pragma GCC optimize("Ofast")
 #pragma GCC optimize("no-stack-protector")
@@ -221,8 +221,8 @@ vector<string> leetcode_212::findWords(vector<vector<char>> &board, const vector
             sta.emplace(first, second, "#" + result);
             for (const auto &way: ways) {
                 // 先判断是否越界,再判断是否已走过
-                if (first + way[0] < 0 || first + way[0] >= m
-                    || second + way[1] < 0 || second + way[1] >= n
+                if ( static_cast<int32_t>(first) + way[0] < 0 || first + way[0] >= m
+                    || static_cast<int32_t>(second) + way[1] < 0 || second + way[1] >= n
                     || board[first + way[0]][second + way[1]] == exp) {
                     continue;
                 }
@@ -235,17 +235,17 @@ vector<string> leetcode_212::findWords(vector<vector<char>> &board, const vector
             dfs(i, j);
         }
     }
-    static const auto faster_streams = [] {
-        srand(time(nullptr));
-        // use time to init the random seed
-        std::ios::sync_with_stdio(false);
-        std::istream::sync_with_stdio(false);
-        std::ostream::sync_with_stdio(false);
-        std::cin.tie(nullptr);
-        std::cout.tie(nullptr);
-        // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
-        return 0;
-    }();
     return {uset.cbegin(), uset.cend()};
 }
+static const auto faster_streams = [] {
+    srand(time(nullptr));
+    // use time to init the random seed
+    std::ios::sync_with_stdio(false);
+    std::istream::sync_with_stdio(false);
+    std::ostream::sync_with_stdio(false);
+    std::cin.tie(nullptr);
+    std::cout.tie(nullptr);
+    // 关闭c++风格输入输出 , 与C风格输入输出的同步,提高性能.
+    return 0;
+}();
 }
