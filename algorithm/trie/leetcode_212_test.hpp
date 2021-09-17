@@ -25,7 +25,12 @@ SOFTWARE.
 */
 //@Tag string
 //@Tag 字符串
-//@Tag 模仿
+//@Tag HashMap
+//@Tag 哈希表
+//@Tag Trie
+//@Tag 字典树
+//@Tag 模拟
+//@Tag 偷鸡
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_212_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_212_HPP
 

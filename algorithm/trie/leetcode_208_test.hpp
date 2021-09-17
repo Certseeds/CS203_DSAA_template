@@ -114,10 +114,6 @@ struct leetcode_208 {
     };
 };
 
-void warpper(const string &s, int32_t length) {
-
-}
-
 TEST_CASE("1 [test 208]", "[test 208]") {
     const auto leetcode_208_tire = std::make_unique<leetcode_208::trie>();
     leetcode_208_tire->insert("apple");

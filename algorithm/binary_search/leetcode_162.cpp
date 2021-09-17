@@ -53,7 +53,7 @@ int leetcode_162::findPeakElement(const vector<int> &nums) {
         if (judge(left) != -1) {
             return static_cast<int32_t>(left);
         }
-        if (left + step - 1 >= 0 && left + step < nums_size && nums[left + step - 1] < nums[left + step]
+        if (left + step  >= 1 && left + step < nums_size && nums[left + step - 1] < nums[left + step]
             && left + step + 1 < nums_size && nums[left + step] < nums[left + step + 1]) {
             left += step;
         } else {

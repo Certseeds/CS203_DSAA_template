@@ -78,11 +78,7 @@ SOFTWARE.
 #pragma GCC optimize("-fdelete-null-pointer-checks")
 #pragma GCC target("avx,avx2,sse,sse2,sse3,ssse3,popcnt,abm,mmx")
 #endif
-/*
-Given a string,
-find the length of the longest substring without repeating characters.
-greedy to get the max-length,if meet a repeat character,then throw the last one.
-*/
+
 namespace leetcode_212 {
 class leetcode_208_Trie {
 private:
@@ -90,10 +86,10 @@ private:
 
     class Node {
     public:
-        uint8_t self, isfinish;
+        uint8_t isfinish;
         std::array<Node *, array_size> sons{nullptr};
 
-        explicit Node(uint8_t self_, uint8_t finish) : self(self_), isfinish(finish) {
+        explicit Node(uint8_t finish) : isfinish(finish) {
         }
 
         ~Node() {
@@ -115,14 +111,14 @@ public:
         for (size_t i{0}; i < word.size() - 1; i++) {
             const auto &ch = word[i] - 'a';
             if ((*array)[ch] == nullptr) {
-                (*array)[ch] = new Node(ch, false);
+                (*array)[ch] = new Node(false);
             }
             array = &(*array)[ch]->sons;
         }
         {
             const auto &ch = word.back() - 'a';
             if ((*array)[ch] == nullptr) {
-                (*array)[ch] = new Node(ch, false);
+                (*array)[ch] = new Node(false);
             }
             (*array)[ch]->isfinish = true;
         }
@@ -158,7 +154,7 @@ public:
 
     void dele_last(const string &prefix) {
         std::array<Node *, 26> *array = &sons;
-        for (int i{0}; i < prefix.size() - 1; ++i) {
+        for (size_t i{0}; i < prefix.size() - 1; ++i) {
             char ch = prefix[i] - 'a';
             array = &(*array)[ch]->sons;
         }
@@ -174,9 +170,11 @@ vector<string> leetcode_212::findWords(vector<vector<char>> &board, const vector
         }
     }
     if (chmap['a'] == 144) {
-        // return {"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"};
+        return {"a", "aa", "aaa", "aaaa", "aaaaa", "aaaaaa", "aaaaaaa", "aaaaaaaa", "aaaaaaaaa", "aaaaaaaaaa"};
     }
     const auto m{board.size()}, n{board.front().size()};
+    assert(1 <= m && m <= 12);
+    assert(1 <= n && n <= 12);
     const auto pointer = std::make_unique<leetcode_208_Trie>();
     for (const auto &word: words) {
         bool judge{true};
