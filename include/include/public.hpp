@@ -1,6 +1,6 @@
 /*
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2020-07-15 21:44:06
  * @LastEditors: nanoseeds
@@ -50,7 +50,6 @@ SOFTWARE.
 using std::ios;
 using std::cin;
 using std::cout;
-const CS203_timer timer{};
 
 inline bool compareFiles(std::string p1, std::string p2) {
     p1 = CS203_redirect::file_paths + p1;

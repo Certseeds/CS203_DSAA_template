@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-08-01 17:33:49
  * @LastEditors: nanoseeds
@@ -31,13 +30,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-
+#include <catch_main.hpp>
 #include <algorithm>
 #include <numeric>
 #include <tuple>
 #include <vector>
 
-#include "catch_main.hpp"
 
 using Catch::Matchers::Contains;
 using Catch::Matchers::Equals;

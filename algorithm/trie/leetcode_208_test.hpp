@@ -33,10 +33,11 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_208_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_208_HPP
 
+#include <catch_main.hpp>
+
 #include <array>
 #include <string>
 #include <unordered_set>
-#include <catch_main.hpp>
 
 namespace leetcode_208 {
 using std::endl;

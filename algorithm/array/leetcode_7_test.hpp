@@ -29,13 +29,15 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_HPP
 
+#include <catch_main.hpp>
 #include <array>
 #include <vector>
 #include <limits>
-#include <catch_main.hpp>
+
 namespace leetcode_7 {
 using std::array;
 using std::vector;
+
 struct leetcode_7 {
     static int32_t reverse(int32_t x);
 

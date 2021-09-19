@@ -38,7 +38,7 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 struct leetcode_1 {
-    static vector<int> twoSum(const vector<int>& nums, int target);
+    static vector<int> twoSum(const vector<int> &nums, int target);
 };
 
 TEST_CASE("basic tests [test 1]", "[test 1]") {

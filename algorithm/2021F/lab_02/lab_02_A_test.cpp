@@ -25,22 +25,24 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_02_A.cpp"
 
 std::string getFilePath() noexcept {
     return "./../../../../algorithm/2021F/lab_02/lab_02_A_data/";
 }
+
 namespace lab_02_A {
 using std::tie;
 using std::cin;
 using std::cout;
 using std::tuple;
 using std::vector;
+
 TEST_CASE("test case with sequence", "[test 02 A]") {
     CS203_sequence sequence{1, 1, 0}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
@@ -49,7 +51,7 @@ TEST_CASE("test case with sequence", "[test 02 A]") {
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &file_name : files_name) {
+    for (const auto &file_name: files_name) {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {

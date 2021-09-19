@@ -1,9 +1,9 @@
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_{0}_{1}.cpp"
 
@@ -43,7 +43,7 @@ TEST_CASE("test case with sequence", "[test {0} {1}][.]") {{
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &file_name : files_name) {{
+    for (const auto &file_name: files_name) {{
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {{

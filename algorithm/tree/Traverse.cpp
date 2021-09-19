@@ -1,6 +1,5 @@
 /*
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-07-30 10:30:53
  * @LastEditors: nanoseeds
@@ -31,6 +30,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#include <catch_main.hpp>
 #include <functional>
 #include <iostream>
 #include <numeric>
@@ -38,7 +39,6 @@ SOFTWARE.
 #include <vector>
 
 #include "TreeNode.hpp"
-#include "catch_main.hpp"
 
 using Catch::Matchers::Equals;
 using std::cout;

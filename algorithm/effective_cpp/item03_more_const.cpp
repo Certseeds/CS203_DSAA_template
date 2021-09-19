@@ -51,6 +51,7 @@ struct TextBlock {
                 static_cast<const TextBlock &>(*this)(position)
         );
     }
+
     explicit TextBlock(string text) : text(std::move(text)) {}
 
 private:
@@ -70,5 +71,5 @@ int main() {
     tb[0] = '?'; // can
     // ctb[0] ='?'; // can not compile
     ctb(0);
-    tb(0)='?'; // can compile
+    tb(0) = '?'; // can compile
 }

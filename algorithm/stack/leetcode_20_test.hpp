@@ -28,10 +28,10 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
 
+#include <catch_main.hpp>
 #include <stack>
 #include <string>
 
-#include <catch_main.hpp>
 
 namespace leetcode_20 {
 using std::stack;
@@ -58,6 +58,7 @@ TEST_CASE("test case 0 [test 20]", "[test 20]") {
     CHECK_FALSE(leetcode_20::isValid("([)]"));
     CHECK_FALSE(leetcode_20::isValid("(((()[]{})[()[]{}]{()[]{}})[]{))[()[]{}]{()[]{}}"));
 }
+
 TEST_CASE("test case 2-2 [test 20]", "[test 20][.]") {
     CHECK_FALSE(leetcode_20::isValid("([)]"));
 }

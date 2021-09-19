@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2021-09-11 15:27:10
  * @LastEditors: nanoseeds
@@ -91,6 +90,7 @@ struct output_type {
     num_t number{-1};
 
     explicit output_type(bool ok) : OK(ok) {}
+
     output_type(bool ok, num_t number) : OK(ok), number(number) {}
 };
 
@@ -149,7 +149,7 @@ static output_type cal(const input_type &data) {
     }
     // 此处A
     // 二分logn * On check
-    num_t left{aInfo.minV - bInfo.maxV}, right{aInfo.maxV - bInfo.minV+1}, middle{0};
+    num_t left{aInfo.minV - bInfo.maxV}, right{aInfo.maxV - bInfo.minV + 1}, middle{0};
     while (left < right) {
         middle = (right - left) / 2 + left;
         bool OK = check(aInfo, bInfo, middle, h);

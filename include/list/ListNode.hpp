@@ -1,11 +1,12 @@
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP
 #ifdef CS203_DSAA_MACRO_LISTNODE
+
 #include <utility>
 #include <vector>
 /*
  * @Github: https://github.com/Certseeds
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2020-02-02 21:01:26
  * @LastEditors  : nanoseeds

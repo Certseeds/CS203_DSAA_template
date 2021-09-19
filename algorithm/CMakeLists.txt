@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.2)
+cmake_minimum_required(VERSION 3.16.6)
 project(basic_algorithms LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -13,6 +13,7 @@ LIST(APPEND dependencies list)
 LIST(APPEND dependencies effective_cpp)
 LIST(APPEND dependencies string)
 LIST(APPEND dependencies trie)
+LIST(APPEND dependencies math)
 foreach (elementName IN LISTS dependencies)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${elementName})
 endforeach ()

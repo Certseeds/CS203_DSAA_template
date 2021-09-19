@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanos
  * @Date: 2021-06-13 19:38:35
  * @LastEditors: nanos
@@ -41,6 +41,7 @@ using std::map;
 using std::cout, std::endl;
 
 int32_t main();
+
 template<typename Key, typename Value, typename F>
 void update(std::map<Key, Value> &m, F foo) {
     for (auto[key, value]: m) { m[key] = foo(key); }
@@ -60,7 +61,7 @@ void main1() {
     update(m, [](const std::string &key) {
         return std::hash<std::string>{}(key);
     });
-    for (auto&&[key, value] : m) {
+    for (auto&&[key, value]: m) {
         std::cout << key << ":" << value << std::endl;
     }
 }
@@ -84,6 +85,7 @@ int main() {
     return 0;
 }
 }
+
 int32_t main() {
     return moderncpp::chap02::main();
 }

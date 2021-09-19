@@ -48,7 +48,7 @@ static constexpr const char end{'\n'};
 // 用wolframalpha 计算的 xe^(x/20)= b
 static constexpr const double
         minV{0.9}, //b =1,   取得 0.9534461720025874945277780102832174149412593186778100427281924797
-        maxV{258}  //b =10^8 取得 257.40091767269424137944971165126822636856843117329338741172807922
+maxV{258}  //b =10^8 取得 257.40091767269424137944971165126822636856843117329338741172807922
 ;
 static constexpr const auto pricesion = 0.0001f;
 const auto functionProducer = [](int32_t b) {

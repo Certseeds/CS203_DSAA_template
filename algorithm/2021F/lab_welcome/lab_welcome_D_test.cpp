@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2021-09-11 15:27:10
  * @LastEditors: nanoseeds
@@ -33,10 +32,10 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_welcome_D.cpp"
 
@@ -65,7 +64,7 @@ TEST_CASE("test case with sequence", "[test welcome D]") {
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &file_name : files_name) {
+    for (const auto &file_name: files_name) {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {

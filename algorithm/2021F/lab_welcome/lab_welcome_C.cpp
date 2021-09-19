@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2021-09-11 15:27:10
  * @LastEditors: nanoseeds
@@ -114,7 +113,7 @@ static const array<num_t, max_circle> &calcaute() {
     return will_return;
 }
 
-static const auto CIRCLE_NUMBERS=calcaute();
+static const auto CIRCLE_NUMBERS = calcaute();
 
 std::string cal_detail(num_t num) {
     stack<char> bits;
@@ -147,7 +146,7 @@ output_type cal(const input_type &data) {
 }
 
 void output(const output_type &data) {
-    for (const auto & iter : data) {
+    for (const auto &iter: data) {
         std::cout << iter << std::endl;
     }
 }

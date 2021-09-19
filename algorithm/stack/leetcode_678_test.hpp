@@ -26,10 +26,10 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_HPP
 
+#include <catch_main.hpp>
 #include <stack>
 #include <string>
 
-#include <catch_main.hpp>
 
 namespace leetcode_678 {
 using std::stack;
@@ -37,6 +37,7 @@ using std::string;
 
 struct leetcode_678 {
     static bool checkValidString(const string &s);
+
     static bool checkValidString2(const string &s);
 };
 
@@ -52,6 +53,7 @@ TEST_CASE("2 [test 678]", "[test 678]") {
     CHECK_FALSE(leetcode_678::checkValidString(
             "(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(())"));
 }
+
 TEST_CASE("2-1 [test 678]", "[test 678]") {
     CHECK(leetcode_678::checkValidString2("()"));
     CHECK(leetcode_678::checkValidString2("(*)"));

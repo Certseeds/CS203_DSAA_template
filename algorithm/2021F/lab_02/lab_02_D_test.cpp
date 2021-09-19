@@ -25,10 +25,10 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_02_D.cpp"
 
@@ -52,7 +52,7 @@ TEST_CASE("test case 1", "[test 02 D]") {
     const auto output_data = cal(std::make_tuple(114, 514));
     CHECK(output_data == 628);
     CHECK(1 + 2 == 3);
-    vector <int32_t> vec{2, 7, 11, 15};
+    vector<int32_t> vec{2, 7, 11, 15};
     SECTION("CHECK_THAT 1") {
         CHECK_THAT(vec, Contains<int>({2}));
     }SECTION("vec matcher") {
@@ -68,7 +68,7 @@ TEST_CASE("test case with sequence", "[test 02 D][.]") {
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &file_name : files_name) {
+    for (const auto &file_name: files_name) {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {

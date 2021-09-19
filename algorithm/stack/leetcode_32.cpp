@@ -48,7 +48,7 @@ int32_t leetcode_32::longestValidParentheses(const string &s) {
         }
     }
     // dp[0] is always 0
-    return *std::max_element(DP.cbegin()+1, DP.cend());
+    return *std::max_element(DP.cbegin() + 1, DP.cend());
 }
 
 }

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10.2)
+cmake_minimum_required(VERSION 3.16.6)
 set(MAJOR_VERSION 0)
 set(MINOR_VERSION 2)
 set(PATCH_VERSION 2)
@@ -14,8 +14,7 @@ include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/parallel.cmake)
 string(TIMESTAMP time_str "%Y/%m/%d  %y:%m:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes)
-
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/algorithm)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 

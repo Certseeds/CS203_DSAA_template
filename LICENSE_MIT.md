@@ -1,6 +1,6 @@
 <!--
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2020-07-15 23:53:26
  * @LastEditors: nanoseeds

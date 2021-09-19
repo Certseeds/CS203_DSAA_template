@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-07-17 22:57:42
  * @LastEditors: nanoseeds
@@ -34,10 +33,10 @@ SOFTWARE.
 #ifdef CS203_DSAA_TEST_MACRO
 
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include "catch_main.hpp"
 #include "lab_00_B.cpp"
 
 std::string getFilePath() noexcept {
@@ -56,7 +55,7 @@ using Catch::Matchers::Contains;
 
 TEST_CASE("test case 1", "[test 00 B]") {
     auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
-    for (const auto &i:vec1) {
+    for (const auto &i: vec1) {
         CHECK(cal(i) == brute_force(i));
     }
 }

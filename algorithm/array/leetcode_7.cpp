@@ -46,7 +46,7 @@ int leetcode_7::reverse(int32_t x) {
     }
     int32_t will_return = 0;
     for (; i < count; i++) {
-        if(will_return  > (std::numeric_limits<int32_t>::max() -  nums[i]) /10){
+        if (will_return > (std::numeric_limits<int32_t>::max() - nums[i]) / 10) {
             return 0;
         }
         will_return = will_return * 10 + nums[i];

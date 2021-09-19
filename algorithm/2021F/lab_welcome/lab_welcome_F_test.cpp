@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2021-09-11 15:27:10
  * @LastEditors: nanoseeds
@@ -33,10 +32,10 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_welcome_F.cpp"
 
@@ -60,7 +59,7 @@ TEST_CASE("test case 1", "[test welcome F]") {
     const auto output_data = cal(std::make_tuple(114, 514));
     CHECK(output_data == 628);
     CHECK(1 + 2 == 3);
-    vector <int32_t> vec{2, 7, 11, 15};
+    vector<int32_t> vec{2, 7, 11, 15};
     SECTION("CHECK_THAT 1") {
         CHECK_THAT(vec, Contains<int>({2}));
     }SECTION("vec matcher") {
@@ -76,7 +75,7 @@ TEST_CASE("test case with sequence", "[test welcome F][.]") {
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &file_name : files_name) {
+    for (const auto &file_name: files_name) {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {

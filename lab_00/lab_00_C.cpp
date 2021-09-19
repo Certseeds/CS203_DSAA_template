@@ -43,7 +43,7 @@ SOFTWARE.
 并使图中的每一条边的两个节点一个来自 A 集合,一个来自 B 集合,我们就将这个图称为二分图.
 
 每个节点都是一个在 0 到 graph.length-1 之间的整数.
-图中没有自环和平行边： graph[i] 中不存在 i,并且 graph[i] 中没有重复的值.
+图中没有自环和平行边： graph[i] 中不存在 i,并且 graph[i] 中没有重复的值.
 
 输入格式:
 The ﬁrst line contains a single integer N([1,10^6]) —— the number of the nodes in graph
@@ -105,7 +105,7 @@ inline input_type read() {
         num_t X{0};
         std::cin >> X;
         will_return[i].resize(X);
-        for (auto &j : will_return[i]) {
+        for (auto &j: will_return[i]) {
             std::cin >> j;
         }
     }
@@ -124,7 +124,7 @@ output_type isBipartite(const input_type &graph) {
                 num_t head = que.front();
                 que.pop();
                 Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
-                for (const auto &j : graph[head]) {
+                for (const auto &j: graph[head]) {
                     if (color_vec[j] == Color::uncolor) {
                         color_vec[j] = next_color;
                         que.push(j);

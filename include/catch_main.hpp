@@ -1,11 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:41:03
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -34,7 +26,20 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
 #define CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
 //#define CATCH_CONFIG_MAIN
-#include "catch_amalgamated.hpp"
+
+#ifndef CATCH_AMALGAMATED_HPP_INCLUDED
+
+#include <catch_amalgamated.hpp>
+
+#warning "import catch_amalgamated.hpp"
+// find this in ide's autolight
+#else
+#warning "use pre-compiled"
+// output this while compile
+#endif
+
 #include "public.hpp"
+
+static const CS203_timer timer{};
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H

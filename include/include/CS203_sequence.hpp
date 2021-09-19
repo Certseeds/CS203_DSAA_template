@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2020/9/19 21:42:36
  * @LastEditors: nanoseeds
@@ -50,17 +50,14 @@ private:
     std::string postfix_of_testout{"test.out"};
     std::string postfix_of_datain{"data.in"};
     std::string postfix_of_dataout{"data.out"};
-    int32_t begin;
-    int32_t end;
+    int32_t begin{0};
+    int32_t end{0};
     int32_t max_length{-1};
 public:
-    static string file_paths;
 
     // default path1 is input and path2 is output
-    explicit CS203_sequence(int begin, int end, int max_length = -1) {
-        this->begin = begin;
-        this->end = end;
-        this->max_length = max_length;
+    explicit CS203_sequence(int32_t begin, int32_t end, int32_t max_length = -1) : begin(begin), end(end),
+                                                                                   max_length(max_length) {
     }
 
     CS203_sequence(const CS203_sequence &redirect) = delete;
@@ -71,9 +68,7 @@ public:
 
     CS203_sequence &operator=(CS203_sequence &&mat) = delete;
 
-    ~CS203_sequence() = default;
-
-    void setPrefixOfFileName(const string &prefixOfFileName) {
+    void set_prefix_of_filename(const string &prefixOfFileName) {
         prefix_of_file_name = prefixOfFileName;
     }
 
@@ -81,8 +76,8 @@ public:
         postfix_of_testout = postfixOfTestout;
     }
 
-    void set_postfix_of_datain(const string &postfixOfDatain) {
-        postfix_of_datain = postfixOfDatain;
+    void set_postfix_of_datain(string postfixOfDatain) {
+        postfix_of_datain = std::move(postfixOfDatain);
     }
 
     void set_postfix_of_dataout(const string &postfixOfDataout) {
@@ -93,7 +88,7 @@ public:
      *     [begin,end]
     */
     vector<string> get_sequence() const {
-        vector<string> will_return;
+        vector<string> will_return{};
         for (int32_t i = begin; i <= end; ++i) {
             will_return.push_back(std::to_string(i));
         }
@@ -106,7 +101,7 @@ public:
     vector<string> get_same_length_sequence() const {
         int max_lengths = std::max(max_length, get_length(end));
         vector<string> will_return = get_sequence();
-        for (auto &item : will_return) {
+        for (auto &item: will_return) {
             if (static_cast<int32_t>(item.length()) < max_lengths) {
                 item.insert(std::begin(item), max_lengths - item.length(), '0');
             }
@@ -128,7 +123,7 @@ public:
     files_type get_files(bool same_length) const {
         vector<string> sequence = same_length ? get_same_length_sequence() : get_sequence();
         files_type will_return;
-        for (const auto &item :sequence) {
+        for (const auto &item: sequence) {
             string datain = prefix_of_file_name + item + "." + postfix_of_datain;
             string dataout = prefix_of_file_name + item + "." + postfix_of_dataout;
             string testout = prefix_of_file_name + item + "." + postfix_of_testout;

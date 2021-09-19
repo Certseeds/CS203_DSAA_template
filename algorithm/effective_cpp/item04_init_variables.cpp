@@ -44,7 +44,7 @@ public:
 
     explicit people(bool male_) : male(male_), schools() {}
 
-    static people & always() {
+    static people &always() {
         static people emp{true, {"social"}};
         return emp;
     }

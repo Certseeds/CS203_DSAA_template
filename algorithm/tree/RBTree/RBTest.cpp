@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-08-06 22:42:27
  * @LastEditors: nanoseeds
@@ -31,9 +30,10 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#include <catch_main.hpp>
 #include <random>
 #include <vector>
-#include "catch_main.hpp"
 #include "RBTree.hpp"
 
 using std::cout;

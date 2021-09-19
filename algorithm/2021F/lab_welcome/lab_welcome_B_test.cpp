@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2021-09-11 15:27:10
  * @LastEditors: nanoseeds
@@ -33,10 +32,10 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_welcome_B.cpp"
 
@@ -56,9 +55,11 @@ using std::vector;
 using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
+
 TEST_CASE("test case 1", "[test welcome B]") {
-    const auto output_data = cal(std::make_tuple(std::unordered_set<int32_t>{2, 3, 999999, 1}, std::vector<int32_t>{3, 99}));
-    CHECK_THAT(output_data,Equals<TRUE_FALSE>({TRUE_FALSE::YES,TRUE_FALSE::NO}));
+    const auto output_data = cal(
+            std::make_tuple(std::unordered_set<int32_t>{2, 3, 999999, 1}, std::vector<int32_t>{3, 99}));
+    CHECK_THAT(output_data, Equals<TRUE_FALSE>({TRUE_FALSE::YES, TRUE_FALSE::NO}));
 }
 // 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
 TEST_CASE("test case with sequence", "[test welcome B]") {

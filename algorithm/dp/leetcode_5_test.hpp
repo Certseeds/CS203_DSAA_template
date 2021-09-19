@@ -29,9 +29,9 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_5_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_5_TEST_CPP
 
+#include <catch_main.hpp>
 #include <vector>
 #include <string>
-#include <catch_main.hpp>
 
 namespace lcs_5 {
 using std::string;

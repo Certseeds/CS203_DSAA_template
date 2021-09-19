@@ -72,7 +72,7 @@ inline input_type read() {
     int32_t number{0};
     std::cin >> number;
     input_type will_return(number, 0);
-    for (auto &item : will_return) {
+    for (auto &item: will_return) {
         std::cin >> item;
     }
     return will_return;
@@ -100,7 +100,7 @@ num_type brute_force(num_type data) {
 }
 
 void output(const vector<num_type> &data) {
-    for (const auto &num : data) {
+    for (const auto &num: data) {
         std::cout << num << end;
     }
 }

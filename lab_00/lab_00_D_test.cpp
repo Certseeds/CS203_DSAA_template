@@ -1,12 +1,4 @@
 /*
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-21 21:44:25
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
-/*
 MIT License
 
 CS203_DSAA_template
@@ -33,12 +25,13 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
-#include "catch_main.hpp"
+#include <catch_main.hpp>
 #include "lab_00_D.cpp"
 #include <iostream>
 #include <tuple>
 
 std::string getFilePath() noexcept { return "./../../lab_00/lab_00_D_data/"; }
+
 namespace lab_00_D {
 
 using std::cin;
@@ -52,22 +45,21 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 
 TEST_CASE("test case 1", "[test 00 D]") {
-  const CS203_redirect cr{"01.data.in"};
-  // 重定向开始,开始run
-  auto input_data = read();
-  cal(input_data);
-  // 重定向结束
+    const CS203_redirect cr{"01.data.in"};
+    // 重定向开始,开始run
+    auto input_data = read();
+    cal(input_data);
+    // 重定向结束
 }
 
 TEST_CASE("test case 2", "[test 00 D]") {
-  SECTION("do") {
-    const CS203_redirect cr{"01.data.in", "01.test.out"};
-    auto input_data = read();
-    cal(input_data);
-  }
-  SECTION("compare files") {
-    CHECK(compareFiles("01.test.out", "01.data.out"));
-  }
+    SECTION("do") {
+        const CS203_redirect cr{"01.data.in", "01.test.out"};
+        auto input_data = read();
+        cal(input_data);
+    }SECTION("compare files") {
+        CHECK(compareFiles("01.test.out", "01.data.out"));
+    }
 }
 } // namespace lab_00_D
 

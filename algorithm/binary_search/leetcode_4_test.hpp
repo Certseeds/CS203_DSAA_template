@@ -31,8 +31,8 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_4_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_4_HPP
 
-#include <vector>
 #include <catch_main.hpp>
+#include <vector>
 
 namespace leetcode_4 {
 using std::vector;

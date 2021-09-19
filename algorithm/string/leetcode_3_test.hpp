@@ -31,12 +31,12 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_3_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_3_HPP
 
+#include <catch_main.hpp>
 #include <array>
 #include <stack>
 #include <bitset>
 #include <unordered_map>
 #include <unordered_set>
-#include <catch_main.hpp>
 
 namespace leetcode_3 {
 using std::endl;
@@ -91,12 +91,12 @@ TEST_CASE("6 [test 3]", "[test 3]") {
 }
 
 TEST_CASE("7 [test 3]", "[test 3]") {
-    string str {"tmmzuxt"};
+    string str{"tmmzuxt"};
     warpper(str, 5);
 }
 
 TEST_CASE("8 [test 3]", "[test 3]") {
-    string str {"1145141919810"};
+    string str{"1145141919810"};
     warpper(str, 4);
 }
 }

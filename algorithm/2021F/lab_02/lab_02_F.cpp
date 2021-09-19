@@ -76,13 +76,13 @@ int main() {
 }
 
 inline input_type read() {
-    num_t a{0},b{0};
+    num_t a{0}, b{0};
     std::cin >> a >> b;
     return std::make_tuple(a, b);
 }
 
 output_type cal(input_type data) {
-    num_t a{0},b{0};
+    num_t a{0}, b{0};
     tie(a, b) = data;
     num_t c = a + b;
     return c;
@@ -91,6 +91,7 @@ output_type cal(input_type data) {
 void output(const output_type &data) {
     cout << data << end;
 }
+
 static const auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed

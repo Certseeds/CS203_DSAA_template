@@ -29,8 +29,8 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_6_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_6_HPP
 
-#include <string>
 #include <catch_main.hpp>
+#include <string>
 
 namespace leetcode_6 {
 using std::string;

@@ -27,6 +27,7 @@ SOFTWARE.
 #include <vector>
 #include <iostream>
 #include <algorithm>
+
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_02_B{
 #endif

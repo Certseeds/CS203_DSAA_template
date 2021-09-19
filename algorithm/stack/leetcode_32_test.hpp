@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanos
  * @Date: 2021-04-03 10:15:42
  * @LastEditors: nanos
@@ -38,10 +38,11 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_HPP
 
+#include <catch_main.hpp>
+
 #include <stack>
 #include <string>
 
-#include <catch_main.hpp>
 
 namespace leetcode_32 {
 using std::stack;

@@ -25,10 +25,10 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
-#include <catch_main.hpp>
 
 #include "lab_02_C.cpp"
 
@@ -51,8 +51,9 @@ using Catch::Matchers::Contains;
 TEST_CASE("test case 1", "[test 02 C]") {
     const Catch::Approx target = Catch::Approx(0.9534862518).epsilon(0.01);
     CHECK(cal_detail(1) == target);
-    const Catch::Approx target2 = Catch::Approx(257.40091767269424137944971165126822636856843117329338741172807922).epsilon(0.01);
-    CHECK(cal_detail(std::pow(10,8)) == target2);
+    const Catch::Approx target2 = Catch::Approx(
+            257.40091767269424137944971165126822636856843117329338741172807922).epsilon(0.01);
+    CHECK(cal_detail(std::pow(10, 8)) == target2);
 }
 // 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
 // 此处因为输出为 "一个范围",不适合进行直接比对输出
@@ -64,7 +65,7 @@ TEST_CASE("test case with sequence", "[test 02 C][.]") {
     const auto files_name = sequence.get_files(true);
     // 获取一个std::tuple<string,string,string> ,
     // 其中每个tuple内为 `输入数据`,`except输出数据`,`测试输出数据`名.
-    for (const auto &file_name : files_name) {
+    for (const auto &file_name: files_name) {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {

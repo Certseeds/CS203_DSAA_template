@@ -52,7 +52,7 @@ string leetcode_5::longestPalindrome(const string &s) {
             begin_end = {i, max_size};
         }
     }
-    for (size_t i {s_size}; i > 0; i--) {
+    for (size_t i{s_size}; i > 0; i--) {
         for (size_t j{i + 1}; j < s_size; j++) {
             dp[i - 1][j] = ((s[i - 1] == s[j]) && dp[i][j - 1]);
             if (j - i + 2 > max_size && dp[i - 1][j]) {

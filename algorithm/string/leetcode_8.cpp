@@ -1,15 +1,5 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:48:30
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- * @LastEditTime: 2021-01-03 21:45:55
- */
 /*
 MIT License
-
 
 CS203_DSAA_template
 
@@ -33,17 +23,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-static constexpr double eps{0.00000001};
-static constexpr double neps{-eps};
+#include "leetcode_8_test.hpp"
 
-constexpr inline int32_t sign(int32_t x) {
-    return ((x > 0) - (x < 0));
+namespace leetcode_8 {
+
+int leetcode_8::myAtoi(const string &str) {
+    size_t begin{0};
+    int8_t sign{1};
+    int64_t will_return{0};
+    while (str[begin] == ' ') {
+        begin++;
+    }
+    if (str[begin] >= 'a' && str[begin] <= 'z') {
+        return 0;
+    } else if (str[begin] == '+') {
+        begin++;
+    } else if (str[begin] == '-') {
+        sign = -1;
+        begin++;
+    }
+    while (str[begin] >= '0' && str[begin] <= '9') {
+        will_return = will_return * 10 + (str[begin] - '0');
+        begin++;
+        if (will_return > std::numeric_limits<int32_t>::max()) {
+            return sign == 1 ? std::numeric_limits<int32_t>::max() :
+                   std::numeric_limits<int32_t>::min();
+        }
+    }
+    return static_cast<int32_t>(will_return * sign);
 }
-
-constexpr inline int32_t sign(double x) {
-    return ((x < neps) ? -1 : (x > neps));
 }
-
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP

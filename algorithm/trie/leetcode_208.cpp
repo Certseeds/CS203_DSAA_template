@@ -28,7 +28,7 @@ SOFTWARE.
 namespace leetcode_208 {
 
 
-void leetcode_208::trie::insert(const string& word) {
+void leetcode_208::trie::insert(const string &word) {
     uset.insert(word);
 }
 
@@ -44,7 +44,7 @@ bool leetcode_208::trie::startsWith(const string &prefix) {
 }
 
 
-void leetcode_208::trie2::insert(const string& word) {
+void leetcode_208::trie2::insert(const string &word) {
     std::array<Node *, 26> *array = &sons;
     for (size_t i{0}; i < word.size() - 1; i++) {
         const auto &ch = word[i] - 'a';

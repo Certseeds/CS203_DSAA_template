@@ -221,7 +221,7 @@ vector<string> leetcode_212::findWords(vector<vector<char>> &board, const vector
             sta.emplace(first, second, "#" + result);
             for (const auto &way: ways) {
                 // 先判断是否越界,再判断是否已走过
-                if ( static_cast<int32_t>(first) + way[0] < 0 || first + way[0] >= m
+                if (static_cast<int32_t>(first) + way[0] < 0 || first + way[0] >= m
                     || static_cast<int32_t>(second) + way[1] < 0 || second + way[1] >= n
                     || board[first + way[0]][second + way[1]] == exp) {
                     continue;
@@ -237,6 +237,7 @@ vector<string> leetcode_212::findWords(vector<vector<char>> &board, const vector
     }
     return {uset.cbegin(), uset.cend()};
 }
+
 static const auto faster_streams = [] {
     srand(time(nullptr));
     // use time to init the random seed
