@@ -36,9 +36,10 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 
-#warning "import catch_main.hpp"
+#pragma message("import catch_main.hpp")
+
 #else
-#warning "use pre-compiled"
+#pragma message("use pre-compiled")
 #endif
 
 #include <iostream>
