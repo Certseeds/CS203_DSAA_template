@@ -30,12 +30,12 @@ SOFTWARE.
 #ifndef CATCH_AMALGAMATED_HPP_INCLUDED
 
 #include <catch_amalgamated.hpp>
-
-#warning "import catch_amalgamated.hpp"
+#pragma message("import catch_amalgamated.hpp")
 // find this in ide's autolight
 #else
-#warning "use pre-compiled"
+#pragma message("use pre-compiled")
 // output this while compile
+// 兼容MSVC
 #endif
 
 #include "public.hpp"
