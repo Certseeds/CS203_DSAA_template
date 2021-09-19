@@ -37,7 +37,7 @@ jobs:
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DLOCAL_MACHINE=1
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DLOCAL_MACHINE=0
 
       - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH
@@ -64,7 +64,7 @@ jobs:
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DLOCAL_MACHINE=1
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DLOCAL_MACHINE=0
 
       - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH

@@ -4,6 +4,7 @@ project(${PROJECT_NAME}_moderncpp LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
+
 enable_testing()
 set(dependencies 02 04 07)
 foreach (elementName IN LISTS dependencies)
