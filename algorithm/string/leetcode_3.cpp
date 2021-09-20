@@ -31,7 +31,7 @@ find the length of the longest substring without repeating characters.
 greedy to get the max-length,if meet a repeat character,then throw the last one.
 */
 namespace leetcode_3 {
-int leetcode_3::lengthOfLongestSubstring(const string &s) {
+int32_t leetcode_3::lengthOfLongestSubstring(const string &s) {
     const auto s_size{s.size()};
     size_t fst{0};
     int32_t maxLength{0};
@@ -54,7 +54,7 @@ int leetcode_3::lengthOfLongestSubstring(const string &s) {
     return maxLength;
 }
 
-int leetcode_3::lengthOfLongestSubstring2(const string &s) {
+int32_t leetcode_3::lengthOfLongestSubstring2(const string &s) {
     int32_t maxv{std::numeric_limits<int16_t>::min()}, len{0}, begin{0};
     const auto s_size = static_cast<int32_t>(s.size());
     std::array<uint8_t, 128> umap{0};
@@ -72,15 +72,13 @@ int leetcode_3::lengthOfLongestSubstring2(const string &s) {
     return std::max(len, maxv);
 }
 
-int leetcode_3::lengthOfLongestSubstring3(const string &s) {
+int32_t leetcode_3::lengthOfLongestSubstring3(const string &s) {
     const auto s_size = static_cast<int32_t>(s.size());
-    if (s.size() <= 1) {
+    if (s_size <= 1) {
         return s_size;
     }
     std::array<uint8_t, 256> uarray = {false};
-    int32_t left = 0;
-    int32_t right = 1;
-    int32_t diff = 0;
+    int32_t left{0}, right{1}, diff{0};
     uarray[s[left]] = 1;
     while (right < s_size) {
         if (!uarray[s[right]]) {
