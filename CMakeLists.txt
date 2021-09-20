@@ -7,14 +7,13 @@ project(CS203_DSAA_template
         VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
         LANGUAGES CXX)
 
-set(THREADS_PREFER_PTHREAD_FLAG ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_VERBOSE_MAKEFILE ON)
-set(LOCAL_MACHINE OFF) # 这一项为ON,则为本地主机,则打开预编译头文件,第一次编译时间增加(占有体积增加),换取之后编译速度提升
-# 倘若更看重存储空间占用而非编译速度,可以改成OFF
+option(MULTIPLY_TIMES "This is a option for pre compile headers" ON)
 
-string(TIMESTAMP time_str "%Y/%m/%d  %y:%m:%S")
+string(TIMESTAMP time_str "%Y/%m/%d  %H:%M:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
+
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CMakeLists.txt)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/algorithm)
