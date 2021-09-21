@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2020-08-06 22:41:41
  * @LastEditors: nanoseeds
@@ -221,7 +221,7 @@ public:
     void insert(T key);
 
     void insert(std::initializer_list<T> key) {
-        for (const auto &item : key) {
+        for (const auto &item: key) {
             RBTree<T>::insert(item);
         }
     }

@@ -1,20 +1,4 @@
 /*
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2021-06-07 13:51:09
- * @LastEditors: nanoseeds
- * @LastEditTime: 2021-06-11 10:07:15
- */
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-22 22:33:32
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
-/*
 MIT License
 
 CS203_DSAA_template
@@ -39,10 +23,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <vector>
-#include <iostream>
+#include <catch_main.hpp>
 #include "sort_wrapper.hpp"
-#include "catch_main.hpp"
 
 using std::vector;
 using Catch::Matchers::Equals;

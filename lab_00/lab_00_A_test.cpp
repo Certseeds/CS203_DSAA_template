@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-07-15 22:13:18
  * @LastEditors: nanoseeds
@@ -33,16 +32,24 @@ SOFTWARE.
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
+#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
+
+#include <catch_main.hpp>
+
+#pragma message("import catch_main.hpp")
+
+#else
+#pragma message("use pre-compiled")
+#endif
+
 #include <iostream>
 #include <tuple>
 #include <vector>
 
-#include <catch_main.hpp>
 #include "lab_00_A.cpp"
 
-std::string getFilePath() noexcept {
-    return "./../../lab_00/lab_00_A_data/";
-}
+std::string getFilePath() noexcept { return "./../../lab_00/lab_00_A_data/"; }
+
 namespace lab_00_A {
 using std::cin;
 using std::cout;
@@ -72,7 +79,8 @@ TEST_CASE("test case 3", "[test 00 A]") {
     for (int i = 0; i < 20; i++) {
         const int a = randfun();
         const int b = randfun();
-        CHECK(cal(std::make_tuple(a, b)) == cal(std::make_tuple(b, a))); // 确认对偶性
+        CHECK(cal(std::make_tuple(a, b)) ==
+              cal(std::make_tuple(b, a)));          // 确认对偶性
         CHECK(a + b == cal(std::make_tuple(a, b))); // 确认正确性
     }
 }
@@ -81,5 +89,5 @@ TEST_CASE("test case 4", "[test 00 A]") {
     auto output = cal(std::make_tuple(100, 1000));
     CHECK(output == 1100);
 }
-}
-#endif  //CS203_DSAA_TEST_MACRO
+} // namespace lab_00_A
+#endif // CS203_DSAA_TEST_MACRO

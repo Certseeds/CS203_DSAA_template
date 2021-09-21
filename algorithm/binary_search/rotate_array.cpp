@@ -1,6 +1,5 @@
 /*
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanoseeds
  * @Date: 2020-08-01 17:39:45
  * @LastEditors: nanoseeds
@@ -33,10 +32,10 @@ SOFTWARE.
 */
 // refer https://leetcode-cn.com/problems/rotate-array/
 // 189
+#include <catch_main.hpp>
 #include <algorithm>
 #include <vector>
 
-#include "catch_main.hpp"
 
 using Catch::Matchers::Contains;
 using Catch::Matchers::Equals;
@@ -93,7 +92,7 @@ TEST_CASE("test case `for`", "[test binary search - rotate_array_min]") {
             {5,  6,    7, 1, 2, 3, 4},
             {-1, -100, 3, 99},
     };
-    for (auto &vec : vec_list) {
+    for (auto &vec: vec_list) {
         for (auto i = 0u; i < vec.size() * 2 + 1; i++) {
             vector<num_t> vec_2{vec};
             brute_force(vec, i);

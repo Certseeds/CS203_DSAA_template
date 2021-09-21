@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanos
  * @Date: 2021-05-13 20:29:20
  * @LastEditors: nanos
@@ -31,8 +31,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "fft.hpp"
 #include <catch_main.hpp>
+#include "fft.hpp"
 
 namespace fft {
 using Catch::Matchers::Equals;

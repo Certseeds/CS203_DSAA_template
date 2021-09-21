@@ -1,16 +1,21 @@
-cmake_minimum_required(VERSION 3.10.2)
-project(CS203_DSAA_template VERSION 0.2.2)
+cmake_minimum_required(VERSION 3.16.6)
+
+set(PROJECT_VERSION_MAJOR 0)
+set(PROJECT_VERSION_MINOR 3)
+set(PROJECT_VERSION_PATCH 0)
+project(CS203_DSAA_template
+        VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
+        LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_VERBOSE_MAKEFILE ON)
+option(MULTIPLY_TIMES "This is a option for pre compile headers" ON)
 
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/cross_platform.cmake)
-include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/parallel.cmake)
-string(TIMESTAMP time_str "%Y/%m/%d  %y:%m:%S")
+string(TIMESTAMP time_str "%Y/%m/%d  %H:%M:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/includes)
-
+include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CMakeLists.txt)
+add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/algorithm)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 

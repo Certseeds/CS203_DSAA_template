@@ -1,17 +1,9 @@
-/*
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-07-27 15:50:42
- * @LastEditors: nanoseeds
- * @LastEditTime: 2021-01-28 17:05:20
- */
+#include <catch_main.hpp>
 
 #include <algorithm>
 #include <tuple>
 #include <vector>
 
-#include "catch_main.hpp"
 
 using Catch::Matchers::Contains;
 using Catch::Matchers::Equals;
@@ -46,7 +38,7 @@ TEST_CASE("lower_bound", "[test basic binary search]") {
             {4, 4},
             {5, 7},
             {6, 9}};
-    for (const auto &i : input_result) {
+    for (const auto &i: input_result) {
         num_t input{0};
         num_t output{0};
         tie(input, output) = i;
@@ -80,7 +72,7 @@ TEST_CASE("any_equal", "[test basic binary search]") {
             {5, 10, 15},
             {6, 15, 16}};
     // 0 2 4 8 12 15
-    for (const auto &i : input_result) {
+    for (const auto &i: input_result) {
         num_t input{0};
         num_t left{0};
         num_t right{0};
@@ -113,7 +105,7 @@ TEST_CASE("upper_bound", "[test basic binary search]") {
             {4, 10},
             {5, 15},
             {6, 16}};
-    for (const auto &i : input_result) {
+    for (const auto &i: input_result) {
         num_t input{0};
         num_t output{0};
         tie(input, output) = i;
@@ -135,7 +127,7 @@ TEST_CASE("lower_bound_warpper", "[test basic binary search]") {
             {4, 3},
             {5, 6},
             {6, 8}};
-    for (const auto &i : input_result) {
+    for (const auto &i: input_result) {
         num_t input{0};
         num_t output{0};
         tie(input, output) = i;
@@ -157,7 +149,7 @@ TEST_CASE("upper_bound_warpper", "[test basic binary search]") {
             {4, 6},
             {5, 8},
             {6, 9}};
-    for (const auto &i : input_result) {
+    for (const auto &i: input_result) {
         num_t input{0};
         num_t output{0};
         tie(input, output) = i;

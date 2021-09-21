@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanos
  * @Date: 2021-06-08 20:26:06
  * @LastEditors: nanos
@@ -32,9 +32,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include <cassert>
-#include <utility>
-#include <queue>
 #include <cstring>
+#include <queue>
+#include <utility>
 #include "flow.hpp"
 
 namespace graph::flow {
@@ -73,7 +73,7 @@ void flow::maxflow_ek() {
             break;
         }
         const auto search = [this](int begin, int end) {
-            for (int32_t i{0}; i < this->table[begin].size(); i++) {
+            for (int32_t i{0}; static_cast<size_t>(i) < this->table[begin].size(); i++) {
                 if (this->table[begin][i].end == end) {
                     return i;
                 }

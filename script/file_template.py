@@ -6,7 +6,7 @@
 @Author: nanoseeds
 @Date: 2020-07-15 21:47:09
 LastEditors: nanoseeds
-LastEditTime: 2021-06-11 11:26:38
+LastEditTime: 2021-09-17 23:58:53
 @LICENSE: MIT
 '''
 '''
@@ -56,7 +56,7 @@ create_time: str = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
 source_path: str = './../lab_{0}/lab_{0}_{1}.cpp'
 test_path: str = './../lab_{0}/lab_{0}_{1}_test.cpp'
 source_cmake_path: str = './../lab_{0}/CMakeLists.txt'
-attributes_path:str = './../lab_{0}/.gitattributes'
+attributes_path: str = './../lab_{0}/.gitattributes'
 main_cmake_path: str = './../CMakeLists.txt'
 
 
@@ -97,7 +97,7 @@ def main() -> None:
     problem_order: List[str] = ['A', 'B', 'C',
                                 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     # labs: List[str] = ['01']
-    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
     problem_order_list_str: str = " ".join(problem_order)
     for i in labs:
         try_mkdir(i)  # 准备文件夹
@@ -108,6 +108,7 @@ def main() -> None:
             attr.write("* linguist-vendored")
     print('produce files finish')
     print(f"{len(labs) * (len(problem_order) + 1) * 2} files is produced")
+
 
 # range in [begin,end)
 if __name__ == '__main__':

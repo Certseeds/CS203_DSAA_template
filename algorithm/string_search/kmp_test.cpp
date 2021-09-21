@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
  * @Author: nanos
  * @Date: 2021-04-02 10:12:44
  * @LastEditors: nanos
@@ -31,8 +30,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+
+#include <catch_main.hpp>
 #include "kmp.hpp"
-#include "catch_main.hpp"
 
 namespace string_search {
 using Catch::Matchers::Equals;

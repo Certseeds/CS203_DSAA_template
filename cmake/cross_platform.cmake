@@ -17,3 +17,5 @@ ELSEIF (UNIX)
 ENDIF ()
 set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED) # instead of pthread
+
+MESSAGE(STATUS ${CMAKE_CURRENT_SOURCE_DIR}/cross_platform.cmake)

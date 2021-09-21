@@ -1,6 +1,6 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
+
  * @Author: nanos
  * @Date: 2021-08-14 17:38:35
  * @LastEditors: nanos
@@ -44,7 +44,7 @@ int32_t main() {
     // 必须手动填长度,有点难受,不知道什么时候会出自动推导长度的版本
     std::sort(arr.begin(), arr.end());
     std::forward_list<int32_t> flist{};
-    for (auto &&v:arr) {
+    for (auto &&v: arr) {
         flist.push_front(v);
     }
     return 0;

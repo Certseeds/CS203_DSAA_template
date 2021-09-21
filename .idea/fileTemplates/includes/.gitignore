@@ -1,0 +1,6 @@
+*
+!.gitignore
+!FILE_HEAD_CPP.h
+!FILE_HEAD_PY.py
+!LICENSE_MIT_CPP.h
+!LICENSE_MIT_PY.py
