@@ -23,69 +23,103 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <list>
-#include <array>
-#include <deque>
-#include <queue>
-#include <stack>
-#include <tuple>
-#include <string>
+//@Tag Done
+
 #include <vector>
 #include <numeric>
 #include <iostream>
 #include <algorithm>
 #include <unordered_map>
-#include <unordered_set>
 
 #ifdef CS203_DSAA_TEST_MACRO
 namespace lab_02_D{
 #endif
-
+// 10^9 * 2 < 2^31 -1
 using std::cin;
-using std::tie;
 using std::cout;
-using std::list;
-using std::sort;
-using std::array;
-using std::deque;
-using std::queue;
-using std::stack;
 using std::tuple;
-using std::string;
 using std::vector;
 using std::unordered_map;
-using std::unordered_set;
-using std::priority_queue;
 static constexpr const char end{'\n'};
 
 using num_t = int32_t;
-using input_type = tuple<num_t, num_t>;
-using output_type = num_t;
+using input_type = vector<num_t>;
+using output_type = size_t;
 
 inline input_type read();
 
-output_type cal(input_type data);
+output_type cal(const input_type &data);
 
 void output(const output_type &data);
 
 int main() {
-    auto input_data = read();
-    auto output_data = cal(input_data);
+    const auto input_data = read();
+    const auto output_data = cal(input_data);
     output(output_data);
     return 0;
 }
 
 inline input_type read() {
-    num_t a{0}, b{0};
-    std::cin >> a >> b;
-    return std::make_tuple(a, b);
+    size_t n{0};
+    std::cin >> n;
+    vector<num_t> nums(n, -1);
+    for (size_t i{0}; i < n; i++) {
+        std::cin >> nums[i];
+    }
+    return nums;
 }
 
-output_type cal(input_type data) {
-    num_t a{0}, b{0};
-    tie(a, b) = data;
-    num_t c = a + b;
-    return c;
+output_type cal(const input_type &data) {
+    const auto judge = [](const int32_t n) {
+        return (n & (n - 1)) == 0;
+    };
+    const auto make_unique = [](size_t left, size_t right) {
+        return (left << 32) + right;
+    };
+    const auto arr = [] {
+        vector<int32_t> vec(32, 1);
+        for (size_t i{1}; i < 32; ++i) {
+            vec[i] = 2 * vec[i - 1];
+        }
+        return vec;
+    }();
+    const auto data_size = data.size();
+    unordered_map<num_t, size_t> sizes{};
+    unordered_map<uint64_t, uint64_t> uset{};
+    for (size_t i{0}; i < data_size; i++) {
+        if (sizes.find(data[i]) == sizes.end()) {
+            sizes[data[i]] = (i << 32) + 1;
+        } else {
+            sizes[data[i]]++;
+        }
+    }
+    size_t same_count{0};
+    for (const auto pair: sizes) {
+        const num_t key = pair.first;
+        const size_t value = pair.second;
+        const size_t count_num = ((value << 32) >> 32);
+        //std::cout << key << " " << value << " " << count_num << end;
+        if (judge(key)) {
+            same_count += (count_num * (count_num - 1)) / 2;
+        }
+    }
+    for (size_t i{0}; i < data_size; i++) {
+        for (size_t j{31}; j >= 1; j--) {
+            if (sizes.find(arr[j] - data[i]) != sizes.cend()) {
+                const auto rhs = sizes[arr[j] - data[i]];
+                const auto rhs_loca = rhs >> 32;
+                if (i < rhs_loca) {
+                    const auto count = make_unique(i, rhs);
+                    const auto count_size = (rhs << 32) >> 32;
+                    uset[count] += count_size;
+                }
+            }
+        }
+    }
+    return std::accumulate(uset.begin(), uset.end(), same_count,
+                           [](uint64_t lhs, const std::pair<uint64_t, uint64_t> &rhs) {
+                               return lhs + rhs.second;
+                           });
 }
 
 void output(const output_type &data) {

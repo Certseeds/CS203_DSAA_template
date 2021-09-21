@@ -48,16 +48,19 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
+TEST_CASE("test case 0", "[test 02 D]") {
+    const auto data = vector<int32_t>{1, 2, 3, 7};
+    CHECK(cal(data) == 2);
+}
+
 TEST_CASE("test case 1", "[test 02 D]") {
-    const auto output_data = cal(std::make_tuple(114, 514));
-    CHECK(output_data == 628);
-    CHECK(1 + 2 == 3);
-    vector<int32_t> vec{2, 7, 11, 15};
-    SECTION("CHECK_THAT 1") {
-        CHECK_THAT(vec, Contains<int>({2}));
-    }SECTION("vec matcher") {
-        CHECK_THAT(vec, UnorderedEquals<int>({15, 11, 7, 2}));
-    }
+    const auto data = vector<int32_t>{1, 1, 2, 2, 3, 3, 7, 7};
+    CHECK(cal(data) == 10);
+}
+
+TEST_CASE("test case 2", "[test 02 D]") {
+    const auto data = vector<int32_t>{1, 1, 1, 2, 2, 2, 3, 3, 3, 7, 7, 7};
+    CHECK(cal(data) == 24);
 }
 // 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
 TEST_CASE("test case with sequence", "[test 02 D][.]") {
