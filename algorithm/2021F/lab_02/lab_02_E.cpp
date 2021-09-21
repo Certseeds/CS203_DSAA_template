@@ -23,6 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
+//@Tag TODO
 #include <list>
 #include <array>
 #include <deque>
@@ -59,12 +60,12 @@ using std::priority_queue;
 static constexpr const char end{'\n'};
 
 using num_t = int32_t;
-using input_type = tuple<num_t, num_t>;
-using output_type = num_t;
+using input_type = tuple<vector<num_t>, vector<num_t>, vector<std::pair<num_t, num_t>>>;
+using output_type = vector<num_t>;
 
 inline input_type read();
 
-output_type cal(input_type data);
+output_type cal(const input_type &data);
 
 void output(const output_type &data);
 
@@ -76,20 +77,36 @@ int main() {
 }
 
 inline input_type read() {
-    num_t a{0}, b{0};
-    std::cin >> a >> b;
-    return std::make_tuple(a, b);
+    num_t n{0}, T{0};
+    std::cin >> n >> T;
+    vector<num_t> A(n, -1), B(n, -1);
+    for (int32_t i{0}; i < n; i++) {
+        std::cin >> A[i];
+    }
+    for (int32_t i{0}; i < n; i++) {
+        std::cin >> B[i];
+    }
+    num_t tempa, tempb;
+    vector<std::pair<num_t, num_t>> pairs;
+    for (int32_t i{0}; i < T; ++i) {
+        std::cin >> tempa >> tempb;
+        pairs.emplace_back(tempa, tempb);
+    }
+    return std::make_tuple(A, B, pairs);
 }
 
-output_type cal(input_type data) {
-    num_t a{0}, b{0};
-    tie(a, b) = data;
-    num_t c = a + b;
-    return c;
+output_type cal(const input_type &data) {
+    vector<num_t> A, B;
+    vector<std::pair<num_t, num_t>> pairs;
+    tie(A, B, pairs) = data;
+    // TODO
+    return {};
 }
 
 void output(const output_type &data) {
-    cout << data << end;
+    for (auto &&dat: data) {
+        cout << dat << end;
+    }
 }
 
 static const auto faster_streams = [] {
