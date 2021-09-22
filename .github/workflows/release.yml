@@ -54,7 +54,7 @@ jobs:
         run: cmake --version
 
       - name: prepare folder
-        run: cmake -E make_directory ./CMAKE_DEBUG_PATH -DMULTIPLY_TIMES=0
+        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH

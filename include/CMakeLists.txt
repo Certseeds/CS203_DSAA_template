@@ -28,4 +28,5 @@ if (MULTIPLY_TIMES)
                               )
 else ()
     MESSAGE(STATUS "MULTIPLY_TIMES is OFF")
+    target_precompile_headers(${PROJECT_NAME}_MULTIPLY INTERFACE <cstdint>) # 总得include点东西
 endif ()
