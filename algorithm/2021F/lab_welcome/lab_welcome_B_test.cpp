@@ -44,6 +44,8 @@ std::string getFilePath() noexcept {
     // 和A用一套测试数据
 }
 
+const std::string CS203_redirect::file_paths = getFilePath();
+
 namespace lab_welcome_B {
 
 using std::tie;

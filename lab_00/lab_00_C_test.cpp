@@ -41,6 +41,8 @@ std::string getFilePath() noexcept {
     return "./../../lab_00/lab_00_C_data/";
 }
 
+const std::string CS203_redirect::file_paths = getFilePath();
+
 namespace lab_00_C {
 
 using std::cin;

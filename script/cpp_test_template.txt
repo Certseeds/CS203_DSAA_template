@@ -10,6 +10,7 @@
 std::string getFilePath() noexcept {{
     return "./../../lab_{0}/lab_{0}_{1}_data/";
 }}
+const std::string CS203_redirect::file_paths = getFilePath();
 
 namespace lab_{0}_{1} {{
 

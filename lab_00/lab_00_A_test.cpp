@@ -50,6 +50,8 @@ SOFTWARE.
 
 std::string getFilePath() noexcept { return "./../../lab_00/lab_00_A_data/"; }
 
+const std::string CS203_redirect::file_paths = getFilePath();
+
 namespace lab_00_A {
 using std::cin;
 using std::cout;

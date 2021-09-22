@@ -43,6 +43,8 @@ std::string getFilePath() noexcept {
     return "./../../../../algorithm/2021F/lab_welcome/lab_welcome_A_data/";
 }
 
+const std::string CS203_redirect::file_paths = getFilePath();
+
 namespace lab_welcome_A {
 
 using std::tie;

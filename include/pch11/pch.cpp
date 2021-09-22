@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,24 +23,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-//#define CATCH_CONFIG_MAIN
-
-#ifndef CATCH_AMALGAMATED_HPP_INCLUDED
-
-#include <catch_amalgamated.hpp>
-#pragma message("import catch_amalgamated.hpp")
-// find this in ide's autolight
-#else
-#pragma message("use pre-compiled")
-// output this while compile
-// 兼容MSVC
-#endif
-
-
-#include <public.hpp>
-
-static const CS203_timer timer{};
-
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H

@@ -38,8 +38,6 @@ SOFTWARE.
 #include <iostream>
 #include <string>
 
-std::string getFilePath() noexcept;
-
 using std::cin;
 using std::cout;
 using std::string;
@@ -83,7 +81,6 @@ public:
     }
 };
 
-const std::string CS203_redirect::file_paths = getFilePath();
 
 #ifndef CS203_DSAA_TEST_MACRO
 
@@ -94,7 +91,7 @@ const std::string CS203_redirect::file_paths = getFilePath();
 std::string getFilePath() noexcept {
     return "";
 }
-
+const std::string CS203_redirect::file_paths = getFilePath();
 #endif //CS203_DSAA_TEST_MACRO
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
