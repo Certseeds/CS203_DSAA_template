@@ -36,14 +36,15 @@ SOFTWARE.
  * 数组α具有ν个元素,请输出数组a `中位数的double形式`
  * `中位数的double形式` 定义为,
  * match (ν % 2) {
- *  0 => { return (α[ν/2-1]+α[ν/2])/2; }
- *  1 => { return α[ν/2]; }
+ *  0 => { return (α[ν/2-1]+α[ν/2]); }
+ *  1 => { return 2*α[ν/2]; }
  * };
  * @输入
  * 第一行输入 int32_t n, 大于1,小于5*10^6
  * 第二行有n个int32_t, [0,2^31-1]
  * @输出
  * 一个 `中位数的double形式`
+ * @解析,此处坑点在于 int32_t *2会爆掉,所以都需要使用int64_t
  * */
 //@Tag Done
 #pragma GCC optimize(3,"Ofast","inline","no-stack-protector","unroll-loops")
