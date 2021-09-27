@@ -288,7 +288,7 @@ SimplePcg32 &rng();
 #define CATCH_PLATFORM_HPP_INCLUDED
 
 #ifdef __APPLE__
-                                                                                                                        # include <TargetConditionals.h>
+# include <TargetConditionals.h>
 # if TARGET_OS_OSX == 1
 #  define CATCH_PLATFORM_MAC
 # elif TARGET_OS_IPHONE == 1
@@ -336,7 +336,7 @@ SimplePcg32 &rng();
 
 #if defined(__clang__)
 
-                                                                                                                        #    define CATCH_INTERNAL_START_WARNINGS_SUPPRESSION _Pragma( "clang diagnostic push" )
+#    define CATCH_INTERNAL_START_WARNINGS_SUPPRESSION _Pragma( "clang diagnostic push" )
 #    define CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION  _Pragma( "clang diagnostic pop" )
 
 // As of this writing, IBM XL's implementation of __builtin_constant_p has a bug
@@ -387,14 +387,14 @@ SimplePcg32 &rng();
 #endif
 
 #ifdef __OS400__
-                                                                                                                        #       define CATCH_INTERNAL_CONFIG_NO_POSIX_SIGNALS
+#       define CATCH_INTERNAL_CONFIG_NO_POSIX_SIGNALS
 #       define CATCH_CONFIG_COLOUR_NONE
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 // Android somehow still does not support std::to_string
 #if defined(__ANDROID__)
-                                                                                                                        #    define CATCH_INTERNAL_CONFIG_NO_CPP11_TO_STRING
+#    define CATCH_INTERNAL_CONFIG_NO_CPP11_TO_STRING
 #    define CATCH_INTERNAL_CONFIG_ANDROID_LOGWRITE
 #endif
 
@@ -414,7 +414,7 @@ SimplePcg32 &rng();
 // Cygwin
 #ifdef __CYGWIN__
 
-                                                                                                                        // Required for some versions of Cygwin to declare gettimeofday
+// Required for some versions of Cygwin to declare gettimeofday
 // see: http://stackoverflow.com/questions/36901803/gettimeofday-not-declared-in-this-scope-cygwin
 #   define _BSD_SOURCE
 // some versions of cygwin (most) do not support std::to_string. Use the libstd check.
@@ -431,7 +431,7 @@ SimplePcg32 &rng();
 // Visual C++
 #if defined(_MSC_VER)
 
-                                                                                                                        #  define CATCH_INTERNAL_START_WARNINGS_SUPPRESSION __pragma( warning(push) )
+#  define CATCH_INTERNAL_START_WARNINGS_SUPPRESSION __pragma( warning(push) )
 #  define CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION  __pragma( warning(pop) )
 
 // Universal Windows platform does not support SEH
@@ -454,7 +454,7 @@ SimplePcg32 &rng();
 #endif // _MSC_VER
 
 #if defined(_REENTRANT) || defined(_MSC_VER)
-                                                                                                                        // Enable async processing, as -pthread is specified or no additional linking is required
+// Enable async processing, as -pthread is specified or no additional linking is required
 # define CATCH_INTERNAL_CONFIG_USE_ASYNC
 #endif // _MSC_VER
 
@@ -494,7 +494,7 @@ SimplePcg32 &rng();
 // This means that it is detected as Windows, but does not provide
 // the same set of capabilities as real Windows does.
 #if defined(UNDER_RTSS) || defined(RTX64_BUILD)
-                                                                                                                        #define CATCH_INTERNAL_CONFIG_NO_WINDOWS_SEH
+#define CATCH_INTERNAL_CONFIG_NO_WINDOWS_SEH
     #define CATCH_INTERNAL_CONFIG_NO_ASYNC
     #define CATCH_CONFIG_COLOUR_NONE
 #endif
@@ -528,7 +528,7 @@ SimplePcg32 &rng();
 // Check if variant is available and usable
 #  if __has_include(<variant>) && defined(CATCH_CPP17_OR_GREATER)
 #    if defined(__clang__) && (__clang_major__ < 8)
-                                                                                                                        // work around clang bug with libstdc++ https://bugs.llvm.org/show_bug.cgi?id=31852
+// work around clang bug with libstdc++ https://bugs.llvm.org/show_bug.cgi?id=31852
          // fix should be in clang 8, workaround in libstdc++ 8.2
   #      include <ciso646>
   #      if defined(__GLIBCXX__) && defined(_GLIBCXX_RELEASE) && (_GLIBCXX_RELEASE < 9)
@@ -646,7 +646,7 @@ SimplePcg32 &rng();
 #endif
 
 #if defined(CATCH_CONFIG_DISABLE_EXCEPTIONS)
-                                                                                                                        #define CATCH_TRY if ((true))
+#define CATCH_TRY if ((true))
 #define CATCH_CATCH_ALL if ((false))
 #define CATCH_CATCH_ANON(type) if ((false))
 #else
@@ -1690,7 +1690,7 @@ inline void optimizer_barrier() { keep_memory(); }
 } // namespace Detail
 #elif defined(_MSC_VER)
 
-                                                                                                                        #pragma optimize("", off)
+#pragma optimize("", off)
         template <typename T>
         inline void keep_memory(T* p) {
             // thanks @milleniumbug
@@ -1819,7 +1819,7 @@ void throw_exception(Ex const &e) {
 }
 
 #else // ^^ Exceptions are enabled //  Exceptions are disabled vv
-                                                                                                                        [[noreturn]]
+[[noreturn]]
     void throw_exception(std::exception const& e);
 #endif
 
@@ -1889,7 +1889,7 @@ struct is_callable<Fun(Args...)> : decltype(is_callable_tester::test<Fun, Args..
 template<typename Func, typename... U>
 using FunctionReturnType = std::remove_reference_t<std::remove_cv_t<std::invoke_result_t<Func, U...>>>;
 #else
-                                                                                                                        template <typename Func, typename... U>
+template <typename Func, typename... U>
     using FunctionReturnType = std::remove_reference_t<std::remove_cv_t<std::result_of_t<Func(U...)>>>;
 #endif
 
@@ -2880,7 +2880,7 @@ private:
 
 #if defined(CATCH_CONFIG_PREFIX_ALL)
 
-                                                                                                                        #define CATCH_BENCHMARK(...) \
+#define CATCH_BENCHMARK(...) \
     INTERNAL_CATCH_BENCHMARK(INTERNAL_CATCH_UNIQUE_NAME(____C_A_T_C_H____B_E_N_C_H____), INTERNAL_CATCH_GET_1_ARG(__VA_ARGS__,,), INTERNAL_CATCH_GET_2_ARG(__VA_ARGS__,,))
 #define CATCH_BENCHMARK_ADVANCED(name) \
     INTERNAL_CATCH_BENCHMARK_ADVANCED(INTERNAL_CATCH_UNIQUE_NAME(____C_A_T_C_H____B_E_N_C_H____), name)
@@ -3029,7 +3029,7 @@ struct IMutableEnumValuesRegistry {
 #endif
 
 #ifdef _MSC_VER
-                                                                                                                        #pragma warning(push)
+#pragma warning(push)
 #pragma warning(disable:4180) // We attempt to stream a function (address) by const&, which MSVC complains about but is harmless
 #endif
 
@@ -3084,7 +3084,7 @@ std::enable_if_t<
 }
 
 #if defined(_MANAGED)
-                                                                                                                        //! Convert a CLR string to a utf8 std::string
+//! Convert a CLR string to a utf8 std::string
         template<typename T>
         std::string clrReferenceToString( T^ ref ) {
             if (ref == nullptr)
@@ -3139,7 +3139,7 @@ std::string convertUnknownEnumToString(E e) {
 }
 
 #if defined(_MANAGED)
-                                                                                                                        template <typename T>
+template <typename T>
         std::string stringify( T^ e ) {
             return ::Catch::StringMaker<T^>::convert(e);
         }
@@ -3332,7 +3332,7 @@ struct StringMaker<R C::*> {
 };
 
 #if defined(_MANAGED)
-                                                                                                                        template <typename T>
+template <typename T>
     struct StringMaker<T^> {
         static std::string convert( T^ ref ) {
             return ::Catch::Detail::clrReferenceToString(ref);
@@ -3362,7 +3362,7 @@ std::string rangeToString(InputIterator first, Sentinel last) {
 // This means that we do not bring in their headers
 
 #if defined(CATCH_CONFIG_ENABLE_ALL_STRINGMAKERS)
-                                                                                                                        #  define CATCH_CONFIG_ENABLE_PAIR_STRINGMAKER
+#  define CATCH_CONFIG_ENABLE_PAIR_STRINGMAKER
 #  define CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER
 #  define CATCH_CONFIG_ENABLE_VARIANT_STRINGMAKER
 #  define CATCH_CONFIG_ENABLE_OPTIONAL_STRINGMAKER
@@ -3370,7 +3370,7 @@ std::string rangeToString(InputIterator first, Sentinel last) {
 
 // Separate std::pair specialization
 #if defined(CATCH_CONFIG_ENABLE_PAIR_STRINGMAKER)
-                                                                                                                        #include <utility>
+#include <utility>
 namespace Catch {
     template<typename T1, typename T2>
     struct StringMaker<std::pair<T1, T2> > {
@@ -3388,7 +3388,7 @@ namespace Catch {
 #endif // CATCH_CONFIG_ENABLE_PAIR_STRINGMAKER
 
 #if defined(CATCH_CONFIG_ENABLE_OPTIONAL_STRINGMAKER) && defined(CATCH_CONFIG_CPP17_OPTIONAL)
-                                                                                                                        #include <optional>
+#include <optional>
 namespace Catch {
     template<typename T>
     struct StringMaker<std::optional<T> > {
@@ -3407,7 +3407,7 @@ namespace Catch {
 
 // Separate std::tuple specialization
 #if defined(CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER)
-                                                                                                                        #include <tuple>
+#include <tuple>
 namespace Catch {
     namespace Detail {
         template<
@@ -3448,7 +3448,7 @@ namespace Catch {
 #endif // CATCH_CONFIG_ENABLE_TUPLE_STRINGMAKER
 
 #if defined(CATCH_CONFIG_ENABLE_VARIANT_STRINGMAKER) && defined(CATCH_CONFIG_CPP17_VARIANT)
-                                                                                                                        #include <variant>
+#include <variant>
 namespace Catch {
     template<>
     struct StringMaker<std::monostate> {
@@ -3500,7 +3500,7 @@ struct is_range : detail::is_range_impl<T> {
 };
 
 #if defined(_MANAGED) // Managed types are never ranges
-                                                                                                                        template <typename T>
+template <typename T>
     struct is_range<T^> {
         static const bool value = false;
     };
@@ -3648,7 +3648,7 @@ struct StringMaker<std::chrono::time_point<std::chrono::system_clock, Duration>>
         auto converted = std::chrono::system_clock::to_time_t(time_point);
 
 #ifdef _MSC_VER
-                                                                                                                                std::tm timeInfo = {};
+        std::tm timeInfo = {};
             gmtime_s(&timeInfo, &converted);
 #else
         std::tm *timeInfo = std::gmtime(&converted);
@@ -3815,7 +3815,7 @@ struct StringMaker<Catch::Approx> {
 #define CATCH_TEST_SPEC_HPP_INCLUDED
 
 #ifdef __clang__
-                                                                                                                        #pragma clang diagnostic push
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #endif
 
@@ -4192,14 +4192,14 @@ public:
 
 #if defined(CATCH_CONFIG_PREFIX_ALL) && !defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #define CATCH_INFO( msg ) INTERNAL_CATCH_INFO( "CATCH_INFO", msg )
+#define CATCH_INFO( msg ) INTERNAL_CATCH_INFO( "CATCH_INFO", msg )
   #define CATCH_UNSCOPED_INFO( msg ) INTERNAL_CATCH_UNSCOPED_INFO( "CATCH_UNSCOPED_INFO", msg )
   #define CATCH_WARN( msg ) INTERNAL_CATCH_MSG( "CATCH_WARN", Catch::ResultWas::Warning, Catch::ResultDisposition::ContinueOnFailure, msg )
   #define CATCH_CAPTURE( ... ) INTERNAL_CATCH_CAPTURE( INTERNAL_CATCH_UNIQUE_NAME(capturer), "CATCH_CAPTURE", __VA_ARGS__ )
 
 #elif defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #define CATCH_INFO( msg )          (void)(0)
+#define CATCH_INFO( msg )          (void)(0)
   #define CATCH_UNSCOPED_INFO( msg ) (void)(0)
   #define CATCH_WARN( msg )          (void)(0)
   #define CATCH_CAPTURE( ... )       (void)(0)
@@ -4213,7 +4213,7 @@ public:
 
 #elif !defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #define INFO( msg )          (void)(0)
+#define INFO( msg )          (void)(0)
   #define UNSCOPED_INFO( msg ) (void)(0)
   #define WARN( msg )          (void)(0)
   #define CAPTURE( ... )       (void)(0)
@@ -4309,7 +4309,7 @@ public:
     CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION
 #else // CATCH_CONFIG_DISABLE
 
-                                                                                                                        #define CATCH_REGISTER_REPORTER(name, reporterType)
+#define CATCH_REGISTER_REPORTER(name, reporterType)
 #define CATCH_REGISTER_LISTENER(listenerType)
 
 #endif // CATCH_CONFIG_DISABLE
@@ -4329,7 +4329,7 @@ public:
 #define CATCH_CLARA_HPP_INCLUDED
 
 #if defined( __clang__ )
-                                                                                                                        #    pragma clang diagnostic push
+#    pragma clang diagnostic push
 #    pragma clang diagnostic ignored "-Wweak-vtables"
 #    pragma clang diagnostic ignored "-Wshadow"
 #    pragma clang diagnostic ignored "-Wdeprecated"
@@ -5164,7 +5164,7 @@ struct RegistrarForTagAliases {
 #include <iosfwd>
 
 #ifdef _MSC_VER
-                                                                                                                        #pragma warning(push)
+#pragma warning(push)
 #pragma warning(disable:4389) // '==' : signed/unsigned mismatch
 #pragma warning(disable:4018) // more "signed/unsigned mismatch"
 #pragma warning(disable:4312) // Converting int to T* using reinterpret_cast (issue on x64 platform)
@@ -5173,7 +5173,7 @@ struct RegistrarForTagAliases {
 #endif
 
 #ifdef __clang__
-                                                                                                                        #  pragma clang diagnostic push
+#  pragma clang diagnostic push
 #  pragma clang diagnostic ignored "-Wsign-compare"
 #elif defined __GNUC__
 #  pragma GCC diagnostic push
@@ -5528,7 +5528,7 @@ void handleExceptionMatchExpr(AssertionHandler &handler, std::string const &str,
 
 #if defined(CATCH_CONFIG_FAST_COMPILE) || defined(CATCH_CONFIG_DISABLE_EXCEPTIONS)
 
-                                                                                                                        ///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // Another way to speed-up compilation is to omit local try-catch for REQUIRE*
 // macros.
 #define INTERNAL_CATCH_TRY
@@ -5662,7 +5662,7 @@ void handleExceptionMatchExpr(AssertionHandler &handler, std::string const &str,
 #define CATCH_RECURSION_LEVEL5(...) CATCH_RECURSION_LEVEL4(CATCH_RECURSION_LEVEL4(CATCH_RECURSION_LEVEL4(__VA_ARGS__)))
 
 #ifdef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
-                                                                                                                        #define INTERNAL_CATCH_EXPAND_VARGS(...) __VA_ARGS__
+#define INTERNAL_CATCH_EXPAND_VARGS(...) __VA_ARGS__
 // MSVC needs more evaluations
 #define CATCH_RECURSION_LEVEL6(...) CATCH_RECURSION_LEVEL5(CATCH_RECURSION_LEVEL5(CATCH_RECURSION_LEVEL5(__VA_ARGS__)))
 #define CATCH_RECURSE(...)  CATCH_RECURSION_LEVEL6(CATCH_RECURSION_LEVEL6(__VA_ARGS__))
@@ -5707,7 +5707,7 @@ void handleExceptionMatchExpr(AssertionHandler &handler, std::string const &str,
 #define INTERNAL_CATCH_STRINGIZE2(...) #__VA_ARGS__
 #define INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS(param) INTERNAL_CATCH_STRINGIZE(INTERNAL_CATCH_REMOVE_PARENS(param))
 #else
-                                                                                                                        // MSVC is adding extra space and needs another indirection to expand INTERNAL_CATCH_NOINTERNAL_CATCH_DEF
+// MSVC is adding extra space and needs another indirection to expand INTERNAL_CATCH_NOINTERNAL_CATCH_DEF
 #define INTERNAL_CATCH_STRINGIZE2(...) INTERNAL_CATCH_STRINGIZE3(__VA_ARGS__)
 #define INTERNAL_CATCH_STRINGIZE3(...) #__VA_ARGS__
 #define INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS(param) (INTERNAL_CATCH_STRINGIZE(INTERNAL_CATCH_REMOVE_PARENS(param)) + 1)
@@ -5722,7 +5722,7 @@ void handleExceptionMatchExpr(AssertionHandler &handler, std::string const &str,
 #define INTERNAL_CATCH_MAKE_TYPE_LIST2(...) decltype(get_wrapper<INTERNAL_CATCH_REMOVE_PARENS_GEN(__VA_ARGS__)>())
 #define INTERNAL_CATCH_MAKE_TYPE_LIST(...) INTERNAL_CATCH_MAKE_TYPE_LIST2(INTERNAL_CATCH_REMOVE_PARENS(__VA_ARGS__))
 #else
-                                                                                                                        #define INTERNAL_CATCH_MAKE_TYPE_LIST2(...) INTERNAL_CATCH_EXPAND_VARGS(decltype(get_wrapper<INTERNAL_CATCH_REMOVE_PARENS_GEN(__VA_ARGS__)>()))
+#define INTERNAL_CATCH_MAKE_TYPE_LIST2(...) INTERNAL_CATCH_EXPAND_VARGS(decltype(get_wrapper<INTERNAL_CATCH_REMOVE_PARENS_GEN(__VA_ARGS__)>()))
 #define INTERNAL_CATCH_MAKE_TYPE_LIST(...) INTERNAL_CATCH_EXPAND_VARGS(INTERNAL_CATCH_MAKE_TYPE_LIST2(INTERNAL_CATCH_REMOVE_PARENS(__VA_ARGS__)))
 #endif
 
@@ -5867,7 +5867,7 @@ void handleExceptionMatchExpr(AssertionHandler &handler, std::string const &str,
 #define INTERNAL_CATCH_DECLARE_SIG_TEST(TestName, ...) INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DECLARE_SIG_TEST_X,INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DEFINE_SIG_TEST_X,INTERNAL_CATCH_DECLARE_SIG_TEST_X,INTERNAL_CATCH_DECLARE_SIG_TEST_X, INTERNAL_CATCH_DECLARE_SIG_TEST1, INTERNAL_CATCH_DECLARE_SIG_TEST0)(TestName, __VA_ARGS__)
 #define INTERNAL_CATCH_REMOVE_PARENS_GEN(...) INTERNAL_CATCH_VA_NARGS_IMPL(__VA_ARGS__, INTERNAL_CATCH_REMOVE_PARENS_11_ARG,INTERNAL_CATCH_REMOVE_PARENS_10_ARG,INTERNAL_CATCH_REMOVE_PARENS_9_ARG,INTERNAL_CATCH_REMOVE_PARENS_8_ARG,INTERNAL_CATCH_REMOVE_PARENS_7_ARG,INTERNAL_CATCH_REMOVE_PARENS_6_ARG,INTERNAL_CATCH_REMOVE_PARENS_5_ARG,INTERNAL_CATCH_REMOVE_PARENS_4_ARG,INTERNAL_CATCH_REMOVE_PARENS_3_ARG,INTERNAL_CATCH_REMOVE_PARENS_2_ARG,INTERNAL_CATCH_REMOVE_PARENS_1_ARG)(__VA_ARGS__)
 #else
-                                                                                                                        #define INTERNAL_CATCH_NTTP_0(signature)
+#define INTERNAL_CATCH_NTTP_0(signature)
 #define INTERNAL_CATCH_NTTP_GEN(...) INTERNAL_CATCH_EXPAND_VARGS(INTERNAL_CATCH_VA_NARGS_IMPL(__VA_ARGS__, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_1,INTERNAL_CATCH_NTTP_1, INTERNAL_CATCH_NTTP_0)( __VA_ARGS__))
 #define INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD(TestName, ...) INTERNAL_CATCH_EXPAND_VARGS(INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD1, INTERNAL_CATCH_DEFINE_SIG_TEST_METHOD0)(TestName, __VA_ARGS__))
 #define INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD(TestName, ClassName, ...) INTERNAL_CATCH_EXPAND_VARGS(INTERNAL_CATCH_VA_NARGS_IMPL( "dummy", __VA_ARGS__, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X,INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD_X, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD1, INTERNAL_CATCH_DECLARE_SIG_TEST_METHOD0)(TestName, ClassName, __VA_ARGS__))
@@ -6048,7 +6048,7 @@ struct AutoReg : Detail::NonCopyable {
 } // end namespace Catch
 
 #if defined(CATCH_CONFIG_DISABLE)
-                                                                                                                        #define INTERNAL_CATCH_TESTCASE_NO_REGISTRATION( TestName, ... ) \
+#define INTERNAL_CATCH_TESTCASE_NO_REGISTRATION( TestName, ... ) \
         static inline void TestName()
     #define INTERNAL_CATCH_TESTCASE_METHOD_NO_REGISTRATION( TestName, ClassName, ... ) \
         namespace{                        \
@@ -6111,7 +6111,7 @@ struct AutoReg : Detail::NonCopyable {
 
 #if defined(CATCH_CONFIG_PREFIX_ALL) && !defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #define CATCH_REQUIRE( ... ) INTERNAL_CATCH_TEST( "CATCH_REQUIRE", Catch::ResultDisposition::Normal, __VA_ARGS__ )
+#define CATCH_REQUIRE( ... ) INTERNAL_CATCH_TEST( "CATCH_REQUIRE", Catch::ResultDisposition::Normal, __VA_ARGS__ )
   #define CATCH_REQUIRE_FALSE( ... ) INTERNAL_CATCH_TEST( "CATCH_REQUIRE_FALSE", Catch::ResultDisposition::Normal | Catch::ResultDisposition::FalseTest, __VA_ARGS__ )
 
   #define CATCH_REQUIRE_THROWS( ... ) INTERNAL_CATCH_THROWS( "CATCH_REQUIRE_THROWS", Catch::ResultDisposition::Normal, __VA_ARGS__ )
@@ -6160,7 +6160,7 @@ struct AutoReg : Detail::NonCopyable {
 
 #elif defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE) // ^^ prefixed, implemented | vv prefixed, disabled
 
-                                                                                                                        #define CATCH_REQUIRE( ... )        (void)(0)
+#define CATCH_REQUIRE( ... )        (void)(0)
   #define CATCH_REQUIRE_FALSE( ... )  (void)(0)
 
   #define CATCH_REQUIRE_THROWS( ... ) (void)(0)
@@ -6234,7 +6234,7 @@ struct AutoReg : Detail::NonCopyable {
 #define STATIC_REQUIRE(...)       static_assert(   __VA_ARGS__,  #__VA_ARGS__ ); SUCCEED( #__VA_ARGS__ )
 #define STATIC_REQUIRE_FALSE(...) static_assert( !(__VA_ARGS__), "!(" #__VA_ARGS__ ")" ); SUCCEED( "!(" #__VA_ARGS__ ")" )
 #else
-                                                                                                                        #define STATIC_REQUIRE( ... )       REQUIRE( __VA_ARGS__ )
+#define STATIC_REQUIRE( ... )       REQUIRE( __VA_ARGS__ )
     #define STATIC_REQUIRE_FALSE( ... ) REQUIRE_FALSE( __VA_ARGS__ )
 #endif
 
@@ -6250,7 +6250,7 @@ struct AutoReg : Detail::NonCopyable {
 
 #elif !defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE) // ^^ unprefixed, implemented | vv unprefixed, disabled
 
-                                                                                                                        #define REQUIRE( ... )       (void)(0)
+#define REQUIRE( ... )       (void)(0)
   #define REQUIRE_FALSE( ... ) (void)(0)
 
   #define REQUIRE_THROWS( ... ) (void)(0)
@@ -6310,7 +6310,7 @@ struct AutoReg : Detail::NonCopyable {
 #endif
 
 #if defined(CATCH_CONFIG_DISABLE)
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_NO_REGISTRATION_2( TestName, TestFunc, Name, Tags, Signature, ... )  \
+#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_NO_REGISTRATION_2( TestName, TestFunc, Name, Tags, Signature, ... )  \
         INTERNAL_CATCH_DEFINE_SIG_TEST(TestFunc, INTERNAL_CATCH_REMOVE_PARENS(Signature))
     #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_NO_REGISTRATION_2( TestNameClass, TestName, ClassName, Name, Tags, Signature, ... )    \
         namespace{                                                                                  \
@@ -6389,7 +6389,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_TEST_CASE(Name, Tags, ...) \
         INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, typename TestType, __VA_ARGS__ )
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_TEST_CASE(Name, Tags, ...) \
+#define INTERNAL_CATCH_TEMPLATE_TEST_CASE(Name, Tags, ...) \
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, typename TestType, __VA_ARGS__ ) )
 #endif
 
@@ -6397,7 +6397,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG(Name, Tags, Signature, ...) \
         INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, Signature, __VA_ARGS__ )
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG(Name, Tags, Signature, ...) \
+#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG(Name, Tags, Signature, ...) \
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, Signature, __VA_ARGS__ ) )
 #endif
 
@@ -6439,7 +6439,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE(Name, Tags, ...)\
         INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2(INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, typename T,__VA_ARGS__)
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE(Name, Tags, ...)\
+#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE(Name, Tags, ...)\
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, typename T, __VA_ARGS__ ) )
 #endif
 
@@ -6447,7 +6447,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_SIG(Name, Tags, Signature, ...)\
         INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2(INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, Signature, __VA_ARGS__)
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_SIG(Name, Tags, Signature, ...)\
+#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_SIG(Name, Tags, Signature, ...)\
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), Name, Tags, Signature, __VA_ARGS__ ) )
 #endif
 
@@ -6517,7 +6517,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD(ClassName, Name, Tags, ...) \
         INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____C_L_A_S_S____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ) , ClassName, Name, Tags, typename T, __VA_ARGS__ )
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD( ClassName, Name, Tags,... ) \
+#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD( ClassName, Name, Tags,... ) \
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____C_L_A_S_S____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ) , ClassName, Name, Tags, typename T, __VA_ARGS__ ) )
 #endif
 
@@ -6525,7 +6525,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG(ClassName, Name, Tags, Signature, ...) \
         INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____C_L_A_S_S____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ) , ClassName, Name, Tags, Signature, __VA_ARGS__ )
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG( ClassName, Name, Tags, Signature, ... ) \
+#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG( ClassName, Name, Tags, Signature, ... ) \
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____C_L_A_S_S____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ) , ClassName, Name, Tags, Signature, __VA_ARGS__ ) )
 #endif
 
@@ -6570,7 +6570,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD(ClassName, Name, Tags, ...)\
         INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), ClassName, Name, Tags, typename T, __VA_ARGS__ )
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD( ClassName, Name, Tags, ... )\
+#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD( ClassName, Name, Tags, ... )\
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), ClassName, Name, Tags, typename T,__VA_ARGS__ ) )
 #endif
 
@@ -6578,7 +6578,7 @@ struct AutoReg : Detail::NonCopyable {
 #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG(ClassName, Name, Tags, Signature, ...)\
         INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), ClassName, Name, Tags, Signature, __VA_ARGS__ )
 #else
-                                                                                                                        #define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG( ClassName, Name, Tags, Signature, ... )\
+#define INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_SIG( ClassName, Name, Tags, Signature, ... )\
         INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_PRODUCT_TEST_CASE_METHOD_2( INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____ ), INTERNAL_CATCH_UNIQUE_NAME( ____C_A_T_C_H____T_E_M_P_L_A_T_E____T_E_S_T____F_U_N_C____ ), ClassName, Name, Tags, Signature,__VA_ARGS__ ) )
 #endif
 
@@ -6622,7 +6622,7 @@ struct AutoReg : Detail::NonCopyable {
 
 #if defined(CATCH_CONFIG_PREFIX_ALL) && !defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
+#ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
     #define CATCH_TEMPLATE_TEST_CASE( ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE( __VA_ARGS__ )
     #define CATCH_TEMPLATE_TEST_CASE_SIG( ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG( __VA_ARGS__ )
     #define CATCH_TEMPLATE_TEST_CASE_METHOD( className, ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD( className, __VA_ARGS__ )
@@ -6648,7 +6648,7 @@ struct AutoReg : Detail::NonCopyable {
 
 #elif defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
+#ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
     #define CATCH_TEMPLATE_TEST_CASE( ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_NO_REGISTRATION(__VA_ARGS__)
     #define CATCH_TEMPLATE_TEST_CASE_SIG( ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG_NO_REGISTRATION(__VA_ARGS__)
     #define CATCH_TEMPLATE_TEST_CASE_METHOD( className, ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_NO_REGISTRATION(className, __VA_ARGS__)
@@ -6682,7 +6682,7 @@ struct AutoReg : Detail::NonCopyable {
 #define TEMPLATE_LIST_TEST_CASE(...) INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE(__VA_ARGS__)
 #define TEMPLATE_LIST_TEST_CASE_METHOD(className, ...) INTERNAL_CATCH_TEMPLATE_LIST_TEST_CASE_METHOD( className, __VA_ARGS__ )
 #else
-                                                                                                                        #define TEMPLATE_TEST_CASE( ... ) INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE( __VA_ARGS__ ) )
+#define TEMPLATE_TEST_CASE( ... ) INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE( __VA_ARGS__ ) )
     #define TEMPLATE_TEST_CASE_SIG( ... ) INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG( __VA_ARGS__ ) )
     #define TEMPLATE_TEST_CASE_METHOD( className, ... ) INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD( className, __VA_ARGS__ ) )
     #define TEMPLATE_TEST_CASE_METHOD_SIG( className, ... ) INTERNAL_CATCH_EXPAND_VARGS( INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_SIG( className, __VA_ARGS__ ) )
@@ -6696,7 +6696,7 @@ struct AutoReg : Detail::NonCopyable {
 
 #elif !defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
+#ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
     #define TEMPLATE_TEST_CASE( ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_NO_REGISTRATION(__VA_ARGS__)
     #define TEMPLATE_TEST_CASE_SIG( ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_SIG_NO_REGISTRATION(__VA_ARGS__)
     #define TEMPLATE_TEST_CASE_METHOD( className, ... ) INTERNAL_CATCH_TEMPLATE_TEST_CASE_METHOD_NO_REGISTRATION(className, __VA_ARGS__)
@@ -6730,7 +6730,7 @@ struct AutoReg : Detail::NonCopyable {
 #include <vector>
 
 #ifdef __clang__
-                                                                                                                        #pragma clang diagnostic push
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #endif
 
@@ -6910,7 +6910,7 @@ public:
 #define INTERNAL_CATCH_TRANSLATE_EXCEPTION(signature) INTERNAL_CATCH_TRANSLATE_EXCEPTION2( INTERNAL_CATCH_UNIQUE_NAME( catch_internal_ExceptionTranslator ), signature )
 
 #if defined(CATCH_CONFIG_DISABLE)
-                                                                                                                        #define INTERNAL_CATCH_TRANSLATE_EXCEPTION_NO_REG( translatorName, signature) \
+#define INTERNAL_CATCH_TRANSLATE_EXCEPTION_NO_REG( translatorName, signature) \
             static std::string translatorName( signature )
 #endif
 
@@ -7868,7 +7868,7 @@ struct ITagAliasRegistry {
 #define CATCH_CONFIG_UNCAUGHT_EXCEPTIONS_HPP
 
 #if defined(_MSC_VER)
-                                                                                                                        #  if _MSC_VER >= 1900 // Visual Studio 2015 or newer
+#  if _MSC_VER >= 1900 // Visual Studio 2015 or newer
 #    define CATCH_INTERNAL_CONFIG_CPP17_UNCAUGHT_EXCEPTIONS
 #  endif
 #endif
@@ -7999,7 +7999,7 @@ namespace Catch {
 namespace Detail {
 
 #if defined(CATCH_CONFIG_POLYFILL_NONMEMBER_CONTAINER_ACCESS)
-                                                                                                                        template <typename Container>
+template <typename Container>
     constexpr auto empty(Container const& cont) -> decltype(cont.empty()) {
         return cont.empty();
     }
@@ -8056,7 +8056,7 @@ bool isDebuggerActive();
 
 #ifdef CATCH_PLATFORM_MAC
 
-                                                                                                                        #if defined(__i386__) || defined(__x86_64__)
+#if defined(__i386__) || defined(__x86_64__)
         #define CATCH_TRAP() __asm__("int $3\n" : : ) /* NOLINT */
     #elif defined(__aarch64__)
         #define CATCH_TRAP()  __asm__(".inst 0xd4200000")
@@ -8064,7 +8064,7 @@ bool isDebuggerActive();
 
 #elif defined(CATCH_PLATFORM_IPHONE)
 
-                                                                                                                        // use inline assembler
+// use inline assembler
     #if defined(__i386__) || defined(__x86_64__)
         #define CATCH_TRAP()  __asm__("int $3")
     #elif defined(__aarch64__)
@@ -8082,12 +8082,12 @@ bool isDebuggerActive();
 #if defined(__GNUC__) && (defined(__i386) || defined(__x86_64))
 #define CATCH_TRAP() asm volatile ("int $3") /* NOLINT */
 #else // Fall back to the generic way.
-                                                                                                                        #include <signal.h>
+#include <signal.h>
 
         #define CATCH_TRAP() raise(SIGTRAP)
 #endif
 #elif defined(_MSC_VER)
-                                                                                                                        #define CATCH_TRAP() __debugbreak()
+#define CATCH_TRAP() __debugbreak()
 #elif defined(__MINGW32__)
     extern "C" __declspec(dllimport) void __stdcall DebugBreak();
     #define CATCH_TRAP() DebugBreak()
@@ -8193,7 +8193,7 @@ private:
 
 #if defined(CATCH_PLATFORM_WINDOWS)
 
-                                                                                                                        #if !defined(NOMINMAX) && !defined(CATCH_CONFIG_NO_NOMINMAX)
+#if !defined(NOMINMAX) && !defined(CATCH_CONFIG_NO_NOMINMAX)
 #  define CATCH_DEFINED_NOMINMAX
 #  define NOMINMAX
 #endif
@@ -8222,7 +8222,7 @@ private:
 
 #if defined( CATCH_CONFIG_WINDOWS_SEH )
 
-                                                                                                                        namespace Catch {
+namespace Catch {
 
     struct FatalConditionHandler {
 
@@ -8266,7 +8266,7 @@ struct FatalConditionHandler {
 
 #else
 
-                                                                                                                        namespace Catch {
+namespace Catch {
     struct FatalConditionHandler {};
 }
 
@@ -8465,7 +8465,7 @@ private:
 
 #if defined(CATCH_CONFIG_NEW_CAPTURE)
 
-                                                                                                                        // Windows's implementation of std::tmpfile is terrible (it tries
+// Windows's implementation of std::tmpfile is terrible (it tries
     // to create a file inside system folder, thus requiring elevated
     // privileges for the binary), so we have to use tmpnam(_s) and
     // create the file ourselves there.
@@ -9135,7 +9135,7 @@ std::string extractClassName(StringRef const &classOrQualifiedMethodName);
 #define CATCH_TEST_SPEC_PARSER_HPP_INCLUDED
 
 #ifdef __clang__
-                                                                                                                        #pragma clang diagnostic push
+#pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wpadded"
 #endif
 
@@ -9397,7 +9397,7 @@ std::string to_string(T const &t) {
 #if defined(CATCH_CONFIG_CPP11_TO_STRING)
     return std::to_string(t);
 #else
-                                                                                                                            ReusableStringStream rss;
+    ReusableStringStream rss;
         rss << t;
         return rss.str();
 #endif
@@ -9669,7 +9669,7 @@ protected:
 };
 
 #ifdef __clang__
-                                                                                                                        #    pragma clang diagnostic push
+#    pragma clang diagnostic push
 #    pragma clang diagnostic ignored "-Wnon-virtual-dtor"
 #endif
 
@@ -9850,7 +9850,7 @@ Detail::MatchNotOf<T> operator!(MatcherBase<T> const &matcher) {
 
 
 #if defined(CATCH_CONFIG_PREFIX_ALL) && !defined(CATCH_CONFIG_DISABLE)
-                                                                                                                        #define CATCH_REQUIRE_THROWS_WITH( expr, matcher ) INTERNAL_CATCH_THROWS_STR_MATCHES( "CATCH_REQUIRE_THROWS_WITH", Catch::ResultDisposition::Normal, matcher, expr )
+  #define CATCH_REQUIRE_THROWS_WITH( expr, matcher ) INTERNAL_CATCH_THROWS_STR_MATCHES( "CATCH_REQUIRE_THROWS_WITH", Catch::ResultDisposition::Normal, matcher, expr )
   #define CATCH_REQUIRE_THROWS_MATCHES( expr, exceptionType, matcher ) INTERNAL_CATCH_THROWS_MATCHES( "CATCH_REQUIRE_THROWS_MATCHES", exceptionType, Catch::ResultDisposition::Normal, matcher, expr )
 
   #define CATCH_CHECK_THROWS_WITH( expr, matcher ) INTERNAL_CATCH_THROWS_STR_MATCHES( "CATCH_CHECK_THROWS_WITH", Catch::ResultDisposition::ContinueOnFailure, matcher, expr )
@@ -9861,7 +9861,7 @@ Detail::MatchNotOf<T> operator!(MatcherBase<T> const &matcher) {
 
 #elif defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #define CATCH_REQUIRE_THROWS_WITH( expr, matcher )                   (void)(0)
+  #define CATCH_REQUIRE_THROWS_WITH( expr, matcher )                   (void)(0)
   #define CATCH_REQUIRE_THROWS_MATCHES( expr, exceptionType, matcher ) (void)(0)
 
   #define CATCH_CHECK_THROWS_WITH( expr, matcher )                     (void)(0)
@@ -9883,7 +9883,7 @@ Detail::MatchNotOf<T> operator!(MatcherBase<T> const &matcher) {
 
 #elif !defined(CATCH_CONFIG_PREFIX_ALL) && defined(CATCH_CONFIG_DISABLE)
 
-                                                                                                                        #define REQUIRE_THROWS_WITH( expr, matcher )                   (void)(0)
+#define REQUIRE_THROWS_WITH( expr, matcher )                   (void)(0)
   #define REQUIRE_THROWS_MATCHES( expr, exceptionType, matcher ) (void)(0)
 
   #define CHECK_THROWS_WITH( expr, matcher )                     (void)(0)
@@ -9958,7 +9958,7 @@ using std::conjunction;
 
 #else // CATCH_CPP17_OR_GREATER
 
-                                                                                                                        template<typename... Cond>
+template<typename... Cond>
         struct conjunction : std::true_type {};
 
         template<typename Cond, typename... Rest>
@@ -10998,7 +10998,7 @@ struct CompactReporter : StreamingReporterBase {
 
 
 #if defined(_MSC_VER)
-                                                                                                                        #pragma warning(push)
+#pragma warning(push)
 #pragma warning(disable:4061) // Not all labels are EXPLICITLY handled in switch
                               // Note that 4062 (not all labels are handled
                               // and default is missing) is enabled
@@ -11497,7 +11497,7 @@ private:
 #include <cstring>
 
 #ifdef __clang__
-                                                                                                                        #   pragma clang diagnostic push
+#   pragma clang diagnostic push
 #   pragma clang diagnostic ignored "-Wpadded"
 #endif
 
