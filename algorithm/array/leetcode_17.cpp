@@ -1,10 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-22 22:26:04
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -30,30 +23,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "sort_wrapper.hpp"
+#include "leetcode_17_test.hpp"
 
-using std::vector;
-
-void insert_sort(vector<int32_t> &nums);
-
-void sort_warpper(vector<int32_t> &nums) {
-    insert_sort(nums);
-}
-
-void insert_sort(vector<int32_t> &nums) {
-    int32_t will_return{0};
-    const auto nums_size = static_cast<int32_t>(nums.size());
-    for (int i = 0; i < nums_size; i++) {
-        will_return++;
-        for (int j = i; j >= 1; j--) {
-            will_return++;
-            will_return++;
-            if (nums[j - 1] > nums[j]) {
-                will_return++;
-                std::swap(nums[j - 1], nums[j]);
+namespace leetcode_17 {
+vector<string> leetcode_17::letterCombinations(const string &digits) {
+    if (digits.empty()) {
+        return {};
+    }
+    const vector<vector<char>> chars{
+            {},
+            {'a', 'b', 'c'},
+            {'d', 'e', 'f'},
+            {'g', 'h', 'i'},
+            {'j', 'k', 'l'},
+            {'m', 'n', 'o'},
+            {'p', 'q', 'r', 's'},
+            {'t', 'u', 'v'},
+            {'w', 'x', 'y', 'z'}
+    };
+    vector<string> will_return = {""};
+    for (const char &digit: digits) {
+        vector<string> temp;
+        for (const string &temp_str: will_return) {
+            for (const char &k: chars[digit - '1']) {
+                temp.emplace_back(temp_str + k);
             }
         }
-        will_return++;
+        will_return = temp;
     }
-    will_return++;
+    return will_return;
+}
 }

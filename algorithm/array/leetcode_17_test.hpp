@@ -1,10 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-22 22:26:04
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -30,30 +23,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "sort_wrapper.hpp"
+//@Tag array
+//@Tag 数组
+//@Tag 双指针
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_HPP
 
+#include <catch_main.hpp>
+#include <vector>
+#include <cstdint>
+
+namespace leetcode_17 {
 using std::vector;
+using std::unordered_set;
+using std::unordered_map;
 
-void insert_sort(vector<int32_t> &nums);
+struct leetcode_17 {
+    static vector<string> letterCombinations(const string &digits);
+};
 
-void sort_warpper(vector<int32_t> &nums) {
-    insert_sort(nums);
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
+
+TEST_CASE("test case 1 [test 17]", "[test 17]") {
+    CHECK_THAT(leetcode_17::letterCombinations("23"),
+               UnorderedEquals<string>({"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}));
 }
 
-void insert_sort(vector<int32_t> &nums) {
-    int32_t will_return{0};
-    const auto nums_size = static_cast<int32_t>(nums.size());
-    for (int i = 0; i < nums_size; i++) {
-        will_return++;
-        for (int j = i; j >= 1; j--) {
-            will_return++;
-            will_return++;
-            if (nums[j - 1] > nums[j]) {
-                will_return++;
-                std::swap(nums[j - 1], nums[j]);
-            }
-        }
-        will_return++;
-    }
-    will_return++;
+TEST_CASE("test case 2 [test 17]", "[test 17]") {
+    CHECK_THAT(leetcode_17::letterCombinations(""),
+               UnorderedEquals<string>({}));
 }
+
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_HPP
