@@ -1,11 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2021-09-26 20:27:22
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
