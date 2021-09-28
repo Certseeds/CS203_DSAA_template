@@ -35,8 +35,6 @@ SOFTWARE.
 
 namespace leetcode_17 {
 using std::vector;
-using std::unordered_set;
-using std::unordered_map;
 
 struct leetcode_17 {
     static vector<string> letterCombinations(const string &digits);
