@@ -43,60 +43,74 @@ SOFTWARE.
 #pragma GCC target("mmx")
 
 #include <map>
+#include <vector>
 #include <iostream>
+#include <algorithm>
 #include <unordered_map>
 
 #ifdef CS203_DSAA_TEST_MACRO
-namespace lab_04_A{
+namespace lab_04_2A{
 #endif
 
 using std::cin;
 using std::tie;
 using std::map;
 using std::cout;
+using std::pair;
+using std::vector;
+
 static constexpr const char end{'\n'};
 static constexpr const char space{' '};
 using num_t = int32_t;
-using lab04map = std::map<num_t, num_t>;
-const auto read = []() {
-    // 好像有用,又好像没用的快读
-    static int x, sign;
-    static char c;
-    x = 0;
-    sign = 1;
-    while (c < '0' || c > '9') {
-        if (c == '-') {
-            sign = -1;
-        }
-        c = getchar();
-    }
-    for (; c >= '0' && c <= '9'; c = getchar()) {
-        x = (x << 3) + (x << 1) + c - '0';
-    }
-    return x * sign;
-};
 
 int main() {
     num_t nu{0}, mu{0};
     num_t coeff{0}, expon{0};
-    lab04map NU{};
-    // nu = read();
-    // mu = read();
     std::cin >> nu >> mu;
+    vector<std::pair<num_t, num_t>> NU{}, MU{};
+    NU.reserve(nu), MU.reserve(mu);
     for (num_t i{0}; i < nu; ++i) {
-        //read(coeff),read(expon);
         std::cin >> coeff >> expon;
-        NU[expon] = coeff;
+        NU.emplace_back(expon, coeff);
     }
     for (num_t i{0}; i < mu; ++i) {
-        //read(coeff),read(expon);
         std::cin >> coeff >> expon;
-        NU[expon] += coeff;
+        MU.emplace_back(expon, coeff);
     }
-    std::cout << NU.size() << end;
-    for (auto iter = NU.crbegin(); iter != NU.crend(); ++iter) {
-        if (iter->first != 0) {
-            std::cout << iter->second << space << iter->first << end;
+    // 读取结束
+    const static auto cmp = [](const std::pair<num_t, num_t> &lhs, const std::pair<num_t, num_t> &rhs) {
+        return lhs.first > rhs.first;
+    };
+    std::sort(NU.begin(), NU.end(), cmp);
+    std::sort(MU.begin(), MU.end(), cmp);
+    // 排序完成,可归并
+    vector<std::pair<num_t, num_t>> result{};
+    result.reserve(nu + mu);
+    num_t nul{0}, mul{0};
+    while (nul < nu && mul < mu) {
+        const auto &NUele = NU[nul];
+        const auto &MUele = MU[mul];
+        if (NUele.first > MUele.first) {
+            result.emplace_back(NUele);
+            nul++;
+        } else if (NUele.first < MUele.first) {
+            result.emplace_back(MUele);
+            mul++;
+        } else {
+            result.emplace_back(NUele.first, NUele.second + MUele.second);
+            nul++, mul++;
+        }
+    }
+    for (; nul < nu; nul++) {
+        result.emplace_back(NU[nul]);
+    }
+    for (; mul < mu; mul++) {
+        result.emplace_back(MU[mul]);
+    }
+    std::cout << result.size() << end;
+    for (const auto &iter: result) {
+        if (iter.first != 0) {
+            std::cout << iter.second << space << iter.first << end;
         }
     }
     return 0;
