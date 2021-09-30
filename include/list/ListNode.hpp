@@ -4,13 +4,13 @@
 
 #include <utility>
 #include <vector>
+#include <cstdint>
+#include <cstddef>
 /*
- * @Github: https://github.com/Certseeds
-
  * @Author: nanoseeds
  * @Date: 2020-02-02 21:01:26
- * @LastEditors  : nanoseeds
- * @LastEditTime : 2020-02-06 09:30:22
+ * @LastEditors : nanoseeds
+ * @LastEditTime: 2020-02-06 09:30:22
  */
 namespace LISTNODE {
 using std::vector;
@@ -87,6 +87,9 @@ private:
 
 
 bool ListNode::equal(const vector<int32_t> &nums, const ListNode *const node) {
+    if (nums.empty() && node == nullptr) {
+        return true;
+    }
     ListNode const *n = node;
     for (size_t i{0}; i < nums.size(); ++i) {
         if (nums[i] != n->val) {

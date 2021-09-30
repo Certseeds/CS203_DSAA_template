@@ -58,8 +58,7 @@ using std::cout;
 using std::sort;
 using std::tuple;
 using std::vector;
-static constexpr const char end{'\n'};
-static constexpr const char space{' '};
+static constexpr const char end{'\n'}, space{' '};
 
 using num_t = int32_t;
 using input_type = tuple<vector<vector<num_t>>, vector<vector<num_t>>>;

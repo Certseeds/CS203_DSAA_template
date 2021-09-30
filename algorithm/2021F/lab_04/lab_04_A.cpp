@@ -54,8 +54,7 @@ using std::cin;
 using std::tie;
 using std::map;
 using std::cout;
-static constexpr const char end{'\n'};
-static constexpr const char space{' '};
+static constexpr const char end{'\n'}, space{' '};
 using num_t = int32_t;
 using lab04map = std::map<num_t, num_t>;
 const auto read = []() {

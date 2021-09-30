@@ -40,7 +40,7 @@ SOFTWARE.
 #pragma GCC optimize(3, "Ofast", "inline", "no-stack-protector", "unroll-loops")
 #pragma GCC optimize("inline-small-functions")
 #pragma GCC optimize("-finline-small-functions")
-#pragma GCC target("mmx")
+#pragma GCC target("sse,sse2,mmx")
 
 #include <map>
 #include <vector>
@@ -59,8 +59,7 @@ using std::cout;
 using std::pair;
 using std::vector;
 
-static constexpr const char end{'\n'};
-static constexpr const char space{' '};
+static constexpr const char end{'\n'},space{' '};
 using num_t = int32_t;
 
 int main() {
