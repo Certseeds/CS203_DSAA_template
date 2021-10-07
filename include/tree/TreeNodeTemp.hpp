@@ -1,18 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:48:30
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- * @LastEditTime: 2021-01-03 21:45:55
- */
 /*
 MIT License
 
-
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2021 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,16 +23,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-static constexpr const double eps{0.00000001}, neps{-eps};
+#ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
 
-constexpr inline int32_t sign(int32_t x) {
-    return ((x > 0) - (x < 0));
+namespace TREE_NODE_TEMP {
+template<typename T, template<typename> typename CLASS>
+struct TreeNodeTemp {
+public:
+    T val;
+    CLASS<T> *left, *right;
+
+    virtual ~TreeNodeTemp() {
+        this->val = static_cast<T>(0);
+        this->left = nullptr;
+        this->right = nullptr;
+    }
+
+    TreeNodeTemp(const CLASS<T> &obj) = delete;
+
+    TreeNodeTemp &operator=(const CLASS<T> &node) = delete;
+
+    TreeNodeTemp(CLASS<T> &&node) = delete;
+
+    TreeNodeTemp &operator=(CLASS<T> &&node) = delete;
+
+private:
+    explicit TreeNodeTemp(T x = static_cast<T>(0)) : TreeNodeTemp<T, CLASS>(x, nullptr, nullptr) {};
+
+    TreeNodeTemp(T x, CLASS<T> *le, CLASS<T> *rig) : val(x), left(le), right(rig) {};
+
+    friend CLASS<T>;
+};
 }
-
-constexpr inline int32_t sign(double x) {
-    return ((x < neps) ? -1 : (x > neps));
-}
-
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
+#endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP

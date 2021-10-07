@@ -14,7 +14,6 @@
  */
 namespace LISTNODE {
 using std::vector;
-static constexpr const int32_t No_list = -100000;
 static size_t alloc_delete_count{0};
 
 struct ListNode {
@@ -42,6 +41,8 @@ struct ListNode {
 };
 
 class ListNodeLink {
+private:
+    static constexpr const int32_t No_list = -100000;
 public:
     vector<ListNode *> list{};
 
@@ -87,8 +88,8 @@ private:
 
 
 bool ListNode::equal(const vector<int32_t> &nums, const ListNode *const node) {
-    if (nums.empty() && node == nullptr) {
-        return true;
+    if (node == nullptr) {
+        return nums.empty();
     }
     ListNode const *n = node;
     for (size_t i{0}; i < nums.size(); ++i) {

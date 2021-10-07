@@ -1,14 +1,5 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:48:30
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- * @LastEditTime: 2021-01-03 21:45:55
- */
 /*
 MIT License
-
 
 CS203_DSAA_template
 
@@ -32,16 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-static constexpr const double eps{0.00000001}, neps{-eps};
+#include "leetcode_24_test.hpp"
 
-constexpr inline int32_t sign(int32_t x) {
-    return ((x > 0) - (x < 0));
+namespace leetcode_24 {
+
+ListNode *leetcode_24::swapPairs(ListNode *head) {
+    if (head == nullptr) {
+        return nullptr;
+    } else if (head->next == nullptr) {
+        return head;
+    }
+    ListNode *const fir = head;
+    ListNode *const sec = fir->next;
+    ListNode *const third = swapPairs(sec->next);
+    sec->next = fir;
+    fir->next = third;
+    return sec;
 }
 
-constexpr inline int32_t sign(double x) {
-    return ((x < neps) ? -1 : (x > neps));
 }
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP

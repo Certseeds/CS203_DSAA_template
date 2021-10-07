@@ -98,7 +98,7 @@ output_type cal(const input_type &data) {
         const num_t key = pair.first;
         const size_t value = pair.second;
         const size_t count_num = ((value << 32) >> 32);
-        //std::cout << key << " " << value << " " << count_num << end;
+        //std::cout << val << " " << value << " " << count_num << end;
         if (judge(key)) {
             same_count += (count_num * (count_num - 1)) / 2;
         }

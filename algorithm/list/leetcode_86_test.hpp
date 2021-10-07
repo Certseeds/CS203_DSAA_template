@@ -1,14 +1,5 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:48:30
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- * @LastEditTime: 2021-01-03 21:45:55
- */
 /*
 MIT License
-
 
 CS203_DSAA_template
 
@@ -32,16 +23,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
-static constexpr const double eps{0.00000001}, neps{-eps};
+//@Tag list
+//@Tag 链表
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
 
-constexpr inline int32_t sign(int32_t x) {
-    return ((x > 0) - (x < 0));
+#include <catch_main.hpp>
+#include <ListNode.hpp>
+
+namespace leetcode_86 {
+using LISTNODE::ListNode;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
+
+struct leetcode_86 {
+    static ListNode* partition(ListNode* head, int32_t x);
+};
+
+
+
+using LISTNODE::ListNodeLink;
+
+TEST_CASE("-1 [test _86]", "[test _86]") {
+    const ListNodeLink vec1{1,4,3,2,5,2};
+    const ListNode *const result = leetcode_86::partition(vec1[0],3);
+    CHECK(ListNode::equal({1,2,2,4,3,5}, result));
 }
-
-constexpr inline int32_t sign(double x) {
-    return ((x < neps) ? -1 : (x > neps));
 }
-
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_HELPER_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP

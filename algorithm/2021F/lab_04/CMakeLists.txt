@@ -6,19 +6,19 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies A 2A B) # C D E F
+set(dependencies A 2A B C D) # E F
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp)
     add_executable(${PROJECT_NAME}_${elementName}_test ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}_test.cpp)
     target_compile_definitions(${PROJECT_NAME}_${elementName}_test PRIVATE CS203_DSAA_TEST_MACRO)
+    target_link_libraries(${PROJECT_NAME}_${elementName} PRIVATE
+                          CS203_DSAA_template_INCLUDE_LIST
+                          CS203_DSAA_template_INCLUDE_TREE)
     target_link_libraries(${PROJECT_NAME}_${elementName}_test PRIVATE
-                          CS203_DSAA_template_INCLUDE)
-
-
+                          CS203_DSAA_template_INCLUDE
+                          CS203_DSAA_template_INCLUDE_TREE
+                          CS203_DSAA_template_INCLUDE_LIST)
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName}_test)
 endforeach ()
 unset(dependencies)
-
-target_link_libraries(${PROJECT_NAME}_B PRIVATE CS203_DSAA_template_INCLUDE_LIST)
-target_link_libraries(${PROJECT_NAME}_B_test PRIVATE CS203_DSAA_template_INCLUDE_LIST)

@@ -36,15 +36,15 @@ SOFTWARE.
 #include <vector>
 #include "RBTree.hpp"
 
-using std::cout;
-using std::endl;
+namespace RED_BLACK_TREE {
+using std::cout,std::endl;
 
 TEST_CASE("bulit node", "[RBNode]") {
-    auto temp = RBTNode<int>(1, RBTColor::Red);
+    auto temp = RBTNode<int>(1);
 }
 
 TEST_CASE("bulit node pointer", "[RBNode]") {
-    const auto temp = std::make_unique<RBTNode<int32_t>>(1, RBTColor::Black);
+    const auto temp = std::make_unique<RBTNode<int32_t>>(1,nullptr,nullptr,nullptr, RBTColor::Black);
 }
 
 TEST_CASE("bulit tree", "[RBTree]") {
@@ -58,7 +58,7 @@ TEST_CASE("auto pointer tree", "[RBTree]") {
 }
 
 TEST_CASE("bulit tree pointer", "[RBTree]") {
-    const auto *const temp = new RBTree<int>();
+    const auto *const temp = new RBTree<int32_t>();
     delete temp;
 }
 
@@ -613,4 +613,5 @@ TEST_CASE("insert delete size 10 function order 2", "[RBTree][.]") { //passed
         }
     }
     //}
+}
 }
