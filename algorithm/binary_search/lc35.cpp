@@ -54,8 +54,7 @@ int searchInsert(const vector<int> &nums, int target) {
     }
     int32_t left{0}, right{n_size - 1}, middle{0};
     while (left < right) {
-        middle = (right - left) / 2 + left; // 避免溢出
-        if (nums[middle] > target) {
+        if (middle = (right - left) / 2 + left; nums[middle] > target) {// 避免溢出
             right = middle;
         } else if (nums[middle] < target) {
             left = middle + 1;// 只有一处+1

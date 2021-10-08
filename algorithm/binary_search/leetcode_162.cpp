@@ -84,8 +84,7 @@ int32_t leetcode_162::findPeakElement2(const vector<int> &nums) {
                                                                                 : nege1;
     };
     while (left < right) {
-        mid = (right - left) / 2 + left;
-        if (judge(mid) != -1) {
+        if (mid = (right - left) / 2 + left;judge(mid) != -1) {
             return judge(mid);
         } else if (nums[mid] < nums[mid + 1]) {
             left = mid + 1;
