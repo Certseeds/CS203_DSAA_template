@@ -44,7 +44,7 @@ public:
     RBTColor color{RBTColor::Black};
 
     constexpr explicit RBTNode(T value, RBTNode *l = nullptr, RBTNode *r = nullptr, RBTNode *p = nullptr,
-                      RBTColor c = RBTColor::Red) : base(value, l, r), parent(p), color(c) {}
+                               RBTColor c = RBTColor::Red) : base(value, l, r), parent(p), color(c) {}
 
     ~RBTNode() override = default;
 

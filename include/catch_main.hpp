@@ -30,6 +30,7 @@ SOFTWARE.
 #ifndef CATCH_AMALGAMATED_HPP_INCLUDED
 
 #include <catch_amalgamated.hpp>
+
 #pragma message("import catch_amalgamated.hpp")
 // find this in ide's autolight
 #else

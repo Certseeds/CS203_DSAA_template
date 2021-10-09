@@ -59,7 +59,7 @@ using std::cout;
 using std::pair;
 using std::vector;
 
-static constexpr const char end{'\n'},space{' '};
+static constexpr const char end{'\n'}, space{' '};
 using num_t = int32_t;
 
 int main() {

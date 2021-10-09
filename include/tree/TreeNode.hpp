@@ -14,12 +14,14 @@
 namespace TREE_NODE {
 using TREE_NODE_TEMP::TreeNodeTemp;
 using std::vector;
+
 template<typename T>
-struct TreeNode: public TreeNodeTemp<T,TreeNode>{
+struct TreeNode : public TreeNodeTemp<T, TreeNode> {
 private:
-    using base = TreeNodeTemp<T,TreeNode>;
+    using base = TreeNodeTemp<T, TreeNode>;
 public:
-    explicit TreeNode(T x): base(x){}
+    explicit TreeNode(T x) : base(x) {}
+
     static constexpr const T No{static_cast<T>(-100000)};
 };
 
@@ -33,6 +35,7 @@ static void organize(vector<TreeNode<T> *> Tree) {
         }
     }
 }
+
 template<typename T>
 static vector<TreeNode<T> *> numToTree(const vector<T> &nums) {
     const auto nums_size = nums.size();

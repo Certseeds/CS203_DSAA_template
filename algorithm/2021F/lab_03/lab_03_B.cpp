@@ -39,10 +39,11 @@ SOFTWARE.
  * @解析,此处坑点在于 int32_t *2会爆掉,所以都需要使用int64_t
  * */
 //@Tag Done
-#pragma GCC optimize(3,"Ofast","inline","no-stack-protector","unroll-loops")
+#pragma GCC optimize(3, "Ofast", "inline", "no-stack-protector", "unroll-loops")
 #pragma GCC optimize("inline-small-functions")
 #pragma GCC optimize("-finline-small-functions")
 #pragma GCC target("mmx")
+
 #include <vector>
 #include <iostream>
 #include <algorithm>
@@ -75,6 +76,7 @@ int main() {
     output(output_data);
     return 0;
 }
+
 // function from algorithm/sort/merge_sort.cpp
 static void mergesort_rec(vector<num_t> &nums, vector<num_t> &zeros, int begin, int endnum) {
     if (begin >= endnum) {
@@ -90,7 +92,7 @@ static void mergesort_rec(vector<num_t> &nums, vector<num_t> &zeros, int begin, 
     int pos = begin;
     int start1 = begin;
     int start2 = middle + 1;
-    for (;start1 <= middle && start2 <= endnum;pos++) {
+    for (; start1 <= middle && start2 <= endnum; pos++) {
         if (nums[start1] < nums[start2]) {
             zeros[pos] = nums[start1];
             start1++;

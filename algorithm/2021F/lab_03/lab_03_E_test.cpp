@@ -35,6 +35,7 @@ SOFTWARE.
 std::string getFilePath() noexcept {
     return "./../../lab_03/lab_03_E_data/";
 }
+
 const std::string CS203_redirect::file_paths = getFilePath();
 
 namespace lab_03_E {
@@ -53,7 +54,7 @@ TEST_CASE("test case 1", "[test 03 E]") {
     const auto output_data = cal(std::make_tuple(114, 514));
     CHECK(output_data == 628);
     CHECK(1 + 2 == 3);
-    vector <int32_t> vec{2, 7, 11, 15};
+    vector<int32_t> vec{2, 7, 11, 15};
     SECTION("CHECK_THAT 1") {
         CHECK_THAT(vec, Contains<int>({2}));
     }SECTION("vec matcher") {

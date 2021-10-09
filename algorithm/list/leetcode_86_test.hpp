@@ -37,17 +37,16 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 struct leetcode_86 {
-    static ListNode* partition(ListNode* head, int32_t x);
+    static ListNode *partition(ListNode *head, int32_t x);
 };
-
 
 
 using LISTNODE::ListNodeLink;
 
 TEST_CASE("-1 [test _86]", "[test _86]") {
-    const ListNodeLink vec1{1,4,3,2,5,2};
-    const ListNode *const result = leetcode_86::partition(vec1[0],3);
-    CHECK(ListNode::equal({1,2,2,4,3,5}, result));
+    const ListNodeLink vec1{1, 4, 3, 2, 5, 2};
+    const ListNode *const result = leetcode_86::partition(vec1[0], 3);
+    CHECK(ListNode::equal({1, 2, 2, 4, 3, 5}, result));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP

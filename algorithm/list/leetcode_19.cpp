@@ -26,9 +26,9 @@ SOFTWARE.
 #include "leetcode_19_test.hpp"
 
 namespace leetcode_19 {
-ListNode * leetcode_19::removeNthFromEnd(ListNode *head, int32_t n) {
+ListNode *leetcode_19::removeNthFromEnd(ListNode *head, int32_t n) {
     // auto *will_return = new ListNode(0);
-    ListNode will_return_o{0,head};
+    ListNode will_return_o{0, head};
     auto *const will_return = &will_return_o;
     ListNode *first = will_return;
     ListNode *second = will_return;
@@ -55,9 +55,9 @@ ListNode * leetcode_19::removeNthFromEnd(ListNode *head, int32_t n) {
     return will_return->next;
 }
 
-ListNode * leetcode_19::removeNthFromEnd2(ListNode *head, int32_t n) {
+ListNode *leetcode_19::removeNthFromEnd2(ListNode *head, int32_t n) {
     // auto *will_return = new ListNode(0);
-    ListNode will_return_o{0,head};
+    ListNode will_return_o{0, head};
     auto *const will_return = &will_return_o;
     ListNode *first = will_return;
     ListNode *second = will_return;

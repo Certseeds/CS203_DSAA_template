@@ -39,6 +39,7 @@ SOFTWARE.
 #include <vector>
 
 #include "TreeNode.hpp"
+
 using TREE_NODE::TreeNode;
 using Catch::Matchers::Equals;
 using std::cout;

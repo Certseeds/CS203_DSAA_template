@@ -42,11 +42,13 @@ struct leetcode_61 {
 
 
 using LISTNODE::ListNodeLink;
+
 TEST_CASE("-1 [test _61]", "[test _61]") {
     const ListNodeLink vec1{1};
     const ListNode *const result = leetcode_61::rotateRight(vec1[0], 0);
     CHECK(ListNode::equal({1}, result));
 }
+
 TEST_CASE("0 [test _61]", "[test _61]") {
     const ListNodeLink vec1{1, 2};
     const ListNode *const result = leetcode_61::rotateRight(vec1[0], 2);
@@ -81,6 +83,7 @@ TEST_CASE("5 [test _61]", "[test _61]") {
     const ListNode *const result = leetcode_61::rotateRight(vec1[0], 4);
     CHECK(ListNode::equal({2, 3, 4, 5, 1}, result));
 }
+
 TEST_CASE("6 [test _61]", "[test _61]") {
     const ListNodeLink vec1{1, 2, 3, 4, 5};
     const ListNode *const result = leetcode_61::rotateRight(vec1[0], 1234);

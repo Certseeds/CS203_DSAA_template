@@ -35,6 +35,7 @@ SOFTWARE.
 std::string getFilePath() noexcept {
     return "./../../../../algorithm/2021F/lab_03/lab_03_B_data/";
 }
+
 const std::string CS203_redirect::file_paths = getFilePath();
 
 namespace lab_03_B {

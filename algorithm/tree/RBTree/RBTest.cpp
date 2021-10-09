@@ -37,14 +37,14 @@ SOFTWARE.
 #include "RBTree.hpp"
 
 namespace RED_BLACK_TREE {
-using std::cout,std::endl;
+using std::cout, std::endl;
 
 TEST_CASE("bulit node", "[RBNode]") {
     auto temp = RBTNode<int>(1);
 }
 
 TEST_CASE("bulit node pointer", "[RBNode]") {
-    const auto temp = std::make_unique<RBTNode<int32_t>>(1,nullptr,nullptr,nullptr, RBTColor::Black);
+    const auto temp = std::make_unique<RBTNode<int32_t>>(1, nullptr, nullptr, nullptr, RBTColor::Black);
 }
 
 TEST_CASE("bulit tree", "[RBTree]") {

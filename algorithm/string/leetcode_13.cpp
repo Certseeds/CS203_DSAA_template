@@ -26,12 +26,15 @@ SOFTWARE.
 #include "leetcode_13_test.hpp"
 
 namespace leetcode_13 {
-int32_t  leetcode_13::romanToInt(const string &s) {
-    constexpr const static array<array<const char* const, 9>,3> vas {{
-            {"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
-            {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
-            {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}
-    }};
+int32_t leetcode_13::romanToInt(const string &s) {
+    constexpr const static array<array<const char *const, 9>, 3> vas{{
+                                                                             {"C", "CC", "CCC", "CD", "D", "DC", "DCC",
+                                                                              "DCCC", "CM"},
+                                                                             {"X", "XX", "XXX", "XL", "L", "LX", "LXX",
+                                                                              "LXXX", "XC"},
+                                                                             {"I", "II", "III", "IV", "V", "VI", "VII",
+                                                                              "VIII", "IX"}
+                                                                     }};
     int32_t will_return{0};
     size_t begin{0};
     int32_t added{1000};
@@ -39,7 +42,7 @@ int32_t  leetcode_13::romanToInt(const string &s) {
         will_return += added;
         begin++;
     }
-    for (const auto &i  :vas) {
+    for (const auto &i: vas) {
         added /= 10;
         for (auto j{i.crbegin()}; j != i.crend(); j++) {
             const auto jsize{strlen(*j)};

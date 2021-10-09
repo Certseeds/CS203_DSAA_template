@@ -38,7 +38,7 @@ string leetcode_14::longestCommonPrefix(const vector<string> &strs) {
     will_return.reserve(10000);
     for (size_t i = 0; i < length; i++) {
         char judge = strs[0][i];
-        for (const auto &item : strs) {
+        for (const auto &item: strs) {
             if (item[i] != judge) {
                 return will_return;
             }

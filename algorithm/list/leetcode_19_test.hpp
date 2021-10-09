@@ -41,6 +41,7 @@ using Catch::Matchers::Contains;
 
 struct leetcode_19 {
     static ListNode *removeNthFromEnd(ListNode *head, int32_t n);
+
     static ListNode *removeNthFromEnd2(ListNode *head, int32_t n);
 };
 
@@ -63,6 +64,7 @@ TEST_CASE("test case 3 [test 19]", "[test 19]") {
     const auto *const result = leetcode_19::removeNthFromEnd(vec1[0], 5);
     CHECK(ListNode::equal({2, 3, 4, 5}, result));
 }
+
 TEST_CASE("test case 2-1 [test 19]", "[test 19]") {
     const ListNodeLink vec1{1, 2, 3, 4, 5};
     const auto *const result = leetcode_19::removeNthFromEnd2(vec1[0], 2);

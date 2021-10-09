@@ -33,7 +33,7 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_MAGIC_MACRO_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDES_MAGIC_MACRO_HPP
 
-#pragma GCC optimize(3,"Ofast","inline","no-stack-protector","unroll-loops")
+#pragma GCC optimize(3, "Ofast", "inline", "no-stack-protector", "unroll-loops")
 #pragma GCC optimize("-fgcse")
 #pragma GCC optimize("-fgcse-lm")
 #pragma GCC optimize("-fipa-sra")

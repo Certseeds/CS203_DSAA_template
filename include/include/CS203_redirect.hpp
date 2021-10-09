@@ -90,6 +90,7 @@ public:
 std::string getFilePath() noexcept {
     return "";
 }
+
 const std::string CS203_redirect::file_paths = getFilePath();
 #endif //CS203_DSAA_TEST_MACRO
 

@@ -39,7 +39,7 @@ vector<vector<int32_t>> leetcode_15::threeSum(vector<int32_t> &nums) {
         zero_nums += (i == 0);
     }
     size_t count{0};
-    for (const auto &key  :umap) {
+    for (const auto &key: umap) {
         nums[count] = key.first;
         count++;
     }
