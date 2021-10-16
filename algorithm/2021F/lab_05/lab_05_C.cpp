@@ -35,7 +35,7 @@ SOFTWARE.
 #pragma GCC optimize("-finline-small-functions")
 #pragma GCC target("mmx")
 #endif
-
+#include <array>
 #include <tuple>
 #include <stack>
 #include <limits>
@@ -88,7 +88,7 @@ inline input_type read() {
 
 namespace MAP {
 static const auto umap = [] {
-    static std::array<uint8_t, std::numeric_limits<uint8_t>::max()> arr;
+    static std::array<uint8_t, std::numeric_limits<uint8_t>::max() + 1> arr;
     arr['('] = ')';
     arr['['] = ']';
     arr['{'] = '}';
