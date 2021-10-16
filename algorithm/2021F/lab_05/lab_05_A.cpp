@@ -39,7 +39,7 @@ SOFTWARE.
  * 剩余的惧亡者将进行生体转化 直到 生体转化堆 为空 或者没有惧亡者能够进行生体转化
  * 此时星神将会结束生体转化.
  *
- * 输出生体转化结束时多少惧亡者 进行了 生体转化
+ * 输出生体转化结束时多少惧亡者 还没有进行生体转化
  *@输入
  * 第一行数字 α,代表时隙数量 [0,1000]
  * 之后是 α行操作
@@ -106,7 +106,7 @@ int32_t main() {
     for (size_t i{0}, op_hashed{0}, de_hashed{0}; i < alpha; ++i) {
         string operation, detail;
         std::cin >> operation;
-        op_hashed = {HASH::STD_HASH_STRING(operation)};
+        op_hashed = HASH::STD_HASH_STRING(operation);
         if (op_hashed == HASH::TAKE_FOOD && !way.empty()) {
             const auto way_top{way.top()}, comer_top{comer.front()};
             comer.pop();
@@ -118,7 +118,7 @@ int32_t main() {
             }
         } else {
             std::cin >> detail;
-            de_hashed = {HASH::STD_HASH_STRING(detail)};
+            de_hashed = HASH::STD_HASH_STRING(detail);
             if (op_hashed == HASH::NEW_COMER) {
                 comer.push(de_hashed);
                 will_return.first++;
