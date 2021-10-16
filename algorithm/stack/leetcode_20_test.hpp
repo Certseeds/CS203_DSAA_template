@@ -59,7 +59,7 @@ TEST_CASE("test case 0 [test 20]", "[test 20]") {
     CHECK_FALSE(leetcode_20::isValid("(((()[]{})[()[]{}]{()[]{}})[]{))[()[]{}]{()[]{}}"));
 }
 
-TEST_CASE("test case 2-2 [test 20]", "[test 20][.]") {
+TEST_CASE("test case 2-2 [test 20]", "[test 20]") {
     CHECK_FALSE(leetcode_20::isValid("([)]"));
 }
 

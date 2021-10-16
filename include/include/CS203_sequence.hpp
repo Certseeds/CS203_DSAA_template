@@ -43,7 +43,7 @@ using std::cout;
 using std::string;
 using std::vector;
 
-class CS203_sequence {
+class CS203_sequence final{
 private:
     std::string prefix_of_file_name{""};
     std::string postfix_of_testout{"test.out"};

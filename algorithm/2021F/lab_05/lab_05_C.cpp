@@ -88,7 +88,7 @@ inline input_type read() {
 
 namespace MAP {
 static const auto umap = [] {
-    static std::array<uint8_t, std::numeric_limits<uint8_t>::max() + 1> arr;
+    static std::array<uint8_t, std::numeric_limits<uint8_t>::max() + 1> arr{0};
     arr['('] = ')';
     arr['['] = ']';
     arr['{'] = '}';

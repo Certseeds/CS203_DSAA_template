@@ -41,7 +41,7 @@ using std::cin;
 using std::cout;
 using std::string;
 
-class CS203_redirect {
+class CS203_redirect final{
 private:
     std::streambuf *strmin_buf;
     std::streambuf *strmout_buf;

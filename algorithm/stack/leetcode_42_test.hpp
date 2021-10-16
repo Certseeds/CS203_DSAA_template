@@ -1,16 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,34 +23,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
+//@Tag stack
+//@Tag 栈
+//@Tag 单调栈
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP
 
-#include <iostream>
-#include <chrono>
+#include <catch_main.hpp>
+#include <stack>
 
-std::chrono::milliseconds get_ms() {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::system_clock::now().time_since_epoch());
-}
+namespace leetcode_42 {
+using std::stack;
 
-class CS203_timer final{
-private:
-    std::chrono::milliseconds ms{get_ms()};
-public:
-    CS203_timer() = default;
-
-    CS203_timer(const CS203_timer &timer) = delete;
-
-    CS203_timer(CS203_timer &&timer) = delete;
-
-    CS203_timer &operator=(const CS203_timer &timer) = delete;
-
-    CS203_timer &operator=(CS203_timer &&mat) = delete;
-
-    ~CS203_timer() {
-        std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
-    }
+struct leetcode_42 {
+    static int trap(const vector<int> &height);
 };
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
+
+TEST_CASE("test case 1 [test _42]", "[test _42]") {
+    const vector<int32_t> input{0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1};
+    CHECK(6 == leetcode_42::trap(input));
+}
+
+TEST_CASE("test case 2 [test _42]", "[test _42]") {
+    const vector<int32_t> input{4, 2, 0, 3, 2, 5};
+    CHECK(9 == leetcode_42::trap(input));
+}
+
+TEST_CASE("test case 3 [test _42]", "[test _42]") {
+    const vector<int32_t> input{0, 1, 0, 3, 1, 0, 1, 3, 2, 1, 2, 1};
+    CHECK(9 == leetcode_42::trap(input));
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP

@@ -40,7 +40,7 @@ struct ListNode {
     static bool equal(const std::initializer_list<int32_t> &nums, const ListNode *node);
 };
 
-class ListNodeLink {
+class ListNodeLink final{
 private:
     static constexpr const int32_t No_list = -100000;
 public:
