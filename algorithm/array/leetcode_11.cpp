@@ -30,8 +30,8 @@ namespace leetcode_11 {
 int leetcode_11::maxArea(const vector<int32_t> &height) {
     int32_t left{0},
             right = static_cast<int32_t>(height.size() - 1);
-    const auto water = [& height](const auto lhs,const auto rhs){
-        return (rhs - lhs)  * std::min(height[lhs], height[rhs]);
+    const auto water = [& height](const auto lhs, const auto rhs) {
+        return (rhs - lhs) * std::min(height[lhs], height[rhs]);
     };
     int32_t will_return = water(left, right);
     while (left < right) {

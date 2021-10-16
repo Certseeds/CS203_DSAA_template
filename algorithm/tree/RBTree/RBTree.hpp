@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
  * @Author: nanoseeds
  * @Date: 2020-08-06 22:41:41
  * @LastEditors: nanoseeds
@@ -39,21 +38,22 @@ SOFTWARE.
 #include <stack>
 #include <map>
 
-using std::cout;
-using std::endl;
+namespace RED_BLACK_TREE {
+using std::cout, std::endl;
 using std::stack;
 using std::initializer_list;
+using RED_BLACK_TREE_NODE::RBTNode, RED_BLACK_TREE_NODE::RBTColor;
 
 template<typename T>
 class RBTree {
 public:
     using Node_t = RBTNode<T>;
 private:
-    inline bool check_law2() {
+    inline bool check_law2() const {
         return nullptr == this->root || this->root->isBlack();
     }
 
-    inline bool check_law4() {
+    inline bool check_law4() const {
         if (this->root == nullptr) {
             return true;
         }
@@ -63,10 +63,10 @@ private:
             const auto node = sta.top();
             sta.pop();
             if (node->isRed()) {
-                if (node->left != nullptr && node->left->isRed()) {
-                    return false;
-                }
-                if (node->right != nullptr && node->right->isRed()) {
+                static const auto judge_func = [](Node_t *const n) {
+                    return n != nullptr && n->isRed();
+                };
+                if (judge_func(node->left) || judge_func(node->right)) {
                     return false;
                 }
             }
@@ -236,11 +236,11 @@ public:
 
 template<typename T>
 void RBTree<T>::insert(T key) {
-    auto *const node = new Node_t(key, RBTColor::Red, nullptr, nullptr, nullptr);
+    auto *const node = new Node_t(key, nullptr, nullptr, nullptr);
     Node_t *temp = root;
     while (temp != nullptr) {
-        int32_t comp_val_one = this->comp(temp->key, key);
-        int32_t comp_val_two = this->comp(key, temp->key);
+        int32_t comp_val_one = this->comp(temp->val, key);
+        int32_t comp_val_two = this->comp(key, temp->val);
         if (comp_val_two) {
             if (temp->left == nullptr) {
                 temp->set_left(node);
@@ -388,8 +388,8 @@ template<typename T>
 void RBTree<T>::remove(T key) {
     Node_t *temp = root;
     while (temp != nullptr) {
-        int32_t comp_val_one = this->comp(temp->key, key);
-        int32_t comp_val_two = this->comp(key, temp->key);
+        int32_t comp_val_one = this->comp(temp->val, key);
+        int32_t comp_val_two = this->comp(key, temp->val);
         if (comp_val_two) {
             if (temp->left == nullptr) {
                 goto unfind;
@@ -409,7 +409,7 @@ void RBTree<T>::remove(T key) {
             while (right_min->left != nullptr) {
                 right_min = right_min->left;
             }
-            std::swap(temp->key, right_min->key);
+            std::swap(temp->val, right_min->val);
             removeNode(right_min);
             goto find;
         }
@@ -570,7 +570,7 @@ static const auto print = [](auto p) {
     const auto *node = p.second;
     std::cout << std::string(distance, ' ');
     std::cout << (node->isRed() ? 'R' : 'B') << ':';
-    std::cout << node->key << '\n';
+    std::cout << node->val << '\n';
 };
 
 static constexpr const int32_t plusNumber = 2;
@@ -605,12 +605,12 @@ template<typename T>
 bool RBTree<T>::find(T key) const {
     Node_t *temp = root;
     while (temp != nullptr) {
-        if (temp->key > key) {
+        if (temp->val > key) {
             if (temp->left == nullptr) {
                 return false;
             }
             temp = temp->left;
-        } else if (temp->key < key) {
+        } else if (temp->val < key) {
             if (temp->right == nullptr) {
                 return false;
             }
@@ -620,5 +620,5 @@ bool RBTree<T>::find(T key) const {
         }
     }
 }
-
+}
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTREE_HPP

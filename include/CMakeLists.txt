@@ -4,6 +4,8 @@ project(${PROJECT_NAME}_INCLUDE LANGUAGES CXX)
 add_library(${PROJECT_NAME} INTERFACE)
 
 set(dependencies include)
+LIST(APPEND dependencies pch11)
+LIST(APPEND dependencies pch17)
 LIST(APPEND dependencies list)
 LIST(APPEND dependencies tree)
 LIST(APPEND dependencies magic_macro)
@@ -22,9 +24,9 @@ if (MULTIPLY_TIMES)
     # 倘若只编译一次,或更看重存储空间占用而非编译速度,可以改成OFF
     MESSAGE(STATUS "MULTIPLY_TIMES is ON")
     target_precompile_headers(${PROJECT_NAME}_MULTIPLY INTERFACE
-                              #${CMAKE_CURRENT_SOURCE_DIR}/include/catch_amalgamated.hpp
                               ${CMAKE_CURRENT_SOURCE_DIR}/catch_main.hpp
                               )
 else ()
     MESSAGE(STATUS "MULTIPLY_TIMES is OFF")
+    target_precompile_headers(${PROJECT_NAME}_MULTIPLY INTERFACE <cstdint>) # 总得include点东西
 endif ()

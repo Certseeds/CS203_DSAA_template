@@ -1,10 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2021-09-11 15:27:10
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -43,6 +36,8 @@ std::string getFilePath() noexcept {
     return "./../../../../algorithm/2021F/lab_welcome/lab_welcome_A_data/";
     // 和A用一套测试数据
 }
+
+const std::string CS203_redirect::file_paths = getFilePath();
 
 namespace lab_welcome_B {
 

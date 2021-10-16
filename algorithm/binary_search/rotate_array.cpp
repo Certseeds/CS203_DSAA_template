@@ -59,8 +59,8 @@ void rorate_array_min(vector<num_t> &nums, num_t k) {
     if (0 == k) {
         return;
     }
-    k = k % nums.size();
-    const auto nums_size = nums.size();
+    const auto nums_size = static_cast<num_t>(nums.size());
+    k = k % nums_size;
     reserve(nums, 0, nums_size - 1);
     reserve(nums, 0, k - 1);
     reserve(nums, k, nums_size - 1);
@@ -70,7 +70,8 @@ void brute_force(vector<num_t> &nums, num_t k) {
     if (0 == k) {
         return;
     }
-    k = k % nums.size();
+    const auto nums_size = static_cast<num_t>(nums.size());
+    k = k % nums_size;
     vector<num_t> backend(k, 0);
     for (auto i = 0; i < k; i++) {
         backend[k - i - 1] = nums.back();
@@ -95,8 +96,8 @@ TEST_CASE("test case `for`", "[test binary search - rotate_array_min]") {
     for (auto &vec: vec_list) {
         for (auto i = 0u; i < vec.size() * 2 + 1; i++) {
             vector<num_t> vec_2{vec};
-            brute_force(vec, i);
-            rorate_array_min(vec_2, i);
+            brute_force(vec, static_cast<num_t>(i));
+            rorate_array_min(vec_2, static_cast<num_t>(i));
             CHECK_THAT(vec, Equals(vec_2));
         }
     }

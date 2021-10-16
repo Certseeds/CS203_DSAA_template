@@ -1,10 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-17 22:57:42
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -39,9 +32,9 @@ SOFTWARE.
 #include <iostream>
 #include "lab_00_B.cpp"
 
-std::string getFilePath() noexcept {
-    return "./../../lab_00/lab_00_B_data/";
-}
+std::string getFilePath() noexcept { return "./../../lab_00/lab_00_B_data/"; }
+
+const std::string CS203_redirect::file_paths = getFilePath();
 
 namespace lab_00_B {
 using std::tie;

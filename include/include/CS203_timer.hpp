@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
  * @Author: nanoseeds
  * @Date: 2020-07-15 21:42:36
  * @LastEditors: nanoseeds
@@ -42,7 +41,7 @@ std::chrono::milliseconds get_ms() {
             std::chrono::system_clock::now().time_since_epoch());
 }
 
-class CS203_timer {
+class CS203_timer final{
 private:
     std::chrono::milliseconds ms{get_ms()};
 public:

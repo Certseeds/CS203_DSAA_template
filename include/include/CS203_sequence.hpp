@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
  * @Author: nanoseeds
  * @Date: 2020/9/19 21:42:36
  * @LastEditors: nanoseeds
@@ -44,7 +43,7 @@ using std::cout;
 using std::string;
 using std::vector;
 
-class CS203_sequence {
+class CS203_sequence final{
 private:
     std::string prefix_of_file_name{""};
     std::string postfix_of_testout{"test.out"};

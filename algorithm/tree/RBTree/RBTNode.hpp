@@ -1,11 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
- * @Author: nanoseeds
- * @Date: 2020-08-06 22:40:40
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
@@ -33,33 +25,37 @@ SOFTWARE.
 */
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP
+
+#include <TreeNodeTemp.hpp>
+
+namespace RED_BLACK_TREE_NODE {
+using TREE_NODE_TEMP::TreeNodeTemp;
 enum class RBTColor : bool {
     Black = false,
     Red = true
 };
 
 template<typename T>
-class RBTNode {
+class RBTNode : public TreeNodeTemp<T, RBTNode> {
+private:
+    using base = TreeNodeTemp<T, RBTNode>;
 public:
-    T key;
-    RBTColor color{RBTColor::Black};
     RBTNode *parent{nullptr};
-    RBTNode *left{nullptr};
-    RBTNode *right{nullptr};
+    RBTColor color{RBTColor::Black};
 
-    constexpr RBTNode(T value, RBTColor c, RBTNode *p = nullptr, RBTNode *l = nullptr, RBTNode *r = nullptr) :
-            key(value), color(c), parent(p), left(l), right(r) {}
+    constexpr explicit RBTNode(T value, RBTNode *l = nullptr, RBTNode *r = nullptr, RBTNode *p = nullptr,
+                               RBTColor c = RBTColor::Red) : base(value, l, r), parent(p), color(c) {}
 
-    ~RBTNode() = default;
+    ~RBTNode() override = default;
 
-    inline RBTNode *get_grandparent() {
+    inline RBTNode *get_grandparent() const {
         if (this->parent == nullptr) {
             return nullptr;
         }
         return this->parent->parent;
     }
 
-    inline RBTNode *get_uncle() {
+    inline RBTNode *get_uncle() const {
         RBTNode *const grand_parent = this->get_grandparent();
         if (nullptr == grand_parent) {
             return nullptr;
@@ -70,7 +66,7 @@ public:
         return grand_parent->left;
     }
 
-    inline RBTNode *get_brother() {
+    inline RBTNode *get_brother() const {
         RBTNode *const p_node = this->parent;
         if (nullptr == p_node) {
             return nullptr;
@@ -81,7 +77,7 @@ public:
         return p_node->left;
     }
 
-    inline void isLeaf() {
+    inline void isLeaf() const {
         return this->left == nullptr && this->right == nullptr;
     }
 
@@ -118,7 +114,7 @@ public:
     }
 
     bool operator==(const T &v) const {
-        return this->key == v;
+        return this->val == v;
     }
 
     friend bool operator==(const T &v, const RBTNode<T> &rbtNode) {
@@ -127,11 +123,11 @@ public:
 
     bool operator==(const std::tuple<T, T, T> &v) const {
         const auto&[key, left, right] = v;
-        return key == this->key &&
+        return key == this->val &&
                this->left != nullptr && left == *this->left &&
                this->right != nullptr && right == *this->right;
     }
 
 };
-
+}
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP

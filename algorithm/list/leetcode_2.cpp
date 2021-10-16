@@ -26,11 +26,11 @@ SOFTWARE.
 #include "leetcode_2_test.hpp"
 
 namespace leetcode_2 {
-int get_depth(ListNode *node) {
+int32_t get_depth(ListNode *node) {
     if (node == nullptr) {
         return 0;
     }
-    int will_return = 0;
+    int32_t will_return = 0;
     while (node != nullptr) {
         will_return++;
         node = node->next;

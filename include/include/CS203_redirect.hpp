@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
  * @Author: nanoseeds
  * @Date: 2020-07-24 01:56:19
  * @LastEditors: nanoseeds
@@ -38,13 +37,11 @@ SOFTWARE.
 #include <iostream>
 #include <string>
 
-std::string getFilePath() noexcept;
-
 using std::cin;
 using std::cout;
 using std::string;
 
-class CS203_redirect {
+class CS203_redirect final{
 private:
     std::streambuf *strmin_buf;
     std::streambuf *strmout_buf;
@@ -83,7 +80,6 @@ public:
     }
 };
 
-const std::string CS203_redirect::file_paths = getFilePath();
 
 #ifndef CS203_DSAA_TEST_MACRO
 
@@ -95,6 +91,7 @@ std::string getFilePath() noexcept {
     return "";
 }
 
+const std::string CS203_redirect::file_paths = getFilePath();
 #endif //CS203_DSAA_TEST_MACRO
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H

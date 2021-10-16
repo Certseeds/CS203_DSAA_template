@@ -1,6 +1,5 @@
 /*
  * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
  * @Author: nanoseeds
  * @Date: 2020-07-15 21:44:06
  * @LastEditors: nanoseeds
@@ -36,11 +35,11 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_INCLUDES_PUBLIC_HPP
 
 #include <string>
+#include <cstdint>
 #include <fstream>
 #include <iostream>
 #include <fstream>
 #include <iterator>
-#include <string>
 #include <algorithm>
 #include "CS203_helper.hpp"
 #include "CS203_timer.hpp"

@@ -49,9 +49,8 @@ using num_t = int32_t;
 // 此函数目的在于寻找其中间的最大值,[first,last]
 num_t triple_search(vector<num_t> &nums, num_t first, num_t last) {
     while (first < last - 1) {
-        num_t middle = (last - first) / 2 + first;
-        num_t right_middle = (last - middle) / 2 + middle;
-        if (nums[middle] > nums[right_middle]) {
+        if (num_t middle{(last - first) / 2 + first}, right_middle{(last - middle) / 2 + middle};
+                nums[middle] > nums[right_middle]) {
             last = right_middle - 1;
         } else if (nums[middle] < nums[right_middle]) {
             first = middle + 1;

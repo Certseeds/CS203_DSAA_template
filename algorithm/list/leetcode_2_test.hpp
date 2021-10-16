@@ -43,10 +43,11 @@ struct leetcode_2 {
     static ListNode *addTwoNumbers(ListNode *l1, ListNode *l2);
 };
 
+using LISTNODE::ListNodeLink;
 
 TEST_CASE("basic tests [test 2]", "[test 2]") {
-    vector<ListNode *> vec1 = ListNode::numToList(vector<int>{2, 4, 3});
-    vector<ListNode *> vec2 = ListNode::numToList(vector<int>{5, 6, 4});
+    const ListNodeLink vec1{2, 4, 3};
+    const ListNodeLink vec2{5, 6, 4};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);
     CHECK(result != nullptr);
     CHECK(result->val == 7);
@@ -56,40 +57,23 @@ TEST_CASE("basic tests [test 2]", "[test 2]") {
     CHECK(result->next->next->val == 8);
     CHECK(result->next->next->next == nullptr);
     CHECK(ListNode::equal({7, 0, 8}, result));
-    for (auto &i: vec1) {
-        delete i;
-    }
-    for (auto &i: vec2) {
-        delete i;
-    }
 }
 
 TEST_CASE("basic tests 2 [test 2]", "[test 2]") {
-    vector<ListNode *> vec1 = ListNode::numToList(vector<int>{0});
-    vector<ListNode *> vec2 = ListNode::numToList(vector<int>{0});
+
+    const ListNodeLink vec1{0};
+    const ListNodeLink vec2{0};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);
     CHECK(result != nullptr);
     CHECK(result->val == 0);
     CHECK(ListNode::equal({0}, result));
-    for (auto &i: vec1) {
-        delete i;
-    }
-    for (auto &i: vec2) {
-        delete i;
-    }
 }
 
 TEST_CASE("basic tests 3 [test 2]", "[test 2]") {
-    vector<ListNode *> vec1 = ListNode::numToList(vector<int>{9, 9, 9, 9, 9, 9, 9});
-    vector<ListNode *> vec2 = ListNode::numToList(vector<int>{9, 9, 9, 9});
+    const ListNodeLink vec1{9, 9, 9, 9, 9, 9, 9};
+    const ListNodeLink vec2{9, 9, 9, 9};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);
     CHECK(ListNode::equal({8, 9, 9, 9, 0, 0, 0, 1}, result));
-    for (auto &i: vec1) {
-        delete i;
-    }
-    for (auto &i: vec2) {
-        delete i;
-    }
 }
 
 

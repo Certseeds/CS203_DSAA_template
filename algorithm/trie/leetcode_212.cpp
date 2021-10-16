@@ -80,11 +80,11 @@ SOFTWARE.
 #endif
 
 namespace leetcode_212 {
-class leetcode_208_Trie {
+class leetcode_208_Trie final{
 private:
     static constexpr const size_t array_size{26};
 
-    class Node {
+    class Node final{
     public:
         uint8_t isfinish;
         std::array<Node *, array_size> sons{nullptr};

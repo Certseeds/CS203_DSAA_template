@@ -36,9 +36,8 @@ SOFTWARE.
 '''
 
 import os
-from typing import List
-
 import time
+from typing import List
 
 main_code_template: str
 test_code_template: str

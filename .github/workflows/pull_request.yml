@@ -40,6 +40,18 @@ jobs:
         run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=0
 
       - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/lab_00
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/2021F
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH
         run: cmake --build . --config DEBUG --parallel
 
@@ -67,9 +79,20 @@ jobs:
         run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=0
 
       - name: cmake compile
-        working-directory: ./CMAKE_DEBUG_PATH
+        working-directory: ./CMAKE_DEBUG_PATH/lab_00
         run: cmake --build . --config DEBUG --parallel
 
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/2021F
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake --build . --config DEBUG --parallel
   # This workflow contains a single job called "build"
   build:
     name: test for the release script

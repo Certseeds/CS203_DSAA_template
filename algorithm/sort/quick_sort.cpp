@@ -66,7 +66,7 @@ inline int get_rand(int left, int right) {
 }
 
 int partition(vector<int> &nums, int left, int right, int pivotIndex) {
-    int pivotValue = nums[pivotIndex];
+    const int pivotValue = nums[pivotIndex];
     std::swap(nums[pivotIndex], nums[right]); // 把pivot移到結尾
     int storeIndex = left;
     for (int i = left; i < right; i++) {

@@ -19,8 +19,7 @@ using num_t = int32_t;
 // nums升序,寻找[first,last)内,第一个不小于value的值（x>=value的第一个)
 num_t lower_bound(vector<num_t> &nums, num_t first, num_t last, num_t value) {
     while (first < last) {
-        num_t middle = first + (last - first) / 2;
-        if (nums[middle] < value) {
+        if (num_t middle = first + (last - first) / 2;nums[middle] < value) {
             first = middle + 1;
         } else if (nums[middle] >= value) {
             last = middle;
@@ -50,8 +49,7 @@ TEST_CASE("lower_bound", "[test basic binary search]") {
 // 任意!
 num_t any_equal(vector<num_t> &nums, num_t first, num_t last, num_t value) {
     while (first < last) {
-        num_t middle = first + (last - first) / 2;
-        if (nums[middle] == value) {
+        if (num_t middle = first + (last - first) / 2;nums[middle] == value) {
             return middle;
         } else if (nums[middle] < value) {
             first = middle + 1;
@@ -77,7 +75,7 @@ TEST_CASE("any_equal", "[test basic binary search]") {
         num_t left{0};
         num_t right{0};
         tie(input, left, right) = i;
-        num_t result = any_equal(vec, 0, vec.size(), input);
+        num_t result = any_equal(vec, 0, static_cast<num_t>(vec.size()), input);
         CHECK(result >= left);
         CHECK(result < right);
     }
@@ -86,8 +84,7 @@ TEST_CASE("any_equal", "[test basic binary search]") {
 // nums升序,寻找[first,last)内,第一个大于value的值（x>value的第一个)
 num_t upper_bound(vector<num_t> &nums, num_t first, num_t last, num_t value) {
     while (first < last) {
-        num_t middle = first + (last - first) / 2;
-        if (!(nums[middle] > value)) {
+        if (num_t middle = first + (last - first) / 2;nums[middle] <= value) {
             first = middle + 1;
         } else if (nums[middle] > value) {
             last = middle;

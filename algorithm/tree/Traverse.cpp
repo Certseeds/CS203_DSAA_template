@@ -40,16 +40,16 @@ SOFTWARE.
 
 #include "TreeNode.hpp"
 
+using TREE_NODE::TreeNode;
 using Catch::Matchers::Equals;
 using std::cout;
 using std::stack;
 using std::vector;
-using action = const std::function<void(const TreeNode *)> &;
-static constexpr char end{'\n'};
-static constexpr char space{' '};
+using action = const std::function<void(const TreeNode<int32_t> *)> &;
+static constexpr char end{'\n'}, space{' '};
 
 //auto func1 = [](const TreeNode* tn) -> void { cout << tn->val << space; };
-void pre_rec(const TreeNode *root, action func) {
+void pre_rec(const TreeNode<int32_t> *root, action func) {
     if (root == nullptr) {
         return;
     }
@@ -58,14 +58,14 @@ void pre_rec(const TreeNode *root, action func) {
     pre_rec(root->right, func);
 }
 
-void pre_iter1(const TreeNode *root, action func) {
+void pre_iter1(const TreeNode<int32_t> *root, action func) {
     if (root == nullptr) {
         return;
     }
-    stack<const TreeNode *> sta;
+    stack<const TreeNode<int32_t> *> sta;
     sta.push(root);
     while (!sta.empty()) {
-        const TreeNode *head = sta.top();
+        const TreeNode<int32_t> *head = sta.top();
         sta.pop();
         func(head);
         if (head->right != nullptr) {
@@ -77,12 +77,12 @@ void pre_iter1(const TreeNode *root, action func) {
     }
 }
 
-void pre_iter2(TreeNode *root, action func) {
+void pre_iter2(TreeNode<int32_t> *root, action func) {
     if (root == nullptr) {
         return;
     }
-    stack<TreeNode *> sta;
-    TreeNode *head = root;
+    stack<TreeNode<int32_t> *> sta;
+    TreeNode<int32_t> *head = root;
     while (head != nullptr || !sta.empty()) {
         while (head != nullptr) {
             func(head);
@@ -94,16 +94,16 @@ void pre_iter2(TreeNode *root, action func) {
     }
 }
 
-void pre_iter3(TreeNode *root, action func) {
+void pre_iter3(TreeNode<int32_t> *root, action func) {
     //作者：sonp
     //链接：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/mo-fang-di-gui-zhi-bian-yi-xing-by-sonp/
     if (root == nullptr) {
         return;
     }
-    stack<TreeNode *> sta;
+    stack<TreeNode<int32_t> *> sta;
     sta.push(root);
     while (!sta.empty()) {
-        TreeNode *head = sta.top();
+        TreeNode<int32_t> *head = sta.top();
         sta.pop();
         if (head != nullptr) {
             if (head->right != nullptr) {
@@ -121,7 +121,7 @@ void pre_iter3(TreeNode *root, action func) {
     }
 }
 
-void in_rec(const TreeNode *root, action func) {
+void in_rec(const TreeNode<int32_t> *root, action func) {
     if (root == nullptr) {
         return;
     }
@@ -130,12 +130,12 @@ void in_rec(const TreeNode *root, action func) {
     in_rec(root->right, func);
 }
 
-void in_iter(TreeNode *root, action func) {
+void in_iter(TreeNode<int32_t> *root, action func) {
     if (root == nullptr) {
         return;
     }
-    stack<TreeNode *> sta;
-    TreeNode *head = root;
+    stack<TreeNode<int32_t> *> sta;
+    TreeNode<int32_t> *head = root;
     while (head != nullptr || !sta.empty()) {
         while (head != nullptr) {
             sta.push(head);
@@ -148,16 +148,16 @@ void in_iter(TreeNode *root, action func) {
     }
 }
 
-void in_iter2(TreeNode *root, action func) {
+void in_iter2(TreeNode<int32_t> *root, action func) {
     //作者：sonp
     //链接：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/mo-fang-di-gui-zhi-bian-yi-xing-by-sonp/
     if (root == nullptr) {
         return;
     }
-    stack<TreeNode *> sta;
+    stack<TreeNode<int32_t> *> sta;
     sta.push(root);
     while (!sta.empty()) {
-        TreeNode *head = sta.top();
+        TreeNode<int32_t> *head = sta.top();
         sta.pop();
         if (head != nullptr) {
             if (head->right != nullptr) {
@@ -175,7 +175,7 @@ void in_iter2(TreeNode *root, action func) {
     }
 }
 
-void post_rec(const TreeNode *root, action func) {
+void post_rec(const TreeNode<int32_t> *root, action func) {
     if (root == nullptr) {
         return;
     }
@@ -184,16 +184,16 @@ void post_rec(const TreeNode *root, action func) {
     func(root);
 }
 
-void post_iter(TreeNode *root, action func) {
+void post_iter(TreeNode<int32_t> *root, action func) {
     //作者：sonp
     //链接：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/mo-fang-di-gui-zhi-bian-yi-xing-by-sonp/
     if (root == nullptr) {
         return;
     }
-    stack<TreeNode *> sta;
+    stack<TreeNode<int32_t> *> sta;
     sta.push(root);
     while (!sta.empty()) {
-        TreeNode *head = sta.top();
+        TreeNode<int32_t> *head = sta.top();
         sta.pop();
         if (head != nullptr) {
             sta.push(head);
@@ -217,11 +217,11 @@ TEST_CASE("traverse basic", "[tree traverse]") {
     static int32_t count = 0;
     vector<int32_t> vec(tree_nodes);
     std::iota(vec.begin(), vec.end(), 0);
-    vector<TreeNode *> numvec = TreeNode::numToTree(vec);
-    TreeNode *head = numvec[0];
+    vector<TreeNode<int32_t> *> numvec = TREE_NODE::numToTree<int32_t>(vec);
+    TreeNode<int32_t> *head = numvec[0];
     static vector<int32_t> last(tree_nodes);
     vector<int32_t> res;
-    auto func2 = [&res](const TreeNode *tn) -> void { res.push_back(tn->val); };
+    auto func2 = [&res](const TreeNode<int32_t> *tn) -> void { res.push_back(tn->val); };
     SECTION("pre_rec") {
         count++;
         pre_rec(head, func2);
@@ -256,7 +256,7 @@ TEST_CASE("traverse basic", "[tree traverse]") {
     }
     std::copy(std::begin(res), std::end(res), std::begin(last));
     std::copy(std::begin(res), std::end(res), std::ostream_iterator<int>{std::cout, " "});
-    std::for_each(std::begin(numvec), std::end(numvec), [](TreeNode *node) { delete node; });
+    std::for_each(std::begin(numvec), std::end(numvec), [](TreeNode<int32_t> *node) { delete node; });
     cout << name[count] << end;
     res.clear();
 }
