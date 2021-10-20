@@ -18,6 +18,9 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-18.04, ubuntu-latest ]
+        gcc_v: [11] # Version of G++,GCC
+    env:
+      GCC_V: ${{ matrix.gcc_v }}
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -28,6 +31,17 @@ jobs:
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt install tree; tree
+
+      - name: Install GCC-11,G++-11
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V}
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
+
+      - name: prepare libopencv
+        run: |
+          sudo apt update && sudo apt install libopencv-dev
 
       - name: Use cmake
         run: cmake --version
@@ -49,9 +63,9 @@ jobs:
 
       - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH/algorithm/
-        run: cmake --build . --config DEBUG --parallel
+        run: cmake --build .
+      - name: cmake compile --config DEBUG --parallel
 
-      - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH
         run: cmake --build . --config DEBUG --parallel
 
