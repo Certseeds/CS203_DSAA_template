@@ -1,5 +1,5 @@
-/*  CS205_C_CPP
-    Copyright (C) 2020  nanoseeds
+/*  CS203_DSAA_template
+    Copyright (C) 2020-2021 nanoseeds Wjia wuyuhao
 
     CS205_C_CPP is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -14,19 +14,13 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
-/**
- * @Github: https://github.com/Certseeds/CS205_C_CPP
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-05-07 11:30:27
- * @LastEditors  : nanoseeds
- */
+#include <catch_main.hpp>
+
 #include <complex>
 #include <iostream>
 #include <random>
 #include <vector>
 #include <cstdint>
-#include "catch_main.hpp"
 #include "./matrix.hpp"
 
 using namespace Mat_pro;
@@ -170,18 +164,18 @@ TEST_CASE("no vectors negative", "[test 1]") {
     Matrix<double> m4(0, -1);
     Matrix<float> m5(-1, -1);
     Matrix<int_least32_t> m6(-2, 9);
-    CHECK(m1.rows() >= 0);
-    CHECK(m1.cols() >= 0);
-    CHECK(m2.rows() >= 0);
-    CHECK(m2.cols() >= 0);
-    CHECK(m3.rows() >= 0);
-    CHECK(m3.cols() >= 0);
-    CHECK(m4.rows() >= 0);
-    CHECK(m4.cols() >= 0);
-    CHECK(m5.rows() >= 0);
-    CHECK(m5.cols() >= 0);
-    CHECK(m6.rows() >= 0);
-    CHECK(m6.cols() >= 0);
+    CHECK(m1.rows() == 5);
+    CHECK(m1.cols() == 2);
+    CHECK(m2.rows() == 4);
+    CHECK(m2.cols() == 6);
+    CHECK(m3.rows() == 1);
+    CHECK(m3.cols() == 4);
+    CHECK(m4.rows() == 0);
+    CHECK(m4.cols() == 0);
+    CHECK(m5.rows() == 0);
+    CHECK(m5.cols() == 0);
+    CHECK(m6.rows() == 0);
+    CHECK(m6.cols() == 0);
 }
 
 TEST_CASE("zeros and ones", "[test 2]") {
@@ -722,7 +716,7 @@ TEST_CASE("sum & avg", "[test 1]") {
     cout << "average of row1: " << mc1.row_avg(1) << endl;
     cout << "sum of column1: " << mc1.col_sum(1) << endl;
     cout << "average of column1: " << mc1.col_avg(1) << endl;
-    const auto m11 = m10 * std::complex<double_t>(3.5, 4.5);
+    const Matrix<std::complex<double_t>> m11 = m10 * std::complex<double_t>(3.5, 4.5);
     cout << m11;
     cout << "sum: " << m11.sum() << endl;
     cout << "average: " << m11.avg() << endl;
@@ -995,8 +989,8 @@ TEST_CASE("inverse", "[test 5]") {
     Matrix<double> m7{2};
     auto temp4 = m7.inverse();
     Matrix<double> m8{0.5};
-    CHECK(Matrix<double>::inside_equal(m1.inverse(), m2));
-    CHECK(Matrix<double>::inside_equal(m3.inverse(), m4));
+    CHECK(Matrix<double>::inside_equal(temp, m2));
+    CHECK(Matrix<double>::inside_equal(temp2, m4));
     CHECK(Matrix<double>::inside_equal(m5.inverse(), m6));
     CHECK(Matrix<double>::inside_equal(m7.inverse(), m8));
 }

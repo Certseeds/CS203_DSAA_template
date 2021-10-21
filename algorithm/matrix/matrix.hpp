@@ -1,5 +1,5 @@
-/*  CS205_C_CPP
-    Copyright (C) 2020  nanoseeds
+/*  CS203_DSAA_template
+    Copyright (C) 2020-2021 nanoseeds Wjia wuyuhao
 
     CS205_C_CPP is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -14,15 +14,9 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
-/**
- * @Github: https://github.com/Certseeds/CS205_C_CPP
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-05-07 15:46:11
- * @LastEditors  : nanoseeds
- */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_2_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_2_HPP
+
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_HPP
 
 #include <algorithm>
 #include <complex>
@@ -31,113 +25,12 @@
 #include <limits>
 #include <numeric>
 #include <utility>
-#include <valarray>
 #include <vector>
 #include <cmath>
+#include "expression_template.hpp"
 #include "template_helper.hpp"
 
-namespace OPERATOR {
-template<typename T>
-struct Binary {
-    const T &cast() const { return static_cast<const T &>(*this); }
-};
 
-struct Add : Binary<Add> {
-    template<typename T1>
-    static T1 Op(T1 a, T1 b) {
-        return a + b;
-    }
-};
-
-struct Minus : Binary<Minus> {
-    template<typename T1>
-    static T1 Op(T1 a, T1 b) {
-        return a - b;
-    }
-};
-
-// define Minimum
-struct Minimum : Binary<Minimum> {
-    template<typename T1>
-    static T1 Op(T1 a, T1 b) {
-        return a < b ? a : b;
-    }
-};
-}
-
-namespace EXPRESSION {
-using OPERATOR::Add;
-using OPERATOR::Minus;
-using OPERATOR::Binary;
-using OPERATOR::Minimum;
-// this is expression, all expressions must inherit it
-
-template<typename T>
-struct Expression {
-
-    // returns const reference of the actual type of this expression
-    const T &cast() const { return static_cast<const T &>(*this); }
-
-    size_t rows() const { return cast().rows(); }// get Expression size
-    size_t cols() const { return cast().cols(); }// get Expression size
-// template binary operation, works for any expressions
-
-
-
-private:
-    Expression &operator=(const Expression &) = default;
-
-    Expression() = default;
-
-    Expression(Expression &&node) = default;
-
-    Expression &operator=(Expression &&node) = default;
-
-    friend T;
-};
-
-
-// binary expression: (binary op,lhs, rhs)
-// Func can easily allows user customized theirs binary operators
-template<typename Func, typename TLhs, typename TRhs>
-struct BinaryOp : public Expression<BinaryOp<Func, TLhs, TRhs> > {
-    BinaryOp(const TLhs &lhs, const TRhs &rhs) : lhs_(lhs.cast()), rhs_(rhs.cast()) {}
-
-    // work function, computing this expression at position i, import for lazy computing
-
-    auto value(size_t i, size_t j) const {
-        return Func::Op(lhs_.value(i, j), rhs_.value(i, j));
-    }
-
-    size_t rows() const { return std::min(static_cast<size_t>(lhs_.rows()), static_cast<size_t>(rhs_.rows())); }
-
-    size_t cols() const { return std::min(static_cast<size_t>(lhs_.cols()), static_cast<size_t>(rhs_.cols())); }
-
-private:
-    const TLhs &lhs_;
-    const TRhs &rhs_;
-};
-
-template<typename Func, typename TLhs, typename TRhs>
-requires(std::is_base_of<Binary<Func>, Func>::value)
-static inline BinaryOp<Func, TLhs, TRhs> expToBinaryOp(const Expression<TLhs> &lhs, const Expression<TRhs> &rhs) {
-    static_assert(std::is_base_of<Binary<Func>, Func>::value);
-    return BinaryOp<Func, TLhs, TRhs>(lhs.cast(), rhs.cast());
-}
-
-namespace UnOperatorBinary {
-template<typename TLhs, typename TRhs>
-inline BinaryOp<Minimum, TLhs, TRhs>
-min(const Expression<TLhs> &lhs, const Expression<TRhs> &rhs) {
-    return expToBinaryOp<Minimum>(lhs, rhs);
-}
-}
-using UnOperatorBinary::min;
-
-// allocation just by user
-// no constructor and destructor to allocate and de-allocate memory
-
-}
 #ifdef  _HAVE_OPENCV_
 
 #include <opencv2/opencv.hpp>
@@ -158,12 +51,9 @@ enum class CV_TYPE : int32_t {
 };
 #endif
 
-using std::endl;
-using std::valarray;
-using std::vector;
-using std::pow;
+using std::endl, std::pow, std::vector;
 
-static constexpr const double_t eps = 0.000001;
+static constexpr const double_t eps{0.000001};
 
 struct Matrix_Shape_Not_Match_Exception : public std::exception {
     char will_return[300] = "\0";
@@ -184,6 +74,8 @@ struct Matrix_Shape_Not_Match_Exception : public std::exception {
 /** @related: get from https://blog.csdn.net/qq_31175231/article/details/77479692
  */
 using EXPRESSION::Expression;
+using OPERATOR::Add, OPERATOR::Minus, OPERATOR::Minimum, OPERATOR::Maximum;
+using EXPRESSION::UnOperatorBinary::min, EXPRESSION::UnOperatorBinary::max;
 
 template<typename T>
 class Matrix : public Expression<Matrix<T>> {
@@ -191,7 +83,6 @@ private:
     vector<vector<T>> vec;
 public:
 
-    //explicit Matrix() { this->vec = vector<vector<T>>(1, vector<T>(1)); };
     explicit Matrix() : Matrix(0, 0) {};
 
     explicit Matrix(int32_t rows, int32_t cols);
@@ -199,19 +90,19 @@ public:
     // 拷贝构造函数 Copy Constructor
     Matrix(const Matrix<T> &mat) {
         this->operator=<Matrix<T>>(mat);
-        // this->vec = vector<vector<T>>(mat.vec);
     }
 
+    Matrix<T> &operator=(const Matrix<T> &mat) {
+        this->operator=<Matrix<T>>(mat);
+        return *this;
+    }
+
+    // 拷贝赋值运算符 Copy Assignment operator
     template<typename ExpType>
     Matrix(const Expression<ExpType> &src) {
         this->operator=<ExpType>(src);
     }
 
-    Matrix<T> &operator=(const Matrix<T> &mat) {
-        return this->operator=<Matrix<T>>(mat);
-    }
-
-    // 拷贝赋值运算符 Copy Assignment operator
     template<typename ExpType>
     Matrix<T> &operator=(const Expression<ExpType> &src) {
         const ExpType &srcReal = src.cast();
@@ -225,6 +116,7 @@ public:
         return *this;
     }
 
+    // 移动构造函数运算符 Move Constructor
     Matrix(Matrix<T> &&mat) noexcept {
         this->operator=<Matrix<T>>(mat);
         mat.vec.resize(0);
@@ -298,9 +190,9 @@ public:
         return output;
     }
 
-    [[nodiscard]] inline int32_t rows() const;
+    [[nodiscard]] inline size_t rows() const;
 
-    [[nodiscard]] inline int32_t cols() const;
+    [[nodiscard]] inline size_t cols() const;
 
     Matrix<T> transpose() const;
 
@@ -314,12 +206,9 @@ public:
     operator_table(const Matrix<T> &mat1, const Matrix<T> &mat2,
                    const std::function<T(const T &t1, const T &t2)> &func);
 
-    inline static Matrix<T>
-    operator_table(const Matrix<T> &mat1, const std::function<T(const T &t1)> &func);
+    typename vector<T>::const_iterator get_row_iter_begin(size_t rows) const;
 
-    typename vector<T>::const_iterator get_row_iter_begin(int32_t rows) const;
-
-    typename vector<T>::const_iterator get_row_iter_end(int32_t rows) const;
+    typename vector<T>::const_iterator get_row_iter_end(size_t rows) const;
 
     /**@related: https://stackoverflow.com/questions/30736951/templated-class-check-if-complex-at-compile-time
              * */
@@ -339,8 +228,7 @@ public:
         return sums / static_cast<double_t>(this->rows() * this->cols());
     }
 
-    template<typename T1 = T>
-    requires is_complex<T1>
+    template<is_complex T1 = T>
     auto avg() const {
         static_assert(is_complex<T1>, "T1 avg()");
         T1 sums = this->sum();
@@ -372,8 +260,7 @@ public:
         //        return 1;
     }
 
-    template<typename T1 = T>
-    requires is_complex<T1>
+    template<is_complex T1 = T>
     T1 row_avg(int32_t row) const {
         if (row > this->rows() || this->is_empty()) {
             return static_cast<T1>(-1);
@@ -395,8 +282,7 @@ public:
         return this->col_sum(col) / static_cast<double>(this->rows());
     }
 
-    template<typename T1 = T>
-    requires is_complex<T1>
+    template<is_complex T1 = T>
     T1 col_avg(int32_t col) const {
         if (col <= 0 || col > this->cols()) {
             return -1;
@@ -457,6 +343,19 @@ public:
     Matrix<T> joint(Matrix<T> matrix) const;
 
     Matrix<T> mul(const Matrix<T> &mat2);
+
+    /**
+     * Matrix / number, return a Matrix.
+     * same type.
+     * */
+    Matrix<T> operator/(const T &t2) {
+        const auto func = [t2](const T &t1) { return t1 / t2; };
+        Matrix<T> will_return(this->rows(), this->cols());
+        for (size_t i{0}; i < this->rows(); ++i) {
+            std::transform(this->vec[i].begin(), this->vec[i].end(), will_return.vec[i].begin(), func);
+        }
+        return will_return;
+    }
 };// namespace Mat_pro
 
 template<typename T>
@@ -492,7 +391,7 @@ T Matrix<T>::get_inside(int32_t rows, int32_t cols) const {
 }
 
 template<typename T>
-typename vector<T>::const_iterator Matrix<T>::get_row_iter_begin(int32_t rows) const {
+typename vector<T>::const_iterator Matrix<T>::get_row_iter_begin(size_t rows) const {
     if (rows >= this->rows()) {
         return this->vec.front().cbegin();
     }
@@ -500,7 +399,7 @@ typename vector<T>::const_iterator Matrix<T>::get_row_iter_begin(int32_t rows) c
 }
 
 template<typename T>
-typename vector<T>::const_iterator Matrix<T>::get_row_iter_end(int32_t rows) const {
+typename vector<T>::const_iterator Matrix<T>::get_row_iter_end(size_t rows) const {
     if (rows >= this->rows()) {
         return this->vec.back().cend();
     }
@@ -534,7 +433,7 @@ Matrix<T> Matrix<T>::values(int32_t rows, int32_t cols, T t) {
 template<typename T>
 Matrix<T> Matrix<T>::eye_value(int32_t s, T t) {
     Matrix<T> will_return(s, s);
-    for (int32_t i = 0; i < s; ++i) {
+    for (int32_t i{0}; i < s; ++i) {
         will_return.vec[i][i] = t;
     }
     return will_return;
@@ -552,7 +451,7 @@ inline Matrix<T> Matrix<T>::operator_table(const Matrix<T> &mat1, const Matrix<T
         throw Matrix_Shape_Not_Match_Exception("two matrix do not equal size", __FILE__, __LINE__);
     }
     Matrix<T> will_return(mat1.rows(), mat1.cols());
-    for (int32_t i = 0; i < mat1.rows(); ++i) {
+    for (size_t i{0}; i < mat1.rows(); ++i) {
         std::transform(mat1.vec[i].begin(), mat1.vec[i].end(),
                        mat2.vec[i].begin(), will_return.vec[i].begin(), func);
     }
@@ -560,28 +459,19 @@ inline Matrix<T> Matrix<T>::operator_table(const Matrix<T> &mat1, const Matrix<T
 }
 
 template<typename T>
-Matrix<T> Matrix<T>::operator_table(const Matrix<T> &mat1, const std::function<T(const T &t1)> &func) {
-    Matrix<T> will_return(mat1.rows(), mat1.cols());
-    for (int32_t i = 0; i < mat1.rows(); ++i) {
-        std::transform(mat1.vec[i].begin(), mat1.vec[i].end(), will_return.vec[i].begin(), func);
-    }
-    return will_return;
-}
-
-template<typename T>
-inline int32_t Matrix<T>::rows() const {
-    return static_cast<int32_t>(this->vec.size());
+inline size_t Matrix<T>::rows() const {
+    return this->vec.size();
 }
 
 /**
  * if the it's empty,then is_empty is true,
  * */
 template<typename T>
-inline int32_t Matrix<T>::cols() const {
+inline size_t Matrix<T>::cols() const {
     if (this->rows() == 0) {
-        return 0;
+        return static_cast<size_t>(0);
     }
-    return static_cast<int32_t>(this->vec.front().size());
+    return this->vec.front().size();
 }
 
 template<typename T>
@@ -590,8 +480,8 @@ Matrix<T> Matrix<T>::transpose() const {
         return Matrix<T>();
     }
     Matrix<T> will_return(this->cols(), this->rows());
-    for (int32_t i = 0; i < this->rows(); ++i) {
-        for (int32_t j = 0; j < this->cols(); ++j) {
+    for (size_t i{0}; i < this->rows(); ++i) {
+        for (size_t j{0}; j < this->cols(); ++j) {
             will_return.vec[j][i] = this->vec[i][j];
         }
     }
@@ -608,9 +498,7 @@ public:
 
     // work function, computing this expression at position i, import for lazy computing
 
-    auto value(size_t i, size_t j) const {
-        return num;
-    }
+    T value(size_t i, size_t j) const { return this->num; }
 
     size_t rows() const { return 0x3f3f3f3f; }
 
@@ -619,23 +507,21 @@ public:
 };
 
 template<typename T1, typename T2>
-inline EXPRESSION::BinaryOp<OPERATOR::Add, T1, T2>
+inline EXPRESSION::BinaryOp<Add, T1, T2>
 operator+(const Expression<T1> &lhs, const Expression<T2> &rhs) {
-    return expToBinaryOp<OPERATOR::Add>(lhs, rhs);
+    return expToBinaryOp<Add>(lhs, rhs);
 }
 
-template<typename T1, typename T2>
-requires (std::is_integral_v<T2> || std::is_floating_point_v<T2>)
-inline EXPRESSION::BinaryOp<OPERATOR::Add, T1, number<T2>>
+template<typename T1, opencv_type T2>
+inline EXPRESSION::BinaryOp<Add, T1, number<T2>>
 operator+(const Expression<T1> &lhs, const T2 &rhs) {
-    return expToBinaryOp<OPERATOR::Add>(lhs, number<T2>(rhs));
+    return expToBinaryOp<Add>(lhs, number<T2>(rhs));
 }
 
-template<typename T1, typename T2>
-requires (std::is_integral_v<T1> || std::is_floating_point_v<T1>)
-inline EXPRESSION::BinaryOp<OPERATOR::Add, number<T1>, T2>
+template<typename T1, opencv_type T2>
+inline EXPRESSION::BinaryOp<Add, number<T1>, T2>
 operator+(const T1 &lhs, const Expression<T2> &rhs) {
-    return expToBinaryOp<OPERATOR::Add>(rhs, lhs);
+    return expToBinaryOp<Add>(rhs, lhs);
 }
 
 /**
@@ -644,11 +530,10 @@ operator+(const T1 &lhs, const Expression<T2> &rhs) {
  * */
 
 
-template<typename T1, typename T2>
-requires (std::is_integral_v<T1> || std::is_floating_point_v<T1>)
-inline EXPRESSION::BinaryOp<OPERATOR::Add, number<T1>, T2>
+template<opencv_type T1, typename T2>
+inline EXPRESSION::BinaryOp<Add, number<T1>, T2>
 operator-(const T1 &lhs, const Expression<T2> &rhs) {
-    return expToBinaryOp<OPERATOR::Add>(number<T2>(lhs * -1), rhs);
+    return expToBinaryOp<Add>(number<T2>(lhs * -1), rhs);
 }
 
 /**
@@ -656,26 +541,17 @@ operator-(const T1 &lhs, const Expression<T2> &rhs) {
  * input mat1,mat2 and will_return's type is same.
  * */
 template<typename T1, typename T2>
-inline EXPRESSION::BinaryOp<OPERATOR::Minus, T1, T2>
+inline EXPRESSION::BinaryOp<Minus, T1, T2>
 operator-(const Expression<T1> &lhs, const Expression<T2> &rhs) {
-    return expToBinaryOp<OPERATOR::Minus>(lhs, rhs);
+    return expToBinaryOp<Minus>(lhs, rhs);
 }
 
-template<typename T1, typename T2>
-requires (std::is_integral_v<T2> || std::is_floating_point_v<T2>)
-inline EXPRESSION::BinaryOp<OPERATOR::Minus, T1, number<T2>>
+template<typename T1, opencv_type T2>
+inline EXPRESSION::BinaryOp<Minus, T1, number<T2>>
 operator-(const Expression<T1> &lhs, const T2 &rhs) {
-    return expToBinaryOp<OPERATOR::Minus>(lhs, number<T2>(rhs));
+    return expToBinaryOp<Minus>(lhs, number<T2>(rhs));
 }
 
-/**
- * Matrix / number, return a Matrix.
- * same type.
- * */
-template<typename T>
-Matrix<T> operator/(const Matrix<T> &mat1, const T &t2) {
-    return Matrix<T>::operator_table(mat1, [t2](const T &t1) { return t1 / t2; });
-}
 
 /**
  * matrix * number, need T1 can * T2
@@ -709,7 +585,7 @@ auto operator*(const Matrix<T1> &mat1, const vector<T2> &t2) -> Matrix<Multiply_
                 "shape not match,matrix can not multiply vector", __FILE__, __LINE__);
     }
     vector<vector<Multiply_Result_t<T1, T2>>> temp(1, vector<Multiply_Result_t<T1, T2>>(mat1.rows()));
-    for (uint32_t i = 0; i < temp.size(); ++i) {
+    for (uint32_t i{0}; i < temp.size(); ++i) {
         temp[0][i] = std::inner_product(mat1.get_row_iter_begin(i), mat1.get_row_iter_end(i), t2.begin(),
                                         static_cast<Multiply_Result_t<T1, T2>>(0));
     }
@@ -724,13 +600,13 @@ auto operator*(const Matrix<T1> &mat1, const vector<T2> &t2) -> Matrix<Multiply_
  * */
 template<typename T1, typename T2>
 auto operator*(const vector<T1> &t1, const Matrix<T2> &mat2) -> Matrix<Multiply_Result_t<T1, T2>> {
-    if (t1.size() != static_cast<unsigned >(mat2.rows())) {
+    if (t1.size() != mat2.rows()) {
         throw Matrix_Shape_Not_Match_Exception(
                 "shape not match,vector can not multiply matrix", __FILE__, __LINE__);
     }
     vector<vector<Multiply_Result_t<T1, T2>>> temp(mat2.cols(), vector<Multiply_Result_t<T1, T2>>(1));
     auto transfor = mat2.transpose();
-    for (int32_t i = 0; i < transfor.rows(); ++i) {
+    for (size_t i{0}; i < transfor.rows(); ++i) {
         temp[i][0] = std::inner_product(transfor.get_row_iter_begin(i), transfor.get_row_iter_end(i), t1.cbegin(),
                                         static_cast<Multiply_Result_t<T1, T2>>(0));
     }
@@ -751,8 +627,8 @@ Matrix<T> operator*(const Matrix<T> &mat1, const Matrix<T> &mat2) {
     }
     Matrix<T> temp = mat2.transpose();
     vector<vector<T>> will_return(mat1.rows(), vector<T>(mat2.cols()));
-    for (int32_t i = 0; i < mat1.rows(); ++i) {
-        for (int32_t j = 0; j < mat2.cols(); ++j) {
+    for (size_t i{0}; i < mat1.rows(); ++i) {
+        for (size_t j{0}; j < mat2.cols(); ++j) {
             will_return[i][j] = std::inner_product(mat1.get_row_iter_begin(i), mat1.get_row_iter_end(i),
                                                    temp.get_row_iter_begin(j), static_cast<T>(0));
             // transform_reduce can not use.
@@ -775,7 +651,7 @@ T Matrix<T>::dot(const Matrix<T> &mat2) {
                 "size do not equal bewtween this and Mat2", __FILE__, __LINE__);
     }
     T will_return(0);
-    for (int32_t i = 0; i < mat2.rows(); ++i) {
+    for (size_t i{0}; i < mat2.rows(); ++i) {
         will_return = std::inner_product(this->get_row_iter_begin(i), this->get_row_iter_end(i),
                                          mat2.get_row_iter_begin(i), will_return);
     }
@@ -792,10 +668,10 @@ template<typename T1, typename T2>
 auto kron(const Matrix<T1> &mat1, const Matrix<T2> &mat2) -> Matrix<Multiply_Result_t<T1, T2>> {
     vector<vector<Multiply_Result_t<T1, T2>>> will_return(
             mat1.rows() * mat2.rows(), vector<Multiply_Result_t<T1, T2>>(mat1.cols() * mat2.cols()));
-    for (int32_t i = 0; i < mat1.rows(); ++i) {
-        for (int32_t j = 0; j < mat1.cols(); ++j) {
-            for (int32_t k = 0; k < mat2.rows(); ++k) {
-                for (int32_t m = 0; m < mat2.cols(); ++m) {
+    for (size_t i{0}; i < mat1.rows(); ++i) {
+        for (size_t j{0}; j < mat1.cols(); ++j) {
+            for (size_t k{0}; k < mat2.rows(); ++k) {
+                for (size_t m{0}; m < mat2.cols(); ++m) {
                     will_return[i * mat1.rows() + k][j * mat1.cols() + m] =
                             mat1.get_inside(i, j) * mat2.get_inside(k, m);
                 }
@@ -844,7 +720,7 @@ bool Matrix<T>::inside_equal(const Matrix<T> &mat1, const Matrix<T> &mat2) {
     if (!size_equal(mat1, mat2)) {
         return false;
     }
-    for (int32_t i = 0; i < mat1.rows(); ++i) {
+    for (int32_t i{0}; i < mat1.rows(); ++i) {
         if (!std::equal(mat1.vec[i].begin(), mat1.vec[i].end(), mat2.vec[i].begin(), mat2.vec[i].end())) {
             return false;
         }
@@ -856,7 +732,7 @@ template<typename T>
 T Matrix<T>::trace() const {
     T will_return{0};
     if (this->is_square()) {
-        for (int32_t i = 0; i < this->rows(); ++i) {
+        for (int32_t i{0}; i < this->rows(); ++i) {
             will_return += this->vec[i][i];
         }
     }
@@ -871,9 +747,9 @@ T determinant_in(const vector<vector<T>> &matrix) {
     uint32_t size_m = matrix.size();
     vector<vector<T>> submatrix(size_m - 1, vector<T>(size_m - 1, static_cast<T>(0)));
     T will_return(0);
-    for (uint32_t i = 0; i < size_m; ++i) {
-        for (uint32_t j = 0; j < size_m - 1; ++j) {
-            for (uint32_t k = 0; k < size_m - 1; ++k) {
+    for (uint32_t i{0}; i < size_m; ++i) {
+        for (uint32_t j{0}; j < size_m - 1; ++j) {
+            for (uint32_t k{0}; k < size_m - 1; ++k) {
                 submatrix[j][k] = matrix[(((i > j) ? 0 : 1) + j)][k + 1];
             }
         }
@@ -898,13 +774,13 @@ Matrix<T> Matrix<T>::inverse() const {
     if (this->is_square() && this->rows() > 1 && this->determinant() != 0) {
         static constexpr T zeroNumber{0};
         std::vector<std::vector<T>> result_vector(this->rows(), std::vector<T>(this->cols(), zeroNumber));
-        for (int32_t i = 0; i < this->rows(); i++) {
-            for (int32_t j = 0; j < this->cols(); j++) {
+        for (size_t i{0}; i < this->rows(); i++) {
+            for (size_t j{0}; j < this->cols(); j++) {
                 //vector<vector<T>> submatrix(this->rows() - 1, vector<T>(this->cols() - 1, static_cast<T>(0)));
                 vector<vector<T >> submatrix(this->vec);
                 submatrix.erase(submatrix.begin() + i);
-                for (int m = 0; m < this->rows() - 1; ++m) {
-                    submatrix[m].erase(submatrix[m].begin() + j);
+                for (int m{1}; m < this->rows(); ++m) {
+                    submatrix[m - 1].erase(submatrix[m - 1].begin() + j);
                 }
                 result_vector[j][i] =
                         (((i + j) % 2) ? -1 : 1) * determinant_in(submatrix);//子矩阵展开得到伴随矩阵
@@ -924,14 +800,14 @@ template<typename T>
 Matrix<T> Matrix<T>::conj() const {
     vector<vector<T>> vvc(this->rows(), vector<T>(this->cols()));
     if constexpr (is_complex<T>) {
-        for (int32_t i = 0; i < this->rows(); ++i) {
-            for (int32_t j = 0; j < this->cols(); ++j) {
+        for (int32_t i{0}; i < this->rows(); ++i) {
+            for (int32_t j{0}; j < this->cols(); ++j) {
                 vvc[i][j] = std::conj(this->vec[i][j]);
             }
         }
     } else if constexpr (has_conj<T>) {
-        for (int32_t i = 0; i < this->rows(); ++i) {
-            for (int32_t j = 0; j < this->cols(); ++j) {
+        for (int32_t i{0}; i < this->rows(); ++i) {
+            for (int32_t j{0}; j < this->cols(); ++j) {
                 vvc[i][j] = this->vec[i][j].conj();
             }
         }
@@ -1005,7 +881,7 @@ T Matrix<T>::col_max(int32_t col) const {
         throw std::invalid_argument("col out of range(it begin at 1)");
     }
     T max_v = vec.front()[col - 1];
-    for (int i = 0; i < this->rows(); ++i) {
+    for (int32_t i{0}; i < this->rows(); ++i) {
         max_v = std::max(max_v, vec[i][col - 1]);
     }
     return max_v;
@@ -1017,7 +893,7 @@ T Matrix<T>::col_min(int32_t col) const {
         throw std::invalid_argument("col out of range(it begin at 1)");
     }
     T min_v = vec.front()[col - 1];
-    for (int i = 0; i < this->rows(); ++i) {
+    for (int32_t i{0}; i < this->rows(); ++i) {
         min_v = std::min(min_v, vec[i][col - 1]);
     }
     return min_v;
@@ -1029,7 +905,7 @@ T Matrix<T>::col_sum(int32_t col) const {
         throw std::invalid_argument("col out of range(it begin at 1)");
     }
     T sum(0);
-    for (int32_t i = 0; i < this->rows(); ++i) {
+    for (int32_t i{0}; i < this->rows(); ++i) {
         sum += vec[i][col - 1];
     }
     return sum;
@@ -1038,7 +914,7 @@ T Matrix<T>::col_sum(int32_t col) const {
 /**get convolution of Matrix and kernel
  * @param1: this: Matrix: m_n T
  * @param2: mat2: Matrix: f1_f2 T, addvise f1=f2 and they are odd.
- * @param3: padding: int32_t the size of padding.<br> default = 0
+ * @param3: padding: int32_t the size of padding.<br> default{0}
  * @param4: stride: int32_t the stride of each step.<br> default = 1
  * @return: Matrix: x1_x2 T</br>
  * <br>x1 = ⌊(m+2p-f_1)/s⌋+1</br>
@@ -1046,27 +922,31 @@ T Matrix<T>::col_sum(int32_t col) const {
  * */
 template<typename T>
 Matrix<T> Matrix<T>::convolution(const Matrix<T> &kernel, int32_t padding, int32_t stride) const {
+    const auto rows{static_cast<int32_t>(this->rows())},
+            cols{static_cast<int32_t>(this->cols())},
+            kernel_rows{static_cast<int32_t>(kernel.rows())},
+            kernel_cols{static_cast<int32_t>(kernel.cols())};
     if (padding < 0 || stride < 0
-        || this->rows() + 2 * padding < kernel.rows()
-        || this->cols() + 2 * padding < kernel.cols()
+        || rows + 2 * padding < kernel_rows
+        || cols + 2 * padding < kernel_cols
         || !kernel.is_square()) {
         throw std::invalid_argument("input parameter happen error");
     }
-    padding = std::max(padding, kernel.rows() - 1);
-    //padding = std::max(padding, std::max(kernel.rows(), kernel.cols()));
-    int32_t new_row = floor((this->rows() + 2 * padding - kernel.rows()) / stride) + 1;
-    int32_t new_col = floor((this->cols() + 2 * padding - kernel.cols()) / stride) + 1;
+    padding = std::max(padding, kernel_rows - 1);
+    //padding = std::max(padding, std::max(kernel_rows, kernel_cols));
+    int32_t new_row = floor((rows + 2 * padding - kernel_rows) / stride) + 1;
+    int32_t new_col = floor((cols + 2 * padding - kernel_cols) / stride) + 1;
     vector<vector<T>> will_return(new_row, vector<T>(new_col, static_cast<T>(0)));
-    vector<vector<T>> big_vec(this->rows() + padding * 2,
-                              vector<T>(this->cols() + padding * 2, static_cast<T>(0)));
-    for (int i = padding; i < this->rows() + padding; ++i) {
-        for (int j = padding; j < this->cols() + padding; ++j) {
+    vector<vector<T>> big_vec(rows + padding * 2,
+                              vector<T>(cols + padding * 2, static_cast<T>(0)));
+    for (int32_t i{padding}; i < rows + padding; ++i) {
+        for (int32_t j{padding}; j < cols + padding; ++j) {
             big_vec[i][j] = this->vec[i - padding][j - padding];
         }
     }
-    for (int k = 0; k < new_row; k++) {
-        for (int i = 0; i < new_col; i++) {
-            for (int j = 0; j < kernel.rows(); ++j) {
+    for (int32_t k{0}; k < new_row; k++) {
+        for (int32_t i{0}; i < new_col; i++) {
+            for (int32_t j{0}; j < kernel_rows; ++j) {
                 will_return[k][i] += std::inner_product(std::begin(kernel.vec[j]), std::end(kernel.vec[j]),
                                                         std::begin(big_vec[k * stride + j]) + i * stride,
                                                         static_cast<T>(0));
@@ -1083,21 +963,21 @@ Matrix<T>::convolution_mul(const Matrix<T> &kernel, int32_t padding, int32_t str
     if (this->cols() % demension != 0) {
         throw std::invalid_argument("Demension not match matrix size");
     }
-    for (int i = 0; i < demension; ++i) {
+    for (int32_t i{0}; i < demension; ++i) {
         vector<vector<T>> temp(this->rows(), vector<T>(this->cols() / demension));
-        for (int j = 0; j < this->rows(); ++j) {
-            for (int k = 0; k < this->cols() / demension; ++k) {
+        for (int32_t j{0}; j < this->rows(); ++j) {
+            for (int32_t k{0}; k < this->cols() / demension; ++k) {
                 temp[j][k] = this->get_inside(j, k * demension + i);
             }
         }
         mats.emplace_back(temp);
     }
-    for (int i = 0; i < demension; ++i) {
+    for (int32_t i{0}; i < demension; ++i) {
         mats[i] = mats[i].convolution(kernel, padding, stride);
     }
     vector<vector<T>> will_return(this->rows(), vector<T>(this->cols()));
-    for (int j = 0; j < this->rows(); ++j) {
-        for (int k = 0; k < this->cols(); ++k) {
+    for (int32_t j{0}; j < this->rows(); ++j) {
+        for (int32_t k{0}; k < this->cols(); ++k) {
             will_return[j][k] = mats[k % demension].get_inside(j, k / demension);
         }
     }
@@ -1113,7 +993,7 @@ Matrix<T> Matrix<T>::reshape(int32_t row, int32_t col) const {
         return Matrix<T>(*this);
     }
     vector<vector<T>> res(row, vector<T>(col, static_cast<T>(0)));
-    for (int i = 0; i < num; i++) {
+    for (int32_t i{0}; i < num; i++) {
         res[i / col][i % col] = this->get_inside(i / this->cols(), i % col_num);
     }
     return Matrix<T>(std::move(res));
@@ -1150,9 +1030,9 @@ Matrix<T> Matrix<T>::slice(int32_t row1, int32_t row2, int32_t col1, int32_t col
 template<typename T>
 Matrix<T> cv_to_mat(const Mat &m) {
     vector<vector<T>> will_return(m.rows, vector<T>(m.cols * m.channels()));
-    for (int i = 0; i < m.rows; ++i) {
+    for (int32_t i{0}; i < m.rows; ++i) {
         auto temp_head = m.ptr(i);
-        for (int j = 0; j < m.cols * m.channels(); ++j) {
+        for (int32_t j{0}; j < m.cols * m.channels(); ++j) {
             switch (m.type() % 8) {
                 case static_cast<int32_t>(CV_TYPE::FLOAT32_T): {
                     will_return[i][j] = from_char_array<float>(temp_head + j * m.elemSize1());
@@ -1172,7 +1052,7 @@ Matrix<T> cv_to_mat(const Mat &m) {
     return Matrix<T>(std::move(will_return));
 }
 
-template<typename T>
+template<opencv_type T>
 Mat mat_to_cv(const Matrix<T> &matrix, int32_t demen) requires opencv_type<T> {
     CV_TYPE type{CV_TYPE::NO_TYPE};
     if constexpr (is_same_v<T, uint8_t>) {
@@ -1190,17 +1070,18 @@ Mat mat_to_cv(const Matrix<T> &matrix, int32_t demen) requires opencv_type<T> {
     } else if constexpr (is_same_v<T, double>) {
         type = CV_TYPE::FLOAT64_T;
     }
+    const auto type_int32{static_cast<int32_t>(type)};
     if (matrix.cols() % demen != 0) {
         throw std::invalid_argument("demension not match matrix size");
     }
-    Mat will_return(matrix.rows(), matrix.cols() / demen, static_cast<int32_t>(type) + (demen - 1) * 7);
+    Mat will_return(matrix.rows(), matrix.cols() / demen, type_int32 + (demen - 1) * 7);
     vector<Mat> mats;
-    for (int k = 0; k < demen; ++k) {
-        mats.push_back(Mat(matrix.rows(), matrix.cols() / demen, static_cast<int32_t>(type)));
+    for (int32_t k{0}; k < demen; ++k) {
+        mats.push_back(Mat(matrix.rows(), matrix.cols() / demen, type_int32));
     }
-    for (int i = 0; i < matrix.rows(); ++i) {
-        for (int j = 0; j < matrix.cols() / demen; ++j) {
-            for (int k = 0; k < demen; ++k) {
+    for (int32_t i{0}; i < matrix.rows(); ++i) {
+        for (int32_t j{0}; j < matrix.cols() / demen; ++j) {
+            for (int32_t k{0}; k < demen; ++k) {
                 mats.at(k).at<T>(i, j) = matrix.get_inside(i, j * demen + k);
             }
         }
@@ -1217,14 +1098,14 @@ Mat mat_to_cv(const Matrix<T> &matrix, int32_t demen) requires opencv_type<T> {
  */
 template<typename T>
 Matrix<double_t> Matrix<T>::Householder(int32_t col, int32_t ele) const {
-    double_t square = 0;
+    double_t square{0};
     for (uint32_t i = ele - 1; i < vec.size(); ++i) {
         square += pow(vec[i][col - 1], 2);
     }
     double_t mod = vec[ele - 1][col - 1] > 0 ? pow(square, 0.5) : -pow(square, 0.5);
     double_t modulus = mod * (mod + vec[ele - 1][col - 1]);
     vector<vector<double_t>> U(this->rows(), vector<double_t>(1));
-    for (int j = 0; j < this->rows(); ++j) {
+    for (int32_t j{0}; j < this->rows(); ++j) {
         if (j > ele - 1) {
             U[j][0] = this->get_inside(j, col - 1);
         } else {
@@ -1250,7 +1131,7 @@ Matrix<double_t> Matrix<T>::Hessenberg() const {
     Matrix<double_t> right_H = Matrix<double_t>::eye(this->rows());
     vector<vector<double_t>> v = this->transform();
     Matrix<double_t> H = left_H * Matrix<double_t>(v) * right_H;
-    for (int i = 1; i < this->rows() - 1; ++i) {
+    for (int32_t i = 1; i < this->rows() - 1; ++i) {
         if (abs(H.get_inside(i + 1, i - 1)) > eps) {
             left_H = left_H * H.Householder(i, i + 1);
             right_H = H.Householder(i, i + 1) * right_H;
@@ -1268,8 +1149,7 @@ template<typename T>
 Matrix<double_t> Matrix<T>::Givens(int32_t col, int32_t begin, int32_t end) const {
     Matrix<double_t> R = Matrix<double_t>::eye(this->rows());
     double_t r = pow(pow(vec[begin - 1][col - 1], 2) + pow(vec[end - 1][col - 1], 2), 0.5);
-    double_t c = 1;
-    double_t s = 0;
+    double_t c{1}, s{0};
     if (abs(r) > eps) {
         c = vec[begin - 1][col - 1] / r;
         s = vec[end - 1][col - 1] / r;
@@ -1290,7 +1170,7 @@ template<typename T>
 Matrix<double_t> Matrix<T>::QR_iteration() const {
     Matrix<double_t> R = this->Hessenberg();
     Matrix<double_t> Q = Matrix<double_t>::eye(vec.size());
-    for (uint32_t i = 1; i < vec.size(); ++i) {
+    for (int32_t i{1}; i < vec.size(); ++i) {
         Matrix<double_t> temp_R = R.Givens(i, i, i + 1);
         R = temp_R * R;
         Q = Q * temp_R.transpose();
@@ -1312,10 +1192,10 @@ vector<double_t> Matrix<T>::eigenvalue() const {
     vector<double_t> eigenvalues(this->rows());
     static constexpr int32_t iter_times = 150;
     Matrix<double_t> H = this->QR_iteration();
-    for (int i = 0; i < iter_times; ++i) {
+    for (int32_t i{0}; i < iter_times; ++i) {
         H = H.QR_iteration();
     }
-    for (int j = 0; j < this->rows(); ++j) {
+    for (int32_t j{0}; j < this->rows(); ++j) {
         eigenvalues[j] = H.get_inside(j, j);
     }
     return eigenvalues;
@@ -1332,8 +1212,7 @@ Matrix<double_t> Matrix<T>::eigenvector() const {
     vector<double_t> eigenvalues = this->eigenvalue();
     vector<vector<double_t>> v = this->transform();
     std::sort(eigenvalues.begin(), eigenvalues.end());
-    int32_t begin = 0;
-    int32_t repeat = 0;
+    int32_t begin{0}, repeat{0};
     for (int end = 1; end < this->rows(); ++end) {
         if (round(eigenvalues[begin] * 10) / 10 == round(eigenvalues[end] * 10) / 10) {
             repeat++;
@@ -1344,10 +1223,10 @@ Matrix<double_t> Matrix<T>::eigenvector() const {
     }
     Matrix<double_t> vectors(this->rows(), this->rows());
     int32_t size = vec.size() - repeat;
-    for (int i = 0; i < size; ++i) {
+    for (int32_t i{0}; i < size; ++i) {
         vector<vector<double_t>> eigenmatrix = this->transform();
         double_t eigenvalue = eigenvalues[i];
-        for (uint32_t j = 0; j < vec.size(); ++j) {
+        for (uint32_t j{0}; j < vec.size(); ++j) {
             eigenmatrix[j][j] = round((eigenmatrix[j][j] - eigenvalue) * 10) / 10;
         }
         if (i == 0) {
@@ -1368,7 +1247,7 @@ Matrix<double_t> Matrix<T>::Gauss() const {
     vector<vector<double_t>> v = this->transform();
     Matrix<double_t> REF(v);
     //int32_t row = 0;
-    for (int32_t row = 0, find = 0; row < this->rows(); ++row) {
+    for (int32_t row{0}, find{0}; row < this->rows(); ++row) {
         double_t element = 1;
         bool flag = false;
         for (uint32_t i = find; i < vec.size(); ++i) {
@@ -1397,10 +1276,10 @@ Matrix<double_t> Matrix<T>::Gauss() const {
 template<typename T>
 Matrix<double_t> Matrix<T>::Elimination() const {
     Matrix<double_t> R = this->Gauss();
-    for (int32_t i = 0; static_cast<size_t>(i) < vec.size(); ++i) {
-        for (int32_t j = 0; static_cast<size_t>(j) < vec[0].size(); ++j) {
+    for (int32_t i{0}; static_cast<size_t>(i) < vec.size(); ++i) {
+        for (int32_t j{0}; static_cast<size_t>(j) < vec[0].size(); ++j) {
             if (abs(R.get_inside(i, j)) > eps) {
-                for (int k = i - 1; k >= 0; --k) {
+                for (int32_t k = i - 1; k >= 0; --k) {
                     R = R.row_elimination(k, j, i);
                 }
                 break;
@@ -1419,8 +1298,8 @@ inline Matrix<double_t> Matrix<T>::Nullspace() const {
     Matrix<double_t> matrix = this->Elimination();
     vector<int32_t> pivots(this->cols(), 0);
     int32_t null_num = this->cols();
-    for (int i = 0; i < this->rows(); ++i) {
-        for (int j = 0; j < this->cols(); ++j) {
+    for (int32_t i{0}; i < this->rows(); ++i) {
+        for (int32_t j{0}; j < this->cols(); ++j) {
             if (abs(matrix.get_inside(i, j)) > eps) {
                 pivots[j] = 1;
                 null_num--;
@@ -1429,19 +1308,19 @@ inline Matrix<double_t> Matrix<T>::Nullspace() const {
         }
     }
     vector<vector<double_t>> vectors(this->rows(), vector<double_t>(null_num, 0));
-    int32_t col = 0;
-    for (uint32_t i = 0; i < vec[0].size(); ++i) {
+    int32_t col{0};
+    for (uint32_t i{0}; i < vec[0].size(); ++i) {
         if (pivots[i] == 0) {
-            for (int j = 0; j < null_num; ++j) {
+            for (int32_t j{0}; j < null_num; ++j) {
                 if (j == col) {
                     vectors[i][j] = 1;
                 }
             }
             col++;
         } else {
-            for (uint32_t k = 0; k < vec[0].size(); ++k) {
+            for (uint32_t k{0}; k < vec[0].size(); ++k) {
                 if (pivots[k] == 0) {
-                    for (int j = 0; j < null_num; ++j) {
+                    for (int32_t j{0}; j < null_num; ++j) {
                         vectors[i][j] = -matrix.get_inside(i, k);
                     }
                 }
@@ -1457,7 +1336,7 @@ inline Matrix<double_t> Matrix<T>::Nullspace() const {
 template<typename T>
 vector<vector<double_t>> Matrix<T>::transform() const {
     vector<vector<double_t>> v(this->rows());
-    for (int i = 0; i < this->rows(); ++i) {
+    for (int32_t i{0}; i < this->rows(); ++i) {
         v[i] = vector<double_t>(this->get_row_iter_begin(i), this->get_row_iter_end(i));
     }
     return v;
@@ -1485,7 +1364,7 @@ Matrix<T> Matrix<T>::joint(Matrix<T> matrix) const {
         return Matrix<T>(*this);
     }
     vector<vector<T>> will_return(this->vec);
-    for (int i = 0; i < this->rows(); ++i) {
+    for (size_t i{0}; i < this->rows(); ++i) {
         will_return[i].insert(will_return[i].end(), matrix.get_row_iter_begin(i), matrix.get_row_iter_end(i));
     }
     return Matrix<T>(std::move(will_return));
@@ -1497,7 +1376,7 @@ Matrix<T> Matrix<T>::joint(Matrix<T> matrix) const {
 template<typename T>
 Matrix<double_t> Matrix<T>::row_elimination(int32_t row, double_t ele) const {
     Matrix<double_t> matrix(this->transform());
-    for (uint32_t i = 0; i < vec[0].size(); ++i) {
+    for (size_t i{0}; i < vec[0].size(); ++i) {
         if (std::abs(ele) <= eps) {
             matrix.vec[row][i] = 0;
         } else {
@@ -1518,11 +1397,11 @@ template<typename T>
 Matrix<double_t> Matrix<T>::row_elimination(int32_t row, int32_t col, int32_t remove_row) const {
     Matrix<double_t> matrix(this->transform());
     double_t temp = vec[row][col];
-    for (uint32_t i = 0; i < vec[0].size(); ++i) {
+    for (uint32_t i{0}; i < vec[0].size(); ++i) {
         matrix.vec[row][i] = this->get_inside(row, i) - temp * vec[remove_row][i];
     }
     return matrix;
 }
 
 }
-#endif  //CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_2_HPP
+#endif  //CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_HPP

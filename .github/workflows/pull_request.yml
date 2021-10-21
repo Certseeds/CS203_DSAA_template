@@ -62,6 +62,10 @@ jobs:
         run: cmake --build . --config DEBUG --parallel
 
       - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/matrix
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH/algorithm/
         run: cmake --build .
       - name: cmake compile --config DEBUG --parallel
@@ -98,6 +102,10 @@ jobs:
 
       - name: cmake compile
         working-directory: ./CMAKE_DEBUG_PATH/algorithm/2021F
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/matrix
         run: cmake --build . --config DEBUG --parallel
 
       - name: cmake compile

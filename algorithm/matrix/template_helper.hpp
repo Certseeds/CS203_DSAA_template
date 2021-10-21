@@ -1,5 +1,5 @@
-/*  CS205_C_CPP
-    Copyright (C) 2020  nanoseeds
+/*  CS203_DSAA_template
+    Copyright (C) 2020-2021 nanoseeds Wjia wuyuhao
 
     CS205_C_CPP is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -14,13 +14,6 @@
     You should have received a copy of the GNU Affero General Public License
     along with this program.  If not, see <https://www.gnu.org/licenses/>.
     */
-/**
- * @Github: https://github.com/Certseeds/CS205_C_CPP
- * @Organization: SUSTech
- * @Author: nanoseeds
- * @Date: 2020-05-24 17:56:20
- * @LastEditors  : nanoseeds
- */
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_TEMPLATE_HELPER_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_TEMPLATE_HELPER_HPP
 
@@ -94,7 +87,7 @@ concept has_conj = requires(T f) { f.conj(); };
 template<typename T>
 T from_char_array(unsigned char const *buffer) {
     T will_return;
-    auto *dp = reinterpret_cast<unsigned char *>(&will_return);
+    auto *const dp = reinterpret_cast<unsigned char *>(&will_return);
     std::copy(buffer, buffer + sizeof(T), dp);
     return will_return;
 }
@@ -103,22 +96,27 @@ T from_char_array(unsigned char const *buffer) {
 template<typename T, typename... Us>
 struct is_any_of;
 
+// #3 集合为空集
+template<typename T>
+struct is_any_of<T> : std::false_type {
+};
 // #1 匹配集合中的第一个类型
 template<typename T, typename... U1_to_Un>
 struct is_any_of<T, T, U1_to_Un...> : std::true_type {
 };
-
 // #2 第一个类型不匹配
 template<typename T, typename U0, typename... U1_to_Un>
 struct is_any_of<T, U0, U1_to_Un...> : is_any_of<T, U1_to_Un...> {
 };
 
-// #3 集合为空集
 template<typename T>
-struct is_any_of<T> : std::false_type {
-};
+concept opencv_type = is_any_of<T, uint8_t, uint16_t, int8_t, int16_t, int32_t, float, double>::value;
+
 template<typename T>
-concept opencv_type = requires(T f) {
-    1 == 1;
+concept is_OPERATOR = requires(T f) {
+    T::Op(f, f);
+    std::constructible_from<T>;
+    std::default_initializable<T>;
+    sizeof(T) == 1;
 };
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_TEMPLATE_HELPER_HPP
