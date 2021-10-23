@@ -30,15 +30,15 @@ SOFTWARE.
 #include <vector>
 #include <iostream>
 
-#include "lab_05_B.cpp"
+#include "lab_05_D.cpp"
 
 std::string getFilePath() noexcept {
-    return "./../../../../algorithm/2021F/lab_05/lab_05_B_data/";
+    return "./../../../../algorithm/2021F/lab_05/lab_05_D_data/";
 }
 
 const std::string CS203_redirect::file_paths = getFilePath();
 
-namespace lab_05_B {
+namespace lab_05_D {
 
 using std::tie;
 using std::cin;
@@ -50,9 +50,8 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-// 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
-TEST_CASE("test case with sequence [test 05_B]", "[test 05_B]") {
-    CS203_sequence sequence{1, 1, 0}; // // 基础设定,[1,1]
+TEST_CASE("test case with sequence [test 05_D]", "[test 05_D]") {
+    CS203_sequence sequence{1, 9, 0}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
     sequence.set_postfix_of_testout("test.out"); // 测试输出数据后缀,默认为 test.out
