@@ -55,7 +55,7 @@ static const vector<string> gene5{
 };
 using Catch::Matchers::UnorderedEquals;
 
-TEST_CASE("1 [test 22]", "[test 22]") {
+TEST_CASE("1 [test_22]", "[test_22]") {
     CHECK(leetcode_22::generateParenthesis(1).size() == 1);
     CHECK(leetcode_22::generateParenthesis(2).size() == 2);
     CHECK(leetcode_22::generateParenthesis(3).size() == 5);
@@ -63,7 +63,7 @@ TEST_CASE("1 [test 22]", "[test 22]") {
     CHECK_THAT(leetcode_22::generateParenthesis(3), UnorderedEquals(gene5));
 }
 
-TEST_CASE("2 [test 22]", "[test 22]") {
+TEST_CASE("2 [test_22]", "[test_22]") {
     for (int32_t i{1}; i < 5; i++) {
         CHECK_THAT(leetcode_22::generateParenthesis(i), UnorderedEquals(leetcode_22::generateParenthesis(i)));
     }

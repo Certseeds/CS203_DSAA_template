@@ -49,7 +49,7 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-TEST_CASE("1 [test 15]", "[test 15]") {
+TEST_CASE("1 [test_16]", "[test_16]") {
     vector<int32_t> nums{-1, 2, 1, -4};
     const auto output = leetcode_16::threeSumClosest(nums, 1);
     CHECK(output == 2);

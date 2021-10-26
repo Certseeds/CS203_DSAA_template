@@ -59,43 +59,43 @@ void warpper(const string &s, int32_t length) {
     CHECK(leetcode_3::lengthOfLongestSubstring3(s) == length);
 }
 
-TEST_CASE("1 [test 3]", "[test 3]") {
+TEST_CASE("1 [test_3]", "[test_3]") {
     string str{"abcabcbb"};
     warpper(str, 3);
 }
 
-TEST_CASE("2 [test 3]", "[test 3]") {
+TEST_CASE("2 [test_3]", "[test_3]") {
     string str{"bbbbb"};
     warpper(str, 1);
 }
 
-TEST_CASE("3 [test 3]", "[test 3]") {
+TEST_CASE("3 [test_3]", "[test_3]") {
     string str{"pwwkew"};
     warpper(str, 3);
 }
 
-TEST_CASE("4 [test 3]", "[test 3]") {
+TEST_CASE("4 [test_3]", "[test_3]") {
     string str{"abba"};
     cout << leetcode_3::lengthOfLongestSubstring(str) << endl;
     warpper(str, 2);
 }
 
-TEST_CASE("5 [test 3]", "[test 3]") {
+TEST_CASE("5 [test_3]", "[test_3]") {
     string str{" "};
     warpper(str, 1);
 }
 
-TEST_CASE("6 [test 3]", "[test 3]") {
+TEST_CASE("6 [test_3]", "[test_3]") {
     string str(3, '3');
     warpper(str, 1);
 }
 
-TEST_CASE("7 [test 3]", "[test 3]") {
+TEST_CASE("7 [test_3]", "[test_3]") {
     string str{"tmmzuxt"};
     warpper(str, 5);
 }
 
-TEST_CASE("8 [test 3]", "[test 3]") {
+TEST_CASE("8 [test_3]", "[test_3]") {
     string str{"1145141919810"};
     warpper(str, 4);
 }

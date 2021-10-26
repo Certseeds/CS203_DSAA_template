@@ -45,7 +45,7 @@ struct leetcode_2 {
 
 using LISTNODE::ListNodeLink;
 
-TEST_CASE("basic tests [test 2]", "[test 2]") {
+TEST_CASE("basic tests [test_2]", "[test_2]") {
     const ListNodeLink vec1{2, 4, 3};
     const ListNodeLink vec2{5, 6, 4};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);
@@ -59,7 +59,7 @@ TEST_CASE("basic tests [test 2]", "[test 2]") {
     CHECK(ListNode::equal({7, 0, 8}, result));
 }
 
-TEST_CASE("basic tests 2 [test 2]", "[test 2]") {
+TEST_CASE("basic tests 2 [test_2]", "[test_2]") {
 
     const ListNodeLink vec1{0};
     const ListNodeLink vec2{0};
@@ -69,7 +69,7 @@ TEST_CASE("basic tests 2 [test 2]", "[test 2]") {
     CHECK(ListNode::equal({0}, result));
 }
 
-TEST_CASE("basic tests 3 [test 2]", "[test 2]") {
+TEST_CASE("basic tests 3 [test_2]", "[test_2]") {
     const ListNodeLink vec1{9, 9, 9, 9, 9, 9, 9};
     const ListNodeLink vec2{9, 9, 9, 9};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);

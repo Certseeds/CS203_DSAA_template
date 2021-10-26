@@ -45,28 +45,28 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 
-TEST_CASE("1 [test 26]", "[test 26]") {
+TEST_CASE("1 [test_26]", "[test_26]") {
     vector<int32_t> vec{1, 2};
     const vector<int32_t> result{1, 2};
-    THEN("then1 [test 26]") {
+    THEN("then1 [test_26]") {
         leetcode_26::removeDuplicates(vec);
     }
     CHECK_THAT(vec, Equals(result));
 }
 
-TEST_CASE("2 [test 26]", "[test 26]") {
+TEST_CASE("2 [test_26]", "[test_26]") {
     vector<int32_t> vec{1, 1, 2};
     const vector<int32_t> result{1, 2};
-    THEN("then3 [test 26]") {
+    THEN("then3 [test_26]") {
         leetcode_26::removeDuplicates(vec);
     }
     CHECK_THAT(vec, Equals(result));
 }
 
-TEST_CASE("3 [test 26]", "[test 26]") {
+TEST_CASE("3 [test_26]", "[test_26]") {
     vector<int32_t> vec{0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
     const vector<int32_t> result{0, 1, 2, 3, 4};
-    THEN("then5 [test 26]") {
+    THEN("then5 [test_26]") {
         leetcode_26::removeDuplicates(vec);
     }
     CHECK_THAT(vec, Equals(result));

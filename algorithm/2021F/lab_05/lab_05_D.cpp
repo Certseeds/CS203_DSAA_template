@@ -25,7 +25,6 @@ SOFTWARE.
 */
 /*
  * @题目描述
- * 匹配括号,输出是否匹配
  * */
 //@Tag DONE
 
@@ -79,15 +78,15 @@ inline input_type read() {
 }
 
 output_type cal(const input_type &data) {
-    stack<int32_t> sta;
+    stack<num_t> sta;
     sta.push(-1);
     for (const auto &ele: data) {
         if (ele == left) {
             // 无论怎样,左括号都要压栈
             sta.push(-1);
         } else if (sta.top() != -1) {
-            // 栈内有未清空的数字则累加, 注意,此时只可能为左括号
-            int32_t middle{0};
+            // 栈内有未清空的数字则累加, 注意,此时只可能为右括号
+            num_t middle{0};
             do {
                 middle += sta.top();
                 middle %= mod_num;

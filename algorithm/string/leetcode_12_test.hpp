@@ -51,32 +51,32 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-TEST_CASE("test case 1 [test 12", "[test 12]") {
+TEST_CASE("test case 1 [test_12", "[test_12]") {
     CHECK(leetcode_12::intToRoman(3) == "III");
     CHECK(leetcode_12::intToRoman_2(3) == "III");
 }
 
-TEST_CASE("test case 2 [test 12", "[test 12]") {
+TEST_CASE("test case 2 [test_12", "[test_12]") {
     CHECK(leetcode_12::intToRoman(4) == "IV");
     CHECK(leetcode_12::intToRoman_2(4) == "IV");
 }
 
-TEST_CASE("test case 3 [test 12", "[test 12]") {
+TEST_CASE("test case 3 [test_12", "[test_12]") {
     CHECK(leetcode_12::intToRoman(9) == "IX");
     CHECK(leetcode_12::intToRoman_2(9) == "IX");
 }
 
-TEST_CASE("test case 4 [test 12", "[test 12]") {
+TEST_CASE("test case 4 [test_12", "[test_12]") {
     CHECK(leetcode_12::intToRoman(58) == "LVIII");
     CHECK(leetcode_12::intToRoman_2(58) == "LVIII");
 }
 
-TEST_CASE("test case 5 [test 12", "[test 12]") {
+TEST_CASE("test case 5 [test_12", "[test_12]") {
     CHECK(leetcode_12::intToRoman(1994) == "MCMXCIV");
     CHECK(leetcode_12::intToRoman_2(1994) == "MCMXCIV");
 }
 
-TEST_CASE("test case 6 [test 12", "[test 12]") {
+TEST_CASE("test case 6 [test_12", "[test_12]") {
     CHECK(leetcode_12::intToRoman(114514) ==
           "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMDXIV");
     CHECK(leetcode_12::intToRoman_2(114514) ==

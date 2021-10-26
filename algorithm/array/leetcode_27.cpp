@@ -23,43 +23,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag array
-//@Tag 数组
+#include "leetcode_27_test.hpp"
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP
+namespace leetcode_27 {
 
-#include <catch_main.hpp>
-#include <unordered_map>
+int leetcode_27::removeElement(vector<int32_t> &vec, int32_t val) {
+    vec.erase(std::remove(vec.begin(), vec.end(), val), vec.end());
+    return vec.size();
+}
 
-namespace leetcode_1 {
-using std::unordered_map;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
-
-struct leetcode_1 {
-    static vector<int> twoSum(const vector<int> &nums, int target);
-};
-
-TEST_CASE("basic tests [test_1]", "[test_1]") {
-    const vector<int32_t> vec{2, 7, 11, 15};
-    auto result = leetcode_1::twoSum(vec, 9);
-    SECTION("size is always 2") {
-        CHECK(result.size() == 2);
-    }SECTION("test cases") {
-        CHECK_THAT(result, UnorderedEquals<int>({0, 1}));
+int leetcode_27::removeElement2(vector<int32_t> &vec, int32_t val) {
+    const size_t vec_size{vec.size()};
+    int32_t order{0};
+    for(size_t begin{0};begin < vec_size;begin++) {
+        if (vec[begin] != val) {
+            vec[order] = vec[begin];
+            order++;
+        }
     }
+    vec.resize(order);
+    return order;
 }
-
-TEST_CASE("basic tests 2 [test_1]", "[test_1]") {
-    const vector<int32_t> vec{3, 2, 4};
-    auto result = leetcode_1::twoSum(vec, 6);
-    SECTION("size is always 2") {
-        CHECK(result.size() == 2);
-    }SECTION("test cases") {
-        CHECK_THAT(result, UnorderedEquals<int32_t>({1, 2}));
-    }
 }
-
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP

@@ -44,12 +44,12 @@ struct leetcode_14 {
     static string longestCommonPrefix(const vector<string> &strs);
 };
 
-TEST_CASE("test case 1 [test 14]", "[test 14]") {
+TEST_CASE("test case 1 [test_14]", "[test_14]") {
     const vector<string> strs = {"flower", "flow", "flight"};
     CHECK(leetcode_14::longestCommonPrefix(strs) == "fl");
 }
 
-TEST_CASE("test case 2 [test 14]", "[test 14]") {
+TEST_CASE("test case 2 [test_14]", "[test_14]") {
     const vector<string> strs = {
             "dog", "racecar", "car"
     };
@@ -57,7 +57,7 @@ TEST_CASE("test case 2 [test 14]", "[test 14]") {
 
 }
 
-TEST_CASE("test case 3 [test 14]", "[test 14]") {
+TEST_CASE("test case 3 [test_14]", "[test_14]") {
     const vector<string> strs = {
     };
     CHECK(leetcode_14::longestCommonPrefix(strs).empty());

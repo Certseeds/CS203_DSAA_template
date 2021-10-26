@@ -44,12 +44,12 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-TEST_CASE("test case 1 [test 17]", "[test 17]") {
+TEST_CASE("test case 1 [test_17]", "[test_17]") {
     CHECK_THAT(leetcode_17::letterCombinations("23"),
                UnorderedEquals<string>({"ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"}));
 }
 
-TEST_CASE("test case 2 [test 17]", "[test 17]") {
+TEST_CASE("test case 2 [test_17]", "[test_17]") {
     CHECK_THAT(leetcode_17::letterCombinations(""),
                UnorderedEquals<string>({}));
 }

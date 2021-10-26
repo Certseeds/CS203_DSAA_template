@@ -41,14 +41,14 @@ struct leetcode_20 {
     static bool isValid(const string &s);
 };
 
-TEST_CASE("test case 1 [test 20]", "[test 20]") {
+TEST_CASE("test case 1 [test_20]", "[test_20]") {
     CHECK(leetcode_20::isValid("()"));
     CHECK(leetcode_20::isValid("()[]{}"));
     CHECK(leetcode_20::isValid("(()[]{})[()[]{}]{()[]{}}"));
     CHECK(leetcode_20::isValid("(((()[]{})[()[]{}]{()[]{}})[]{})[()[]{}]{()[]{}}"));
 }
 
-TEST_CASE("test case 0 [test 20]", "[test 20]") {
+TEST_CASE("test case 0 [test_20]", "[test_20]") {
     CHECK_FALSE(leetcode_20::isValid("(]"));
     CHECK_FALSE(leetcode_20::isValid("(}"));
     CHECK_FALSE(leetcode_20::isValid("[}"));
@@ -59,7 +59,7 @@ TEST_CASE("test case 0 [test 20]", "[test 20]") {
     CHECK_FALSE(leetcode_20::isValid("(((()[]{})[()[]{}]{()[]{}})[]{))[()[]{}]{()[]{}}"));
 }
 
-TEST_CASE("test case 2-2 [test 20]", "[test 20]") {
+TEST_CASE("test case 2-2 [test_20]", "[test_20]") {
     CHECK_FALSE(leetcode_20::isValid("([)]"));
 }
 

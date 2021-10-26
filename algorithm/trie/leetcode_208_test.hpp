@@ -115,7 +115,7 @@ struct leetcode_208 {
     };
 };
 
-TEST_CASE("1 [test 208]", "[test 208]") {
+TEST_CASE("1 [test_208]", "[test_208]") {
     const auto leetcode_208_tire = std::make_unique<leetcode_208::trie>();
     leetcode_208_tire->insert("apple");
     leetcode_208_tire->insert("apple");
@@ -126,7 +126,7 @@ TEST_CASE("1 [test 208]", "[test 208]") {
     CHECK(leetcode_208_tire->search("app"));
 }
 
-TEST_CASE("2 [test 208]", "[test 208]") {
+TEST_CASE("2 [test_208]", "[test_208]") {
     const auto leetcode_208_tire = std::make_unique<leetcode_208::trie>();
     leetcode_208_tire->insert("hello");
     CHECK_FALSE(leetcode_208_tire->search("hell"));
@@ -137,7 +137,7 @@ TEST_CASE("2 [test 208]", "[test 208]") {
     CHECK(leetcode_208_tire->startsWith("hello"));
 }
 
-TEST_CASE("1-2 [test 208]", "[test 208]") {
+TEST_CASE("1-2 [test_208]", "[test_208]") {
     const auto leetcode_208_tire2 = std::make_unique<leetcode_208::trie2>();
     leetcode_208_tire2->insert("apple");
     CHECK(leetcode_208_tire2->search("apple"));
@@ -147,7 +147,7 @@ TEST_CASE("1-2 [test 208]", "[test 208]") {
     CHECK(leetcode_208_tire2->search("app"));
 }
 
-TEST_CASE("2-2 [test 208]", "[test 208]") {
+TEST_CASE("2-2 [test_208]", "[test_208]") {
     const auto leetcode_208_tire2 = std::make_unique<leetcode_208::trie2>();
     leetcode_208_tire2->insert("hello");
     CHECK_FALSE(leetcode_208_tire2->search("hell"));

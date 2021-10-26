@@ -48,7 +48,7 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-TEST_CASE("1 [test 15]", "[test 15]") {
+TEST_CASE("1 [test_15]", "[test_15]") {
     vector<int32_t> nums{-4, -1, -1, 0, 1, 2};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{{-1, 0,  1},
@@ -56,28 +56,28 @@ TEST_CASE("1 [test 15]", "[test 15]") {
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("2 [test 15]", "[test 15]") {
+TEST_CASE("2 [test_15]", "[test_15]") {
     vector<int32_t> nums{};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{};
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("3 [test 15]", "[test 15]") {
+TEST_CASE("3 [test_15]", "[test_15]") {
     vector<int32_t> nums{0};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{};
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("8 [test 15]", "[test 15]") {
+TEST_CASE("8 [test_15]", "[test_15]") {
     vector<int32_t> nums{0, 0, 0};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{{0, 0, 0}};
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("4 [test 15]", "[test 15]") {
+TEST_CASE("4 [test_15]", "[test_15]") {
     vector<int32_t> nums{-1, 0, 1, 2, -1, -4};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{{-1, 0,  1},
@@ -85,21 +85,21 @@ TEST_CASE("4 [test 15]", "[test 15]") {
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("5 [test 15]", "[test 15]") {
+TEST_CASE("5 [test_15]", "[test_15]") {
     vector<int32_t> nums{};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{};
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("6 [test 15]", "[test 15]") {
+TEST_CASE("6 [test_15]", "[test_15]") {
     vector<int32_t> nums{0};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{};
     CHECK_THAT(output, UnorderedEquals(results));
 }
 
-TEST_CASE("7 [test 15]", "[test 15]") {
+TEST_CASE("7 [test_15]", "[test_15]") {
     vector<int32_t> nums{0, 0, 0};
     auto output = leetcode_15::threeSum(nums);
     const vector<vector<int32_t>> results{{0, 0, 0}};

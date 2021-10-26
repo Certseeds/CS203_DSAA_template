@@ -42,13 +42,13 @@ struct leetcode_1614 {
     static int maxDepth(const string &s);
 };
 
-TEST_CASE("1 [test 1614]", "[test 1614]") {
+TEST_CASE("1 [test_1614]", "[test_1614]") {
     CHECK(1 == leetcode_1614::maxDepth("()"));
     CHECK(1 == leetcode_1614::maxDepth("(*)"));
     CHECK(2 == leetcode_1614::maxDepth("((*))"));
 }
 
-TEST_CASE("2 [test 1614]", "[test 1614]") {
+TEST_CASE("2 [test_1614]", "[test_1614]") {
     CHECK(3 == leetcode_1614::maxDepth("(1+(2*3)+((8)/4))+1"));
     CHECK(3 == leetcode_1614::maxDepth("(1)+((2))+(((3)))"));
     CHECK(1 == leetcode_1614::maxDepth("1+(2*3)/(2-1)"));
