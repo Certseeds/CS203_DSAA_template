@@ -26,32 +26,26 @@ SOFTWARE.
 //@Tag list
 //@Tag 链表
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_29_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_29_HPP
 
 #include <cstdint>
 #include <catch_main.hpp>
 
-namespace leetcode_9 {
-struct leetcode_9 {
-    static bool isPalindrome(int32_t x);
+namespace leetcode_29 {
+struct leetcode_29 {
+    static int divide(int dividend, int divisor);
 };
 
-
-TEST_CASE("test case 1 [test_9]", "[test_9]") {
-    CHECK(leetcode_9::isPalindrome(121));
-}
-
-TEST_CASE("test case 2 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(-121));
-}
-
-TEST_CASE("test case 3 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(120));
-}
-
-TEST_CASE("test case 4 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(10));
+TEST_CASE("1 [test 29]", "[test 29]") {
+    CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), -1) == std::numeric_limits<int32_t>::max());
+    CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), 1) == std::numeric_limits<int32_t>::min());
+    CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), 2) == -1073741824);
+    CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), -2) == 1073741824);
+    CHECK(leetcode_29::divide(10, 3) == 3);
+    CHECK(leetcode_29::divide(7, -3) == -2);
+    CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), std::numeric_limits<int32_t>::min()) == 1);
+    CHECK(leetcode_29::divide(-1010369383, -2147483648) == 0);
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_29_HPP

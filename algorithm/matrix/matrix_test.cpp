@@ -587,7 +587,7 @@ TEST_CASE("vector cross vector", "[test_3]") {
     const auto vec3 = cross(vec1, vec2);
 }
 
-TEST_CASE("test for trace", "[test 5]") {
+TEST_CASE("test for trace", "[test_5]") {
     Matrix<int32_t> m1{{1, 2},
                        {3, 1}};
     Matrix<int32_t> m2{{0, 3},
@@ -726,7 +726,7 @@ TEST_CASE("sum & avg", "[test_1]") {
     cout << "average of column4: " << m11.col_avg(4) << endl;
 }
 // TODO vector<vector<T>> test
-TEST_CASE("test for convolution", "[test 7]") {
+TEST_CASE("test for convolution", "[test_7]") {
     Matrix<int32_t> m1{{1, 1, 1, 0, 0},
                        {0, 1, 1, 1, 0},
                        {0, 0, 1, 1, 1},
@@ -744,7 +744,7 @@ TEST_CASE("test for convolution", "[test 7]") {
     cout << m1.convolution(m2, 2, 3);
 }
 
-TEST_CASE("test for reshape&slice", "[test 6]") {
+TEST_CASE("test for reshape&slice", "[test_6]") {
     Matrix<int32_t> m1{{1,  2},
                        {3,  4},
                        {5,  6},
@@ -801,7 +801,7 @@ void full_random(Mat &temp) {
     }
 }
 
-TEST_CASE("test for cv_matrix", "[test 8][.]") {
+TEST_CASE("test for cv_matrix", "[test_8][.]") {
     Mat temp = Mat::ones(2, 3, 0);
     full_random<uchar>(temp);
     cout << "mat 1" << endl;
@@ -828,7 +828,7 @@ TEST_CASE("test for cv_matrix", "[test 8][.]") {
     cout << cv_to_mat<double_t>(temp5);
 }
 
-TEST_CASE("test for matrix_to_cv", "[test 8][.]") {
+TEST_CASE("test for matrix_to_cv", "[test_8][.]") {
     Matrix<int32_t> mat1{{1, 2, 3, 4},
                          {2, 3, 4, 5},
                          {4, 5, 6, 7}};
@@ -875,7 +875,7 @@ TEST_CASE("test for matrix_to_cv", "[test 8][.]") {
 
 #endif
 
-TEST_CASE("test for row_exchange in test 5") {
+TEST_CASE("test for row_exchange in test_5") {
     Matrix<double_t> matrix{{1, 2},
                             {3, 4}};
     Matrix<double_t> result1{{3, 4},
@@ -884,7 +884,7 @@ TEST_CASE("test for row_exchange in test 5") {
     CHECK(!Matrix<double_t>::inside_equal(result1, matrix));
 }
 
-TEST_CASE("eigenvalue", "[test 5]") {
+TEST_CASE("eigenvalue", "[test_5]") {
     vector<double_t> eigenvalues;
     Matrix<int32_t> m3{{5, -3, 2},
                        {6, -4, 4},
@@ -924,7 +924,7 @@ TEST_CASE("eigenvalue", "[test 5]") {
     }
 }
 
-TEST_CASE("eigenvector", "[test 5]") {
+TEST_CASE("eigenvector", "[test_5]") {
     Matrix<int32_t> m1{{2, 1},
                        {1, 2}};
 
@@ -956,7 +956,7 @@ TEST_CASE("eigenvector", "[test 5]") {
     cout << endl << "m3's eigenvectors:" << endl << m3.eigenvector();
 }
 
-TEST_CASE("inverse", "[test 5]") {
+TEST_CASE("inverse", "[test_5]") {
     Matrix<double> m1{{2, 2},
                       {1, 2}};
     auto temp = m1.inverse();

@@ -41,26 +41,26 @@ struct leetcode_678 {
     static bool checkValidString2(const string &s);
 };
 
-TEST_CASE("1 [test 678]", "[test 678]") {
+TEST_CASE("1 [test_678]", "[test_678]") {
     CHECK(leetcode_678::checkValidString("()"));
     CHECK(leetcode_678::checkValidString("(*)"));
     CHECK(leetcode_678::checkValidString("(*))"));
 }
 
-TEST_CASE("2 [test 678]", "[test 678]") {
+TEST_CASE("2 [test_678]", "[test_678]") {
     CHECK_FALSE(leetcode_678::checkValidString(
             "(((((*(((((*((**(((*)*((((**))*)*)))))))))((*(((((**(**)"));
     CHECK_FALSE(leetcode_678::checkValidString(
             "(((((*(()((((*((**(((()()*)()()()*((((**)())*)*)))))))(())(()))())((*()()(((()((()*(())*(()**)()(())"));
 }
 
-TEST_CASE("2-1 [test 678]", "[test 678]") {
+TEST_CASE("2-1 [test_678]", "[test_678]") {
     CHECK(leetcode_678::checkValidString2("()"));
     CHECK(leetcode_678::checkValidString2("(*)"));
     CHECK(leetcode_678::checkValidString2("(*))"));
 }
 
-TEST_CASE("2-2 [test 678]", "[test 678]") {
+TEST_CASE("2-2 [test_678]", "[test_678]") {
     CHECK_FALSE(leetcode_678::checkValidString2(
             "(((((*(((((*((**(((*)*((((**))*)*)))))))))((*(((((**(**)"));
     CHECK_FALSE(leetcode_678::checkValidString2(

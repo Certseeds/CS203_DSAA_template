@@ -18,7 +18,6 @@ foreach (elementName IN LISTS dependencies)
 endforeach ()
 unset(dependencies)
 
-
 set(dependencies 28)
 foreach (elementOrder IN LISTS dependencies)
     set(elementName leetcode_${elementOrder})

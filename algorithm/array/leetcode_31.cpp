@@ -23,35 +23,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
+#include "leetcode_31_test.hpp"
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
+namespace leetcode_31 {
 
-#include <cstdint>
-#include <catch_main.hpp>
-
-namespace leetcode_9 {
-struct leetcode_9 {
-    static bool isPalindrome(int32_t x);
-};
-
-
-TEST_CASE("test case 1 [test_9]", "[test_9]") {
-    CHECK(leetcode_9::isPalindrome(121));
+void leetcode_31::nextPermutation(vector<int32_t> &nums) {
+    if (nums.size() <= 1) {
+        return;
+    }
+    size_t j{nums.size() - 1};
+    for (; j > 0; j--) {
+        if (nums[j - 1] < nums[j]) {
+            break;
+        }
+    }
+    if (j == 0) {
+        std::reverse(nums.begin(), nums.end());
+        return;
+    }
+    for (size_t k = nums.size() - 1; k >= j; k--) {
+        if (nums[k] > nums[j - 1]) {
+            std::swap(nums[k], nums[j - 1]);
+            break;
+        }
+    }
+    std::reverse(nums.begin() + j, nums.end());
 }
 
-TEST_CASE("test case 2 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(-121));
-}
 
-TEST_CASE("test case 3 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(120));
 }
-
-TEST_CASE("test case 4 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(10));
-}
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP

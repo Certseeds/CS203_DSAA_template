@@ -41,43 +41,43 @@ struct leetcode_5 {
     static string longestPalindrome(const string &s);
 };
 
-TEST_CASE("1 [test 5]", "[test 5]") {
+TEST_CASE("1 [test_5]", "[test_5]") {
     CHECK(leetcode_5::longestPalindrome("babad").size() == 3);
 }
 
-TEST_CASE("2 [test 5]", "[test 5]") {
+TEST_CASE("2 [test_5]", "[test_5]") {
     CHECK(leetcode_5::longestPalindrome("cbbc").size() == 4);
 }
 
-TEST_CASE("2_  [test 5]", "[test 5]") {
+TEST_CASE("2_  [test_5]", "[test_5]") {
     CHECK(leetcode_5::longestPalindrome("cbbd").size() == 2);
 }
 
-TEST_CASE("3 [test 5]", "[test 5]") {
+TEST_CASE("3 [test_5]", "[test_5]") {
     CHECK(leetcode_5::longestPalindrome("cb").size() == 1);
 }
 
-TEST_CASE("4 [test 5]", "[test 5]") {
+TEST_CASE("4 [test_5]", "[test_5]") {
     CHECK(leetcode_5::longestPalindrome("c").size() == 1);
 }
 
-TEST_CASE("5 [test 5]", "[test 5]") {
+TEST_CASE("5 [test_5]", "[test_5]") {
     CHECK(leetcode_5::longestPalindrome("").empty());
 }
 
-TEST_CASE("6 [test 5]", "[test 5]") {
+TEST_CASE("6 [test_5]", "[test_5]") {
     const string str = "ac";
     CHECK(leetcode_5::longestPalindrome(str).size() == 1);
     CHECK(leetcode_5::longestPalindrome(str) == "a");
 }
 
-TEST_CASE("7 [test 5]", "[test 5]") {
+TEST_CASE("7 [test_5]", "[test_5]") {
     const string str = "aaaaa";
     CHECK(leetcode_5::longestPalindrome(str).size() == 5);
     CHECK(leetcode_5::longestPalindrome(str) == str);
 }
 
-TEST_CASE("8 [test 5]", "[test 5]") {
+TEST_CASE("8 [test_5]", "[test_5]") {
     const string str = "mozblnzrszxtdjmwvgeovtxoftpcsbnjryogrnibiiqfexljlfikfcxvrzrpfvugtdjrlkgvkmrqgeltifdehsewpdhpjpnuobmuozopmglnocqcozvratjpzrklexqdeuvvzfjkuknkkoynxptrgtzadmpfdkphfjhdulhzncoofmmrwqjxeyhodfavcgpjmohohuztezdxegqzbaaobzrqptuqsvwnfdneyccbkgkjafztytwuppvleukdqqzyeiltsvoqbxupbasiityganofxijucwzqgtdyxljociwwjdrnfnfbwyymmvbuvbrdnvcubzkohknbsneutrcukfiqqhfviqdsbtrldipenqifdcrenpuyaqvkparycksurhbtjppwhezbcgocamurdawimkzzkmiwadrumacogcbzehwppjtbhruskcyrapkvqayupnercdfiqnepidlrtbsdqivfhqqifkucrtuensbnkhokzbucvndrbvubvmmyywbfnfnrdjwwicojlxydtgqzwcujixfonagytiisabpuxbqovstlieyzqqdkuelvppuwtytzfajkgkbccyendfnwvsqutpqrzboaabzqgexdzetzuhohomjpgcvafdohyexjqwrmmfoocnzhludhjfhpkdfpmdaztgrtpxnyokknkukjfzvvuedqxelkrzpjtarvzocqconlgmpozoumbounpjphdpweshedfitlegqrmkvgklrjdtguvfprzrvxcfkifljlxefqiibinrgoyrjnbscptfoxtvoegvwmjdtxzsrznlbzom";
     CHECK(leetcode_5::longestPalindrome(str) == str);
 }
