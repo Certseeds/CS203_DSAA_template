@@ -41,7 +41,6 @@ struct leetcode_92 {
     static ListNode *reverseBetween(ListNode *head, int32_t left, int32_t right);
 };
 
-
 using LISTNODE::ListNodeLink;
 
 TEST_CASE("-1 [test _92]", "[test _92]") {

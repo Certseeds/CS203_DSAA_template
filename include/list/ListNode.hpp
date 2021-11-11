@@ -29,8 +29,6 @@ struct ListNode {
     ListNode(const ListNode &obj) : ListNode(obj.val, obj.next) {};
 
     ~ListNode() {
-        this->val = 0;
-        this->next = nullptr;
         alloc_delete_count--;
     }
 

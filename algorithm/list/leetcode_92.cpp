@@ -42,7 +42,6 @@ struct AVLTreeNode : public TreeNode<T> {
 ListNode *leetcode_92::reverseBetween(ListNode *head, int32_t left, int32_t right) {
     AVLTreeNode<int32_t> x;
     x.left = new AVLTreeNode<int32_t>();
-    auto *temp = dynamic_cast<AVLTreeNode<int32_t> *>(x.left);
     ListNode will_return(-1);
     will_return.next = head;
     ListNode *pre{&will_return};
@@ -58,6 +57,7 @@ ListNode *leetcode_92::reverseBetween(ListNode *head, int32_t left, int32_t righ
         pre->next = next;
         next->next = prenext;
     }
+    delete x.left;
     return will_return.next;
 }
 }

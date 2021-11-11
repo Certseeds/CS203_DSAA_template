@@ -57,6 +57,9 @@ TEST_CASE("basic tests [test_2]", "[test_2]") {
     CHECK(result->next->next->val == 8);
     CHECK(result->next->next->next == nullptr);
     CHECK(ListNode::equal({7, 0, 8}, result));
+    delete result->next->next;
+    delete result->next;
+    delete result;
 }
 
 TEST_CASE("basic tests 2 [test_2]", "[test_2]") {
@@ -67,6 +70,7 @@ TEST_CASE("basic tests 2 [test_2]", "[test_2]") {
     CHECK(result != nullptr);
     CHECK(result->val == 0);
     CHECK(ListNode::equal({0}, result));
+    delete result;
 }
 
 TEST_CASE("basic tests 3 [test_2]", "[test_2]") {
@@ -74,6 +78,14 @@ TEST_CASE("basic tests 3 [test_2]", "[test_2]") {
     const ListNodeLink vec2{9, 9, 9, 9};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);
     CHECK(ListNode::equal({8, 9, 9, 9, 0, 0, 0, 1}, result));
+    ListNode *will_delete{const_cast<ListNode*>(result)};
+    vector<ListNode *> nodes;
+    while (will_delete != nullptr) {
+        nodes.push_back(will_delete);
+        will_delete = will_delete->next;
+    }
+    const ListNodeLink removed{nodes};
+
 }
 
 

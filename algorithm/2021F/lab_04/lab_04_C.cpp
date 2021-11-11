@@ -113,10 +113,13 @@ static num_t phi{0};
 
 void output(const output_type &data);
 
+void destoryResource(const input_type &data);
+
 int32_t main() {
     const auto input_data = read();
     const auto output_data = cal(input_data);
     output(output_data);
+    destoryResource(input_data);
     return 0;
 }
 
@@ -179,6 +182,16 @@ void output(const output_type &data) {
         std::cout << (*iter) << space;
     }
     std::cout << *(data.cend() - 1);
+}
+
+void destoryResource(const input_type &data) {
+    vector<ListNode *> nodes{};
+    vector<std::pair<num_t, num_t>> operas{};
+    vector<num_t> will_return{};
+    std::tie(nodes, operas) = data;
+    for (const auto &node: nodes) {
+        delete node;
+    }
 }
 
 static const auto faster_streams = [] {
