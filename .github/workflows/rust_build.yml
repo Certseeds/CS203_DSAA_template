@@ -1,0 +1,56 @@
+# @Organization: SUSTech
+# @Author: nanoseeds
+# @Date: 2020-07-28 22:43:03
+# @LastEditors: nanoseeds
+#@LastEditTime: 2020-07-28 23:43:03
+# This is a basic workflow to help you get started with Actions
+
+name: Rust Build and Test
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  [ push,pull_request ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    name: test
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ windows-latest,ubuntu-18.04, ubuntu-latest ]
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
+
+      - name: Cache toolchain
+        uses: actions/cache@v2
+        with:
+          path: |
+            ~/.rustup/toolchains
+            ~/.rustup/update-hashes
+            ~/.rustup/settings.toml
+          key: ${{ runner.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-rust-toolchain-
+            ${{ runner.os }}-rust
+            ${{ runner.os }}
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: rust build
+        working-directory: ./basic/cs205_c_cpp_2020s
+        run: cargo build --all --release --all-features -j2
+
+      - name: rust test
+        working-directory: ./basic/cs205_c_cpp_2020s
+        run: cargo test --all -j2
+

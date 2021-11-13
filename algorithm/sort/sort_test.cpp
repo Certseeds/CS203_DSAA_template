@@ -55,7 +55,7 @@ TEST_CASE("basic test", "[sort]") {
     CHECK_THAT(nums, Equals(nums_result));
 }
 
-TEST_CASE("basic test 2", "[sort]") {
+TEST_CASE("basic test_2", "[sort]") {
     vector<int> nums{3, 2, 3, 1, 2, 4, 5, 5, 6};
     vector<int> nums_result(nums);
     sort_warpper(nums);
@@ -63,7 +63,7 @@ TEST_CASE("basic test 2", "[sort]") {
     CHECK_THAT(nums, Equals(nums_result));
 }
 
-TEST_CASE("basic test 3", "[sort]") {
+TEST_CASE("basic test_3", "[sort]") {
     vector<int> nums{1, 1, 4, 5, 1, 4, 1, 9, 1, 9, 8, 1, 0};
     vector<int> nums_result(nums);
     sort_warpper(nums);

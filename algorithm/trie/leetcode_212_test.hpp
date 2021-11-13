@@ -54,7 +54,7 @@ struct leetcode_212 {
     static vector<string> findWords(vector<vector<char>> &board, const vector<string> &words);
 };
 
-TEST_CASE("test basic 1[test 212]", "[test 212]") {
+TEST_CASE("test basic 1[test_212]", "[test_212]") {
     vector<vector<char>> board{{'o', 'a', 'b', 'n'},
                                {'o', 't', 'a', 'e'},
                                {'a', 'h', 'k', 'r'},
@@ -64,7 +64,7 @@ TEST_CASE("test basic 1[test 212]", "[test 212]") {
     CHECK_THAT(leetcode_212::findWords(board, words), UnorderedEquals<string>(results));
 }
 
-TEST_CASE("test basic 2[test 212]", "[test 212]") {
+TEST_CASE("test basic 2[test_212]", "[test_212]") {
     vector<vector<char>> board{{'o', 'a', 'a', 'n'},
                                {'e', 't', 'a', 'e'},
                                {'i', 'h', 'k', 'r'},
@@ -74,7 +74,7 @@ TEST_CASE("test basic 2[test 212]", "[test 212]") {
     CHECK_THAT(leetcode_212::findWords(board, words), UnorderedEquals<string>(results));
 }
 
-TEST_CASE("test basic 3[test 212]", "[test 212]") {
+TEST_CASE("test basic 3[test_212]", "[test_212]") {
     vector<vector<char>> board{
             {'a', 'a', 'a', 'a', 'a', 'a'},
             {'a', 'a', 'a', 'a', 'a', 'a'},
@@ -87,7 +87,7 @@ TEST_CASE("test basic 3[test 212]", "[test 212]") {
     CHECK_THAT(leetcode_212::findWords(board, words), UnorderedEquals<string>(results));
 }
 
-TEST_CASE("test basic 4[test 212]", "[test 212]") {
+TEST_CASE("test basic 4[test_212]", "[test_212]") {
     vector<vector<char>> board{
             {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'},
             {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'},
@@ -108,7 +108,7 @@ TEST_CASE("test basic 4[test 212]", "[test 212]") {
     CHECK_THAT(leetcode_212::findWords(board, words), UnorderedEquals<string>(results));
 }
 
-TEST_CASE("test basic 5[test 212]", "[test 212]") {
+TEST_CASE("test basic 5[test_212]", "[test_212]") {
     vector<vector<char>> board{
             {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'},
             {'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a'},

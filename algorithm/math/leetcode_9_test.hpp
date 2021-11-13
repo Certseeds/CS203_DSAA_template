@@ -38,19 +38,19 @@ struct leetcode_9 {
 };
 
 
-TEST_CASE("test case 1 [test 9]", "[test 9]") {
+TEST_CASE("test case 1 [test_9]", "[test_9]") {
     CHECK(leetcode_9::isPalindrome(121));
 }
 
-TEST_CASE("test case 2 [test 9]", "[test 9]") {
+TEST_CASE("test case 2 [test_9]", "[test_9]") {
     CHECK_FALSE(leetcode_9::isPalindrome(-121));
 }
 
-TEST_CASE("test case 3 [test 9]", "[test 9]") {
+TEST_CASE("test case 3 [test_9]", "[test_9]") {
     CHECK_FALSE(leetcode_9::isPalindrome(120));
 }
 
-TEST_CASE("test case 4 [test 9]", "[test 9]") {
+TEST_CASE("test case 4 [test_9]", "[test_9]") {
     CHECK_FALSE(leetcode_9::isPalindrome(10));
 }
 }

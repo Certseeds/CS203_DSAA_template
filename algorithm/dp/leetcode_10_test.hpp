@@ -40,7 +40,7 @@ struct leetcode_10 {
     static bool isMatch(const string &s, const string &p);
 };
 
-TEST_CASE("test case 1", "[test 10]") {
+TEST_CASE("test case 1", "[test_10]") {
     CHECK_FALSE(leetcode_10::isMatch("aa", "a"));
     CHECK(leetcode_10::isMatch("aa", "a*"));
     CHECK(leetcode_10::isMatch("ab", ".*"));

@@ -39,35 +39,35 @@ struct leetcode_8 {
     static int myAtoi(const string &str);
 };
 
-TEST_CASE("1 [test 8]", "[test 8]") {
+TEST_CASE("1 [test_8]", "[test_8]") {
     CHECK(leetcode_8::myAtoi("42") == 42);
     CHECK(leetcode_8::myAtoi("65537") == 65537);
     CHECK(leetcode_8::myAtoi("114514") == 114514);
     CHECK(leetcode_8::myAtoi("1919810") == 1919810);
 }
 
-TEST_CASE("2 [test 8]", "[test 8]") {
+TEST_CASE("2 [test_8]", "[test_8]") {
     CHECK(leetcode_8::myAtoi("+42") == 42);
     CHECK(leetcode_8::myAtoi("+65537") == 65537);
     CHECK(leetcode_8::myAtoi("+114514") == 114514);
     CHECK(leetcode_8::myAtoi("+1919810") == 1919810);
 }
 
-TEST_CASE("3 [test 8]", "[test 8]") {
+TEST_CASE("3 [test_8]", "[test_8]") {
     CHECK(leetcode_8::myAtoi("-42") == -42);
     CHECK(leetcode_8::myAtoi("-65537") == -65537);
     CHECK(leetcode_8::myAtoi("-114514") == -114514);
     CHECK(leetcode_8::myAtoi("-1919810") == -1919810);
 }
 
-TEST_CASE("4 [test 8]", "[test 8]") {
+TEST_CASE("4 [test_8]", "[test_8]") {
     CHECK(leetcode_8::myAtoi("  -42") == -42);
     CHECK(leetcode_8::myAtoi("  -65537") == -65537);
     CHECK(leetcode_8::myAtoi("    -114514") == -114514);
     CHECK(leetcode_8::myAtoi("     -1919810") == -1919810);
 }
 
-TEST_CASE("5 [test 8]", "[test 8]") {
+TEST_CASE("5 [test_8]", "[test_8]") {
     CHECK(leetcode_8::myAtoi("114514 with meaningless words") == 114514);
     CHECK(leetcode_8::myAtoi("meaningless words with -65537") == 0);
     CHECK(leetcode_8::myAtoi("2147483647") == std::numeric_limits<int32_t>::max());

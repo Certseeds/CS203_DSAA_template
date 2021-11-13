@@ -46,37 +46,37 @@ struct leetcode_7 {
     static int32_t reverse3(int32_t x);
 };
 
-TEST_CASE("1 [test 7]", "[test 7]") {
+TEST_CASE("1 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse(123) == 321);
     CHECK(leetcode_7::reverse2(123) == 321);
     CHECK(leetcode_7::reverse3(123) == 321);
 }
 
-TEST_CASE("2 [test 7]", "[test 7]") {
+TEST_CASE("2 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse(-123) == -321);
     CHECK(leetcode_7::reverse2(-123) == -321);
     CHECK(leetcode_7::reverse3(-123) == -321);
 }
 
-TEST_CASE("3 [test 7]", "[test 7]") {
+TEST_CASE("3 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse(120) == 21);
     CHECK(leetcode_7::reverse2(120) == 21);
     CHECK(leetcode_7::reverse3(120) == 21);
 }
 
-TEST_CASE("4 [test 7]", "[test 7]") {
+TEST_CASE("4 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse(0) == 0);
     CHECK(leetcode_7::reverse2(0) == 0);
     CHECK(leetcode_7::reverse3(0) == 0);
 }
 
-TEST_CASE("5 [test 7]", "[test 7]") {
+TEST_CASE("5 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse(-2147483648) == 0);
     CHECK(leetcode_7::reverse2(-2147483648) == 0);
     CHECK(leetcode_7::reverse3(-2147483648) == 0);
 }
 
-TEST_CASE("6 [test 7]", "[test 7]") {
+TEST_CASE("6 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse(1463847412) == 2147483641);
     CHECK(leetcode_7::reverse2(1463847412) == 2147483641);
     CHECK(leetcode_7::reverse3(1463847412) == 2147483641);

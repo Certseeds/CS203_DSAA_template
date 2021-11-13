@@ -47,13 +47,13 @@ struct leetcode_162 {
     static int findPeakElement2(const vector<int> &nums);
 };
 
-TEST_CASE("1 [test 162]", "[test 162]") {
+TEST_CASE("1 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 3, 1};
     CHECK(leetcode_162::findPeakElement2(nums) == 2);
     CHECK(leetcode_162::findPeakElement(nums) == 2);
 }
 
-TEST_CASE("2 [test 162]", "[test 162]") {
+TEST_CASE("2 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 1, 3, 5, 6, 4};
     const auto v = leetcode_162::findPeakElement2(nums);
     const auto v2 = leetcode_162::findPeakElement(nums);
@@ -61,13 +61,13 @@ TEST_CASE("2 [test 162]", "[test 162]") {
     CHECK_THAT((vector<int32_t>{1, 5}), Contains<int32_t>(vector<int32_t>{v2}));
 }
 
-TEST_CASE("3 [test 162]", "[test 162]") {
+TEST_CASE("3 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 3, 4, 3};
     const auto v = leetcode_162::findPeakElement(nums);
     CHECK_THAT((vector<int32_t>{3}), Contains<int32_t>(vector<int32_t>{v}));
 }
 
-TEST_CASE("4 [test 162]", "[test 162]") {
+TEST_CASE("4 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 1, 3, 5, 6, 4};
     const auto v = leetcode_162::findPeakElement(nums);
     CHECK_THAT((vector<int32_t>{1, 5}), Contains<int32_t>(vector<int32_t>{v}));

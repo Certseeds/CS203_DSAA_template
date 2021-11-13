@@ -45,7 +45,7 @@ struct leetcode_4 {
     static double findMedianSortedArraysOlogN2(const vector<int32_t> &nums1, const vector<int32_t> &nums2);
 };
 
-TEST_CASE("1 [test 4]", "[test 4]") {
+TEST_CASE("1 [test_4]", "[test_4]") {
     const vector<int32_t> num1{1, 3};
     const vector<int32_t> num2{2};
     CHECK(leetcode_4::findMedianSortedArraysOn(num1, num2) == 2);
@@ -53,7 +53,7 @@ TEST_CASE("1 [test 4]", "[test 4]") {
     CHECK(leetcode_4::findMedianSortedArraysOlogN2(num1, num2) == 2);
 }
 
-TEST_CASE("2 [test 4]", "[test 4]") {
+TEST_CASE("2 [test_4]", "[test_4]") {
     const vector<int32_t> num1{1, 3};
     const vector<int32_t> num2{2, 4};
     CHECK(leetcode_4::findMedianSortedArraysOn(num1, num2) == 2.5f);
@@ -61,7 +61,7 @@ TEST_CASE("2 [test 4]", "[test 4]") {
     CHECK(leetcode_4::findMedianSortedArraysOlogN2(num1, num2) == 2.5f);
 }
 
-TEST_CASE("3 [test 4]", "[test 4]") {
+TEST_CASE("3 [test_4]", "[test_4]") {
     const vector<int32_t> num1{0, 0};
     const vector<int32_t> num2{0, 0};
     CHECK(leetcode_4::findMedianSortedArraysOn(num1, num2) == 0);
@@ -69,7 +69,7 @@ TEST_CASE("3 [test 4]", "[test 4]") {
     CHECK(leetcode_4::findMedianSortedArraysOlogN2(num1, num2) == 0);
 }
 
-TEST_CASE("4 [test 4]", "[test 4]") {
+TEST_CASE("4 [test_4]", "[test_4]") {
     const vector<int32_t> num1{1};
     const vector<int32_t> num2{};
     CHECK(leetcode_4::findMedianSortedArraysOn(num1, num2) == 1);
@@ -77,7 +77,7 @@ TEST_CASE("4 [test 4]", "[test 4]") {
     CHECK(leetcode_4::findMedianSortedArraysOlogN2(num1, num2) == 1);
 }
 
-TEST_CASE("5 [test 4]", "[test 4]") {
+TEST_CASE("5 [test_4]", "[test_4]") {
     const vector<int32_t> num1{2};
     const vector<int32_t> num2{};
     CHECK(leetcode_4::findMedianSortedArraysOn(num1, num2) == 2);
@@ -85,7 +85,7 @@ TEST_CASE("5 [test 4]", "[test 4]") {
     CHECK(leetcode_4::findMedianSortedArraysOlogN2(num1, num2) == 2);
 }
 
-TEST_CASE("6 [test 4]", "[test 4]") {
+TEST_CASE("6 [test_4]", "[test_4]") {
     const vector<int32_t> num1{2, 2, 4, 4};
     const vector<int32_t> num2{2, 2, 4, 4};
     CHECK(leetcode_4::findMedianSortedArraysOlogN(num1, num2) == 3.0f);

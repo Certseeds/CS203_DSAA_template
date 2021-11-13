@@ -53,6 +53,11 @@ TEST_CASE("-1 [test _109]", "[test _109]") {
     CHECK(result->right->val == 9);
     CHECK(result->left->left->val == -10);
     CHECK(result->right->left->val == 5);
+    delete result->left->left;
+    delete result->right->left;
+    delete result->left;
+    delete result->right;
+    delete result;
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP

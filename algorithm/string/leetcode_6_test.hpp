@@ -40,7 +40,7 @@ struct leetcode_6 {
 };
 
 
-TEST_CASE("test basic [test 6]", "[test 6]") {
+TEST_CASE("test basic [test_6]", "[test_6]") {
     CHECK(leetcode_6::convert("PAYPALISHIRING", 3) == "PAHNAPLSIIGYIR");
     CHECK(leetcode_6::convert("PAYPALISHIRING", 4) == "PINALSIGYAHRPI");
     CHECK(leetcode_6::convert("A", 1) == "A");

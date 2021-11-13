@@ -89,13 +89,11 @@ private:
         uint8_t isfinish;
         std::array<Node *, array_size> sons{nullptr};
 
-        explicit Node(uint8_t finish) : isfinish(finish) {
-        }
+        explicit Node(uint8_t finish) : isfinish(finish) {}
 
         ~Node() {
-            for (size_t i{0}; i < array_size; i++) {
-                delete sons[i];
-                sons[i] = nullptr;
+            for (const auto& son: sons) {
+                delete son;
             }
         }
     };
@@ -159,6 +157,12 @@ public:
             array = &(*array)[ch]->sons;
         }
         (*array)[prefix.back() - 'a']->isfinish = false;
+    }
+
+    virtual ~leetcode_208_Trie(){
+        for (const auto& son: sons) {
+            delete son;
+        }
     }
 };
 

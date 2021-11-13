@@ -41,7 +41,7 @@ struct leetcode_1 {
     static vector<int> twoSum(const vector<int> &nums, int target);
 };
 
-TEST_CASE("basic tests [test 1]", "[test 1]") {
+TEST_CASE("basic tests [test_1]", "[test_1]") {
     const vector<int32_t> vec{2, 7, 11, 15};
     auto result = leetcode_1::twoSum(vec, 9);
     SECTION("size is always 2") {
@@ -51,7 +51,7 @@ TEST_CASE("basic tests [test 1]", "[test 1]") {
     }
 }
 
-TEST_CASE("basic tests 2 [test 1]", "[test 1]") {
+TEST_CASE("basic tests 2 [test_1]", "[test_1]") {
     const vector<int32_t> vec{3, 2, 4};
     auto result = leetcode_1::twoSum(vec, 6);
     SECTION("size is always 2") {

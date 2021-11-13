@@ -52,7 +52,7 @@ struct leetcode_32 {
     static int32_t longestValidParentheses(const string &s);
 };
 
-TEST_CASE("test case 1 [test 32]", "[test 32]") {
+TEST_CASE("test case 1 [test_32]", "[test_32]") {
     CHECK(0 == leetcode_32::longestValidParentheses(""));
     CHECK(2 == leetcode_32::longestValidParentheses("(()"));
     CHECK(2 == leetcode_32::longestValidParentheses("())"));
