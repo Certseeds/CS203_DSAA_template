@@ -44,33 +44,35 @@ enum GRID : char {
 struct leetcode_200 {
     static int numIslands(const vector<vector<char>> &grid);
 };
+
 TEST_CASE("1 [test_200]", "[test_200]") {
     vector<vector<char>> edges{
-            {'1', '1', '1', '1', '0'},
-            {'1', '1', '0', '1', '0'},
-            {'1', '1', '0', '0', '0'},
-            {'0', '0', '0', '0', '0'},
+            {LAND,  LAND,  LAND,  LAND,  WATER},
+            {LAND,  LAND,  WATER, LAND,  WATER},
+            {LAND,  LAND,  WATER, WATER, WATER},
+            {WATER, WATER, WATER, WATER, WATER},
     };
     static constexpr const auto result{1};
     CHECK(result == leetcode_200::numIslands(edges));
 
 }
 
-TEST_CASE("2 [test_200]", "[test_200][.]") {
+TEST_CASE("2 [test_200]", "[test_200]") {
     const vector<vector<char>> edges{
-            {'1', '1', '0', '0', '0'},
-            {'1', '1', '0', '0', '0'},
-            {'0', '0', '1', '0', '0'},
-            {'0', '0', '0', '1', '1'}
+            {LAND,  LAND,  WATER, WATER, WATER},
+            {LAND,  LAND,  WATER, WATER, WATER},
+            {WATER, WATER, LAND,  WATER, WATER},
+            {WATER, WATER, WATER, LAND,  LAND}
     };
     static constexpr const auto result{3};
     CHECK(result == leetcode_200::numIslands(edges));
 }
+
 TEST_CASE("3 [test_200]", "[test_200]") {
     const vector<vector<char>> edges{
-            {'1', '0', '0'},
-            {'0', '0', '0'},
-            {'0', '0', '1'}
+            {LAND,  WATER, WATER},
+            {WATER, WATER, WATER},
+            {WATER, WATER, LAND}
     };
     static constexpr const auto result{2};
     CHECK(result == leetcode_200::numIslands(edges));
