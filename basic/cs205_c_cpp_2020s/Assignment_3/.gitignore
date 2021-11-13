@@ -1,0 +1,3 @@
+cmake_build_path
+*.out
+
