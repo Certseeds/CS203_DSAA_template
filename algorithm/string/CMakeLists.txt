@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 enable_testing()
 
 set(dependencies 3 6 8 12 13)
-LIST(APPEND dependencies 14 22)
+LIST(APPEND dependencies 14 22 38)
 foreach (elementOrder IN LISTS dependencies)
     set(elementName leetcode_${elementOrder})
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
