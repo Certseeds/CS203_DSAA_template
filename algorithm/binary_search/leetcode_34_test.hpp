@@ -32,6 +32,7 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_34_HPP
 
 #include <catch_main.hpp>
+#include "basic.hpp"
 #include <vector>
 
 namespace leetcode_34 {

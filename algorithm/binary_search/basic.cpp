@@ -69,6 +69,15 @@ num_t upper_bound(vector<num_t> &nums, num_t first, num_t last, num_t value) {
     return first;
 }
 
+num_t lower_bound_warpper(vector<num_t> &nums, num_t first, num_t last, num_t value) {
+    return lower_bound(nums, first, last, value) - 1;
+}
+
+//升序,[first,last)内,最后一个小于等于value的值,(x<=value 最大值)
+num_t upper_bound_warpper(vector<num_t> &nums, num_t first, num_t last, num_t value) {
+    return upper_bound(nums, first, last, value) - 1;
+}
+
 int32_t binary_search_pos(std::vector<int32_t> vec, int32_t target, int32_t begin, int32_t end) {
     // it is [begin,end),length is end-begin
     int32_t middle{0};
