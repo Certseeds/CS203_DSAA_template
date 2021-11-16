@@ -23,37 +23,54 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_39_test.hpp"
+#include "leetcode_40_test.hpp"
 
-namespace leetcode_39 {
+namespace leetcode_40 {
+struct pair final {
+    int32_t number;
+    int32_t times;
+};
 
 void
-combinSumTrace(vector<vector<int32_t>> &combinations, const vector<int32_t> &candidates, vector<int32_t> &combination,
-               int32_t target, size_t index) {
+combinSumTrace(vector<vector<int32_t>> &combinations, const vector<pair> &candidates,
+               vector<int32_t> &combination, int32_t target, size_t index) {
     if (target == 0) {
         combinations.emplace_back(combination);
         return;
     }
-    if (index == candidates.size()) {
+    if (index == candidates.size() || target < candidates[index].number) {
         return;
     }
     const auto this_num{candidates[index]};
-    if (this_num <= target) {
-        combination.emplace_back(this_num);
-        combinSumTrace(combinations, candidates, combination, target - this_num, index);
-        combination.pop_back();
-    } else {
-        return;
+    index++;
+    for (int32_t i{0}; i <= this_num.times; i++, target -= this_num.number) {
+        if (target < 0) {
+            continue;
+        }
+        for (int32_t j{0}; j < i; j++) {
+            combination.push_back(this_num.number);
+        }
+        combinSumTrace(combinations, candidates, combination, target, index);
+        for (int32_t j{0}; j < i; j++) {
+            combination.pop_back();
+        }
     }
-    combinSumTrace(combinations, candidates, combination, target, index + 1);
 }
 
-vector<vector<int32_t>> leetcode_39::combinationSum(const vector<int32_t> &candidates, int32_t target) {
-    vector<int32_t> candidates_back{candidates};
-    std::sort(candidates_back.begin(), candidates_back.end());
+vector<vector<int32_t>> leetcode_40::combinationSum2(const vector<int32_t> &candidates, int32_t target) {
+    map<int32_t, int32_t> umap;
+    for (const auto candidate: candidates) {
+        umap[candidate]++;
+    }
+    vector<pair> pairs;
+    pairs.reserve(umap.size());
+    for (const auto[k, v]: umap) {
+        pairs.push_back(pair{k, v});
+    }
     vector<vector<int32_t>> combinations;
     vector<int32_t> combination;
-    combinSumTrace(combinations, candidates_back, combination, target, static_cast<size_t>(0));
+    combinSumTrace(combinations, pairs, combination, target, static_cast<size_t>(0));
     return combinations;
 }
+
 }
