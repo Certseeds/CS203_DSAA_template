@@ -27,7 +27,6 @@ SOFTWARE.
 
 namespace leetcode_29 {
 
-
 int leetcode_29::divide(int32_t dividend, int32_t divisor) {
     if (dividend == divisor) {
         return 1;
@@ -36,7 +35,7 @@ int leetcode_29::divide(int32_t dividend, int32_t divisor) {
     } else if (divisor == 1) {
         return dividend;
     }
-    int32_t will_return{0}, signs = 1;
+    int32_t will_return{0}, signs{1};
     if (dividend == std::numeric_limits<int32_t>::min()) {
         if (divisor == -1) {
             return std::numeric_limits<int32_t>::max();

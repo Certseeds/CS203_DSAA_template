@@ -56,7 +56,7 @@ void mergesort_rec(vector<int32_t> &nums, vector<int32_t> &zeros, int begin, int
             std::swap(nums[begin], nums[end]);
         }
     }
-    int middle = begin + (end - begin) / 2;;
+    const int32_t middle = begin + (end - begin) / 2;;
     mergesort_rec(nums, zeros, begin, middle);
     mergesort_rec(nums, zeros, middle + 1, end);
     int pos = begin;

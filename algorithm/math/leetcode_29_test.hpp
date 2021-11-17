@@ -37,7 +37,7 @@ struct leetcode_29 {
     static int divide(int dividend, int divisor);
 };
 
-TEST_CASE("1 [test 29]", "[test 29]") {
+TEST_CASE("1 [test _29]", "[test _29]") {
     CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), -1) == std::numeric_limits<int32_t>::max());
     CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), 1) == std::numeric_limits<int32_t>::min());
     CHECK(leetcode_29::divide(std::numeric_limits<int32_t>::min(), 2) == -1073741824);
