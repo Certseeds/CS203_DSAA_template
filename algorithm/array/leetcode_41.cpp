@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanos
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,31 +23,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_53_test.hpp"
+#include "leetcode_41_test.hpp"
 
-namespace leetcode_53 {
-// [begin,end)
-int32_t maxSubArray(const vector<int32_t> &nums, size_t begin, size_t end) {
-    if (begin + 1 == end) {
-        return nums[begin];
+namespace leetcode_41 {
+
+int leetcode_41::firstMissingPositive(vector<int32_t> &nums) {
+    const auto nums_size{static_cast<int32_t>(nums.size())};
+    for (auto &value: nums) {
+        if (value <= 0) {
+            value = nums_size + 1;
+        }
     }
-    const auto half{begin + (end - begin) / 2};
-    const auto left{maxSubArray(nums, begin, half)},
-            right{maxSubArray(nums, half, end)};
-    int32_t max_left{-0x3f3f3f3f}, left_sum{0}, max_right{-0x3f3f3f3f}, right_sum{0};
-    for (size_t left_order{half}; left_order >= begin + 1; left_order--) {
-        // 无符号数判断的时候不要-1 > 0, 而是用 > 1
-        left_sum += nums[left_order - 1];
-        max_left = std::max(max_left, left_sum);
+    for (const auto &value: nums) {
+        const auto absV{std::abs(value) -1};
+        if (0 <= absV && absV < nums_size) {
+            nums[absV] = -1 * std::abs(nums[absV]);
+        }
     }
-    for (size_t right_order{half}; right_order < end; right_order++) {
-        right_sum += nums[right_order];
-        max_right = std::max(max_right, right_sum);
+    nums.push_back(nums_size + 1);
+    for (int32_t i{0}; i < nums_size + 1; i++) {
+        if (0 < nums[i]) {
+            return (i + 1);
+        }
     }
-    return std::max(std::max(left, right), max_left + max_right);
+    return -1;
 }
 
-int leetcode_53::maxSubArray(const vector<int> &nums) {
-    return ::leetcode_53::maxSubArray(nums, 0, nums.size());
-}
+
 }
