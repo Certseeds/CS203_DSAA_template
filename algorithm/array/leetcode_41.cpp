@@ -35,7 +35,7 @@ int leetcode_41::firstMissingPositive(vector<int32_t> &nums) {
         }
     }
     for (const auto &value: nums) {
-        const auto absV{std::abs(value) -1};
+        const auto absV{std::abs(value) - 1};
         if (0 <= absV && absV < nums_size) {
             nums[absV] = -1 * std::abs(nums[absV]);
         }
@@ -49,5 +49,20 @@ int leetcode_41::firstMissingPositive(vector<int32_t> &nums) {
     return -1;
 }
 
+int leetcode_41::firstMissingPositive2(vector<int32_t> &nums) {
+    const size_t maxv{nums.size()};
+    vector<int32_t> num(nums.size() + 1, 0);
+    for (size_t i{0}; i < nums.size(); i++) {
+        if (0 < nums[i] && nums[i] <= static_cast<int32_t>(maxv)) {
+            num[nums[i] - 1] = nums[i];
+        }
+    }
+    for (size_t i{0}; i < num.size(); i++) {
+        if (num[i] == 0) {
+            return static_cast<int32_t>(i + 1);
+        }
+    }
+    return -1;
+}
 
 }

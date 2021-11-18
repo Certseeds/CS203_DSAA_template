@@ -48,7 +48,7 @@ int leetcode_29::divide(int32_t dividend, int32_t divisor) {
     dividend *= sign(dividend);
     divisor *= sign(divisor);
     while (dividend >= divisor) {
-        short temp = 0;
+        short temp{0};
         //cout << dividend << " " << divisor << endl;
         while (dividend >= divisor) {
             //cout << dividend << " " << temp << " " << divisor << endl;
