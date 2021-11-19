@@ -23,33 +23,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag stack
-//@Tag 栈
-//@Tag 输入保证合法
-#include "leetcode_1614_test.hpp"
+//@Tag array
+//@Tag 数组
 
-namespace leetcode_1614 {
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_56_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_56_HPP
 
-int leetcode_1614::maxDepth(const string &s) {
-    static const auto arr = [] {
-        static auto arr = std::array<uint8_t, std::numeric_limits<uint8_t>::max() + 1>{0};
-        arr['('] = '(';
-        arr[')'] = '(';
-        return arr;
-    }();
-    stack<uint8_t> sta{};
-    int32_t will_return{0}, temp{0};
-    for (auto &&ch: s) {
-        if (arr[ch] == ch) {
-            sta.push(ch);
-        } else if (!sta.empty() && arr[ch] == sta.top()) {
-            will_return = std::max(will_return, static_cast<int32_t>(sta.size()));
-            sta.pop();
-        } else {
-            will_return = std::max(will_return, static_cast<int32_t>(sta.size()));
-        }
-        temp++;
-    }
-    return will_return;
+#include <catch_main.hpp>
+#include <cstdint>
+#include <vector>
+
+namespace leetcode_56 {
+using std::vector;
+
+struct leetcode_56 {
+    static vector<vector<int32_t>> merge(const vector<vector<int32_t>> &intervals);
+};
+
+using Catch::Matchers::Equals;
+
+TEST_CASE("1 {test_56}", "{test_56}") {
+    const vector<vector<int32_t>> inputs{{1,  3},
+                                         {2,  6},
+                                         {8,  10},
+                                         {15, 18}};
+    const vector<vector<int32_t>> result{{{1, 6}, {8, 10}, {15, 18}}};
+    CHECK_THAT(leetcode_56::merge(inputs), Equals(result));
+}
+
+TEST_CASE("2 {test_56}", "{test_56}") {
+    const vector<vector<int32_t>> inputs{{1, 4},
+                                         {4, 5}};
+    const vector<vector<int32_t>> result{{{1, 5}}};
+    CHECK_THAT(leetcode_56::merge(inputs), Equals(result));
 }
 }
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_56_HPP

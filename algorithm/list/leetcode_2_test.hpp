@@ -78,7 +78,7 @@ TEST_CASE("basic tests 3 [test_2]", "[test_2]") {
     const ListNodeLink vec2{9, 9, 9, 9};
     const ListNode *const result = leetcode_2::addTwoNumbers(vec1[0], vec2[0]);
     CHECK(ListNode::equal({8, 9, 9, 9, 0, 0, 0, 1}, result));
-    ListNode *will_delete{const_cast<ListNode*>(result)};
+    ListNode *will_delete{const_cast<ListNode *>(result)};
     vector<ListNode *> nodes;
     while (will_delete != nullptr) {
         nodes.push_back(will_delete);

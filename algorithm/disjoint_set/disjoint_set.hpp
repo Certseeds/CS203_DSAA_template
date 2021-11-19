@@ -17,8 +17,11 @@ private:
     std::vector<size_t> points; // 记录子节点
 public:
     explicit disjoint_set(size_t size);
+
     size_t find(size_t x);
-    void merge (size_t x,size_t y);
+
+    void merge(size_t x, size_t y);
+
     void mergeHeur(size_t x, size_t y);
 };
 }

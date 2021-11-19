@@ -133,6 +133,7 @@ TEST_CASE("4 [test_399]", "[test_399]") {
     const vector<double_t> results{1.3333f, 1.0f, -1.0f};
     CHECK_THAT(results, Approx(leetcode_399::calcEquation(edges, values, queries)).epsilon(0.01f));
 }
+
 TEST_CASE("6 [test_399]", "[test_399]") {
     const vector<vector<string>> edges{
             {"e", "a"},

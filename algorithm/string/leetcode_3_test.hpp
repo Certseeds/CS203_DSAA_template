@@ -45,7 +45,7 @@ using std::string;
 using std::unordered_map;
 using std::unordered_set;
 
-struct leetcode_3 final{
+struct leetcode_3 final {
     static int lengthOfLongestSubstring(const string &s);
 
     static int lengthOfLongestSubstring2(const string &s);

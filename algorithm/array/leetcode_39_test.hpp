@@ -49,7 +49,8 @@ using Catch::Matchers::Contains;
 TEST_CASE("basic test [test_39]", "[test_39]") {
     const vector<int32_t> candidates{2, 3, 6, 7};
     const static constexpr auto target{7};
-    const vector<vector<int32_t>> results{{7}, {2, 2, 3}};
+    const vector<vector<int32_t>> results{{7},
+                                          {2, 2, 3}};
     CHECK_THAT(results, UnorderedEquals(leetcode_39::combinationSum(candidates, target)));
 }
 

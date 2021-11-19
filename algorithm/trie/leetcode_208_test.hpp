@@ -80,7 +80,7 @@ struct leetcode_208 {
     private:
         static constexpr const size_t array_size{26};
 
-        class Node final{
+        class Node final {
         public:
             uint8_t self, isfinish;
             std::array<Node *, array_size> sons{nullptr};

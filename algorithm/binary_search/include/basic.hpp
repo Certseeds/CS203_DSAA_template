@@ -51,6 +51,7 @@ num_t upper_bound(vector<num_t> &nums, num_t first, num_t last, num_t value);
 
 // 升序,[first,last)内,最后一个小于value的值（x<value的最大值）
 num_t lower_bound_warpper(vector<num_t> &nums, num_t first, num_t last, num_t value);
+
 //升序,[first,last)内,最后一个小于等于value的值,(x<=value 最大值)
 num_t upper_bound_warpper(vector<num_t> &nums, num_t first, num_t last, num_t value);
 

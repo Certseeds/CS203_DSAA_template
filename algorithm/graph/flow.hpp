@@ -48,7 +48,7 @@ using f_adjlist = vector<vector<flink>>;
 
 f_adjlist build_f_adjlist(const adjlist &table);
 
-class flow final{
+class flow final {
 public:
     f_adjlist table; // graph本身
     int32_t Sn{-1};// 源点

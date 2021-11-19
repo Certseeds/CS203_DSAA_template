@@ -23,33 +23,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag stack
-//@Tag 栈
-//@Tag 输入保证合法
-#include "leetcode_1614_test.hpp"
+#include "leetcode_56_test.hpp"
 
-namespace leetcode_1614 {
+namespace leetcode_56 {
 
-int leetcode_1614::maxDepth(const string &s) {
-    static const auto arr = [] {
-        static auto arr = std::array<uint8_t, std::numeric_limits<uint8_t>::max() + 1>{0};
-        arr['('] = '(';
-        arr[')'] = '(';
-        return arr;
-    }();
-    stack<uint8_t> sta{};
-    int32_t will_return{0}, temp{0};
-    for (auto &&ch: s) {
-        if (arr[ch] == ch) {
-            sta.push(ch);
-        } else if (!sta.empty() && arr[ch] == sta.top()) {
-            will_return = std::max(will_return, static_cast<int32_t>(sta.size()));
-            sta.pop();
-        } else {
-            will_return = std::max(will_return, static_cast<int32_t>(sta.size()));
-        }
-        temp++;
+vector<vector<int32_t>> leetcode_56::merge(const vector<vector<int32_t>> &intervals) {
+    vector<vector<int32_t>> nums{intervals};
+    const size_t nums_size{nums.size()};
+    if (nums_size <= 1) {
+        return nums;
     }
+    std::sort(std::begin(nums), std::end(nums), [](const auto &v1, const auto &v2) {
+        return v1[0] < v2[0];
+    });
+    vector<vector<int32_t>> will_return;
+    int32_t begin{nums[0][0]}, end{nums[0][1]};
+    for (size_t order{1}; order < nums_size; order++) {
+        if (end >= nums[order][0]) {
+            end = std::max(end, nums[order][1]);
+        } else {
+            will_return.push_back({begin, end});
+            begin = nums[order][0];
+            end = nums[order][1];
+        }
+    }
+    will_return.push_back({begin, end});
     return will_return;
 }
 }

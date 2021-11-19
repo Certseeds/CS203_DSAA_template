@@ -1,6 +1,5 @@
 /**
  * @Github: https://github.com/{0}/{1}
- * @Organization: SUSTech
  * @Author: {2}
  * @Date: {3}
  * @LastEditors: {2}
