@@ -35,7 +35,7 @@ int leetcode_27::removeElement(vector<int32_t> &vec, int32_t val) {
 int leetcode_27::removeElement2(vector<int32_t> &vec, int32_t val) {
     const size_t vec_size{vec.size()};
     int32_t order{0};
-    for(size_t begin{0};begin < vec_size;begin++) {
+    for (size_t begin{0}; begin < vec_size; begin++) {
         if (vec[begin] != val) {
             vec[order] = vec[begin];
             order++;

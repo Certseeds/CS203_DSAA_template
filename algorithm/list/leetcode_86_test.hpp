@@ -48,7 +48,7 @@ TEST_CASE("-1 [test _86]", "[test _86]") {
     const ListNode *const result = leetcode_86::partition(vec1[0], 3);
     CHECK(ListNode::equal({1, 2, 2, 4, 3, 5}, result));
 
-    ListNode *will_delete{const_cast<ListNode*>(result)};
+    ListNode *will_delete{const_cast<ListNode *>(result)};
     vector<ListNode *> nodes;
     while (will_delete != nullptr) {
         nodes.push_back(will_delete);

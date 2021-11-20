@@ -30,22 +30,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <catch_main.hpp>
-#include <algorithm>
-#include <vector>
+#include "leetcode_35_test.hpp"
 
-
-using Catch::Matchers::Contains;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using std::tie;
-using std::tuple;
-using std::vector;
-using num_t = int32_t;
 // 实质上是寻找第一个大于等于target的数字的下标
 // 如果目标不存在,则返回第一个大于其的位置减一
-namespace binary_search::lc35 {
-int searchInsert(const vector<int> &nums, int target) {
+namespace binary_search::leetcode_35 {
+
+int32_t leetcode_35::searchInsert(const vector<int> &nums, int32_t target) {
     const auto n_size = static_cast<int32_t>(nums.size());
     if (nums.empty() || target < nums.front()) {
         return 0; // 放到第一个
@@ -65,25 +56,9 @@ int searchInsert(const vector<int> &nums, int target) {
     return left;
 }
 
-}
-namespace binary_search::lc35 {
-TEST_CASE("test case 1", "[test lc35]") {
-    CHECK(2 == searchInsert(vector<int32_t>{1, 3, 5, 6}, 5));
-}
-
-TEST_CASE("test case 2", "[test lc35]") {
-    CHECK(1 == searchInsert(vector<int32_t>{1, 3, 5, 6}, 2));
+int32_t leetcode_35::searchInsert2(const vector<int32_t> &nums, int32_t target) {
+    const auto diff = std::lower_bound(nums.begin(), nums.end(), target);
+    return static_cast<int32_t>(distance(nums.begin(), diff));
 }
 
-TEST_CASE("test case 3", "[test lc35]") {
-    CHECK(4 == searchInsert(vector<int32_t>{1, 3, 5, 6}, 7));
-}
-
-TEST_CASE("test case 4", "[test lc35]") {
-    CHECK(0 == searchInsert(vector<int32_t>{1, 3, 5, 6}, 0));
-}
-
-TEST_CASE("test case 5", "[test lc35]") {
-    CHECK(0 == searchInsert(vector<int32_t>{1}, 0));
-}
 }

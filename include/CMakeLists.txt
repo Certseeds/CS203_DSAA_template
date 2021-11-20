@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.16.6)
 project(${PROJECT_NAME}_INCLUDE LANGUAGES CXX)
 
-add_library(${PROJECT_NAME} INTERFACE)
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
+add_library(${PROJECT_NAME} INTERFACE)
 set(dependencies include)
-LIST(APPEND dependencies pch11)
 LIST(APPEND dependencies pch17)
 LIST(APPEND dependencies list)
 LIST(APPEND dependencies tree)

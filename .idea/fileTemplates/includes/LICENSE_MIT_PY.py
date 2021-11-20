@@ -1,7 +1,7 @@
 """
 MIT License
 
-${PROJECT_NAME} 
+${PROJECT_NAME}
 
 Copyright (c) 2020-${YEAR}  ${USER}
 

@@ -36,8 +36,10 @@ bool leetcode_9::isPalindrome(int32_t x) {
         nums.push_back(x % 10);
         x /= 10;
     }
-    for (int32_t i = 0; i < static_cast<int32_t>(nums.size() / 2); i++) {
-        if (nums[i] != nums[nums.size() - 1 - i]) {
+    const auto nums_size{nums.size()};
+    const auto half_size{static_cast<int32_t>(nums_size / 2)};
+    for (int32_t i{0}; i < half_size; i++) {
+        if (nums[i] != nums[nums_size - 1 - i]) {
             return false;
         }
     }

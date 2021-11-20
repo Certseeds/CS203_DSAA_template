@@ -55,8 +55,8 @@ void rec_quicksort(vector<int> &nums, int left, int right) {
     if (left >= right) {
         return;
     }
-    int rand_posi = get_rand(left, right);
-    int final_posi = partition(nums, left, right, rand_posi);
+    const int32_t rand_posi = get_rand(left, right);
+    const int32_t final_posi = partition(nums, left, right, rand_posi);
     rec_quicksort(nums, left, final_posi - 1);
     rec_quicksort(nums, final_posi + 1, right);
 }

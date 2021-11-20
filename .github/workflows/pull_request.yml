@@ -28,6 +28,9 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
+      - name: hardwares - cpu
+        run: nproc; cat /proc/cpuinfo
+
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt install tree; tree
@@ -51,7 +54,7 @@ jobs:
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=0
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00
@@ -98,7 +101,7 @@ jobs:
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=0
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00

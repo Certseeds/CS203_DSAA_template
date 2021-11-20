@@ -39,19 +39,23 @@ struct leetcode_9 {
 
 
 TEST_CASE("test case 1 [test_9]", "[test_9]") {
-    CHECK(leetcode_9::isPalindrome(121));
+    static constexpr const auto input{121};
+    CHECK(leetcode_9::isPalindrome(input));
 }
 
 TEST_CASE("test case 2 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(-121));
+    static constexpr const auto input{-121};
+    CHECK_FALSE(leetcode_9::isPalindrome(input));
 }
 
 TEST_CASE("test case 3 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(120));
+    static constexpr const auto input{120};
+    CHECK_FALSE(leetcode_9::isPalindrome(input));
 }
 
 TEST_CASE("test case 4 [test_9]", "[test_9]") {
-    CHECK_FALSE(leetcode_9::isPalindrome(10));
+    static constexpr const auto input{10};
+    CHECK_FALSE(leetcode_9::isPalindrome(input));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP

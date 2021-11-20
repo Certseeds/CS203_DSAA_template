@@ -26,26 +26,11 @@ SOFTWARE.
 #include "leetcode_92_test.hpp"
 
 namespace leetcode_92 {
-template<typename T>
-struct TreeNode {
-    T val{static_cast<T>(0)};
-    TreeNode<T> *left{nullptr}, *right{nullptr};
-
-    virtual ~TreeNode() = default;
-};
-
-template<typename T>
-struct AVLTreeNode : public TreeNode<T> {
-    size_t height{0};
-};
-
 ListNode *leetcode_92::reverseBetween(ListNode *head, int32_t left, int32_t right) {
-    AVLTreeNode<int32_t> x;
-    x.left = new AVLTreeNode<int32_t>();
-    ListNode will_return(-1);
+    ListNode will_return{-1};
     will_return.next = head;
     ListNode *pre{&will_return};
-    for (int32_t i{0}; i < left - 1; i++) {
+    for (int32_t i{1}; i < left; i++) {
         pre = pre->next;
     }
     ListNode *iter{pre->next};
@@ -57,7 +42,6 @@ ListNode *leetcode_92::reverseBetween(ListNode *head, int32_t left, int32_t righ
         pre->next = next;
         next->next = prenext;
     }
-    delete x.left;
     return will_return.next;
 }
 }

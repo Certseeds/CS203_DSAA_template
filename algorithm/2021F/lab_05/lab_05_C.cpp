@@ -35,6 +35,7 @@ SOFTWARE.
 #pragma GCC optimize("-finline-small-functions")
 #pragma GCC target("mmx")
 #endif
+
 #include <array>
 #include <tuple>
 #include <stack>

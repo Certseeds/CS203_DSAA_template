@@ -80,11 +80,11 @@ SOFTWARE.
 #endif
 
 namespace leetcode_212 {
-class leetcode_208_Trie final{
+class leetcode_208_Trie final {
 private:
     static constexpr const size_t array_size{26};
 
-    class Node final{
+    class Node final {
     public:
         uint8_t isfinish;
         std::array<Node *, array_size> sons{nullptr};
@@ -92,7 +92,7 @@ private:
         explicit Node(uint8_t finish) : isfinish(finish) {}
 
         ~Node() {
-            for (const auto& son: sons) {
+            for (const auto &son: sons) {
                 delete son;
             }
         }
@@ -159,8 +159,8 @@ public:
         (*array)[prefix.back() - 'a']->isfinish = false;
     }
 
-    virtual ~leetcode_208_Trie(){
-        for (const auto& son: sons) {
+    virtual ~leetcode_208_Trie() {
+        for (const auto &son: sons) {
             delete son;
         }
     }

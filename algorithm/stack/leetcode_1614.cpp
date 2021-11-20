@@ -38,15 +38,15 @@ int leetcode_1614::maxDepth(const string &s) {
         return arr;
     }();
     stack<uint8_t> sta{};
-    int32_t will_return{0},temp{0};
+    int32_t will_return{0}, temp{0};
     for (auto &&ch: s) {
         if (arr[ch] == ch) {
             sta.push(ch);
         } else if (!sta.empty() && arr[ch] == sta.top()) {
-            will_return = std::max(will_return,static_cast<int32_t>(sta.size()));
+            will_return = std::max(will_return, static_cast<int32_t>(sta.size()));
             sta.pop();
         } else {
-            will_return = std::max(will_return,static_cast<int32_t>(sta.size()));
+            will_return = std::max(will_return, static_cast<int32_t>(sta.size()));
         }
         temp++;
     }

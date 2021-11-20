@@ -43,21 +43,21 @@ void sort_warpper(vector<int32_t> &nums) {
 }
 
 void heap_sort(vector<int32_t> &nums) {
-    int nums_size = nums.size();
-    int beginIndex = (nums_size / 2) - 1;
-    for (int i = beginIndex; i >= 0; i--) {
+    const int32_t nums_size{static_cast<int32_t>(nums.size())};
+    const int32_t beginIndex = (nums_size / 2) - 1;
+    for (int32_t i = beginIndex; i >= 0; i--) {
         heapsort_rec(nums, i, nums_size - 1);
     }
-    for (int i = nums_size - 1; i > 0; i--) {
+    for (int32_t i = nums_size - 1; i > 0; i--) {
         std::swap(nums[0], nums[i]);
         heapsort_rec(nums, 0, i - 1);
     }
 }
 
 void heapsort_rec(vector<int32_t> &nums, int index, int length) {
-    int left = index * 2 + 1;
-    int right = left + 1;
-    int son_max = left;
+    const int32_t left = index * 2 + 1;
+    const int32_t right = left + 1;
+    int32_t son_max = left;
     if (left > length) {
         return;
     }

@@ -31,8 +31,8 @@ int32_t leetcode_26::removeDuplicates(vector<int32_t> &nums) {
         return 0;
     }
     int32_t last{nums.front() - 1}, count{0};
-    for (auto& num: nums) {
-        if(num != last){
+    for (auto &num: nums) {
+        if (num != last) {
             last = num;
             nums[count] = num;
             count++;

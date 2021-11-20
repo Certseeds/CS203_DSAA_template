@@ -32,7 +32,7 @@ vector<string> leetcode_22::generateParenthesis(int n) {
     }
     vector<string> will_return{generateParenthesis(n - 1)};
     unordered_set<string> uset{};
-    for (const auto &i : will_return) {
+    for (const auto &i: will_return) {
         for (int32_t j{0}; j < n; j++) {
             uset.insert(string(i).insert(j, "()"));
         }

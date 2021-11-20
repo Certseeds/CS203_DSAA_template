@@ -1,6 +1,6 @@
 /*
  * @Github: https://github.com/Certseeds
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2021-01-05 18:49:03
  * @LastEditors: nanoseeds
@@ -24,7 +24,7 @@
     */
 /**
  * @Github: https://github.com/Certseeds
- * @Organization: SUSTech
+
  * @Author: nanoseeds
  * @Date: 2020-03-26 18:10:42
  * @LastEditors  : nanoseeds
