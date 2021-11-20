@@ -11,6 +11,9 @@ foreach (elementName IN LISTS dependencies)
     add_library(${PROJECT_NAME}_${elementName} ${LIB_WAY} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}_sort.cpp)
     add_executable(${PROJECT_NAME}_${elementName}_test ${CMAKE_CURRENT_SOURCE_DIR}/sort_test.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName}_test CS203_DSAA_template_INCLUDE ${PROJECT_NAME}_${elementName})
+    target_precompile_headers(${PROJECT_NAME}_${elementName}_test REUSE_FROM
+                              CS203_DSAA_template_INCLUDE_PCH11
+                              )
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}_sort.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName}_test)
 endforeach ()

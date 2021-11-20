@@ -18,6 +18,9 @@ foreach (elementName IN LISTS dependencies)
                           CS203_DSAA_template_INCLUDE
                           CS203_DSAA_template_INCLUDE_TREE
                           CS203_DSAA_template_INCLUDE_LIST)
+    target_precompile_headers(${PROJECT_NAME}_${elementName}_test REUSE_FROM
+                              CS203_DSAA_template_INCLUDE_PCH11
+                              )
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName}_test)
 endforeach ()

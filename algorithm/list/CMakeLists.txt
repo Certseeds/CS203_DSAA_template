@@ -12,6 +12,9 @@ foreach (elementOrder IN LISTS dependencies)
     set(elementName leetcode_${elementOrder})
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE CS203_DSAA_template_INCLUDE_LIST)
+    target_precompile_headers(${PROJECT_NAME}_${elementName} REUSE_FROM
+                              CS203_DSAA_template_INCLUDE_PCH17
+                              )
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName})
     unset(elementName)
