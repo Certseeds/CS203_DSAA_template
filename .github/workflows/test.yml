@@ -14,10 +14,6 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: checkout code
-        uses: actions/checkout@v2
-
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt install tree ;tree

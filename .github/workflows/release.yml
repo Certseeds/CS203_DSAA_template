@@ -27,6 +27,9 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
+      - name: hardwares - cpu
+        run: nproc; cat /proc/cpuinfo
+
       - name: Install GCC-11,G++-11
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
