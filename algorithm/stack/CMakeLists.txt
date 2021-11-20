@@ -9,6 +9,7 @@ set(dependencies 678 20 32 42 1614)
 foreach (elementOrder IN LISTS dependencies)
     set(elementName leetcode_${elementOrder})
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
+    target_compile_definitions(${PROJECT_NAME}_${elementName} PRIVATE CS203_DSAA_TEST_MACRO)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE)
     target_precompile_headers(${PROJECT_NAME}_${elementName} REUSE_FROM
                               CS203_DSAA_template_INCLUDE_PCH17
