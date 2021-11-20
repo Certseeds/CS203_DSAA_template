@@ -49,7 +49,7 @@ jobs:
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=0
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00
@@ -95,7 +95,7 @@ jobs:
 
       - name: cmake prepare for compile
         working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=0
+        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00
