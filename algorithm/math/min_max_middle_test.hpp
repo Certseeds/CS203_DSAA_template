@@ -24,14 +24,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 //@Tag list
-//@Tag 链表
+//@Tag 数学
+//@Description 最大值
+//@Description 最小值
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_MINMAX_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_MINMAX_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_MIN_MAX_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_MIN_MAX_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <limits>
+#include <random>
 
 namespace leetcode_minmax {
 struct minmax final {
@@ -48,6 +51,12 @@ struct leetcode_minmax {
     static int32_t maxV(const vector<int32_t> &values);
 
     static minmax minMaxV(const vector<int32_t> &values);
+
+    static int32_t random_partition(vector<int32_t> &values, int32_t begin, int32_t end);
+
+    static int32_t partition(vector<int32_t> &values, int32_t begin, int32_t end);
+
+    static int32_t middleV(vector<int32_t> &values, int32_t begin, int32_t end, int32_t ith);
 };
 
 TEST_CASE("basic test [test_minmax]", "[test_minmax]") {
@@ -89,5 +98,30 @@ TEST_CASE("basic test 5 [test_minmax]", "[test_minmax]") {
     CHECK(max == leetcode_minmax::maxV(input));
     CHECK(minmax{min, max} == leetcode_minmax::minMaxV(input));
 }
+
+TEST_CASE("basic test 6 [test_minmax]", "[test_minmax]") {
+    vector<int32_t> input{1, 1, 8, 1, 0, 4, 1, 9, 1, 9, 4, 1, 5};
+    CHECK(9 == leetcode_minmax::partition(input, 0, 12));
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_MINMAX_HPP
+
+TEST_CASE("basic test 7 [test_minmax]", "[test_minmax]") {
+    vector<int32_t> input{1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    for (int32_t i{1}; i < 10; i++) {
+        CHECK(i == leetcode_minmax::middleV(input, 0, 9, i));
+    }
+    for (int32_t i{1}; i < 9; i++) {
+        CHECK(i == leetcode_minmax::middleV(input, 0, 8, i));
+    }
+}
+
+TEST_CASE("basic test 8 [test_minmax]", "[test_minmax]") {
+    vector<int32_t> input{1, 4, 5, 7, 8, 9, 6, 2, 3, 10};
+    for (int32_t i{1}; i < 10; i++) {
+        CHECK(i == leetcode_minmax::middleV(input, 0, 9, i));
+    }
+    for (int32_t i{1}; i < 9; i++) {
+        CHECK(i == leetcode_minmax::middleV(input, 0, 8, i));
+    }
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_MIN_MAX_HPP

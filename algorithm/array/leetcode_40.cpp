@@ -31,9 +31,8 @@ struct pair final {
     int32_t times;
 };
 
-void
-combinSumTrace(vector<vector<int32_t>> &combinations, const vector<pair> &candidates,
-               vector<int32_t> &combination, int32_t target, size_t index) {
+void combinSumTrace(vector<vector<int32_t>> &combinations, const vector<pair> &candidates,
+                    vector<int32_t> &combination, int32_t target, size_t index) {
     if (target == 0) {
         combinations.emplace_back(combination);
         return;

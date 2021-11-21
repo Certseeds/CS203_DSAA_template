@@ -23,7 +23,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_minmax_test.hpp"
+#include "min_max_middle_test.hpp"
 
 namespace leetcode_minmax {
 
@@ -60,5 +60,40 @@ minmax leetcode_minmax::minMaxV(const vector<int32_t> &values) {
         }
     }
     return {minV, maxV};
+}
+
+int32_t leetcode_minmax::partition(vector<int32_t> &values, int32_t begin, int32_t end) {
+    const auto x{values[end]};
+    auto i{begin - 1};
+    for (int32_t j{begin}; j < end ; ++j) {
+        if (values[j] <= x) {
+            i++;
+            std::swap(values[i], values[j]);
+        }
+    }
+    std::swap(values[i + 1], values[end]);
+    return i + 1;
+}
+int32_t leetcode_minmax::random_partition(vector<int32_t> &values, int32_t begin, int32_t end) {
+    std::random_device rd;   // non-deterministic generator
+    std::mt19937 gen{rd()};  // to seed mersenne twister.
+    std::uniform_int_distribution<> dist{begin, end}; // distribute results between 1 and 6 inclusive.
+    const auto i{dist(gen)};
+    std::swap(values[end], values[i]);
+    return partition(values, begin, end);
+}
+//O(n)复杂度获取 values中 [begin,end]上, (从零开始计数的) ith value
+int32_t leetcode_minmax::middleV(vector<int32_t> &values, int32_t begin, int32_t end, int32_t ith) {
+    if (begin == end) {
+        return values[begin];
+    }
+    const auto q = random_partition(values, begin, end);
+    const auto k{q - begin + 1};
+    if (ith == k) {
+        return values[q];
+    } else if (ith < k) {
+        return middleV(values, begin, q - 1, ith);
+    }
+    return middleV(values, q + 1, end, ith - k);
 }
 }
