@@ -65,7 +65,7 @@ minmax leetcode_minmax::minMaxV(const vector<int32_t> &values) {
 int32_t leetcode_minmax::partition(vector<int32_t> &values, int32_t begin, int32_t end) {
     const auto x{values[end]};
     auto i{begin - 1};
-    for (int32_t j{begin}; j < end ; ++j) {
+    for (int32_t j{begin}; j < end; ++j) {
         if (values[j] <= x) {
             i++;
             std::swap(values[i], values[j]);
@@ -74,6 +74,7 @@ int32_t leetcode_minmax::partition(vector<int32_t> &values, int32_t begin, int32
     std::swap(values[i + 1], values[end]);
     return i + 1;
 }
+
 int32_t leetcode_minmax::random_partition(vector<int32_t> &values, int32_t begin, int32_t end) {
     std::random_device rd;   // non-deterministic generator
     std::mt19937 gen{rd()};  // to seed mersenne twister.
@@ -82,8 +83,11 @@ int32_t leetcode_minmax::random_partition(vector<int32_t> &values, int32_t begin
     std::swap(values[end], values[i]);
     return partition(values, begin, end);
 }
+
 //O(n)复杂度获取 values中 [begin,end]上, (从零开始计数的) ith value
 int32_t leetcode_minmax::middleV(vector<int32_t> &values, int32_t begin, int32_t end, int32_t ith) {
+    assert(0 <= begin && begin <= end);
+    assert(end < static_cast<int32_t>(values.size()));
     if (begin == end) {
         return values[begin];
     }

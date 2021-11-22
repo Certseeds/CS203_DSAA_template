@@ -23,35 +23,47 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_35_test.hpp"
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_69_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_69_HPP
+
+#include <catch_main.hpp>
+#include <algorithm>
+#include <vector>
 
 // 实质上是寻找第一个大于等于target的数字的下标
 // 如果目标不存在,则返回第一个大于其的位置减一
-namespace binary_search::leetcode_35 {
 
-int32_t leetcode_35::searchInsert(const vector<int> &nums, int32_t target) {
-    const auto n_size = static_cast<int32_t>(nums.size());
-    if (nums.empty() || target < nums.front()) {
-        return 0; // 放到第一个
-    } else if (nums.back() < target) {
-        return n_size; // 放到最后一个
-    }
-    int32_t left{0}, right{n_size - 1}, middle{0};
-    while (left < right) {
-        if (middle = (right - left) / 2 + left; nums[middle] > target) {// 避免溢出
-            right = middle;
-        } else if (nums[middle] < target) {
-            left = middle + 1;// 只有一处+1
-        } else {
-            return middle;
-        }
-    }
-    return left;
+namespace leetcode_69 {
+struct leetcode_69 final {
+    static int32_t mySqrt(int32_t x);
+};
+
+TEST_CASE("test case 0", "[test leetcode_69]") {
+    CHECK(0 == leetcode_69::mySqrt(0));
+    CHECK(1 == leetcode_69::mySqrt(1));
+    CHECK(1 == leetcode_69::mySqrt(1));
+    CHECK(1 == leetcode_69::mySqrt(1));
 }
 
-int32_t leetcode_35::searchInsert2(const vector<int32_t> &nums, int32_t target) {
-    const auto diff = std::lower_bound(nums.begin(), nums.end(), target);
-    return static_cast<int32_t>(distance(nums.begin(), diff));
+TEST_CASE("test case 1", "[test leetcode_69]") {
+    static constexpr const auto input{4}, result{2};
+    CHECK(result == leetcode_69::mySqrt(input));
 }
 
+TEST_CASE("test case 2", "[test leetcode_69]") {
+    static constexpr const auto input{8}, result{2};
+    CHECK(result == leetcode_69::mySqrt(input));
 }
+
+TEST_CASE("test case 3", "[test leetcode_69]") {
+    static constexpr const auto input{9}, result{3};
+    CHECK(result == leetcode_69::mySqrt(input));
+}
+
+TEST_CASE("test case 4", "[test leetcode_69]") {
+    static constexpr const auto input{6}, result{2};
+    CHECK(result == leetcode_69::mySqrt(input));
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_69_HPP
+

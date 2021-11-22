@@ -5,11 +5,19 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies leetcode_1143)
-LIST(APPEND dependencies leetcode_5)
-LIST(APPEND dependencies leetcode_10)
-LIST(APPEND dependencies leetcode_44)
-LIST(APPEND dependencies leetcode_45)
+
+
+enable_testing()
+set(dependencies )
+
+set(leetcode_order 1143 5 10 44 45)
+LIST(APPEND leetcode_order 63 62 64 70)
+foreach (elementOrder IN LISTS leetcode_order)
+    LIST(APPEND dependencies leetcode_${elementOrder})
+endforeach ()
+unset(leetcode_order)
+
+
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE)

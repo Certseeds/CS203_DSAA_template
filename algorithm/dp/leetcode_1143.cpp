@@ -33,7 +33,7 @@ SOFTWARE.
 #include "leetcode_1143_test.hpp"
 
 namespace leetcode_1143 {
-int32_t longestCommonSubsequence2(const string &text1, const string &text2) {
+int32_t leetcode_1143::longestCommonSubsequence2(const string &text1, const string &text2) {
     const auto fst_size{text1.size()}, snd_size{text2.size()};
     vector<vector<int32_t>> dp(fst_size + 1, vector<int32_t>(snd_size + 1, 0));
     // init vector for 0 can except init [0][...],[...][0] to 0
@@ -62,8 +62,6 @@ int32_t leetcode_1143::longestCommonSubsequence(const string &text1, const strin
                 snd[j] = std::max(snd[j - 1], fst[j]);
             }
         }
-
-
         std::swap(fst,snd);
     }
     return fst.back();
