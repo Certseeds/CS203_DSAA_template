@@ -23,32 +23,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_32_test.hpp"
+//@Tag array
+//@Tag 数组
+//@Tag 双指针
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_80_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_80_HPP
 
-namespace leetcode_32 {
-int32_t leetcode_32::longestValidParentheses(const string &s) {
-    const auto s_size{s.size()};
-    if (s_size <= 1) {
-        return 0;
-    }
-    vector<int32_t> DP(s_size, 0);
-    for (std::remove_const<decltype(s_size)>::type i{1}; i < s_size; i++) {
-        if (s[i] == ')') {
-            if (s[i - 1] == '(') {
-                DP[i] = 2;
-                if (i >= 2) {
-                    DP[i] += DP[i - 2];
-                }
-            } else if (i - DP[i - 1] > 0 && s[i - DP[i - 1] - 1] == '(') {
-                DP[i] = DP[i - 1] + 2;
-                if (static_cast<int32_t>(i) >= DP[i - 1] + 2) {
-                    DP[i] += DP[i - DP[i - 1] - 2];
-                }
-            }
-        }
-    }
-    // dp[0] is always 0
-    return *std::max_element(DP.cbegin() + 1, DP.cend());
+#include <catch_main.hpp>
+#include <cstdint>
+#include <vector>
+
+namespace leetcode_80 {
+using std::vector;
+
+struct leetcode_80 {
+    static int32_t removeDuplicates(vector<int32_t> &nums);
+};
+
+using Catch::Matchers::Equals;
+
+TEST_CASE("1 [test_80]", "[test_80]") {
+    vector<int32_t> input{0, 0, 1, 1, 1, 1, 2, 3, 3};
+    const vector<int32_t> result{0, 0, 1, 1, 2, 3, 3};
+    const auto size = leetcode_80::removeDuplicates(input);
+    input.resize(size);
+    CHECK_THAT(input, Equals(result));
 }
 
+TEST_CASE("2 [test_80]", "[test_80]") {
+    vector<int32_t> input{1, 1, 1, 2, 2, 3};
+    const vector<int32_t> result{1, 1, 2, 2, 3};
+    const auto size = leetcode_80::removeDuplicates(input);
+    input.resize(size);
+    CHECK_THAT(input, Equals(result));
 }
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_80_HPP
