@@ -1,17 +1,18 @@
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP
-#ifdef CS203_DSAA_MACRO_LISTNODE
-
-#include <utility>
-#include <vector>
-#include <cstdint>
-#include <cstddef>
 /*
  * @Author: nanoseeds
  * @Date: 2020-02-02 21:01:26
  * @LastEditors : nanoseeds
  * @LastEditTime: 2020-02-06 09:30:22
  */
+#ifndef CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP
+
+#include <cstdint>
+#include <cstddef>
+#include <utility>
+#include <vector>
+
+
 namespace LISTNODE {
 using std::vector;
 static size_t alloc_delete_count{0};
@@ -38,7 +39,7 @@ struct ListNode {
     static bool equal(const std::initializer_list<int32_t> &nums, const ListNode *node);
 };
 
-class ListNodeLink final{
+class ListNodeLink final {
 private:
     static constexpr const int32_t No_list = -100000;
 public:
@@ -106,5 +107,4 @@ bool ListNode::equal(const std::initializer_list<int32_t> &nums, const ListNode 
     return ListNode::equal(vector<int32_t>(nums), node);
 }
 }
-#endif
 #endif //CS203_DSAA_TEMPLATE_INCLUDES_LISTNODE_HPP

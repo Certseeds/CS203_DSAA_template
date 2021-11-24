@@ -1,16 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,34 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+#include "leetcode_94_test.hpp"
+#include "traverse.cpp"
 
-#include <iostream>
-#include <chrono>
-
-std::chrono::milliseconds get_ms() {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::system_clock::now().time_since_epoch());
+namespace leetcode_94 {
+using namespace Tree_Traverse;
+void recursion_94(TreeNode *root, vector<int32_t> &vec) {
+    const auto function = [&vec](const TreeNode *tn) -> void { vec.push_back(tn->val); };
+    rec::in(root, function);
 }
 
-class CS203_timer final{
-private:
-    std::chrono::milliseconds ms{get_ms()};
-public:
-    CS203_timer() = default;
-
-    CS203_timer(const CS203_timer &timer) = delete;
-
-    CS203_timer(CS203_timer &&timer) = delete;
-
-    CS203_timer &operator=(const CS203_timer &timer) = delete;
-
-    CS203_timer &operator=(CS203_timer &&mat) = delete;
-
-    ~CS203_timer() {
-        std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
-    }
-};
-
-#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+void iteration_94(TreeNode *root, vector<int> &vec) {
+    const auto function = [&vec](const TreeNode *tn) -> void { vec.push_back(tn->val); };
+    iter::in(root, function);
+}
+vector<int32_t> leetcode_94::inorderTraversal(TreeNode *root) {
+    vector<int32_t> will_return{};
+    recursion_94(root,will_return);
+    return will_return;
+}
+}

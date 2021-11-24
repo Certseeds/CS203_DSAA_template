@@ -1,19 +1,39 @@
 /*
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-30 10:34:16
- * @LastEditors: nanoseeds
- * @LastEditTime: 2021-01-03 21:01:19
- */
+MIT License
+
+CS203_DSAA_template
+
+Copyright (C) 2020-2021  nanoseeds
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP
 
-#include <TreeNodeTemp.hpp>
+#include <tree/TreeNodeTemp.hpp>
 #include <vector>
+#include <queue>
 
 namespace TREE_NODE {
 using TREE_NODE_TEMP::TreeNodeTemp;
 using std::vector;
+using std::queue;
 
 template<typename T>
 struct TreeNode : public TreeNodeTemp<T, TreeNode> {
@@ -44,6 +64,28 @@ static vector<TreeNode<T> *> numToTree(const vector<T> &nums) {
         will_return[i] = (nums[i] != TreeNode<T>::No) ? new TreeNode<T>(nums[i]) : nullptr;
     }
     organize(will_return);
+    return will_return;
+}
+template<typename T>
+static bool judge_equal(TreeNode<T> *root, const vector<T> &vec) {
+    queue<TreeNode<T> *> que{};
+    vector<T> nums{};
+    que.push(root);
+    while (!que.empty()) {
+        TreeNode<T> *head = que.front();
+        que.pop();
+        if (head == nullptr) {
+            nums.push_back(TreeNode<T>::No);
+            continue;
+        }
+        nums.push_back(head->val);
+        que.push(head->left);
+        que.push(head->right);
+    }
+    bool will_return{true};
+    for (size_t i{0}; i < nums.size(); i++) {
+        will_return = will_return && (nums[i] == vec[i]);
+    }
     return will_return;
 }
 };

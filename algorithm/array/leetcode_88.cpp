@@ -1,16 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,34 +23,22 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+#include "leetcode_88_test.hpp"
 
-#include <iostream>
-#include <chrono>
-
-std::chrono::milliseconds get_ms() {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::system_clock::now().time_since_epoch());
-}
-
-class CS203_timer final{
-private:
-    std::chrono::milliseconds ms{get_ms()};
-public:
-    CS203_timer() = default;
-
-    CS203_timer(const CS203_timer &timer) = delete;
-
-    CS203_timer(CS203_timer &&timer) = delete;
-
-    CS203_timer &operator=(const CS203_timer &timer) = delete;
-
-    CS203_timer &operator=(CS203_timer &&mat) = delete;
-
-    ~CS203_timer() {
-        std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
+namespace leetcode_88 {
+void leetcode_88::merge(vector<int32_t> &nums1, int32_t m,const vector<int32_t> &nums2, int32_t n) {
+    for (int32_t begin_x{m - 1}, begin_y{n - 1}, count{m + n - 1}; count >= 0; count--) {
+        if (begin_x < 0) {
+            // repeat with meaning
+            nums1[count] = nums2[begin_y];
+            begin_y--;
+        } else if (begin_y < 0 || nums1[begin_x] > nums2[begin_y]) {
+            nums1[count] = nums1[begin_x];
+            begin_x--;
+        } else {
+            nums1[count] = nums2[begin_y];
+            begin_y--;
+        }
     }
-};
-
-#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+}
+}

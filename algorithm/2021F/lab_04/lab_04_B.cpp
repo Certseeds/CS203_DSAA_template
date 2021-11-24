@@ -54,9 +54,9 @@ please find the going-out order of student.
 //@Tag Done
 
 
-#ifdef CS203_DSAA_MACRO_LISTNODE
+#ifdef CS203_DSAA_TEST_MACRO
 
-#include <ListNode.hpp>
+#include <list/ListNode.hpp>
 
 #else
 #include <cstdint>
@@ -69,7 +69,7 @@ struct ListNode {
     explicit ListNode(int32_t x) : ListNode(x, nullptr) {}
 };
 }
-#endif //CS203_DSAA_MACRO_LISTNODE
+#endif //CS203_DSAA_TEST_MACRO
 
 #include <vector>
 #include <numeric>

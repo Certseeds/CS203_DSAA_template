@@ -1,16 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,34 +23,25 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+//@Tag tree
+//@Tag 树
+//@description 中序遍历
 
-#include <iostream>
-#include <chrono>
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
 
-std::chrono::milliseconds get_ms() {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::system_clock::now().time_since_epoch());
-}
+#include <catch_main.hpp>
+#include <tree/TreeNode.hpp>
+#include <vector>
 
-class CS203_timer final{
-private:
-    std::chrono::milliseconds ms{get_ms()};
-public:
-    CS203_timer() = default;
+namespace leetcode_94 {
 
-    CS203_timer(const CS203_timer &timer) = delete;
+using std::vector;
+using TreeNode = TREE_NODE::TreeNode<int32_t>;
 
-    CS203_timer(CS203_timer &&timer) = delete;
-
-    CS203_timer &operator=(const CS203_timer &timer) = delete;
-
-    CS203_timer &operator=(CS203_timer &&mat) = delete;
-
-    ~CS203_timer() {
-        std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
-    }
+struct leetcode_94 {
+    static vector<int32_t> inorderTraversal(TreeNode* root);
 };
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP

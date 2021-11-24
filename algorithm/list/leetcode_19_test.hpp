@@ -31,7 +31,7 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
-#include <ListNode.hpp>
+#include <list/ListNode.hpp>
 
 namespace leetcode_19 {
 using LISTNODE::ListNode;
