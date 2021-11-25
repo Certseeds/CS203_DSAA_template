@@ -25,20 +25,24 @@ SOFTWARE.
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODELINK_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODELINK_HPP
+
 #include "tree/TreeNode.hpp"
 #include <stack>
+
 namespace TREE_NODE {
 using std::stack;
+
 template<typename T>
 class TreeNodeLink final {
 public:
-    vector<TreeNode<T> *> list{};
+    vector<TreeNode < T> *> list{};
 
     TreeNodeLink(std::initializer_list<int32_t> list_) : list(TreeNode<T>::numToTree(list_)) {}
 
-    explicit TreeNodeLink(vector<TreeNode<T> *> list_) : list(std::move(list_)) {}
+    explicit TreeNodeLink(vector<TreeNode<T> *> list_): list(std::move(list_)) {}
 
-    explicit TreeNodeLink(TreeNode<T> *li) {
+
+    explicit TreeNodeLink(TreeNode <T> *li) {
         list.push_back(li);
     }
 
@@ -59,6 +63,14 @@ public:
             }
         }
     }
+
+    TreeNodeLink(const TreeNodeLink &) = delete;
+
+    TreeNodeLink(TreeNodeLink &&) = delete;
+
+    TreeNodeLink &operator=(const TreeNodeLink &) = delete;
+
+    TreeNodeLink &operator=(TreeNodeLink &&) = delete;
 };
 
 }

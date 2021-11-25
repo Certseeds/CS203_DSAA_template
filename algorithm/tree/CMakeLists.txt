@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 enable_testing()
 set(dependencies traverse_test)
 
-set(leetcode_order 94 95)
+set(leetcode_order 94 95 96 98 100)
 foreach (elementOrder IN LISTS leetcode_order)
     LIST(APPEND dependencies leetcode_${elementOrder})
 endforeach ()

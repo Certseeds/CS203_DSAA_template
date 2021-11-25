@@ -25,43 +25,38 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_98_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_98_HPP
 
 #include <catch_main.hpp>
+#include <unordered_map>
 #include <tree/TreeNode.hpp>
 #include <tree/TreeNodeLink.hpp>
-#include <vector>
 
-namespace leetcode_95 {
+namespace leetcode_98 {
 
-using std::vector;
+using std::unordered_map;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using Catch::Matchers::Equals;
-struct leetcode_95 {
-    static vector<TreeNode *> generateTrees(int32_t n);
+using TREE_NODE::numToTree;
+
+struct leetcode_98 {
+    static bool isValidBST(TreeNode *root);
 };
-TEST_CASE("test_case 1 [test_95]", "[test_95]") {
-    const auto three = leetcode_95::generateTrees(0);
-    CHECK_THAT(three, Equals<TreeNode *>({}));
-    const TreeNodeLink link1{three};
+
+TEST_CASE("test_case 1 [test_98]", "[test_98]") {
+    const vector<int32_t> vec{2, 1, 3};
+    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
+    CHECK(leetcode_98::isValidBST(numvec[0]));
+    const TreeNodeLink link{numvec[0]};
 }
 
-TEST_CASE("test_case 2 [test_95]", "[test_95]") {
-    const vector<vector<int32_t>> result{
-            {1, TreeNode::No, 2,  TreeNode::No, 3,  TreeNode::No, TreeNode::No},
-            {1, TreeNode::No, 3,  2,  TreeNode::No, TreeNode::No, TreeNode::No},
-            {2, 1,  3,  TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No},
-            {3, 1,  TreeNode::No, TreeNode::No, 2,  TreeNode::No, TreeNode::No},
-            {3, 2,  TreeNode::No, 1,  TreeNode::No, TreeNode::No, TreeNode::No},
-    };
-    const auto three = leetcode_95::generateTrees(3);
-    CHECK(three.size() == 5);
-    for (int32_t i{0}; i < 5; ++i) {
-        CHECK(TREE_NODE::judge_equal(three[i], result[i]));
-    }
-    const TreeNodeLink link1{three};
+TEST_CASE("test_case 2 [test_98]", "[test_98]") {
+    const vector<int32_t> vec{5, 1, 4, TreeNode::No, TreeNode::No, 3, 6};
+    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
+    CHECK_FALSE(leetcode_98::isValidBST(numvec[0]));
+    const TreeNodeLink link{numvec[0]};
 }
+
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_98_HPP
