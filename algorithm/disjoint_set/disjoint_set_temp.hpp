@@ -23,29 +23,37 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_HPP
 
-#include "disjoint_set_temp.hpp"
-#include <string>
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_TEMP_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_TEMP_HPP
 
-namespace disjoint_set {
+#include <vector>
+
+namespace disjoint_set_temp {
 using std::vector;
-using disjoint_set_temp::DisjointSetBase;
 
-class disjoint_set final : public DisjointSetBase {
-private:
-    using base = disjoint_set_temp::DisjointSetBase;
+class DisjointSetBase {
+protected:
+    std::vector<size_t> fa; // 记录father
+    std::vector<size_t> points; // 记录子节点
 public:
-    explicit disjoint_set(size_t x);
+    explicit DisjointSetBase(size_t size) : fa(vector<size_t>(size + 1, -1)) {};
 
-    size_t find(size_t x) override;
+    virtual size_t find(size_t x) = 0;
 
-    void merge(size_t x, size_t y) override;
+    virtual void merge(size_t x, size_t y) = 0;
 
-    void mergeHeur(size_t x, size_t y) override;
+    virtual void mergeHeur(size_t x, size_t y) = 0;
+
+    DisjointSetBase(const DisjointSetBase &obj) = delete;
+
+    DisjointSetBase &operator=(const DisjointSetBase &node) = delete;
+
+    DisjointSetBase(DisjointSetBase &&node) = delete;
+
+    DisjointSetBase &operator=(DisjointSetBase &&node) = delete;
+
 };
 }
 
-
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_TEMP_HPP

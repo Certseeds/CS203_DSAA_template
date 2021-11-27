@@ -46,7 +46,7 @@ bool leetcode_97::isInterleave(const string &s1, const string &s2, const string 
     }
     for (size_t i{1}; i <= s1_size; i++) {
         for (size_t j{1}; j <= s2_size; j++) {
-            const char &char1{s1[i - 1]}, char2{s2[j - 1]}, char3{s3[i + j - 1]};
+            const char char1{s1[i - 1]}, char2{s2[j - 1]}, char3{s3[i + j - 1]};
             if (char1 == char3) {
                 dp[i][j] = dp[i][j] || dp[i - 1][j];
             }
