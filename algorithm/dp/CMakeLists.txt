@@ -8,10 +8,11 @@ enable_testing()
 
 
 enable_testing()
-set(dependencies )
+set(dependencies)
 
 set(leetcode_order 1143 5 10 44 45)
 LIST(APPEND leetcode_order 63 62 64 70 97)
+LIST(APPEND leetcode_order 322 509_1137)
 foreach (elementOrder IN LISTS leetcode_order)
     LIST(APPEND dependencies leetcode_${elementOrder})
 endforeach ()

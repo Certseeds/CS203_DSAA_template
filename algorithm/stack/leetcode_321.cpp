@@ -51,9 +51,8 @@ int32_t compare(const vector<int32_t> &fst, size_t fst_size, const vector<int32_
 vector<int32_t> leetcode_321::maxNumber(const vector<int32_t> &nums1, const vector<int32_t> &nums2, size_t k) {
     const auto nums1_size{nums1.size()}, nums2_size{nums2.size()};
     vector<int32_t> backup{};
-    for (size_t x = std::max(0, static_cast<int32_t>(k) - static_cast<int32_t>(nums2_size)),
-                 maxV{std::min(k, nums1_size)}; x <= maxV; x++) {
-        const auto x_size{x},y_size{k - x};
+    for (size_t x = k > nums2_size ? k - nums2_size : 0, maxV{std::min(k, nums1_size)}; x <= maxV; x++) {
+        const auto x_size{x}, y_size{k - x};
         // 这里得注意, 先保证序列整体大小优先,
         // 再考虑保证整体单调栈特性
         const auto order = [](const vector<int32_t> &num, size_t needSize) {
@@ -84,8 +83,10 @@ vector<int32_t> leetcode_321::maxNumber(const vector<int32_t> &nums1, const vect
         const std::function<int(size_t, size_t)> comp = [&max1, &max2, &comp, x_size, y_size]
                 (size_t fst, size_t snd) {
             if (fst == x_size) {
+                // 分别讨论有顺序作用
                 return -1;
             } else if (snd == y_size) {
+                // 分别讨论有顺序作用,不能合并
                 return 1;
             } else if (max1[fst] > max2[snd]) {
                 return 1;
