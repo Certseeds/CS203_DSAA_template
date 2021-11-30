@@ -23,18 +23,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_70_test.hpp"
+#include "leetcode_198_test.hpp"
 
-namespace leetcode_70 {
+namespace leetcode_198 {
 
-int32_t leetcode_70::climbStairs(int32_t n) {
-    int32_t b{1};
-    for (int32_t a{0}, i{0}, temp{-1}; i < n; i++) {
-        temp = a;
-        a = b;
-        b = temp + a;
+int64_t leetcode_198::rob(const vector<int32_t> &nums) {
+    const auto nums_size{nums.size()};
+    if (nums_size <= 1) {
+        return nums[0];
     }
-    return b;
+    vector<int64_t> dp(nums_size + 1, 0); // 取得0个 只能得0
+    dp[1] = nums[0];// then nums_size >= 2
+    for (size_t i{2}; i <= nums_size; i++) {
+        dp[i] = std::max(dp[i - 2] + nums[i - 1], dp[i - 1]);
+    }
+    return dp.back();
 }
 
+int64_t leetcode_198::rob2(const vector<int32_t> &nums) {
+    const auto nums_size{nums.size()};
+    std::array<int64_t, 3> dp{0, nums[0], 0};
+    // 滚 动 数 组
+    for (size_t i{2}; i <= nums_size; i++) {
+        dp[2] = std::max(dp[0] + nums[i - 1], dp[1]);
+        dp[0] = dp[1];
+        dp[1] = dp[2];
+    }
+    return dp[2];
+}
 }

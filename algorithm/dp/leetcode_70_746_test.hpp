@@ -27,10 +27,11 @@ SOFTWARE.
 //@Tag 动态规划
 //@Description 斐波那契?
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_TEST_CPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_TEST_CPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_746_TEST_CPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_746_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstddef>
 #include <cstdint>
 #include <vector>
 
@@ -67,4 +68,30 @@ TEST_CASE("5 [test_70]", "[test_70]") {
     CHECK(result == leetcode_70::climbStairs(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_TEST_CPP
+
+namespace leetcode_746 {
+using std::vector;
+using std::unordered_map;
+
+struct leetcode_746 final {
+    static int32_t minCostClimbingStairs(const vector<int32_t> &cost);
+
+    static int32_t minCostClimbingStairs2(const vector<int32_t> &cost);
+};
+
+TEST_CASE("1 [test_746]", "[test_746]") {
+    const vector<int32_t> input{10, 15, 20};
+    static constexpr const auto output{15};
+    CHECK(output == leetcode_746::minCostClimbingStairs(input));
+    CHECK(output == leetcode_746::minCostClimbingStairs2(input));
+}
+
+TEST_CASE("2 [test_746]", "[test_746]") {
+    const vector<int32_t> input{1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
+    static constexpr const auto output{6};
+    // 0 -> 2 -> 4 ->6 -> 7 -> 9 -> out六跳,每跳cost 1
+    CHECK(output == leetcode_746::minCostClimbingStairs(input));
+    CHECK(output == leetcode_746::minCostClimbingStairs2(input));
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_746_TEST_CPP
