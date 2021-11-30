@@ -26,8 +26,8 @@ SOFTWARE.
 //@Tag DP
 //@Tag 动态规划
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_198_TEST_CPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_198_TEST_CPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_198_213_TEST_CPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_198_213_TEST_CPP
 
 #include <catch_main.hpp>
 #include <cstddef>
@@ -46,16 +46,54 @@ struct leetcode_198 final {
 
 TEST_CASE("1 [test_198]", "[test_198]") {
     const vector<int32_t> input{1, 2, 3, 1};
-    static constexpr const auto output{4ll};
+    static constexpr const auto output{static_cast<int64_t>(4)};
     CHECK(output == leetcode_198::rob(input));
     CHECK(output == leetcode_198::rob2(input));
 }
 
 TEST_CASE("2 [test_198]", "[test_198]") {
     const vector<int32_t> input{2, 7, 9, 3, 1};
-    static constexpr const auto output{12ll};
+    static constexpr const auto output{static_cast<int64_t>(12)};
+    CHECK(output == leetcode_198::rob(input));
+    CHECK(output == leetcode_198::rob2(input));
+}
+
+TEST_CASE("3 [test_198]", "[test_198]") {
+    const vector<int32_t> input{1, 1};
+    static constexpr const auto output{static_cast<int64_t>(1)};
     CHECK(output == leetcode_198::rob(input));
     CHECK(output == leetcode_198::rob2(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_198_TEST_CPP
+namespace leetcode_213 {
+using std::vector;
+using std::unordered_map;
+
+struct leetcode_213 final {
+    static int64_t rob(const vector<int32_t> &nums);
+
+    static int64_t rob2(const vector<int32_t> &nums);
+};
+
+TEST_CASE("1 [test_213]", "[test_213]") {
+    const vector<int32_t> input{2, 3, 2};
+    static constexpr const auto output{static_cast<int64_t>(3)};
+    CHECK(output == leetcode_213::rob(input));
+    CHECK(output == leetcode_213::rob2(input));
+}
+
+TEST_CASE("2 [test_213]", "[test_213]") {
+    const vector<int32_t> input{1, 2, 3, 1};
+    static constexpr const auto output{static_cast<int64_t>(4)};
+    CHECK(output == leetcode_213::rob(input));
+    CHECK(output == leetcode_213::rob2(input));
+}
+
+TEST_CASE("3 [test_213]", "[test_213]") {
+    const vector<int32_t> input{1, 1};
+    static constexpr const auto output{static_cast<int64_t>(1)};
+    CHECK(output == leetcode_213::rob(input));
+    CHECK(output == leetcode_213::rob2(input));
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_198_213_TEST_CPP
