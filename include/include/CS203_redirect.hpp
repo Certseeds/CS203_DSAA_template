@@ -36,12 +36,13 @@ SOFTWARE.
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <class_helper/nonable.hpp>
 
 using std::cin;
 using std::cout;
 using std::string;
 
-class CS203_redirect final{
+class CS203_redirect final : private nonCopyMoveAble {
 private:
     std::streambuf *strmin_buf;
     std::streambuf *strmout_buf;
@@ -64,14 +65,6 @@ public:
             std::cout.rdbuf(file_out.rdbuf());
         }
     }
-
-    CS203_redirect(const CS203_redirect &redirect) = delete;
-
-    CS203_redirect(CS203_redirect &&redirect) = delete;
-
-    CS203_redirect &operator=(const CS203_redirect &redirect) = delete;
-
-    CS203_redirect &operator=(CS203_redirect &&mat) = delete;
 
     ~CS203_redirect() {
         std::cout.rdbuf(strmout_buf);

@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 add_library(${PROJECT_NAME}_lib ${LIB_WAY} ${CMAKE_CURRENT_SOURCE_DIR}/disjoint_set.cpp)
+target_link_libraries(${PROJECT_NAME}_lib PRIVATE CS203_DSAA_template_INCLUDE)
 
 enable_testing()
 set(dependencies 684 200 130 399)

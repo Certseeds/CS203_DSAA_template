@@ -25,10 +25,10 @@ SOFTWARE.
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
-
+#include <class_helper/nonable.hpp>
 namespace TREE_NODE_TEMP {
 template<typename T, template<typename> typename CLASS>
-struct TreeNodeTemp {
+struct TreeNodeTemp : private nonCopyMoveAble {
 public:
     T val;
     CLASS<T> *left, *right;
@@ -39,13 +39,6 @@ public:
         this->right = nullptr;
     }
 
-    TreeNodeTemp(const CLASS<T> &obj) = delete;
-
-    TreeNodeTemp &operator=(const CLASS<T> &node) = delete;
-
-    TreeNodeTemp(CLASS<T> &&node) = delete;
-
-    TreeNodeTemp &operator=(CLASS<T> &&node) = delete;
 
 private:
     explicit TreeNodeTemp(T x = static_cast<T>(0)) : TreeNodeTemp<T, CLASS>(x, nullptr, nullptr) {};

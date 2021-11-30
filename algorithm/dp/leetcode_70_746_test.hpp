@@ -71,7 +71,6 @@ TEST_CASE("5 [test_70]", "[test_70]") {
 
 namespace leetcode_746 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_746 final {
     static int32_t minCostClimbingStairs(const vector<int32_t> &cost);

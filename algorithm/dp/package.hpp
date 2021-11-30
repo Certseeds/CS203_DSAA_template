@@ -1,16 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:42:36
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,27 +23,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
 
-#include <iostream>
-#include <chrono>
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_PACKAGE_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_PACKAGE_HPP
+
+#include <cstddef>
+#include <utility>
+#include <vector>
 #include <class_helper/nonable.hpp>
 
-std::chrono::milliseconds get_ms() {
-    return std::chrono::duration_cast<std::chrono::milliseconds>(
-            std::chrono::system_clock::now().time_since_epoch());
-}
-
-class CS203_timer final : private nonCopyMoveAble {
-private:
-    std::chrono::milliseconds ms{get_ms()};
-public:
-    CS203_timer() = default;
-
-    ~CS203_timer() {
-        std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
-    }
+namespace zero_one_package {
+using std::vector;
+struct something final {
+    size_t cost, money;
+};
+enum class allow_unfull : bool {
+    ALLOW = true, // 必须放满
+    UN_ALLOW = false // 不必须放满
 };
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+struct Package final : private nonCopyMoveAble {
+private:
+    const vector<something> things;
+    const size_t full;
+public:
+    Package(vector<something> things, size_t maxV) : things(std::move(things)), full(maxV) {}
+    template<allow_unfull T>
+    size_t solve();
+};
+}
+
+
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_PACKAGE_HPP

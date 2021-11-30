@@ -36,7 +36,6 @@ SOFTWARE.
 
 namespace leetcode_198 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_198 final {
     static int64_t rob(const vector<int32_t> &nums);
@@ -67,7 +66,6 @@ TEST_CASE("3 [test_198]", "[test_198]") {
 }
 namespace leetcode_213 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_213 final {
     static int64_t rob(const vector<int32_t> &nums);

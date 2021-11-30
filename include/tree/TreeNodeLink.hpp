@@ -28,12 +28,12 @@ SOFTWARE.
 
 #include "tree/TreeNode.hpp"
 #include <stack>
-
+#include <class_helper/nonable.hpp>
 namespace TREE_NODE {
 using std::stack;
 
 template<typename T>
-class TreeNodeLink final {
+class TreeNodeLink final : private nonCopyMoveAble {
 public:
     vector<TreeNode < T> *> list{};
 
@@ -63,14 +63,6 @@ public:
             }
         }
     }
-
-    TreeNodeLink(const TreeNodeLink &) = delete;
-
-    TreeNodeLink(TreeNodeLink &&) = delete;
-
-    TreeNodeLink &operator=(const TreeNodeLink &) = delete;
-
-    TreeNodeLink &operator=(TreeNodeLink &&) = delete;
 };
 
 }

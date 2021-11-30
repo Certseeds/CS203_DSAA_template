@@ -28,11 +28,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_TEMP_HPP
 
 #include <vector>
+#include <class_helper/nonable.hpp>
 
 namespace disjoint_set_temp {
 using std::vector;
 
-class DisjointSetBase {
+class DisjointSetBase : private nonCopyMoveAble {
 protected:
     std::vector<size_t> fa; // 记录father
     std::vector<size_t> points; // 记录子节点
@@ -44,14 +45,6 @@ public:
     virtual void merge(size_t x, size_t y) = 0;
 
     virtual void mergeHeur(size_t x, size_t y) = 0;
-
-    DisjointSetBase(const DisjointSetBase &obj) = delete;
-
-    DisjointSetBase &operator=(const DisjointSetBase &node) = delete;
-
-    DisjointSetBase(DisjointSetBase &&node) = delete;
-
-    DisjointSetBase &operator=(DisjointSetBase &&node) = delete;
 
 };
 }
