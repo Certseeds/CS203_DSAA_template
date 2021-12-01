@@ -35,15 +35,6 @@ jobs:
       - name: ensure the path and files of project
         run: sudo apt install tree; tree
 
-      - uses: actions/cache@v2
-        env:
-          cache-name: cache-cmake-build-path
-        with:
-          path: ./CMAKE_DEBUG_PATH
-          key: ${{ matrix.os }}-cmake-build-${{ hashFiles('CMakeLists.txt') }}-${{ env.GCC_V }}
-          restore-keys: |
-            ${{ matrix.os }}-cmake-build-${{ hashFiles('CMakeLists.txt') }}
-
       - name: Install GCC-11,G++-11
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
@@ -57,7 +48,6 @@ jobs:
 
       - name: Use cmake
         run: cmake --version
-
 
       - name: prepare folder
         run: cmake -E make_directory ./CMAKE_DEBUG_PATH
@@ -102,15 +92,6 @@ jobs:
     steps:
       - name: checkout code
         uses: actions/checkout@v2
-
-      - uses: actions/cache@v2
-        env:
-          cache-name: cache-cmake-build-path
-        with:
-          path: ./CMAKE_DEBUG_PATH
-          key: ${{ runner.os }}-cmake-build-${{ hashFiles('CMakeLists.txt') }}
-          restore-keys: |
-            ${{ runner.os }}-cmake-build-
 
       - name: Use cmake
         run: cmake --version
