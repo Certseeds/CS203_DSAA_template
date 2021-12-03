@@ -29,13 +29,13 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_100_HPP
 
 #include <catch_main.hpp>
-#include <unordered_map>
 #include <tree/TreeNode.hpp>
 #include <tree/TreeNodeLink.hpp>
+#include <vector>
 
 namespace leetcode_100 {
 
-using std::unordered_map;
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using TREE_NODE::numToTree;

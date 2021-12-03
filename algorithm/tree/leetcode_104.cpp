@@ -23,38 +23,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_98_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_98_HPP
+#include "leetcode_104_test.hpp"
 
-#include <catch_main.hpp>
-#include <tree/TreeNode.hpp>
-#include <tree/TreeNodeLink.hpp>
+namespace leetcode_104 {
 
-namespace leetcode_98 {
-
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
-
-struct leetcode_98 {
-    static bool isValidBST(TreeNode *root);
-};
-
-TEST_CASE("test_case 1 [test_98]", "[test_98]") {
-    const vector<int32_t> vec{2, 1, 3};
-    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
-    CHECK(leetcode_98::isValidBST(numvec[0]));
-    const TreeNodeLink link{numvec[0]};
+int32_t leetcode_104::maxDepth(TreeNode *root) {
+    if (root == nullptr) {
+        return 0;
+    }
+    root->val = 1;
+    int32_t will_return{1};
+    stack<TreeNode *> tree;
+    tree.push(root);
+    while (!tree.empty()) {
+        const TreeNode *begin = tree.top();
+        tree.pop();
+        if (begin->left == nullptr && begin->right == nullptr) {
+            will_return = std::max(will_return, begin->val);
+            continue;
+        }
+        if (begin->left != nullptr) {
+            begin->left->val = begin->val + 1;
+            tree.push(begin->left);
+        }
+        if (begin->right != nullptr) {
+            begin->right->val = begin->val + 1;
+            tree.push(begin->right);
+        }
+    }
+    return will_return;
 }
-
-TEST_CASE("test_case 2 [test_98]", "[test_98]") {
-    const vector<int32_t> vec{5, 1, 4, TreeNode::No, TreeNode::No, 3, 6};
-    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
-    CHECK_FALSE(leetcode_98::isValidBST(numvec[0]));
-    const TreeNodeLink link{numvec[0]};
 }
-
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_98_HPP

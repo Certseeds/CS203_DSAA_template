@@ -24,7 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_98_test.hpp"
-#include "traverse.cpp"
 
 namespace leetcode_98 {
 

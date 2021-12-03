@@ -24,7 +24,6 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_95_test.hpp"
-#include "traverse.cpp"
 
 namespace leetcode_95 {
 vector<TreeNode *> generateTrees_rec(int32_t left, int32_t right) {
@@ -55,7 +54,6 @@ vector<TreeNode *> leetcode_95::generateTrees(int32_t n) {
         return vector<TreeNode *>{};
     }
     return generateTrees_rec(1, n);
-    return vector<TreeNode *>();
 }
 
 }

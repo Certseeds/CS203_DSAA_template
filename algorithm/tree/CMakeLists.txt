@@ -8,6 +8,7 @@ enable_testing()
 set(dependencies traverse_test)
 
 set(leetcode_order 94 95 96 98 100)
+LIST(APPEND leetcode_order 104)
 foreach (elementOrder IN LISTS leetcode_order)
     LIST(APPEND dependencies leetcode_${elementOrder})
 endforeach ()
