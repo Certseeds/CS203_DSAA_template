@@ -58,7 +58,7 @@ SOFTWARE.
  * PS: 据说跳表也可以,没尝试故不分析
  * */
 //@Tag DONE
-#ifdef CS203_DSAA_MACRO_TREENODE
+#ifdef CS203_DSAA_TEST_MACRO
 
 #else
 #include <cstdint>
@@ -67,7 +67,7 @@ SOFTWARE.
 #pragma GCC optimize("inline-small-functions")
 #pragma GCC optimize("-finline-small-functions")
 #pragma GCC target("sse,sse2,mmx")
-#endif //CS203_DSAA_MACRO_TREENODE
+#endif //CS203_DSAA_TEST_MACRO
 
 #include <tuple>
 #include <vector>

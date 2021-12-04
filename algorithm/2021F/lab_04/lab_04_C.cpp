@@ -60,9 +60,9 @@ SOFTWARE.
  *  输出`3 5`
  * */
 //@Tag DONE
-#ifdef CS203_DSAA_MACRO_LISTNODE
+#ifdef CS203_DSAA_TEST_MACRO
 
-#include <ListNode.hpp>
+#include <list/ListNode.hpp>
 
 #else
 #include <cstdint>
@@ -79,7 +79,7 @@ struct ListNode {
 #pragma GCC optimize("inline-small-functions")
 #pragma GCC optimize("-finline-small-functions")
 #pragma GCC target("mmx")
-#endif //CS203_DSAA_MACRO_LISTNODE
+#endif //CS203_DSAA_TEST_MACRO
 
 #include <tuple>
 #include <vector>

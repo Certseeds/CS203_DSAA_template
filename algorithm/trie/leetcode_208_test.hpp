@@ -38,23 +38,15 @@ SOFTWARE.
 #include <array>
 #include <string>
 #include <unordered_set>
-
+#include <class_helper/nonable.hpp>
 namespace leetcode_208 {
 using std::endl;
 using std::string;
 using std::unordered_set;
 
 struct leetcode_208 {
-    struct TrieTemplate {
+    struct TrieTemplate : private nonCopyMoveAble {
         TrieTemplate() = default;
-
-        TrieTemplate(const TrieTemplate &) = delete;
-
-        TrieTemplate(TrieTemplate &&) = delete;
-
-        TrieTemplate &operator=(const TrieTemplate &) = delete;
-
-        TrieTemplate &operator=(TrieTemplate &&) = delete;
 
         virtual void insert(const string &) {}
 

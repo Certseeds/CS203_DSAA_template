@@ -30,34 +30,27 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
+#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP
 
 #include <iostream>
 #include <chrono>
+#include <class_helper/nonable.hpp>
 
 std::chrono::milliseconds get_ms() {
     return std::chrono::duration_cast<std::chrono::milliseconds>(
             std::chrono::system_clock::now().time_since_epoch());
 }
 
-class CS203_timer final{
+class CS203_timer final : private nonCopyMoveAble {
 private:
     std::chrono::milliseconds ms{get_ms()};
 public:
     CS203_timer() = default;
-
-    CS203_timer(const CS203_timer &timer) = delete;
-
-    CS203_timer(CS203_timer &&timer) = delete;
-
-    CS203_timer &operator=(const CS203_timer &timer) = delete;
-
-    CS203_timer &operator=(CS203_timer &&mat) = delete;
 
     ~CS203_timer() {
         std::cout << "cost " << get_ms().count() - ms.count() << " ms\n";
     }
 };
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_TIMER_H
+#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_TIMER_HPP

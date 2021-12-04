@@ -12,13 +12,8 @@ foreach (elementName IN LISTS dependencies)
     set(CMAKE_CXX_STANDARD 17)
     add_executable(${PROJECT_NAME}_${elementName}_test ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}_test.cpp)
     target_compile_definitions(${PROJECT_NAME}_${elementName}_test PRIVATE CS203_DSAA_TEST_MACRO)
-    target_link_libraries(${PROJECT_NAME}_${elementName} PRIVATE
-                          CS203_DSAA_template_INCLUDE_LIST
-                          CS203_DSAA_template_INCLUDE_TREE)
     target_link_libraries(${PROJECT_NAME}_${elementName}_test PRIVATE
-                          CS203_DSAA_template_INCLUDE
-                          CS203_DSAA_template_INCLUDE_TREE
-                          CS203_DSAA_template_INCLUDE_LIST)
+                          CS203_DSAA_template_INCLUDE)
     target_precompile_headers(${PROJECT_NAME}_${elementName}_test REUSE_FROM
                               CS203_DSAA_template_INCLUDE_PCH17
                               )

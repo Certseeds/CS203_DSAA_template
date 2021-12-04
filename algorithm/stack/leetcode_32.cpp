@@ -27,12 +27,12 @@ SOFTWARE.
 
 namespace leetcode_32 {
 int32_t leetcode_32::longestValidParentheses(const string &s) {
-    const auto s_size = s.size();
+    const auto s_size{s.size()};
     if (s_size <= 1) {
         return 0;
     }
     vector<int32_t> DP(s_size, 0);
-    for (std::remove_const<decltype(s_size)>::type i = 1; i < s_size; i++) {
+    for (std::remove_const<decltype(s_size)>::type i{1}; i < s_size; i++) {
         if (s[i] == ')') {
             if (s[i - 1] == '(') {
                 DP[i] = 2;

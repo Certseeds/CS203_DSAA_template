@@ -40,7 +40,8 @@ TEST_CASE("test max flow 1", "[test graph flow]") {
     const auto adjlist_obj = build_adjlist({{{1, 3, 30}, {2, 1, 30}, {2, 3, 20}, {4, 2, 30}, {4, 3, 20}}}, 4);
     flow origin{adjlist_obj, 4, 3};
     origin.maxflow_ek();
-    CHECK(50 == origin.result);
+    static constexpr const auto result{50};
+    CHECK(result == origin.result);
 }
 
 TEST_CASE("test max flow 2", "[test graph flow]") {
@@ -50,7 +51,8 @@ TEST_CASE("test max flow 2", "[test graph flow]") {
             }, 4);
     flow origin{adjlist_obj, 1, 4};
     origin.maxflow_ek();
-    CHECK(50 == origin.result);
+    static constexpr const auto result{50};
+    CHECK(result == origin.result);
 }
 
 TEST_CASE("test max flow 3", "[test graph flow]") {
@@ -60,7 +62,8 @@ TEST_CASE("test max flow 3", "[test graph flow]") {
             }, 4);
     flow origin{adjlist_obj, 1, 3};
     origin.maxflow_ek();
-    CHECK(15 == origin.result);
+    static constexpr const auto result{15};
+    CHECK(result == origin.result);
 }
 
 TEST_CASE("test max flow 4", "[test graph flow]") {
@@ -70,6 +73,7 @@ TEST_CASE("test max flow 4", "[test graph flow]") {
             }, 5);
     flow origin{adjlist_obj, 1, 5};
     origin.maxflow_ek();
-    CHECK(70 == origin.result);
+    static constexpr const auto result{70};
+    CHECK(result == origin.result);
 }
 }

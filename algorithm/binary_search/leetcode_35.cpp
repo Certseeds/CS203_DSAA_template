@@ -1,10 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanos
- * @Date: 2021-09-07 00:08:19
- * @LastEditors: nanos
- * @LICENSE: MIT
- */
 /*
 MIT License
 

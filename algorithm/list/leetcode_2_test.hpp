@@ -31,7 +31,7 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <unordered_map>
-#include <ListNode.hpp>
+#include <list/ListNode.hpp>
 
 namespace leetcode_2 {
 using LISTNODE::ListNode;

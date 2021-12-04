@@ -30,8 +30,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
 
 #include <catch_main.hpp>
-#include <ListNode.hpp>
-#include <TreeNode.hpp>
+#include <list/ListNode.hpp>
+#include <tree/TreeNode.hpp>
 
 namespace leetcode_109 {
 using LISTNODE::ListNode;

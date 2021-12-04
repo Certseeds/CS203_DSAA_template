@@ -11,7 +11,8 @@ namespace disjoint_set {
 using std::string;
 using std::cout, std::endl;
 
-disjoint_set::disjoint_set(const size_t size) : fa(vector<size_t>(size + 1, -1)), points(vector<size_t>(size + 1, 0)) {
+disjoint_set::disjoint_set(size_t size) : base(size) {
+    this->points = vector<size_t>(size + 1, 0);
     // 0号元素弃用
     // from 1 to ${size}
     // value is 1 to ${size}

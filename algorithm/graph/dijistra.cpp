@@ -41,7 +41,7 @@ vector<int32_t> dijkstra(const adjlist &input, int32_t begin_node) {
     vector<int32_t> results(input.size(), 0x3f3f3f3f);
     results[begin_node] = 0;
     // PS: in this part,if begin_node count from 1, begin_node should -= 1
-    static constexpr auto cmp{
+    static constexpr const auto cmp{
             [](const link &v1, const link &v2) {
                 return v1.cost > v2.cost;
             }

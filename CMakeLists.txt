@@ -1,10 +1,12 @@
 cmake_minimum_required(VERSION 3.16.6)
 
 set(PROJECT_VERSION_MAJOR 0)
-set(PROJECT_VERSION_MINOR 3)
-set(PROJECT_VERSION_PATCH 1)
+set(PROJECT_VERSION_MINOR 6)
+set(PROJECT_VERSION_PATCH 0)
 project(CS203_DSAA_template
         VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
+        DESCRIPTION "Template for Algorithm Based on C++11 and Modern CMake"
+        HOMEPAGE_URL "https://github.com/Certseeds/CS203_DSAA_template"
         LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)

@@ -30,20 +30,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_SEQUENCE_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_SEQUENCE_HPP
+#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_SEQUENCE_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_SEQUENCE_HPP
 
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <vector>
+#include <class_helper/nonable.hpp>
 
 using std::cin;
 using std::cout;
 using std::string;
 using std::vector;
 
-class CS203_sequence final{
+class CS203_sequence final : private nonCopyMoveAble {
 private:
     std::string prefix_of_file_name{""};
     std::string postfix_of_testout{"test.out"};
@@ -58,14 +59,6 @@ public:
     explicit CS203_sequence(int32_t begin, int32_t end, int32_t max_length = -1) : begin(begin), end(end),
                                                                                    max_length(max_length) {
     }
-
-    CS203_sequence(const CS203_sequence &redirect) = delete;
-
-    CS203_sequence(CS203_sequence &&redirect) = delete;
-
-    CS203_sequence &operator=(const CS203_sequence &redirect) = delete;
-
-    CS203_sequence &operator=(CS203_sequence &&mat) = delete;
 
     void set_prefix_of_filename(const string &prefixOfFileName) {
         prefix_of_file_name = prefixOfFileName;
@@ -132,4 +125,4 @@ public:
     }
 };
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_SEQUENCE_HPP
+#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_SEQUENCE_HPP

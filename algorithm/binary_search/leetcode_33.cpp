@@ -27,7 +27,7 @@ SOFTWARE.
 
 namespace leetcode_33 {
 
-int leetcode_33::search(vector<int> &nums, int target) {
+int32_t leetcode_33::search(const vector<int32_t> &nums, int32_t target) {
     const auto nums_size{static_cast<int32_t>(nums.size())};
     if (nums.empty()) {
         return -1;
@@ -45,7 +45,7 @@ int leetcode_33::search(vector<int> &nums, int target) {
         }
         maxv /= 2;
     }
-    const auto &binary_search_find_first_equal = [target, nums](auto begin, auto end) {
+    const auto &binary_search_find_first_equal = [target, &nums](auto begin, auto end) {
         int32_t middle{0};
         while (begin < static_cast<int32_t>(end)) {
             middle = (end - begin) / 2 + begin;

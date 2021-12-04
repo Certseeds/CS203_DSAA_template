@@ -30,18 +30,19 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
-#define CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
+#ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_REDIRECT_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_REDIRECT_HPP
 
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <class_helper/nonable.hpp>
 
 using std::cin;
 using std::cout;
 using std::string;
 
-class CS203_redirect final{
+class CS203_redirect final : private nonCopyMoveAble {
 private:
     std::streambuf *strmin_buf;
     std::streambuf *strmout_buf;
@@ -65,14 +66,6 @@ public:
         }
     }
 
-    CS203_redirect(const CS203_redirect &redirect) = delete;
-
-    CS203_redirect(CS203_redirect &&redirect) = delete;
-
-    CS203_redirect &operator=(const CS203_redirect &redirect) = delete;
-
-    CS203_redirect &operator=(CS203_redirect &&mat) = delete;
-
     ~CS203_redirect() {
         std::cout.rdbuf(strmout_buf);
         std::cin.rdbuf(strmin_buf);
@@ -94,4 +87,4 @@ std::string getFilePath() noexcept {
 const std::string CS203_redirect::file_paths = getFilePath();
 #endif //CS203_DSAA_TEST_MACRO
 
-#endif //CS203_DSAA_TEMPLATE_INCLUDES_CS203_REDIRECT_H
+#endif //CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_REDIRECT_HPP
