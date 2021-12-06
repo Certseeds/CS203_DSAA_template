@@ -25,39 +25,58 @@ SOFTWARE.
 */
 //@Tag DP
 //@Tag 动态规划
+//@Tag stack
+//@Tag 单调栈
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_121_TEST_CPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_121_TEST_CPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_122_TEST_CPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_122_TEST_CPP
 
 #include <catch_main.hpp>
 #include <cstddef>
 #include <cstdint>
+#include <stack>
 #include <vector>
-#include <numeric>
 
-namespace leetcode_121 {
+namespace leetcode_122 {
+using std::stack;
 using std::vector;
 
-struct leetcode_121 final {
+struct leetcode_122 final {
     static int32_t maxProfit(const vector<int32_t> &prices);
 
     static int32_t maxProfit2(const vector<int32_t> &prices);
+
+    static int32_t maxProfit3(const vector<int32_t> &prices);
+
+    static int32_t maxProfit4(const vector<int32_t> &prices);
 };
 
 
-TEST_CASE("1 [test_121]", "[test_121]") {
+TEST_CASE("1 [test_122]", "[test_122]") {
     const vector<int32_t> input{7, 1, 5, 3, 6, 4};
-    static constexpr const auto result{5};
-    CHECK(result == leetcode_121::maxProfit(input));
-    CHECK(result == leetcode_121::maxProfit2(input));
+    static constexpr const auto result{7};
+    CHECK(result == leetcode_122::maxProfit(input));
+    CHECK(result == leetcode_122::maxProfit2(input));
+    CHECK(result == leetcode_122::maxProfit3(input));
+    CHECK(result == leetcode_122::maxProfit4(input));
 }
 
-TEST_CASE("2 [test_121]", "[test_121]") {
+TEST_CASE("2 [test_122]", "[test_122]") {
     const vector<int32_t> input{7, 6, 4, 3, 1};
     static constexpr const auto result{0};
-    CHECK(result == leetcode_121::maxProfit(input));
-    CHECK(result == leetcode_121::maxProfit2(input));
+    CHECK(result == leetcode_122::maxProfit(input));
+    CHECK(result == leetcode_122::maxProfit2(input));
+    CHECK(result == leetcode_122::maxProfit3(input));
+    CHECK(result == leetcode_122::maxProfit4(input));
 }
 
+TEST_CASE("3 [test_122]", "[test_122]") {
+    const vector<int32_t> input{1, 2, 3, 4, 5};
+    static constexpr const auto result{4};
+    CHECK(result == leetcode_122::maxProfit(input));
+    CHECK(result == leetcode_122::maxProfit2(input));
+    CHECK(result == leetcode_122::maxProfit3(input));
+    CHECK(result == leetcode_122::maxProfit4(input));
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_121_TEST_CPP
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_122_TEST_CPP

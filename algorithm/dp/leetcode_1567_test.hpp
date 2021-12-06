@@ -33,7 +33,6 @@ SOFTWARE.
 #include <vector>
 
 namespace leetcode_1567 {
-using std::string;
 using std::vector;
 
 struct leetcode_1567 {

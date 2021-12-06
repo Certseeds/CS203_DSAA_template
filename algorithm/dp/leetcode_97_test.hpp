@@ -37,7 +37,6 @@ SOFTWARE.
 
 namespace leetcode_97 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_97 final {
     static bool isInterleave(const string &s1, const string &s2, const string &s3);

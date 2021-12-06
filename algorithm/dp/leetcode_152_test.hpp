@@ -37,7 +37,6 @@ SOFTWARE.
 
 namespace leetcode_152 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_152 final {
     static int32_t maxProduct(const vector<int32_t> &nums);
