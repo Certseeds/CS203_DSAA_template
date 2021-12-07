@@ -23,74 +23,29 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_122_test.hpp"
+#include "leetcode_714_test.hpp"
 
-namespace leetcode_122 {
+namespace leetcode_714 {
 
-int32_t leetcode_122::maxProfit(const vector<int32_t> &prices) {
-    const auto p_size{prices.size()};
-    if (p_size <= 1) {
-        return 0;
-    }
-    // 样例 1-2-3-4-5
-    // 不考虑1买入,2卖出
-    // 而是考虑 1买入,
-    //         2卖出,2买入
-    //         3卖出,3买入
-    //         4卖出,4买入
-    //         5卖出
-    // 这样的一串流程,并且只在卖出时计费
-    int32_t will_return{0};
-    stack<int32_t> sta;
-    for (size_t i{0}; i < p_size; i++) {
-        int32_t perf{0};
-        const auto price = prices[i];
-        if (!sta.empty() && price > sta.top()) {
-            perf = price - sta.top();
-            sta.pop();
-        }
-        sta.push(price);
-        will_return += perf;
-    }
-    return will_return;
-}
-
-int32_t leetcode_122::maxProfit2(const vector<int32_t> &prices) {
-    const auto p_size{prices.size()};
-    if (p_size <= 1) {
-        return 0;
-    }
-    int32_t willreturn{0}, temp{0};
-    for (size_t i{1}; i < p_size; i++) {
-        temp = prices[i] - prices[i - 1];
-        if (temp > 0) {
-            willreturn += temp;
-        }
-    }
-    return willreturn;
-}
-
-int32_t leetcode_122::maxProfit3(const vector<int32_t> &prices) {
+int32_t leetcode_714::maxProfit(const vector<int32_t> &prices, int32_t fee) {
     const auto p_size{prices.size()};
     if (p_size <= 1) {
         return 0;
     }
     vector<int32_t> dpBuy(p_size + 1, 0), dpSell(p_size + 1, 0);
-    // dpBuy[i], 第i天之后, 购入股票状态下的最大收益
-    // dpSell[i], 第i天之后, 出售股票状态下的最大收益
     dpBuy[0] = 0; // 0 day之前无法有任何操作
     dpSell[0] = 0; // 0 day之前无法有任何操作
     dpBuy[1] = -prices[0]; // 1 day 购入
     dpSell[1] = 0; // 无法sell,没东西
     for (size_t i{2}; i <= p_size; i++) {
         const auto price{prices[i - 1]};
-        dpBuy[i] = std::max(dpBuy[i - 1], dpSell[i - 1] - price); //
-        dpSell[i] = std::max(dpSell[i - 1], dpBuy[i - 1] + price);
+        dpBuy[i] = std::max(dpBuy[i - 1], dpSell[i - 1] - price); // 只有卖出后有冷冻期,买入时没有
+        dpSell[i] = std::max(dpSell[i - 1], dpBuy[i - 1] + price - fee);
     }
     return dpSell.back();
 }
 
-int32_t leetcode_122::maxProfit4(const vector<int32_t> &prices) {
+int32_t leetcode_714::maxProfit2(const vector<int32_t> &prices, int32_t fee) {
     const auto p_size{prices.size()};
     if (p_size <= 1) {
         return 0;
@@ -103,9 +58,8 @@ int32_t leetcode_122::maxProfit4(const vector<int32_t> &prices) {
     for (size_t i{1}; i < p_size; i++, sellLast = sellNow, buyLast = buyNow) {
         const auto price{prices[i]};
         buyNow = std::max(buyLast, sellLast - price); //
-        sellNow = std::max(sellLast, buyLast + price);
+        sellNow = std::max(sellLast, buyLast + price - fee);
     }
     return sellNow;
 }
-
 }
