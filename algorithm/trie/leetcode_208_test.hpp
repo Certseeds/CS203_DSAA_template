@@ -34,77 +34,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_208_HPP
 
 #include <catch_main.hpp>
+#include <tree/trie.hpp>
 
-#include <array>
-#include <string>
-#include <unordered_set>
-#include <class_helper/nonable.hpp>
 namespace leetcode_208 {
-using std::endl;
-using std::string;
-using std::unordered_set;
-
 struct leetcode_208 {
-    struct TrieTemplate : private nonCopyMoveAble {
-        TrieTemplate() = default;
-
-        virtual void insert(const string &) {}
-
-        virtual bool search(const string &) { return false; }
-
-        virtual bool startsWith(const string &) { return false; }
-    };
-
-    struct trie : public TrieTemplate {
-    private:
-        unordered_set<string> uset{};
-    public:
-        trie() = default;
-
-        void insert(const string &word) override;
-
-        bool search(const string &word) override;
-
-        bool startsWith(const string &prefix) override;
-    };
-
-    struct trie2 : public TrieTemplate {
-    private:
-        static constexpr const size_t array_size{26};
-
-        class Node final {
-        public:
-            uint8_t self, isfinish;
-            std::array<Node *, array_size> sons{nullptr};
-
-            explicit Node(uint8_t self_, uint8_t finish) : self(self_), isfinish(finish) {
-            }
-
-            ~Node() {
-                for (size_t i{0}; i < array_size; i++) {
-                    delete sons[i];
-                    sons[i] = nullptr;
-                }
-            }
-        };
-
-        std::array<Node *, array_size> sons{nullptr};
-    public:
-        trie2() = default;
-
-        ~trie2() {
-            for (size_t i{0}; i < array_size; i++) {
-                delete sons[i];
-                sons[i] = nullptr;
-            }
-        }
-
-        void insert(const string &word) override;
-
-        bool search(const string &word) override;
-
-        bool startsWith(const string &prefix) override;
-    };
+    using trie = trie::trie;
+    using trie2 = trieR::trie;
 };
 
 TEST_CASE("1 [test_208]", "[test_208]") {

@@ -1,9 +1,10 @@
+
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +24,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_208_test.hpp"
+#include "leetcode_139_test.hpp"
+#include <tree/trie.hpp>
 
-namespace leetcode_208 {
-using trie = trie::trie;
-using trie2 = trieR::trie;
+namespace leetcode_139 {
+using trieIter::trie;
+
+bool leetcode_139::wordBreak(const string &s, const vector<string> &wordDict) {
+    const auto s_size{s.size()};
+    size_t wordMin{0x3f3f3f3f};
+    trie Trie{};
+    for (const auto &word: wordDict) {
+        Trie.insert(word.cbegin(), word.cend());
+        wordMin = std::min(wordMin, word.size());
+    }
+    if (s_size < wordMin) {
+        return false; // can not even spell into smallest word
+    }
+    vector<uint8_t> dp(s_size + 1, false);
+    //dp[i] => the ith word match or not
+    dp[0] = true;
+    for (size_t i{1}; i <= s_size; i++) {
+        for (size_t j{0}; j < i; j++) {
+            dp[i] = dp[i] ||
+                    (dp[j] && Trie.search(s.cbegin() + j, s.cbegin() + i));
+        }
+    }
+    return dp.back();
+}
+
 }
