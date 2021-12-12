@@ -28,15 +28,19 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_PACKAGE_HPP
 
 #include <cstddef>
+#include <cstdint>
 #include <utility>
 #include <vector>
 #include <class_helper/nonable.hpp>
 
 namespace zero_one_package {
 using std::vector;
+
 struct something final {
-    size_t cost, money;
+    something(int64_t cost, int64_t money) : cost(cost), money(money) {};
+    int64_t cost, money;
 };
+
 enum class allow_unfull : bool {
     ALLOW = true, // 必须放满
     UN_ALLOW = false // 不必须放满
@@ -45,11 +49,18 @@ enum class allow_unfull : bool {
 struct Package final : private nonCopyMoveAble {
 private:
     const vector<something> things;
-    const size_t full;
+    const int64_t full;
 public:
-    Package(vector<something> things, size_t maxV) : things(std::move(things)), full(maxV) {}
+    Package(const vector<something> &things, int64_t maxV) : things(things), full(maxV) {}
+
     template<allow_unfull T>
-    size_t solve();
+    int64_t solve();
+
+    template<allow_unfull T>
+    int64_t solveSaveSpace();
+
+    template<allow_unfull T>
+    int64_t solveOneLine();
 };
 }
 

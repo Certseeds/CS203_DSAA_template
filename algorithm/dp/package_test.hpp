@@ -32,9 +32,29 @@ SOFTWARE.
 
 namespace zero_one_package {
 TEST_CASE("1 [test dp_package]", "[test dp_package]") {
-    Package package{{}, 0};
-    // Package package2 = package;
-    // Package package2 = std::move(package);
+    const vector<something> things{
+            something{2, 4}, something{1, 2}, something{3, 3},
+    };
+    static constexpr const size_t weight = 4;
+    Package package{things, weight};
+    /**
+     * cost 1 to things[1], get 2 <br>
+     * cost 2 to things[0], get 4 <br>
+     * Sums: cost 3, get 6
+     * */
+    static constexpr const size_t unFullResult = 6;
+    CHECK(unFullResult == package.solve<allow_unfull::ALLOW>());
+    CHECK(unFullResult == package.solveSaveSpace<allow_unfull::ALLOW>());
+    CHECK(unFullResult == package.solveOneLine<allow_unfull::ALLOW>());
+    /**
+     * cost 1 to things[1], get 2 <br>
+     * cost 3 to things[2], get 3 <br>
+     * Sums: cost 4, get 5
+     * */
+    static constexpr const size_t FullResult = 5;
+    CHECK(FullResult == package.solve<allow_unfull::UN_ALLOW>());
+    CHECK(FullResult == package.solveSaveSpace<allow_unfull::UN_ALLOW>());
+    CHECK(FullResult == package.solveOneLine<allow_unfull::UN_ALLOW>());
 }
 }
 
