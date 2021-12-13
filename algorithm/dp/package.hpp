@@ -38,7 +38,7 @@ using std::vector;
 
 struct something final {
     something(int64_t cost, int64_t money) : cost(cost), money(money) {};
-    int64_t cost, money;
+    const int64_t cost, money;
 };
 
 enum class allow_unfull : bool {
@@ -54,13 +54,13 @@ public:
     Package(const vector<something> &things, int64_t maxV) : things(things), full(maxV) {}
 
     template<allow_unfull T>
-    int64_t solve();
+    int64_t solve() const; // 最普通解法
 
     template<allow_unfull T>
-    int64_t solveSaveSpace();
+    int64_t solveSaveSpace() const; // O(n)空间优化
 
     template<allow_unfull T>
-    int64_t solveOneLine();
+    int64_t solveOneLine() const; // 更彻底的空间优化
 };
 }
 

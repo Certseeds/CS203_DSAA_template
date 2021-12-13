@@ -49,5 +49,20 @@ int32_t leetcode_96::numTrees(int32_t n) {
     return will_return;
 }
 
+constexpr std::array<int32_t, 20> numTreesFunc() {
+    std::array<int32_t, 20> arr{1, 1, 2};
+    for (size_t i{3}; i < arr.size(); i++) {
+        int32_t count{0};
+        for (size_t j{0}; j < i; j++) {
+            count += arr[j] * arr[i - j - 1];
+        }
+        arr[i] = count;
+    }
+    return arr;
+}
 
+int32_t leetcode_96::numTreesConstexpr(int32_t n) {
+    // constexpr,很神奇吧
+    return numTreesFunc()[n];
+}
 }

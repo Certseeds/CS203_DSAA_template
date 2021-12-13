@@ -1,9 +1,10 @@
+
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,38 +24,31 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
-
-#include <catch_main.hpp>
-#include <unordered_map>
-
-namespace leetcode_96 {
-
-using std::unordered_map;
-struct leetcode_96 {
-    static int32_t numTrees(int32_t n);
-    static int32_t numTreesConstexpr(int32_t n);
-};
+#include "leetcode_153_154_test.hpp"
 
 
-TEST_CASE("test_case 1 [test_96]", "[test_96]") {
-    static constexpr const auto input{1};
-    static constexpr const auto result{1};
-    CHECK(result == leetcode_96::numTrees(input));
-}
-
-TEST_CASE("test_case 2 [test_96]", "[test_96]") {
-    static constexpr const auto input{3};
-    static constexpr const auto result{5};
-    CHECK(result == leetcode_96::numTrees(input));
-}
-TEST_CASE("test_case 3 [test_96]", "[test_96]") {
-    static constexpr const auto input{19};
-    static constexpr const auto result{1767263190};
-    CHECK(result == leetcode_96::numTrees(input));
+namespace leetcode_154 {
+int32_t leetcode_154::findMin(const vector<int32_t> &nums) {
+    size_t begin{0}, middle{0};
+    size_t end{nums.size() - 1};
+    while (begin < end) {
+        middle = (end - begin) / 2 + begin;
+        if (nums[middle] > nums[end]) {
+            begin = middle + 1;
+        } else if (nums[middle] < nums[end]) {
+            end = middle;
+        } else {
+            end--;
+        }
+    }
+    return nums[begin];
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
+
+namespace leetcode_153 {
+using leetcode_154::leetcode_154;
+
+int32_t leetcode_153::findMin(const vector<int32_t> &nums) {
+    return leetcode_154::findMin(nums);
+}
+}

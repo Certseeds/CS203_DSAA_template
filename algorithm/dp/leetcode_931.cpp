@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2021  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,38 +23,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
+#include "leetcode_931_test.hpp"
 
-#include <catch_main.hpp>
-#include <unordered_map>
+namespace leetcode_931 {
 
-namespace leetcode_96 {
-
-using std::unordered_map;
-struct leetcode_96 {
-    static int32_t numTrees(int32_t n);
-    static int32_t numTreesConstexpr(int32_t n);
-};
-
-
-TEST_CASE("test_case 1 [test_96]", "[test_96]") {
-    static constexpr const auto input{1};
-    static constexpr const auto result{1};
-    CHECK(result == leetcode_96::numTrees(input));
-}
-
-TEST_CASE("test_case 2 [test_96]", "[test_96]") {
-    static constexpr const auto input{3};
-    static constexpr const auto result{5};
-    CHECK(result == leetcode_96::numTrees(input));
-}
-TEST_CASE("test_case 3 [test_96]", "[test_96]") {
-    static constexpr const auto input{19};
-    static constexpr const auto result{1767263190};
-    CHECK(result == leetcode_96::numTrees(input));
+int32_t leetcode_931::minFallingPathSum(const vector<vector<int32_t>> &matrix) {
+    if (matrix.empty() || matrix.front().empty()) {
+        return 0;
+    }
+    const auto row{matrix.size()}, col{matrix.front().size()};
+    if (col == 1) {
+        return std::accumulate(matrix.cbegin(), matrix.cend(), 0,
+                               [](auto &fir, const auto &sec) { return fir + sec[0]; });
+    }
+    vector<int32_t> last(row, 0), now(row, 0);
+    for (size_t line{0}; line < row; line++) {
+        now[0] = matrix[line][0] + std::min(last[0], last[1]);
+        for (size_t j{1}; j < col - 1; j++) {
+            now[j] = matrix[line][j] + std::min(last[j], std::min(last[j - 1], last[j + 1]));
+        }
+        now[col - 1] = matrix[line][col - 1] + std::min(last[col - 2], last[col - 1]);
+        std::swap(now, last);
+    }
+    return *std::min_element(last.cbegin(), last.cend());
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP

@@ -1,4 +1,3 @@
-
 /*
 MIT License
 
@@ -24,22 +23,41 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_153_test.hpp"
+//@Tag DP
+//@Tag 动态规划
 
-namespace leetcode_153 {
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_931_TEST_CPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_931_TEST_CPP
 
-int32_t leetcode_153::findMin(const vector<int32_t> &nums) {
-    int32_t begin{0}, middle{0}, end{static_cast<int32_t>(nums.size()) - 1};
-    while (begin < end) {
-        middle = (end - begin) / 2 + begin;
-        if (nums[middle] > nums[end]) {
-            begin = middle + 1;
-        } else if (nums[middle] < nums[end]) {
-            end = middle;
-        } else {
-            end--;
-        }
-    }
-    return nums[begin];
+#include <catch_main.hpp>
+#include <cstddef>
+#include <cstdint>
+#include <vector>
+
+namespace leetcode_931 {
+using std::vector;
+
+struct leetcode_931 final {
+    static int32_t minFallingPathSum(const vector<vector<int32_t >> &matrix);
+};
+
+TEST_CASE("1 [test_931]", "[test_931]") {
+    const vector<vector<int32_t>> input{
+            {2, 1, 3},
+            {6, 5, 4},
+            {7, 8, 9}
+    };
+    static constexpr const auto result{13};
+    CHECK(result == leetcode_931::minFallingPathSum(input));
+}
+
+TEST_CASE("2 [test_931]", "[test_931]") {
+    const vector<vector<int32_t>> input{
+            {-19, 57},
+            {-40, -5},
+    };
+    static constexpr const auto result{-59};
+    CHECK(result == leetcode_931::minFallingPathSum(input));
 }
 }
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_931_TEST_CPP

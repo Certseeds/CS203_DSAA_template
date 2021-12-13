@@ -29,7 +29,7 @@ SOFTWARE.
 
 namespace zero_one_package {
 template<allow_unfull T>
-int64_t zero_one_package::Package::solve() {
+int64_t zero_one_package::Package::solve() const {
     const auto thing_size = things.size();
     vector<vector<int64_t>> dp;
     // dp[i][j] 前i件商品, j总容积量下的最大money
@@ -61,7 +61,7 @@ int64_t zero_one_package::Package::solve() {
 }
 
 template<allow_unfull T>
-int64_t zero_one_package::Package::solveSaveSpace() {
+int64_t zero_one_package::Package::solveSaveSpace() const {
     const auto thing_size = things.size();
     vector<int64_t> lastLine, nowLine;
     // dp[i][j] 前i件商品, j总容积量下的最大money
@@ -97,7 +97,7 @@ int64_t zero_one_package::Package::solveSaveSpace() {
 }
 
 template<allow_unfull T>
-int64_t zero_one_package::Package::solveOneLine() {
+int64_t zero_one_package::Package::solveOneLine() const {
     const auto thing_size = things.size();
     const auto ful = this->full;
     vector<int64_t> line;
