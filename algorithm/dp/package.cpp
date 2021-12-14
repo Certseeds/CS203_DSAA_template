@@ -27,9 +27,11 @@ SOFTWARE.
 #include "package.hpp"
 #include "package_test.hpp"
 
-namespace zero_one_package {
+namespace dp_package {
+
+namespace zero_one {
 template<allow_unfull T>
-int64_t zero_one_package::Package::solve() const {
+int64_t Package::solve() const {
     const auto thing_size = things.size();
     vector<vector<int64_t>> dp;
     // dp[i][j] 前i件商品, j总容积量下的最大money
@@ -61,7 +63,7 @@ int64_t zero_one_package::Package::solve() const {
 }
 
 template<allow_unfull T>
-int64_t zero_one_package::Package::solveSaveSpace() const {
+int64_t Package::solveSaveSpace() const {
     const auto thing_size = things.size();
     vector<int64_t> lastLine, nowLine;
     // dp[i][j] 前i件商品, j总容积量下的最大money
@@ -90,14 +92,14 @@ int64_t zero_one_package::Package::solveSaveSpace() const {
         std::swap(lastLine, nowLine);
     }
     if constexpr (T == allow_unfull::UN_ALLOW) {
-        return lastLine.back();
+        return std::max(lastLine.back(), static_cast<int64_t>(0));
     } else {
         return *std::max_element(std::cbegin(lastLine), std::cend(lastLine));
     }
 }
 
 template<allow_unfull T>
-int64_t zero_one_package::Package::solveOneLine() const {
+int64_t Package::solveOneLine() const {
     const auto thing_size = things.size();
     const auto ful = this->full;
     vector<int64_t> line;
@@ -116,9 +118,57 @@ int64_t zero_one_package::Package::solveOneLine() const {
         zeroOnePack(things[i - 1]);
     }
     if constexpr (T == allow_unfull::UN_ALLOW) {
-        return line.back();
+        return std::max(line.back(), static_cast<int64_t>(0));
     } else {
         return *std::max_element(std::cbegin(line), std::cend(line));
     }
 }
+}
+
+namespace complete {
+template<allow_unfull T>
+int64_t Package::solve() const {
+    const auto things_size{things.size()};
+    vector<size_t> parts(things_size, 0);
+    vector<something> thingsList{};
+    for (size_t i{0}; i < things_size; i++) {
+        const auto cost{things[i].cost}, money{things[i].money};
+        parts[i] = full / cost + ((full % cost) != 0);
+        for (size_t j{1}; j <= parts[i]; j++) {
+            thingsList.emplace_back(j * cost, j * money);
+        }
+    }
+    const zero_one::Package package{thingsList, full};
+    return package.solveOneLine<T>();
+}
+
+template<allow_unfull T>
+int64_t Package::solve2() const {
+    const auto things_size{things.size()};
+    vector<size_t> parts(things_size, 0);
+    vector<something> thingsList{};
+    for (size_t i{0}; i < things_size; i++) {
+        const auto cost{things[i].cost}, money{things[i].money};
+        parts[i] = full / cost + ((full % cost) != 0);
+    }
+    for (size_t i{0}; i < things_size; i++) {
+        const auto iCost{things[i].cost}, iMoney{things[i].money};
+        for (size_t j{0}; j < i; j++) {
+            const auto jCost{things[j].cost}, jMoney{things[j].money};
+            if (iCost <= jCost && iMoney >= jMoney) {
+                parts[j] = 0;
+            }
+        }
+    }
+    for (size_t i{0}; i < things_size; i++) {
+        const auto cost{things[i].cost}, money{things[i].money};
+        for (size_t j{1}; j <= parts[i]; j++) {
+            thingsList.emplace_back(j * cost, j * money);
+        }
+    }
+    const zero_one::Package package{thingsList, full};
+    return package.solveOneLine<T>();
+}
+}
+
 }

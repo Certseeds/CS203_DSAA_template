@@ -33,8 +33,7 @@ SOFTWARE.
 #include <vector>
 #include <class_helper/nonable.hpp>
 
-namespace zero_one_package {
-using std::vector;
+namespace dp_package {
 
 struct something final {
     something(int64_t cost, int64_t money) : cost(cost), money(money) {};
@@ -45,6 +44,30 @@ enum class allow_unfull : bool {
     ALLOW = true, // 必须放满
     UN_ALLOW = false // 不必须放满
 };
+namespace zero_one {
+
+using std::vector;
+
+struct Package final : private nonCopyMoveAble {
+private:
+    const vector<something> things; // 物品
+    const int64_t full; // 容积
+public:
+    Package(const vector<something> &things, int64_t maxV) : things(things), full(maxV) {}
+
+    template<allow_unfull T>
+    [[nodiscard]] int64_t solve() const; // 最普通解法
+
+    template<allow_unfull T>
+    [[nodiscard]] int64_t solveSaveSpace() const; // O(n)空间优化
+
+    template<allow_unfull T>
+    [[nodiscard]] int64_t solveOneLine() const; // 更彻底的空间优化
+};
+}
+
+namespace complete {
+using std::vector;
 
 struct Package final : private nonCopyMoveAble {
 private:
@@ -54,15 +77,14 @@ public:
     Package(const vector<something> &things, int64_t maxV) : things(things), full(maxV) {}
 
     template<allow_unfull T>
-    int64_t solve() const; // 最普通解法
-
+    [[nodiscard]] int64_t solve() const; // 最普通解法
     template<allow_unfull T>
-    int64_t solveSaveSpace() const; // O(n)空间优化
-
-    template<allow_unfull T>
-    int64_t solveOneLine() const; // 更彻底的空间优化
+    [[nodiscard]] int64_t solve2() const; // O(N^2) 去掉不经济的物品
+    // TODO, 二进制拆分
+    // TODO, 独有解法
 };
+
 }
 
-
+}
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_PACKAGE_HPP
