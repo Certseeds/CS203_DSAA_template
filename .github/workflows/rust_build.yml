@@ -29,6 +29,16 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
+      - name: Cache Packages
+        uses: actions/cache@v2
+        with:
+          path:  ~/.cargo
+          key: ${{ runner.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-rust-toolchain-
+            ${{ runner.os }}-rust
+            ${{ runner.os }}
+
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
