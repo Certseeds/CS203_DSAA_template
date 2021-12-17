@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanos
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,43 +23,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_5_test.hpp"
+#include "leetcode_167_test.hpp"
 
-namespace lcs_5 {
+namespace leetcode_167 {
 
-string leetcode_5::longestPalindrome(const string &s) {
-    const size_t s_size = s.size();
-    if (s_size <= 1) {
-        return s;
-    } else if (s_size == 2) {
-        if (s[0] == s[1]) {
-            return s;
+vector<int32_t> leetcode_167::twoSum(const vector<int32_t> &numbers, int32_t target) {
+    unordered_map<int32_t, int32_t> umap;
+    for (size_t i{0}, nums_size{numbers.size()}; i < nums_size; i++) {
+        const auto iPlus = static_cast<int32_t>(i + 1);
+        if (umap.count(target - numbers[i]) != 0) {
+            return {umap[target - numbers[i]], iPlus};
         } else {
-            return s.substr(0, 1);
+            umap[numbers[i]] = iPlus;
         }
     }
-    vector<vector<uint8_t>> dp(s_size, vector<uint8_t>(s_size, false));
-    std::pair<size_t, size_t> begin_end{0, 1};
-    size_t max_size = 1;
-    for (size_t i{0}; i < s_size; i++) {
-        dp[i][i] = true;
-    }
-    for (size_t i{0}; i < s_size - 1; i++) {
-        dp[i][i + 1] = (s[i] == s[i + 1]);
-        if (dp[i][i + 1]) {
-            max_size = 2;
-            begin_end = {i, max_size};
+    return {-1, -1};
+}
+
+vector<int32_t> leetcode_167::twoSum2(const vector<int32_t> &numbers, int32_t target) {
+    int32_t begin{0};
+    auto ends = static_cast<int32_t>(numbers.size() - 1);
+    int32_t sum{numbers[begin] + numbers[ends]};
+    while (begin < ends && sum != target) {
+        if (sum > target) {
+            ends--;
+        } else if (sum < target) {
+            begin++;
         }
+        sum = numbers[begin] + numbers[ends];
     }
-    for (size_t i{s_size}; i > 0; i--) {
-        for (size_t j{i + 1}; j < s_size; j++) {
-            dp[i - 1][j] = ((s[i - 1] == s[j]) && dp[i][j - 1]);
-            if (j - i + 2 > max_size && dp[i - 1][j]) {
-                max_size = j - i + 2;
-                begin_end = {i - 1, max_size};
-            }
-        }
-    }
-    return s.substr(begin_end.first, begin_end.second);
+    return {begin + 1, ends + 1};
 }
 }

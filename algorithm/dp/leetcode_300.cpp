@@ -23,43 +23,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_5_test.hpp"
+#include "leetcode_300_test.hpp"
 
-namespace lcs_5 {
+namespace leetcode_300 {
 
-string leetcode_5::longestPalindrome(const string &s) {
-    const size_t s_size = s.size();
-    if (s_size <= 1) {
-        return s;
-    } else if (s_size == 2) {
-        if (s[0] == s[1]) {
-            return s;
-        } else {
-            return s.substr(0, 1);
-        }
+int32_t leetcode_300::lengthOfLIS(const vector<int32_t> &nums) {
+    const auto nums_size{nums.size()};
+    if (nums_size <= 1) {
+        return static_cast<int32_t>(nums_size);
     }
-    vector<vector<uint8_t>> dp(s_size, vector<uint8_t>(s_size, false));
-    std::pair<size_t, size_t> begin_end{0, 1};
-    size_t max_size = 1;
-    for (size_t i{0}; i < s_size; i++) {
-        dp[i][i] = true;
-    }
-    for (size_t i{0}; i < s_size - 1; i++) {
-        dp[i][i + 1] = (s[i] == s[i + 1]);
-        if (dp[i][i + 1]) {
-            max_size = 2;
-            begin_end = {i, max_size};
-        }
-    }
-    for (size_t i{s_size}; i > 0; i--) {
-        for (size_t j{i + 1}; j < s_size; j++) {
-            dp[i - 1][j] = ((s[i - 1] == s[j]) && dp[i][j - 1]);
-            if (j - i + 2 > max_size && dp[i - 1][j]) {
-                max_size = j - i + 2;
-                begin_end = {i - 1, max_size};
+    vector<int32_t> dp(nums_size, 1);
+    // 难点在DP定义上, 如何定义子问题,让问题能够连接起来
+    // [j] 以j为结尾的最长严格递增子序列
+    int32_t will_return{1};
+    for (size_t i{1}; i < nums_size; i++) {
+        for (size_t j{0}; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                dp[i] = std::max(dp[i], dp[j] + 1);
             }
+            will_return = std::max(will_return, dp[i]);
         }
     }
-    return s.substr(begin_end.first, begin_end.second);
+    return will_return;
 }
+
 }
