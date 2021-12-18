@@ -33,11 +33,11 @@ jobs:
         uses: actions/cache@v2
         with:
           path:  ~/.cargo
-          key: ${{ runner.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
+          key: ${{ matrix.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
           restore-keys: |
-            ${{ runner.os }}-rust-toolchain-
-            ${{ runner.os }}-rust
-            ${{ runner.os }}
+            ${{ matrix.os }}-rust-toolchain-
+            ${{ matrix.os }}-rust
+            ${{ matrix.os }}
 
       - uses: actions-rs/toolchain@v1
         with:
