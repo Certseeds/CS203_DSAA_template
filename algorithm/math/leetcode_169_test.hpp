@@ -32,6 +32,7 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <limits>
 #include <unordered_map>
 
 namespace leetcode_169 {

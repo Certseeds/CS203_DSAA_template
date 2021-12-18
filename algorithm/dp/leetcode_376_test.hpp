@@ -23,31 +23,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_413_test.hpp"
+//@Tag DP
+//@Tag 动态规划
 
-namespace leetcode_413 {
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_376_TEST_CPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_376_TEST_CPP
 
-int32_t leetcode_413::numberOfArithmeticSlices(const vector<int32_t> &nums) {
-    const auto nums_size{nums.size()};
-    if (nums.size() <= 2) {
-        return 0;
-    }
-    static constexpr const auto func = [](int32_t x) {
-        return (x - 1) * (x - 2) / 2;
-    };// 完全不必要嗯算, 有连续段落的总长度即可
-    int32_t sums{0}, lastDiff{nums[1] - nums[0]}, len{1};
-    for (size_t i{2}; i < nums_size; i++) {
-        const int32_t nowDiff{nums[i] - nums[i - 1]};
-        if (nowDiff != lastDiff) {
-            sums += func(len + 1);
-            len = 1;
-            lastDiff = nowDiff;
-        } else {
-            len++;
-        }
-    }
-    sums += func(len + 1);
-    return sums;
+#include <catch_main.hpp>
+#include <cstdint>
+#include <vector>
+
+namespace leetcode_376 {
+using std::vector;
+struct leetcode_376 final {
+    static int32_t wiggleMaxLength(const vector<int32_t> &nums);
+};
+
+TEST_CASE("1 [test_376]", "[test_376]") {
+    const vector<int32_t> input{1, 7, 4, 9, 2, 5};
+    static constexpr const auto result{6};
+    CHECK(result == leetcode_376::wiggleMaxLength(input));
 }
 
+TEST_CASE("2 [test_376]", "[test_376]") {
+    const vector<int32_t> input{1, 17, 5, 10, 13, 15, 10, 5, 16, 8};
+    static constexpr const auto result{7};
+    CHECK(result == leetcode_376::wiggleMaxLength(input));
 }
+
+TEST_CASE("3 [test_376]", "[test_376]") {
+    const vector<int32_t> input{1, 2, 3, 4, 5, 6, 7, 8, 9};
+    static constexpr const auto result{2};
+    CHECK(result == leetcode_376::wiggleMaxLength(input));
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_376_TEST_CPP

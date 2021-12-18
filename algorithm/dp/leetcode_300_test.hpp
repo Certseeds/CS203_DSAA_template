@@ -36,11 +36,9 @@ SOFTWARE.
 #include <cstddef>
 #include <cstdint>
 #include <vector>
-#include <queue>
 
 namespace leetcode_300 {
 using std::vector;
-using std::priority_queue;
 
 struct leetcode_300 final {
     static int32_t lengthOfLIS(const vector<int32_t> &nums);

@@ -23,31 +23,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_413_test.hpp"
+#include "leetcode_376_test.hpp"
 
-namespace leetcode_413 {
+namespace leetcode_376 {
 
-int32_t leetcode_413::numberOfArithmeticSlices(const vector<int32_t> &nums) {
+int32_t leetcode_376::wiggleMaxLength(const vector<int32_t> &nums) {
     const auto nums_size{nums.size()};
-    if (nums.size() <= 2) {
-        return 0;
+    if (nums_size <= 1) {
+        return static_cast<int32_t>(nums_size);
     }
-    static constexpr const auto func = [](int32_t x) {
-        return (x - 1) * (x - 2) / 2;
-    };// 完全不必要嗯算, 有连续段落的总长度即可
-    int32_t sums{0}, lastDiff{nums[1] - nums[0]}, len{1};
-    for (size_t i{2}; i < nums_size; i++) {
-        const int32_t nowDiff{nums[i] - nums[i - 1]};
-        if (nowDiff != lastDiff) {
-            sums += func(len + 1);
-            len = 1;
-            lastDiff = nowDiff;
-        } else {
-            len++;
+    vector<int32_t> dpInc(nums_size, 1), dpDec(nums_size, 1);
+    for (size_t i{1}; i < nums_size; i++) {
+        for (size_t j{0}; j < i; j++) {
+            if (nums[i] > nums[j]) {
+                dpInc[i] = std::max(dpInc[i], dpDec[j] + 1);
+            } else if (nums[i] < nums[j]) {
+                dpDec[i] = std::max(dpDec[i], dpInc[j] + 1);
+            }
         }
     }
-    sums += func(len + 1);
-    return sums;
+    return std::max(
+            *std::max_element(std::cbegin(dpInc), std::cend(dpInc)),
+            *std::max_element(std::cbegin(dpDec), std::cend(dpDec))
+    );
 }
+
 
 }

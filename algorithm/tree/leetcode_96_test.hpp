@@ -44,17 +44,20 @@ TEST_CASE("test_case 1 [test_96]", "[test_96]") {
     static constexpr const auto input{1};
     static constexpr const auto result{1};
     CHECK(result == leetcode_96::numTrees(input));
+    CHECK(result == leetcode_96::numTreesConstexpr(input));
 }
 
 TEST_CASE("test_case 2 [test_96]", "[test_96]") {
     static constexpr const auto input{3};
     static constexpr const auto result{5};
     CHECK(result == leetcode_96::numTrees(input));
+    CHECK(result == leetcode_96::numTreesConstexpr(input));
 }
 TEST_CASE("test_case 3 [test_96]", "[test_96]") {
     static constexpr const auto input{19};
     static constexpr const auto result{1767263190};
     CHECK(result == leetcode_96::numTrees(input));
+    CHECK(result == leetcode_96::numTreesConstexpr(input));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP

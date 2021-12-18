@@ -32,7 +32,6 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <vector>
-#include <unordered_map>
 
 namespace leetcode_322 {
 using std::vector;
