@@ -35,30 +35,27 @@ SOFTWARE.
 
 namespace leetcode_60 {
 struct leetcode_60 {
-    static string getPermutation(int n, int k);
+    static string getPermutation(int32_t n, int32_t k);
 
-    static string getPermutation_rec_out(int n, int k);
+    static string getPermutation_rec_out(int32_t n, int32_t k);
 };
 
 TEST_CASE("1 [test_60]", "[test_60]") {
-    static constexpr const auto n{3};
-    static constexpr const auto k{3};
+    static constexpr const auto n{3}, k{3};
     static constexpr const char *const result{"213"};
     CHECK(result == leetcode_60::getPermutation(n, k));
     CHECK(result == leetcode_60::getPermutation_rec_out(n, k));
 }
 
 TEST_CASE("2 [test_60]", "[test_60]") {
-    static constexpr const auto n{4};
-    static constexpr const auto k{9};
+    static constexpr const auto n{4}, k{9};
     static constexpr const char *const result{"2314"};
     CHECK(result == leetcode_60::getPermutation(n, k));
     CHECK(result == leetcode_60::getPermutation_rec_out(n, k));
 }
 
 TEST_CASE("3 [test_60]", "[test_60]") {
-    static constexpr const auto n{3};
-    static constexpr const auto k{1};
+    static constexpr const auto n{3}, k{1};
     static constexpr const char *const result{"123"};
     CHECK(result == leetcode_60::getPermutation(n, k));
     CHECK(result == leetcode_60::getPermutation_rec_out(n, k));

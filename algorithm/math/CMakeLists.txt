@@ -8,7 +8,7 @@ enable_testing()
 set(dependencies min_max_middle)
 
 set(leetcode_order 9 29 43 50 60)
-LIST(APPEND leetcode_order 118_119)
+LIST(APPEND leetcode_order 118_119 169 217)
 foreach (elementOrder IN LISTS leetcode_order)
     LIST(APPEND dependencies leetcode_${elementOrder})
 endforeach ()
