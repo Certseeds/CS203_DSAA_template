@@ -26,65 +26,6 @@ SOFTWARE.
 #include "leetcode_208_test.hpp"
 
 namespace leetcode_208 {
-
-
-void leetcode_208::trie::insert(const string &word) {
-    uset.insert(word);
-}
-
-bool leetcode_208::trie::search(const string &word) {
-    return uset.find(word) != std::end(uset);
-}
-
-bool leetcode_208::trie::startsWith(const string &prefix) {
-    return
-            std::any_of(std::cbegin(uset), std::cend(uset), [& prefix](const auto &item) {
-                return prefix.size() <= item.size() && memcmp(item.c_str(), prefix.c_str(), prefix.size()) == 0;
-            });
-}
-
-
-void leetcode_208::trie2::insert(const string &word) {
-    std::array<Node *, 26> *array = &sons;
-    for (size_t i{0}; i < word.size() - 1; i++) {
-        const auto &ch = word[i] - 'a';
-        if ((*array)[ch] == nullptr) {
-            (*array)[ch] = new Node(ch, false);
-        }
-        array = &(*array)[ch]->sons;
-    }
-    {
-        const auto &ch = word.back() - 'a';
-        if ((*array)[ch] == nullptr) {
-            (*array)[ch] = new Node(ch, false);
-        }
-        (*array)[ch]->isfinish = true;
-    }
-}
-
-bool leetcode_208::trie2::search(const string &word) {
-    const std::array<Node *, 26> *array = &sons;
-    uint8_t isfinish{false};
-    for (auto ch: word) {
-        ch -= 'a';
-        if ((*array)[ch] == nullptr) {
-            return false;
-        }
-        isfinish = (*array)[ch]->isfinish;
-        array = &(*array)[ch]->sons;
-    }
-    return isfinish;
-}
-
-bool leetcode_208::trie2::startsWith(const string &prefix) {
-    const std::array<Node *, 26> *array = &sons;
-    for (auto ch: prefix) {
-        ch -= 'a';
-        if ((*array)[ch] == nullptr) {
-            return false;
-        }
-        array = &(*array)[ch]->sons;
-    }
-    return true;
-}
+using trie = trie::trie;
+using trie2 = trieR::trie;
 }

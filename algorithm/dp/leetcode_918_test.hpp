@@ -37,10 +37,9 @@ SOFTWARE.
 
 namespace leetcode_918 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_918 final {
-    static int32_t maxSubarraySumCircular(const vector<int> &nums);
+    static int32_t maxSubarraySumCircular(const vector<int32_t> &nums);
 };
 
 TEST_CASE("10 [test_918]", "[test_918]") {

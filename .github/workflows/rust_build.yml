@@ -29,22 +29,20 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v2
 
-      - name: Cache toolchain
+      - name: Cache Packages
         uses: actions/cache@v2
         with:
-          path: |
-            ~/.rustup/toolchains
-            ~/.rustup/update-hashes
-            ~/.rustup/settings.toml
-          key: ${{ runner.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
+          path:  ~/.cargo
+          key: ${{ matrix.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
           restore-keys: |
-            ${{ runner.os }}-rust-toolchain-
-            ${{ runner.os }}-rust
-            ${{ runner.os }}
+            ${{ matrix.os }}-rust-toolchain-
+            ${{ matrix.os }}-rust
+            ${{ matrix.os }}
 
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
+          default: true
 
       - name: rust build
         working-directory: ./basic/cs205_c_cpp_2020s

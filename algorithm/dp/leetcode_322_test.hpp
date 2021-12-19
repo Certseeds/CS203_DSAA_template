@@ -32,11 +32,9 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <vector>
-#include <unordered_map>
 
 namespace leetcode_322 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_322 final {
     static int32_t coinChange(const vector<int32_t> &coins, int32_t amount);

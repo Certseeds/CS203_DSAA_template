@@ -3,7 +3,7 @@ project(${PROJECT_NAME}_INCLUDE LANGUAGES CXX)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-add_library(${PROJECT_NAME} INTERFACE)
+add_library(${PROJECT_NAME} INTERFACE tree/trie.hpp tree/trie_base.hpp)
 set(dependencies include)
 LIST(APPEND dependencies pch17)
 foreach (elementName IN LISTS dependencies)

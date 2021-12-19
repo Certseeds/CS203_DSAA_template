@@ -39,7 +39,6 @@ SOFTWARE.
 // 兼容MSVC
 #endif
 
-
 #include <public.hpp>
 
 static const CS203_timer timer{};

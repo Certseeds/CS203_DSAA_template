@@ -40,46 +40,77 @@ using std::vector;
 struct leetcode_5 {
     static string longestPalindrome(const string &s);
 };
+template<typename Type, size_t length>
+constexpr size_t arr_length(const Type (&)[length]) {
+    return length;
+}
+template<size_t length>
+constexpr size_t arr_length(const char (&)[length]) {
+    return length - 1;
+}
 
 TEST_CASE("1 [test_5]", "[test_5]") {
-    CHECK(leetcode_5::longestPalindrome("babad").size() == 3);
+    static constexpr const auto *const input{"babad"};
+    static constexpr const char result[]{"bab"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
 }
 
 TEST_CASE("2 [test_5]", "[test_5]") {
-    CHECK(leetcode_5::longestPalindrome("cbbc").size() == 4);
+    static constexpr const auto *const input{"cbbc"};
+    static constexpr const char result[]{"cbbc"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 
 TEST_CASE("2_  [test_5]", "[test_5]") {
-    CHECK(leetcode_5::longestPalindrome("cbbd").size() == 2);
+    static constexpr const auto *const input{"cbbd"};
+    static constexpr const char result[]{"bb"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 
 TEST_CASE("3 [test_5]", "[test_5]") {
-    CHECK(leetcode_5::longestPalindrome("cb").size() == 1);
+    static constexpr const auto *const input{"cb"};
+    static constexpr const char result[]{"c"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
 }
 
 TEST_CASE("4 [test_5]", "[test_5]") {
-    CHECK(leetcode_5::longestPalindrome("c").size() == 1);
+    static constexpr const auto *const input{"c"};
+    static constexpr const char result[]{"c"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 
+
 TEST_CASE("5 [test_5]", "[test_5]") {
-    CHECK(leetcode_5::longestPalindrome("").empty());
+    static constexpr const auto *const input{""};
+    static constexpr const char result[]{""};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 
 TEST_CASE("6 [test_5]", "[test_5]") {
-    const string str = "ac";
-    CHECK(leetcode_5::longestPalindrome(str).size() == 1);
-    CHECK(leetcode_5::longestPalindrome(str) == "a");
+    static constexpr const auto *const input{"ac"};
+    static constexpr const char result[]{"a"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 
 TEST_CASE("7 [test_5]", "[test_5]") {
-    const string str = "aaaaa";
-    CHECK(leetcode_5::longestPalindrome(str).size() == 5);
-    CHECK(leetcode_5::longestPalindrome(str) == str);
+    static constexpr const auto *const input{"aaaaa"};
+    static constexpr const char result[]{"aaaaa"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 
 TEST_CASE("8 [test_5]", "[test_5]") {
-    const string str = "mozblnzrszxtdjmwvgeovtxoftpcsbnjryogrnibiiqfexljlfikfcxvrzrpfvugtdjrlkgvkmrqgeltifdehsewpdhpjpnuobmuozopmglnocqcozvratjpzrklexqdeuvvzfjkuknkkoynxptrgtzadmpfdkphfjhdulhzncoofmmrwqjxeyhodfavcgpjmohohuztezdxegqzbaaobzrqptuqsvwnfdneyccbkgkjafztytwuppvleukdqqzyeiltsvoqbxupbasiityganofxijucwzqgtdyxljociwwjdrnfnfbwyymmvbuvbrdnvcubzkohknbsneutrcukfiqqhfviqdsbtrldipenqifdcrenpuyaqvkparycksurhbtjppwhezbcgocamurdawimkzzkmiwadrumacogcbzehwppjtbhruskcyrapkvqayupnercdfiqnepidlrtbsdqivfhqqifkucrtuensbnkhokzbucvndrbvubvmmyywbfnfnrdjwwicojlxydtgqzwcujixfonagytiisabpuxbqovstlieyzqqdkuelvppuwtytzfajkgkbccyendfnwvsqutpqrzboaabzqgexdzetzuhohomjpgcvafdohyexjqwrmmfoocnzhludhjfhpkdfpmdaztgrtpxnyokknkukjfzvvuedqxelkrzpjtarvzocqconlgmpozoumbounpjphdpweshedfitlegqrmkvgklrjdtguvfprzrvxcfkifljlxefqiibinrgoyrjnbscptfoxtvoegvwmjdtxzsrznlbzom";
-    CHECK(leetcode_5::longestPalindrome(str) == str);
+    static constexpr const auto *const input{
+            "mozblnzrszxtdjmwvgeovtxoftpcsbnjryogrnibiiqfexljlfikfcxvrzrpfvugtdjrlkgvkmrqgeltifdehsewpdhpjpnuobmuozopmglnocqcozvratjpzrklexqdeuvvzfjkuknkkoynxptrgtzadmpfdkphfjhdulhzncoofmmrwqjxeyhodfavcgpjmohohuztezdxegqzbaaobzrqptuqsvwnfdneyccbkgkjafztytwuppvleukdqqzyeiltsvoqbxupbasiityganofxijucwzqgtdyxljociwwjdrnfnfbwyymmvbuvbrdnvcubzkohknbsneutrcukfiqqhfviqdsbtrldipenqifdcrenpuyaqvkparycksurhbtjppwhezbcgocamurdawimkzzkmiwadrumacogcbzehwppjtbhruskcyrapkvqayupnercdfiqnepidlrtbsdqivfhqqifkucrtuensbnkhokzbucvndrbvubvmmyywbfnfnrdjwwicojlxydtgqzwcujixfonagytiisabpuxbqovstlieyzqqdkuelvppuwtytzfajkgkbccyendfnwvsqutpqrzboaabzqgexdzetzuhohomjpgcvafdohyexjqwrmmfoocnzhludhjfhpkdfpmdaztgrtpxnyokknkukjfzvvuedqxelkrzpjtarvzocqconlgmpozoumbounpjphdpweshedfitlegqrmkvgklrjdtguvfprzrvxcfkifljlxefqiibinrgoyrjnbscptfoxtvoegvwmjdtxzsrznlbzom"};
+    static constexpr const char result[]{
+            "mozblnzrszxtdjmwvgeovtxoftpcsbnjryogrnibiiqfexljlfikfcxvrzrpfvugtdjrlkgvkmrqgeltifdehsewpdhpjpnuobmuozopmglnocqcozvratjpzrklexqdeuvvzfjkuknkkoynxptrgtzadmpfdkphfjhdulhzncoofmmrwqjxeyhodfavcgpjmohohuztezdxegqzbaaobzrqptuqsvwnfdneyccbkgkjafztytwuppvleukdqqzyeiltsvoqbxupbasiityganofxijucwzqgtdyxljociwwjdrnfnfbwyymmvbuvbrdnvcubzkohknbsneutrcukfiqqhfviqdsbtrldipenqifdcrenpuyaqvkparycksurhbtjppwhezbcgocamurdawimkzzkmiwadrumacogcbzehwppjtbhruskcyrapkvqayupnercdfiqnepidlrtbsdqivfhqqifkucrtuensbnkhokzbucvndrbvubvmmyywbfnfnrdjwwicojlxydtgqzwcujixfonagytiisabpuxbqovstlieyzqqdkuelvppuwtytzfajkgkbccyendfnwvsqutpqrzboaabzqgexdzetzuhohomjpgcvafdohyexjqwrmmfoocnzhludhjfhpkdfpmdaztgrtpxnyokknkukjfzvvuedqxelkrzpjtarvzocqconlgmpozoumbounpjphdpweshedfitlegqrmkvgklrjdtguvfprzrvxcfkifljlxefqiibinrgoyrjnbscptfoxtvoegvwmjdtxzsrznlbzom"};
+    CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
+    CHECK(result == leetcode_5::longestPalindrome(input));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_5_TEST_CPP

@@ -27,7 +27,6 @@ SOFTWARE.
 
 namespace lcs_5 {
 
-
 string leetcode_5::longestPalindrome(const string &s) {
     const size_t s_size = s.size();
     if (s_size <= 1) {

@@ -1,0 +1,40 @@
+//
+// Created by nanos on 2021/12/8.
+//
+
+#ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TRIE_BASE_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TRIE_BASE_HPP
+
+#include <string>
+#include <unordered_set>
+#include <class_helper/nonable.hpp>
+
+namespace trieBase {
+struct TrieTemplate : private nonCopyMoveAble {
+protected:
+    TrieTemplate() = default;
+
+public:
+
+    virtual void insert(const string &) = 0;
+
+    virtual bool search(const string &) = 0;
+
+    virtual bool startsWith(const string &) = 0;
+};
+}
+
+namespace trieIterBase {
+struct TrieTemplate : private nonCopyMoveAble {
+protected:
+    TrieTemplate() = default;
+
+public:
+    virtual void insert(string::const_iterator cb, string::const_iterator ce) = 0;
+
+    virtual bool search(string::const_iterator cb, string::const_iterator ce) = 0;
+
+    virtual bool startsWith(string::const_iterator cb, string::const_iterator ce) = 0;
+};
+}
+#endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TRIE_BASE_HPP

@@ -37,7 +37,6 @@ SOFTWARE.
 
 namespace leetcode_416 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_416 final {
     static bool canPartition(const vector<int32_t> &nums);

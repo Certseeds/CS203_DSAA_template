@@ -47,10 +47,9 @@ int64_t leetcode_198::rob2(const vector<int32_t> &nums) {
     }
     std::array<int64_t, 3> dp{0, nums[0], 0};
     // 滚 动 数 组
-    for (size_t i{2}; i <= nums_size; i++) {
+    for (size_t i{2}; i <= nums_size; i++, dp[1] = dp[2]) {
         dp[2] = std::max(dp[0] + nums[i - 1], dp[1]);
-        dp[0] = dp[1];
-        dp[1] = dp[2];
+        dp[0] = dp[1]; // 不确保执行顺序,所以不能都放过去
     }
     return dp[2];
 }

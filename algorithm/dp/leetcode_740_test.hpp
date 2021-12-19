@@ -37,7 +37,6 @@ SOFTWARE.
 
 namespace leetcode_740 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_740 final {
     static int deleteAndEarn(const vector<int> &nums);

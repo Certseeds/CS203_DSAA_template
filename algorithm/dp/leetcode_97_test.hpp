@@ -33,36 +33,35 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <vector>
-#include <unordered_map>
 
 namespace leetcode_97 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_97 final {
     static bool isInterleave(const string &s1, const string &s2, const string &s3);
 };
 
 TEST_CASE("1 [test_97]", "[test_97]") {
-    static constexpr const auto s1{"aabcc"}, s2{"dbbca"}, s3{"aadbbcbcac"};
+    static constexpr const char *const s1{"aabcc"}, *const s2{"dbbca"}, *const s3{"aadbbcbcac"};
     CHECK(leetcode_97::isInterleave(s1, s2, s3));
 }
 
 TEST_CASE("2 [test_97]", "[test_97]") {
-    static constexpr const auto s1{"aabcc"}, s2{"dbbca"}, s3{"aadbbbaccc"};
+    static constexpr const char *const s1{"aabcc"}, *const s2{"dbbca"}, *const s3{"aadbbbaccc"};
     CHECK_FALSE(leetcode_97::isInterleave(s1, s2, s3));
 }
 
 TEST_CASE("3 [test_97]", "[test_97]") {
-    static constexpr const auto s1{""}, s2{""}, s3{""};
+    static constexpr const char *const s1{""}, *const s2{""}, *const s3{""};
     CHECK(leetcode_97::isInterleave(s1, s2, s3));
 }
 
 TEST_CASE("4 [test_97]", "[test_97]") {
-    static constexpr const auto s1{
+    static constexpr const char *const s1{
             "abababababababababababababababababababababababababababababababababababababababababababababababababbb"},
-            s2{"babababababababababababababababababababababababababababababababababababababababababababababababaaaba"},
-            s3{
+            *const s2{
+            "babababababababababababababababababababababababababababababababababababababababababababababababaaaba"},
+            *const s3{
             "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababbb"};
     CHECK_FALSE(leetcode_97::isInterleave(s1, s2, s3));
 }

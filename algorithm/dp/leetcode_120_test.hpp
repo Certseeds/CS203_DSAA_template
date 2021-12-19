@@ -37,7 +37,6 @@ SOFTWARE.
 
 namespace leetcode_120 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_120 final {
     static int32_t minimumTotal(const vector<vector<int32_t>> &triangle);
