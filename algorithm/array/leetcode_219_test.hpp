@@ -25,9 +25,9 @@ SOFTWARE.
 */
 //@Tag array
 //@Tag 数组
-//@Tag 双指针
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_167_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_167_HPP
+//@Tag 哈希表
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_219_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_219_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -35,32 +35,30 @@ SOFTWARE.
 #include <vector>
 #include <unordered_map>
 
-namespace leetcode_167 {
+namespace leetcode_219 {
 using std::vector;
 using std::unordered_map;
 
-struct leetcode_167 {
-    static vector<int32_t> twoSum(const vector<int32_t> &numbers, int32_t target);
-
-    static vector<int32_t> twoSum2(const vector<int32_t> &numbers, int32_t target);
+struct leetcode_219 {
+    static bool containsNearbyDuplicate(const vector <int32_t> &nums, int32_t k);
 };
 
-using Catch::Matchers::Equals;
-
-TEST_CASE("test case 1 [test_167]", "[test_167]") {
-    const vector<int32_t> input{2, 7, 11, 15};
-    static constexpr const auto target{9};
-    const vector<int32_t> result{1, 2};
-    CHECK_THAT(leetcode_167::twoSum(input, target), Equals(result));
-    CHECK_THAT(leetcode_167::twoSum2(input, target), Equals(result));
+TEST_CASE("test case 1 [test_219]", "[test_219]") {
+    const vector <int32_t> input{1, 2, 3, 1};
+    static constexpr const auto k{3};
+    CHECK(leetcode_219::containsNearbyDuplicate(input, k));
 }
 
-TEST_CASE("test case 2 [test_167]", "[test_167]") {
-    const vector<int32_t> input{2, 3, 4};
-    static constexpr const auto target{6};
-    const vector<int32_t> result{1, 3};
-    CHECK_THAT(leetcode_167::twoSum(input, target), Equals(result));
-    CHECK_THAT(leetcode_167::twoSum2(input, target), Equals(result));
+TEST_CASE("test case 2 [test_219]", "[test_219]") {
+    const vector <int32_t> input{1, 0, 1, 1};
+    static constexpr const auto k{1};
+    CHECK(leetcode_219::containsNearbyDuplicate(input, k));
+}
+
+TEST_CASE("test case 3 [test_219]", "[test_219]") {
+    const vector <int32_t> input{1, 2, 3, 1, 2, 3};
+    static constexpr const auto k{2};
+    CHECK_FALSE(leetcode_219::containsNearbyDuplicate(input, k));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_167_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_219_HPP

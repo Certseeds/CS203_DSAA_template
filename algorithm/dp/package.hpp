@@ -80,8 +80,12 @@ public:
     [[nodiscard]] int64_t solve() const; // 最普通解法
     template<allow_unfull T>
     [[nodiscard]] int64_t solve2() const; // O(N^2) 去掉不经济的物品
-    // TODO, 二进制拆分
-    // TODO, 独有解法
+
+    template<allow_unfull T>
+    [[nodiscard]] int64_t solveBinary() const; // O(N^2) 拆分常数化,最多31种
+
+    template<allow_unfull T>
+    [[nodiscard]] int64_t solveComplete() const;
 };
 
 }
