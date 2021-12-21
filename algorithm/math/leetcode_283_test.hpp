@@ -37,6 +37,7 @@ namespace leetcode_283 {
 
 struct leetcode_283 {
     static void moveZeroes(vector<int32_t> &nums);
+
     static void moveZeroes2(vector<int32_t> &nums);
 };
 
@@ -45,15 +46,18 @@ using Catch::Matchers::Equals;
 TEST_CASE("1 [test_283]", "[test_283]") {
     vector<int32_t> input{0, 1, 0, 3, 12};
     const vector<int32_t> result{1, 3, 12, 0, 0};
-    leetcode_283::moveZeroes(input);
-    CHECK_THAT(result, Equals(input));
-}
+    WHEN("one node") {
+        leetcode_283::moveZeroes(input);
+        THEN("the values") {
+            CHECK_THAT(result, Equals(input));
+        }
+    }WHEN("one node") {
+        leetcode_283::moveZeroes2(input);
+        THEN("the values") {
+            CHECK_THAT(result, Equals(input));
+        }
+    }
 
-TEST_CASE("2 [test_283]", "[test_283]") {
-    vector<int32_t> input{0, 1, 0, 3, 12};
-    const vector<int32_t> result{1, 3, 12, 0, 0};
-    leetcode_283::moveZeroes2(input);
-    CHECK_THAT(result, Equals(input));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_HPP

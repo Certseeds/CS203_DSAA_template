@@ -32,8 +32,9 @@ string leetcode_38::countAndSay(int n) {
     }
     string str1{countAndSay(n - 1)};
     string will_return{};
-    for (size_t i{0}; i < str1.size();) {
-        int length{0};
+    const auto str1_size{str1.size()};
+    for (size_t i{0}; i < str1_size;) {
+        int32_t length{0};
         while (str1[i + length] == str1[i]) {
             length++;
         }
