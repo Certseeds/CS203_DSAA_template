@@ -9,7 +9,7 @@ set(dependencies min_max_middle)
 
 set(leetcode_order 9 29 43 50 60)
 LIST(APPEND leetcode_order 118_119 169 217 263)
-LIST(APPEND leetcode_order 268 283 338 343)
+LIST(APPEND leetcode_order 268 283 338 343 372)
 foreach (elementOrder IN LISTS leetcode_order)
     LIST(APPEND dependencies leetcode_${elementOrder})
 endforeach ()

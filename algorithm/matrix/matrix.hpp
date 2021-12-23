@@ -499,6 +499,8 @@ public:
     // work function, computing this expression at position i, import for lazy computing
 
     T value(size_t i, size_t j) const { return this->num; }
+    //before invoke, invoke the ~number
+    // 感觉是优化错误
 
     size_t rows() const { return 0x3f3f3f3f; }
 
