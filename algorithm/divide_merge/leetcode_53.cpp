@@ -44,7 +44,7 @@ int32_t maxSubArray(const vector<int32_t> &nums, size_t begin, size_t end) {
         right_sum += nums[right_order];
         max_right = std::max(max_right, right_sum);
     }
-    return std::max(std::max(left, right), max_left + max_right);
+    return std::max({left, right, max_left + max_right});
 }
 
 int32_t leetcode_53::maxSubArray(const vector<int32_t> &nums) {

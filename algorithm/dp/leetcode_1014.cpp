@@ -55,7 +55,7 @@ int32_t leetcode_1014::maxScoreSightseeingPair(const vector<int32_t> &nums) noex
         } else {
             dp[j] = i;
         }
-        maxDiff = std::max(maxDiff, std::max(diff1, diff2));
+        maxDiff = std::max({maxDiff, diff1, diff2});
     }
     return maxDiff;
 }

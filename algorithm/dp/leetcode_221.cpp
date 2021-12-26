@@ -74,7 +74,7 @@ int32_t leetcode_221::maximalSquare2(const vector<vector<char>> &matrix) {
                     matrix[i][j] == base ?
                     0
                                          :
-                    std::min(dp[i][j], std::min(dp[i + 1][j], dp[i][j + 1])) + 1
+                    std::min({dp[i][j], dp[i + 1][j], dp[i][j + 1]}) + 1
             );
             maxV = std::max(maxV, dp[i + 1][j + 1]);
         }

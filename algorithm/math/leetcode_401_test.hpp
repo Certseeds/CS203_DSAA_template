@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanos
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,28 +23,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_931_test.hpp"
+//@Tag Math
+//@Tag 数学
 
-namespace leetcode_931 {
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
 
-int32_t leetcode_931::minFallingPathSum(const vector<vector<int32_t>> &matrix) {
-    if (matrix.empty() || matrix.front().empty()) {
-        return 0;
-    }
-    const auto row{matrix.size()}, col{matrix.front().size()};
-    if (col == 1) {
-        return std::accumulate(matrix.cbegin(), matrix.cend(), 0,
-                               [](auto &fir, const auto &sec) { return fir + sec[0]; });
-    }
-    vector<int32_t> last(row, 0), now(row, 0);
-    for (size_t line{0}; line < row; line++) {
-        now[0] = matrix[line][0] + std::min(last[0], last[1]);
-        for (size_t j{1}; j < col - 1; j++) {
-            now[j] = matrix[line][j] + std::min({last[j],last[j - 1], last[j + 1]});
-        }
-        now[col - 1] = matrix[line][col - 1] + std::min(last[col - 2], last[col - 1]);
-        std::swap(now, last);
-    }
-    return *std::min_element(last.cbegin(), last.cend());
+#include <catch_main.hpp>
+#include <cassert>
+#include <cstdint>
+#include <cstddef>
+
+namespace leetcode_401 {
+
+struct leetcode_401 {
+    static vector<string> readBinaryWatch(int32_t num);
+};
+
+
+using Catch::Matchers::UnorderedEquals;
+
+TEST_CASE("1 [test_401]", "[test_401]") {
+    static constexpr const auto input{1};
+    const vector<string> result{
+            "0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"
+    };
+    CHECK_THAT(result, UnorderedEquals(leetcode_401::readBinaryWatch(input)));
 }
+
 }
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+
