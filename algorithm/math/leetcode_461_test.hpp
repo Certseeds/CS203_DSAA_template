@@ -26,30 +26,31 @@ SOFTWARE.
 //@Tag Math
 //@Tag 数学
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_461_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_461_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
 
-namespace leetcode_401 {
+namespace leetcode_461 {
 
-struct leetcode_401 {
-    static vector<string> readBinaryWatch(int32_t num);
+struct leetcode_461 {
+    static int32_t hammingDistance(int32_t x, int32_t y);
 };
 
+TEST_CASE("1 [test_461]", "[test_461]") {
+    static constexpr const auto inputX{1}, inputY{4};
+    static constexpr const auto result{2};
+    CHECK(result == leetcode_461::hammingDistance(inputX, inputY));
+}
 
-using Catch::Matchers::UnorderedEquals;
-
-TEST_CASE("1 [test_401]", "[test_401]") {
-    static constexpr const auto input{1};
-    const vector<string> result{
-            "0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"
-    };
-    CHECK_THAT(result, UnorderedEquals(leetcode_401::readBinaryWatch(input)));
+TEST_CASE("2 [test_461]", "[test_461]") {
+    static constexpr const auto inputX{3}, inputY{1};
+    static constexpr const auto result{1};
+    CHECK(result == leetcode_461::hammingDistance(inputX, inputY));
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_461_HPP
 

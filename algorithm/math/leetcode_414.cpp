@@ -23,33 +23,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag Math
-//@Tag 数学
+#include "leetcode_414_test.hpp"
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+namespace leetcode_414 {
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-
-namespace leetcode_401 {
-
-struct leetcode_401 {
-    static vector<string> readBinaryWatch(int32_t num);
-};
-
-
-using Catch::Matchers::UnorderedEquals;
-
-TEST_CASE("1 [test_401]", "[test_401]") {
-    static constexpr const auto input{1};
-    const vector<string> result{
-            "0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"
-    };
-    CHECK_THAT(result, UnorderedEquals(leetcode_401::readBinaryWatch(input)));
+int32_t leetcode_414::thirdMax(const vector<int32_t> &nums) {
+    unordered_set<int32_t> uset;
+    for (const auto i: nums) {
+        uset.insert(i);
+    }
+    if (uset.size() < 3) {
+        return *(std::max_element(uset.cbegin(), uset.cend()));
+    }
+    std::array<int32_t, 3> fst{std::numeric_limits<int32_t>::min(), std::numeric_limits<int32_t>::min(),
+                               std::numeric_limits<int32_t>::min()};
+    for (const auto i: uset) {
+        if (i > fst[2] && i != fst[1] && i != fst[0]) {
+            fst[2] = i;
+        }
+        if (fst[2] > fst[1]) {
+            std::swap(fst[1], fst[2]);
+        }
+        if (fst[1] > fst[0]) {
+            std::swap(fst[0], fst[1]);
+        }
+    }
+    return fst[2];
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-

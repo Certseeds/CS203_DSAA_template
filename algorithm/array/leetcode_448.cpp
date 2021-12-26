@@ -23,33 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag Math
-//@Tag 数学
+#include "leetcode_448_test.hpp"
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+namespace leetcode_448 {
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-
-namespace leetcode_401 {
-
-struct leetcode_401 {
-    static vector<string> readBinaryWatch(int32_t num);
-};
-
-
-using Catch::Matchers::UnorderedEquals;
-
-TEST_CASE("1 [test_401]", "[test_401]") {
-    static constexpr const auto input{1};
-    const vector<string> result{
-            "0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"
-    };
-    CHECK_THAT(result, UnorderedEquals(leetcode_401::readBinaryWatch(input)));
+vector<int32_t> leetcode_448::findDisappearedNumbers(const vector<int32_t> &nums) {
+    vector<int32_t> res, num{nums};
+    const auto nums_size{nums.size()};
+    for (size_t i{0}; i < nums_size; i++) {
+        const int32_t m = abs(num[i]) - 1; // index start from 0
+        num[m] = num[m] > 0 ? -num[m] : num[m];
+    }
+    for (size_t i{0}; i < nums_size; i++) {
+        if (num[i] > 0) {
+            res.push_back(static_cast<int32_t>(i + 1));
+        }
+    }
+    return res;
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-

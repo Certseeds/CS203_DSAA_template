@@ -23,33 +23,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag Math
-//@Tag 数学
+#include "leetcode_461_test.hpp"
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+namespace leetcode_461 {
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-
-namespace leetcode_401 {
-
-struct leetcode_401 {
-    static vector<string> readBinaryWatch(int32_t num);
-};
-
-
-using Catch::Matchers::UnorderedEquals;
-
-TEST_CASE("1 [test_401]", "[test_401]") {
-    static constexpr const auto input{1};
-    const vector<string> result{
-            "0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"
-    };
-    CHECK_THAT(result, UnorderedEquals(leetcode_401::readBinaryWatch(input)));
+int32_t leetcode_461::hammingDistance(int32_t x, int32_t y) {
+    int32_t count{0};
+    for (int32_t temp{x ^ y}; temp != 0; temp = temp >> 1) {
+        count += (temp & 1);
+    }
+    return count;
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-

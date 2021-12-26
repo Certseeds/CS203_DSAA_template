@@ -23,33 +23,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag Math
-//@Tag 数学
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+//@Tag array
+//@Tag 数组
+//@Tag 哈希表
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_448_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_448_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
+#include <unordered_map>
 
-namespace leetcode_401 {
+namespace leetcode_448 {
+using std::vector;
+using std::unordered_map;
 
-struct leetcode_401 {
-    static vector<string> readBinaryWatch(int32_t num);
+struct leetcode_448 {
+    static vector<int32_t> findDisappearedNumbers(const vector<int32_t> &nums);
 };
-
 
 using Catch::Matchers::UnorderedEquals;
 
-TEST_CASE("1 [test_401]", "[test_401]") {
-    static constexpr const auto input{1};
-    const vector<string> result{
-            "0:01", "0:02", "0:04", "0:08", "0:16", "0:32", "1:00", "2:00", "4:00", "8:00"
-    };
-    CHECK_THAT(result, UnorderedEquals(leetcode_401::readBinaryWatch(input)));
+TEST_CASE("test case 1 [test_448]", "[test_448]") {
+    const vector<int32_t> input{4, 3, 2, 7, 8, 2, 3, 1};
+    const vector<int32_t> result{5, 6};
+    CHECK_THAT(result, UnorderedEquals(leetcode_448::findDisappearedNumbers(input)));
+}
+
+TEST_CASE("test case 2 [test_448]", "[test_448]") {
+    const vector<int32_t> input{1, 1};
+    const vector<int32_t> result{2};
+    CHECK_THAT(result, UnorderedEquals(leetcode_448::findDisappearedNumbers(input)));
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_448_HPP
