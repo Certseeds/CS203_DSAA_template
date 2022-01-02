@@ -9,6 +9,8 @@
 #include <cstddef>
 #include <cstdint>
 
+namespace TREE_NODE {
+
 class TreeNodeMulti {
 public:
     int32_t val;
@@ -20,6 +22,7 @@ public:
 
     Node(int _val, vector<Node *> _children) : val(_val), children(_children) {}
 };
+}
 
 
 #endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_MULTI_HPP
