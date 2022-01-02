@@ -29,8 +29,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
 
 #include <catch_main.hpp>
-#include <tree/TreeNode.hpp>
-#include <tree/TreeNodeLink.hpp>
+#include <tree/treenode_.hpp>
+#include <tree/treenode_link.hpp>
 #include <vector>
 
 namespace leetcode_95 {

@@ -26,7 +26,7 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDES_TREENODE_HPP
 
-#include <tree/TreeNodeTemp.hpp>
+#include <tree/treenode_temp.hpp>
 #include <vector>
 #include <queue>
 

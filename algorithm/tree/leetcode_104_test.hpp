@@ -30,8 +30,8 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <stack>
-#include <tree/TreeNode.hpp>
-#include <tree/TreeNodeLink.hpp>
+#include <tree/treenode_.hpp>
+#include <tree/treenode_link.hpp>
 
 namespace leetcode_104 {
 

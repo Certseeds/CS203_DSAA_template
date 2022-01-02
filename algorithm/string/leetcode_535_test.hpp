@@ -57,8 +57,6 @@ struct leetcode_535 {
 
 };
 
-using Catch::Matchers::Equals;
-
 TEST_CASE("1 [test_535]", "[test_535]") {
     static constexpr const char *const input{"you know the rules and so do I"};
     base *const pointer = leetcode_535::getObject1();
