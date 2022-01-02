@@ -26,7 +26,7 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_LINK_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_LINK_HPP
 
-#include "tree/treenode_.hpp"
+#include "tree/treenode.hpp"
 #include <stack>
 #include <class_helper/nonable.hpp>
 namespace TREE_NODE {

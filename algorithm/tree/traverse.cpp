@@ -38,7 +38,7 @@ SOFTWARE.
 #include <stack>
 #include <vector>
 
-#include "tree/treenode_.hpp"
+#include "tree/treenode.hpp"
 
 namespace Tree_Traverse {
 using TreeNode = TREE_NODE::TreeNode<int32_t>;

@@ -26,7 +26,7 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_RBTREE_RBTNODE_HPP
 
-#include <tree/treenode_temp.hpp>
+#include <tree/treenode_template.hpp>
 
 namespace RED_BLACK_TREE_NODE {
 using TREE_NODE_TEMP::TreeNodeTemp;
