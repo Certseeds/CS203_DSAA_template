@@ -5,22 +5,23 @@
 #ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_MULTI_HPP
 #define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_MULTI_HPP
 
+#include <utility>
 #include <vector>
 #include <cstddef>
 #include <cstdint>
 
 namespace TREE_NODE {
 
-class TreeNodeMulti {
+class TreeNodeMulti final : private nonCopyMoveAble {
 public:
-    int32_t val;
+    int32_t val{};
     vector<TreeNodeMulti *> children;
 
-    Node() = default;
+    TreeNodeMulti() = default;
 
-    Node(int _val) : Node(_val, {}) {};
+    TreeNodeMulti(int _val) : TreeNodeMulti(_val, {}) {};
 
-    Node(int _val, vector<Node *> _children) : val(_val), children(_children) {}
+    TreeNodeMulti(int _val, vector<TreeNodeMulti *> _children) : val(_val), children(std::move(_children)) {}
 };
 }
 
