@@ -43,5 +43,6 @@ struct leetcode_559 {
     static int maxDepth(Node *root);
 };
 
+TEST_CASE("test_case 1 [test_559]", "[test_559]") {}
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_559_HPP

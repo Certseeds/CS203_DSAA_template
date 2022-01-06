@@ -42,6 +42,7 @@ using TreeNode = TREE_NODE::TreeNode<int32_t>;
 struct leetcode_94 {
     static vector<int32_t> inorderTraversal(TreeNode* root);
 };
+TEST_CASE("test_case 1 [test_94]", "[test_94]") {}
 
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
