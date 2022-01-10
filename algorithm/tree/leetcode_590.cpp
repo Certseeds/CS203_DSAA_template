@@ -23,43 +23,40 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_589_test.hpp"
+#include "leetcode_590_test.hpp"
 
-namespace leetcode_589 {
+namespace leetcode_590 {
 
 void real_action(const Node *const root, vector<int32_t> &vec) {
     if (root == nullptr) {
         return;
     }
-    vec.push_back(root->val);
     for (const auto child: root->children) {
         real_action(child, vec);
     }
+    vec.push_back(root->val);
 }
 
-vector<int32_t> leetcode_589::preorder(const Node *const root) {
+vector<int32_t> leetcode_590::postorder(const Node *const root) {
     vector<int32_t> vec;
     real_action(root, vec);
     return vec;
 }
 
-vector<int32_t> leetcode_589::preorderIter(const Node *const root) {
+vector<int32_t> leetcode_590::postorderIter(const Node *const root) {
     if (root == nullptr) {
         return {};
     }
-    vector<int32_t> vec{};
-    const auto func = [&vec](const Node *const node) {
-        vec.push_back(node->val);
-    };
+    list<int32_t> nodes;
     for (stack<const Node *> sta({root}); !sta.empty();) {
         const auto *const head = sta.top();
         sta.pop();
-        func(head);
-        for (auto iter{head->children.rbegin()}; iter != head->children.rend(); iter++) {
-            sta.push(*iter);
+        nodes.insert(nodes.cbegin(), head->val);
+        for (const auto iter: head->children) {
+            sta.push(iter);
         }
     }
-    return vec;
+    return {nodes.cbegin(), nodes.cend()};
 }
 
 }

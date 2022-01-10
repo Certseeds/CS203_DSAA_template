@@ -23,43 +23,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_589_test.hpp"
+//@Tag tree
+//@Tag 树
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_590_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_590_HPP
 
-namespace leetcode_589 {
+#include <catch_main.hpp>
+#include <tree/treenode_multi.hpp>
+#include <list>
+#include <stack>
 
-void real_action(const Node *const root, vector<int32_t> &vec) {
-    if (root == nullptr) {
-        return;
-    }
-    vec.push_back(root->val);
-    for (const auto child: root->children) {
-        real_action(child, vec);
-    }
+namespace leetcode_590 {
+
+using Node = TREE_NODE::TreeNodeMulti;
+using std::stack;
+using std::list;
+
+struct leetcode_590 final {
+    static vector<int32_t> postorder(const Node *root);
+
+    static vector<int32_t> postorderIter(const Node *root);
+};
+
+TEST_CASE("test_case 1 [test_590]", "[test_590]") {
+    // TODO
 }
-
-vector<int32_t> leetcode_589::preorder(const Node *const root) {
-    vector<int32_t> vec;
-    real_action(root, vec);
-    return vec;
 }
-
-vector<int32_t> leetcode_589::preorderIter(const Node *const root) {
-    if (root == nullptr) {
-        return {};
-    }
-    vector<int32_t> vec{};
-    const auto func = [&vec](const Node *const node) {
-        vec.push_back(node->val);
-    };
-    for (stack<const Node *> sta({root}); !sta.empty();) {
-        const auto *const head = sta.top();
-        sta.pop();
-        func(head);
-        for (auto iter{head->children.rbegin()}; iter != head->children.rend(); iter++) {
-            sta.push(*iter);
-        }
-    }
-    return vec;
-}
-
-}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_590_HPP
