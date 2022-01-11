@@ -8,7 +8,7 @@ enable_testing()
 
 
 enable_testing()
-set(dependencies package)
+set(dependencies package divide_bar)
 
 set(leetcode_order 1143 5 10 44 45)
 LIST(APPEND leetcode_order 63 62 64 70_746)
