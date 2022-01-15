@@ -26,11 +26,11 @@ public:
         uset.insert(word);
     }
 
-    bool search(const string &word) override {
+    bool search(const string &word) const override {
         return uset.find(word) != std::end(uset);
     }
 
-    bool startsWith(const string &prefix) override {
+    bool startsWith(const string &prefix) const override {
         return
                 std::any_of(std::cbegin(uset), std::cend(uset), [& prefix](const auto &item) {
                     return prefix.size() <= item.size() && memcmp(item.c_str(), prefix.c_str(), prefix.size()) == 0;
@@ -42,6 +42,7 @@ namespace trieIter {
 
 using std::array;
 using trieIterBase::TrieTemplate;
+
 struct trie : public TrieTemplate {
     static constexpr const size_t array_size{26};
 
@@ -88,7 +89,7 @@ public:
         }
     }
 
-    bool search(string::const_iterator cb, string::const_iterator ce) override {
+    bool search(string::const_iterator cb, string::const_iterator ce) const override {
         const std::array<Node *, 26> *array = &sons;
         uint8_t isfinish{false};
         for (; cb != ce; cb++) {
@@ -102,7 +103,7 @@ public:
         return isfinish;
     }
 
-    bool startsWith(string::const_iterator cb, string::const_iterator ce) override {
+    bool startsWith(string::const_iterator cb, string::const_iterator ce) const override {
         const std::array<Node *, 26> *array = &sons;
         for (; cb != ce; cb++) {
             const auto ch = *cb - 'a';
@@ -132,11 +133,11 @@ public:
         return Trie.insert(word.cbegin(), word.cend());
     }
 
-    bool search(const string &word) override {
+    bool search(const string &word) const override {
         return Trie.search(word.cbegin(), word.cend());
     }
 
-    bool startsWith(const string &prefix) override {
+    bool startsWith(const string &prefix) const override {
         return Trie.startsWith(prefix.cbegin(), prefix.cend());
     }
 };

@@ -29,6 +29,7 @@ SOFTWARE.
 #include "tree/treenode.hpp"
 #include <stack>
 #include <class_helper/nonable.hpp>
+
 namespace TREE_NODE {
 using std::stack;
 
@@ -37,9 +38,9 @@ class TreeNodeLink final : private nonCopyMoveAble {
 public:
     vector<TreeNode < T> *> list{};
 
-    TreeNodeLink(std::initializer_list<int32_t> list_) : list(TreeNode<T>::numToTree(list_)) {}
+    TreeNodeLink(std::initializer_list<int32_t> list_): list(TreeNode<T>::numToTree(list_)) {}
 
-    explicit TreeNodeLink(vector<TreeNode<T> *> list_): list(std::move(list_)) {}
+    explicit TreeNodeLink(vector<TreeNode<T> *> list_): list (std::move(list_)) {}
 
 
     explicit TreeNodeLink(TreeNode <T> *li) {
@@ -51,7 +52,7 @@ public:
             stack<const TreeNode<T> *> sta;
             sta.push(i);
             while (!sta.empty()) {
-                const TreeNode<T> *head = sta.top();
+                const TreeNode<T> *const head = sta.top();
                 sta.pop();
                 if (head->right != nullptr) {
                     sta.push(head->right);
