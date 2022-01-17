@@ -51,8 +51,7 @@ int32_t leetcode_1143::longestCommonSubsequence2(const string &text1, const stri
 
 int32_t leetcode_1143::longestCommonSubsequence(const string &text1, const string &text2) {
     const auto fst_size{text1.size()}, snd_size{text2.size()};
-    vector<int32_t> fst(snd_size + 1, 0);
-    vector<int32_t> snd(snd_size + 1, 0);
+    vector<int32_t> fst(snd_size + 1, 0),snd(snd_size + 1, 0);
     // init vector for 0 can except init [0][...],[...][0] to 0
     for (size_t i{1}; i <= fst_size; i++) {
         for (size_t j{1}; j <= snd_size; j++) {
