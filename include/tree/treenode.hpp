@@ -58,7 +58,7 @@ static void organize(vector<TreeNode<T> *> Tree) {
 
 template<typename T>
 static vector<TreeNode<T> *> numToTree(const vector<T> &nums) {
-    const auto nums_size {nums.size()};
+    const auto nums_size{nums.size()};
     vector<TreeNode<T> *> will_return(nums_size, nullptr);
     for (size_t i{0}; i < nums_size; i++) {
         will_return[i] = (nums[i] != TreeNode<T>::No) ? new TreeNode<T>(nums[i]) : nullptr;
@@ -68,7 +68,7 @@ static vector<TreeNode<T> *> numToTree(const vector<T> &nums) {
 }
 
 template<typename T>
-static bool judge_equal(TreeNode<T> *root, const vector<T> &vec) {
+static bool judge_equal(TreeNode<T> *const root, const vector<T> &vec) {
     queue<TreeNode<T> *> que{};
     vector<T> nums{};
     que.push(root);
@@ -82,6 +82,9 @@ static bool judge_equal(TreeNode<T> *root, const vector<T> &vec) {
         nums.push_back(head->val);
         que.push(head->left);
         que.push(head->right);
+    }
+    if (nums.size() != vec.size()) {
+        return false;
     }
     bool will_return{true};
     for (size_t i{0}; i < nums.size(); i++) {

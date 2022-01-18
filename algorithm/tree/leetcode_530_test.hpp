@@ -50,7 +50,7 @@ struct leetcode_530 {
 
 TEST_CASE("test_case 1 [test_530]", "[test_530]") {
     const vector<int32_t> input{4, 2, 6, 1, 3};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     static constexpr const auto result{1};
     THEN("case 1") {
         CHECK(result == leetcode_530::getMinimumDifference(numVecInput[0]));
@@ -62,7 +62,7 @@ TEST_CASE("test_case 1 [test_530]", "[test_530]") {
 
 TEST_CASE("test_case 2 [test_530]", "[test_530]") {
     const vector<int32_t> input{1, 0, 48, TreeNode::No, TreeNode::No, 12, 49};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     static constexpr const auto result{1};
     THEN("case 1") {
         CHECK(result == leetcode_530::getMinimumDifference(numVecInput[0]));

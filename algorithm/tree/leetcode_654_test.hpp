@@ -25,8 +25,8 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_617_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_617_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
 
 #include <catch_main.hpp>
 #include <tree/treenode.hpp>
@@ -34,7 +34,7 @@ SOFTWARE.
 #include <list>
 #include <stack>
 
-namespace leetcode_617 {
+namespace leetcode_654 {
 
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
@@ -42,26 +42,27 @@ using TREE_NODE::numToTree;
 using std::stack;
 using std::list;
 
-struct leetcode_617 final {
-    static TreeNode *mergeTrees(TreeNode *root1, TreeNode *root2);
+struct leetcode_654 final {
+    static TreeNode *constructMaximumBinaryTree(const vector<int32_t> &nums);
 };
 
+TEST_CASE("test_case 1 [test_654]", "[test_654]") {
+    const vector<int32_t> input{3, 2, 1, 6, 0, 5};
+    const vector<int32_t> result{6,
+                                 3, 5,
+                                 TreeNode::No, 2, 0, TreeNode::No,
+                                 TreeNode::No, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
+    auto *const resultPtr = leetcode_654::constructMaximumBinaryTree(input);
+    const TreeNodeLink link{resultPtr};
+    CHECK(TREE_NODE::judge_equal(resultPtr, result));
+}
 
-TEST_CASE("test_case 1 [test_617]", "[test_617]") {
-    // TODO
-    const vector<int32_t> input1{1, 3, 2, 5, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    const vector<int32_t> input2{2, 1, 3, TreeNode::No, 4, TreeNode::No, 7, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No};
-    const vector<int32_t> result{3, 4, 5, 5, 4, TreeNode::No, 7, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input1);
-    const vector<TreeNode *> numVecInput2 = numToTree<int32_t>(input2);
-    const TreeNodeLink link{numVecInput.front()}, link2{numVecInput2.front()};
-//    auto *resultPtr = leetcode_617::mergeTrees(numVecInput[0], numVecInput2[0]);
-//    CHECK(TREE_NODE::judge_equal(resultPtr, result));
-//    const TreeNodeLink link3{resultPtr};
-// 内存不太好管理,停掉测试
+TEST_CASE("test_case 2 [test_654]", "[test_654]") {
+    const vector<int32_t> input{3, 2, 1};
+    const vector<int32_t> result{3, TreeNode::No, 2, TreeNode::No, 1, TreeNode::No, TreeNode::No};
+    auto *const resultPtr = leetcode_654::constructMaximumBinaryTree(input);
+    const TreeNodeLink link{resultPtr};
+    CHECK(TREE_NODE::judge_equal(resultPtr, result));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_617_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
