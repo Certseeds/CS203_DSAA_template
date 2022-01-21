@@ -39,7 +39,7 @@ int32_t leetcode_518::change(int32_t amount, const vector<int32_t> &coins) {
         dp[i][0] = 0; // 世界上没有空硬币,因此完全无法拼凑出来
     }
     for (int32_t i{1}; i <= amount; i++) {
-        dp[0][i] = 0; // 没有硬币,无法频出任何金额
+        dp[0][i] = 0; // 没有硬币,无法拼出任何金额
     }
     for (size_t i{1}; i <= coins_size; i++) {
         const auto coin{coins[i - 1]};
@@ -55,6 +55,21 @@ int32_t leetcode_518::change(int32_t amount, const vector<int32_t> &coins) {
         }
     }
     return dp.back().back();
+}
+
+int32_t leetcode_518::change2(int32_t amount, const vector<int32_t> &coins) {
+    const auto coins_size{coins.size()}, amount_size{static_cast<size_t>(amount)};
+    // ~dp[i][j]代表使用前i种硬币,在j金额下能够凑出的硬币组合数~
+    // dp[j]代表j金额下凑出的硬币组合数
+    vector<int32_t> dp(amount_size + 1, 0);
+    dp[0] = 1; // 只有没有金额才能不用硬币拼凑出
+    for (size_t i{1}; i <= coins_size; i++) {
+        const auto coin{coins[i - 1]}; // i代表使用前i种硬币
+        for (int32_t j = coin; j <= amount; j++) {
+            dp[j] += dp[j - coin];
+        }
+    }
+    return dp.back();
 }
 
 }
