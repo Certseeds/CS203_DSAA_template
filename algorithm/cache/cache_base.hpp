@@ -32,15 +32,15 @@ SOFTWARE.
 #include <class_helper/nonable.hpp>
 
 namespace cache {
-class cache_base : private nonCopyMoveAble {
+class cache_base : protected nonCopyMoveAble {
 protected:
     const size_t cache_size;
 public:
     explicit cache_base(size_t x = 0) : cache_size(x) {};
 
-    virtual bool exists(size_t value) const = 0 ;
+    virtual bool exists(size_t value) const = 0;
 
-    virtual bool insert(size_t value) = 0;
+    virtual bool read(size_t value) = 0;
 };
 }
 struct inputs {
@@ -66,4 +66,9 @@ struct inputs {
     }
 };
 
+std::string getFilePath() noexcept {
+    return "./../../../algorithm/cache/data/";
+}
+
+const std::string CS203_redirect::file_paths = getFilePath();
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_CACHE_CACHE_BASE_HPP
