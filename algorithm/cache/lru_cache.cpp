@@ -153,6 +153,11 @@ public:
             return false;
         }
     }
+    ~lru_cache() {
+        for (const auto&[k, v]: umap) {
+            delete v;
+        }
+    }
 };
 
 TEST_CASE("lru-2 test sample") {
