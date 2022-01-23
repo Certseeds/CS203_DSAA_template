@@ -94,7 +94,6 @@ void print(output_type &map, num_t a, num_t b) {
             map[a - 1 + i][b + j + spis[i].first] = spis[i].second[j];
         }
     }
-    return;
 }
 
 void cal(input_type &hi) {

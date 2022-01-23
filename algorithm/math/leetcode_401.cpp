@@ -1,0 +1,127 @@
+/*
+MIT License
+
+CS203_DSAA_template
+
+Copyright (C) 2020-2021  nanoseeds
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+*/
+#include "leetcode_401_test.hpp"
+
+namespace leetcode_401 {
+
+string minutes_toString(const int x) {
+    string will_return;
+    if (x < 10) {
+        will_return.push_back('0');
+        will_return.push_back(x + '0');
+    } else {
+        will_return.push_back((x / 10) + '0');
+        will_return.push_back((x % 10) + '0');
+    }
+    return will_return;
+}
+
+vector<string> hours_complex(const int x) {
+    switch (x) {
+        case 0: {
+            return {"0"};
+        }
+        case 1: {
+            return {"1", "2", "4", "8"};
+        }
+        case 2: {
+            return {"3", "5", "6", "9", "10"};
+        }
+        case 3: {
+            return {"7", "11"};
+        }
+        default: {
+            return {};
+        }
+    }
+}
+
+vector<string> minutes_complex(const int x) {
+    vector<int> nums;
+    switch (x) {
+        case 0: {
+            return {"00"};
+        }
+        case 1: {
+            return {"01", "02", "04", "08", "16", "32"};
+        }
+        case 5: {
+            return {"31", "47", "55", "59"};
+        }
+        case 2: {
+            for (int32_t i{0}; i < 6; i++) {
+                for (int32_t j{i + 1}; j < 6; j++) {
+                    nums.push_back((1 << i) + (1 << j));
+                }
+            }
+            break;
+        }
+        case 3: {
+            for (int32_t i{0}; i < 6; i++) {
+                for (int32_t j{i + 1}; j < 6; j++) {
+                    for (int32_t k{j + 1}; k < 6; k++) {
+                        nums.push_back((1 << i) + (1 << j) + (1 << k));
+                    }
+                }
+            }
+            break;
+        }
+        case 4: {
+            for (int32_t i{0}; i < 6; i++) {
+                for (int32_t j{i + 1}; j < 6; j++) {
+                    if (63 - (1 << i) - (1 << j) < 60) {
+                        nums.push_back(63 - (1 << i) - (1 << j));
+                    }
+                }
+            }
+            break;
+        }
+        default: {
+            return {};
+        }
+    }
+    vector<string> will_return;
+    for (auto i: nums) {
+        will_return.push_back(minutes_toString(i));
+    }
+    return will_return;
+}
+
+
+vector<string> leetcode_401::readBinaryWatch(const int32_t num) {
+    vector<string> will_return;
+    for (int32_t k{0}; k <= std::min(4, num); k++) {
+        vector<string> hours = hours_complex(k);
+        vector<string> minutes = minutes_complex(num - k);
+        for (const auto &i: hours) {
+            for (const auto &j: minutes) {
+                will_return.push_back(i + ":" + j);
+            }
+        }
+    }
+    return will_return;
+}
+}

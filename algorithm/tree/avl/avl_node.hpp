@@ -1,7 +1,7 @@
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_AVL_AVL_NODE_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_AVL_AVL_NODE_HPP
 
-#include <tree/TreeNodeTemp.hpp>
+#include <tree/treenode_template.hpp>
 
 namespace AVL_TREE {
 using TREE_NODE_TEMP::TreeNodeTemp;

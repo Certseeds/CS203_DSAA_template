@@ -18,9 +18,9 @@ public:
 
     virtual void insert(const string &) = 0;
 
-    virtual bool search(const string &) = 0;
+    virtual bool search(const string &) const = 0;
 
-    virtual bool startsWith(const string &) = 0;
+    virtual bool startsWith(const string &)const  = 0;
 };
 }
 
@@ -32,9 +32,9 @@ protected:
 public:
     virtual void insert(string::const_iterator cb, string::const_iterator ce) = 0;
 
-    virtual bool search(string::const_iterator cb, string::const_iterator ce) = 0;
+    virtual bool search(string::const_iterator cb, string::const_iterator ce) const = 0;
 
-    virtual bool startsWith(string::const_iterator cb, string::const_iterator ce) = 0;
+    virtual bool startsWith(string::const_iterator cb, string::const_iterator ce) const = 0;
 };
 }
 #endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TRIE_BASE_HPP

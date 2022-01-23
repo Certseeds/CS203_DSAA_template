@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2021 nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,29 +23,45 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
-#include <class_helper/nonable.hpp>
-namespace TREE_NODE_TEMP {
-template<typename T, template<typename> typename CLASS>
-struct TreeNodeTemp : private nonCopyMoveAble {
+//@Tag string
+//@Tag 字符串
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_535_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_535_HPP
+
+#include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <string>
+#include <unordered_map>
+
+namespace leetcode_535 {
+
+using std::string;
+using std::unordered_map;
+
+class base {
 public:
-    T val;
-    CLASS<T> *left, *right;
+    ~base() = default;
 
-    virtual ~TreeNodeTemp() {
-        this->val = static_cast<T>(0);
-        this->left = nullptr;
-        this->right = nullptr;
+    virtual string encode(string longUrl) = 0;
+
+    virtual string decode(string shortUrl) = 0;
+
+    void ensure(const string &input) {
+        CHECK(this->decode(this->encode(input)) == input);
     }
-
-
-private:
-    explicit TreeNodeTemp(T x = static_cast<T>(0)) : TreeNodeTemp<T, CLASS>(x, nullptr, nullptr) {};
-
-    TreeNodeTemp(T x, CLASS<T> *le, CLASS<T> *rig) : val(x), left(le), right(rig) {};
-
-    friend CLASS<T>;
 };
+
+struct leetcode_535 {
+    static base *getObject1();
+
+};
+
+TEST_CASE("1 [test_535]", "[test_535]") {
+    static constexpr const char *const input{"you know the rules and so do I"};
+    base *const pointer = leetcode_535::getObject1();
+    CHECK(input == pointer->decode(pointer->encode(input)));
+    pointer->ensure(input);
 }
-#endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODETEMP_HPP
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_535_HPP

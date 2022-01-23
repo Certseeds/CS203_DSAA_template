@@ -31,7 +31,7 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
 
 #include <catch_main.hpp>
-#include <tree/TreeNode.hpp>
+#include <tree/treenode.hpp>
 #include <vector>
 
 namespace leetcode_94 {
@@ -42,6 +42,7 @@ using TreeNode = TREE_NODE::TreeNode<int32_t>;
 struct leetcode_94 {
     static vector<int32_t> inorderTraversal(TreeNode* root);
 };
+TEST_CASE("test_case 1 [test_94]", "[test_94]") {}
 
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP

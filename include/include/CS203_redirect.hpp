@@ -73,7 +73,6 @@ public:
     }
 };
 
-
 #ifndef CS203_DSAA_TEST_MACRO
 
 /* if in this macro, it means it do not belong to ./test/lab_${number}/${x}_test.cpp

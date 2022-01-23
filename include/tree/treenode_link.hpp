@@ -23,12 +23,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODELINK_HPP
-#define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODELINK_HPP
+#ifndef CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_LINK_HPP
+#define CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_LINK_HPP
 
-#include "tree/TreeNode.hpp"
+#include "tree/treenode.hpp"
 #include <stack>
 #include <class_helper/nonable.hpp>
+
 namespace TREE_NODE {
 using std::stack;
 
@@ -37,9 +38,9 @@ class TreeNodeLink final : private nonCopyMoveAble {
 public:
     vector<TreeNode < T> *> list{};
 
-    TreeNodeLink(std::initializer_list<int32_t> list_) : list(TreeNode<T>::numToTree(list_)) {}
+    TreeNodeLink(std::initializer_list<int32_t> list_): list(TreeNode<T>::numToTree(list_)) {}
 
-    explicit TreeNodeLink(vector<TreeNode<T> *> list_): list(std::move(list_)) {}
+    explicit TreeNodeLink(vector<TreeNode<T> *> list_): list (std::move(list_)) {}
 
 
     explicit TreeNodeLink(TreeNode <T> *li) {
@@ -51,7 +52,7 @@ public:
             stack<const TreeNode<T> *> sta;
             sta.push(i);
             while (!sta.empty()) {
-                const TreeNode<T> *head = sta.top();
+                const TreeNode<T> *const head = sta.top();
                 sta.pop();
                 if (head->right != nullptr) {
                     sta.push(head->right);
@@ -66,4 +67,4 @@ public:
 };
 
 }
-#endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODELINK_HPP
+#endif //CS203_DSAA_TEMPLATE_INCLUDE_TREE_TREENODE_LINK_HPP

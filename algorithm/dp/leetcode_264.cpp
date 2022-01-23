@@ -51,7 +51,7 @@ int32_t leetcode_264::nthUglyNumber(int32_t n) {
         maxDiv2 = maxDiv2 > dp[i - 1] ? maxDiv2 : 0x3f3f3f3f;
         maxDiv3 = maxDiv3 > dp[i - 1] ? maxDiv3 : 0x3f3f3f3f;
         maxDiv5 = maxDiv5 > dp[i - 1] ? maxDiv5 : 0x3f3f3f3f;
-        dp[i] = std::min(maxDiv2, std::min(maxDiv3, maxDiv5));
+        dp[i] = std::min({maxDiv2,maxDiv3, maxDiv5});
     }
     // 不想用O(n)的方式,log_2^(2000)也不过20左右
     return dp[n - 1];

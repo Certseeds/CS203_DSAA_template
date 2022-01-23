@@ -33,19 +33,24 @@ SOFTWARE.
 
 #include "traverse.cpp"
 
+#include <tree/treenode_link.hpp>
+
 namespace Tree_Traverse {
+
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 
 TEST_CASE("traverse basic", "[tree traverse]") {
     static constexpr const std::array<const char *const, 4> name{"", "pre order", "in order", "post order"};
     static constexpr const int32_t tree_nodes{32};
-    static int32_t count = 0;
+    static int32_t count{0};
     vector<int32_t> vec(tree_nodes);
     std::iota(vec.begin(), vec.end(), 0);
-    vector<TreeNode *> numvec = TREE_NODE::numToTree<int32_t>(vec);
-    const TreeNode *head = numvec[0];
+    const vector<TreeNode *> numvec = TREE_NODE::numToTree<int32_t>(vec);
+    const TreeNode *const head = numvec[0];
+    const TreeNodeLink link{numvec[0]};
     static vector<int32_t> last(tree_nodes);
     vector<int32_t> res;
-    auto func2 = [&res](const TreeNode *tn) -> void { res.push_back(tn->val); };
+    const auto func2 = [&res](const TreeNode *tn) -> void { res.push_back(tn->val); };
     SECTION("pre_rec") {
         count++;
         rec::pre(head, func2);
@@ -77,10 +82,12 @@ TEST_CASE("traverse basic", "[tree traverse]") {
     }SECTION("post_rec") {
         rec::post(head, func2);
         CHECK_THAT(res, Equals(last));
+    }SECTION("iter_rec2") {
+        iter::post2(head, func2);
+        CHECK_THAT(res, Equals(last));
     }
     std::copy(std::begin(res), std::end(res), std::begin(last));
     std::copy(std::begin(res), std::end(res), std::ostream_iterator<int>{std::cout, " "});
-    std::for_each(std::begin(numvec), std::end(numvec), [](TreeNode *node) { delete node; });
     cout << name[count] << end;
     res.clear();
 }

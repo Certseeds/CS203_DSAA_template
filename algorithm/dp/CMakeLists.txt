@@ -8,7 +8,7 @@ enable_testing()
 
 
 enable_testing()
-set(dependencies package)
+set(dependencies package divide_bar)
 
 set(leetcode_order 1143 5 10 44 45)
 LIST(APPEND leetcode_order 63 62 64 70_746)
@@ -17,7 +17,9 @@ LIST(APPEND leetcode_order 198_213 740 55 918)
 LIST(APPEND leetcode_order 152 120 1567 1014 121)
 LIST(APPEND leetcode_order 122 309 714 139 413)
 LIST(APPEND leetcode_order 91 264 931 304_1314 221)
-LIST(APPEND leetcode_order 516 300 174 376)
+LIST(APPEND leetcode_order 516 300 174 376 643)
+LIST(APPEND leetcode_order 392 72 518 377 279)
+
 foreach (elementOrder IN LISTS leetcode_order)
     LIST(APPEND dependencies leetcode_${elementOrder})
 endforeach ()

@@ -29,6 +29,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
 
 #include <catch_main.hpp>
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 namespace leetcode_38 {
