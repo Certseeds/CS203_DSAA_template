@@ -27,16 +27,16 @@ SOFTWARE.
 
 namespace leetcode_1 {
 
-vector<int> leetcode_1::twoSum(const vector<int> &nums, int target) {
-    const auto nums_size = static_cast<int32_t>(nums.size());
+vector<int32_t> leetcode_1::twoSum(const vector<int32_t> &nums, int32_t target) {
+    const auto nums_size{nums.size()};
     unordered_map<int32_t, int32_t> umaps;
-    for (int32_t i = 0; i < nums_size; i++) {
+    for (size_t i{0}; i < nums_size; i++) {
         if (umaps.find(target - nums[i]) != std::end(umaps)) {
-            return vector<int32_t>{i, umaps[target - nums[i]] - 1};
+            return {static_cast<int32_t>(i), umaps[target - nums[i]] - 1};
         }
-        umaps[nums[i]] = i + 1;
+        umaps[nums[i]] = static_cast<int32_t>(i) + 1;
     }
-    return vector<int32_t>{};
+    return {};
 }
 /*
 if the number is not so big, it's better to use brute force,

@@ -96,7 +96,7 @@ public:
         }
     }
 
-    ~LRU() {
+    ~LRU() override {
         for (const auto&[k, v]: umap) {
             delete v;
         }

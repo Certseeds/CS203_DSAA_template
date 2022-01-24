@@ -99,7 +99,7 @@ namespace O1 {
 
 class lru_cache final : public cache_base {
 private:
-    struct Node final: private nonCopyMoveAble {
+    struct Node final : private nonCopyMoveAble {
         const size_t v;
         Node *before{nullptr};
         Node *next{nullptr};
@@ -156,7 +156,7 @@ public:
         }
     }
 
-    ~lru_cache() {
+    ~lru_cache() override {
         for (const auto&[k, v]: umap) {
             delete v;
         }

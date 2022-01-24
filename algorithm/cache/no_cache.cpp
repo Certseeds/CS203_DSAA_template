@@ -21,7 +21,8 @@
 #include <memory>
 
 namespace cache::no {
-class no_cache final : public cache_base {
+
+class no_cache final : private cache_base {
 public:
     explicit no_cache(size_t size = 0) : cache_base(0) {}
 
@@ -29,19 +30,18 @@ public:
 
     bool read(size_t value) override { return false; }
 };
-
+const vector<string> pairs{
+        "sample.data.in",
+        "1.data.in",
+        "2.data.in",
+        "3.data.in",
+        "4.data.in",
+        "5.data.in",
+        "6.data.in",
+        "7.data.in",
+};
 TEST_CASE("no test sample") {
-    const vector<std::pair<size_t, string>> pairs{
-            {1,     "sample.data.in"},
-            {1176,  "1.data.in"},
-            {11847, "2.data.in"},
-            {82394, "3.data.in"},
-            {4,     "4.data.in"},
-            {3,     "5.data.in"},
-            {5,     "6.data.in"},
-            {1,     "7.data.in"},
-    };
-    for (const auto&[result, file_name]: pairs) {
+    for (const auto &file_name: pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
         const auto cache = std::make_unique<no_cache>(input.cacheSize);

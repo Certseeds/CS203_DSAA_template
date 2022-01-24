@@ -32,14 +32,16 @@ public:
     virtual bool exists(size_t value) const = 0;
 
     virtual bool read(size_t value) = 0;
+
+    virtual ~cache_base() = default;
 };
 }
 struct inputs {
     const size_t cacheSize{};
     const vector<int32_t> querys;
 
-    inputs(size_t cacheSize, size_t queryNumbers, vector<int32_t> querys) :
-            cacheSize(cacheSize), queryNumbers(queryNumbers), querys(std::move(querys)) {}
+    inputs(size_t cacheSize, vector<int32_t> querys) :
+            cacheSize(cacheSize), querys(std::move(querys)) {}
 
     static inputs read_input() {
         size_t cache_size{0};
@@ -52,7 +54,7 @@ struct inputs {
             cin >> temp_number;
             query_pages.push_back(temp_number);
         }
-        return inputs{cache_size, query_numbers, query_pages};
+        return inputs{cache_size, query_pages};
     }
 };
 
