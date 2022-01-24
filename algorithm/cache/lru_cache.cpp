@@ -1,12 +1,12 @@
 /*  CS203_DSAA_template
     Copyright (C) 2022  nanoseeds
 
-    CS302_OS is free software: you can redistribute it and/or modify
+    CS203_DSAA_template is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
     published by the Free Software Foundation, either version 3 of the
     License, or (at your option) any later version.
 
-    CS302_OS is distributed in the hope that it will be useful,
+    CS203_DSAA_template is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU Affero General Public License for more details.
@@ -39,6 +39,19 @@
 5,不命中,4,5,1,2
  * */
 namespace cache::lru {
+
+const static vector<std::pair<size_t, string>> pairs{
+        {1,     "sample.data.in"},
+        {1176,  "1.data.in"},
+        {11847, "2.data.in"},
+        {82394, "3.data.in"},
+        {4,     "4.data.in"},
+        {3,     "5.data.in"},
+        {5,     "6.data.in"},
+        {1,     "7.data.in"},
+};
+namespace On {
+
 class lru_cache final : public cache_base {
 private:
     std::list<size_t> lru;
@@ -69,16 +82,6 @@ public:
 };
 
 TEST_CASE("lru test sample") {
-    const vector<std::pair<size_t, string>> pairs{
-            {1,     "sample.data.in"},
-            {1176,  "1.data.in"},
-            {11847, "2.data.in"},
-            {82394, "3.data.in"},
-            {4,     "4.data.in"},
-            {3,     "5.data.in"},
-            {5,     "6.data.in"},
-            {1,     "7.data.in"},
-    };
     for (const auto&[result, file_name]: pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
@@ -91,13 +94,12 @@ TEST_CASE("lru test sample") {
         CHECK(result == hits);
     }
 }
-
 }
-namespace cache::lru2 {
+namespace O1 {
 
 class lru_cache final : public cache_base {
 private:
-    struct Node : private nonCopyMoveAble {
+    struct Node final: private nonCopyMoveAble {
         const size_t v;
         Node *before{nullptr};
         Node *next{nullptr};
@@ -153,6 +155,7 @@ public:
             return false;
         }
     }
+
     ~lru_cache() {
         for (const auto&[k, v]: umap) {
             delete v;
@@ -161,16 +164,6 @@ public:
 };
 
 TEST_CASE("lru-2 test sample") {
-    const vector<std::pair<size_t, string>> pairs{
-            {1,     "sample.data.in"},
-            {1176,  "1.data.in"},
-            {11847, "2.data.in"},
-            {82394, "3.data.in"},
-            {4,     "4.data.in"},
-            {3,     "5.data.in"},
-            {5,     "6.data.in"},
-            {1,     "7.data.in"},
-    };
     for (const auto&[result, file_name]: pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
@@ -182,6 +175,7 @@ TEST_CASE("lru-2 test sample") {
         }
         CHECK(result == hits);
     }
+}
 }
 }
 #endif
