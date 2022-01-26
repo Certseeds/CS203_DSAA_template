@@ -22,8 +22,14 @@
 #include <vector>
 #include <unordered_map>
 
+/**
+ * 当刚入场的page,visit被置为false时会与被置为true有明显不一致
+ * clock默认为true
+ * fifo_sc则不修改,默认为false
+ * */
 namespace cache::clock {
-// clock算法居然和fifo_sc有一样的效果
+static constexpr const auto init = true;
+namespace initFalse {
 const static vector<std::pair<size_t, string>> pairs{
         {5,     "4.data.in"},
         {2,     "sample.data.in"},
@@ -34,11 +40,23 @@ const static vector<std::pair<size_t, string>> pairs{
         {6,     "6.data.in"},
         {1,     "7.data.in"},
 };
-
+}
+namespace initTrue {
+const static vector<std::pair<size_t, string>> pairs{
+        {2,     "4.data.in"},
+        {1,     "sample.data.in"},
+        {1193,  "1.data.in"},
+        {11826, "2.data.in"},
+        {82382, "3.data.in"},
+        {5,     "5.data.in"},
+        {4,     "6.data.in"},
+        {2,     "7.data.in"},
+};
+}
 namespace On {
 class clock_cache final : private cache_base {
 private:
-    std::vector<std::pair<size_t, bool>> que;
+    std::vector<std::pair<size_t, bool>> que;// 双链表(大小固定)的和vector没区别
     size_t pointer = 0;
 public:
     explicit clock_cache(size_t size) : cache_base(size), que(vector<std::pair<size_t, bool>>(size,
@@ -70,6 +88,7 @@ public:
                 }
             }
             que[pointer % cache_size].first = page;
+            que[pointer % cache_size].second = init;
             pointer++;
             return false;
         }
@@ -77,7 +96,7 @@ public:
 };
 
 TEST_CASE("clock test n") {
-    for (const auto &[result, file_name]: pairs) {
+    for (const auto &[result, file_name]: init ? initTrue::pairs : initFalse::pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
         const auto cache = std::make_unique<clock_cache>(input.cacheSize);
@@ -125,7 +144,7 @@ public:
                 }
             }
             que[pointer % cache_size] = page;
-            umap[page] = false;
+            umap[page] = init;
             pointer++;
             return false;
         }
@@ -133,7 +152,7 @@ public:
 };
 
 TEST_CASE("clock test 1") {
-    for (const auto &[result, file_name]: pairs) {
+    for (const auto &[result, file_name]: init ? initTrue::pairs : initFalse::pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
         const auto cache = std::make_unique<clock_cache>(input.cacheSize);

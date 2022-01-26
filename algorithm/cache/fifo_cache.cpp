@@ -19,7 +19,7 @@
 #include <catch_main.hpp>
 #include "cache_base.hpp"
 #include <memory>
-#include <queue>
+#include <list>
 #include <unordered_set>
 
 namespace cache::fifo {
@@ -38,7 +38,7 @@ const static vector<std::pair<size_t, string>> pairs{
 namespace On {
 class fifo_cache final : private cache_base {
 private:
-    std::deque<size_t> que;
+    std::list<size_t> que;
 public:
     explicit fifo_cache(size_t size) : cache_base(size) {}
 
@@ -77,7 +77,7 @@ TEST_CASE("fifo test n") {
 namespace O1 {
 class fifo_cache final : private cache_base {
 private:
-    std::queue<size_t> que;
+    std::list<size_t> que;
     std::unordered_set<size_t> uset;
 public:
     explicit fifo_cache(size_t size) : cache_base(size) {}
@@ -94,9 +94,9 @@ public:
             if (que.size() == cache_size) {
                 const auto last{que.front()};
                 uset.erase(last);
-                que.pop();
+                que.pop_front();
             }
-            que.push(page);
+            que.push_back(page);
             uset.insert(page);
             return false;
         }

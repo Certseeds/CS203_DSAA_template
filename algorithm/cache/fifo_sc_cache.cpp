@@ -19,7 +19,7 @@
 #include <catch_main.hpp>
 #include "cache_base.hpp"
 #include <memory>
-#include <queue>
+#include <list>
 #include <unordered_map>
 
 namespace cache::fifo_sc {
@@ -38,7 +38,7 @@ const static vector<std::pair<size_t, string>> pairs{
 namespace On {
 class fifo_sc_cache final : private cache_base {
 private:
-    std::deque<std::pair<size_t, bool>> que;
+    std::list<std::pair<size_t, bool>> que;
 public:
     explicit fifo_sc_cache(size_t size) : cache_base(size) {}
 
@@ -89,7 +89,7 @@ TEST_CASE("fifo_sc test n") {
 namespace O1 {
 class fifo_sc_cache final : private cache_base {
 private:
-    std::queue<size_t> que;
+    std::list<size_t> que;
     std::unordered_map<size_t, bool> umap;
 public:
     explicit fifo_sc_cache(size_t size) : cache_base(size) {}
@@ -106,18 +106,18 @@ public:
             if (que.size() == cache_size) {
                 while (true) {
                     const auto key = que.front();
-                    que.pop();
+                    que.pop_front();
                     const auto hadVisit = umap[key];
                     umap[key] = false;
                     if (hadVisit) {
-                        que.emplace(key);
+                        que.emplace_back(key);
                     } else {
                         umap.erase(key);
                         break;
                     }
                 }
             }
-            que.emplace(page);
+            que.emplace_back(page);
             umap[page] = false;
             return false;
         }
