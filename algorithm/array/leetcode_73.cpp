@@ -27,7 +27,7 @@ SOFTWARE.
 
 namespace leetcode_73 {
 
-void leetcode_73::setZeroes(vector<vector<int>> &matrix) {
+void leetcode_73::setZeroes(vector<vector<int32_t>> &matrix) {
     if (matrix.empty() || matrix.front().empty()) {
         return;
     }

@@ -96,9 +96,9 @@ TEST_CASE("basic test 2[test_73]", "[test_73]") {
 
 TEST_CASE("basic test 4[test_73]", "[test_73]") {
     const vector<vector<int32_t>> vec1{
-            {-4,         -2147483648, 6,  -7, 0},
-            {-8,         6,           -8, -6, 0},
-            {2147483647, 2,           -9, -6, -10}
+            {-4,         std::numeric_limits<int32_t>::min(), 6,  -7, 0},
+            {-8,         6,                                   -8, -6, 0},
+            {2147483647, 2,                                   -9, -6, -10}
     };
     const vector<vector<int32_t>> result{
             {0,          0, 0,  0,  0},
