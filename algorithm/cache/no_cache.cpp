@@ -18,19 +18,21 @@
 
 #include <catch_main.hpp>
 #include "cache_base.hpp"
+#include <array>
 #include <memory>
 
 namespace cache::no {
 
 class no_cache final : private cache_base {
 public:
-    explicit no_cache(size_t size = 0) : cache_base(0) {}
+    explicit no_cache(size_t) : cache_base(0) {}
 
-    bool exists(size_t value) const override { return false; }
+    bool exists(size_t) const override { return false; }
 
-    bool read(size_t value) override { return false; }
+    bool read(size_t) override { return false; }
 };
-const vector<string> pairs{
+
+std::array<const char *const, 8> pairs{
         "sample.data.in",
         "1.data.in",
         "2.data.in",
@@ -40,6 +42,7 @@ const vector<string> pairs{
         "6.data.in",
         "7.data.in",
 };
+
 TEST_CASE("no test sample") {
     for (const auto &file_name: pairs) {
         const CS203_redirect cr{file_name};

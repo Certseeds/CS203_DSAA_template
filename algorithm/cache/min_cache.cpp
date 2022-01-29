@@ -48,7 +48,7 @@ private:
     struct pn final {
         size_t page, next;
     };
-    static constexpr const auto cmp{[](const pn v1, const pn v2) { return v1.next > v2.next; }};
+    static constexpr const auto cmp = [](const pn v1, const pn v2) { return v1.next > v2.next; };
 private:
     const vector<size_t> predict;
     size_t position{0};
