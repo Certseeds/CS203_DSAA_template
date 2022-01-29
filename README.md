@@ -4,8 +4,8 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License](MIT-shield)][MIT_Link]
-[![CC BY-NC-SA 4.0](cc_by_nc_sa_4_0_shield)][cc_by_nc_sa_4_0]
+[![MIT License][MIT-shield]][MIT_Link]
+[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_shield]][cc_by_nc_sa_4_0]
 [![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
 
 <br />
