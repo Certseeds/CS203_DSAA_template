@@ -1,5 +1,5 @@
 /*  CS203_DSAA_template
-    Copyright (C) 2022  nafifoseeds
+    Copyright (C) 2022  nanoseeds
 
     CS203_DSAA_template is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as

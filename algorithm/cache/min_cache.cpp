@@ -1,5 +1,5 @@
 /*  CS203_DSAA_template
-    Copyright (C) 2022  nafifoseeds
+    Copyright (C) 2022  nanoseeds
 
     CS203_DSAA_template is free software: you can redistribute it and/or modify
     it under the terms of the GNU Affero General Public License as
@@ -37,7 +37,7 @@ const static vector<std::pair<size_t, string>> pairs{
 };
 
 /**
- * 这是个需要能"预知未来"的算法
+ * 这是个需要"预知未来"的算法
  * 平均O(n)算不错的了
  * */
 namespace On {
