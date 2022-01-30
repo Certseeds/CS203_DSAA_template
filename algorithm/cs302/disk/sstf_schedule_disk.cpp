@@ -24,43 +24,49 @@
 
 namespace disk_schedule::no {
 
-class fcfs_disk final : public disk_base {
+class sstf_disk final : public disk_base {
 public:
-    fcfs_disk(size_t S, size_t M, size_t N, vector<size_t> requests) : disk_base(S, M, N, std::move(requests)) {
-        vector<size_t> steps;
+    sstf_disk(size_t S, size_t M, size_t N, vector<size_t> requests) : disk_base(S, M, N, std::move(requests)) {
+        vector<size_t> steps{};
         size_t last_head{this->S}, distance{0};
         steps.push_back(last_head);
-        for (const auto &item: this->requests) {
-            distance += std::max(item, last_head) - std::min(item, last_head);
-            last_head = item;
-            steps.push_back(last_head);
+        for (size_t i{0}; i < this->N; ++i) {
+            const auto min_p = std::min_element(
+                    std::begin(this->requests) + i, std::end(this->requests),
+                    [last_head](const auto t1, const auto t2) {
+                        return std::max(t1, last_head) - std::min(t1, last_head) <
+                               std::max(t2, last_head) - std::min(t2, last_head);
+                    }
+            );
+            steps.push_back(*min_p);
+            distance += std::max(*min_p, last_head) - std::min(*min_p, last_head);
         }
         this->steps = steps;
         this->distance = distance;
     };
 
     [[nodiscard]] const char *name() const override {
-        return "First Come First Served"; // same as First In First Out
+        return "Shortest Seek Time First";
     }
 };
 
 constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
         std::tuple<const char *const, const char *const, const char *const>
-                {"01.data.in", "fcfs/01.data.out", "fcfs/01.test.out"},
+                {"01.data.in", "sstf/01.data.out", "sstf/01.test.out"},
         std::tuple<const char *const, const char *const, const char *const>
-                {"02.data.in", "fcfs/02.data.out", "fcfs/02.test.out"},
+                {"02.data.in", "sstf/02.data.out", "sstf/02.test.out"},
         std::tuple<const char *const, const char *const, const char *const>
-                {"03.data.in", "fcfs/03.data.out", "fcfs/03.test.out"},
+                {"03.data.in", "sstf/03.data.out", "sstf/03.test.out"},
         std::tuple<const char *const, const char *const, const char *const>
-                {"04.data.in", "fcfs/04.data.out", "fcfs/04.test.out"}
+                {"04.data.in", "sstf/04.data.out", "sstf/04.test.out"}
 };
 
-TEST_CASE("fcfs test sample") {
+TEST_CASE("sstf test sample") {
     for (const auto &[stdInput, stdOutput, testOutput]: pairs) {
         {
             const CS203_redirect cr{stdInput, testOutput};
             const auto input = inputs::read_input();
-            const auto disk = std::make_unique<fcfs_disk>(input.S, input.M, input.N, input.requests);
+            const auto disk = std::make_unique<sstf_disk>(input.S, input.M, input.N, input.requests);
             disk->output();
         }
         CHECK(compareFiles(stdOutput, testOutput));
