@@ -59,7 +59,7 @@ struct inputs {
 };
 
 std::string getFilePath() noexcept {
-    return "./../../../algorithm/cache/data/";
+    return "./../../../../algorithm/cs302/cache/data/";
 }
 
 const std::string CS203_redirect::file_paths = getFilePath();

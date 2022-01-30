@@ -32,7 +32,7 @@ public:
     bool read(size_t) override { return false; }
 };
 
-std::array<const char *const, 8> pairs{
+const std::array<const char *const, 8> pairs{
         "sample.data.in",
         "1.data.in",
         "2.data.in",
