@@ -10,7 +10,7 @@ And the default moving direction of head is from inner to outer.
 
 Complete C-LOOK algorithms. Return the visiting sequence of tracks and calculate the total moving distance.
 
-磁盘结构如下图所示(此处无图), 磁道计数自外向内增大,最外侧为0. 磁头默认移动方向自内向外.
+磁盘结构如下图所示(此处无图), 磁道计数自外向内增大,最外侧为0. 磁头默认移动方向自内向外.(自大到小)
 
 请实现C-LOOK算法, 返回磁头的visit顺序,计算综合移动距离.
 

@@ -27,16 +27,13 @@ namespace disk_schedule::no {
 class fcfs_disk final : public disk_base {
 public:
     fcfs_disk(size_t S, size_t M, size_t N, vector<size_t> requests) : disk_base(S, M, N, std::move(requests)) {
-        vector<size_t> steps;
-        size_t last_head{this->S}, distance{0};
-        steps.push_back(last_head);
+        size_t last_head{this->S};
+        this->steps.push_back(last_head);
         for (const auto &item: this->requests) {
-            distance += std::max(item, last_head) - std::min(item, last_head);
+            this->distance += std::max(item, last_head) - std::min(item, last_head);
             last_head = item;
-            steps.push_back(last_head);
+            this->steps.push_back(last_head);
         }
-        this->steps = steps;
-        this->distance = distance;
     };
 
     [[nodiscard]] const char *name() const override {
@@ -44,7 +41,7 @@ public:
     }
 };
 
-static constexpr const  std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
+static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
         std::tuple<const char *const, const char *const, const char *const>
                 {"01.data.in", "fcfs/01.data.out", "fcfs/01.test.out"},
         std::tuple<const char *const, const char *const, const char *const>
