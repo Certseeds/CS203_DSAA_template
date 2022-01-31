@@ -39,7 +39,7 @@ public:
             this->steps.push_back(*left);
         }
         this->steps.push_back(*std::begin(sorts));
-        for (auto left{std::end(sorts) - 1}; left != range.first; --left) {
+        for (auto left{std::end(sorts) - 1}; left != (range.second - 1); --left) {
             this->steps.push_back(*left);
         }
         for (size_t i{1}, size{this->steps.size()}; i < size; ++i) {

@@ -33,11 +33,11 @@ public:
         sorts.push_back(S);
         std::sort(std::begin(sorts), std::end(sorts), std::less<>());
         const auto range = std::equal_range(std::begin(sorts), std::end(sorts), S);
-        for (auto left{range.first}; left != std::begin(sorts); --left) {
+        for (auto left{range.second - 1}; left != std::begin(sorts); --left) {
             this->steps.push_back(*left);
         }
         this->steps.push_back(*std::begin(sorts));
-        for (auto left{range.first + 1}; left != std::end(sorts); ++left) {
+        for (auto left{range.second}; left != std::end(sorts); ++left) {
             this->steps.push_back(*left);
         }
         for (size_t i{1}, size{this->steps.size()}; i < size; ++i) {
