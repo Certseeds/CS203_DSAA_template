@@ -19,27 +19,35 @@
 #include <catch_main.hpp>
 #include "disk_schedule_base.hpp"
 #include <array>
+#include <algorithm>
 #include <memory>
-#include <utility>
+#include <unordered_set>
 
 namespace disk_schedule::no {
+using std::unordered_set;
 
 class sstf_disk final : public disk_base {
 public:
     sstf_disk(size_t S, size_t M, size_t N, vector<size_t> requests) : disk_base(S, M, N, std::move(requests)) {
+        unordered_set<size_t> uset;
+        for (const auto request: this->requests) {
+            uset.insert(request);
+        }
         vector<size_t> steps{};
         size_t last_head{this->S}, distance{0};
         steps.push_back(last_head);
         for (size_t i{0}; i < this->N; ++i) {
             const auto min_p = std::min_element(
-                    std::begin(this->requests) + i, std::end(this->requests),
+                    std::begin(uset), std::end(uset),
                     [last_head](const auto t1, const auto t2) {
                         return std::max(t1, last_head) - std::min(t1, last_head) <
                                std::max(t2, last_head) - std::min(t2, last_head);
                     }
             );
-            steps.push_back(*min_p);
             distance += std::max(*min_p, last_head) - std::min(*min_p, last_head);
+            last_head = *min_p;
+            steps.push_back(last_head);
+            uset.erase(min_p);
         }
         this->steps = steps;
         this->distance = distance;
@@ -49,8 +57,7 @@ public:
         return "Shortest Seek Time First";
     }
 };
-
-constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
+static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
         std::tuple<const char *const, const char *const, const char *const>
                 {"01.data.in", "sstf/01.data.out", "sstf/01.test.out"},
         std::tuple<const char *const, const char *const, const char *const>

@@ -44,7 +44,7 @@ public:
     }
 };
 
-constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
+static constexpr const  std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
         std::tuple<const char *const, const char *const, const char *const>
                 {"01.data.in", "fcfs/01.data.out", "fcfs/01.test.out"},
         std::tuple<const char *const, const char *const, const char *const>
