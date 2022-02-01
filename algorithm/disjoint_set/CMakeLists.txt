@@ -9,8 +9,9 @@ target_link_libraries(${PROJECT_NAME}_lib PRIVATE CS203_DSAA_template_INCLUDE)
 
 enable_testing()
 set(dependencies 684 200 130 399)
-foreach (elementOrder IN LISTS dependencies)
-    set(elementName leetcode_${elementOrder})
+LIST(TRANSFORM dependencies PREPEND leetcode_)
+
+foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} ${PROJECT_NAME}_lib CS203_DSAA_template_INCLUDE)
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp")

@@ -5,8 +5,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies leetcode_208)
-LIST(APPEND dependencies leetcode_212)
+set(dependencies 208 212)
+LIST(TRANSFORM dependencies PREPEND leetcode_)
+
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE)

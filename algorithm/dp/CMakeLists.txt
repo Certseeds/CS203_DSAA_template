@@ -6,8 +6,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
 
-
-enable_testing()
 set(dependencies package divide_bar)
 
 set(leetcode_order 1143 5 10 44 45)
@@ -19,10 +17,10 @@ LIST(APPEND leetcode_order 122 309 714 139 413)
 LIST(APPEND leetcode_order 91 264 931 304_1314 221)
 LIST(APPEND leetcode_order 516 300 174 376 643)
 LIST(APPEND leetcode_order 392 72 518 377 279)
+LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
-foreach (elementOrder IN LISTS leetcode_order)
-    LIST(APPEND dependencies leetcode_${elementOrder})
-endforeach ()
+set(dependencies ${dependencies} ${leetcode_order})
+
 unset(leetcode_order)
 
 

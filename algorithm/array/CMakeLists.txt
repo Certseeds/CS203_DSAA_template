@@ -13,9 +13,10 @@ list(APPEND leetcode_order 39 40 41 56 80)
 list(APPEND leetcode_order 88 167 219 350 448)
 list(APPEND leetcode_order 485 500 532 561 566)
 list(APPEND leetcode_order 581 605 661 73 665)
-foreach (elementOrder IN LISTS leetcode_order)
-    LIST(APPEND dependencies leetcode_${elementOrder})
-endforeach ()
+LIST(TRANSFORM leetcode_order PREPEND leetcode_)
+
+set(dependencies ${dependencies} ${leetcode_order})
+
 unset(leetcode_order)
 
 foreach (elementName IN LISTS dependencies)
