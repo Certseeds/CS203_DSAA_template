@@ -36,7 +36,7 @@ using std::stack;
 template<typename T>
 class TreeNodeLink final : private nonCopyMoveAble {
 public:
-    vector<TreeNode < T> *> list{};
+    vector<TreeNode<T> *> list{};
 
     TreeNodeLink(std::initializer_list<int32_t> list_): list(TreeNode<T>::numToTree(list_)) {}
 
