@@ -1,12 +1,15 @@
 <div id="top"></div>
 
+[![MIT License][MIT-shield]][MIT_Link]
+[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_shield]][cc_by_nc_sa_4_0]
+[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
+
+[![Github Releases][release-shield]][release-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][MIT-shield]][MIT_Link]
-[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_shield]][cc_by_nc_sa_4_0]
-[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
+
 
 <br />
 <div align="center">
@@ -395,4 +398,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [issues-url]: https://github.com/Certseeds/CS203_DSAA_template/issues
 [license-shield]: https://img.shields.io/github/license/Certseeds/CS203_DSAA_template.svg?style=for-the-badge
 [license-url]: https://github.com/Certseeds/CS203_DSAA_template/blob/master/LICENSE.md
-
+[release-shield]: https://img.shields.io/github/release/Certseeds/CS203_DSAA_template.svg?style=for-the-badge
+[release-url]: https://github.com/Certseeds/CS203_DSAA_template/releases
