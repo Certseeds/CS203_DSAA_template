@@ -47,7 +47,7 @@ vector<int32_t> dijkstra(const adjlist &input, int32_t begin_node) {
             }
     };
     priority_queue<link, vector<link>, decltype(cmp)> priorityQueue{cmp};
-    priority_queue<link, std::deque<link>, decltype(cmp)> priorityQueue2{cmp};
+    // priority_queue<link, std::deque<link>, decltype(cmp)> priorityQueue2{cmp};
     priorityQueue.push(link(begin_node, -1));
     while (!priorityQueue.empty()) {
         auto head = priorityQueue.top();

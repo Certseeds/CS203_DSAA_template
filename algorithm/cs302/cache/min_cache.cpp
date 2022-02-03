@@ -38,7 +38,7 @@ const static vector<std::pair<size_t, string>> pairs{
 
 /**
  * 这是个需要"预知未来"的算法
- * 平均O(n)算不错的了
+ * 平均O(logN)算不错的了
  * */
 namespace OlogN {
 using std::priority_queue, std::unordered_set, std::vector;

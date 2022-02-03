@@ -59,9 +59,9 @@ private:
     std::vector<std::pair<size_t, bool>> que;// 双链表(大小固定)的和vector没区别
     size_t pointer = 0;
 public:
-    explicit clock_cache(size_t size) : cache_base(size), que(vector<std::pair<size_t, bool>>(size,
-                                                                                              {std::numeric_limits<size_t>::max(),
-                                                                                               false})) {
+    explicit clock_cache(size_t size) : cache_base(size),
+                                        que(vector<std::pair<size_t, bool>>
+                                                    (size, {std::numeric_limits<size_t>::max(), false})) {
         CHECK(size != 0);
     }
 

@@ -112,7 +112,7 @@ private:
     std::unordered_map<size_t, Node *> umap;
 public:
     explicit lru_cache(size_t size = 1) : cache_base(size) {
-        assert(size != 0);
+        CHECK(size != 0);
         this->head.next = &(this->head);
         this->head.before = &(this->head);
     }
