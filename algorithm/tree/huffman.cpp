@@ -23,15 +23,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include <class_helper/nonable.hpp>
-#include <unordered_map>
 #include <map>
 #include <list>
 #include <stack>
-#include <tuple>
 #include <queue>
-#include <unordered_map>
 #include <string>
+#include <unordered_map>
 
 namespace tree::huffman {
 
@@ -133,7 +130,7 @@ string huffman::cal(const string &str) const {
 
 string huffman::decal(const string &serilize) const {
     string will_return{};
-    TreeNode *root = base, *next{nullptr};
+    const TreeNode* root = base;
     for (const auto ch: serilize) {
         if (ch == '0') {
             root = root->left;

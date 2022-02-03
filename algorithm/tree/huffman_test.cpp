@@ -38,9 +38,17 @@ TEST_CASE("test_case 1 [test_tree_huffman]", "[test_tree_huffman]") {
     const string str{"1919810"};
     CHECK(str == hn.decal(hn.cal(str)));
 }
+
 TEST_CASE("test_case 2 [test_tree_huffman]", "[test_tree_huffman]") {
     const huffman hn{"An awesome Algorithm template for Solve Online-Judge !"};
     const string str{"An awesome for Solve Online-Judge !"};
+    CHECK(str == hn.decal(hn.cal(str)));
+}
+
+TEST_CASE("test_case 3 [test_tree_huffman]", "[test_tree_huffman]") {
+    const huffman hn{
+            string(45, 'a') + string(13, 'b') + string(12, 'c') + string(16, 'd') + string(9, 'e') + string(5, 'f')};
+    const string str{"abedcaffe"};
     CHECK(str == hn.decal(hn.cal(str)));
 }
 }
