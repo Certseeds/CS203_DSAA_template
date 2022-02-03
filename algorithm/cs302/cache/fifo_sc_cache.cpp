@@ -20,6 +20,7 @@
 #include "cache_base.hpp"
 #include <memory>
 #include <list>
+#include <queue>
 #include <unordered_map>
 
 namespace cache::fifo_sc {
@@ -89,7 +90,7 @@ TEST_CASE("fifo_sc test n") {
 namespace O1 {
 class fifo_sc_cache final : private cache_base {
 private:
-    std::list<size_t> que;
+    std::queue<size_t, std::list<size_t>> que;
     std::unordered_map<size_t, bool> umap;
 public:
     explicit fifo_sc_cache(size_t size) : cache_base(size) {}
@@ -106,18 +107,18 @@ public:
             if (que.size() == cache_size) {
                 while (true) {
                     const auto key = que.front();
-                    que.pop_front();
+                    que.pop();
                     const auto hadVisit = umap[key];
                     umap[key] = false;
                     if (hadVisit) {
-                        que.emplace_back(key);
+                        que.push(key);
                     } else {
                         umap.erase(key);
                         break;
                     }
                 }
             }
-            que.emplace_back(page);
+            que.push(page);
             umap[page] = false;
             return false;
         }

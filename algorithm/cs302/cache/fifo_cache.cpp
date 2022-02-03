@@ -20,6 +20,7 @@
 #include "cache_base.hpp"
 #include <memory>
 #include <list>
+#include <queue>
 #include <unordered_set>
 
 namespace cache::fifo {
@@ -77,7 +78,7 @@ TEST_CASE("fifo test n") {
 namespace O1 {
 class fifo_cache final : private cache_base {
 private:
-    std::list<size_t> que;
+    std::queue<size_t, std::list<size_t>> que;
     std::unordered_set<size_t> uset;
 public:
     explicit fifo_cache(size_t size) : cache_base(size) {}
@@ -94,9 +95,9 @@ public:
             if (que.size() == cache_size) {
                 const auto last{que.front()};
                 uset.erase(last);
-                que.pop_front();
+                que.pop();
             }
-            que.push_back(page);
+            que.push(page);
             uset.insert(page);
             return false;
         }
