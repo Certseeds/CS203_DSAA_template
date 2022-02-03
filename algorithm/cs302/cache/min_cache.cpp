@@ -40,19 +40,23 @@ const static vector<std::pair<size_t, string>> pairs{
  * 这是个需要"预知未来"的算法
  * 平均O(n)算不错的了
  * */
-namespace On {
+namespace OlogN {
 using std::priority_queue, std::unordered_set, std::vector;
 
 class min_cache final : private cache_base {
 private:
     struct pn final {
         size_t page, next;
+
+        //按next由大到小排列
+        bool operator<(const pn &a) const { return this->next > a.next; }
     };
-    static constexpr const auto cmp = [](const pn v1, const pn v2) { return v1.next > v2.next; };
+
 private:
     const vector<size_t> predict;
     size_t position{0};
-    std::set<pn, decltype(cmp)> uset{cmp}; // 没想到set充当优先队列这么优秀
+    std::multiset<pn> pset{}; // 没想到set充当优先队列这么优秀
+    std::unordered_set<size_t> uset{};
 private:
     /**
      * Example
@@ -72,25 +76,27 @@ public:
     explicit min_cache(size_t size, vector<size_t> pri) : cache_base(size), predict(std::move(pri)) {}
 
     [[nodiscard]] bool exists(size_t page) const override {
-        return std::end(uset) !=
-               std::find_if(uset.begin(), uset.end(), [page](const auto search) { return search.page == page; });
+        return std::end(uset) != uset.find(page);
     }
 
     bool read(size_t page) override {
         if (this->exists(page)) {
-            const auto iter = std::find_if(uset.begin(), uset.end(),
+            const auto iter = std::find_if(pset.begin(), pset.end(),
                                            [page](const auto search) { return search.page == page; });
-            uset.erase(iter);
+            pset.erase(iter);
             const auto next{this->getNext(page)};
-            uset.insert({page, next});
+            pset.insert({page, next});
             return true;
         } else {
             if (uset.size() == cache_size) {
-                const auto top_iter = uset.cbegin();
-                uset.erase(top_iter);
+                const auto top_iter = pset.cbegin();
+                const auto top_v = top_iter->page;
+                pset.erase(top_iter);
+                uset.erase(top_v);
             }
             const auto next{this->getNext(page)};
-            uset.insert({page, next});
+            pset.insert({page, next});
+            uset.insert(page);
             return false;
         }
     }
