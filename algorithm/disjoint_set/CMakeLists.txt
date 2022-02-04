@@ -11,6 +11,7 @@ enable_testing()
 set(dependencies 684 200 130 399)
 LIST(TRANSFORM dependencies PREPEND leetcode_)
 
+LIST(APPEND dependencies disjoint_set_lnkedlist)
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} ${PROJECT_NAME}_lib CS203_DSAA_template_INCLUDE)
