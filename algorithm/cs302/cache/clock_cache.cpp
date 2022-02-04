@@ -54,7 +54,7 @@ const static vector<std::pair<size_t, string>> pairs{
 };
 }
 namespace On {
-class clock_cache final : private cache_base {
+class clock_cache final : public cache_base {
 private:
     std::vector<std::pair<size_t, bool>> que;// 双链表(大小固定)的和vector没区别
     size_t pointer = 0;
@@ -111,7 +111,7 @@ TEST_CASE("clock test n") {
 }
 
 namespace O1 {
-class clock_cache final : private cache_base {
+class clock_cache final : public cache_base {
 private:
     std::vector<size_t> que;
     std::unordered_map<size_t, bool> umap;
@@ -155,7 +155,7 @@ TEST_CASE("clock test 1") {
     for (const auto &[result, file_name]: init ? initTrue::pairs : initFalse::pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
-        const auto cache = std::make_unique<clock_cache>(input.cacheSize);
+        const std::unique_ptr<cache_base> cache = std::make_unique<clock_cache>(input.cacheSize);
         size_t hits{0};
         for (const auto iter: input.querys) {
             const auto exist = cache->read(iter);

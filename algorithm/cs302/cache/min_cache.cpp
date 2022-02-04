@@ -43,7 +43,7 @@ const static vector<std::pair<size_t, string>> pairs{
 namespace OlogN {
 using std::priority_queue, std::unordered_set, std::vector;
 
-class min_cache final : private cache_base {
+class min_cache final : public cache_base {
 private:
     struct pn final {
         size_t page, next;
@@ -113,7 +113,7 @@ TEST_CASE("min test 1") {
             }
             return vec;
         }();
-        const auto cache = std::make_unique<min_cache>(input.cacheSize, inputAll);
+        const std::unique_ptr<cache_base> cache = std::make_unique<min_cache>(input.cacheSize, inputAll);
         size_t hits{0};
         for (const auto iter: input.querys) {
             const auto exist = cache->read(iter);

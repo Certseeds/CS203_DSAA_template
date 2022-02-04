@@ -37,7 +37,7 @@ const static vector<std::pair<size_t, string>> pairs{
 };
 
 namespace On {
-class fifo_sc_cache final : private cache_base {
+class fifo_sc_cache final : public cache_base {
 private:
     std::list<std::pair<size_t, bool>> que;
 public:
@@ -88,7 +88,7 @@ TEST_CASE("fifo_sc test n") {
 }
 
 namespace O1 {
-class fifo_sc_cache final : private cache_base {
+class fifo_sc_cache final : public cache_base {
 private:
     std::queue<size_t, std::list<size_t>> que;
     std::unordered_map<size_t, bool> umap;
@@ -129,7 +129,7 @@ TEST_CASE("fifo_sc test 1") {
     for (const auto &[result, file_name]: pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
-        const auto cache = std::make_unique<fifo_sc_cache>(input.cacheSize);
+        const std::unique_ptr<cache_base> cache = std::make_unique<fifo_sc_cache>(input.cacheSize);
         size_t hits{0};
         for (const auto iter: input.querys) {
             const auto exist = cache->read(iter);
