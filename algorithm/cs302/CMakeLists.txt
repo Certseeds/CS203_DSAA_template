@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies cache disk)
+set(dependencies cache disk banker)
 foreach (elementName IN LISTS dependencies)
     add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/${elementName})
 endforeach ()
