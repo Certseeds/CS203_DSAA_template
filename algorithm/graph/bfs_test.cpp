@@ -23,28 +23,39 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_GRAPH_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_GRAPH_HPP
 
-#include <cstdint>
-#include <vector>
-#include <cstddef>
+#include <catch_main.hpp>
+#include "bfs.hpp"
 
 namespace graph {
-using std::vector;
+namespace bfs {
+using Catch::Matchers::Equals;
+// 简简单单一个bfs
 
-struct link {
-    int32_t end{-1}, cost{-1};
-
-    link(int32_t end_, int32_t cost_) : end(end_), cost(cost_) {}
-};
-
-using adjlist = vector<vector<link>>;
-
-// build should not be all empty but each vector is empty,
-adjlist build_adjlist(const vector<vector<int32_t>> &input, int32_t node_num);
-
-bool check_graph_cost_all_positive(const vector<vector<int32_t>> &input);
-
+TEST_CASE("2 [test graph bfs]", "[test graph bfs]") {
+    const auto obj = graphlist({{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}}, 4);
+    const auto result = obj.bfs(2);
+    CHECK(1 == result[0].distance);
+    CHECK(0 == result[1].distance);
+    CHECK(1 == result[2].distance);
+    CHECK(2 == result[3].distance);
+    for (const auto &x: result) {
+        CHECK(x.state == STATE::BLACK);
+    }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_GRAPH_HPP
+
+TEST_CASE("3-1 [test graph bfs]", "[test graph bfs]") {
+    const auto obj = graphlist({{{1, 2, 1}}}, 2);
+    const auto result = obj.bfs(1);
+    CHECK(0 == result[0].distance);
+    CHECK(1 == result[1].distance);
+}
+
+TEST_CASE("3-2 [test graph bfs]", "[test graph bfs]") {
+    const auto obj = graphlist({{{1, 2, 1}}}, 2);
+    const auto result = obj.bfs(2);
+    CHECK(graphlist::NO_V == result[0].distance);
+    CHECK(0 == result[1].distance);
+}
+}
+}

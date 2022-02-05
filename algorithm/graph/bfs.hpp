@@ -23,25 +23,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BFS_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BFS_HPP
 
 #include <cassert>
 #include <queue>
 #include "build_graph.hpp"
 
 namespace graph {
-namespace dijistra {
+namespace bfs {
 using std::vector;
-using std::priority_queue;
+using std::queue;
+enum class STATE {
+    WHITE,
+    GRAY,
+    BLACK,
+};
 
 class graphlist final {
+    struct node {
+        const size_t order;
+        STATE state{STATE::WHITE};
+        node *prev{nullptr};
+        size_t distance{NO_V};
+
+        explicit node(size_t node) : order(node) {}
+
+        node(const node &node_) = default;
+    };
+
     vector<vector<link>> graph;
+    vector<node> nodes_;
+    using invoke = std::function<void(const node &)>;
 public:
+    static constexpr const size_t NO_V{0x3f3f3f3f};
     graphlist(const vector<vector<int32_t>> &input, int32_t node_num) : graph(node_num, vector<link>{}) {
         check_graph_cost_all_positive(input);
         for (const auto &item: input) {
             graph[item[0] - 1].emplace_back(item[1] - 1, item[2]);
+        }
+        nodes_.reserve(node_num);
+        for (size_t i{0}; i < this->size(); ++i) {
+            nodes_.emplace_back(i);
         }
     }
 
@@ -49,34 +72,33 @@ public:
 
     inline auto at(size_t size) const { return graph.at(size); }
 
-    [[nodiscard]] vector<int32_t> dijkstra(int32_t begin_node) const {
-        begin_node -= 1;
-        vector<int32_t> results(this->size(), 0x3f3f3f3f);
-        results[begin_node] = 0;
-        // PS: in this part,if begin_node count from 1, begin_node should -= 1
-        static constexpr const auto cmp{
-                [](const link &v1, const link &v2) {
-                    return v1.cost > v2.cost;
-                }
-        };
-        priority_queue<link, vector<link>, decltype(cmp)> priorityQueue{cmp};
-        priorityQueue.emplace(begin_node, -1);
-        while (!priorityQueue.empty()) {
-            const auto head = priorityQueue.top();
-            priorityQueue.pop();
-            for (auto &i: this->at(head.end)) {
-                const auto val = results[head.end] + i.cost;
-                if (results[i.end] >= val) {
-                    results[i.end] = val;
-                    priorityQueue.push(i);
+    vector<node> bfs(size_t begin_) const {
+        begin_ -= 1;
+        const auto begin = begin_;
+        const invoke func = [](const node &n) { std::cout << n.order << " " << n.distance << std::endl; };
+        auto nodes = nodes_;
+        nodes[begin].distance = 0;
+        nodes[begin].state = STATE::GRAY;
+        queue<size_t> que({nodes[begin].order});
+        func(nodes[begin]);
+        while (!que.empty()) {
+            const auto head_order = que.front();
+            que.pop();
+            for (const auto &[end, cost]: this->at(head_order)) {
+                if (nodes[end].state == STATE::WHITE) {
+                    nodes[end].state = STATE::GRAY;
+                    nodes[end].prev = &nodes[head_order];
+                    nodes[end].distance = nodes[head_order].distance + cost;
+                    que.push(end);
+                    func(nodes[end]);
                 }
             }
+            nodes[head_order].state = STATE::BLACK;
         }
-        // then, in result is the distance from begin_node to i
-        return results;
+        return nodes;
     }
 };
 
 }
 }
-#endif // CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DIJISTRA_HPP
+#endif // CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BFS_HPP

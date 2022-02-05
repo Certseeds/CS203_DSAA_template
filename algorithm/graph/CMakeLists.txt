@@ -7,17 +7,13 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 add_library(${PROJECT_NAME}_BUILD_GRAPH ${LIB_WAY} ${CMAKE_CURRENT_SOURCE_DIR}/build_graph.cpp)
 
 enable_testing()
-set(dependencies dijistra flow)
+set(dependencies dijistra flow bfs)
 foreach (elementName IN LISTS dependencies)
-    add_library(${PROJECT_NAME}_${elementName} ${LIB_WAY}
-                ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
-    target_link_libraries(${PROJECT_NAME}_${elementName}
-                          ${PROJECT_NAME}_BUILD_GRAPH)
     add_executable(${PROJECT_NAME}_${elementName}_test
                    ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}_test.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName}_test
-                          ${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE)
-    MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp")
+                          ${PROJECT_NAME}_BUILD_GRAPH CS203_DSAA_template_INCLUDE)
+    MESSAGE(STATUS "${PROJECT_NAME}_${elementName}_test from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}_test.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName}_test)
 endforeach ()
 unset(dependencies)
