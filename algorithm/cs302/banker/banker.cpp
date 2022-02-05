@@ -24,12 +24,12 @@ using std::unordered_map;
 
 struct process {
     const size_t process_id{};
+    const vector<size_t> max_resource;
     vector<size_t> alloc_resource;
-    vector<size_t> needed_resource;
 
     process(size_t id, const vector<size_t> &resource) : process_id(id),
-                                                         alloc_resource(vector<size_t>(resource.size(), 0)),
-                                                         needed_resource(resource) {};
+                                                         max_resource(resource),
+                                                         alloc_resource(vector<size_t>(resource.size(), 0)) {};
 };
 
 class bankerAlgo : private nonCopyMoveAble {
@@ -48,7 +48,7 @@ class bankerAlgo : private nonCopyMoveAble {
                 return false;
             }
         }
-        umap.emplace(command.process_id, process(command.process_id, command.resource));
+        umap.emplace(command.process_id, process{command.process_id, command.resource});
         return true;
     }
 
@@ -56,7 +56,6 @@ class bankerAlgo : private nonCopyMoveAble {
         const auto id{command.process_id};
         for (size_t i{0}, size{resource.size()}; i < size; ++i) {
             umap.at(id).alloc_resource[i] += command.resource[i];
-            umap.at(id).needed_resource[i] -= command.resource[i];
             resource[i] -= command.resource[i];
         }
     }
@@ -69,7 +68,7 @@ class bankerAlgo : private nonCopyMoveAble {
         vector<size_t> copyResource = this->resources;
         std::unordered_map<size_t, banker::process> copyUmap = umap;
         for (size_t i{0}; i < resource_size; ++i) {
-            if (command.resource[i] > std::min(process.needed_resource[i], copyResource[i])) {
+            if (command.resource[i] > std::min(process.max_resource[i] - process.alloc_resource[i], copyResource[i])) {
                 return false;
             }
         }
@@ -80,7 +79,7 @@ class bankerAlgo : private nonCopyMoveAble {
             for (const auto &[item_first, item_second]: copyUmap) {
                 bool jump_in{true};
                 for (size_t j{0}; j < this->resource_size; ++j) {
-                    if (item_second.needed_resource[j] > copyResource[j]) {
+                    if (item_second.max_resource[j] > item_second.alloc_resource[j] + copyResource[j]) {
                         jump_in = false;
                         break;
                     }
