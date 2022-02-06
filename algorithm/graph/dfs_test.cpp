@@ -30,13 +30,13 @@ SOFTWARE.
 namespace graph {
 namespace dfs {
 using Catch::Matchers::Equals;
-// 简简单单一个bfs
-TEST_CASE("2 [test graph bfs]", "[test graph bfs]") {
+// 简简单单一个dfs
+TEST_CASE("2 [test graph dfs]", "[test graph dfs]") {
     const auto obj = graphlist({{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}}, 4);
     obj.dfs();
 }
 
-TEST_CASE("1 [test graph bfs]", "[test graph bfs]") {
+TEST_CASE("1 [test graph dfs]", "[test graph dfs]") {
     const auto obj = graphlist(
             {{{7, 13, 53}, {10, 5, 86}, {5, 14, 45}, {5, 10, 49}, {5, 6, 77}, {12, 9, 95}, {6, 10, 75}, {7, 4, 61},
               {8, 5, 2}, {10, 1, 45}, {11, 14, 19}, {9, 15, 15}, {6, 4, 95}, {6, 1, 4}, {8, 12, 29}, {1, 9, 15},
@@ -69,7 +69,7 @@ TEST_CASE("1 [test graph bfs]", "[test graph bfs]") {
     obj.dfs();
 }
 
-TEST_CASE("3-1 [test graph bfs]", "[test graph bfs]") {
+TEST_CASE("3-1 [test graph dfs]", "[test graph dfs]") {
     const auto obj = graphlist({{{1, 2, 1}}}, 2);
     obj.dfs();
 }

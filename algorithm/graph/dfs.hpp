@@ -26,10 +26,8 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DFS_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DFS_HPP
 
-#include <cassert>
-#include <queue>
-#include <unordered_set>
 #include "build_graph.hpp"
+#include <queue>
 
 namespace graph {
 namespace dfs {
