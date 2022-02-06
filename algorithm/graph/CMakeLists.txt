@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 add_library(${PROJECT_NAME}_BUILD_GRAPH ${LIB_WAY} ${CMAKE_CURRENT_SOURCE_DIR}/build_graph.cpp)
 
 enable_testing()
-set(dependencies dijistra flow bfs)
+set(dependencies dijistra flow bfs dfs)
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName}_test
                    ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}_test.cpp)

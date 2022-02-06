@@ -23,14 +23,16 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BFS_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BFS_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DFS_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DFS_HPP
 
-#include "build_graph.hpp"
+#include <cassert>
 #include <queue>
+#include <unordered_set>
+#include "build_graph.hpp"
 
 namespace graph {
-namespace bfs {
+namespace dfs {
 using std::vector;
 using std::queue;
 enum class STATE {
@@ -44,8 +46,11 @@ class graphlist final {
         const size_t order;
         STATE state{STATE::WHITE};
         node *prev{nullptr};
+        size_t gray_time, blacktime;
         size_t distance{NO_V};
+
         vector<link> links;
+
         explicit node(size_t node) : order(node) {}
 
         node(const node &node_) = default;
@@ -55,6 +60,7 @@ class graphlist final {
     using invoke = std::function<void(const node &)>;
 public:
     static constexpr const size_t NO_V{0x3f3f3f3f};
+
     graphlist(const vector<vector<int32_t>> &input, int32_t node_num) {
         check_graph_cost_all_positive(input);
         graph.reserve(node_num);
@@ -70,33 +76,36 @@ public:
 
     inline auto at(size_t size) const { return graph.at(size).links; }
 
-    vector<node> bfs(size_t begin_) const {
-        begin_ -= 1;
-        const auto begin = begin_;
-        static const  invoke func = [](const node &n) { std::cout << n.order << " " << n.distance << std::endl; };
+    void dfs() const {
         auto nodes = graph;
+        size_t time = 0;
+        for (const auto &node: nodes) {
+            if (node.state == STATE::WHITE) {
+                dfs(nodes, node.order, time);
+            }
+        }
+    }
+
+    static size_t dfs(vector<node> &nodes, size_t begin, size_t time) {
+        static const invoke func = [](const node &n) {
+            //std::cout << n.order << " " << ((n.prev == nullptr) ? 0 : n.prev->order) << std::endl;
+        };
+        func(nodes[begin]);
         nodes[begin].distance = 0;
         nodes[begin].state = STATE::GRAY;
-        queue<size_t> que({nodes[begin].order});
-        //func(nodes[begin]);
-        while (!que.empty()) {
-            const auto head_order = que.front();
-            que.pop();
-            for (const auto &[end, cost]: this->at(head_order)) {
-                if (nodes[end].state == STATE::WHITE) {
-                    nodes[end].state = STATE::GRAY;
-                    nodes[end].prev = &nodes[head_order];
-                    nodes[end].distance = nodes[head_order].distance + cost;
-                    que.push(end);
-                    //func(nodes[end]);
-                }
+        nodes[begin].gray_time = (++time);
+        for (const auto &link: nodes[begin].links) {
+            if (nodes[link.end].state == STATE::WHITE) {
+                nodes[link.end].prev = &nodes[begin];
+                time = dfs(nodes, link.end, time);
             }
-            nodes[head_order].state = STATE::BLACK;
         }
-        return nodes;
+        nodes[begin].state = STATE::BLACK;
+        nodes[begin].blacktime = (++time);
+        return time;
     }
 };
 
 }
 }
-#endif // CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BFS_HPP
+#endif // CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_DFS_HPP

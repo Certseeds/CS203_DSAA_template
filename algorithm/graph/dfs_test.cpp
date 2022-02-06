@@ -25,12 +25,17 @@ SOFTWARE.
 */
 
 #include <catch_main.hpp>
-#include "bfs.hpp"
+#include "dfs.hpp"
 
 namespace graph {
-namespace bfs {
+namespace dfs {
 using Catch::Matchers::Equals;
 // 简简单单一个bfs
+TEST_CASE("2 [test graph bfs]", "[test graph bfs]") {
+    const auto obj = graphlist({{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}}, 4);
+    obj.dfs();
+}
+
 TEST_CASE("1 [test graph bfs]", "[test graph bfs]") {
     const auto obj = graphlist(
             {{{7, 13, 53}, {10, 5, 86}, {5, 14, 45}, {5, 10, 49}, {5, 6, 77}, {12, 9, 95}, {6, 10, 75}, {7, 4, 61},
@@ -61,33 +66,12 @@ TEST_CASE("1 [test graph bfs]", "[test graph bfs]") {
               {10, 14, 32}, {13, 8, 67}, {6, 3, 2}, {9, 14, 3}, {6, 11, 71}, {11, 2, 67}, {3, 1, 65}, {13, 12, 0},
               {3, 6, 27}, {12, 10, 77}}},
             15);
-    const auto result = obj.bfs(2);
-}
-
-TEST_CASE("2 [test graph bfs]", "[test graph bfs]") {
-    const auto obj = graphlist({{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}}, 4);
-    const auto result = obj.bfs(2);
-    CHECK(1 == result[0].distance);
-    CHECK(0 == result[1].distance);
-    CHECK(1 == result[2].distance);
-    CHECK(2 == result[3].distance);
-    for (const auto &x: result) {
-        CHECK(x.state == STATE::BLACK);
-    }
+    obj.dfs();
 }
 
 TEST_CASE("3-1 [test graph bfs]", "[test graph bfs]") {
     const auto obj = graphlist({{{1, 2, 1}}}, 2);
-    SECTION("fst") {
-        const auto result = obj.bfs(1);
-        CHECK(0 == result[0].distance);
-        CHECK(1 == result[1].distance);
-    }SECTION("snd") {
-        const auto result = obj.bfs(2);
-        CHECK(graphlist::NO_V == result[0].distance);
-        CHECK(0 == result[1].distance);
-    }
+    obj.dfs();
 }
-
 }
 }
