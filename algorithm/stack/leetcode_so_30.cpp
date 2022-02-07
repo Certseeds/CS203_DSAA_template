@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,9 +23,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "sword_offer_30_test.hpp"
+#include "leetcode_so_30_test.hpp"
 
-namespace sword_offer_30 {
+namespace leetcode_so_30 {
 struct MinStackPure : MinStack {
 private:
     stack<int32_t> sta1, sta2;
@@ -93,11 +93,11 @@ public:
     }
 };
 
-MinStack *sword_offer_30::pure() {
+MinStack *leetcode_so_30::pure() {
     return new MinStackPure();
 }
 
-MinStack *sword_offer_30::effective() {
+MinStack *leetcode_so_30::effective() {
     return new MinStackEffective();
 }
 

@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag stack
-//@Tag 栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_SWORD_OFFER_09_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_SWORD_OFFER_09_HPP
+//@Tag Queue
+//@Tag 队列
+//@Tag 模拟
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_09_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_09_HPP
 
 #include <catch_main.hpp>
 #include <stack>
 #include <string>
 
-namespace sword_offer_09 {
+namespace leetcode_so_09 {
 using std::stack;
 using std::string;
 
@@ -46,7 +47,7 @@ struct CQueue {
     virtual ~CQueue() = default;
 };
 
-struct sword_offer_09 {
+struct leetcode_so_09 {
     static CQueue *pure();
 
     static CQueue *effective();
@@ -55,9 +56,9 @@ struct sword_offer_09 {
 TEST_CASE("test case pure-1 [test_sw_09]", "[test_sw_09]") {
     std::function<CQueue *()> lambda;
     SECTION("pure") {
-        lambda = sword_offer_09::pure;
+        lambda = leetcode_so_09::pure;
     }SECTION("effective") {
-        lambda = sword_offer_09::effective;
+        lambda = leetcode_so_09::effective;
     }
     const auto ptr = std::unique_ptr<CQueue>(lambda());
     ptr->appendTail(3);
@@ -68,9 +69,9 @@ TEST_CASE("test case pure-1 [test_sw_09]", "[test_sw_09]") {
 TEST_CASE("test case pure-2 [test_sw_09]", "[test_sw_09]") {
     std::function<CQueue *()> lambda;
     SECTION("pure") {
-        lambda = sword_offer_09::pure;
+        lambda = leetcode_so_09::pure;
     }SECTION("effective") {
-        lambda = sword_offer_09::effective;
+        lambda = leetcode_so_09::effective;
     }
     const auto ptr = std::unique_ptr<CQueue>(lambda());
     CHECK(-1 == ptr->deleteHead());
@@ -80,4 +81,4 @@ TEST_CASE("test case pure-2 [test_sw_09]", "[test_sw_09]") {
     CHECK(2 == ptr->deleteHead());
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_SWORD_OFFER_09_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_09_HPP

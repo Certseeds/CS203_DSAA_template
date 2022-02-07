@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,14 +25,14 @@ SOFTWARE.
 */
 //@Tag stack
 //@Tag 栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_SWORD_OFFER_30_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_SWORD_OFFER_30_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP
 
 #include <catch_main.hpp>
 #include <stack>
 #include <string>
 
-namespace sword_offer_30 {
+namespace leetcode_so_30 {
 using std::stack;
 using std::string;
 
@@ -50,7 +50,7 @@ struct MinStack {
     virtual ~MinStack() = default;
 };
 
-struct sword_offer_30 {
+struct leetcode_so_30 {
     static MinStack *pure();
 
     static MinStack *effective();
@@ -59,9 +59,9 @@ struct sword_offer_30 {
 TEST_CASE("test case pure-1 [test_sw_30]", "[test_sw_30]") {
     std::function<MinStack *()> lambda;
     SECTION("pure") {
-        lambda = sword_offer_30::pure;
+        lambda = leetcode_so_30::pure;
     }SECTION("effective") {
-        lambda = sword_offer_30::effective;
+        lambda = leetcode_so_30::effective;
     }
     const auto ptr = std::unique_ptr<MinStack>(lambda());
     ptr->push(0);
@@ -75,9 +75,9 @@ TEST_CASE("test case pure-1 [test_sw_30]", "[test_sw_30]") {
 TEST_CASE("test case pure-2 [test_sw_30]", "[test_sw_30]") {
     std::function<MinStack *()> lambda;
     SECTION("pure") {
-        lambda = sword_offer_30::pure;
+        lambda = leetcode_so_30::pure;
     }SECTION("effective") {
-        lambda = sword_offer_30::effective;
+        lambda = leetcode_so_30::effective;
     }
     const auto ptr = std::unique_ptr<MinStack>(lambda());
     ptr->push(-2);
@@ -90,4 +90,4 @@ TEST_CASE("test case pure-2 [test_sw_30]", "[test_sw_30]") {
     CHECK(0 == ptr->top());
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_SWORD_OFFER_30_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP

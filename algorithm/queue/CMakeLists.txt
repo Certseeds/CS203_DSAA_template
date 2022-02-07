@@ -7,12 +7,12 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 enable_testing()
 set(dependencies)
 
-set(sword_offer_order 09)
-LIST(TRANSFORM sword_offer_order PREPEND sword_offer_)
+set(leetcode_order)
+LIST(APPEND leetcode_order so_09)
+LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
-set(dependencies ${dependencies} ${sword_offer_order})
-
-unset(sword_offer_order)
+set(dependencies ${dependencies} ${leetcode_order})
+unset(leetcode_order)
 
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)

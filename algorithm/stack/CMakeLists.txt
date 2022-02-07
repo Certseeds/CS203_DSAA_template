@@ -8,20 +8,12 @@ enable_testing()
 set(dependencies)
 
 set(leetcode_order 678 20 32 42 1614)
-LIST(APPEND leetcode_order 84_85 316 321)
+LIST(APPEND leetcode_order 84_85 316 321 so_30)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})
 
 unset(leetcode_order)
-
-set(sword_offer_order 30)
-LIST(TRANSFORM sword_offer_order PREPEND sword_offer_)
-
-set(dependencies ${dependencies} ${sword_offer_order})
-
-unset(sword_offer_order)
-
 
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
