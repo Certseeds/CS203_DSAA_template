@@ -82,7 +82,7 @@ public:
     bool read(size_t page) override {
         if (this->exists(page)) {
             const auto iter = std::find_if(pset.begin(), pset.end(),
-                                           [page](const auto search) { return search.page == page; });
+                                           [page](const auto& search) { return search.page == page; });
             pset.erase(iter);
             const auto next{this->getNext(page)};
             pset.insert({page, next});
