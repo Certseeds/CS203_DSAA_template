@@ -27,12 +27,11 @@ SOFTWARE.
 
 namespace leetcode_20 {
 bool leetcode_20::isValid(const string &s) {
-    std::stack<uint8_t> stk;
+    std::stack<uint8_t> stk{{'?'}};
     std::unordered_map<uint8_t, uint8_t> umap;
     umap['('] = ')';
     umap['['] = ']';
     umap['{'] = '}';
-    stk.push('?');
     for (const auto i: s) {
         if (umap[stk.top()] == i) {
             stk.pop();

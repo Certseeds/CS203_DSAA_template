@@ -57,8 +57,7 @@ private:
         if (this->root == nullptr) {
             return true;
         }
-        stack<Node_t *> sta;
-        sta.push(this->root);
+        stack<Node_t *> sta{{this->root}};
         while (!sta.empty()) {
             const auto node = sta.top();
             sta.pop();
@@ -84,8 +83,7 @@ private:
         if (this->root == nullptr) {
             return true;
         }
-        stack<std::pair<int, Node_t *>> sta;
-        sta.push(std::make_pair(0, this->root));
+        stack<std::pair<int, Node_t *>> sta{{{0,this->root}}};
         int32_t count = -1;
         while (!sta.empty()) {
             const auto head = sta.top();
@@ -113,8 +111,7 @@ private:
         if (this->root == nullptr) {
             return true;
         }
-        stack<Node_t *> sta;
-        sta.push(this->root);
+        stack<Node_t *> sta{{this->root}};
         size_t count{0};
         while (!sta.empty()) {
             const auto node = sta.top();
@@ -181,8 +178,7 @@ public:
 
     ~RBTree() {
         if (this->root != nullptr) {
-            stack<Node_t *> sta;
-            sta.push(this->root);
+            stack<Node_t *> sta{{this->root}};
             while (!sta.empty()) {
                 const auto node = sta.top();
                 sta.pop();
@@ -580,8 +576,7 @@ void RBTree<T>::pre_order() const {
     if (this->root == nullptr) {
         return;
     }
-    stack<std::pair<int, Node_t *>> sta;
-    sta.push(std::make_pair(0, this->root));
+    stack<std::pair<int, Node_t *>> sta{{{0,this->root}}};
     int count = 0;
     while (!sta.empty()) {
         const auto head = sta.top();

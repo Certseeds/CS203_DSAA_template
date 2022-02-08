@@ -98,8 +98,7 @@ huffman::huffman(const string &str) {
     TreeNode *root = priorityQueue.top();
     const TreeNode *const Croot = root;
     priorityQueue.pop();
-    std::queue<std::pair<string, const TreeNode *const>> que;
-    que.push({"", Croot});
+    std::queue<std::pair<string, const TreeNode *const>> que{{{"", Croot}}};
     while (!que.empty()) {
         const auto[prefix, node] = que.front();
         que.pop();

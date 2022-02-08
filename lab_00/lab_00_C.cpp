@@ -118,8 +118,7 @@ output_type isBipartite(const input_type &graph) {
     for (decltype(node_number) i = 0; i < node_number; i++) {
         if (!graph[i].empty() && color_vec[i] == Color::uncolor) {
             color_vec[i] = Color::red;
-            queue<num_t> que;
-            que.push(i);
+            queue<num_t> que{{i}};
             while (!que.empty()) {
                 num_t head = que.front();
                 que.pop();

@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2022  nanoseeds
+Copyright (C) 2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,40 +23,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_590_test.hpp"
+#include "leetcode_669_test.hpp"
 
-namespace leetcode_590 {
+namespace leetcode_669 {
 
-void real_action(const Node *const root, vector<int32_t> &vec) {
+TreeNode *leetcode_669::trimBST(TreeNode *root, int L, int R) {
     if (root == nullptr) {
-        return;
+        return nullptr;
     }
-    for (const auto child: root->children) {
-        real_action(child, vec);
+    if (root->val < L) {
+        root->left = nullptr;
+        return trimBST(root->right, L, R);
+    } else if (root->val > R) {
+        root->right = nullptr;
+        return trimBST(root->left, L, R);
     }
-    vec.push_back(root->val);
-}
-
-vector<int32_t> leetcode_590::postorder(const Node *const root) {
-    vector<int32_t> vec;
-    real_action(root, vec);
-    return vec;
-}
-
-vector<int32_t> leetcode_590::postorderIter(const Node *const root) {
-    if (root == nullptr) {
-        return {};
-    }
-    list<int32_t> nodes;
-    for (stack<const Node *> sta{{root}}; !sta.empty();) {
-        const auto *const head = sta.top();
-        sta.pop();
-        nodes.insert(nodes.cbegin(), head->val);
-        for (const auto iter: head->children) {
-            sta.push(iter);
-        }
-    }
-    return {nodes.cbegin(), nodes.cend()};
+    root->left = trimBST(root->left, L, R);
+    root->right = trimBST(root->right, L, R);
+    return root;
 }
 
 }

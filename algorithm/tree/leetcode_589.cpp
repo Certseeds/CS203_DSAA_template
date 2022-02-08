@@ -51,7 +51,7 @@ vector<int32_t> leetcode_589::preorderIter(const Node *const root) {
     const auto func = [&vec](const Node *const node) {
         vec.push_back(node->val);
     };
-    for (stack<const Node *> sta({root}); !sta.empty();) {
+    for (stack<const Node *> sta{{root}}; !sta.empty();) {
         const auto *const head = sta.top();
         sta.pop();
         func(head);

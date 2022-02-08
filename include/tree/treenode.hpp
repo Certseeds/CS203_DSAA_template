@@ -69,9 +69,8 @@ static vector<TreeNode<T> *> numToTree(const vector<T> &nums) {
 
 template<typename T>
 static bool judge_equal(TreeNode<T> *const root, const vector<T> &vec) {
-    queue<TreeNode<T> *> que{};
+    queue<TreeNode<T> *> que{{root}};
     vector<T> nums{};
-    que.push(root);
     while (!que.empty()) {
         const TreeNode<T> *const head = que.front();
         que.pop();

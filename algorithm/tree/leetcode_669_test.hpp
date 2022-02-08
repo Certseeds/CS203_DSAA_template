@@ -23,40 +23,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_590_test.hpp"
+//@Tag tree
+//@Tag 树
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_669_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_669_HPP
 
-namespace leetcode_590 {
+#include <catch_main.hpp>
+#include <tree/treenode.hpp>
+#include <tree/treenode_link.hpp>
 
-void real_action(const Node *const root, vector<int32_t> &vec) {
-    if (root == nullptr) {
-        return;
-    }
-    for (const auto child: root->children) {
-        real_action(child, vec);
-    }
-    vec.push_back(root->val);
-}
+namespace leetcode_669 {
 
-vector<int32_t> leetcode_590::postorder(const Node *const root) {
-    vector<int32_t> vec;
-    real_action(root, vec);
-    return vec;
-}
+using TreeNode = TREE_NODE::TreeNode<int32_t>;
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
-vector<int32_t> leetcode_590::postorderIter(const Node *const root) {
-    if (root == nullptr) {
-        return {};
-    }
-    list<int32_t> nodes;
-    for (stack<const Node *> sta{{root}}; !sta.empty();) {
-        const auto *const head = sta.top();
-        sta.pop();
-        nodes.insert(nodes.cbegin(), head->val);
-        for (const auto iter: head->children) {
-            sta.push(iter);
-        }
-    }
-    return {nodes.cbegin(), nodes.cend()};
+struct leetcode_669 final {
+    static TreeNode *trimBST(TreeNode *root, int L, int R);
+};
+
+
+TEST_CASE("test_case 1 [test_669]", "[test_669]") {
+    const vector<int32_t> input{1, 0, 2};
+    const vector<int32_t> result{1,
+                                 TreeNode::No, 2,
+                                 TreeNode::No, TreeNode::No
+    };
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const TreeNodeLink link{numVecInput};
+
+    auto *const resultPtr = leetcode_669::trimBST(numVecInput[0], 1, 2);
+    CHECK(TREE_NODE::judge_equal(resultPtr, result));
 }
 
 }
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_669_HPP

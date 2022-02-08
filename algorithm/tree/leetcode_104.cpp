@@ -33,8 +33,7 @@ int32_t leetcode_104::maxDepth(TreeNode *root) {
     }
     root->val = 1;
     int32_t will_return{1};
-    stack<TreeNode *> tree;
-    tree.push(root);
+    stack<TreeNode *> tree{{root}};
     while (!tree.empty()) {
         const TreeNode *begin = tree.top();
         tree.pop();
