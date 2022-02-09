@@ -23,32 +23,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag string
-//@Tag 字符串
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_657_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_657_HPP
+#include "leetcode_so_05_test.hpp"
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <string>
-
-namespace leetcode_657 {
-
-using std::string;
-
-struct leetcode_657 {
-    static bool judgeCircle(const string &moves);
-};
-
-TEST_CASE("1 [test_657]", "[test_657]") {
-    static constexpr const char *const input{"UD"};
-    CHECK(leetcode_657::judgeCircle(input));
+namespace leetcode_so_05 {
+string leetcode_so_05::replaceSpace(const string &str) {
+    size_t space{0};
+    for (const auto ch: str) {
+        if (ch == ' ') {
+            space++;
+        }
+    }
+    const auto str_size{str.size()};
+    string will_return;
+    will_return.resize((space << 1) + str_size);
+    for (size_t r{str_size}, r_will{will_return.size() - 1}; r > 0; --r, --r_will) {
+        if (str[r - 1] != ' ') {
+            will_return[r_will] = str[r - 1];
+        } else {
+            will_return[r_will] = '0';
+            --r_will;
+            will_return[r_will] = '2';
+            --r_will;
+            will_return[r_will] = '%';
+        }
+    }
+    return will_return;
 }
-
-TEST_CASE("2 [test_657]", "[test_657]") {
-    static constexpr const char *const input{"LL"};
-    CHECK_FALSE(leetcode_657::judgeCircle(input));
 }
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_657_HPP

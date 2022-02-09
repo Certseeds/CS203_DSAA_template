@@ -25,30 +25,27 @@ SOFTWARE.
 */
 //@Tag string
 //@Tag 字符串
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_657_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_657_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_so_05_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_so_05_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
 #include <string>
 
-namespace leetcode_657 {
+namespace leetcode_so_05 {
 
 using std::string;
 
-struct leetcode_657 {
-    static bool judgeCircle(const string &moves);
+struct leetcode_so_05 {
+    static string replaceSpace(const string &str);
 };
 
-TEST_CASE("1 [test_657]", "[test_657]") {
-    static constexpr const char *const input{"UD"};
-    CHECK(leetcode_657::judgeCircle(input));
+
+TEST_CASE("1 [test_so_05]", "[test_so_05]") {
+    static constexpr const char *const input{"We are happy."}, *const result{"We%20are%20happy."};
+    CHECK(result == leetcode_so_05::replaceSpace(input));
 }
 
-TEST_CASE("2 [test_657]", "[test_657]") {
-    static constexpr const char *const input{"LL"};
-    CHECK_FALSE(leetcode_657::judgeCircle(input));
 }
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_657_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_so_05_HPP
