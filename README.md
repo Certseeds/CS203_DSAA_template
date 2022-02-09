@@ -1,12 +1,15 @@
 <div id="top"></div>
 
+[![MIT License][MIT-shield]][MIT_Link]
+[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_shield]][cc_by_nc_sa_4_0]
+[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
+
+[![Github Releases][release-shield]][release-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License](MIT-shield)][MIT_Link]
-[![CC BY-NC-SA 4.0](cc_by_nc_sa_4_0_shield)][cc_by_nc_sa_4_0]
-[![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
+
 
 <br />
 <div align="center">
@@ -174,7 +177,7 @@ PS: 当然,这种情况也只适用于规模比较小的情况,规模再大的�
 
 ``` cpp
 TEST_CASE("test case 1", "[test 00 C]") {
-  CS203_redirect cr{"01.data.in", ""};
+  const CS203_redirect cr{"01.data.in", ""};
   // 重定向开始,开始run
   // or CS203_redirect cr{"01.data.in"};
   auto output_data = isBipartite(read());
@@ -204,7 +207,7 @@ PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_
 ``` cpp
   TEST_CASE("test case 2", "[test 00 D]") {
     SECTION("do") {
-      CS203_redirect cr{"01.data.in", "01.test.out"};
+      const CS203_redirect cr{"01.data.in", "01.test.out"};
       auto input_data = read();
       cal(input_data);
     } SECTION("compare files") {
@@ -395,4 +398,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [issues-url]: https://github.com/Certseeds/CS203_DSAA_template/issues
 [license-shield]: https://img.shields.io/github/license/Certseeds/CS203_DSAA_template.svg?style=for-the-badge
 [license-url]: https://github.com/Certseeds/CS203_DSAA_template/blob/master/LICENSE.md
-
+[release-shield]: https://img.shields.io/github/release/Certseeds/CS203_DSAA_template.svg?style=for-the-badge
+[release-url]: https://github.com/Certseeds/CS203_DSAA_template/releases

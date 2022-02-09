@@ -58,7 +58,7 @@ using Catch::Matchers::Contains;
  * 应该如何只重定向输入,不重定向输出.
  * */
 TEST_CASE("test case 1", "[test 00 C]") {
-    CS203_redirect cr{"01.data.in", ""};
+    const CS203_redirect cr{"01.data.in", ""};
     // 重定向开始,开始run
     const auto output_data = isBipartite(read());
     // 重定向结束
@@ -66,25 +66,25 @@ TEST_CASE("test case 1", "[test 00 C]") {
 }
 
 TEST_CASE("test case 2", "[test 00 C]") {
-    CS203_redirect cr{"02.data.in"};
+    const  CS203_redirect cr{"02.data.in"};
     const auto output_data = isBipartite(read());
     CHECK(output_data);
 }
 
 TEST_CASE("test case 3", "[test 00 C]") {
-    CS203_redirect cr{"03.data.in"};
+    const CS203_redirect cr{"03.data.in"};
     const auto output_data = isBipartite(read());
     CHECK(output_data);
 }
 
 TEST_CASE("test case 4", "[test 00 C]") {
-    CS203_redirect cr{"04.data.in"};
+    const  CS203_redirect cr{"04.data.in"};
     const auto output_data = isBipartite(read());
     CHECK_FALSE(output_data);
 }
 
 TEST_CASE("test case 5", "[test 00 C]") {
-    CS203_redirect cr{"05.data.in"};
+    const  CS203_redirect cr{"05.data.in"};
     const auto output_data = isBipartite(read());
     CHECK_FALSE(output_data);
 }
@@ -97,7 +97,7 @@ TEST_CASE("test case in loop", "[test 00 C]") {
     };
     const vector<uint8_t> result{false, true, true, false, false};
     for (int i = 0; i < 5; ++i) {
-        CS203_redirect cr{strs[i]};
+        const  CS203_redirect cr{strs[i]};
         const auto output_data = isBipartite(read());
         CHECK(output_data == result[i]);
     }
@@ -136,7 +136,7 @@ TEST_CASE("test case with sequence", "[test 00 C]") {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {
-            CS203_redirect cr{datain, testout}; // 重定向输入,输出
+            const CS203_redirect cr{datain, testout}; // 重定向输入,输出
             main();
             // 用括号括住是为了让CS203_redirect在这里被析构,停止重定向
         }

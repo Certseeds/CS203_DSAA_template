@@ -38,22 +38,22 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 struct leetcode_1 {
-    static vector<int> twoSum(const vector<int> &nums, int target);
+    static vector<int32_t> twoSum(const vector<int32_t> &nums, int32_t target);
 };
 
 TEST_CASE("basic tests [test_1]", "[test_1]") {
     const vector<int32_t> vec{2, 7, 11, 15};
-    auto result = leetcode_1::twoSum(vec, 9);
+    const auto result = leetcode_1::twoSum(vec, 9);
     SECTION("size is always 2") {
         CHECK(result.size() == 2);
     }SECTION("test cases") {
-        CHECK_THAT(result, UnorderedEquals<int>({0, 1}));
+        CHECK_THAT(result, UnorderedEquals<int32_t>({0, 1}));
     }
 }
 
 TEST_CASE("basic tests 2 [test_1]", "[test_1]") {
     const vector<int32_t> vec{3, 2, 4};
-    auto result = leetcode_1::twoSum(vec, 6);
+    const auto result = leetcode_1::twoSum(vec, 6);
     SECTION("size is always 2") {
         CHECK(result.size() == 2);
     }SECTION("test cases") {

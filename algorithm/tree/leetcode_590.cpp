@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -48,7 +48,7 @@ vector<int32_t> leetcode_590::postorderIter(const Node *const root) {
         return {};
     }
     list<int32_t> nodes;
-    for (stack<const Node *> sta({root}); !sta.empty();) {
+    for (stack<const Node *> sta{{root}}; !sta.empty();) {
         const auto *const head = sta.top();
         sta.pop();
         nodes.insert(nodes.cbegin(), head->val);

@@ -78,8 +78,7 @@ inline input_type read() {
 }
 
 output_type cal(const input_type &data) {
-    stack<num_t> sta;
-    sta.push(-1);
+    stack<num_t> sta{{-1}};
     for (const auto &ele: data) {
         if (ele == left) {
             // 无论怎样,左括号都要压栈

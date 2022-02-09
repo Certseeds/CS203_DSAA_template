@@ -1,16 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanos
- * @Date: 2021-04-12 23:56:04
- * @LastEditors: nanos
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanos
+Copyright (C) 2020-2022  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -20,10 +13,10 @@ copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+copies or substantial portions of the Software.RRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WA
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTIES OF MERCHANTABILITY,
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
@@ -32,15 +25,15 @@ SOFTWARE.
 */
 
 #include <catch_main.hpp>
-#include "build_graph.hpp"
 #include "dijistra.hpp"
 
 namespace graph {
+namespace dijistra {
 using Catch::Matchers::Equals;
 // 无负值最短路径
 // Dijkstra
 TEST_CASE("1 [test graph dijistra]", "[test graph dijistra]") {
-    const auto adjlist_obj1 = build_adjlist(
+    const auto obj = graphlist(
             {{{7, 13, 53}, {10, 5, 86}, {5, 14, 45}, {5, 10, 49}, {5, 6, 77}, {12, 9, 95}, {6, 10, 75}, {7, 4, 61},
               {8, 5, 2}, {10, 1, 45}, {11, 14, 19}, {9, 15, 15}, {6, 4, 95}, {6, 1, 4}, {8, 12, 29}, {1, 9, 15},
               {10, 9, 81}, {13, 5, 13}, {9, 13, 85}, {2, 8, 45}, {7, 8, 11}, {7, 3, 63}, {2, 11, 60}, {2, 5, 59},
@@ -69,12 +62,19 @@ TEST_CASE("1 [test graph dijistra]", "[test graph dijistra]") {
               {10, 14, 32}, {13, 8, 67}, {6, 3, 2}, {9, 14, 3}, {6, 11, 71}, {11, 2, 67}, {3, 1, 65}, {13, 12, 0},
               {3, 6, 27}, {12, 10, 77}}},
             15);
-    const auto adjlist_obj2 = build_adjlist({{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}}, 4);
-    const auto adjlist_obj3 = build_adjlist({{{1, 2, 1}}}, 2);
-    CHECK_THAT(dijkstra(adjlist_obj1, 2),
+    CHECK_THAT(obj.dijkstra(2),
                Equals(vector<int32_t>{61, 0, 36, 61, 47, 57, 57, 45, 57, 55, 46, 50, 70, 57, 52}));
-    CHECK_THAT(dijkstra(adjlist_obj2, 2), Equals(vector<int32_t>{1, 0, 1, 2}));
-    CHECK_THAT(dijkstra(adjlist_obj3, 1), Equals(vector<int32_t>{0, 1}));
-    CHECK_THAT(dijkstra(adjlist_obj3, 2), Equals(vector<int32_t>{0x3f3f3f3f, 0}));
+}
+
+TEST_CASE("2 [test graph dijistra]", "[test graph dijistra]") {
+    const auto obj = graphlist({{{2, 1, 1}, {2, 3, 1}, {3, 4, 1}}}, 4);
+    CHECK_THAT(obj.dijkstra(2), Equals(vector<int32_t>{1, 0, 1, 2}));
+}
+
+TEST_CASE("3 [test graph dijistra]", "[test graph dijistra]") {
+    const auto obj = graphlist({{{1, 2, 1}}}, 2);
+    CHECK_THAT(obj.dijkstra(1), Equals(vector<int32_t>{0, 1}));
+    CHECK_THAT(obj.dijkstra(2), Equals(vector<int32_t>{0x3f3f3f3f, 0}));
+}
 }
 }

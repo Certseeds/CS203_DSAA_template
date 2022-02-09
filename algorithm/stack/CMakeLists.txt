@@ -8,10 +8,11 @@ enable_testing()
 set(dependencies)
 
 set(leetcode_order 678 20 32 42 1614)
-LIST(APPEND leetcode_order 84_85 316 321)
-foreach (elementOrder IN LISTS leetcode_order)
-    LIST(APPEND dependencies leetcode_${elementOrder})
-endforeach ()
+LIST(APPEND leetcode_order 84_85 316 321 so_30)
+LIST(TRANSFORM leetcode_order PREPEND leetcode_)
+
+set(dependencies ${dependencies} ${leetcode_order})
+
 unset(leetcode_order)
 
 foreach (elementName IN LISTS dependencies)

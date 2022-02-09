@@ -40,10 +40,12 @@ using std::string;
 struct leetcode_657 {
     static bool judgeCircle(const string &moves);
 };
+
 TEST_CASE("1 [test_657]", "[test_657]") {
     static constexpr const char *const input{"UD"};
     CHECK(leetcode_657::judgeCircle(input));
 }
+
 TEST_CASE("2 [test_657]", "[test_657]") {
     static constexpr const char *const input{"LL"};
     CHECK_FALSE(leetcode_657::judgeCircle(input));

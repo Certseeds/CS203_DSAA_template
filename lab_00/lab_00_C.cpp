@@ -113,17 +113,16 @@ inline input_type read() {
 }
 
 output_type isBipartite(const input_type &graph) {
-    auto node_number = graph.size();
+    const auto node_number = graph.size();
     vector<Color> color_vec(node_number, Color::uncolor);
-    for (decltype(node_number) i = 0; i < node_number; i++) {
+    for (size_t i = 0; i < node_number; ++i) {
         if (!graph[i].empty() && color_vec[i] == Color::uncolor) {
             color_vec[i] = Color::red;
-            queue<num_t> que;
-            que.push(i);
+            queue<num_t> que{{static_cast<int32_t>(i)}};
             while (!que.empty()) {
-                num_t head = que.front();
+                const num_t head = que.front();
                 que.pop();
-                Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
+                const Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
                 for (const auto &j: graph[head]) {
                     if (color_vec[j] == Color::uncolor) {
                         color_vec[j] = next_color;

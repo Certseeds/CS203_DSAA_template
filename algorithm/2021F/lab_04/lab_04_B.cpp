@@ -59,13 +59,17 @@ please find the going-out order of student.
 #include <list/ListNode.hpp>
 
 #else
+
 #include <cstdint>
 #include <cstddef>
+
 namespace LISTNODE {
 struct ListNode {
     int32_t val;
     ListNode *next;
+
     ListNode(int32_t v, ListNode *n) : val(v), next(n) {}
+
     explicit ListNode(int32_t x) : ListNode(x, nullptr) {}
 };
 }

@@ -61,8 +61,10 @@ SOFTWARE.
 #ifdef CS203_DSAA_TEST_MACRO
 
 #else
+
 #include <cstdint>
 #include <cstddef>
+
 #pragma GCC optimize(3, "Ofast", "inline", "no-stack-protector", "unroll-loops")
 #pragma GCC optimize("inline-small-functions")
 #pragma GCC optimize("-finline-small-functions")

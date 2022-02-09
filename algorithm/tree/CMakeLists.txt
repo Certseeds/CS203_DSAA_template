@@ -5,14 +5,15 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
-set(dependencies traverse_test)
+set(dependencies traverse_test huffman_test)
 
 set(leetcode_order 94 95 96 98 100)
 LIST(APPEND leetcode_order 104 226 530 559 589)
-LIST(APPEND leetcode_order 590 617 654)
-foreach (elementOrder IN LISTS leetcode_order)
-    LIST(APPEND dependencies leetcode_${elementOrder})
-endforeach ()
+LIST(APPEND leetcode_order 590 617 654 669)
+LIST(TRANSFORM leetcode_order PREPEND leetcode_)
+
+set(dependencies ${dependencies} ${leetcode_order})
+
 unset(leetcode_order)
 
 foreach (elementName IN LISTS dependencies)

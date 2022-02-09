@@ -23,8 +23,9 @@ unset(dependencies)
 
 set(CMAKE_CXX_STANDARD 17)
 set(dependencies 28)
-foreach (elementOrder IN LISTS dependencies)
-    set(elementName leetcode_${elementOrder})
+LIST(TRANSFORM dependencies PREPEND leetcode_)
+
+foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE ${PROJECT_NAME}_kmp)
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp")

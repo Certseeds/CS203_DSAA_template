@@ -44,8 +44,7 @@ void leetcode_130::solve(vector<vector<char>> &board) {
             return;
         }
         results[x][y] = GRID::KEEP_LAND;
-        stack<std::pair<size_t, size_t>> points;
-        points.emplace(x, y);
+        stack<std::pair<size_t, size_t>> points{{{x,y}}};
         while (!points.empty()) {
             const auto head = points.top();
             points.pop();

@@ -102,8 +102,7 @@ output_type cal(const input_type &data) {
     vector<uint8_t> will_return{};
     will_return.reserve(strs.size());
     for (const auto &str: strs) {
-        std::stack<uint8_t> stk;
-        stk.push('?');
+        std::stack<uint8_t> stk{{'?'}};
         for (const auto i: str) {
             if (MAP::umap.at(stk.top()) == i) {
                 stk.pop();

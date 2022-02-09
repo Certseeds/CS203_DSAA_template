@@ -13,9 +13,10 @@ set(dependencies basic_test triple_search rotate_array)
 
 set(leetcode_order 35 4 33 162 34)
 LIST(APPEND leetcode_order 69 81 153_154)
-foreach (elementOrder IN LISTS leetcode_order)
-    LIST(APPEND dependencies leetcode_${elementOrder})
-endforeach ()
+LIST(TRANSFORM leetcode_order PREPEND leetcode_)
+
+set(dependencies ${dependencies} ${leetcode_order})
+
 unset(leetcode_order)
 
 

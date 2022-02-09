@@ -1,17 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
- * @Author: nanos
- * @Date: 2021-04-12 23:57:10
- * @LastEditors: nanos
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanos
+Copyright (C) 2020-2022  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -36,6 +28,7 @@ SOFTWARE.
 
 #include <cstdint>
 #include <vector>
+#include <cstddef>
 
 namespace graph {
 using std::vector;
@@ -52,5 +45,6 @@ using adjlist = vector<vector<link>>;
 adjlist build_adjlist(const vector<vector<int32_t>> &input, int32_t node_num);
 
 bool check_graph_cost_all_positive(const vector<vector<int32_t>> &input);
+
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_BUILD_GRAPH_HPP

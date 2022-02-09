@@ -85,7 +85,7 @@ void pre1(const TreeNode *root, action func) {
     if (root == nullptr) {
         return;
     }
-    for (stack<const TreeNode *> sta({root}); !sta.empty();) {
+    for (stack<const TreeNode *> sta{{root}}; !sta.empty();) {
         const TreeNode *head = sta.top();
         sta.pop();
         func(head);
@@ -121,7 +121,7 @@ void pre3(const TreeNode *root, action func) {
     if (root == nullptr) {
         return;
     }
-    for (stack<const TreeNode *> sta({root}); !sta.empty();) {
+    for (stack<const TreeNode *> sta{{root}}; !sta.empty();) {
         const TreeNode *head = sta.top();
         sta.pop();
         if (head != nullptr) {
@@ -165,7 +165,7 @@ void in2(const TreeNode *root, action func) {
     if (root == nullptr) {
         return;
     }
-    for (stack<const TreeNode *> sta({root}); !sta.empty();) {
+    for (stack<const TreeNode *> sta{{root}}; !sta.empty();) {
         const TreeNode *head = sta.top();
         sta.pop();
         if (head != nullptr) {
@@ -190,7 +190,7 @@ void post(const TreeNode *root, action func) {
     if (root == nullptr) {
         return;
     }
-    for (stack<const TreeNode *> sta({root}); !sta.empty();) {
+    for (stack<const TreeNode *> sta{{root}}; !sta.empty();) {
         const TreeNode *head = sta.top();
         sta.pop();
         if (head != nullptr) {
@@ -216,10 +216,10 @@ void post2(const TreeNode *root, action func) {
         return;
     }
     list<const TreeNode *> nodes;
-    for (stack<const TreeNode *> sta({root}); !sta.empty();) {
+    for (stack<const TreeNode *> sta{{root}}; !sta.empty();) {
         const auto *const head = sta.top();
         sta.pop();
-        nodes.insert(nodes.cbegin(), head);
+        nodes.push_front(head);
         if (head->left != nullptr) {
             sta.push(head->left);
         }
@@ -227,7 +227,7 @@ void post2(const TreeNode *root, action func) {
             sta.push(head->right);
         }
     }
-    for (const auto node: nodes) {
+    for (const auto *const node: nodes) {
         func(node);
     }
 }
