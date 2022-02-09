@@ -47,16 +47,16 @@ using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
 TEST_CASE("test case 1", "[test 00 B]") {
-    auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
+    const auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
     for (const auto &i: vec1) {
         CHECK(cal(i) == brute_force(i));
     }
 }
 
 TEST_CASE("test case 2", "[test 00 B]") {
-    auto vec1 = vector<num_type>{1, 2, 3, 4, 5, 6, 7, 1100000};
-    auto result = cal_warpper(vec1);
-    auto what_we_want = vector<num_type>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
+    const auto vec1 = vector<num_type>{1, 2, 3, 4, 5, 6, 7, 1100000};
+    const auto result = cal_warpper(vec1);
+    const auto what_we_want = vector<num_type>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
     CHECK_THAT(result, Equals<num_type>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
     CHECK_THAT(result, Equals(what_we_want));
 }

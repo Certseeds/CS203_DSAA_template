@@ -177,7 +177,7 @@ PS: 当然,这种情况也只适用于规模比较小的情况,规模再大的�
 
 ``` cpp
 TEST_CASE("test case 1", "[test 00 C]") {
-  CS203_redirect cr{"01.data.in", ""};
+  const CS203_redirect cr{"01.data.in", ""};
   // 重定向开始,开始run
   // or CS203_redirect cr{"01.data.in"};
   auto output_data = isBipartite(read());
@@ -207,7 +207,7 @@ PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_
 ``` cpp
   TEST_CASE("test case 2", "[test 00 D]") {
     SECTION("do") {
-      CS203_redirect cr{"01.data.in", "01.test.out"};
+      const CS203_redirect cr{"01.data.in", "01.test.out"};
       auto input_data = read();
       cal(input_data);
     } SECTION("compare files") {

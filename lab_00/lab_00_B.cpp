@@ -79,15 +79,16 @@ inline input_type read() {
 }
 
 output_type cal_warpper(const input_type &input) {
-    output_type will_return(input.size(), 0);
-    for (size_t i = 0; i < input.size(); ++i) {
+    const auto size{input.size()};
+    output_type will_return(size, 0);
+    for (size_t i{0}; i < size; ++i) {
         will_return[i] = cal(input[i]);
     }
     return will_return;
 }
 
 inline num_type cal(num_type data) {
-    num_type will_return = data * (data + 1) * (data + 2) / 6;
+    const num_type will_return = data * (data + 1) * (data + 2) / 6;
     return will_return;
 }
 

@@ -80,8 +80,8 @@ inline input_type read() {
     num_t m{0}, n{0};
     std::cin >> m >> n;
     input_type mat(m + 1, vector<num_t>(n + 1, -0x3f3f));
-    for (num_t k = 1; k <= m; ++k) {
-        for (num_t i = 1; i <= n; ++i) {
+    for (num_t k{1}; k <= m; ++k) {
+        for (num_t i{1}; i <= n; ++i) {
             std::cin >> mat[k][i];
         }
     }
@@ -98,9 +98,9 @@ void print(output_type &map, num_t a, num_t b) {
 
 void cal(input_type &hi) {
     vector<vector<char>> out(302, vector<char>(301, '.'));
-    auto m = static_cast<num_t>(hi.size()) - 1;
-    auto n = static_cast<num_t>(hi.front().size()) - 1;
-    num_t wide = 4 * n + 2 * m + 1;
+    const auto m = static_cast<num_t>(hi.size()) - 1;
+    const auto n = static_cast<num_t>(hi.front().size()) - 1;
+    const num_t wide = 4 * n + 2 * m + 1;
     num_t h = -0x3f3f;
     for (auto i = 1; i <= m; i++) {
         for (auto j = 1; j <= n; j++) {

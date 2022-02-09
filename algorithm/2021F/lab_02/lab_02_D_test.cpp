@@ -77,7 +77,7 @@ TEST_CASE("test case with sequence", "[test 02 D][.]") {
         string datain, dataout, testout; // 声明
         tie(datain, dataout, testout) = file_name; // 解包
         {
-            CS203_redirect cr{datain, testout}; // 重定向输入,输出
+            const CS203_redirect cr{datain, testout}; // 重定向输入,输出
             main();
             // 用括号括住是为了让CS203_redirect在这里被析构,停止重定向
         }

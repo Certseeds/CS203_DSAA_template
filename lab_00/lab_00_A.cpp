@@ -51,7 +51,7 @@ using output_type = num_t;
 
 inline input_type read();
 
-output_type cal(input_type data);
+output_type cal(const input_type& data);
 
 void output(const output_type &data);
 
@@ -68,7 +68,7 @@ inline input_type read() {
     return std::make_tuple(a, b);
 }
 
-output_type cal(input_type data) {
+output_type cal(const input_type& data) {
     num_t a{0}, b{0};
     tie(a, b) = data;
     num_t c = a + b;
