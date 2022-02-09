@@ -8,7 +8,7 @@ enable_testing()
 
 set(dependencies 3 6 8 12 13)
 LIST(APPEND dependencies 14 22 38 344 535)
-LIST(APPEND dependencies 657 387)
+LIST(APPEND dependencies 657 387 383)
 LIST(TRANSFORM dependencies PREPEND leetcode_)
 
 foreach (elementName IN LISTS dependencies)
