@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,32 +23,33 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag string
-//@Tag 字符串
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
+#include "leetcode_697_test.hpp"
+#include <unordered_map>
 
-#include <catch_main.hpp>
-#include <cassert>
-#include <cstdint>
-#include <string>
+namespace leetcode_697 {
+using std::unordered_map;
 
-namespace leetcode_38 {
-
-using std::string;
-
-struct leetcode_38 {
-    static string countAndSay(int32_t n);
-};
-
-TEST_CASE("1 [test_38]", "[test_38]") {
-    CHECK(leetcode_38::countAndSay(1) == "1");
-    CHECK(leetcode_38::countAndSay(2) == "11");
-    CHECK(leetcode_38::countAndSay(3) == "21");
-    CHECK(leetcode_38::countAndSay(4) == "1211");
-    CHECK(leetcode_38::countAndSay(5) == "111221");
-    CHECK(leetcode_38::countAndSay(6) == "312211");
-    CHECK(leetcode_38::countAndSay(7) == "13112221");
+int32_t leetcode_697::findShortestSubArray(const vector<int32_t> &nums) {
+    if (nums.empty()) {
+        return 0;
+    }
+    unordered_map<int, int> times, begin;
+    int32_t max{0},will_return{0};
+    const auto nums_size{static_cast<int32_t>(nums.size())};
+    for (int32_t i{0}; i < nums_size; i++) {
+        const auto num{nums[i]};
+        ++times[num];
+        if (times[num] == 1) {
+            begin[num] = i;
+        } else {
+            if (times[num] > max) {
+                max = times[num];
+                will_return = i - begin[num];
+            } else if (times[num] == max) {
+                will_return = std::min(will_return, i - begin[num]);
+            }
+        }
+    }
+    return will_return + 1;
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP

@@ -23,32 +23,17 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag string
-//@Tag 字符串
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
+#include "leetcode_242_test.hpp"
+#include <array>
+#include <algorithm>
 
-#include <catch_main.hpp>
-#include <cassert>
-#include <cstdint>
-#include <string>
+namespace leetcode_242 {
+using std::array;
 
-namespace leetcode_38 {
-
-using std::string;
-
-struct leetcode_38 {
-    static string countAndSay(int32_t n);
-};
-
-TEST_CASE("1 [test_38]", "[test_38]") {
-    CHECK(leetcode_38::countAndSay(1) == "1");
-    CHECK(leetcode_38::countAndSay(2) == "11");
-    CHECK(leetcode_38::countAndSay(3) == "21");
-    CHECK(leetcode_38::countAndSay(4) == "1211");
-    CHECK(leetcode_38::countAndSay(5) == "111221");
-    CHECK(leetcode_38::countAndSay(6) == "312211");
-    CHECK(leetcode_38::countAndSay(7) == "13112221");
+bool leetcode_242::isAnagram(const string &s, const string &t) {
+    std::array<size_t, std::numeric_limits<char>::max() + 1> arr{0};
+    for (const auto ch: s) { ++arr[ch]; }
+    for (const auto ch: t) { --arr[ch]; }
+    return std::all_of(arr.cbegin(), arr.cend(), [](const auto ele) { return ele == 0; });
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP

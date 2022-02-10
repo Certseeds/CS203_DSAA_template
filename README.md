@@ -180,7 +180,7 @@ TEST_CASE("test case 1", "[test 00 C]") {
   const CS203_redirect cr{"01.data.in", ""};
   // 重定向开始,开始run
   // or CS203_redirect cr{"01.data.in"};
-  auto output_data = isBipartite(read());
+  const auto output_data = isBipartite(read());
   // 重定向结束
   CHECK_FALSE(output_data);
 }

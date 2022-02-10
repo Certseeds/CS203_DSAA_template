@@ -25,30 +25,31 @@ SOFTWARE.
 */
 //@Tag string
 //@Tag 字符串
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_242_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_242_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
 #include <string>
 
-namespace leetcode_38 {
+namespace leetcode_242 {
 
 using std::string;
 
-struct leetcode_38 {
-    static string countAndSay(int32_t n);
+struct leetcode_242 {
+    static bool isAnagram(const string &s, const string &t);
 };
 
-TEST_CASE("1 [test_38]", "[test_38]") {
-    CHECK(leetcode_38::countAndSay(1) == "1");
-    CHECK(leetcode_38::countAndSay(2) == "11");
-    CHECK(leetcode_38::countAndSay(3) == "21");
-    CHECK(leetcode_38::countAndSay(4) == "1211");
-    CHECK(leetcode_38::countAndSay(5) == "111221");
-    CHECK(leetcode_38::countAndSay(6) == "312211");
-    CHECK(leetcode_38::countAndSay(7) == "13112221");
+TEST_CASE("1 [test_242]", "[test_242]") {
+    static constexpr const char *const s{"anagram"}, *const t{"nagaram"};
+    CHECK(leetcode_242::isAnagram(s, t));
 }
+
+TEST_CASE("2 [test_242]", "[test_242]") {
+    static constexpr const char *const s{"rat"}, *const t{"cat"};
+    CHECK_FALSE(leetcode_242::isAnagram(s, t));
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_38_HPP
+
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_242_HPP
