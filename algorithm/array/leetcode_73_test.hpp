@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,11 +32,9 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <vector>
 #include <cstdint>
-#include <unordered_set>
 
 namespace leetcode_73 {
 using std::vector;
-using std::unordered_set;
 
 struct leetcode_73 {
     static void setZeroes(vector<vector<int32_t>> &matrix);

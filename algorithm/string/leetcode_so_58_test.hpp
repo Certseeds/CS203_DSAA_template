@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -40,8 +40,6 @@ using std::string;
 struct leetcode_so_58 {
     static string reverseLeftWords(const string &s, int n);
 };
-
-
 
 TEST_CASE("1 [test_so_58]", "[test_so_58]") {
     static constexpr const char *const input{"We are happy."}, *const result{"are happy.We "};

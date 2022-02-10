@@ -54,14 +54,10 @@ public:
 };
 
 static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
-        std::tuple<const char *const, const char *const, const char *const>
-                {"01.data.in", "scan/01.data.out", "scan/01.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"02.data.in", "scan/02.data.out", "scan/02.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"03.data.in", "scan/03.data.out", "scan/03.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"04.data.in", "scan/04.data.out", "scan/04.test.out"}
+        std::make_tuple("01.data.in", "scan/01.data.out", "scan/01.test.out"),
+        std::make_tuple("02.data.in", "scan/02.data.out", "scan/02.test.out"),
+        std::make_tuple("03.data.in", "scan/03.data.out", "scan/03.test.out"),
+        std::make_tuple("04.data.in", "scan/04.data.out", "scan/04.test.out"),
 };
 
 TEST_CASE("scan test sample") {

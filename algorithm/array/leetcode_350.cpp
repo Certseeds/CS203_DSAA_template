@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,14 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_350_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_350 {
-
+using std::unordered_map;
 
 vector<int32_t> leetcode_350::intersect(const vector<int32_t> &nums1, const vector<int32_t> &nums2) {
-    const auto * nums1Ref = &nums1;
-    const auto * nums2Ref = &nums2;
+    const auto *nums1Ref = &nums1;
+    const auto *nums2Ref = &nums2;
     const auto nums1_size{nums1.size()}, nums2_size{nums2.size()};
     if (nums1_size >= nums2_size) {
         std::swap(nums1Ref, nums2Ref);

@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_219_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_219 {
-bool leetcode_219::containsNearbyDuplicate(const vector <int32_t> &nums, int32_t k) {
-    unordered_map <size_t, int32_t> umap;
+using std::unordered_map;
+
+bool leetcode_219::containsNearbyDuplicate(const vector<int32_t> &nums, int32_t k) {
+    unordered_map<size_t, int32_t> umap;
     const int32_t nums_size{static_cast<int32_t>(nums.size())};
     for (int32_t i{0}; i < nums_size; i++) {
         if (umap[nums[i]] != 0 && (i - umap[nums[i]]) < k) {
@@ -37,4 +40,5 @@ bool leetcode_219::containsNearbyDuplicate(const vector <int32_t> &nums, int32_t
     }
     return false;
 }
+
 }

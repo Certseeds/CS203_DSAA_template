@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,17 +24,17 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_13_test.hpp"
+#include <array>
 
 namespace leetcode_13 {
+using std::array;
+
 int32_t leetcode_13::romanToInt(const string &s) {
-    constexpr const static array<array<const char *const, 9>, 3> vas{{
-                                                                             {"C", "CC", "CCC", "CD", "D", "DC", "DCC",
-                                                                              "DCCC", "CM"},
-                                                                             {"X", "XX", "XXX", "XL", "L", "LX", "LXX",
-                                                                              "LXXX", "XC"},
-                                                                             {"I", "II", "III", "IV", "V", "VI", "VII",
-                                                                              "VIII", "IX"}
-                                                                     }};
+    constexpr const static array<array<const char *const, 9>, 3> vas{
+            {{"C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"},
+             {"X", "XX", "XXX", "XL", "L", "LX", "LXX", "LXXX", "XC"},
+             {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"}}
+    };
     int32_t will_return{0};
     size_t begin{0};
     int32_t added{1000};

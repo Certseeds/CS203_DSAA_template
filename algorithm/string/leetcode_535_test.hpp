@@ -32,12 +32,10 @@ SOFTWARE.
 #include <cstdint>
 #include <cstddef>
 #include <string>
-#include <unordered_map>
 
 namespace leetcode_535 {
 
 using std::string;
-using std::unordered_map;
 
 class base {
 public:

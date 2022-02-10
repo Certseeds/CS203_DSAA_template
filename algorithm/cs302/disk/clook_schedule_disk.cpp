@@ -52,14 +52,10 @@ public:
 };
 
 static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
-        std::tuple<const char *const, const char *const, const char *const>
-                {"01.data.in", "clook/01.data.out", "clook/01.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"02.data.in", "clook/02.data.out", "clook/02.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"03.data.in", "clook/03.data.out", "clook/03.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"04.data.in", "clook/04.data.out", "clook/04.test.out"}
+        std::make_tuple("01.data.in", "clook/01.data.out", "clook/01.test.out"),
+        std::make_tuple("02.data.in", "clook/02.data.out", "clook/02.test.out"),
+        std::make_tuple("03.data.in", "clook/03.data.out", "clook/03.test.out"),
+        std::make_tuple("04.data.in", "clook/04.data.out", "clook/04.test.out"),
 };
 
 TEST_CASE("clook test sample") {

@@ -38,7 +38,7 @@ namespace leetcode_697 {
 using std::vector;
 
 struct leetcode_697 {
-    static int32_t  findShortestSubArray(const vector<int32_t> &nums);
+    static int32_t findShortestSubArray(const vector<int32_t> &nums);
 };
 
 TEST_CASE("test case 1 [test_697]", "[test_697]") {

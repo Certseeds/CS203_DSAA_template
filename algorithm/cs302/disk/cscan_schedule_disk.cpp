@@ -54,14 +54,10 @@ public:
 };
 
 static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
-        std::tuple<const char *const, const char *const, const char *const>
-                {"01.data.in", "cscan/01.data.out", "cscan/01.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"02.data.in", "cscan/02.data.out", "cscan/02.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"03.data.in", "cscan/03.data.out", "cscan/03.test.out"},
-        std::tuple<const char *const, const char *const, const char *const>
-                {"04.data.in", "cscan/04.data.out", "cscan/04.test.out"}
+        std::make_tuple("01.data.in", "cscan/01.data.out", "cscan/01.test.out"),
+        std::make_tuple("02.data.in", "cscan/02.data.out", "cscan/02.test.out"),
+        std::make_tuple("03.data.in", "cscan/03.data.out", "cscan/03.test.out"),
+        std::make_tuple("04.data.in", "cscan/04.data.out", "cscan/04.test.out"),
 };
 
 TEST_CASE("cscan test sample") {
@@ -69,7 +65,8 @@ TEST_CASE("cscan test sample") {
         {
             const CS203_redirect cr{stdInput, testOutput};
             const auto input = inputs::read_input();
-            const std::unique_ptr<disk_base> disk = std::make_unique<cscan_disk>(input.S, input.M, input.N, input.requests);
+            const std::unique_ptr<disk_base> disk = std::make_unique<cscan_disk>(input.S, input.M, input.N,
+                                                                                 input.requests);
             disk->output();
         }
         CHECK(compareFiles(stdOutput, testOutput));

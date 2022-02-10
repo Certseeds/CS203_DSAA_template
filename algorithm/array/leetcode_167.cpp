@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_167_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_167 {
+using std::unordered_map;
 
 vector<int32_t> leetcode_167::twoSum(const vector<int32_t> &numbers, int32_t target) {
     unordered_map<int32_t, int32_t> umap;
