@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2020-2021  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,30 +23,26 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_203_test.hpp"
+#include "leetcode_709_test.hpp"
+#include <array>
 
-namespace leetcode_203 {
+namespace leetcode_709 {
+using std::array;
 
-ListNode *leetcode_203::removeElements(ListNode *head, int32_t val) {
-    ListNode fst{0};
-    for (ListNode *base{head}; base != nullptr; base = base->next) {
-        if (base->val != val) {
-            fst.next = base;
-            break;
-        }
+constexpr std::array<char, std::numeric_limits<char>::max() + 1> prepare() {
+    std::array<char, std::numeric_limits<char>::max() + 1> bigs{0};
+    for (char ch{'A'}; ch <= 'Z'; ++ch) {
+        bigs[ch] = ('a' - 'A');
     }
-    if (fst.next == nullptr) {
-        return nullptr;
-    }
-    for (ListNode *base{fst.next}; base->next != nullptr;) {
-        ListNode *nnext{base->next};
-        if (nnext->val == val) {
-            base->next = nnext->next;
-        } else {
-            base = base->next;
-        }
-    }
-    return fst.next; // should not reach there
+    return bigs;
 }
 
+string leetcode_709::toLowerCase(const string &str) {
+    static constexpr const std::array<char, prepare().size()> arr{prepare()};
+    string will_return{str};
+    for (auto &ch: will_return) {
+        ch += arr[ch];
+    }
+    return will_return;
+}
 }

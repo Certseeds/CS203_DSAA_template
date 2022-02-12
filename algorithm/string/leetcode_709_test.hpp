@@ -23,30 +23,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_203_test.hpp"
+//@Tag string
+//@Tag 字符串
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_709_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_709_HPP
 
-namespace leetcode_203 {
+#include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <string>
 
-ListNode *leetcode_203::removeElements(ListNode *head, int32_t val) {
-    ListNode fst{0};
-    for (ListNode *base{head}; base != nullptr; base = base->next) {
-        if (base->val != val) {
-            fst.next = base;
-            break;
-        }
-    }
-    if (fst.next == nullptr) {
-        return nullptr;
-    }
-    for (ListNode *base{fst.next}; base->next != nullptr;) {
-        ListNode *nnext{base->next};
-        if (nnext->val == val) {
-            base->next = nnext->next;
-        } else {
-            base = base->next;
-        }
-    }
-    return fst.next; // should not reach there
+namespace leetcode_709 {
+using std::string;
+
+struct leetcode_709 {
+    static string toLowerCase(const string &str);
+};
+
+
+TEST_CASE("1 [test_709]", "[test_709]") {
+    static constexpr const char *const input{"UD"}, *const output{"ud"};
+    CHECK(output == leetcode_709::toLowerCase(input));
 }
 
+TEST_CASE("2 [test_709]", "[test_709]") {
+    static constexpr const char *const input{"LoL"}, *const output{"lol"};
+    CHECK(output == leetcode_709::toLowerCase(input));
 }
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_709_HPP

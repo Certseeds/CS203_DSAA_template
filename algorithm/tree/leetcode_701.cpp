@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,30 +23,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_203_test.hpp"
+#include "leetcode_701_test.hpp"
 
-namespace leetcode_203 {
+namespace leetcode_701 {
 
-ListNode *leetcode_203::removeElements(ListNode *head, int32_t val) {
-    ListNode fst{0};
-    for (ListNode *base{head}; base != nullptr; base = base->next) {
-        if (base->val != val) {
-            fst.next = base;
-            break;
-        }
+TreeNode *leetcode_701::insertIntoBST(TreeNode *root, int32_t val) {
+    auto *const newnode = new TreeNode(val);
+    if (root == nullptr) {
+        return newnode;
     }
-    if (fst.next == nullptr) {
-        return nullptr;
-    }
-    for (ListNode *base{fst.next}; base->next != nullptr;) {
-        ListNode *nnext{base->next};
-        if (nnext->val == val) {
-            base->next = nnext->next;
+    for (TreeNode *base{root}; base != nullptr;) {
+        if (base->val > val) {
+            if (base->left == nullptr) {
+                base->left = newnode;
+                return root;
+            }
+            base = base->left;
         } else {
-            base = base->next;
+            if (base->right == nullptr) {
+                base->right = newnode;
+                return root;
+            }
+            base = base->right;
         }
     }
-    return fst.next; // should not reach there
+    return nullptr;
 }
-
 }
