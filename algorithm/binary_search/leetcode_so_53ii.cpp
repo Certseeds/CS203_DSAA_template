@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,34 +23,28 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
+#include "leetcode_so_53ii_test.hpp"
 
-#include <catch_main.hpp>
-#include <list/ListNode.hpp>
+namespace leetcode_so_53ii {
 
-namespace leetcode_86 {
-using LISTNODE::ListNode;
-
-struct leetcode_86 {
-    static ListNode *partition(ListNode *head, int32_t x);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("-1 [test _86]", "[test _86]") {
-    const ListNodeLink vec1{1, 4, 3, 2, 5, 2};
-    const ListNode *const result = leetcode_86::partition(vec1[0], 3);
-    CHECK(ListNode::equal({1, 2, 2, 4, 3, 5}, result));
-
-    vector<ListNode *> nodes;
-    for (ListNode *will_delete{const_cast<ListNode *>(result)}; will_delete != nullptr;) {
-        nodes.push_back(will_delete);
-        will_delete = will_delete->next;
+int32_t leetcode_so_53ii::missingNumber(const vector<int32_t> &nums) {
+    if (nums.empty()) {
+        return 0;
     }
-    const ListNodeLink removed{nodes};
+    const int32_t size{static_cast<int32_t>(nums.size())};
+    if (nums.back() + 1 == size) {
+        return size;
+    }
+    for (int32_t fst{0}, last{size - 1}; fst < last;) {
+        if (const int32_t mid{fst + (last - fst) / 2}; nums[mid] == mid) {
+            fst = mid + 1;
+            if (nums[mid + 1] - nums[mid] == 2) {
+                return mid + 1;
+            }
+        } else {
+            last = mid;
+        }
+    }
+    return 0;
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP

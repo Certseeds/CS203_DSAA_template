@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,32 +25,40 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
+//@Tag
+//@Description 利用地址不重复
+//
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <list/ListNode.hpp>
 
-namespace leetcode_86 {
+namespace leetcode_141 {
 using LISTNODE::ListNode;
 
-struct leetcode_86 {
-    static ListNode *partition(ListNode *head, int32_t x);
+struct leetcode_141 {
+    static bool hasCycle(ListNode *head);
+
+    static bool hasCycle2(ListNode *head);
 };
 
 using LISTNODE::ListNodeLink;
 
-TEST_CASE("-1 [test _86]", "[test _86]") {
-    const ListNodeLink vec1{1, 4, 3, 2, 5, 2};
-    const ListNode *const result = leetcode_86::partition(vec1[0], 3);
-    CHECK(ListNode::equal({1, 2, 2, 4, 3, 5}, result));
+TEST_CASE("fst [test_141]", "[test_141]") {
+    const ListNodeLink link{3, 2, 0, -4};
+    link[3]->next = link[1];
+    CHECK(leetcode_141::hasCycle(link[0]));
+    CHECK(leetcode_141::hasCycle2(link[0]));
+}
 
-    vector<ListNode *> nodes;
-    for (ListNode *will_delete{const_cast<ListNode *>(result)}; will_delete != nullptr;) {
-        nodes.push_back(will_delete);
-        will_delete = will_delete->next;
-    }
-    const ListNodeLink removed{nodes};
+TEST_CASE("2nd [test_141]", "[test_141]") {
+    const ListNodeLink link{1, 2};
+    link[1]->next = link[0];
+    CHECK(leetcode_141::hasCycle(link[0]));
+    CHECK(leetcode_141::hasCycle2(link[0]));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_HPP

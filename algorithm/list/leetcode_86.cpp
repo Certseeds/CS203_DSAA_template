@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -43,5 +43,6 @@ ListNode *leetcode_86::partition(ListNode *head, int32_t x) {
     p_node1->next = node2.next;
     return node1.next;
 }
+
 }
 

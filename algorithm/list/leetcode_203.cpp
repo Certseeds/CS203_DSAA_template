@@ -23,34 +23,30 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP
+#include "leetcode_203_test.hpp"
 
-#include <catch_main.hpp>
-#include <list/ListNode.hpp>
+namespace leetcode_203 {
 
-namespace leetcode_86 {
-using LISTNODE::ListNode;
-
-struct leetcode_86 {
-    static ListNode *partition(ListNode *head, int32_t x);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("-1 [test _86]", "[test _86]") {
-    const ListNodeLink vec1{1, 4, 3, 2, 5, 2};
-    const ListNode *const result = leetcode_86::partition(vec1[0], 3);
-    CHECK(ListNode::equal({1, 2, 2, 4, 3, 5}, result));
-
-    vector<ListNode *> nodes;
-    for (ListNode *will_delete{const_cast<ListNode *>(result)}; will_delete != nullptr;) {
-        nodes.push_back(will_delete);
-        will_delete = will_delete->next;
+ListNode *leetcode_203::removeElements(ListNode *head, int32_t val) {
+    ListNode fst(0);
+    for (ListNode *base{head}; base != nullptr; base = base->next) {
+        if (base->val != val) {
+            fst.next = base;
+            break;
+        }
     }
-    const ListNodeLink removed{nodes};
+    if (fst.next == nullptr) {
+        return nullptr;
+    }
+    for (ListNode *base{fst.next}; base->next != nullptr;) {
+        ListNode *nnext{base->next};
+        if (nnext->val == val) {
+            base->next = nnext->next;
+        } else {
+            base = base->next;
+        }
+    }
+    return fst.next; // should not reach there
 }
+
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_86_HPP

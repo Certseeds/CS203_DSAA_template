@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanos
+Copyright (C) 2020-2022  nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -41,10 +41,9 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 
 struct leetcode_162 {
-    static int findPeakElement(const vector<int> &nums);
+    static int32_t findPeakElement(const vector<int32_t> &nums);
 
-
-    static int findPeakElement2(const vector<int> &nums);
+    static int32_t findPeakElement2(const vector<int32_t> &nums);
 };
 
 TEST_CASE("1 [test_162]", "[test_162]") {
@@ -66,10 +65,8 @@ TEST_CASE("2 [test_162]", "[test_162]") {
 TEST_CASE("3 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 3, 4, 3};
     static constexpr const auto result{3};
-    const auto v = leetcode_162::findPeakElement(nums);
-    const auto v2 = leetcode_162::findPeakElement2(nums);
-    CHECK(result == v);
-    CHECK(result == v2);
+    CHECK(result == leetcode_162::findPeakElement(nums));
+    CHECK(result == leetcode_162::findPeakElement2(nums));
 }
 
 TEST_CASE("4 [test_162]", "[test_162]") {
