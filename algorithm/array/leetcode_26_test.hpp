@@ -31,6 +31,7 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <vector>
 #include <cstdint>
+#include <cstddef>
 
 namespace leetcode_26 {
 using std::vector;

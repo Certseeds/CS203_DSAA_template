@@ -30,8 +30,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_73_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_73 {
 using std::vector;

@@ -24,8 +24,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_7_test.hpp"
+#include <array>
+#include <vector>
+#include <limits>
 
 namespace leetcode_7 {
+using std::array;
 
 int leetcode_7::reverse(int32_t x) {
     if (x == std::numeric_limits<int32_t>::min()) {

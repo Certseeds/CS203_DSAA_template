@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,32 +23,34 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_657_test.hpp"
+//@Tag array
+//@Tag 数组
+//@Tag 暴力解法
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_HPP
 
-namespace leetcode_657 {
+#include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <vector>
 
-bool leetcode_657::judgeCircle(const string &moves) {
-    int32_t x{0}, y{0};
-    for (size_t i{0}, moves_size{moves.size()}; i < moves_size; ++i) {
-        switch (moves[i]) {
-            case ('L'): {
-                x++;
-                break;
-            }
-            case ('R'): {
-                x--;
-                break;
-            }
-            case ('U'): {
-                y++;
-                break;
-            }
-            case ('D'): {
-                y--;
-                break;
-            }
-        }
-    }
-    return (x == 0 && y == 0);
+namespace leetcode_717 {
+using std::vector;
+
+struct leetcode_717 {
+    static bool isOneBitCharacter(const vector<int32_t> &bits);
+};
+
+
+TEST_CASE("test case 1 [test_717]", "[test_717]") {
+    const vector<int32_t> input{1, 0, 0};
+    CHECK(leetcode_717::isOneBitCharacter(input));
 }
+
+TEST_CASE("test case 2 [test_717]", "[test_717]") {
+    const vector<int32_t> input{1, 1, 1, 0};
+    CHECK_FALSE(leetcode_717::isOneBitCharacter(input));
 }
+
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_HPP

@@ -30,12 +30,13 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP
 
 #include <catch_main.hpp>
-#include <unordered_map>
+#include <cstdint>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_1 {
-using std::unordered_map;
+using std::vector;
 using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 struct leetcode_1 {
     static vector<int32_t> twoSum(const vector<int32_t> &nums, int32_t target);

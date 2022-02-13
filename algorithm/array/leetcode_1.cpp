@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_1_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_1 {
+using std::unordered_map;
 
 vector<int32_t> leetcode_1::twoSum(const vector<int32_t> &nums, int32_t target) {
     const auto nums_size{nums.size()};

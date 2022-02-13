@@ -32,6 +32,7 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <vector>
 #include <cstdint>
+#include <cstddef>
 
 namespace leetcode_17 {
 using std::vector;

@@ -30,14 +30,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_HPP
 
 #include <catch_main.hpp>
-#include <algorithm>
 #include <cstdint>
+#include <cstddef>
 #include <vector>
-#include <map>
 
 namespace leetcode_40 {
 using std::vector;
-using std::map;
 
 struct leetcode_40 {
     static vector<vector<int32_t>> combinationSum2(const vector<int32_t> &candidates, int target);

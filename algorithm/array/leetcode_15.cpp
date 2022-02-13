@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_15_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_15 {
+using std::unordered_map;
 
 vector<vector<int32_t>> leetcode_15::threeSum(vector<int32_t> &nums) {
     vector<vector<int32_t>> will_return{};

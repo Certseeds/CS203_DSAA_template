@@ -22,6 +22,9 @@ if (MULTIPLY_TIMES)
     MESSAGE(STATUS "MULTIPLY_TIMES is ON")
     target_precompile_headers(${PROJECT_NAME}_MULTIPLY INTERFACE
                               ${CMAKE_CURRENT_SOURCE_DIR}/catch_main.hpp
+                              <cstdint> <cstddef> <limits>
+                              <string> <vector>
+                              <algorithm> <numeric>
                               )
 else ()
     MESSAGE(STATUS "MULTIPLY_TIMES is OFF")

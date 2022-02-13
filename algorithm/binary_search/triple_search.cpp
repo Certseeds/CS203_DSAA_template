@@ -69,11 +69,11 @@ const static auto func_factory = [](num_t w, num_t x, num_t y) {
 };
 
 TEST_CASE("test case 1", "[test binary search- triple search]") {
-    constexpr num_t ratio = 1;    // y = -1 * ratio * Math.pow((x-middle),2) + diff
-    constexpr num_t first = 0;    // begin of array
-    constexpr num_t middle = 30;  // max value's index
-    constexpr num_t last = 100;   // last of array
-    constexpr num_t diff = 450;   // max value of array
+    static constexpr const num_t ratio = 1;    // y = -1 * ratio * Math.pow((x-middle),2) + diff
+    static constexpr const num_t first = 0;    // begin of array
+    static constexpr const num_t middle = 30;  // max value's index
+    static constexpr const num_t last = 100;   // last of array
+    static constexpr const num_t diff = 450;   // max value of array
     const auto func = func_factory(ratio, middle, diff);
     vector<num_t> vec(last - first);
     std::iota(std::begin(vec), std::end(vec), first);
@@ -86,7 +86,7 @@ TEST_CASE("test case 1", "[test binary search- triple search]") {
 }
 
 TEST_CASE("test case 2", "[test binary search- triple search]") {
-    constexpr num_t ratio = 3, first = 0, middle = 70, last = 100, diff = 514;
+    static constexpr const num_t ratio = 3, first = 0, middle = 70, last = 100, diff = 514;
     const auto func = func_factory(ratio, middle, diff);
     vector<num_t> vec(last - first);
     std::iota(std::begin(vec), std::end(vec), first);
@@ -99,7 +99,7 @@ TEST_CASE("test case 2", "[test binary search- triple search]") {
 }
 
 TEST_CASE("test case 3", "[test binary search- triple search]") {
-    constexpr num_t ratio = 200, first = 0, middle = 50, last = 100, diff = -200;
+    static constexpr const num_t ratio = 200, first = 0, middle = 50, last = 100, diff = -200;
     const auto func = func_factory(ratio, middle, diff);
     vector<num_t> vec(last - first);
     std::iota(std::begin(vec), std::end(vec), first);
@@ -112,7 +112,7 @@ TEST_CASE("test case 3", "[test binary search- triple search]") {
 }
 
 TEST_CASE("test case 4", "[test binary search- triple search]") {
-    constexpr num_t ratio = 3, first = 10, middle = 60, last = 80, diff = 119;
+    static constexpr const num_t ratio = 3, first = 10, middle = 60, last = 80, diff = 119;
     const auto func = func_factory(ratio, middle, diff);
     vector<num_t> vec(last - first);
     std::iota(std::begin(vec), std::end(vec), first);

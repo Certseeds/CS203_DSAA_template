@@ -27,7 +27,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_69_HPP
 
 #include <catch_main.hpp>
-#include <algorithm>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
 
 // 实质上是寻找第一个大于等于target的数字的下标

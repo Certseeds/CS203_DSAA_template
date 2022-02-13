@@ -17,12 +17,15 @@
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DISK_SCHEDULE_BASE_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DISK_SCHEDULE_BASE_HPP
 
-
+#include <cstdint>
+#include <cstddef>
 #include <utility>
 #include <vector>
 #include <class_helper/nonable.hpp>
 
 namespace disk_schedule {
+using std::vector;
+
 class disk_base : protected nonCopyMoveAble {
 protected:
     const size_t S, M, N;
@@ -34,7 +37,7 @@ public:
     explicit disk_base(size_t S, size_t M, size_t N, vector<size_t> requests) :
             S(S), M(M), N(N), requests(std::move(requests)) {};
 
-    virtual const char * name() const = 0;
+    virtual const char *name() const = 0;
 
     void output() const {
         //std::cout << this->name() << '\n';

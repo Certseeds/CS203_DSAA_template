@@ -24,8 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_40_test.hpp"
+#include <algorithm>
+#include <map>
 
 namespace leetcode_40 {
+using std::map;
 struct pair final {
     int32_t number;
     int32_t times;

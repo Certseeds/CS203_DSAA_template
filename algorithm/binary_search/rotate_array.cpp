@@ -33,15 +33,12 @@ SOFTWARE.
 // refer https://leetcode-cn.com/problems/rotate-array/
 // 189
 #include <catch_main.hpp>
-#include <algorithm>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
+#include <algorithm>
 
-
-using Catch::Matchers::Contains;
 using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using std::tie;
-using std::tuple;
 using std::vector;
 using num_t = int32_t;
 

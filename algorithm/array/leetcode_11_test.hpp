@@ -31,8 +31,8 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <vector>
-#include <limits>
 
 namespace leetcode_11 {
 using std::vector;

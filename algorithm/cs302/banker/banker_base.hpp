@@ -19,6 +19,8 @@
 #define CS203_DSAA_TEMPLATE_ALGORITHM_CS302_BANKER_BANKER_BASE_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <string>
 #include <vector>
 #include <unordered_map>

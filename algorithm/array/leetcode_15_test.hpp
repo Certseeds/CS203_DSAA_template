@@ -32,21 +32,16 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <vector>
 #include <cstdint>
-#include <unordered_set>
-#include <unordered_map>
+#include <cstddef>
 
 namespace leetcode_15 {
 using std::vector;
-using std::unordered_set;
-using std::unordered_map;
 
 struct leetcode_15 {
     static vector<vector<int32_t>> threeSum(vector<int32_t> &nums);
 };
 
-using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("1 [test_15]", "[test_15]") {
     vector<int32_t> nums{-4, -1, -1, 0, 1, 2};

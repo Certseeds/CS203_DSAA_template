@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,32 +23,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#include "leetcode_657_test.hpp"
+#include "leetcode_717_test.hpp"
 
-namespace leetcode_657 {
+namespace leetcode_717 {
 
-bool leetcode_657::judgeCircle(const string &moves) {
-    int32_t x{0}, y{0};
-    for (size_t i{0}, moves_size{moves.size()}; i < moves_size; ++i) {
-        switch (moves[i]) {
-            case ('L'): {
-                x++;
-                break;
-            }
-            case ('R'): {
-                x--;
-                break;
-            }
-            case ('U'): {
-                y++;
-                break;
-            }
-            case ('D'): {
-                y--;
-                break;
-            }
-        }
+bool leetcode_717::isOneBitCharacter(const vector<int32_t> &bits) {
+    const size_t size{bits.size()};
+    if (size < 2 || bits[size - 2] == 0) {
+        return true;
     }
-    return (x == 0 && y == 0);
+    // sizes == 2 is the same with sizes >2
+    // it means, test the string before the last one is over or not
+    size_t i{0};
+    for (; i + 1 < size; ++i) {
+        i += bits[i];
+    }
+    return i + 1 == size;
 }
 }

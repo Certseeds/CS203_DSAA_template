@@ -32,13 +32,13 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace leetcode_162 {
 using std::vector;
 using Catch::Matchers::Contains;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
 
 struct leetcode_162 {
     static int32_t findPeakElement(const vector<int32_t> &nums);

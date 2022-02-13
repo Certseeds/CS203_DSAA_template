@@ -32,15 +32,9 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <vector>
 #include <cstdint>
-#include <algorithm>
-#include <unordered_set>
-#include <unordered_map>
 
 namespace leetcode_16 {
 using std::vector;
-using std::unordered_set;
-using std::unordered_map;
-
 struct leetcode_16 {
     static int32_t threeSumClosest(vector<int32_t> &nums, int32_t target);
 };

@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_36_test.hpp"
+#include <unordered_set>
 
 namespace leetcode_36 {
+using std::unordered_set;
 static constexpr const int32_t sizes_36{9}, block_36{3};
 
 bool isValidSudoku_block(const vector<vector<char>> &board,
@@ -43,9 +45,9 @@ bool isValidSudoku_block(const vector<vector<char>> &board,
 }
 
 bool isValidSudoku_corss_line(const vector<vector<char>> &board, const int32_t number) {
-    unordered_set<int32_t> uset1,uset2;
+    unordered_set<int32_t> uset1, uset2;
     for (int32_t i{0}; i < sizes_36; i++) {
-        if (uset1.count(board[number][i]) == 1 ||(uset2.count(board[i][number]) == 1)) {
+        if (uset1.count(board[number][i]) == 1 || (uset2.count(board[i][number]) == 1)) {
             return false;
         }
         if (board[number][i] != '.') {
