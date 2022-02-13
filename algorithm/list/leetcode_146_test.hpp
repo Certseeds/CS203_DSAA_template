@@ -31,6 +31,7 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
+#include <memory>
 
 namespace leetcode_146 {
 

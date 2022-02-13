@@ -30,13 +30,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
-#include <unordered_set>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_36 {
 using std::vector;
-using std::unordered_set;
 
 struct leetcode_36 {
     static bool isValidSudoku(const vector<vector<char>> &board);

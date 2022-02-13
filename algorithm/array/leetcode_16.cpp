@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_16_test.hpp"
+#include <algorithm>
 
 namespace leetcode_16 {
+
 int leetcode_16::threeSumClosest(vector<int> &nums, int target) {
     std::sort(nums.begin(), nums.end());
     int32_t mindiff{std::numeric_limits<int32_t>::max()}, will_return{0};

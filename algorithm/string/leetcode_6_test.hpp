@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -30,13 +30,15 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_6_HPP
 
 #include <catch_main.hpp>
+#include <cassert>
+#include <cstdint>
 #include <string>
 
 namespace leetcode_6 {
 using std::string;
 
 struct leetcode_6 {
-    static string convert(const string &s, int numRows);
+    static string convert(const string &s, int32_t numRows);
 };
 
 

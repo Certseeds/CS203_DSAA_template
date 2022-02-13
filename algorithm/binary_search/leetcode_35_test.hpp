@@ -27,21 +27,16 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_35_HPP
 
 #include <catch_main.hpp>
-#include <algorithm>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
-
-
-using Catch::Matchers::Contains;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using std::tie;
-using std::tuple;
-using std::vector;
-using num_t = int32_t;
 // 实质上是寻找第一个大于等于target的数字的下标
 // 如果目标不存在,则返回第一个大于其的位置减一
 
 namespace binary_search::leetcode_35 {
+using std::vector;
+using num_t = int32_t;
+
 struct leetcode_35 final {
     static int searchInsert(const vector<int> &nums, int target);
 

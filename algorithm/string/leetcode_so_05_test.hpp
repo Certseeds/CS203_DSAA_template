@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@ SOFTWARE.
 */
 //@Tag string
 //@Tag 字符串
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_so_05_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_so_05_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_SO_05_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_SO_05_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -48,4 +48,4 @@ TEST_CASE("1 [test_so_05]", "[test_so_05]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_so_05_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_SO_05_HPP

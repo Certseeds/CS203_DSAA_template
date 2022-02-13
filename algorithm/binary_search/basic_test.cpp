@@ -27,10 +27,7 @@ SOFTWARE.
 #include "basic.cpp"
 
 namespace binary_search {
-using Catch::Matchers::Contains;
 using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-
 
 TEST_CASE("lower_bound", "[test basic binary search]") {
     const vector<num_t> vec{1, 1, 2, 3, 4, 4, 4, 5, 5, 6};

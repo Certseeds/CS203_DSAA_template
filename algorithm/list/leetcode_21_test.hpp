@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,12 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <list/ListNode.hpp>
 
 namespace leetcode_21 {
 using LISTNODE::ListNode;
 using std::unordered_map;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 struct leetcode_21 {
     static ListNode *mergeTwoLists(ListNode *l1, ListNode *l2);

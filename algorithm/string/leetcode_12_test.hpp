@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -46,41 +46,48 @@ struct leetcode_12 {
     static string intToRoman_2(int num);
 };
 
-
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
-
-TEST_CASE("test case 1 [test_12", "[test_12]") {
-    CHECK(leetcode_12::intToRoman(3) == "III");
-    CHECK(leetcode_12::intToRoman_2(3) == "III");
+TEST_CASE("test case 1 [test_12]", "[test_12]") {
+    static constexpr const auto input{3};
+    static constexpr const char *const result{"III"};
+    CHECK(result == leetcode_12::intToRoman(input));
+    CHECK(result == leetcode_12::intToRoman_2(input));
 }
 
-TEST_CASE("test case 2 [test_12", "[test_12]") {
-    CHECK(leetcode_12::intToRoman(4) == "IV");
-    CHECK(leetcode_12::intToRoman_2(4) == "IV");
+TEST_CASE("test case 2 [test_12]", "[test_12]") {
+    static constexpr const auto input{4};
+    static constexpr const char *const result{"IV"};
+    CHECK(result == leetcode_12::intToRoman(input));
+    CHECK(result == leetcode_12::intToRoman_2(input));
 }
 
-TEST_CASE("test case 3 [test_12", "[test_12]") {
-    CHECK(leetcode_12::intToRoman(9) == "IX");
-    CHECK(leetcode_12::intToRoman_2(9) == "IX");
+TEST_CASE("test case 3 [test_12]", "[test_12]") {
+    static constexpr const auto input{9};
+    static constexpr const char *const result{"IX"};
+    CHECK(result == leetcode_12::intToRoman(input));
+    CHECK(result == leetcode_12::intToRoman_2(input));
 }
 
-TEST_CASE("test case 4 [test_12", "[test_12]") {
-    CHECK(leetcode_12::intToRoman(58) == "LVIII");
-    CHECK(leetcode_12::intToRoman_2(58) == "LVIII");
+TEST_CASE("test case 4 [test_12]", "[test_12]") {
+    static constexpr const auto input{58};
+    static constexpr const char *const result{"LVIII"};
+    CHECK(result == leetcode_12::intToRoman(input));
+    CHECK(result == leetcode_12::intToRoman_2(input));
 }
 
-TEST_CASE("test case 5 [test_12", "[test_12]") {
-    CHECK(leetcode_12::intToRoman(1994) == "MCMXCIV");
-    CHECK(leetcode_12::intToRoman_2(1994) == "MCMXCIV");
+TEST_CASE("test case 5 [test_12]", "[test_12]") {
+    static constexpr const auto input{1994};
+    static constexpr const char *const result{"MCMXCIV"};
+    CHECK(result == leetcode_12::intToRoman(input));
+    CHECK(result == leetcode_12::intToRoman_2(input));
 }
 
-TEST_CASE("test case 6 [test_12", "[test_12]") {
-    CHECK(leetcode_12::intToRoman(114514) ==
-          "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMDXIV");
-    CHECK(leetcode_12::intToRoman_2(114514) ==
-          "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMDXIV");
+TEST_CASE("test case 6 [test_12]", "[test_12]") {
+    static constexpr const auto input{114514};
+    static constexpr const char *const result{
+            "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMDXIV"};
+    CHECK(result == leetcode_12::intToRoman(input));
+    CHECK(result == leetcode_12::intToRoman_2(input));
 }
+
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_12_HPP

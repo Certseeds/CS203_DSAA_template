@@ -17,7 +17,9 @@
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_CACHE_CACHE_BASE_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_CACHE_CACHE_BASE_HPP
 
-
+#include <cstdint>
+#include <cstddef>
+#include <string>
 #include <utility>
 #include <vector>
 #include <class_helper/nonable.hpp>

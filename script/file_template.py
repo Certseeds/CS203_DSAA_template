@@ -1,15 +1,6 @@
 #!/usr/bin/env python3
 # coding=utf-8
 '''
-@Github: https://github.com/Certseeds/CS203_DSAA_template
-@Organization: SUSTech
-@Author: nanoseeds
-@Date: 2020-07-15 21:47:09
-LastEditors: nanoseeds
-LastEditTime: 2021-09-17 23:58:53
-@LICENSE: MIT
-'''
-'''
 MIT License
 
 CS203_DSAA_template
@@ -93,10 +84,10 @@ def copy_cmakeLists(lab_number: str, problem_list: str) -> None:
 def main() -> None:
     labs: List[str] = ['01', '02', '03', '04', '05', '06', '07',
                        '08', '09', '10', '11', '12', '13', '14', '15']
-    problem_order: List[str] = ['A', 'B', 'C',
-                                'D', 'E', 'F', 'G', 'H', 'I', 'J']
+    problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
     # labs: List[str] = ['01']
-    # problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
+    # problem_order: List[str] = ['A', 'B', 'C',
+    #                                 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     problem_order_list_str: str = " ".join(problem_order)
     for i in labs:
         try_mkdir(i)  # 准备文件夹

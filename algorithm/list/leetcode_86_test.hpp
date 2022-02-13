@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,13 +33,10 @@ SOFTWARE.
 
 namespace leetcode_86 {
 using LISTNODE::ListNode;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 struct leetcode_86 {
     static ListNode *partition(ListNode *head, int32_t x);
 };
-
 
 using LISTNODE::ListNodeLink;
 
@@ -48,9 +45,8 @@ TEST_CASE("-1 [test _86]", "[test _86]") {
     const ListNode *const result = leetcode_86::partition(vec1[0], 3);
     CHECK(ListNode::equal({1, 2, 2, 4, 3, 5}, result));
 
-    ListNode *will_delete{const_cast<ListNode *>(result)};
     vector<ListNode *> nodes;
-    while (will_delete != nullptr) {
+    for (ListNode *will_delete{const_cast<ListNode *>(result)}; will_delete != nullptr;) {
         nodes.push_back(will_delete);
         will_delete = will_delete->next;
     }

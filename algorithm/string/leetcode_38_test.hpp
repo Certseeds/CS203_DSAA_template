@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,11 +35,10 @@ SOFTWARE.
 
 namespace leetcode_38 {
 
-using std::array;
 using std::string;
 
 struct leetcode_38 {
-    static string countAndSay(int n);
+    static string countAndSay(int32_t n);
 };
 
 TEST_CASE("1 [test_38]", "[test_38]") {

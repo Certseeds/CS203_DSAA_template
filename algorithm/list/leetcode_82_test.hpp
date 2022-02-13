@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,8 +33,6 @@ SOFTWARE.
 
 namespace leetcode_82 {
 using LISTNODE::ListNode;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 struct leetcode_82 {
     static ListNode *deleteDuplicates(ListNode *head);

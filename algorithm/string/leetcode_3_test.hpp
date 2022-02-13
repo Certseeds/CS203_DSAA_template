@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,31 +32,26 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_3_HPP
 
 #include <catch_main.hpp>
-#include <array>
-#include <stack>
-#include <bitset>
-#include <unordered_map>
-#include <unordered_set>
+#include <cassert>
+#include <cstdint>
+#include <string>
 
 namespace leetcode_3 {
 using std::endl;
-using std::stack;
 using std::string;
-using std::unordered_map;
-using std::unordered_set;
 
 struct leetcode_3 final {
-    static int lengthOfLongestSubstring(const string &s);
+    static int32_t lengthOfLongestSubstring(const string &s);
 
-    static int lengthOfLongestSubstring2(const string &s);
+    static int32_t lengthOfLongestSubstring2(const string &s);
 
-    static int lengthOfLongestSubstring3(const string &s);
+    static int32_t lengthOfLongestSubstring3(const string &s);
 };
 
 void warpper(const string &s, int32_t length) {
-    CHECK(leetcode_3::lengthOfLongestSubstring(s) == length);
-    CHECK(leetcode_3::lengthOfLongestSubstring2(s) == length);
-    CHECK(leetcode_3::lengthOfLongestSubstring3(s) == length);
+    CHECK(length == leetcode_3::lengthOfLongestSubstring(s));
+    CHECK(length == leetcode_3::lengthOfLongestSubstring2(s));
+    CHECK(length == leetcode_3::lengthOfLongestSubstring3(s));
 }
 
 TEST_CASE("1 [test_3]", "[test_3]") {

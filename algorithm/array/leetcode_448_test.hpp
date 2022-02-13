@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -33,11 +33,9 @@ SOFTWARE.
 #include <cstdint>
 #include <cstddef>
 #include <vector>
-#include <unordered_map>
 
 namespace leetcode_448 {
 using std::vector;
-using std::unordered_map;
 
 struct leetcode_448 {
     static vector<int32_t> findDisappearedNumbers(const vector<int32_t> &nums);

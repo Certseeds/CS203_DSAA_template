@@ -30,12 +30,11 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_HPP
 
 #include <catch_main.hpp>
-#include <array>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
-#include <limits>
 
 namespace leetcode_7 {
-using std::array;
 using std::vector;
 
 struct leetcode_7 {

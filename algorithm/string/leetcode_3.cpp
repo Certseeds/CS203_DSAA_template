@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,13 +24,18 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_3_test.hpp"
-
+#include <array>
+#include <bitset>
 /*
 Given a string,
 find the length of the longest substring without repeating characters.
 greedy to get the max-length,if meet a repeat character,then throw the last one.
 */
+
 namespace leetcode_3 {
+using std::array;
+using std::bitset;
+
 int32_t leetcode_3::lengthOfLongestSubstring(const string &s) {
     const auto s_size{s.size()};
     size_t fst{0};
@@ -58,8 +63,6 @@ int32_t leetcode_3::lengthOfLongestSubstring2(const string &s) {
     int32_t maxv{std::numeric_limits<int16_t>::min()}, len{0}, begin{0};
     const auto s_size = static_cast<int32_t>(s.size());
     std::array<uint8_t, 128> umap{0};
-    //unordered_map<int, int> umap;
-    //128 not 26 because maybe have " ".
     for (int32_t i{0}; i < s_size; i++) {
         len++;
         if (umap[s[i]] != 0 && umap[s[i]] > begin) {

@@ -72,7 +72,7 @@ void output(const output_type &data);
 
 int main() {
     auto input_data = read();
-    auto output_data = cal(input_data);
+    const auto output_data = cal(input_data);
     output(output_data);
     return 0;
 }
@@ -81,14 +81,14 @@ inline input_type read() {
     num_t n{0}, T{0}, temp{0};
     std::cin >> n;
     std::unordered_set<num_t> A{};
-    for (int i = 0; i < n; ++i) {
+    for (int i{0}; i < n; ++i) {
         std::cin >> temp;
         A.insert(temp);
     }
     std::cin >> T;
-    vector<num_t> B(T, 0);
-    for (int i = 0; i < T; ++i) {
-        std::cin >> B[i];
+    vector<num_t> B(T);
+    for(auto& num: B){
+        std::cin >> num;
     }
     return std::make_tuple(A, B);
 }

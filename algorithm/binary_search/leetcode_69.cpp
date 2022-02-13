@@ -24,6 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_69_test.hpp"
+#include <algorithm>
 
 // 实质上是寻找第一个大于等于target的数字的下标
 // 如果目标不存在,则返回第一个大于其的位置减一

@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,16 +31,15 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_22_HPP
 
 #include <catch_main.hpp>
+#include <cassert>
+#include <cstdint>
 #include <string>
 #include <vector>
-#include <unordered_set>
 
 namespace leetcode_22 {
 
-using std::array;
 using std::string;
 using std::vector;
-using std::unordered_set;
 
 struct leetcode_22 {
     static vector<string> generateParenthesis(int32_t n);

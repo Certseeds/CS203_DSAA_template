@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_22_test.hpp"
+#include <unordered_set>
 
 namespace leetcode_22 {
+using std::unordered_set;
+
 vector<string> leetcode_22::generateParenthesis(int n) {
     if (n == 1) {
         return vector<string>{"()"};

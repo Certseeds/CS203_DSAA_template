@@ -24,8 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_535_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_535 {
+using std::unordered_map;
+
 class c1 : public base {
 public:
     [[nodiscard]] string encode(const string longUrl) override {
