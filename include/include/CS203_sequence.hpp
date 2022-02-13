@@ -81,7 +81,7 @@ public:
     */
     vector<string> get_sequence() const {
         vector<string> will_return{};
-        for (int32_t i = begin; i <= end; ++i) {
+        for (int32_t i{begin}; i <= end; ++i) {
             will_return.push_back(std::to_string(i));
         }
         return will_return;
@@ -91,7 +91,7 @@ public:
     // 默认max_length = -1,即使用end的长度
     // 若max_length != -1,即传入参数,则使用std::max(end长度,max_length)
     vector<string> get_same_length_sequence() const {
-        int max_lengths = std::max(max_length, get_length(end));
+        const int32_t max_lengths = std::max(max_length, get_length(end));
         vector<string> will_return = get_sequence();
         for (auto &item: will_return) {
             if (static_cast<int32_t>(item.length()) < max_lengths) {
@@ -113,7 +113,7 @@ public:
     using files_type = vector<std::tuple<std::string, std::string, std::string>>;
 
     files_type get_files(bool same_length) const {
-        vector<string> sequence = same_length ? get_same_length_sequence() : get_sequence();
+        const vector<string> sequence = same_length ? get_same_length_sequence() : get_sequence();
         files_type will_return;
         for (const auto &item: sequence) {
             string datain = prefix_of_file_name + item + "." + postfix_of_datain;
