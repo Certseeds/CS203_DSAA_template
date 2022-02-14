@@ -36,6 +36,7 @@ SOFTWARE.
 #include <iostream>
 #include <list>
 #include <stack>
+#include <queue>
 #include <vector>
 
 #include <tree/treenode.hpp>
@@ -46,6 +47,7 @@ using Catch::Matchers::Equals;
 using std::cout;
 using std::list;
 using std::stack;
+using std::queue;
 using std::vector;
 using action = const std::function<void(const TreeNode *)> &;
 static constexpr char end{'\n'}, space{' '};
@@ -210,8 +212,6 @@ void post(const TreeNode *root, action func) {
 }
 
 void post2(const TreeNode *root, action func) {
-    //作者：sonp
-    //链接：https://leetcode-cn.com/problems/binary-tree-postorder-traversal/solution/mo-fang-di-gui-zhi-bian-yi-xing-by-sonp/
     if (root == nullptr) {
         return;
     }
@@ -232,5 +232,24 @@ void post2(const TreeNode *root, action func) {
     }
 }
 
+void level(const TreeNode *root, action func) {
+    if (root == nullptr) {
+        return;
+    }
+    for (queue<const TreeNode *> now{{root}}, next{}; !now.empty();) {
+        while (!now.empty()) {
+            const auto *const head = now.front();
+            now.pop();
+            func(head);
+            if (head->left != nullptr) {
+                next.push(head->left);
+            }
+            if (head->right != nullptr) {
+                next.push(head->right);
+            }
+        }
+        std::swap(now, next);
+    }
+}
 }
 }

@@ -10,7 +10,7 @@ set(dependencies traverse_test huffman_test)
 set(leetcode_order 94 95 96 98 100)
 LIST(APPEND leetcode_order 104 226 530 559 589)
 LIST(APPEND leetcode_order 590 617 654 669 700)
-LIST(APPEND leetcode_order 701)
+LIST(APPEND leetcode_order 701 144 145)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})

@@ -23,34 +23,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
+//@Tag stack
+//@Tag 栈
+//@Tag 单调栈
 
-#include <catch_main.hpp>
-#include <tree/treenode.hpp>
-#include <tree/treenode_link.hpp>
+#include "leetcode_232_test.hpp"
+#include <stack>
 
-namespace leetcode_226 {
+namespace leetcode_232 {
+using std::stack;
 
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TREE_NODE::numToTree;
+class Queue : public leetcode_232::MyQueue {
+private:
+    stack<int32_t> sta1{}, sta2{};
+public:
+    Queue() = default;
 
-struct leetcode_226 {
-    static TreeNode *invertTree(TreeNode *root);
+    void push(int x) override {
+        sta1.push(x);
+    }
+
+    int pop() override {
+        const auto head = this->peek();
+        sta2.pop();
+        return head;
+    }
+
+    int peek() override {
+        if (sta2.empty()) {
+            while (!sta1.empty()) {
+                sta2.push(sta1.top());
+                sta1.pop();
+            }
+        }
+        return sta2.top();
+    }
+
+    bool empty() const override { return sta1.empty() && sta2.empty(); }
 };
 
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+leetcode_232::MyQueue *leetcode_232::pure() {
+    return new Queue();
+}
 
-TEST_CASE("test_case 1 [test_226]", "[test_226]") {
-    const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    leetcode_226::invertTree(numVecInput[0]);
-    const vector<int32_t> result{4, 7, 2, 9, 6, 3, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    CHECK(TREE_NODE::judge_equal(numVecInput.front(), result));
-    const TreeNodeLink link{numVecInput.front()};
+
 }
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP

@@ -23,34 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
+#include "leetcode_145_test.hpp"
+#include "traverse.cpp"
 
-#include <catch_main.hpp>
-#include <tree/treenode.hpp>
-#include <tree/treenode_link.hpp>
+namespace leetcode_145 {
+using namespace Tree_Traverse;
 
-namespace leetcode_226 {
+vector<int32_t> leetcode_145::postorderTraversalIter(TreeNode *root) {
+    vector<int32_t> will_return{};
+    const auto function = [&will_return](const TreeNode *tn) -> void { will_return.push_back(tn->val); };
+    iter::post(root, function);
+    return will_return;
+}
 
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TREE_NODE::numToTree;
-
-struct leetcode_226 {
-    static TreeNode *invertTree(TreeNode *root);
-};
-
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-
-TEST_CASE("test_case 1 [test_226]", "[test_226]") {
-    const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    leetcode_226::invertTree(numVecInput[0]);
-    const vector<int32_t> result{4, 7, 2, 9, 6, 3, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    CHECK(TREE_NODE::judge_equal(numVecInput.front(), result));
-    const TreeNodeLink link{numVecInput.front()};
+vector<int32_t> leetcode_145::postorderTraversal(TreeNode *root) {
+    vector<int32_t> will_return{};
+    const auto function = [&will_return](const TreeNode *tn) -> void { will_return.push_back(tn->val); };
+    rec::post(root, function);
+    return will_return;
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP

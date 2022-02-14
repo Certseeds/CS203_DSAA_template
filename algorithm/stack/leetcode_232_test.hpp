@@ -23,34 +23,46 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_232_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_232_HPP
 
 #include <catch_main.hpp>
-#include <tree/treenode.hpp>
-#include <tree/treenode_link.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <memory>
 
-namespace leetcode_226 {
+namespace leetcode_232 {
 
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TREE_NODE::numToTree;
+struct leetcode_232 {
+    class MyQueue {
+    public:
+        MyQueue() = default;
 
-struct leetcode_226 {
-    static TreeNode *invertTree(TreeNode *root);
+        virtual void push(int x) = 0;
+
+        virtual int pop() = 0;
+
+        virtual int peek() = 0;
+
+        virtual bool empty() const = 0;
+
+        virtual ~MyQueue() = default;
+    };
+
+    static MyQueue *pure();
 };
 
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-
-TEST_CASE("test_case 1 [test_226]", "[test_226]") {
-    const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    leetcode_226::invertTree(numVecInput[0]);
-    const vector<int32_t> result{4, 7, 2, 9, 6, 3, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    CHECK(TREE_NODE::judge_equal(numVecInput.front(), result));
-    const TreeNodeLink link{numVecInput.front()};
+TEST_CASE("1 [test_232]", "[test_232]") {
+    const auto pointer = std::unique_ptr<leetcode_232::MyQueue>(leetcode_232::pure());
+    CHECK(pointer->empty());
+    pointer->push(1);
+    pointer->push(2);
+    CHECK(1 == pointer->peek());
+    CHECK(1 == pointer->pop());
+    CHECK_FALSE(pointer->empty());
+    CHECK(2 == pointer->peek());
+    CHECK(2 == pointer->pop());
+    CHECK(pointer->empty());
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_232_HPP

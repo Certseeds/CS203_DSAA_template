@@ -27,52 +27,52 @@ SOFTWARE.
 //@Tag 树
 //@description 中序遍历
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_145_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_145_HPP
 
 #include <catch_main.hpp>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
 #include <vector>
 
-namespace leetcode_94 {
+namespace leetcode_145 {
 
 using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
 
-struct leetcode_94 {
-    static vector<int32_t> inorderTraversal(TreeNode *root);
+struct leetcode_145 {
+    static vector<int32_t> postorderTraversal(TreeNode *root);
 
-    static vector<int32_t> inorderTraversalIter(TreeNode *root);
+    static vector<int32_t> postorderTraversalIter(TreeNode *root);
 };
 
 using Catch::Matchers::Equals;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 
-TEST_CASE("test_case 1 [test_94]", "[test_94]") {
+TEST_CASE("test_case 1 [test_145]", "[test_145]") {
     const vector<int32_t> input{4,
                                 2, 7,
                                 1, 3, TreeNode::No, TreeNode::No,
                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
     };
-    const vector<int32_t> result{1, 2, 3, 4, 7};
+    const vector<int32_t> result{1, 3, 2, 7, 4};
     const vector<TreeNode *> numVecInput = TREE_NODE::numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput[0]};
-    CHECK_THAT(result, Equals(leetcode_94::inorderTraversal(numVecInput[0])));
-    CHECK_THAT(result, Equals(leetcode_94::inorderTraversalIter(numVecInput[0])));
+    CHECK_THAT(result, Equals(leetcode_145::postorderTraversal(numVecInput[0])));
+    CHECK_THAT(result, Equals(leetcode_145::postorderTraversalIter(numVecInput[0])));
 }
 
-TEST_CASE("test_case 2 [test_94]", "[test_94]") {
+TEST_CASE("test_case 2 [test_145]", "[test_145]") {
     const vector<int32_t> input{4,
                                 2, 7,
                                 1, 3, 5, TreeNode::No,
                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
     };
-    const vector<int32_t> result{1, 2, 3, 4, 5, 7};
+    const vector<int32_t> result{1, 3, 2, 5, 7, 4};
     const vector<TreeNode *> numVecInput = TREE_NODE::numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput[0]};
-    CHECK_THAT(result, Equals(leetcode_94::inorderTraversal(numVecInput[0])));
-    CHECK_THAT(result, Equals(leetcode_94::inorderTraversalIter(numVecInput[0])));
+    CHECK_THAT(result, Equals(leetcode_145::postorderTraversal(numVecInput[0])));
+    CHECK_THAT(result, Equals(leetcode_145::postorderTraversalIter(numVecInput[0])));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_145_HPP
