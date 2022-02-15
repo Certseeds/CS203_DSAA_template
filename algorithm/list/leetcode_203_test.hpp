@@ -33,7 +33,7 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 namespace leetcode_203 {
 using LISTNODE::ListNode;

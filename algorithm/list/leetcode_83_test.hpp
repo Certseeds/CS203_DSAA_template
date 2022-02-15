@@ -29,7 +29,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_83_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_83 {
 using LISTNODE::ListNode;

@@ -89,9 +89,10 @@ This is an example of how to list things you need to use the software and how to
 1. Visual-Studio,与C++开发组件
 2. WSL(推荐),`sudo apt install build-essential`
 
-+ gcc
++ 命令行检测gcc版本
 
 ``` bash
+# username @ ${pcName} in ${path}
 gcc --version
 g++ --version
 ```

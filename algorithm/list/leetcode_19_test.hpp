@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
-#include <list/ListNode.hpp>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_19 {
 using LISTNODE::ListNode;
-using std::unordered_map;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 struct leetcode_19 {
     static ListNode *removeNthFromEnd(ListNode *head, int32_t n);

@@ -23,41 +23,32 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
+#include "leetcode_112_test.hpp"
+#include <queue>
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
+namespace leetcode_112 {
+using std::queue;
 
-namespace leetcode_24 {
-using LISTNODE::ListNode;
-
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
+bool leetcode_112::hasPathSum(TreeNode *root, int targetSum) {
+    if (root == nullptr) {
+        return false;
+    }
+    for (queue<TreeNode *> now{{root}}; !now.empty();) {
+        auto *head = now.front();
+        now.pop();
+        if (head->val == targetSum && head->left == nullptr && head->right == nullptr) {
+            return true;
+        }
+        if (head->left != nullptr) {
+            head->left->val += head->val;
+            now.push(head->left);
+        }
+        if (head->right != nullptr) {
+            head->right->val += head->val;
+            now.push(head->right);
+        }
+    }
+    return false;
 }
 
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
 }
-
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
-}
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP

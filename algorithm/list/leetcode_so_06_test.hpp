@@ -30,7 +30,7 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 namespace leetcode_so_06 {
 using LISTNODE::ListNode;

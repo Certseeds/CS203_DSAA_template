@@ -23,39 +23,46 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-//@Tag 二叉树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+//@Tag array
+//@Tag 数组
+//@Tag 二分搜索
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_240_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_240_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <list/listnode.hpp>
-#include <tree/treenode.hpp>
-#include <tree/treenode_link.hpp>
+#include <vector>
 
-namespace leetcode_109 {
-using LISTNODE::ListNode;
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
+namespace leetcode_240 {
+using std::vector;
 
-struct leetcode_109 {
-    static TreeNode *sortedListToBST(ListNode *head);
+struct leetcode_240 {
+    static bool findNumberIn2DArray(const vector<vector<int32_t>> &matrix, int32_t target);
 };
 
-using LISTNODE::ListNodeLink;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+TEST_CASE("test case 1 {test_240}", "{test_240}") {
+    const vector<vector<int32_t>> input{
+            {1,  4,  7,  11, 15},
+            {2,  5,  8,  12, 19},
+            {3,  6,  9,  16, 22},
+            {10, 13, 14, 17, 24},
+            {18, 21, 23, 26, 30}
+    };
+    static constexpr const auto k{5};
+    CHECK(leetcode_240::findNumberIn2DArray(input, k));
+}
 
-TEST_CASE("-1 [test _109]", "[test _109]") {
-    const ListNodeLink vec1{-10, -3, 0, 5, 9};
-    const vector<int32_t> output{0,
-                                 -3, 9,
-                                 -10, TreeNode::No, 5, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    const TreeNode *const result = leetcode_109::sortedListToBST(vec1[0]);
-    const TreeNodeLink link{const_cast<TreeNode *>(result)};
-    CHECK(TREE_NODE::judge_equal(const_cast<TreeNode *>(result), output));
+TEST_CASE("test case 2 {test_240}", "{test_240}") {
+    const vector<vector<int32_t>> input{
+            {1,  4,  7,  11, 15},
+            {2,  5,  8,  12, 19},
+            {3,  6,  9,  16, 22},
+            {10, 13, 14, 17, 24},
+            {18, 21, 23, 26, 30}
+    };
+    static constexpr const auto k{20};
+    CHECK_FALSE(leetcode_240::findNumberIn2DArray(input, k));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_240_HPP

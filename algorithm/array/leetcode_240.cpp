@@ -23,41 +23,29 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
+#include "leetcode_240_test.hpp"
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
+namespace leetcode_240 {
 
-namespace leetcode_24 {
-using LISTNODE::ListNode;
-
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
+bool leetcode_240::findNumberIn2DArray(const vector<vector<int32_t>> &matrix, int32_t target) {
+    if (matrix.empty() || matrix.front().empty()) {
+        return false;
+    }
+    const size_t n = matrix.size();
+    vector<int32_t> begins(n, 0);
+    vector<int32_t> ends(n, 0);
+    for (size_t i{0}; i < n; ++i) {
+        begins[i] = *matrix[i].begin();
+        ends[i] = *(matrix[i].end() - 1);
+    }
+    const auto temp = std::upper_bound(begins.begin(), begins.end(), target) - begins.begin() - 1;
+    const auto temp2 = std::lower_bound(ends.begin(), ends.end(), target) - ends.begin();
+    for (auto i{temp2}; i <= temp; ++i) {
+        if (std::binary_search(matrix[i].begin(), matrix[i].end(), target)) {
+            return true;
+        }
+    }
+    return false;
 }
 
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
 }
-
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
-}
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP

@@ -32,11 +32,10 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 namespace leetcode_21 {
 using LISTNODE::ListNode;
-using std::unordered_map;
 
 struct leetcode_21 {
     static ListNode *mergeTwoLists(ListNode *l1, ListNode *l2);

@@ -31,7 +31,7 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_206_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 namespace leetcode_206 {
 using LISTNODE::ListNode;

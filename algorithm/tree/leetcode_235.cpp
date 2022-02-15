@@ -23,41 +23,26 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
+#include "leetcode_235_test.hpp"
+#include "traverse.cpp"
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
+namespace leetcode_235 {
+using namespace Tree_Traverse;
 
-namespace leetcode_24 {
-using LISTNODE::ListNode;
-
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
-}
-
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
-}
-
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
+bool leetcode_235::findTarget(TreeNode *root, int k) {
+    vector<int32_t> targets{};
+    const auto func = [&targets](const TreeNode *tn) -> void { targets.push_back(tn->val); };
+    iter::in(root, func);
+    for (size_t ll{0}, rr{targets.size() - 1}; ll < rr;) {
+        const auto sum = targets[ll] + targets[rr];
+        if (sum == k) {
+            return true;
+        } else if (sum > k) {
+            --rr;
+        } else if (sum < k) {
+            ++ll;
+        }
+    }
+    return false;
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP

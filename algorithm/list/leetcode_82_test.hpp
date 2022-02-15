@@ -29,7 +29,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_82_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_82 {
 using LISTNODE::ListNode;
@@ -37,7 +39,6 @@ using LISTNODE::ListNode;
 struct leetcode_82 {
     static ListNode *deleteDuplicates(ListNode *head);
 };
-
 
 using LISTNODE::ListNodeLink;
 

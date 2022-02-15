@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,13 +31,11 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
-#include <list/ListNode.hpp>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_23 {
 using LISTNODE::ListNode;
-using std::unordered_map;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 struct leetcode_23 {
     static ListNode *mergeKLists(const std::vector<ListNode *> &lists);
@@ -52,7 +50,6 @@ TEST_CASE("1 [test _23]", "[test _23]") {
     const auto input = vector<ListNode *>{vec1[0], vec2[0], vec3[0]};
     const ListNode *const result = leetcode_23::mergeKLists(input);
     CHECK(ListNode::equal({1, 1, 2, 3, 4, 4, 5, 6}, result));
-
 }
 
 TEST_CASE("2 [test _23]", "[test _23]") {

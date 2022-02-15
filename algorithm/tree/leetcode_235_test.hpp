@@ -23,39 +23,36 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-//@Tag 二叉树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+//@Tag tree
+//@Tag 树
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_235_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_235_HPP
 
 #include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
 
-namespace leetcode_109 {
-using LISTNODE::ListNode;
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
+namespace leetcode_235 {
 
-struct leetcode_109 {
-    static TreeNode *sortedListToBST(ListNode *head);
+using TreeNode = TREE_NODE::TreeNode<int32_t>;
+using TREE_NODE::numToTree;
+
+struct leetcode_235 {
+    static bool findTarget(TreeNode *root, int k);
 };
 
-using LISTNODE::ListNodeLink;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 
-TEST_CASE("-1 [test _109]", "[test _109]") {
-    const ListNodeLink vec1{-10, -3, 0, 5, 9};
-    const vector<int32_t> output{0,
-                                 -3, 9,
-                                 -10, TreeNode::No, 5, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    const TreeNode *const result = leetcode_109::sortedListToBST(vec1[0]);
-    const TreeNodeLink link{const_cast<TreeNode *>(result)};
-    CHECK(TREE_NODE::judge_equal(const_cast<TreeNode *>(result), output));
+TEST_CASE("test_case 1 [test_235]", "[test_235]") {
+    const vector<int32_t> input{5,
+                                3, 6,
+                                2, 4, TreeNode::No, 7,
+                                TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
+                                TreeNode::No, TreeNode::No};
+    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const TreeNodeLink link{numVecInput.front()};
+    static constexpr const auto target{9};
+    CHECK(leetcode_235::findTarget(numVecInput.front(), target));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_235_HPP

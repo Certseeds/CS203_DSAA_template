@@ -23,39 +23,44 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-//@Tag 二叉树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+//@Tag tree
+//@Tag 树
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_101_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_101_HPP
 
 #include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
+#include <vector>
 
-namespace leetcode_109 {
-using LISTNODE::ListNode;
+namespace leetcode_101 {
+
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
+using TREE_NODE::numToTree;
 
-struct leetcode_109 {
-    static TreeNode *sortedListToBST(ListNode *head);
+struct leetcode_101 {
+    static bool isSymmetric(TreeNode *root);
 };
 
-using LISTNODE::ListNodeLink;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 
-TEST_CASE("-1 [test _109]", "[test _109]") {
-    const ListNodeLink vec1{-10, -3, 0, 5, 9};
-    const vector<int32_t> output{0,
-                                 -3, 9,
-                                 -10, TreeNode::No, 5, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    const TreeNode *const result = leetcode_109::sortedListToBST(vec1[0]);
-    const TreeNodeLink link{const_cast<TreeNode *>(result)};
-    CHECK(TREE_NODE::judge_equal(const_cast<TreeNode *>(result), output));
+TEST_CASE("test_case 1 [test_101]", "[test_101]") {
+    const vector<int32_t> vec{1,
+                              2, 2,
+                              3, 4, 4, 3};
+    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
+    const TreeNodeLink link{numvec[0]};
+    CHECK(leetcode_101::isSymmetric(numvec[0]));
+}
+
+TEST_CASE("test_case 2 [test_101]", "[test_101]") {
+    const vector<int32_t> vec{1,
+                              2, 2,
+                              TreeNode::No, 3, TreeNode::No, 3};
+    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
+    const TreeNodeLink link{numvec[0]};
+    CHECK_FALSE(leetcode_101::isSymmetric(numvec[0]));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_101_HPP

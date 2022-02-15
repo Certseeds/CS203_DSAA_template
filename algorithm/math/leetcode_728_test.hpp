@@ -23,39 +23,35 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-//@Tag 二叉树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+//@Tag Math
+//@Tag 数学
+
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_728_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_728_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <list/listnode.hpp>
-#include <tree/treenode.hpp>
-#include <tree/treenode_link.hpp>
 
-namespace leetcode_109 {
-using LISTNODE::ListNode;
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
+namespace leetcode_728 {
 
-struct leetcode_109 {
-    static TreeNode *sortedListToBST(ListNode *head);
+struct leetcode_728 {
+    static vector<int32_t> selfDividingNumbers(int32_t left, int32_t right);
 };
 
-using LISTNODE::ListNodeLink;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using Catch::Matchers::Equals;
 
-TEST_CASE("-1 [test _109]", "[test _109]") {
-    const ListNodeLink vec1{-10, -3, 0, 5, 9};
-    const vector<int32_t> output{0,
-                                 -3, 9,
-                                 -10, TreeNode::No, 5, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    const TreeNode *const result = leetcode_109::sortedListToBST(vec1[0]);
-    const TreeNodeLink link{const_cast<TreeNode *>(result)};
-    CHECK(TREE_NODE::judge_equal(const_cast<TreeNode *>(result), output));
+TEST_CASE("1 [test_728]", "[test_728]") {
+    static constexpr const auto left{1}, right{22};
+    const vector<int32_t> results{1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 15, 22};
+    CHECK_THAT(results, Equals(leetcode_728::selfDividingNumbers(left, right)));
+}
+
+TEST_CASE("2 [test_728]", "[test_728]") {
+    static constexpr const auto left{47}, right{85};
+    const vector<int32_t> results{48, 55, 66, 77};
+    CHECK_THAT(results, Equals(leetcode_728::selfDividingNumbers(left, right)));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_109_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_728_HPP
+

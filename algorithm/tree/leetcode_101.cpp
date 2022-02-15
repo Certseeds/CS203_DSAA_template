@@ -23,41 +23,24 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
+#include "leetcode_101_test.hpp"
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
-
-namespace leetcode_24 {
-using LISTNODE::ListNode;
-
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
+namespace leetcode_101 {
+bool isSym(TreeNode *left, TreeNode *right) {
+    if (left == nullptr && right == nullptr) {
+        return true;
+    } else if ((left == nullptr) != (right == nullptr)) {
+        return false;
+    }
+    return left->val == right->val && isSym(left->left, right->right) && isSym(left->right, right->left);
 }
 
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
+bool leetcode_101::isSymmetric(TreeNode *root) {
+    if (root == nullptr) {
+        return true;
+    }
+    return isSym(root->left, root->right);
 }
 
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
+
 }
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP

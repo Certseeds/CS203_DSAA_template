@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021 nanoseeds
+Copyright (C) 2020-2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -56,7 +56,7 @@ please find the going-out order of student.
 
 #ifdef CS203_DSAA_TEST_MACRO
 
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 #else
 
