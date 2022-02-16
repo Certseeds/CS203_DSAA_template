@@ -10,23 +10,23 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 
-
 <br />
 <div align="center">
 
 <h3 align="center">CS203-DSAA-template</h3>
 
   <p align="center">
-    An awesome Algorithm template for Solve Online-Judge !
+    An awesome Algorithm Template for IO-Based Single-File Problem(like Online-Judge Problem) ! </br>
+    分布式<sup title="由git保证">1</sup> 去中心化<sup title="推荐使用template生成仓库,不设置主库;没有易受打击的web页">2</sup> 跨平台<sup title="对拍功能由原生实现(虽然MSVC因为换行符原因不太好用)">3</sup>的IO驱动型单文件问题<sup title="包括但不限于OJ平台题目">4</sup>解题模板
     <br />
-    <a href="https://github.com/Certseeds/CS203_DSAA_template"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Certseeds/CS203_DSAA_template/blob/dev/README.md"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/Certseeds/CS203_DSAA_template">View Demo</a>
+    <a href="https://github.com/Certseeds/CS203_DSAA_template/tree/release">View Demo</a>
     ·
-    <a href="https://github.com/Certseeds/CS203_DSAA_template/issues">Report Bug</a>
+    <a href="https://github.com/Certseeds/CS203_DSAA_template/issues/new?template=bug_report.md">Report Bug</a>
     ·
-    <a href="https://github.com/Certseeds/CS203_DSAA_template/issues">Request Feature</a>
+    <a href="https://github.com/Certseeds/CS203_DSAA_template/issues/new?template=feature_request.md">Request Feature</a>
   </p>
 </div>
 
@@ -245,7 +245,7 @@ DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数�
 
 4. 对算法友好的性能:
 
-我写树和图相关的题目时,最头疼的就是Java的爆栈,有一段时间只要用递归就爆栈,相同算法修改为C++之后问题就消失了.
+之前写树和图相关的题目时,最头疼的就是Java的爆栈,有一段时间只要用递归就爆栈,相同算法修改为C++之后问题就消失了.
 
 5. 相关资源的丰富程度
 
@@ -286,7 +286,6 @@ static const auto faster_streams = [] {
 
 先筛选跨平台,去掉了Microsoft,再筛选不需要安装,只剩Catch2, 结束.
 
-
 ## Roadmap
 
 + [x] 基础框架
@@ -311,6 +310,7 @@ static const auto faster_streams = [] {
 + [x] basic文件夹添加CS205内容,方便入门C++
   + [x] 以及一部分rust代码
 + [ ] Cyaron测试数据生成
++ [ ] WiKi Page
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -333,7 +333,7 @@ Don't forget to give the project a star! Thanks again!
 
 ### MIT LICENSE
 
-绝大多数代码(*.cpp,*.hpp,etc)基于MIT协议: 限制最少的主流开源协议
+绝大多数代码(`*.cpp`,`*.hpp`,etc)基于MIT协议: 限制最少的主流开源协议
 
 + 在署名的前提下,
 + 允许他人以任何方式使用,  
@@ -376,6 +376,12 @@ Use this space to list resources you find helpful and would like to give credit 
 + [Best-Readme-Template][Best-Readme-Template]
 + [Choose an Open Source License](https://choosealicense.com)
 
+## Thanks
+
+考虑到[whexy][GitHub-Whexy] 的博客文章[用两个晚上做超简易 OpenJudge][Two-Night-Online-Judge]里`因平台显著降低了作业难度。按任课教师要求已经关停。`这一句.
+
+设计时将分布式<sup title="由git保证">1</sup> 去中心化<sup title="推荐使用template生成仓库,不设置主库;没有易受打击的web页">2</sup> 跨平台<sup title="对拍功能由原生实现(虽然MSVC因为换行符原因不太好用)">3</sup>都纳入考虑.
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 [Best-Readme-Template]: https://github.com/othneildrew/Best-README-Template
@@ -401,3 +407,5 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/Certseeds/CS203_DSAA_template/blob/master/LICENSE.md
 [release-shield]: https://img.shields.io/github/release/Certseeds/CS203_DSAA_template.svg?style=for-the-badge
 [release-url]: https://github.com/Certseeds/CS203_DSAA_template/releases
+[GitHub-Whexy]: https://github.com/whexy
+[Two-Night-Online-Judge]: https://www.whexy.com/posts/wannaAC
