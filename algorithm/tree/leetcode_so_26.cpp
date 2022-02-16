@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2022  nanoseeds
+Copyright (C) 2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,31 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_590_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_590_HPP
+#include "leetcode_so_26_test.hpp"
 
-#include <catch_main.hpp>
-#include <tree/treenode_multi.hpp>
-#include <list>
-#include <stack>
-#include <vector>
-
-namespace leetcode_590 {
-using std::vector;
-using Node = TREE_NODE::TreeNodeMulti;
-using std::stack;
-using std::list;
-
-struct leetcode_590 final {
-    static vector<int32_t> postorder(const Node *root);
-
-    static vector<int32_t> postorderIter(const Node *root);
-};
-
-TEST_CASE("test_case 1 [test_590]", "[test_590]") {
-    CHECK(true); // too simple
+namespace leetcode_so_26 {
+bool in(TreeNode *A, TreeNode *B) {
+    if (B == nullptr) {
+        return true;
+    } else if (A == nullptr) {
+        return false;
+    }
+    return A->val == B->val && in(A->left, B->left) && in(A->right, B->right);
 }
+
+bool leetcode_so_26::isSubStructure(TREE_NODE::TreeNode<int32_t> *A, TREE_NODE::TreeNode<int32_t> *B) {
+    if (B == nullptr || A == nullptr) {
+        return false;
+    }
+    return in(A, B) || isSubStructure(A->left, B) || isSubStructure(A->right, B);
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_590_HPP
+
+}

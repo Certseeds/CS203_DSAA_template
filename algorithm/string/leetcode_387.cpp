@@ -24,9 +24,12 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_387_test.hpp"
+#include <array>
 
 namespace leetcode_387 {
-int leetcode_387::firstUniqChar(const string &s) {
+using std::array;
+
+int32_t leetcode_387::firstUniqChar(const string &s) {
     std::array<int32_t, 128> chars{0};
     for (const auto ch: s) {
         chars[ch]++;
@@ -39,7 +42,7 @@ int leetcode_387::firstUniqChar(const string &s) {
     return -1;
 }
 
-int leetcode_387::firstUniqChar2(const string &s) {
+int32_t leetcode_387::firstUniqChar2(const string &s) {
     std::array<std::pair<int32_t, size_t>, 128> chars{};
     for (auto iter = s.crbegin(); iter != s.crend(); ++iter) {
         const auto ch = *iter;

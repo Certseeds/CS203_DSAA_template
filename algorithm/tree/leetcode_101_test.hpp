@@ -25,10 +25,13 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
+//@Sword-Offer 28
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_101_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_101_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
 #include <vector>

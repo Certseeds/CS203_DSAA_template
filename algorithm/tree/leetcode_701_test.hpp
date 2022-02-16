@@ -29,18 +29,22 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_701_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
+#include <vector>
 
 namespace leetcode_701 {
-
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 
 struct leetcode_701 final {
     static TreeNode *insertIntoBST(TreeNode *root, int32_t val);
 };
+
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_701]", "[test_701]") {
     const vector<int32_t> input{4,

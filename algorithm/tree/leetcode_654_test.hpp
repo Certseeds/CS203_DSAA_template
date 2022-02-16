@@ -29,22 +29,22 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
-#include <list>
-#include <stack>
+#include <vector>
 
 namespace leetcode_654 {
-
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
-using std::stack;
-using std::list;
 
 struct leetcode_654 final {
     static TreeNode *constructMaximumBinaryTree(const vector<int32_t> &nums);
 };
+
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_654]", "[test_654]") {
     const vector<int32_t> input{3, 2, 1, 6, 0, 5};

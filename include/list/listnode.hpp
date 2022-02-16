@@ -69,9 +69,8 @@ public:
     explicit ListNodeLink(vector<ListNode *> list_) : list(std::move(list_)) {}
 
     explicit ListNodeLink(ListNode *node) {
-        while (node != nullptr) {
+        for (; node != nullptr; node = node->next) {
             list.push_back(node);
-            node = node->next;
         }
     }
 

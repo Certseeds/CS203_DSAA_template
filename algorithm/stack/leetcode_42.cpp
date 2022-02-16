@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_42_test.hpp"
+#include <stack>
 
 namespace leetcode_42 {
+using std::stack;
+
 int32_t leetcode_42::trap(const vector<int32_t> &height) {
     int32_t will_return{0};
     stack<size_t> sta;
@@ -53,7 +56,7 @@ int32_t leetcode_42::trapDPLoca(const vector<int32_t> &height) {
 
     // 水位为其 min(左侧最高值,水位最高值) - 本身的值
     const auto height_size{height.size()};
-    vector<size_t>  left(height_size + 1, 0), right(height_size + 1, 0);
+    vector<size_t> left(height_size + 1, 0), right(height_size + 1, 0);
     // 对左侧来说,其左侧为无限低, so do 右侧
     left[0] = 0;
     right[height_size] = height_size - 1;
@@ -77,13 +80,14 @@ int32_t leetcode_42::trapDPLoca(const vector<int32_t> &height) {
     }
     return will_return;
 }
+
 int32_t leetcode_42::trapDPHeight(const vector<int32_t> &height) {
     // 水位为其 min(左侧最高值,水位最高值) - 本身的值
     const auto height_size{height.size()};
     vector<int32_t> left(height_size + 1, 0), right(height_size + 1, 0);
     // 对左侧来说,其左侧为无限低, so do 右侧
     left[0] = height[0];
-    right[height_size] = height[height_size-1];
+    right[height_size] = height[height_size - 1];
     for (size_t i{1}; i < height_size; i++) {
         if (height[i] <= left[i - 1]) {
             left[i] = left[i - 1];

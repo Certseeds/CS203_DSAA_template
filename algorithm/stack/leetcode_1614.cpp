@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,13 @@ SOFTWARE.
 //@Tag 栈
 //@Tag 输入保证合法
 #include "leetcode_1614_test.hpp"
+#include <array>
+#include <stack>
+#include <limits>
 
 namespace leetcode_1614 {
+using std::array;
+using std::stack;
 
 int leetcode_1614::maxDepth(const string &s) {
     static const auto arr = [] {

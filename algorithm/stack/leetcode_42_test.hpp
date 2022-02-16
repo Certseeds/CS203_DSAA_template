@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -32,10 +32,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP
 
 #include <catch_main.hpp>
-#include <stack>
+#include <cstdint>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_42 {
-using std::stack;
+using std::vector;
 
 struct leetcode_42 {
     static int32_t trap(const vector<int32_t> &height);

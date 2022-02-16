@@ -16,7 +16,7 @@ jobs:
 
       # ensure the path and files of project
       - name: ensure the path and files of project
-        run: sudo apt install tree ;tree
+        run: sudo apt-get install tree ;tree
 
       - name: system
         run: uname -a

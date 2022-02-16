@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -31,11 +31,12 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <limits>
-#include <stack>
+#include <vector>
 
 namespace leetcode_84 {
-using std::stack;
+using std::vector;
 
 struct leetcode_84 {
     static int32_t largestRectangleArea(const vector<int32_t> &heights);
@@ -60,7 +61,6 @@ TEST_CASE("test case 3 [test_84]", "[test_84]") {
 }
 }
 namespace leetcode_85 {
-using std::stack;
 
 struct leetcode_85 {
     static int32_t maximalRectangle(const vector<vector<char>> &matrix);

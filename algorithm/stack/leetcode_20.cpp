@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,11 +24,16 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_20_test.hpp"
+#include <array>
+#include <stack>
 
 namespace leetcode_20 {
+using std::array;
+using std::stack;
+
 bool leetcode_20::isValid(const string &s) {
     std::stack<uint8_t> stk{{'?'}};
-    std::unordered_map<uint8_t, uint8_t> umap;
+    std::array<uint8_t, 256> umap{};
     umap['('] = ')';
     umap['['] = ']';
     umap['{'] = '}';

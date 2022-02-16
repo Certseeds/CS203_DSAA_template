@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,10 @@ SOFTWARE.
 //@Tag 栈
 //@Tag 贪心
 #include "leetcode_678_test.hpp"
+#include <stack>
 
 namespace leetcode_678 {
+using std::stack;
 
 bool leetcode_678::checkValidString(const string &s) {
     int32_t order{0};

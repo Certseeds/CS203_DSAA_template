@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_84_85_test.hpp"
+#include <stack>
 
-namespace leetcode_84{
+namespace leetcode_84 {
+using std::stack;
 
 int32_t leetcode_84::largestRectangleArea(const vector<int32_t> &heights) {
     const auto height_size{static_cast<int32_t>(heights.size())};
@@ -58,6 +60,7 @@ int32_t leetcode_84::largestRectangleArea(const vector<int32_t> &heights) {
 }
 }
 namespace leetcode_85 {
+using std::stack;
 
 int32_t leetcode_85::maximalRectangle(const vector<vector<char>> &matrix) {
     if (matrix.empty() || matrix.front().empty()) {
@@ -74,7 +77,8 @@ int32_t leetcode_85::maximalRectangle(const vector<vector<char>> &matrix) {
             const auto now{(matrix[i][j] - '0')};
             heights[i][j] = now ? (now + heights[i - 1][j]) : 0;
         }
-        will_return = std::max(will_return,leetcode_84::leetcode_84::largestRectangleArea({heights[i].cbegin(), heights[i].cend()}));
+        will_return = std::max(will_return, leetcode_84::leetcode_84::largestRectangleArea(
+                {heights[i].cbegin(), heights[i].cend()}));
     }
     return will_return;
 }

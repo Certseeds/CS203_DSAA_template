@@ -51,7 +51,7 @@ vector<int32_t> leetcode_590::postorderIter(const Node *const root) {
     for (stack<const Node *> sta{{root}}; !sta.empty();) {
         const auto *const head = sta.top();
         sta.pop();
-        nodes.insert(nodes.cbegin(), head->val);
+        nodes.push_front(head->val);
         for (const auto iter: head->children) {
             sta.push(iter);
         }

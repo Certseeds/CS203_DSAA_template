@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,54 +25,51 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-//@Tag in-traverse
-//@Tag 中序遍历二叉树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_32_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_32_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
-#include <stack>
+#include <vector>
 
-namespace leetcode_530 {
-
+namespace leetcode_so_32 {
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using std::stack;
 
-struct leetcode_530 {
-    static int32_t getMinimumDifference(TreeNode *root);
+struct leetcode_so_32 final {
+    static vector<int32_t> levelOrderFst(TreeNode *root);
 
-    static int32_t getMinimumDifference2(TreeNode *root);
+    // static vector<int> levelOrderSnd(TreeNode *root); // same with 102
+    static vector<vector<int32_t>> levelOrderTrd(TreeNode *root);
 };
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using TREE_NODE::numToTree;
+using Catch::Matchers::Equals;
 
-TEST_CASE("test_case 1 [test_530]", "[test_530]") {
-    const vector<int32_t> input{4, 2, 6, 1, 3};
+TEST_CASE("test_case 1-1 [test_so_32]", "[test_so_32]") {
+    const vector<int32_t> input{3,
+                                9, 20,
+                                TreeNode::No, TreeNode::No, 15, 7,};
     const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    static constexpr const auto result{1};
-    THEN("case 1") {
-        CHECK(result == leetcode_530::getMinimumDifference(numVecInput[0]));
-    }THEN("case 2") {
-        CHECK(result == leetcode_530::getMinimumDifference2(numVecInput[0]));
-    }
-    const TreeNodeLink link{numVecInput.front()};
+    const TreeNodeLink link{numVecInput[0]};
+    const vector<int32_t> results{3, 9, 20, 15, 7};
+    CHECK_THAT(results, Equals(leetcode_so_32::levelOrderFst(numVecInput[0])));
 }
 
-TEST_CASE("test_case 2 [test_530]", "[test_530]") {
-    const vector<int32_t> input{1, 0, 48, TreeNode::No, TreeNode::No, 12, 49};
+TEST_CASE("test_case 3-1 [test_so_32]", "[test_so_32]") {
+    const vector<int32_t> input{3,
+                                9, 20,
+                                TreeNode::No, TreeNode::No, 15, 7,};
     const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    static constexpr const auto result{1};
-    THEN("case 1") {
-        CHECK(result == leetcode_530::getMinimumDifference(numVecInput[0]));
-    }THEN("case 2") {
-        CHECK(result == leetcode_530::getMinimumDifference2(numVecInput[0]));
-    }
-    const TreeNodeLink link{numVecInput.front()};
+    const TreeNodeLink link{numVecInput[0]};
+    const vector<vector<int32_t>> results{{3},
+                                          {20, 9},
+                                          {15, 7}};
+    CHECK_THAT(results, Equals(leetcode_so_32::levelOrderTrd(numVecInput[0])));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_32_HPP

@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-
 #include "leetcode_321_test.hpp"
+#include <stack>
 
 namespace leetcode_321 {
+using std::stack;
 
 int32_t compare(const vector<int32_t> &fst, size_t fst_size, const vector<int32_t> &snd, size_t snd_size) {
     if (fst.size() < snd.size()) {

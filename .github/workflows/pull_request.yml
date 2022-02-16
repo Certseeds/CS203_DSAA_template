@@ -33,7 +33,7 @@ jobs:
 
       # ensure the path and files of project
       - name: ensure the path and files of project
-        run: sudo apt install tree; tree
+        run: sudo apt-get install tree; tree
 
       - name: Install GCC-11,G++-11
         run: |
@@ -44,7 +44,7 @@ jobs:
 
       - name: prepare libopencv
         run: |
-          sudo apt update && sudo apt install libopencv-dev
+          sudo apt-get update && sudo apt-get install libopencv-dev
 
       - name: Use cmake
         run: cmake --version
@@ -145,7 +145,7 @@ jobs:
 
       # ensure the path and files of project
       - name: ensure the path and files of project
-        run: sudo apt install tree; tree
+        run: sudo apt-get install tree; tree
         if: ${{matrix.os != 'windows-latest'}}
 
       - name: run script

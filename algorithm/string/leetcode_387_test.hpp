@@ -24,7 +24,8 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 //@Tag string
-//@Tag 字符串
+//@Tag 字符串]
+//@Sword-Offer 50
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_387_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_387_HPP
 
@@ -38,9 +39,9 @@ namespace leetcode_387 {
 using std::string;
 
 struct leetcode_387 {
-    static int firstUniqChar(const string &s); // better for short str
+    static int32_t firstUniqChar(const string &s); // better for short str
 
-    static int firstUniqChar2(const string &s); // better for long str
+    static int32_t firstUniqChar2(const string &s); // better for long str
 };
 
 TEST_CASE("1 [test_387]", "[test_387]") {

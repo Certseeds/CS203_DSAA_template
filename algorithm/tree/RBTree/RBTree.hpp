@@ -83,7 +83,7 @@ private:
         if (this->root == nullptr) {
             return true;
         }
-        stack<std::pair<int, Node_t *>> sta{{{0,this->root}}};
+        stack<std::pair<int, Node_t *>> sta{{{0, this->root}}};
         int32_t count = -1;
         while (!sta.empty()) {
             const auto head = sta.top();
@@ -576,7 +576,7 @@ void RBTree<T>::pre_order() const {
     if (this->root == nullptr) {
         return;
     }
-    stack<std::pair<int, Node_t *>> sta{{{0,this->root}}};
+    stack<std::pair<int, Node_t *>> sta{{{0, this->root}}};
     int count = 0;
     while (!sta.empty()) {
         const auto head = sta.top();

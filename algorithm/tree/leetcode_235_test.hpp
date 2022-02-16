@@ -29,19 +29,22 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_235_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
+#include <vector>
 
 namespace leetcode_235 {
 
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TREE_NODE::numToTree;
 
 struct leetcode_235 {
     static bool findTarget(TreeNode *root, int k);
 };
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_235]", "[test_235]") {
     const vector<int32_t> input{5,

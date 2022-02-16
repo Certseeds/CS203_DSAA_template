@@ -31,6 +31,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_559_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode_multi.hpp>
 #include <stack>
 
@@ -43,6 +45,8 @@ struct leetcode_559 {
     static int maxDepth(Node *root);
 };
 
-TEST_CASE("test_case 1 [test_559]", "[test_559]") {}
+TEST_CASE("test_case 1 [test_559]", "[test_559]") {
+    CHECK(true); // too simple
+}
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_559_HPP

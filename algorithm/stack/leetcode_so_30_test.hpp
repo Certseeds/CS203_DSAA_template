@@ -29,12 +29,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP
 
 #include <catch_main.hpp>
-#include <stack>
-#include <string>
 
 namespace leetcode_so_30 {
-using std::stack;
-using std::string;
 
 struct MinStack {
     MinStack() = default;;

@@ -25,23 +25,26 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
+//@Sword-Offer 27
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
 
 namespace leetcode_226 {
 
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TREE_NODE::numToTree;
 
 struct leetcode_226 {
     static TreeNode *invertTree(TreeNode *root);
 };
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_226]", "[test_226]") {
     const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};

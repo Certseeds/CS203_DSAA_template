@@ -34,8 +34,10 @@ SOFTWARE.
 namespace leetcode_96 {
 
 using std::unordered_map;
+
 struct leetcode_96 {
     static int32_t numTrees(int32_t n);
+
     static int32_t numTreesConstexpr(int32_t n);
 };
 
@@ -53,6 +55,7 @@ TEST_CASE("test_case 2 [test_96]", "[test_96]") {
     CHECK(result == leetcode_96::numTrees(input));
     CHECK(result == leetcode_96::numTreesConstexpr(input));
 }
+
 TEST_CASE("test_case 3 [test_96]", "[test_96]") {
     static constexpr const auto input{19};
     static constexpr const auto result{1767263190};

@@ -29,20 +29,24 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_700_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
+#include <vector>
 
 namespace leetcode_700 {
-
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 
 struct leetcode_700 final {
     static TreeNode *searchBST(TreeNode *root, int32_t val);
 
     static TreeNode *searchBSTiter(TreeNode *root, int32_t val);
 };
+
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_700]", "[test_700]") {
     const vector<int32_t> input{4,
@@ -57,6 +61,7 @@ TEST_CASE("test_case 1 [test_700]", "[test_700]") {
     CHECK(search == leetcode_700::searchBST(numVecInput[0], search)->val);
     CHECK(search == leetcode_700::searchBSTiter(numVecInput[0], search)->val);
 }
+
 TEST_CASE("test_case 2 [test_700]", "[test_700]") {
     const vector<int32_t> input{4,
                                 2, 7,

@@ -129,7 +129,7 @@ string huffman::cal(const string &str) const {
 
 string huffman::decal(const string &serilize) const {
     string will_return{};
-    const TreeNode* root = base;
+    const TreeNode *root = base;
     for (const auto ch: serilize) {
         if (ch == '0') {
             root = root->left;
