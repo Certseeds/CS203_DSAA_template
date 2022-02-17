@@ -25,8 +25,8 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -75,4 +75,4 @@ TEST_CASE("test_case 4 [test_so_26]", "[test_so_26]") {
     CHECK(leetcode_so_26::isSubStructure(numVecInput.front(), numVecInput2.front()));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_TEST_HPP

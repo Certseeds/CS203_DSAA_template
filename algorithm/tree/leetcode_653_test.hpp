@@ -25,8 +25,9 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_653_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_653_HPP
+//@Plan 数据结构入门 Day14
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_653_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_653_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -78,4 +79,4 @@ TEST_CASE("test_case 2 [test_653]", "[test_653]") {
     CHECK(result == leetcode_653::lowestCommonAncestor(numVecInput.front(), p, q)->val);
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_653_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_653_TEST_HPP

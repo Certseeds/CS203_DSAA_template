@@ -26,9 +26,10 @@ SOFTWARE.
 //@Tag tree
 //@Tag 树
 //@description 中序遍历
+//@Plan 数据结构入门 Day10
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_TEST_HPP
 
 #include <catch_main.hpp>
 #include <tree/treenode.hpp>
@@ -75,4 +76,4 @@ TEST_CASE("test_case 2 [test_94]", "[test_94]") {
     CHECK_THAT(result, Equals(leetcode_94::inorderTraversalIter(numVecInput[0])));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_TEST_HPP

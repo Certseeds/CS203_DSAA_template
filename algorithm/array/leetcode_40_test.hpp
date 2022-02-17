@@ -26,8 +26,8 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -75,4 +75,4 @@ TEST_CASE("basic test 3[test_40]", "[test_40]") {
     CHECK_THAT(results, UnorderedEquals(leetcode_40::combinationSum2(candidates, target)));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_40_TEST_HPP

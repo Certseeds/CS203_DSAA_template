@@ -27,7 +27,8 @@ SOFTWARE.
 //@Tag 动态规划
 //@Tag stack
 //@Tag 单调栈
-//@Linked 121 122
+//@Linked 121 122 309
+//@Plan 动态规划入门 Day8
 
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_714_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_714_TEST_CPP

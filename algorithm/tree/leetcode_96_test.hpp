@@ -25,8 +25,9 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
+//@Plan 动态规划入门 Day11
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_TEST_HPP
 
 #include <catch_main.hpp>
 #include <unordered_map>
@@ -63,4 +64,4 @@ TEST_CASE("test_case 3 [test_96]", "[test_96]") {
     CHECK(result == leetcode_96::numTreesConstexpr(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_96_TEST_HPP

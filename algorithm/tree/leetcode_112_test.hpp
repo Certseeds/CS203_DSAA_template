@@ -26,9 +26,9 @@ SOFTWARE.
 //@Tag tree
 //@Tag 树
 //@description 中序遍历
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_112_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_112_HPP
+//@Plan 数据结构入门 Day12
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_112_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_112_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -70,4 +70,4 @@ TEST_CASE("test_case 2 [test_112]", "[test_112]") {
     CHECK_FALSE(leetcode_112::hasPathSum(numVecInput[0], target));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_112_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_112_TEST_HPP
