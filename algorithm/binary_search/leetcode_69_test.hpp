@@ -29,7 +29,6 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <vector>
 
 // 实质上是寻找第一个大于等于target的数字的下标
 // 如果目标不存在,则返回第一个大于其的位置减一

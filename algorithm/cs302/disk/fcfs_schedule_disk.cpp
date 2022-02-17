@@ -53,7 +53,8 @@ TEST_CASE("fcfs test sample") {
         {
             const CS203_redirect cr{stdInput, testOutput};
             const auto input = inputs::read_input();
-            const std::unique_ptr<disk_base> disk = std::make_unique<fcfs_disk>(input.S, input.M, input.N, input.requests);
+            const std::unique_ptr<disk_base> disk = std::make_unique<fcfs_disk>(input.S, input.M, input.N,
+                                                                                input.requests);
             disk->output();
         }
         CHECK(compareFiles(stdOutput, testOutput));

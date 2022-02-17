@@ -42,6 +42,7 @@ struct leetcode_350 {
 };
 
 using Catch::Matchers::UnorderedEquals;
+
 TEST_CASE("test case 1 [test_350]", "[test_350]") {
     const vector<int32_t> input1{1, 2, 2, 1}, input2{2, 2};
     const vector<int32_t> result{2, 2};

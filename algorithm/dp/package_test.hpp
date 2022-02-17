@@ -34,7 +34,7 @@ namespace dp_package {
 
 namespace zero_one {
 TEST_CASE("1 [test_zero_one]", "[test_zero_one]") {
-    const vector <something> things{
+    const vector<something> things{
             something{2, 4}, something{1, 2}, something{3, 3},
     };
     static constexpr const size_t weight{4};
@@ -61,7 +61,7 @@ TEST_CASE("1 [test_zero_one]", "[test_zero_one]") {
 }
 namespace complete {
 TEST_CASE("1 [test_complate]", "[test_complate]") {
-    const vector <something> things{
+    const vector<something> things{
             something{1, 1}, something{2, 2}, something{5, 5},
     };
     static constexpr const size_t weight{5};
@@ -79,7 +79,7 @@ TEST_CASE("1 [test_complate]", "[test_complate]") {
 }
 
 TEST_CASE("2 [test_complate]", "[test_complate]") {
-    const vector <something> things{
+    const vector<something> things{
             something{2, 2}
     };
     static constexpr const size_t weight{3};
@@ -97,7 +97,7 @@ TEST_CASE("2 [test_complate]", "[test_complate]") {
 }
 
 TEST_CASE("3 [test_complate]", "[test_complate]") {
-    const vector <something> things{
+    const vector<something> things{
             something{3, 6},
             something{2, 5},
             something{5, 10},

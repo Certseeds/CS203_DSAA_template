@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_414_test.hpp"
+#include <unordered_set>
 
 namespace leetcode_414 {
+using std::unordered_set;
 
 int32_t leetcode_414::thirdMax(const vector<int32_t> &nums) {
     unordered_set<int32_t> uset;

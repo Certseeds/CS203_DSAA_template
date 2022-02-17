@@ -30,9 +30,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_15 {
 using std::vector;

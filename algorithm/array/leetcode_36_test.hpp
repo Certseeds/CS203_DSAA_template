@@ -41,10 +41,6 @@ struct leetcode_36 {
     static bool isValidSudoku(const vector<vector<char>> &board);
 };
 
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
-
 TEST_CASE("basic test [test_36]", "[test_36]") {
     const vector<vector<char>> vec1{
             {'5', '3', '.', '.', '7', '.', '.', '.', '.'},

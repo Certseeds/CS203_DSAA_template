@@ -168,7 +168,7 @@ TEST_CASE("lru-2 test sample") {
     for (const auto&[result, file_name]: pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
-        const std::unique_ptr<cache_base>  cache = std::make_unique<lru_cache>(input.cacheSize);
+        const std::unique_ptr<cache_base> cache = std::make_unique<lru_cache>(input.cacheSize);
         size_t hits{0};
         for (const auto iter: input.querys) {
             const auto exist = cache->read(iter);

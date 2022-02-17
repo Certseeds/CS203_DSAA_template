@@ -41,7 +41,7 @@ void sort_warpper(vector<int32_t> &nums) {
 }
 
 void bubble_sort(vector<int32_t> &nums) {
-    for (size_t i{0},nums_size{nums.size()}; i < nums_size; i++) {
+    for (size_t i{0}, nums_size{nums.size()}; i < nums_size; i++) {
         for (size_t j{0}; j < nums_size - i - 1; j++) {
             if (nums[j] > nums[j + 1]) {
                 std::swap(nums[j], nums[j + 1]);

@@ -32,10 +32,8 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <vector>
 
 namespace leetcode_7 {
-using std::vector;
 
 struct leetcode_7 {
     static int32_t reverse(int32_t x);

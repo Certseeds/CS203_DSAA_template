@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_91_test.hpp"
+#include <vector>
 
 namespace leetcode_91 {
+using std::vector;
 
 int32_t leetcode_91::numDecodings(const string &str) {
     const auto str_size{str.size()};

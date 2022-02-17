@@ -56,6 +56,7 @@ public:
         snd->tail = nullptr;
         return fst;
     }
+
     /**
      * 要先获取到node,才能拿到其首部node,可见完全没用
      * */

@@ -31,10 +31,12 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace leetcode_376 {
 using std::vector;
+
 struct leetcode_376 final {
     static int32_t wiggleMaxLength(const vector<int32_t> &nums);
 };

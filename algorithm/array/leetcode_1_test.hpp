@@ -36,11 +36,12 @@ SOFTWARE.
 
 namespace leetcode_1 {
 using std::vector;
-using Catch::Matchers::UnorderedEquals;
 
 struct leetcode_1 {
     static vector<int32_t> twoSum(const vector<int32_t> &nums, int32_t target);
 };
+
+using Catch::Matchers::UnorderedEquals;
 
 TEST_CASE("basic tests [test_1]", "[test_1]") {
     const vector<int32_t> vec{2, 7, 11, 15};

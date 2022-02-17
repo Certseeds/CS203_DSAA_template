@@ -24,11 +24,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_10_test.hpp"
+#include <vector>
 
 namespace lcs_10 {
+using std::vector;
 
 bool leetcode_10::isMatch(const string &s, const string &p) {
-    const static auto func = [](const auto x, const auto y) {
+    static constexpr const auto func = [](const auto x, const auto y) {
         return y == '.' || x == y;
     };
     const auto s_size{s.size()}, p_size{p.size()};

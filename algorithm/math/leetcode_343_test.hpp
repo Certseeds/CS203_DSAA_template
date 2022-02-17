@@ -36,9 +36,8 @@ SOFTWARE.
 namespace leetcode_343 {
 
 struct leetcode_343 {
-    static int32_t integerBreak(int32_t n);
-
-    static int64_t integerBreak(int64_t n);
+    template<typename T>
+    static T integerBreak(T n);
 };
 
 TEST_CASE("1 [test_343]", "[test_343]") {

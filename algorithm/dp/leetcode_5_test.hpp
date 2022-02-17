@@ -42,10 +42,12 @@ using std::vector;
 struct leetcode_5 {
     static string longestPalindrome(const string &s);
 };
+
 template<typename Type, size_t length>
 constexpr size_t arr_length(const Type (&)[length]) {
     return length;
 }
+
 template<size_t length>
 constexpr size_t arr_length(const char (&)[length]) {
     return length - 1;

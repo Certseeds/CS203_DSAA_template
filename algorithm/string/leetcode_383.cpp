@@ -33,7 +33,7 @@ bool leetcode_383::canConstruct(const string &ransomNote, const string &magazine
     if (ransomNote.size() > magazine.size()) {
         return false;
     }
-    std::array<int64_t , std::numeric_limits<char>::max() + 1> base{0};
+    std::array<int64_t, std::numeric_limits<char>::max() + 1> base{0};
     for (const auto ch: magazine) {
         ++base[ch];
     }

@@ -32,8 +32,10 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_283 {
+using std::vector;
 
 struct leetcode_283 {
     static void moveZeroes(vector<int32_t> &nums);

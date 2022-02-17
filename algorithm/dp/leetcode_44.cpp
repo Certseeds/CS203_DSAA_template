@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_44_test.hpp"
+#include <vector>
 
 namespace leetcode_44 {
+using std::vector;
 
 bool leetcode_44::isMatch(const string &s, const string &p) {
     const auto s_size{s.size()}, p_size{p.size()};

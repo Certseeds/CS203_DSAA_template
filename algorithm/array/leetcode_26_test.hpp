@@ -29,9 +29,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_26_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_26 {
 using std::vector;
@@ -42,8 +42,6 @@ struct leetcode_26 {
 };
 
 using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 
 TEST_CASE("1 [test_26]", "[test_26]") {

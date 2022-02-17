@@ -32,13 +32,14 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_401 {
+using std::vector;
 
 struct leetcode_401 {
     static vector<string> readBinaryWatch(int32_t num);
 };
-
 
 using Catch::Matchers::UnorderedEquals;
 

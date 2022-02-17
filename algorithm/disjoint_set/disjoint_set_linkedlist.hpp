@@ -44,7 +44,7 @@ protected:
     };
 
 public:
-    static T* make_set(size_t x) { return T::make_set(x); }
+    static T *make_set(size_t x) { return T::make_set(x); }
 
     static T *unio(T *fst, T *snd) { return T::unio(fst, snd); }
 

@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_169_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_169 {
+using std::unordered_map;
 
 int32_t leetcode_169::majorityElement(const vector<int32_t> &nums) {
     const auto nums_size{nums.size()};

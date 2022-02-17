@@ -35,11 +35,9 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstddef>
 #include <cstdint>
-#include <stack>
 #include <vector>
 
 namespace leetcode_122 {
-using std::stack;
 using std::vector;
 
 struct leetcode_122 final {

@@ -40,7 +40,7 @@ int32_t leetcode_931::minFallingPathSum(const vector<vector<int32_t>> &matrix) {
     for (size_t line{0}; line < row; line++) {
         now[0] = matrix[line][0] + std::min(last[0], last[1]);
         for (size_t j{1}; j < col - 1; j++) {
-            now[j] = matrix[line][j] + std::min({last[j],last[j - 1], last[j + 1]});
+            now[j] = matrix[line][j] + std::min({last[j], last[j - 1], last[j + 1]});
         }
         now[col - 1] = matrix[line][col - 1] + std::min(last[col - 2], last[col - 1]);
         std::swap(now, last);

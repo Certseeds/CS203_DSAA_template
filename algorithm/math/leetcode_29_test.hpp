@@ -29,8 +29,9 @@ SOFTWARE.
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_29_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_29_HPP
 
-#include <cstdint>
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 
 namespace leetcode_29 {
 struct leetcode_29 {

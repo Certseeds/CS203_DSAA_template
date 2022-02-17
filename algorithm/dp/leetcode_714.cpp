@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_714_test.hpp"
+#include <stack>
 
 namespace leetcode_714 {
+using std::stack;
 
 int32_t leetcode_714::maxProfit(const vector<int32_t> &prices, int32_t fee) {
     const auto p_size{prices.size()};

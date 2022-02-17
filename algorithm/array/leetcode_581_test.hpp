@@ -29,7 +29,6 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_HPP
 
 #include <catch_main.hpp>
-#include <algorithm>
 #include <cstdint>
 #include <cstddef>
 #include <vector>
@@ -39,6 +38,7 @@ using std::vector;
 
 struct leetcode_581 {
     static int32_t findUnsortedSubarray(const vector<int32_t> &nums);
+
     static int32_t findUnsortedSubarray2(const vector<int32_t> &nums);
 };
 

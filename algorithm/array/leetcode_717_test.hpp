@@ -41,7 +41,6 @@ struct leetcode_717 {
     static bool isOneBitCharacter(const vector<int32_t> &bits);
 };
 
-
 TEST_CASE("test case 1 [test_717]", "[test_717]") {
     const vector<int32_t> input{1, 0, 0};
     CHECK(leetcode_717::isOneBitCharacter(input));

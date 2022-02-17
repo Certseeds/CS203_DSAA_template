@@ -29,21 +29,23 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_399_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
 #include <string>
-#include <unordered_map>
 
 namespace leetcode_399 {
 using std::string;
 using std::vector;
-using Catch::Matchers::ApproxMatcher;
-using Catch::Matchers::Approx;
 
 struct leetcode_399 {
     static vector<double>
     calcEquation(const vector<vector<string>> &equations, const vector<double> &values,
                  const vector<vector<string>> &queries);
 };
+
+using Catch::Matchers::ApproxMatcher;
+using Catch::Matchers::Approx;
 
 TEST_CASE("1 [test_399]", "[test_399]") {
     const vector<vector<string>> edges{

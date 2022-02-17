@@ -51,10 +51,6 @@ struct leetcode_154 final {
     static int32_t findMin(const vector<int32_t> &nums);
 };
 
-using Catch::Matchers::Contains;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-
 TEST_CASE("test case 2 [test_154]", "[test_154]") {
     const vector<int32_t> input{2, 2, 2, 0, 1};
     static constexpr const auto result{0};
@@ -62,12 +58,9 @@ TEST_CASE("test case 2 [test_154]", "[test_154]") {
 }
 }
 namespace leetcode_153_154 {
-
+using std::vector;
 using leetcode_153::leetcode_153;
 using leetcode_154::leetcode_154;
-using Catch::Matchers::Contains;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
 
 TEST_CASE("1 [test_153]", "[test_153]") {
     const vector<int32_t> input{3, 4, 5, 1, 2};

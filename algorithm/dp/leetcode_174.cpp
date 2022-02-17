@@ -27,7 +27,6 @@ SOFTWARE.
 
 namespace leetcode_174 {
 
-
 int32_t leetcode_174::calculateMinimumHP(const vector<vector<int32_t>> &dungeon) {
     if (dungeon.empty() || dungeon.front().empty()) {
         return 0;

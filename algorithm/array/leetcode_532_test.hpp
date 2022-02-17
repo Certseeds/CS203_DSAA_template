@@ -32,12 +32,9 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <numeric>
 #include <vector>
-#include <unordered_map>
 
 namespace leetcode_532 {
-using std::unordered_map;
 using std::vector;
 
 struct leetcode_532 {

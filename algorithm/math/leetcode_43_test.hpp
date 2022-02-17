@@ -30,9 +30,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_HPP
 
 #include <catch_main.hpp>
-#include <string>
 #include <cstdint>
-#include <algorithm>
+#include <cstddef>
+#include <string>
 
 namespace leetcode_43 {
 struct leetcode_43 {

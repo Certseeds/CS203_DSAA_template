@@ -33,7 +33,6 @@ SOFTWARE.
 #include <cstdint>
 #include <cstddef>
 #include <vector>
-#include <algorithm>
 
 namespace leetcode_377 {
 using std::vector;

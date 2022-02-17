@@ -38,12 +38,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_1143_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <string>
-#include <vector>
 
 namespace leetcode_1143 {
 using std::string;
-using std::vector;
 
 struct leetcode_1143 {
     static int32_t longestCommonSubsequence(const string &text1, const string &text2);
@@ -52,7 +52,7 @@ struct leetcode_1143 {
 };
 
 TEST_CASE("1 [test_1143]", "[test_1143]") {
-    static constexpr const char *const input1{"abcde"},*const input2{"ace"};
+    static constexpr const char *const input1{"abcde"}, *const input2{"ace"};
     static constexpr const auto result{3};
     CHECK(result == leetcode_1143::longestCommonSubsequence(input1, input2));
     CHECK(result == leetcode_1143::longestCommonSubsequence2(input1, input2));

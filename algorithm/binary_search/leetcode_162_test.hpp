@@ -38,13 +38,14 @@ SOFTWARE.
 
 namespace leetcode_162 {
 using std::vector;
-using Catch::Matchers::Contains;
 
 struct leetcode_162 {
     static int32_t findPeakElement(const vector<int32_t> &nums);
 
     static int32_t findPeakElement2(const vector<int32_t> &nums);
 };
+
+using Catch::Matchers::Contains;
 
 TEST_CASE("1 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 3, 1};

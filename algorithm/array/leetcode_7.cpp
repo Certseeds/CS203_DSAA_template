@@ -29,6 +29,7 @@ SOFTWARE.
 #include <limits>
 
 namespace leetcode_7 {
+using std::vector;
 using std::array;
 
 int leetcode_7::reverse(int32_t x) {

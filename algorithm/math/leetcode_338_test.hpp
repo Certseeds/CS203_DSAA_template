@@ -32,8 +32,10 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_338 {
+using std::vector;
 
 struct leetcode_338 {
     static vector<int32_t> countBits(int32_t num);

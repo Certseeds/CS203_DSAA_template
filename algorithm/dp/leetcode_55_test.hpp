@@ -29,11 +29,11 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_55_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
-#include <string>
 
 namespace leetcode_55 {
-using std::string;
 using std::vector;
 
 struct leetcode_55 {

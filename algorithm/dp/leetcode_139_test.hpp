@@ -34,10 +34,11 @@ SOFTWARE.
 #include <cstddef>
 #include <cstdint>
 #include <vector>
-#include <numeric>
+#include <string>
 
 namespace leetcode_139 {
 using std::vector;
+using std::string;
 
 struct leetcode_139 final {
     static bool wordBreak(const string &s, const vector<string> &wordDict);

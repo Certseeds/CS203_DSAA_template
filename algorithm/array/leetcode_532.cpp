@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_532_test.hpp"
+#include <unordered_map>
 
 namespace leetcode_532 {
+using std::unordered_map;
 
 int32_t leetcode_532::findPairs(const vector<int32_t> &nums, int32_t k) {
     if (k < 0) {

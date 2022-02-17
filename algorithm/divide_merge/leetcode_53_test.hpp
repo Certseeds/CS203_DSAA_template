@@ -31,6 +31,8 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DIVIDE_MERGE_LEETCODE_53_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
 #include <string>
 

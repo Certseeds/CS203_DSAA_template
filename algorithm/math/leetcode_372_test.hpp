@@ -30,9 +30,9 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_HPP
 
 #include <catch_main.hpp>
-#include <cassert>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_372 {
 

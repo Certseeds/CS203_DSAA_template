@@ -33,7 +33,6 @@ SOFTWARE.
 #include <cstddef>
 #include <cstdint>
 #include <vector>
-#include <numeric>
 
 namespace leetcode_174 {
 using std::vector;
@@ -41,10 +40,11 @@ using std::vector;
 struct leetcode_174 final {
     static int32_t calculateMinimumHP(const vector<vector<int32_t>> &dungeon);
 };
+
 TEST_CASE("1 [test_174]", "[test_174]") {
     const vector<vector<int32_t>> inputs{{-2, -3,  3},
-                                          {-5, -10, 1},
-                                          {10, 30,  -5}};
+                                         {-5, -10, 1},
+                                         {10, 30,  -5}};
     static constexpr const auto result{7};
     CHECK(result == leetcode_174::calculateMinimumHP(inputs));
 }

@@ -32,10 +32,9 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <unordered_set>
+#include <vector>
 
 namespace leetcode_414 {
-using std::unordered_set;
 
 struct leetcode_414 {
     static int32_t thirdMax(const vector<int32_t> &nums);

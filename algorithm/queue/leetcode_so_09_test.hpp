@@ -30,11 +30,11 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_09_HPP
 
 #include <catch_main.hpp>
-#include <stack>
 #include <string>
+#include <functional>
+#include <memory>
 
 namespace leetcode_so_09 {
-using std::stack;
 using std::string;
 
 struct CQueue {

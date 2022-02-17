@@ -44,12 +44,6 @@ struct leetcode_27 {
     static int removeElement2(vector<int32_t> &vec, int32_t val);
 };
 
-
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
-
-
 TEST_CASE("1 [test_27]", "[test_27]") {
     static constexpr const int32_t test_result{5};
     vector<int> vec1{0, 1, 2, 2, 3, 0, 4, 2};

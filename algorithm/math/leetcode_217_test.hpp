@@ -32,14 +32,15 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
-#include <unordered_set>
+#include <vector>
 
 namespace leetcode_217 {
-using std::unordered_set;
+using std::vector;
 
 struct leetcode_217 {
     static bool containsDuplicate(const vector<int32_t> &nums);
 };
+
 TEST_CASE("1 [test_217]", "[test_217]") {
     const vector<int32_t> input{3, 4, 3};
     CHECK(leetcode_217::containsDuplicate(input));

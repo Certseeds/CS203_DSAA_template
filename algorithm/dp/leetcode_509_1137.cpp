@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_509_1137_test.hpp"
+#include <array>
 
 namespace leetcode_509 {
+using std::array;
 static constexpr const size_t max{31};
 
 constexpr auto func() {
@@ -44,6 +46,7 @@ int32_t leetcode_509::fib(int32_t n) {
 
 }
 namespace leetcode_1137 {
+using std::array;
 static constexpr const size_t maxV{38};
 
 constexpr auto func() {

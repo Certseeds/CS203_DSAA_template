@@ -49,6 +49,7 @@ ListNode *leetcode_206::reverseList2(ListNode *head) {
     ll = rl;
     return ll;
 }
+
 /**
  * 化简版
  * */

@@ -32,12 +32,13 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace leetcode_64 {
 using std::vector;
 
-struct leetcode_64 final{
+struct leetcode_64 final {
     static int32_t minPathSum(const vector<vector<int32_t>> &grid);
 };
 

@@ -25,10 +25,11 @@ SOFTWARE.
 */
 #include "leetcode_69_test.hpp"
 #include <algorithm>
-
+#include <vector>
 // 实质上是寻找第一个大于等于target的数字的下标
 // 如果目标不存在,则返回第一个大于其的位置减一
 namespace leetcode_69 {
+using std::vector;
 
 int32_t leetcode_69::mySqrt(int32_t x) {
     if (x == 0) {

@@ -34,7 +34,6 @@ SOFTWARE.
 #include <cstddef>
 #include <vector>
 
-
 namespace leetcode_31 {
 using std::vector;
 
@@ -43,8 +42,6 @@ struct leetcode_31 {
 };
 
 using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("basic test [test_31]", "[test_31]") {
     vector<int32_t> vec1{1, 2, 3};

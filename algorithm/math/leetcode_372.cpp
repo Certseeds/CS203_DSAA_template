@@ -36,14 +36,14 @@ static std::array<int32_t, 10> power10(int32_t a) {
     return power10;
 }
 
-int32_t superPower(int32_t a, const vector<int32_t> &b, size_t length,const std::array<int32_t, 10>& nums) {
-    assert(0 < length && length <= 2000);
-    assert(0 <= b[length - 1] && b[length - 1] <= 9);
+int32_t superPower(int32_t a, const vector<int32_t> &b, size_t length, const std::array<int32_t, 10> &nums) {
+    CHECK((0 < length && length <= 2000)); // TODO, catch2 why do not support && in CHECK?
+    CHECK((0 <= b[length - 1] && b[length - 1] <= 9));
     int32_t will_return{nums[b[length - 1]]};
     if (length == 1) {
         return will_return;
     }
-    auto next = superPower(a, b, length - 1,nums);
+    auto next = superPower(a, b, length - 1, nums);
     const auto next2{(next * next) % divided};
     next = (next2 * next2) % divided;
     next = (next * next) % divided;
@@ -51,8 +51,8 @@ int32_t superPower(int32_t a, const vector<int32_t> &b, size_t length,const std:
 }
 
 int32_t leetcode_372::superPow(int32_t a, const vector<int32_t> &b) {
-    assert(1 <= a && a <= std::numeric_limits<int32_t>::max());
+    CHECK((1 <= a && a <= std::numeric_limits<int32_t>::max()));
     std::array<int32_t, 10> nums = power10(a);
-    return superPower(a, b, b.size(),nums);
+    return superPower(a, b, b.size(), nums);
 }
 }

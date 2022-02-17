@@ -32,12 +32,13 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace leetcode_62 {
 using std::vector;
 
-struct leetcode_62 final{
+struct leetcode_62 final {
     static int32_t uniquePaths(size_t m, size_t n);
 };
 

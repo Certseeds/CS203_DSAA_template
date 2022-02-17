@@ -30,18 +30,16 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_16_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_16 {
 using std::vector;
+
 struct leetcode_16 {
     static int32_t threeSumClosest(vector<int32_t> &nums, int32_t target);
 };
-
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("1 [test_16]", "[test_16]") {
     vector<int32_t> nums{-1, 2, 1, -4};

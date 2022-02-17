@@ -32,11 +32,10 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
-#include <limits>
-#include <unordered_map>
+#include <vector>
 
 namespace leetcode_169 {
-using std::unordered_map;
+using std::vector;
 
 struct leetcode_169 {
     static int32_t majorityElement(const vector<int32_t> &nums);

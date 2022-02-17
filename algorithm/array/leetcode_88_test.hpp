@@ -38,7 +38,7 @@ namespace leetcode_88 {
 using std::vector;
 
 struct leetcode_88 {
-    static void merge(vector<int32_t> &nums1, int32_t m,const vector<int32_t> &nums2, int32_t n);
+    static void merge(vector<int32_t> &nums1, int32_t m, const vector<int32_t> &nums2, int32_t n);
 };
 
 using Catch::Matchers::Equals;

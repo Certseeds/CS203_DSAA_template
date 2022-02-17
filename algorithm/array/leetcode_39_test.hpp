@@ -41,10 +41,7 @@ struct leetcode_39 {
     static vector<vector<int32_t>> combinationSum(const vector<int32_t> &candidates, int target);
 };
 
-
-using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("basic test [test_39]", "[test_39]") {
     const vector<int32_t> candidates{2, 3, 6, 7};

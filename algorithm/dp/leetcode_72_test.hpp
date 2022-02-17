@@ -33,10 +33,10 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <vector>
+#include <string>
 
 namespace leetcode_72 {
-using std::vector;
+using std::string;
 
 struct leetcode_72 final {
     static int32_t minDistance(const string &word1, const string &word2);
@@ -44,7 +44,7 @@ struct leetcode_72 final {
 
 
 TEST_CASE("1 [test_72]", "[test_72]") {
-    static constexpr const char *const input1{"abcde"},*const input2{"ace"};
+    static constexpr const char *const input1{"abcde"}, *const input2{"ace"};
     static constexpr const auto result{2};
     CHECK(result == leetcode_72::minDistance(input1, input2));
 }

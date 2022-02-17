@@ -45,10 +45,10 @@ void sort_warpper(vector<int32_t> &nums) {
 void heap_sort(vector<int32_t> &nums) {
     const int32_t nums_size{static_cast<int32_t>(nums.size())};
     const int32_t beginIndex = (nums_size / 2) - 1;
-    for (int32_t i = beginIndex; i >= 0; i--) {
+    for (int32_t i = beginIndex; i >= 0; --i) {
         heapsort_rec(nums, i, nums_size - 1);
     }
-    for (int32_t i = nums_size - 1; i > 0; i--) {
+    for (int32_t i = nums_size - 1; i > 0; --i) {
         std::swap(nums[0], nums[i]);
         heapsort_rec(nums, 0, i - 1);
     }

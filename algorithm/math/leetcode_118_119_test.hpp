@@ -32,12 +32,14 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_118 {
+using std::vector;
+
 struct leetcode_118 {
     static vector<vector<int32_t>> generate(int32_t numRows);
 };
-
 
 using Catch::Matchers::Equals;
 
@@ -63,6 +65,8 @@ TEST_CASE("2 [test_118]", "[test_118]") {
 }
 }
 namespace leetcode_119 {
+using std::vector;
+
 struct leetcode_119 {
     static vector<int32_t> getRow(int32_t rowIndex);
 

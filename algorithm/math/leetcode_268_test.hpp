@@ -32,8 +32,10 @@ SOFTWARE.
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_268 {
+using std::vector;
 
 struct leetcode_268 {
     static int32_t missingNumber(const vector<int32_t> &nums);

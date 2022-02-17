@@ -46,6 +46,7 @@ class graphlist final {
         node *prev{nullptr};
         size_t distance{NO_V};
         vector<link> links;
+
         explicit node(size_t node) : order(node) {}
 
         node(const node &node_) = default;
@@ -55,6 +56,7 @@ class graphlist final {
     using invoke = std::function<void(const node &)>;
 public:
     static constexpr const size_t NO_V{0x3f3f3f3f};
+
     graphlist(const vector<vector<int32_t>> &input, int32_t node_num) {
         check_graph_cost_all_positive(input);
         graph.reserve(node_num);
@@ -73,7 +75,7 @@ public:
     vector<node> bfs(size_t begin_) const {
         begin_ -= 1;
         const auto begin = begin_;
-        static const  invoke func = [](const node &n) { std::cout << n.order << " " << n.distance << std::endl; };
+        static const invoke func = [](const node &n) { std::cout << n.order << " " << n.distance << std::endl; };
         auto nodes = graph;
         nodes[begin].distance = 0;
         nodes[begin].state = STATE::GRAY;

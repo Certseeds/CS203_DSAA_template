@@ -27,7 +27,7 @@ SOFTWARE.
 #include <class_helper/nonable.hpp>
 
 namespace leetcode_146 {
-class LRU final: public LRUCache, protected nonCopyMoveAble {
+class LRU final : public LRUCache, protected nonCopyMoveAble {
 private:
     struct Node final : private nonCopyMoveAble {
         int32_t k;

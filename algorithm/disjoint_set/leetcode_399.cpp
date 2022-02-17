@@ -24,6 +24,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_399_test.hpp"
+#include <unordered_map>
 
 namespace disjoint_set_weight {
 // 节点之间是一张 有向无环图

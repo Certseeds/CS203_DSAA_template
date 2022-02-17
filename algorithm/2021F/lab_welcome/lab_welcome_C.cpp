@@ -90,7 +90,7 @@ inline input_type read() {
     num_t T{0};
     std::cin >> T;
     vector<num_t> nums(T);
-    for(auto& num: nums){
+    for (auto &num: nums) {
         std::cin >> num;
     }
     return nums;

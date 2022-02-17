@@ -26,6 +26,8 @@ SOFTWARE.
 #ifdef CS203_DSAA_TEST_MACRO
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
 #include <iostream>
 #include "lab_00_C.cpp"
