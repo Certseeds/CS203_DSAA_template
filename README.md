@@ -16,7 +16,7 @@
 <h3 align="center">CS203-DSAA-template</h3>
 
   <p align="center">
-    An awesome Algorithm Template for IO-Based Single-File Problem(like Online-Judge Problem) ! </br>
+    An awesome Algorithm Template for IO-Driven Single-File Problem(like Online-Judge Problem) ! </br>
     分布式<sup title="由git保证">1</sup> 去中心化<sup title="推荐使用template生成仓库,不设置主库;没有易受打击的web页">2</sup> 跨平台<sup title="对拍功能由原生实现(虽然MSVC因为换行符原因不太好用)">3</sup>的IO驱动型单文件问题<sup title="包括但不限于OJ平台题目">4</sup>解题模板
     <br />
     <a href="https://github.com/Certseeds/CS203_DSAA_template/blob/dev/README.md"><strong>Explore the docs »</strong></a>
@@ -375,6 +375,8 @@ Use this space to list resources you find helpful and would like to give credit 
 + [Img Shields](https://shields.io)
 + [Best-Readme-Template][Best-Readme-Template]
 + [Choose an Open Source License](https://choosealicense.com)
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Thanks
 

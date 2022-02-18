@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,42 +23,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-//@Plan 剑指OfferII-I Day02
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
+//@Tag array
+//@Tag 数组
+//@Tag 双指针
+//@Plan 剑指OfferII-I Day13
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_SO_21_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_SO_21_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <list/listnode.hpp>
+#include <vector>
 
-namespace leetcode_24 {
-using LISTNODE::ListNode;
+namespace leetcode_so_21 {
+using std::vector;
 
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
+struct leetcode_so_21 {
+    static vector<int32_t> exchange(const vector<int32_t> &nums);
 };
 
-using LISTNODE::ListNodeLink;
+using Catch::Matchers::Equals;
 
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
+TEST_CASE("test case 1 [test_so_21]", "[test_so_21]") {
+    const vector<int32_t> input{1, 2, 3, 4};
+    const vector<int32_t> output{1, 3, 2, 4};
+    CHECK_THAT(output, Equals(leetcode_so_21::exchange(input)));
 }
 
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
+TEST_CASE("test case 2 [test_so_21]", "[test_so_21]") {
+    const vector<int32_t> input{1, 3, 5};
+    const vector<int32_t> output{1, 3, 5};
+    CHECK_THAT(output, Equals(leetcode_so_21::exchange(input)));
 }
 
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
 }
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_SO_21_TEST_HPP

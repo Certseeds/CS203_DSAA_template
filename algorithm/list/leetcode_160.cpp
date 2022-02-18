@@ -1,7 +1,7 @@
 /*
 MIT License
 
-CS203_DSAA_template
+CS160_DSAA_template
 
 Copyright (C) 2020-2022  nanoseeds
 
@@ -23,42 +23,29 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag list
-//@Tag 链表
-//@Plan 剑指OfferII-I Day02
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
+#include "leetcode_160_test.hpp"
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <list/listnode.hpp>
+namespace leetcode_160 {
+ListNode *fst(ListNode *headA, ListNode *headB);
 
-namespace leetcode_24 {
-using LISTNODE::ListNode;
+ListNode *snd(ListNode *headA, ListNode *headB);
 
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
-};
-
-using LISTNODE::ListNodeLink;
-
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
+ListNode *leetcode_160::getIntersectionNode(ListNode *headA, ListNode *headB) {
+    size_t aSize{0}, bSize{0};
+    for (ListNode *temp{headA}; temp != nullptr; temp = temp->next, ++aSize) {}
+    for (ListNode *temp{headB}; temp != nullptr; temp = temp->next, ++bSize) {}
+    if (aSize > bSize) {
+        for (size_t i{bSize}; i < aSize; ++i, headA = headA->next) {}
+    } else if (aSize < bSize) {
+        for (size_t i{aSize}; i < bSize; ++i, headB = headB->next) {}
+    }
+    ListNode aObj{-1, headA}, bObj{-1, headB};
+    for (headA = &aObj,headB = &bObj; headA != nullptr; headA = headA->next, headB = headB->next) {
+        if (headA->next == headB->next) {
+            return headA->next;
+        }
+    }
+    return nullptr;
 }
 
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
 }
-
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
-}
-}
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP

@@ -1,7 +1,7 @@
 /*
 MIT License
 
-CS203_DSAA_template
+CS160_DSAA_template
 
 Copyright (C) 2020-2022  nanoseeds
 
@@ -25,40 +25,40 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-//@Plan 剑指OfferII-I Day02
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
+//@Plan 剑指OfferII-I Day12
+#ifndef CS160_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_160_TEST_HPP
+#define CS160_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_160_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
 #include <list/listnode.hpp>
 
-namespace leetcode_24 {
+namespace leetcode_160 {
 using LISTNODE::ListNode;
 
-struct leetcode_24 {
-    static ListNode *swapPairs(ListNode *head);
+struct leetcode_160 final : private nonCopyMoveAble {
+    static ListNode *getIntersectionNode(ListNode *headA, ListNode *headB);
 };
+
 
 using LISTNODE::ListNodeLink;
 
-TEST_CASE("1 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1, 2, 3, 4};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({2, 1, 4, 3}, result));
-
+TEST_CASE("test case 1 [test_160]", "[test_160]") {
+    const ListNodeLink vecCommon{8, 4, 5};
+    const ListNodeLink vec1{4, 1};
+    const ListNodeLink vec2{5, 0, 1};
+    vec1[1]->next = vecCommon[0];
+    vec2[2]->next = vecCommon[0];
+    const vector<int32_t> output{8, 4, 5};
+    const ListNode *const result = leetcode_160::getIntersectionNode(vec1[0], vec2[0]);
+    CHECK(ListNode::equal(output, result));
 }
-
-TEST_CASE("2 [test _24]", "[test _24]") {
-    const ListNode *const result = leetcode_24::swapPairs(nullptr);
-    CHECK(ListNode::equal({}, result));
-}
-
-TEST_CASE("3 [test _24]", "[test _24]") {
-    const ListNodeLink vec1{1};
-    const ListNode *const result = leetcode_24::swapPairs(vec1[0]);
-    CHECK(ListNode::equal({1}, result));
+TEST_CASE("test case 2 [test_160]", "[test_160]") {
+    const ListNodeLink vecCommon{1};
+    const vector<int32_t> output{1};
+    const ListNode *const result = leetcode_160::getIntersectionNode(vecCommon[0], vecCommon[0]);
+    CHECK(ListNode::equal(output, result));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
+#endif //CS160_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_160_TEST_HPP

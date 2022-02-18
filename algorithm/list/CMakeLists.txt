@@ -9,6 +9,7 @@ set(dependencies 2 19 21 23 24)
 LIST(APPEND dependencies 25 61 82 83 86)
 LIST(APPEND dependencies 109 92 146 206 so_06)
 LIST(APPEND dependencies so_35 141 203 so_18 so_22)
+LIST(APPEND dependencies 160)
 LIST(TRANSFORM dependencies PREPEND leetcode_)
 
 foreach (elementName IN LISTS dependencies)
