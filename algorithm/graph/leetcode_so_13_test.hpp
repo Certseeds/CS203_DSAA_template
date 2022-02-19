@@ -23,39 +23,38 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag tree
-//@Tag 树
-//@Sword-Offer 27
-//@Plan 数据结构入门 Day12
-//@Plan 剑指OfferII-I Day07
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_TEST_HPP
+//@Tag DFS
+//@Tag 深度优先遍历
+//@Plan 剑指OfferII-I Day13
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_LEETCODE_SO_13_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_LEETCODE_SO_13_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <tree/treenode.hpp>
-#include <tree/treenode_link.hpp>
 
-namespace leetcode_226 {
+namespace leetcode_so_13 {
 
-using TreeNode = TREE_NODE::TreeNode<int32_t>;
-
-struct leetcode_226 {
-    static TreeNode *invertTree(TreeNode *root);
+struct leetcode_so_13 {
+    static int32_t movingCount(int32_t m, int32_t n, int32_t k);
 };
 
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
+TEST_CASE("basic tests [test_so_13]", "[test_so_13]") {
+    static constexpr const auto m{2}, n{3}, k{1};
+    static constexpr const auto result{3};
+    CHECK(result == leetcode_so_13::movingCount(m, n, k));
+}
 
-TEST_CASE("test_case 1 [test_226]", "[test_226]") {
-    const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    leetcode_226::invertTree(numVecInput[0]);
-    const vector<int32_t> result{4, 7, 2, 9, 6, 3, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    CHECK(TREE_NODE::judge_equal(numVecInput.front(), result));
-    const TreeNodeLink link{numVecInput.front()};
+TEST_CASE("basic tests 2 [test_so_13]", "[test_so_13]") {
+    static constexpr const auto m{3}, n{1}, k{0};
+    static constexpr const auto result{1};
+    CHECK(result == leetcode_so_13::movingCount(m, n, k));
+}
+
+TEST_CASE("basic tests 3 [test_so_13]", "[test_so_13]") {
+    static constexpr const auto m{1}, n{2}, k{1};
+    static constexpr const auto result{2};
+    CHECK(result == leetcode_so_13::movingCount(m, n, k));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_TEST_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_GRAPH_LEETCODE_SO_13_TEST_HPP

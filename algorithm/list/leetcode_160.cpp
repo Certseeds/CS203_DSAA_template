@@ -26,9 +26,6 @@ SOFTWARE.
 #include "leetcode_160_test.hpp"
 
 namespace leetcode_160 {
-ListNode *fst(ListNode *headA, ListNode *headB);
-
-ListNode *snd(ListNode *headA, ListNode *headB);
 
 ListNode *leetcode_160::getIntersectionNode(ListNode *headA, ListNode *headB) {
     size_t aSize{0}, bSize{0};

@@ -41,7 +41,6 @@ struct leetcode_160 final : private nonCopyMoveAble {
     static ListNode *getIntersectionNode(ListNode *headA, ListNode *headB);
 };
 
-
 using LISTNODE::ListNodeLink;
 
 TEST_CASE("test case 1 [test_160]", "[test_160]") {
