@@ -18,6 +18,7 @@
 
 #include <catch_main.hpp>
 #include "cache_base.hpp"
+#include <array>
 #include <memory>
 #include <unordered_map>
 
@@ -27,30 +28,33 @@
  * fifo_sc则不修改,默认为false
  * */
 namespace cache::clock {
+using std::array;
 static constexpr const auto init = true;
 namespace initFalse {
-const static vector<std::pair<size_t, string>> pairs{
-        {5,     "4.data.in"},
-        {2,     "sample.data.in"},
-        {1177,  "1.data.in"},
-        {11848, "2.data.in"},
-        {82382, "3.data.in"},
-        {5,     "5.data.in"},
-        {6,     "6.data.in"},
-        {1,     "7.data.in"},
-};
+static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
+        {
+                {5, "4.data.in"},
+                {2, "sample.data.in"},
+                {1177, "1.data.in"},
+                {11848, "2.data.in"},
+                {82382, "3.data.in"},
+                {5, "5.data.in"},
+                {6, "6.data.in"},
+                {1, "7.data.in"},
+        }};
 }
 namespace initTrue {
-const static vector<std::pair<size_t, string>> pairs{
-        {2,     "4.data.in"},
-        {1,     "sample.data.in"},
-        {1193,  "1.data.in"},
-        {11826, "2.data.in"},
-        {82382, "3.data.in"},
-        {5,     "5.data.in"},
-        {4,     "6.data.in"},
-        {2,     "7.data.in"},
-};
+static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
+        {
+                {2, "4.data.in"},
+                {1, "sample.data.in"},
+                {1193, "1.data.in"},
+                {11826, "2.data.in"},
+                {82382, "3.data.in"},
+                {5, "5.data.in"},
+                {4, "6.data.in"},
+                {2, "7.data.in"},
+        }};
 }
 namespace On {
 class clock_cache final : public cache_base {

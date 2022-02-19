@@ -18,23 +18,25 @@
 
 #include <catch_main.hpp>
 #include "cache_base.hpp"
+#include <array>
 #include <memory>
 #include <list>
 #include <queue>
 #include <unordered_map>
 
 namespace cache::fifo_sc {
-
-const static vector<std::pair<size_t, string>> pairs{
-        {5,     "4.data.in"},
-        {2,     "sample.data.in"},
-        {1177,  "1.data.in"},
-        {11848, "2.data.in"},
-        {82382, "3.data.in"},
-        {5,     "5.data.in"},
-        {6,     "6.data.in"},
-        {1,     "7.data.in"},
-};
+using std::array;
+static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
+        {
+                {5, "4.data.in"},
+                {2, "sample.data.in"},
+                {1177, "1.data.in"},
+                {11848, "2.data.in"},
+                {82382, "3.data.in"},
+                {5, "5.data.in"},
+                {6, "6.data.in"},
+                {1, "7.data.in"},
+        }};
 
 namespace On {
 class fifo_sc_cache final : public cache_base {

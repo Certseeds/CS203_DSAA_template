@@ -41,12 +41,13 @@ public:
     }
 };
 
-static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
-        std::make_tuple("01.data.in", "fcfs/01.data.out", "fcfs/01.test.out"),
-        std::make_tuple("02.data.in", "fcfs/02.data.out", "fcfs/02.test.out"),
-        std::make_tuple("03.data.in", "fcfs/03.data.out", "fcfs/03.test.out"),
-        std::make_tuple("04.data.in", "fcfs/04.data.out", "fcfs/04.test.out"),
-};
+static constexpr const std::array<const std::array<const char *const, 3>, 4> pairs{
+        {
+                {"01.data.in", "fcfs/01.data.out", "fcfs/01.test.out"},
+                {"02.data.in", "fcfs/02.data.out", "fcfs/02.test.out"},
+                {"03.data.in", "fcfs/03.data.out", "fcfs/03.test.out"},
+                {"04.data.in", "fcfs/04.data.out", "fcfs/04.test.out"},
+        }};
 
 TEST_CASE("fcfs test sample") {
     for (const auto &[stdInput, stdOutput, testOutput]: pairs) {

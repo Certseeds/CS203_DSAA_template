@@ -24,17 +24,18 @@
 #include <vector>
 
 namespace cache::min {
-
-const static vector<std::pair<size_t, string>> pairs{
-        {2,     "sample.data.in"},
-        {4240,  "1.data.in"},
-        {43265, "2.data.in"},
-        {88583, "3.data.in"},
-        {7,     "4.data.in"},
-        {5,     "5.data.in"},
-        {9,     "6.data.in"},
-        {3,     "7.data.in"},
-};
+using std::array;
+static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
+        {
+                {2, "sample.data.in"},
+                {4240, "1.data.in"},
+                {43265, "2.data.in"},
+                {88583, "3.data.in"},
+                {7, "4.data.in"},
+                {5, "5.data.in"},
+                {9, "6.data.in"},
+                {3, "7.data.in"},
+        }};
 
 /**
  * 这是个需要"预知未来"的算法

@@ -47,7 +47,7 @@ int32_t leetcode_so_13::movingCount(int32_t m, int32_t n, int32_t k) {
         for (; num != 0; num /= 10) { sum += num % 10; }
         return sum;
     };
-    static constexpr const std::array<std::array<int32_t, 2>, 4> path{{{1, 0},
+    static constexpr const std::array<const std::array<int32_t, 2>, 4> path{{{1, 0},
                                                                        {-1, 0},
                                                                        {0, 1},
                                                                        {0, -1}}};

@@ -18,6 +18,7 @@
 
 #include <catch_main.hpp>
 #include "cache_base.hpp"
+#include <array>
 #include <limits>
 #include <list>
 #include <unordered_set>
@@ -40,17 +41,18 @@
 5,不命中,4,5,1,2
  * */
 namespace cache::lru {
-
-const static vector<std::pair<size_t, string>> pairs{
-        {1,     "sample.data.in"},
-        {1176,  "1.data.in"},
-        {11847, "2.data.in"},
-        {82394, "3.data.in"},
-        {4,     "4.data.in"},
-        {3,     "5.data.in"},
-        {5,     "6.data.in"},
-        {1,     "7.data.in"},
-};
+using std::array;
+static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
+        {
+                {1, "sample.data.in"},
+                {1176, "1.data.in"},
+                {11847, "2.data.in"},
+                {82394, "3.data.in"},
+                {4, "4.data.in"},
+                {3, "5.data.in"},
+                {5, "6.data.in"},
+                {1, "7.data.in"},
+        }};
 namespace On {
 
 class lru_cache final : public cache_base {

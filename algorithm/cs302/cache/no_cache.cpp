@@ -22,6 +22,7 @@
 #include <memory>
 
 namespace cache::no {
+using std::array;
 
 class no_cache final : public cache_base {
 public:
@@ -32,7 +33,7 @@ public:
     bool read(size_t) override { return false; }
 };
 
-const std::array<const char *const, 8> pairs{
+static constexpr const std::array<const char *const, 8> pairs{
         "sample.data.in",
         "1.data.in",
         "2.data.in",
