@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,8 +27,7 @@ SOFTWARE.
 #include "kmp.hpp"
 
 namespace leetcode_28 {
-
-int leetcode_28::strStr(const string &haystack, const string &needle) {
+int32_t leetcode_28::strStr(const string &haystack, const string &needle) {
     return string_search::strStr(haystack, needle);
 }
 }

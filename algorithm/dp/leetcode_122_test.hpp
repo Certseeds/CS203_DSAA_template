@@ -28,18 +28,16 @@ SOFTWARE.
 //@Tag stack
 //@Tag 单调栈
 //@Linked 121
-
+//@Plan 动态规划入门 Day7
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_122_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_122_TEST_CPP
 
 #include <catch_main.hpp>
 #include <cstddef>
 #include <cstdint>
-#include <stack>
 #include <vector>
 
 namespace leetcode_122 {
-using std::stack;
 using std::vector;
 
 struct leetcode_122 final {

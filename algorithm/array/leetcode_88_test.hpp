@@ -26,8 +26,9 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 //@Tag 双指针
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_88_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_88_HPP
+//@Plan 数据结构入门 Day2
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_88_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_88_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -38,7 +39,7 @@ namespace leetcode_88 {
 using std::vector;
 
 struct leetcode_88 {
-    static void merge(vector<int32_t> &nums1, int32_t m,const vector<int32_t> &nums2, int32_t n);
+    static void merge(vector<int32_t> &nums1, int32_t m, const vector<int32_t> &nums2, int32_t n);
 };
 
 using Catch::Matchers::Equals;
@@ -73,4 +74,4 @@ TEST_CASE("cases [test_88]", "[test_88]") {
     }
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_88_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_88_TEST_HPP

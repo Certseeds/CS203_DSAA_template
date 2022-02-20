@@ -26,14 +26,13 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_31_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_31_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_31_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_31_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
 #include <vector>
-
 
 namespace leetcode_31 {
 using std::vector;
@@ -43,8 +42,6 @@ struct leetcode_31 {
 };
 
 using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("basic test [test_31]", "[test_31]") {
     vector<int32_t> vec1{1, 2, 3};
@@ -88,4 +85,4 @@ TEST_CASE("test just one element [test_31]", "[test_31]") {
     CHECK_THAT(vec1, Equals(_vec1));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_31_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_31_TEST_HPP

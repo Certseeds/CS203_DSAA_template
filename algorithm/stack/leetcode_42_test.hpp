@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,14 +28,18 @@ SOFTWARE.
 //@Tag 单调栈
 //@Tag DP
 //@Tag 动态规划
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP
+//@Plan 动态规划入门 Day9
+
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_TEST_HPP
 
 #include <catch_main.hpp>
-#include <stack>
+#include <cstdint>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_42 {
-using std::stack;
+using std::vector;
 
 struct leetcode_42 {
     static int32_t trap(const vector<int32_t> &height);
@@ -69,4 +73,4 @@ TEST_CASE("test case 3 [test _42]", "[test _42]") {
     CHECK(result == leetcode_42::trapDPHeight(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_42_TEST_HPP

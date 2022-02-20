@@ -28,8 +28,8 @@ SOFTWARE.
 //@Tag binary search
 //@Tag 二分
 //@Level Mid
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -38,13 +38,14 @@ SOFTWARE.
 
 namespace leetcode_162 {
 using std::vector;
-using Catch::Matchers::Contains;
 
 struct leetcode_162 {
     static int32_t findPeakElement(const vector<int32_t> &nums);
 
     static int32_t findPeakElement2(const vector<int32_t> &nums);
 };
+
+using Catch::Matchers::Contains;
 
 TEST_CASE("1 [test_162]", "[test_162]") {
     const vector<int32_t> nums{1, 2, 3, 1};
@@ -79,4 +80,4 @@ TEST_CASE("4 [test_162]", "[test_162]") {
 }
 }
 
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_162_TEST_HPP

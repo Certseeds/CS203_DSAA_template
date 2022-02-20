@@ -26,13 +26,13 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_TEST_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_15 {
 using std::vector;
@@ -101,4 +101,4 @@ TEST_CASE("7 [test_15]", "[test_15]") {
     CHECK_THAT(output, UnorderedEquals(results));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_15_TEST_HPP

@@ -24,8 +24,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_so_09_test.hpp"
+#include <stack>
 
 namespace leetcode_so_09 {
+using std::stack;
+
 struct StackQueue : CQueue {
 private:
     stack<int32_t> sta1, sta2;

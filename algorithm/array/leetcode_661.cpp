@@ -46,7 +46,8 @@ vector<vector<int32_t>> leetcode_661::imageSmoother(const vector<vector<int32_t>
         }
     } else if (sizes_in == 1) {
         if (sizes == 2) {
-            return {{(M[0][0] + M[1][0]) / 2}, {(M[0][0] + M[1][0]) / 2}};
+            return {{(M[0][0] + M[1][0]) / 2},
+                    {(M[0][0] + M[1][0]) / 2}};
         } else {
             willreturn[0][0] = (M[0][0] + M[1][0]) / 2;
             willreturn[sizes - 1][0] = (M[sizes - 1][0]

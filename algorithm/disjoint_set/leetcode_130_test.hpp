@@ -33,13 +33,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_130_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
-#include <string>
 
 namespace leetcode_130 {
-using std::string;
 using std::vector;
-using Catch::Matchers::Equals;
 enum GRID : char {
     WATER = 'X',
     LAND = 'O',
@@ -49,6 +48,8 @@ enum GRID : char {
 struct leetcode_130 {
     static void solve(vector<vector<char>> &board);
 };
+
+using Catch::Matchers::Equals;
 
 TEST_CASE("1 [test_130]", "[test_130]") {
     vector<vector<char>> edges{

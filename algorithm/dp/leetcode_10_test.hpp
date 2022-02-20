@@ -29,12 +29,12 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_10_TEST_CPP
 
 #include <catch_main.hpp>
-#include <vector>
+#include <cstdint>
+#include <cstddef>
 #include <string>
 
 namespace lcs_10 {
 using std::string;
-using std::vector;
 
 struct leetcode_10 {
     static bool isMatch(const string &s, const string &p);

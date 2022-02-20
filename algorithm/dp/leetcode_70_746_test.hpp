@@ -26,7 +26,7 @@ SOFTWARE.
 //@Tag DP
 //@Tag 动态规划
 //@Description 斐波那契?
-
+//@Plan 动态规划入门 Day2
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_746_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_70_746_TEST_CPP
 
@@ -41,7 +41,6 @@ using std::vector;
 struct leetcode_70 final {
     static int32_t climbStairs(int32_t n);
 };
-
 
 TEST_CASE("1 [test_70]", "[test_70]") {
     static constexpr const auto input{2}, result{2};

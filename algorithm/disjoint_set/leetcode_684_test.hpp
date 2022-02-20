@@ -29,17 +29,18 @@ SOFTWARE.
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_684_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
-#include <string>
 
 namespace leetcode_684 {
-using std::string;
 using std::vector;
-using Catch::Matchers::Equals;
 
 struct leetcode_684 {
     static vector<int> findRedundantConnection(const vector<vector<int>> &edges);
 };
+
+using Catch::Matchers::Equals;
 
 TEST_CASE("1 [test_684]", "[test_684]") {
     const vector<vector<int32_t>> edges{{1, 2},

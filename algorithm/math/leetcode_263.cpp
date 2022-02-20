@@ -38,6 +38,7 @@ bool isUgly2(const int32_t n) {
     }
     return false;
 }
+
 bool leetcode_263::isUgly(int32_t n) {
     if (n <= 0) {
         return false;

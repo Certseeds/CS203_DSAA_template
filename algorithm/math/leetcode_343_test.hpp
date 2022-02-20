@@ -25,9 +25,9 @@ SOFTWARE.
 */
 //@Tag Math
 //@Tag 数学
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_343_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_343_HPP
+//@Plan 动态规划入门 Day21
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_343_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_343_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
@@ -36,9 +36,8 @@ SOFTWARE.
 namespace leetcode_343 {
 
 struct leetcode_343 {
-    static int32_t integerBreak(int32_t n);
-
-    static int64_t integerBreak(int64_t n);
+    template<typename T>
+    static T integerBreak(T n);
 };
 
 TEST_CASE("1 [test_343]", "[test_343]") {
@@ -65,5 +64,5 @@ TEST_CASE("4 [test_343]", "[test_343]") {
     CHECK(result == leetcode_343::integerBreak(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_343_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_343_TEST_HPP
 

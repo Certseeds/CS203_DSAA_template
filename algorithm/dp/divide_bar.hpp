@@ -35,10 +35,10 @@ SOFTWARE.
 
 namespace dp_divide_bar {
 using std::vector;
-namespace iter{
+namespace iter {
 static int64_t maxProfit(const vector<int64_t> &divide_profits, size_t length);
 }
-namespace rec{
+namespace rec {
 static int64_t maxProfit(const vector<int64_t> &divide_profits, size_t length);
 }
 }

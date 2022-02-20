@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,25 +26,22 @@ SOFTWARE.
 //@Tag stack
 //@Tag 栈
 //@Tag 单调栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_321_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_321_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_321_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_321_TEST_HPP
 
 #include <catch_main.hpp>
-#include <stack>
-#include <string>
-#include <unordered_set>
+#include <cstdint>
+#include <cstddef>
+#include <vector>
 
 namespace leetcode_321 {
-using std::stack;
-using std::string;
-using std::string_view;
-using std::unordered_set;
-using Catch::Matchers::Equals;
+using std::vector;
 
 struct leetcode_321 {
     static vector<int32_t> maxNumber(const vector<int32_t> &nums1, const vector<int32_t> &nums2, size_t k);
 };
 
+using Catch::Matchers::Equals;
 
 TEST_CASE("2 [test_321]", "[test_321]") {
     const vector<int32_t> nums1{6, 7};
@@ -72,4 +69,4 @@ TEST_CASE("1 [test_321]", "[test_321]") {
 
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_321_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_321_TEST_HPP

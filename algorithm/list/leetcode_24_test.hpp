@@ -25,11 +25,14 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
+//@Plan 剑指OfferII-I Day02
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_24 {
 using LISTNODE::ListNode;
@@ -58,4 +61,4 @@ TEST_CASE("3 [test _24]", "[test _24]") {
     CHECK(ListNode::equal({1}, result));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_24_TEST_HPP

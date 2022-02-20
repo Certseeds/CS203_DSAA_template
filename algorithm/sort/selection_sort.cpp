@@ -44,18 +44,18 @@ void selection_sort(vector<int32_t> &nums) {
     int32_t will_return{0};
     const auto nums_size = static_cast<int32_t>(nums.size());
     for (int i = 0; i < nums_size - 1; ++i) {
-        will_return++;
+        ++will_return;
         int k = i;
         for (int j = i + 1; j < nums_size; ++j) {
-            will_return++;
-            will_return++;
+            ++will_return;
+            ++will_return;
             if (nums[k] > nums[j]) {
                 k = j;
             }
         }
-        will_return++;
-        will_return++;
+        ++will_return;
+        ++will_return;
         std::swap(nums[i], nums[k]);
     }
-    will_return++;
+    ++will_return;
 }

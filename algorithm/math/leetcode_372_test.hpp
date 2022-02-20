@@ -26,13 +26,13 @@ SOFTWARE.
 //@Tag Math
 //@Tag 数学
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_TEST_HPP
 
 #include <catch_main.hpp>
-#include <cassert>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_372 {
 
@@ -69,5 +69,5 @@ TEST_CASE("4 [test_372]", "[test_372]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_372_TEST_HPP
 

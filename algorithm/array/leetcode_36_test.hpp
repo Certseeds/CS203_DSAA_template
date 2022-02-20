@@ -25,9 +25,9 @@ SOFTWARE.
 */
 //@Tag array
 //@Tag 数组
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_HPP
+//@Plan 数据结构入门 Day5
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -40,10 +40,6 @@ using std::vector;
 struct leetcode_36 {
     static bool isValidSudoku(const vector<vector<char>> &board);
 };
-
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("basic test [test_36]", "[test_36]") {
     const vector<vector<char>> vec1{
@@ -74,4 +70,4 @@ TEST_CASE("test reverse [test_36]", "[test_36]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_36_TEST_HPP

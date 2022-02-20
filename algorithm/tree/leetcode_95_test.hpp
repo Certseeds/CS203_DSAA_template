@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,8 +25,8 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_TEST_HPP
 
 #include <catch_main.hpp>
 #include <tree/treenode.hpp>
@@ -60,8 +60,9 @@ TEST_CASE("test_case 2 [test_95]", "[test_95]") {
             {3, 2,            TreeNode::No, 1,            TreeNode::No, TreeNode::No, TreeNode::No},
     };
     const auto three = leetcode_95::generateTrees(3);
-    CHECK(5 == three.size());
-    for (int32_t i{0}; i < 5; ++i) {
+    static constexpr const auto length{5};
+    CHECK(length == three.size());
+    for (int32_t i{0}; i < length; ++i) {
         CHECK(TREE_NODE::judge_equal(three[i], result[i]));
     }
     for (const auto &node: three) {
@@ -69,4 +70,4 @@ TEST_CASE("test_case 2 [test_95]", "[test_95]") {
     }
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_95_TEST_HPP

@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,11 +25,13 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_92_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_92_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_92_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_92_TEST_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_92 {
 using LISTNODE::ListNode;
@@ -58,4 +60,4 @@ TEST_CASE("1 [test _92]", "[test _92]") {
     CHECK(ListNode::equal({3, 5}, result));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_92_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_92_TEST_HPP

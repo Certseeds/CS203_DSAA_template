@@ -32,10 +32,11 @@ SOFTWARE.
 
 #include <catch_main.hpp>
 #include <cstdint>
-#include <vector>
+#include <cstddef>
+#include <string>
 
 namespace leetcode_97 {
-using std::vector;
+using std::string;
 
 struct leetcode_97 final {
     static bool isInterleave(const string &s1, const string &s2, const string &s3);

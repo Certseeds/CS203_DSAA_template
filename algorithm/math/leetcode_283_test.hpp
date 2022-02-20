@@ -26,14 +26,16 @@ SOFTWARE.
 //@Tag Math
 //@Tag 数学
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_283 {
+using std::vector;
 
 struct leetcode_283 {
     static void moveZeroes(vector<int32_t> &nums);
@@ -60,5 +62,5 @@ TEST_CASE("1 [test_283]", "[test_283]") {
 
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_283_TEST_HPP
 

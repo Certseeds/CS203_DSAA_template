@@ -25,11 +25,10 @@ SOFTWARE.
 */
 //@Tag array
 //@Tag 数组
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_TEST_HPP
 
 #include <catch_main.hpp>
-#include <algorithm>
 #include <cstdint>
 #include <cstddef>
 #include <vector>
@@ -39,6 +38,7 @@ using std::vector;
 
 struct leetcode_581 {
     static int32_t findUnsortedSubarray(const vector<int32_t> &nums);
+
     static int32_t findUnsortedSubarray2(const vector<int32_t> &nums);
 };
 
@@ -70,4 +70,4 @@ TEST_CASE("test case 4 [test_581]", "[test_581]") {
     CHECK(result == leetcode_581::findUnsortedSubarray2(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_581_TEST_HPP

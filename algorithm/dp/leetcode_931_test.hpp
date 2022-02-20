@@ -25,7 +25,7 @@ SOFTWARE.
 */
 //@Tag DP
 //@Tag 动态规划
-
+//@Plan 动态规划入门 Day13
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_931_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_931_TEST_CPP
 
@@ -38,7 +38,7 @@ namespace leetcode_931 {
 using std::vector;
 
 struct leetcode_931 final {
-    static int32_t minFallingPathSum(const vector<vector<int32_t >> &matrix);
+    static int32_t minFallingPathSum(const vector<vector<int32_t>> &matrix);
 };
 
 TEST_CASE("1 [test_931]", "[test_931]") {

@@ -25,7 +25,7 @@ SOFTWARE.
 */
 //@Tag DP
 //@Tag 动态规划
-//@Tag
+//@Plan 动态规划入门 Day17
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_5_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_5_TEST_CPP
 
@@ -42,10 +42,12 @@ using std::vector;
 struct leetcode_5 {
     static string longestPalindrome(const string &s);
 };
+
 template<typename Type, size_t length>
 constexpr size_t arr_length(const Type (&)[length]) {
     return length;
 }
+
 template<size_t length>
 constexpr size_t arr_length(const char (&)[length]) {
     return length - 1;

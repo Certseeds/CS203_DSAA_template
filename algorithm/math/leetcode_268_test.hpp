@@ -26,14 +26,16 @@ SOFTWARE.
 //@Tag Math
 //@Tag 数学
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_268_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_268_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_268_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_268_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_268 {
+using std::vector;
 
 struct leetcode_268 {
     static int32_t missingNumber(const vector<int32_t> &nums);
@@ -65,5 +67,5 @@ TEST_CASE("4 [test_268]", "[test_268]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_268_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_268_TEST_HPP
 

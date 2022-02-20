@@ -26,8 +26,9 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 //@Tag 哈希表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_350_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_350_HPP
+//@Plan 数据结构入门 Day3
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_350_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_350_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -42,6 +43,7 @@ struct leetcode_350 {
 };
 
 using Catch::Matchers::UnorderedEquals;
+
 TEST_CASE("test case 1 [test_350]", "[test_350]") {
     const vector<int32_t> input1{1, 2, 2, 1}, input2{2, 2};
     const vector<int32_t> result{2, 2};
@@ -55,4 +57,4 @@ TEST_CASE("test case 2 [test_350]", "[test_350]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_350_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_350_TEST_HPP

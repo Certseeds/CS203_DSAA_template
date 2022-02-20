@@ -82,8 +82,8 @@ def copy_cmakeLists(lab_number: str, problem_list: str) -> None:
 
 
 def main() -> None:
-    labs: List[str] = ['01', '02', '03', '04', '05', '06', '07',
-                       '08', '09', '10', '11', '12', '13', '14', '15']
+    labs: List[str] = ['welcome', '02', '03', '04', '05', '06',
+                       '07', '08', '09', '10', 'bonus']
     problem_order: List[str] = ['A', 'B', 'C', 'D', 'E', 'F']
     # labs: List[str] = ['01']
     # problem_order: List[str] = ['A', 'B', 'C',

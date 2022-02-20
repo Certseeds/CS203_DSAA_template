@@ -26,8 +26,8 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 //@Tag 暴力枚举
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_500_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_500_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_500_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_500_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -67,4 +67,4 @@ TEST_CASE("test case 3 [test_500]", "[test_500]") {
     CHECK_THAT(result, Equals(leetcode_500::findWords({std::cbegin(input), std::cend(input)})));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_500_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_500_TEST_HPP

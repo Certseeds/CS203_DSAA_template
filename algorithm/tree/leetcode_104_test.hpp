@@ -25,10 +25,13 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_104_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_104_HPP
+//@Plan 数据结构入门 Day11
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_104_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_104_TEST_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <stack>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
@@ -52,4 +55,4 @@ TEST_CASE("test_case 1 [test_104]", "[test_104]") {
     const TreeNodeLink link{numVec[0]};
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_104_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_104_TEST_HPP

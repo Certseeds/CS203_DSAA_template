@@ -27,8 +27,10 @@ SOFTWARE.
 #include "disjoint_set.hpp"
 #include <unordered_set>
 #include <stack>
+#include <string>
 
 namespace leetcode_130 {
+using std::string;
 using disjoint_set::disjoint_set;
 using std::unordered_set, std::stack;
 
@@ -44,7 +46,7 @@ void leetcode_130::solve(vector<vector<char>> &board) {
             return;
         }
         results[x][y] = GRID::KEEP_LAND;
-        stack<std::pair<size_t, size_t>> points{{{x,y}}};
+        stack<std::pair<size_t, size_t>> points{{{x, y}}};
         while (!points.empty()) {
             const auto head = points.top();
             points.pop();

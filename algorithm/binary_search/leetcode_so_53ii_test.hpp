@@ -58,6 +58,7 @@ TEST_CASE("test case 3 [test_so_53ii]", "[test_so_53ii]") {
     static constexpr const auto result{2};
     CHECK(result == leetcode_so_53ii::missingNumber(input));
 }
+
 TEST_CASE("test case 4 [test_so_53ii]", "[test_so_53ii]") {
     const vector<int32_t> input{0};
     static constexpr const auto result{1};

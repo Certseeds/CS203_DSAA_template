@@ -26,13 +26,13 @@ SOFTWARE.
 //@Tag list
 //@Tag 链表
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_TEST_HPP
 
 #include <catch_main.hpp>
-#include <string>
 #include <cstdint>
-#include <algorithm>
+#include <cstddef>
+#include <string>
 
 namespace leetcode_43 {
 struct leetcode_43 {
@@ -67,4 +67,4 @@ TEST_CASE("4 [test _43]", "[test _43]") {
     CHECK(result == leetcode_43::multiply(num1, num2));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_43_TEST_HPP

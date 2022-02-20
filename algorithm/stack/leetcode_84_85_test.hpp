@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,16 +26,17 @@ SOFTWARE.
 //@Tag stack
 //@Tag 栈
 //@Tag 单调栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_84_85_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_84_85_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_84_85_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_84_85_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
+#include <cstddef>
 #include <limits>
-#include <stack>
+#include <vector>
 
 namespace leetcode_84 {
-using std::stack;
+using std::vector;
 
 struct leetcode_84 {
     static int32_t largestRectangleArea(const vector<int32_t> &heights);
@@ -60,7 +61,6 @@ TEST_CASE("test case 3 [test_84]", "[test_84]") {
 }
 }
 namespace leetcode_85 {
-using std::stack;
 
 struct leetcode_85 {
     static int32_t maximalRectangle(const vector<vector<char>> &matrix);
@@ -99,4 +99,4 @@ TEST_CASE("test case 4 [test_85]", "[test_85]") {
     CHECK(result == leetcode_85::maximalRectangle(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_84_85_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_84_85_TEST_HPP

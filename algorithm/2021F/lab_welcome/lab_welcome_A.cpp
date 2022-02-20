@@ -87,7 +87,7 @@ inline input_type read() {
     }
     std::cin >> T;
     vector<num_t> B(T);
-    for(auto& num: B){
+    for (auto &num: B) {
         std::cin >> num;
     }
     return std::make_tuple(A, B);

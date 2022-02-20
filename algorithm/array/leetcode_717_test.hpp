@@ -26,8 +26,8 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 //@Tag 暴力解法
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -41,7 +41,6 @@ struct leetcode_717 {
     static bool isOneBitCharacter(const vector<int32_t> &bits);
 };
 
-
 TEST_CASE("test case 1 [test_717]", "[test_717]") {
     const vector<int32_t> input{1, 0, 0};
     CHECK(leetcode_717::isOneBitCharacter(input));
@@ -53,4 +52,4 @@ TEST_CASE("test case 2 [test_717]", "[test_717]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_717_TEST_HPP

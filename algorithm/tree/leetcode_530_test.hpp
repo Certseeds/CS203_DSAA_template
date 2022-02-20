@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -27,10 +27,12 @@ SOFTWARE.
 //@Tag 树
 //@Tag in-traverse
 //@Tag 中序遍历二叉树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_TEST_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
 #include <stack>
@@ -38,8 +40,6 @@ SOFTWARE.
 namespace leetcode_530 {
 
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 using std::stack;
 
 struct leetcode_530 {
@@ -47,6 +47,9 @@ struct leetcode_530 {
 
     static int32_t getMinimumDifference2(TreeNode *root);
 };
+
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_530]", "[test_530]") {
     const vector<int32_t> input{4, 2, 6, 1, 3};
@@ -72,4 +75,4 @@ TEST_CASE("test_case 2 [test_530]", "[test_530]") {
     const TreeNodeLink link{numVecInput.front()};
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_TEST_HPP

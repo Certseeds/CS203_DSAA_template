@@ -26,16 +26,15 @@ SOFTWARE.
 //@Tag Math
 //@Tag 数学
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_414_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_414_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_414_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_414_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <unordered_set>
+#include <vector>
 
 namespace leetcode_414 {
-using std::unordered_set;
 
 struct leetcode_414 {
     static int32_t thirdMax(const vector<int32_t> &nums);
@@ -66,5 +65,5 @@ TEST_CASE("4 [test_414]", "[test_414]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_414_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_414_TEST_HPP
 

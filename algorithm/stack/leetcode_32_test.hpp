@@ -1,17 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
-
- * @Author: nanos
- * @Date: 2021-04-03 10:15:42
- * @LastEditors: nanos
- * @LICENSE: MIT
- */
 /*
 MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -35,17 +27,13 @@ SOFTWARE.
 //@Tag 栈
 //@Tag 动态规划
 //@Tag DP
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_TEST_HPP
 
 #include <catch_main.hpp>
-
-#include <stack>
 #include <string>
 
-
 namespace leetcode_32 {
-using std::stack;
 using std::string;
 
 struct leetcode_32 {
@@ -64,4 +52,4 @@ TEST_CASE("test case 1 [test_32]", "[test_32]") {
 
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_32_TEST_HPP

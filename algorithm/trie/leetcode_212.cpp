@@ -204,7 +204,7 @@ vector<string> leetcode_212::findWords(vector<vector<char>> &board, const vector
 
 
         constexpr const static char exp{'#'};
-        stack<std::tuple<size_t, size_t, string>> sta{{{x,y,""}}};
+        stack<std::tuple<size_t, size_t, string>> sta{{{x, y, ""}}};
         while (!sta.empty()) {
             auto[first, second, result] = sta.top();
             sta.pop();

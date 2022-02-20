@@ -33,11 +33,13 @@ SOFTWARE.
 //@Tag DP
 //@Tag 动态规划
 //@Description 经典小学数学题,交叉部分算面积
-
+//@Plan 动态规划入门 Day14
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_1314_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_1314_TEST_CPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <vector>
 
 namespace leetcode_1314 {

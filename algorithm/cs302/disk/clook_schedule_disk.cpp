@@ -51,19 +51,21 @@ public:
     }
 };
 
-static constexpr const std::array<std::tuple<const char *const, const char *const, const char *const>, 4> pairs{
-        std::make_tuple("01.data.in", "clook/01.data.out", "clook/01.test.out"),
-        std::make_tuple("02.data.in", "clook/02.data.out", "clook/02.test.out"),
-        std::make_tuple("03.data.in", "clook/03.data.out", "clook/03.test.out"),
-        std::make_tuple("04.data.in", "clook/04.data.out", "clook/04.test.out"),
-};
+static constexpr const std::array<const std::array<const char *const, 3>, 4> pairs{
+        {
+                {"01.data.in", "clook/01.data.out", "clook/01.test.out"},
+                {"02.data.in", "clook/02.data.out", "clook/02.test.out"},
+                {"03.data.in", "clook/03.data.out", "clook/03.test.out"},
+                {"04.data.in", "clook/04.data.out", "clook/04.test.out"},
+        }};
 
 TEST_CASE("clook test sample") {
     for (const auto &[stdInput, stdOutput, testOutput]: pairs) {
         {
             const CS203_redirect cr{stdInput, testOutput};
             const auto input = inputs::read_input();
-            const std::unique_ptr<disk_base> disk = std::make_unique<clook_disk>(input.S, input.M, input.N, input.requests);
+            const std::unique_ptr<disk_base> disk = std::make_unique<clook_disk>(input.S, input.M, input.N,
+                                                                                 input.requests);
             disk->output();
         }
         CHECK(compareFiles(stdOutput, testOutput));

@@ -27,6 +27,7 @@ SOFTWARE.
 //@Tag 动态规划
 //@Tag Trie
 //@Tag 字典树
+//@Plan 动态规划入门 Day9
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_139_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_139_TEST_CPP
 
@@ -34,10 +35,11 @@ SOFTWARE.
 #include <cstddef>
 #include <cstdint>
 #include <vector>
-#include <numeric>
+#include <string>
 
 namespace leetcode_139 {
 using std::vector;
+using std::string;
 
 struct leetcode_139 final {
     static bool wordBreak(const string &s, const vector<string> &wordDict);

@@ -55,6 +55,7 @@ TEST_CASE("test case 1", "[test welcome A]") {
             std::make_tuple(std::unordered_set<int32_t>{2, 3, 999999, 1}, std::vector<int32_t>{3, 99}));
     CHECK_THAT(output_data, Equals<TRUE_FALSE>({TRUE_FALSE::YES, TRUE_FALSE::NO}));
 }
+
 TEST_CASE("test case with sequence", "[test welcome A]") {
     CS203_sequence sequence{1, 1, 0}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in

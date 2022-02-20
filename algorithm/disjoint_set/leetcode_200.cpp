@@ -26,8 +26,10 @@ SOFTWARE.
 #include "leetcode_200_test.hpp"
 #include "disjoint_set.hpp"
 #include <unordered_set>
+#include <string>
 
 namespace leetcode_200 {
+using std::string;
 using disjoint_set::disjoint_set;
 using std::unordered_set;
 

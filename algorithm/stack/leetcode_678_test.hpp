@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,16 +23,13 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_TEST_HPP
 
 #include <catch_main.hpp>
-#include <stack>
 #include <string>
 
-
 namespace leetcode_678 {
-using std::stack;
 using std::string;
 
 struct leetcode_678 {
@@ -69,4 +66,4 @@ TEST_CASE("2-2 [test_678]", "[test_678]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_678_TEST_HPP

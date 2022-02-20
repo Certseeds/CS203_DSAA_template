@@ -25,7 +25,7 @@ SOFTWARE.
 */
 //@Tag DP
 //@Tag 动态规划
-
+//@Plan 动态规划入门 Day16
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_221_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_221_TEST_CPP
 
@@ -33,16 +33,15 @@ SOFTWARE.
 #include <cstddef>
 #include <cstdint>
 #include <vector>
-#include <numeric>
 
 namespace leetcode_221 {
 using std::vector;
 
 struct leetcode_221 final {
     static int32_t maximalSquare(const vector<vector<char>> &matrix);
+
     static int32_t maximalSquare2(const vector<vector<char>> &matrix);
 };
-
 
 TEST_CASE("4 [test_221]", "[test_221]") {
     const vector<vector<char>> input{
@@ -53,6 +52,7 @@ TEST_CASE("4 [test_221]", "[test_221]") {
     CHECK(result == leetcode_221::maximalSquare(input));
     CHECK(result == leetcode_221::maximalSquare2(input));
 }
+
 TEST_CASE("1 [test_221]", "[test_221]") {
     const vector<vector<char>> input{
             {'1', '0', '1', '0', '0'},
@@ -76,9 +76,7 @@ TEST_CASE("2 [test_221]", "[test_221]") {
 }
 
 TEST_CASE("3 [test_221]", "[test_221]") {
-    const vector<vector<char>> input{
-            {'0'},
-    };
+    const vector<vector<char>> input{{'0'},};
     static constexpr const auto result{0};
     CHECK(result == leetcode_221::maximalSquare(input));
     CHECK(result == leetcode_221::maximalSquare2(input));

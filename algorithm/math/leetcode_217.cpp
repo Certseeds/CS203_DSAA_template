@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_217_test.hpp"
+#include <unordered_set>
 
 namespace leetcode_217 {
+using std::unordered_set;
 
 bool leetcode_217::containsDuplicate(const vector<int32_t> &nums) {
     unordered_set<int32_t> judges;

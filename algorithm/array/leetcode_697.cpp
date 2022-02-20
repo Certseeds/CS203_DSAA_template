@@ -34,7 +34,7 @@ int32_t leetcode_697::findShortestSubArray(const vector<int32_t> &nums) {
         return 0;
     }
     unordered_map<int, int> times, begin;
-    int32_t max{0},will_return{0};
+    int32_t max{0}, will_return{0};
     const auto nums_size{static_cast<int32_t>(nums.size())};
     for (int32_t i{0}; i < nums_size; i++) {
         const auto num{nums[i]};

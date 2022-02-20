@@ -25,6 +25,7 @@ SOFTWARE.
 */
 //@Tag DP
 //@Tag 动态规划
+//@Plan 动态规划入门 Day5
 
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_918_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_918_TEST_CPP
@@ -33,7 +34,6 @@ SOFTWARE.
 #include <cstddef>
 #include <cstdint>
 #include <vector>
-#include <numeric>
 
 namespace leetcode_918 {
 using std::vector;

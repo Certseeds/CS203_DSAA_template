@@ -26,7 +26,7 @@ SOFTWARE.
 #include "leetcode_88_test.hpp"
 
 namespace leetcode_88 {
-void leetcode_88::merge(vector<int32_t> &nums1, int32_t m,const vector<int32_t> &nums2, int32_t n) {
+void leetcode_88::merge(vector<int32_t> &nums1, int32_t m, const vector<int32_t> &nums2, int32_t n) {
     for (int32_t begin_x{m - 1}, begin_y{n - 1}, count{m + n - 1}; count >= 0; count--) {
         if (begin_x < 0) {
             // repeat with meaning

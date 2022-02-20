@@ -27,14 +27,15 @@ SOFTWARE.
 //@Tag 链表
 //@Tag
 //@Description 利用地址不重复
-//
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_HPP
+//@Plan 数据结构入门 Day7
+
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 namespace leetcode_141 {
 using LISTNODE::ListNode;
@@ -61,4 +62,4 @@ TEST_CASE("2nd [test_141]", "[test_141]") {
     CHECK(leetcode_141::hasCycle2(link[0]));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_141_TEST_HPP

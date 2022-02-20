@@ -25,16 +25,13 @@ SOFTWARE.
 */
 //@Tag stack
 //@Tag 栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP
+//@Plan 剑指OfferII-I Day01
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_TEST_HPP
 
 #include <catch_main.hpp>
-#include <stack>
-#include <string>
 
 namespace leetcode_so_30 {
-using std::stack;
-using std::string;
 
 struct MinStack {
     MinStack() = default;;
@@ -90,4 +87,4 @@ TEST_CASE("test case pure-2 [test_sw_30]", "[test_sw_30]") {
     CHECK(0 == ptr->top());
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_TEST_HPP

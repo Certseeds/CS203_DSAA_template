@@ -25,26 +25,26 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_TEST_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
-#include <list>
-#include <stack>
+#include <vector>
 
 namespace leetcode_654 {
-
+using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
-using std::stack;
-using std::list;
 
 struct leetcode_654 final {
     static TreeNode *constructMaximumBinaryTree(const vector<int32_t> &nums);
 };
+
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_654]", "[test_654]") {
     const vector<int32_t> input{3, 2, 1, 6, 0, 5};
@@ -65,4 +65,4 @@ TEST_CASE("test_case 2 [test_654]", "[test_654]") {
     CHECK(TREE_NODE::judge_equal(resultPtr, result));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_654_TEST_HPP

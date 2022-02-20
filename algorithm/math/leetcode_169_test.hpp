@@ -26,17 +26,16 @@ SOFTWARE.
 //@Tag list
 //@Tag 链表
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_169_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_169_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_169_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_169_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
-#include <limits>
-#include <unordered_map>
+#include <vector>
 
 namespace leetcode_169 {
-using std::unordered_map;
+using std::vector;
 
 struct leetcode_169 {
     static int32_t majorityElement(const vector<int32_t> &nums);
@@ -79,5 +78,5 @@ TEST_CASE("5 [test_169]", "[test_169]") {
     CHECK(result == leetcode_169::majorityElement2(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_169_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_169_TEST_HPP
 

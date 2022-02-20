@@ -26,17 +26,17 @@ SOFTWARE.
 //@Tag DP
 //@Tag 动态规划
 //@Description 最小路径和
-
+//@Plan 动态规划入门 Day19
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_72_TEST_CPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_72_TEST_CPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <vector>
+#include <string>
 
 namespace leetcode_72 {
-using std::vector;
+using std::string;
 
 struct leetcode_72 final {
     static int32_t minDistance(const string &word1, const string &word2);
@@ -44,7 +44,7 @@ struct leetcode_72 final {
 
 
 TEST_CASE("1 [test_72]", "[test_72]") {
-    static constexpr const char *const input1{"abcde"},*const input2{"ace"};
+    static constexpr const char *const input1{"abcde"}, *const input2{"ace"};
     static constexpr const auto result{2};
     CHECK(result == leetcode_72::minDistance(input1, input2));
 }

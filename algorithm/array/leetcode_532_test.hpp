@@ -26,18 +26,15 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 //@Tag 暴力枚举
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_532_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_532_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_532_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_532_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <numeric>
 #include <vector>
-#include <unordered_map>
 
 namespace leetcode_532 {
-using std::unordered_map;
 using std::vector;
 
 struct leetcode_532 {
@@ -75,4 +72,4 @@ TEST_CASE("test case 5 [test_532]", "[test_532]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_532_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_532_TEST_HPP

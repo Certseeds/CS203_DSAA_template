@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -26,12 +26,14 @@ SOFTWARE.
 //@Tag tree
 //@Tag 树
 //@description 中序遍历
+//@Plan 数据结构入门 Day10
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_TEST_HPP
 
 #include <catch_main.hpp>
 #include <tree/treenode.hpp>
+#include <tree/treenode_link.hpp>
 #include <vector>
 
 namespace leetcode_94 {
@@ -40,9 +42,38 @@ using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
 
 struct leetcode_94 {
-    static vector<int32_t> inorderTraversal(TreeNode* root);
-};
-TEST_CASE("test_case 1 [test_94]", "[test_94]") {}
+    static vector<int32_t> inorderTraversal(TreeNode *root);
 
+    static vector<int32_t> inorderTraversalIter(TreeNode *root);
+};
+
+using Catch::Matchers::Equals;
+using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
+
+TEST_CASE("test_case 1 [test_94]", "[test_94]") {
+    const vector<int32_t> input{4,
+                                2, 7,
+                                1, 3, TreeNode::No, TreeNode::No,
+                                TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
+    };
+    const vector<int32_t> result{1, 2, 3, 4, 7};
+    const vector<TreeNode *> numVecInput = TREE_NODE::numToTree<int32_t>(input);
+    const TreeNodeLink link{numVecInput[0]};
+    CHECK_THAT(result, Equals(leetcode_94::inorderTraversal(numVecInput[0])));
+    CHECK_THAT(result, Equals(leetcode_94::inorderTraversalIter(numVecInput[0])));
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_HPP
+
+TEST_CASE("test_case 2 [test_94]", "[test_94]") {
+    const vector<int32_t> input{4,
+                                2, 7,
+                                1, 3, 5, TreeNode::No,
+                                TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
+    };
+    const vector<int32_t> result{1, 2, 3, 4, 5, 7};
+    const vector<TreeNode *> numVecInput = TREE_NODE::numToTree<int32_t>(input);
+    const TreeNodeLink link{numVecInput[0]};
+    CHECK_THAT(result, Equals(leetcode_94::inorderTraversal(numVecInput[0])));
+    CHECK_THAT(result, Equals(leetcode_94::inorderTraversalIter(numVecInput[0])));
+}
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_94_TEST_HPP

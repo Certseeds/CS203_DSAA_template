@@ -22,6 +22,7 @@
 #include <memory>
 
 namespace cache::no {
+using std::array;
 
 class no_cache final : public cache_base {
 public:
@@ -32,7 +33,7 @@ public:
     bool read(size_t) override { return false; }
 };
 
-const std::array<const char *const, 8> pairs{
+static constexpr const std::array<const char *const, 8> pairs{
         "sample.data.in",
         "1.data.in",
         "2.data.in",
@@ -47,7 +48,7 @@ TEST_CASE("no test sample") {
     for (const auto &file_name: pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
-        const std::unique_ptr<cache_base>  cache = std::make_unique<no_cache>(input.cacheSize);
+        const std::unique_ptr<cache_base> cache = std::make_unique<no_cache>(input.cacheSize);
         size_t hits{0};
         for (const auto iter: input.querys) {
             const auto exist = cache->read(iter);

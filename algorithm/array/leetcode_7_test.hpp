@@ -26,16 +26,14 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <vector>
 
 namespace leetcode_7 {
-using std::vector;
 
 struct leetcode_7 {
     static int32_t reverse(int32_t x);
@@ -81,4 +79,4 @@ TEST_CASE("6 [test_7]", "[test_7]") {
     CHECK(leetcode_7::reverse3(1463847412) == 2147483641);
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_7_TEST_HPP

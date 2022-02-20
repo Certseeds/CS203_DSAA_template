@@ -68,6 +68,12 @@ public:
 
     explicit ListNodeLink(vector<ListNode *> list_) : list(std::move(list_)) {}
 
+    explicit ListNodeLink(ListNode *node) {
+        for (; node != nullptr; node = node->next) {
+            list.push_back(node);
+        }
+    }
+
     virtual ~ListNodeLink() {
         for (auto &i: list) {
             delete i;

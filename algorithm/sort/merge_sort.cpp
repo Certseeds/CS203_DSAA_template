@@ -65,22 +65,22 @@ void mergesort_rec(vector<int32_t> &nums, vector<int32_t> &zeros, int begin, int
     while (start1 <= middle && start2 <= end) {
         if (nums[start1] < nums[start2]) {
             zeros[pos] = nums[start1];
-            start1++;
+            ++start1;
         } else {
             zeros[pos] = nums[start2];
-            start2++;
+            ++start2;
         }
-        pos++;
+        ++pos;
     }
     while (start1 <= middle) {
         zeros[pos] = nums[start1];
-        pos++;
-        start1++;
+        ++pos;
+        ++start1;
     }
     while (start2 <= end) {
         zeros[pos] = nums[start2];
-        pos++;
-        start2++;
+        ++pos;
+        ++start2;
     }
     memcpy(reinterpret_cast<void *>(&nums[begin]), reinterpret_cast<void *>(&zeros[begin]),
            sizeof(int32_t) * (end - begin + 1));

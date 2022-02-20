@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -28,18 +28,18 @@ SOFTWARE.
 
 namespace leetcode_94 {
 using namespace Tree_Traverse;
-void recursion_94(TreeNode *root, vector<int32_t> &vec) {
-    const auto function = [&vec](const TreeNode *tn) -> void { vec.push_back(tn->val); };
-    rec::in(root, function);
+
+vector<int32_t> leetcode_94::inorderTraversalIter(TreeNode *root) {
+    vector<int32_t> will_return{};
+    const auto function = [&will_return](const TreeNode *tn) -> void { will_return.push_back(tn->val); };
+    iter::in(root, function);
+    return will_return;
 }
 
-void iteration_94(TreeNode *root, vector<int> &vec) {
-    const auto function = [&vec](const TreeNode *tn) -> void { vec.push_back(tn->val); };
-    iter::in(root, function);
-}
 vector<int32_t> leetcode_94::inorderTraversal(TreeNode *root) {
     vector<int32_t> will_return{};
-    recursion_94(root,will_return);
+    const auto function = [&will_return](const TreeNode *tn) -> void { will_return.push_back(tn->val); };
+    rec::in(root, function);
     return will_return;
 }
 }

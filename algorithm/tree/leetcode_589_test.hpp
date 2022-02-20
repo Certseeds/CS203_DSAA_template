@@ -25,10 +25,12 @@ SOFTWARE.
 */
 //@Tag tree
 //@Tag 树
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_589_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_589_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_589_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_589_TEST_HPP
 
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 #include <tree/treenode_multi.hpp>
 #include <stack>
 
@@ -44,7 +46,7 @@ struct leetcode_589 final {
 };
 
 TEST_CASE("test_case 1 [test_589]", "[test_589]") {
-    // TODO
+    CHECK(true); // too simple
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_589_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_589_TEST_HPP

@@ -25,9 +25,9 @@ SOFTWARE.
 */
 //@Tag array
 //@Tag 数组
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP
+//@Plan 数据结构入门 Day2
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -36,11 +36,12 @@ SOFTWARE.
 
 namespace leetcode_1 {
 using std::vector;
-using Catch::Matchers::UnorderedEquals;
 
 struct leetcode_1 {
     static vector<int32_t> twoSum(const vector<int32_t> &nums, int32_t target);
 };
+
+using Catch::Matchers::UnorderedEquals;
 
 TEST_CASE("basic tests [test_1]", "[test_1]") {
     const vector<int32_t> vec{2, 7, 11, 15};
@@ -63,4 +64,4 @@ TEST_CASE("basic tests 2 [test_1]", "[test_1]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1_TEST_HPP

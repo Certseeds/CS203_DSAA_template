@@ -24,8 +24,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 #include "leetcode_97_test.hpp"
+#include <vector>
 
 namespace leetcode_97 {
+using std::vector;
 
 bool leetcode_97::isInterleave(const string &s1, const string &s2, const string &s3) {
     const auto s1_size{s1.size()}, s2_size{s2.size()}, s3_size{s3.size()};

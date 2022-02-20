@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,16 +25,15 @@ SOFTWARE.
 */
 //@Tag stack
 //@Tag 栈
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
+//@Plan 数据结构入门 Day9
+
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_TEST_HPP
 
 #include <catch_main.hpp>
-#include <stack>
 #include <string>
 
-
 namespace leetcode_20 {
-using std::stack;
 using std::string;
 
 struct leetcode_20 {
@@ -64,4 +63,4 @@ TEST_CASE("test case 2-2 [test_20]", "[test_20]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_20_TEST_HPP

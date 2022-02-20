@@ -25,19 +25,22 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 数学问题
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_118_119_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_118_119_HPP
+//@Plan 动态规划入门 Day12
+//@Plan 数据结构入门 Day4
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_118_119_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_118_119_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
+#include <vector>
 
 namespace leetcode_118 {
+using std::vector;
+
 struct leetcode_118 {
     static vector<vector<int32_t>> generate(int32_t numRows);
 };
-
 
 using Catch::Matchers::Equals;
 
@@ -63,6 +66,8 @@ TEST_CASE("2 [test_118]", "[test_118]") {
 }
 }
 namespace leetcode_119 {
+using std::vector;
+
 struct leetcode_119 {
     static vector<int32_t> getRow(int32_t rowIndex);
 
@@ -86,4 +91,4 @@ TEST_CASE("2 [test_119]", "[test_119]") {
     CHECK_THAT(result, Equals(leetcode_119::getRowN(input)));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_118_119_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_118_119_TEST_HPP

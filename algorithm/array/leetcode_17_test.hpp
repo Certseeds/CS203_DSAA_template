@@ -26,24 +26,24 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 //@Tag 双指针
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_TEST_HPP
 
 #include <catch_main.hpp>
-#include <vector>
 #include <cstdint>
 #include <cstddef>
+#include <string>
+#include <vector>
 
 namespace leetcode_17 {
 using std::vector;
+using std::string;
 
 struct leetcode_17 {
     static vector<string> letterCombinations(const string &digits);
 };
 
-using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("test case 1 [test_17]", "[test_17]") {
     CHECK_THAT(leetcode_17::letterCombinations("23"),
@@ -56,4 +56,4 @@ TEST_CASE("test case 2 [test_17]", "[test_17]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_17_TEST_HPP

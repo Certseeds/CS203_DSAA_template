@@ -25,20 +25,21 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_HPP
+//@Plan 剑指OfferII-I Day02
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_TEST_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <list/listnode.hpp>
 
 namespace leetcode_so_06 {
 using LISTNODE::ListNode;
-using Catch::Matchers::Equals;
 
 struct leetcode_so_06 final : private nonCopyMoveAble {
     static vector<int> reversePrint(ListNode *head);
 };
+
+using Catch::Matchers::Equals;
 
 TEST_CASE("test case 1 [test_206]", "[test_206]") {
     const LISTNODE::ListNodeLink vec1{1, 2, 3, 4, 5};
@@ -47,4 +48,4 @@ TEST_CASE("test case 1 [test_206]", "[test_206]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_SO_06_TEST_HPP

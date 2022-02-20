@@ -25,21 +25,22 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_217_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_217_HPP
+//@Plan 数据结构入门 Day1
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_217_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_217_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cassert>
 #include <cstdint>
-#include <unordered_set>
+#include <vector>
 
 namespace leetcode_217 {
-using std::unordered_set;
+using std::vector;
 
 struct leetcode_217 {
     static bool containsDuplicate(const vector<int32_t> &nums);
 };
+
 TEST_CASE("1 [test_217]", "[test_217]") {
     const vector<int32_t> input{3, 4, 3};
     CHECK(leetcode_217::containsDuplicate(input));
@@ -75,5 +76,5 @@ TEST_CASE("7 [test_217]", "[test_217]") {
     CHECK(leetcode_217::containsDuplicate(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_217_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_217_TEST_HPP
 

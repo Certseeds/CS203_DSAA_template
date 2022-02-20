@@ -26,19 +26,20 @@ SOFTWARE.
 //@Tag Math
 //@Tag 数学
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
+#include <vector>
 
 namespace leetcode_401 {
+using std::vector;
 
 struct leetcode_401 {
     static vector<string> readBinaryWatch(int32_t num);
 };
-
 
 using Catch::Matchers::UnorderedEquals;
 
@@ -51,5 +52,5 @@ TEST_CASE("1 [test_401]", "[test_401]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_401_TEST_HPP
 

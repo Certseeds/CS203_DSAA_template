@@ -27,8 +27,8 @@ SOFTWARE.
 //@Tag 数组
 //@Tag STL
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_27_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_27_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_27_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_27_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -43,12 +43,6 @@ struct leetcode_27 {
 
     static int removeElement2(vector<int32_t> &vec, int32_t val);
 };
-
-
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
-
 
 TEST_CASE("1 [test_27]", "[test_27]") {
     static constexpr const int32_t test_result{5};
@@ -102,4 +96,4 @@ TEST_CASE("5 [test_27]", "[test_27]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_27_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_27_TEST_HPP

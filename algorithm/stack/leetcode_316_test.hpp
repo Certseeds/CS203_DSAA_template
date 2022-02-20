@@ -3,7 +3,7 @@ MIT License
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022  nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -23,55 +23,48 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_316_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_316_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_316_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_316_TEST_HPP
 
 #include <catch_main.hpp>
-#include <stack>
 #include <string>
-#include <unordered_set>
 
 namespace leetcode_316 {
-using std::stack;
 using std::string;
 using std::string_view;
-using std::unordered_set;
 
 struct leetcode_316 {
     static string removeDuplicateLetters(string_view s);
 };
+
 TEST_CASE("2 [test_316]", "[test_316]") {
-    static constexpr const char *const input{"cbacdcbc"};
-    static constexpr const char *const output{"acdb"};
+    static constexpr const char *const input{"cbacdcbc"}, *const output{"acdb"};
     CHECK(output == leetcode_316::removeDuplicateLetters(input));
 }
 
 TEST_CASE("1 [test_316]", "[test_316]") {
-    static constexpr const char *const input{"bcabc"};
-    static constexpr const char *const output{"abc"};
+    static constexpr const char *const input{"bcabc"}, *const output{"abc"};
     CHECK(output == leetcode_316::removeDuplicateLetters(input));
 }
 
 TEST_CASE("3 [test_316]", "[test_316]") {
-    static constexpr const char *const input{"cdadabcc"};
-    static constexpr const char *const output{"adbc"};
+    static constexpr const char *const input{"cdadabcc"}, *const output{"adbc"};
     CHECK(output == leetcode_316::removeDuplicateLetters(input));
 }
 
 TEST_CASE("4 [test_316]", "[test_316]") {
-    static constexpr const char *const input{"abcd"};
-    static constexpr const char *const output{"abcd"};
+    static constexpr const char *const input{"abcd"}, *const output{"abcd"};
     CHECK(output == leetcode_316::removeDuplicateLetters(input));
 }
 
 TEST_CASE("5 [test_316]", "[test_316]") {
-    static constexpr const char *const input{"bddbccd"};
-    static constexpr const char *const output{"bcd"};
+    static constexpr const char *const input{"bddbccd"}, *const output{"bcd"};
     CHECK(output == leetcode_316::removeDuplicateLetters(input));
 }
+
 TEST_CASE("6 [test_316]", "[test_316]") {
     static constexpr const char *const input{"thesqtitxyetpxloeevdeqifkz"};
     leetcode_316::removeDuplicateLetters(input);
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_316_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STACK_LEETCODE_316_TEST_HPP

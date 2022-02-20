@@ -25,11 +25,13 @@ SOFTWARE.
 */
 //@Tag list
 //@Tag 链表
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_61_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_61_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_61_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_61_TEST_HPP
 
 #include <catch_main.hpp>
-#include <list/ListNode.hpp>
+#include <cstdint>
+#include <cstddef>
+#include <list/listnode.hpp>
 
 namespace leetcode_61 {
 using LISTNODE::ListNode;
@@ -87,4 +89,4 @@ TEST_CASE("6 [test _61]", "[test _61]") {
     CHECK(ListNode::equal({2, 3, 4, 5, 1}, result));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_61_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_61_TEST_HPP

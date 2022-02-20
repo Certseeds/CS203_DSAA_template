@@ -26,8 +26,8 @@ SOFTWARE.
 //@Tag array
 //@Tag 数组
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_39_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_39_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_39_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_39_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
@@ -41,10 +41,7 @@ struct leetcode_39 {
     static vector<vector<int32_t>> combinationSum(const vector<int32_t> &candidates, int target);
 };
 
-
-using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
 TEST_CASE("basic test [test_39]", "[test_39]") {
     const vector<int32_t> candidates{2, 3, 6, 7};
@@ -85,4 +82,4 @@ TEST_CASE("basic test 5[test_39]", "[test_39]") {
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_39_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_39_TEST_HPP

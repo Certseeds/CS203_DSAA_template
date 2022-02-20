@@ -9,6 +9,7 @@ set(dependencies)
 
 set(leetcode_order 678 20 32 42 1614)
 LIST(APPEND leetcode_order 84_85 316 321 so_30)
+LIST(APPEND leetcode_order 232)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})

@@ -26,11 +26,12 @@ SOFTWARE.
 //@Tag list
 //@Tag 链表
 
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_TEST_HPP
 
-#include <cstdint>
 #include <catch_main.hpp>
+#include <cstdint>
+#include <cstddef>
 
 namespace leetcode_9 {
 struct leetcode_9 {
@@ -58,4 +59,4 @@ TEST_CASE("test case 4 [test_9]", "[test_9]") {
     CHECK_FALSE(leetcode_9::isPalindrome(input));
 }
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_9_TEST_HPP
