@@ -147,17 +147,14 @@ void in(const TreeNode *root, action func) {
     if (root == nullptr) {
         return;
     }
-    stack<const TreeNode *> sta;
     const TreeNode *head = root;
-    while (head != nullptr || !sta.empty()) {
-        while (head != nullptr) {
+    for (stack<const TreeNode *> sta; head != nullptr || !sta.empty(); head = head->right) {
+        for (; head != nullptr; head = head->left) {
             sta.push(head);
-            head = head->left;
         }
         head = sta.top();
         sta.pop();
         func(head);
-        head = head->right;
     }
 }
 
