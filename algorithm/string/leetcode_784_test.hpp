@@ -26,32 +26,36 @@ SOFTWARE.
 //@Tag string
 //@Tag 字符串
 //@Description 非常简单
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_784_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_784_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
 #include <string>
 
-namespace leetcode_771 {
+namespace leetcode_784 {
 using std::string;
 
-struct leetcode_771 {
-    static int numJewelsInStones(const string &jewels, const string &stones);
+struct leetcode_784 {
+    static vector<string> letterCasePermutation(const string &S);
 };
 
-TEST_CASE("1 [test_771]", "[test_771]") {
-    static constexpr const char *const jewels{"aA"}, *const stones{"aAAbbbb"};
-    static constexpr const auto output{3};
-    CHECK(output == leetcode_771::numJewelsInStones(jewels, stones));
+using Catch::Matchers::UnorderedEquals;
+
+TEST_CASE("1 [test_784]", "[test_784]") {
+    static constexpr const char *const input{"a1b2"};
+    static constexpr const std::array<const char *const, 4> arr{"a1b2", "a1B2", "A1b2", "A1B2"};
+    const vector<string> output{arr.cbegin(), arr.cend()};
+    CHECK_THAT(output, UnorderedEquals(leetcode_784::letterCasePermutation(input)));
 }
 
-TEST_CASE("2 [test_771]", "[test_771]") {
-    static constexpr const char *const jewels{"z"}, *const stones{"ZZ"};
-    static constexpr const auto output{0};
-    CHECK(output == leetcode_771::numJewelsInStones(jewels, stones));
+TEST_CASE("2 [test_784]", "[test_784]") {
+    static constexpr const char *const input{"3z4"};
+    static constexpr const std::array<const char *const, 2> arr{"3z4", "3Z4"};
+    const vector<string> output{arr.cbegin(), arr.cend()};
+    CHECK_THAT(output, UnorderedEquals(leetcode_784::letterCasePermutation(input)));
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_784_TEST_HPP

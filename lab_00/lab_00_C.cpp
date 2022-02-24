@@ -93,7 +93,7 @@ inline input_type read() {
     num_t N{0};
     std::cin >> N;
     vector<vector<num_t>> will_return(N);
-    for (auto i = 0; i < N; i++) {
+    for (auto i = 0; i < N; ++i) {
         num_t X{0};
         std::cin >> X;
         will_return[i].resize(X);
@@ -107,11 +107,10 @@ inline input_type read() {
 output_type isBipartite(const input_type &graph) {
     const auto node_number = graph.size();
     vector<Color> color_vec(node_number, Color::uncolor);
-    for (size_t i = 0; i < node_number; ++i) {
+    for (size_t i{0}; i < node_number; ++i) {
         if (!graph[i].empty() && color_vec[i] == Color::uncolor) {
             color_vec[i] = Color::red;
-            queue<num_t> que{{static_cast<int32_t>(i)}};
-            while (!que.empty()) {
+            for (queue<num_t> que{{static_cast<int32_t>(i)}};!que.empty();) {
                 const num_t head = que.front();
                 que.pop();
                 const Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;

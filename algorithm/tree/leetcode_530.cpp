@@ -55,9 +55,9 @@ int32_t leetcode_530::getMinimumDifference2(TreeNode *root) {
     if (root == nullptr) {
         return std::numeric_limits<int32_t>::max();
     }
-    stack<TreeNode *> sta;
+    stack<TreeNode *> sta{};
     int32_t lastValue{-0x3f3f3f3f}, will_return{std::numeric_limits<int32_t>::max()};
-    for (TreeNode *head = root; head != nullptr || !sta.empty(); head = head->right) {
+    for (TreeNode *head{root}; head != nullptr || !sta.empty(); head = head->right) {
         while (head != nullptr) {
             sta.push(head);
             head = head->left;

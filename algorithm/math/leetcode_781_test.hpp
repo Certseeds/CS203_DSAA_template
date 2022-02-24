@@ -23,35 +23,43 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag string
-//@Tag 字符串
-//@Description 非常简单
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
+//@Tag Math
+//@Tag 数学
+
+#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_781_TEST_HPP
+#define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_781_TEST_HPP
 
 #include <catch_main.hpp>
 #include <cstdint>
 #include <cstddef>
-#include <string>
+#include <vector>
 
-namespace leetcode_771 {
-using std::string;
+namespace leetcode_781 {
+using std::vector;
 
-struct leetcode_771 {
-    static int numJewelsInStones(const string &jewels, const string &stones);
+struct leetcode_781 {
+    static int32_t numRabbits(const vector<int32_t> &answers);
 };
 
-TEST_CASE("1 [test_771]", "[test_771]") {
-    static constexpr const char *const jewels{"aA"}, *const stones{"aAAbbbb"};
-    static constexpr const auto output{3};
-    CHECK(output == leetcode_771::numJewelsInStones(jewels, stones));
+using Catch::Matchers::Equals;
+
+TEST_CASE("1 [test_781]", "[test_781]") {
+    const vector<int32_t> input{1, 1, 2};
+    static constexpr const auto output{5};
+    CHECK(output == leetcode_781::numRabbits(input));
 }
 
-TEST_CASE("2 [test_771]", "[test_771]") {
-    static constexpr const char *const jewels{"z"}, *const stones{"ZZ"};
-    static constexpr const auto output{0};
-    CHECK(output == leetcode_771::numJewelsInStones(jewels, stones));
+TEST_CASE("2 [test_781]", "[test_781]") {
+    const vector<int32_t> input{1, 1, 4, 5, 1, 4};
+    static constexpr const auto output{15};
+    CHECK(output == leetcode_781::numRabbits(input));
 }
 
+TEST_CASE("3 [test_781]", "[test_781]") {
+    const vector<int32_t> input{10, 10, 10};
+    static constexpr const auto output{11};
+    CHECK(output == leetcode_781::numRabbits(input));
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
+}
+#endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_781_TEST_HPP
+

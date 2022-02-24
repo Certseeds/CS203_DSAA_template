@@ -23,35 +23,23 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-//@Tag string
-//@Tag 字符串
-//@Description 非常简单
-#ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
-#define CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
+#include "leetcode_781_test.hpp"
+#include <unordered_map>
 
-#include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
-#include <string>
+namespace leetcode_781 {
+using std::unordered_map;
 
-namespace leetcode_771 {
-using std::string;
-
-struct leetcode_771 {
-    static int numJewelsInStones(const string &jewels, const string &stones);
-};
-
-TEST_CASE("1 [test_771]", "[test_771]") {
-    static constexpr const char *const jewels{"aA"}, *const stones{"aAAbbbb"};
-    static constexpr const auto output{3};
-    CHECK(output == leetcode_771::numJewelsInStones(jewels, stones));
-}
-
-TEST_CASE("2 [test_771]", "[test_771]") {
-    static constexpr const char *const jewels{"z"}, *const stones{"ZZ"};
-    static constexpr const auto output{0};
-    CHECK(output == leetcode_771::numJewelsInStones(jewels, stones));
+int32_t leetcode_781::numRabbits(const vector<int32_t> &answers) {
+    unordered_map<int32_t, int32_t> umap;
+    for (const auto &num: answers) {
+        ++umap[num];
+    }
+    int32_t will_return{0};
+    for (const auto &[key, value]: umap) {
+        const auto key1 = key + 1;
+        will_return += key1 * (value / key1 + static_cast<int32_t>(value % key1 != 0));
+    }
+    return will_return;
 }
 
 }
-#endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_771_TEST_HPP
