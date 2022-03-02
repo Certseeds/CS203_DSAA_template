@@ -1,9 +1,8 @@
+// SPDX-License-Identifier: MIT
 /*
-MIT License
-
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanos
+Copyright (C) 2020-2022 nanos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

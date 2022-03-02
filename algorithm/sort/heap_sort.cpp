@@ -3,14 +3,12 @@
  * @Author: nanoseeds
  * @Date: 2020-07-22 23:13:02
  * @LastEditors: nanoseeds
- * @LICENSE: MIT
  */
+// SPDX-License-Identifier: MIT
 /*
-MIT License
-
 CS203_DSAA_template
 
-Copyright (C) 2020-2021  nanoseeds
+Copyright (C) 2020-2022 nanoseeds
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
