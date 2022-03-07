@@ -6,8 +6,11 @@ Copyright (C) 2020-2022 nanoseeds
 
 */
 #include "leetcode_530_test.hpp"
+#include <stack>
 
 namespace leetcode_530 {
+
+using std::stack;
 
 int32_t leetcode_530::getMinimumDifference(TreeNode *root) {
     if (root == nullptr) {

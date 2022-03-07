@@ -18,12 +18,10 @@ Copyright (C) 2020-2022 nanoseeds
 #include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
-#include <stack>
 
 namespace leetcode_530 {
 
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using std::stack;
 
 struct leetcode_530 {
     static int32_t getMinimumDifference(TreeNode *root);
