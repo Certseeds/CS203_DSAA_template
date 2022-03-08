@@ -215,7 +215,7 @@ void level(const TreeNode *root, action func) {
     if (root == nullptr) {
         return;
     }
-    for (queue<const TreeNode *> now{{root}}, next{}; !now.empty();) {
+    for (queue<const TreeNode *> now{{root}}, next{}; !now.empty(); std::swap(now, next)) {
         while (!now.empty()) {
             const auto *const head = now.front();
             now.pop();
@@ -227,7 +227,6 @@ void level(const TreeNode *root, action func) {
                 next.push(head->right);
             }
         }
-        std::swap(now, next);
     }
 }
 }

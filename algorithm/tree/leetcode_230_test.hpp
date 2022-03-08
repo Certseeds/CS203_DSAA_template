@@ -33,7 +33,7 @@ TEST_CASE("test_case 1 [test_230]", "[test_230]") {
                                 TreeNode::No, 2};
     static constexpr const auto k{1};
     static constexpr const auto result{1};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput.front()};
     CHECK(result == leetcode_230::kthSmallest(numVecInput.front(), k));
 }
@@ -46,7 +46,7 @@ TEST_CASE("test_case 2 [test_230]", "[test_230]") {
     };
     static constexpr const auto k{3};
     static constexpr const auto result{3};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput.front()};
     CHECK(result == leetcode_230::kthSmallest(numVecInput.front(), k));
 }

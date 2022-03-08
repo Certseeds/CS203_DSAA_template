@@ -35,7 +35,7 @@ TEST_CASE("test_case 1 [test_235]", "[test_235]") {
                                 2, 4, TreeNode::No, 7,
                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
                                 TreeNode::No, TreeNode::No};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput.front()};
     static constexpr const auto target{9};
     CHECK(leetcode_235::findTarget(numVecInput.front(), target));

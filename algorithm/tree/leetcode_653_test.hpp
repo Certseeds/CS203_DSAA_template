@@ -36,7 +36,7 @@ TEST_CASE("test_case 1 [test_653]", "[test_653]") {
                                 TreeNode::No, TreeNode::No, 3, 5, TreeNode::No, TreeNode::No, TreeNode::No,
                                 TreeNode::No,
     };
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput.front()};
     auto *const p = new TreeNode(2);
     auto *const q = new TreeNode(8);
@@ -52,7 +52,7 @@ TEST_CASE("test_case 2 [test_653]", "[test_653]") {
                                 TreeNode::No, TreeNode::No, 3, 5, TreeNode::No, TreeNode::No, TreeNode::No,
                                 TreeNode::No,
     };
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput.front()};
     auto *const p = new TreeNode(2);
     auto *const q = new TreeNode(4);

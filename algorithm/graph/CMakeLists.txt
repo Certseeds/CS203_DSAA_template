@@ -11,7 +11,7 @@ set(dependencies dijistra flow bfs dfs toposort)
 LIST(TRANSFORM dependencies APPEND _test)
 
 set(leetcode_order)
-list(APPEND leetcode_order 743 so_12 so_13)
+list(APPEND leetcode_order 743 so_12 so_13 797)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})

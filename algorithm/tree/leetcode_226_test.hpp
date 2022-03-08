@@ -32,7 +32,7 @@ using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_226]", "[test_226]") {
     const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     leetcode_226::invertTree(numVecInput[0]);
     const vector<int32_t> result{4, 7, 2, 9, 6, 3, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
                                  TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};

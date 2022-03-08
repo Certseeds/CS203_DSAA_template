@@ -36,7 +36,7 @@ TEST_CASE("test_case 1 [test_236]", "[test_236]") {
                                 TreeNode::No, TreeNode::No, 7, 4};
     const TreeNode p{5}, q{1};
     static constexpr const auto result{3};
-    vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
     const TreeNodeLink link{numVecInput.front()};
     CHECK(result == leetcode_236::lowestCommonAncestor(numVecInput.front(), &p, &q)->val);
 }
