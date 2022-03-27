@@ -31,31 +31,23 @@ using TREE_NODE::numToTree;
 using Catch::Matchers::Equals;
 
 TEST_CASE("test_case 1 [test_so_26]", "[test_so_26]") {
-    const vector<int32_t> input{3, 4, 5, 1, 2}, input2{4, 1};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input), numVecInput2 = numToTree<int32_t>(input2);
-    const TreeNodeLink link{numVecInput[0]}, link2{numVecInput2[0]};
-    CHECK(leetcode_so_26::isSubStructure(numVecInput.front(), numVecInput2.front()));
+    const TreeNodeLink input{3, 4, 5, 1, 2}, input2{4, 1};
+    CHECK(leetcode_so_26::isSubStructure(input[0], input2[0]));
 }
 
 TEST_CASE("test_case 2 [test_so_26]", "[test_so_26]") {
-    const vector<int32_t> input{1, 0, 1, -4, -3}, input2{1, -4};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input), numVecInput2 = numToTree<int32_t>(input2);
-    const TreeNodeLink link{numVecInput[0]}, link2{numVecInput2[0]};
-    CHECK_FALSE(leetcode_so_26::isSubStructure(numVecInput.front(), numVecInput2.front()));
+    const TreeNodeLink input{1, 0, 1, -4, -3}, input2{1, -4};
+    CHECK_FALSE(leetcode_so_26::isSubStructure(input[0], input2[0]));
 }
 
 TEST_CASE("test_case 3 [test_so_26]", "[test_so_26]") {
-    const vector<int32_t> input{1, 2, 3, 4}, input2{3};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input), numVecInput2 = numToTree<int32_t>(input2);
-    const TreeNodeLink link{numVecInput[0]}, link2{numVecInput2[0]};
-    CHECK(leetcode_so_26::isSubStructure(numVecInput.front(), numVecInput2.front()));
+    const TreeNodeLink input{1, 2, 3, 4}, input2{3};
+    CHECK(leetcode_so_26::isSubStructure(input[0], input2[0]));
 }
 
 TEST_CASE("test_case 4 [test_so_26]", "[test_so_26]") {
-    const vector<int32_t> input{10, 12, 6, 8, 3, 11}, input2{10, 12, 6, 8};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input), numVecInput2 = numToTree<int32_t>(input2);
-    const TreeNodeLink link{numVecInput[0]}, link2{numVecInput2[0]};
-    CHECK(leetcode_so_26::isSubStructure(numVecInput.front(), numVecInput2.front()));
+    const TreeNodeLink input{10, 12, 6, 8, 3, 11}, input2{10, 12, 6, 8};
+    CHECK(leetcode_so_26::isSubStructure(input[0], input2[0]));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_26_TEST_HPP

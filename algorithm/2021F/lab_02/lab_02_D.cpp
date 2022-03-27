@@ -55,38 +55,38 @@ output_type cal(const input_type &data) {
     const auto judge = [](const int32_t n) {
         return (n & (n - 1)) == 0;
     };
-    const auto make_unique = [](size_t left, size_t right) {
+    const auto make_unique = [](uint64_t left, uint64_t right) {
         return (left << 32) + right;
     };
     const auto arr = [] {
         vector<int32_t> vec(32, 1);
-        for (size_t i{1}; i < 32; ++i) {
+        for (uint64_t i{1}; i < 32; ++i) {
             vec[i] = 2 * vec[i - 1];
         }
         return vec;
     }();
     const auto data_size = data.size();
-    unordered_map<num_t, size_t> sizes{};
+    unordered_map<num_t, uint64_t> sizes{};
     unordered_map<uint64_t, uint64_t> uset{};
-    for (size_t i{0}; i < data_size; i++) {
+    for (uint64_t i{0}; i < data_size; i++) {
         if (sizes.find(data[i]) == sizes.end()) {
             sizes[data[i]] = (i << 32) + 1;
         } else {
             sizes[data[i]]++;
         }
     }
-    size_t same_count{0};
+    uint64_t same_count{0};
     for (const auto pair: sizes) {
         const num_t key = pair.first;
-        const size_t value = pair.second;
-        const size_t count_num = ((value << 32) >> 32);
+        const uint64_t value = pair.second;
+        const uint64_t count_num = ((value << 32) >> 32);
         //std::cout << val << " " << value << " " << count_num << end;
         if (judge(key)) {
             same_count += (count_num * (count_num - 1)) / 2;
         }
     }
-    for (size_t i{0}; i < data_size; i++) {
-        for (size_t j{31}; j >= 1; j--) {
+    for (uint64_t i{0}; i < data_size; i++) {
+        for (uint64_t j{31}; j >= 1; j--) {
             if (sizes.find(arr[j] - data[i]) != sizes.cend()) {
                 const auto rhs = sizes[arr[j] - data[i]];
                 const auto rhs_loca = rhs >> 32;

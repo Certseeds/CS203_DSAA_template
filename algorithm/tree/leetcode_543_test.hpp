@@ -28,11 +28,9 @@ using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_543]", "[test_543]") {
-    const vector<int32_t> input{4, 2, 6, 1, 3};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const TreeNodeLink input{4, 2, 6, 1, 3};
     static constexpr const auto result{3};
-    const TreeNodeLink link{numVecInput.front()};
-    CHECK(result == leetcode_543::diameterOfBinaryTree(numVecInput.front()));
+    CHECK(result == leetcode_543::diameterOfBinaryTree(input[0]));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_543_TEST_HPP

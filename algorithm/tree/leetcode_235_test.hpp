@@ -27,18 +27,15 @@ struct leetcode_235 {
 };
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_235]", "[test_235]") {
-    const vector<int32_t> input{5,
+    const TreeNodeLink input{5,
                                 3, 6,
                                 2, 4, TreeNode::No, 7,
                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
                                 TreeNode::No, TreeNode::No};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    const TreeNodeLink link{numVecInput.front()};
     static constexpr const auto target{9};
-    CHECK(leetcode_235::findTarget(numVecInput.front(), target));
+    CHECK(leetcode_235::findTarget(input[0], target));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_235_TEST_HPP

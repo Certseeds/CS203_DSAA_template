@@ -29,15 +29,12 @@ using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_669]", "[test_669]") {
-    const vector<int32_t> input{1, 0, 2};
+    const TreeNodeLink input{1, 0, 2};
     const vector<int32_t> result{1,
                                  TreeNode::No, 2,
                                  TreeNode::No, TreeNode::No
     };
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    const TreeNodeLink link{numVecInput};
-
-    auto *const resultPtr = leetcode_669::trimBST(numVecInput[0], 1, 2);
+    auto *const resultPtr = leetcode_669::trimBST(input[0], 1, 2);
     CHECK(TREE_NODE::judge_equal(resultPtr, result));
 }
 

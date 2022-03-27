@@ -28,16 +28,13 @@ struct leetcode_226 {
 };
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_226]", "[test_226]") {
-    const vector<int32_t> input{4, 2, 7, 1, 3, 6, 9};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    leetcode_226::invertTree(numVecInput[0]);
+    const TreeNodeLink input{4, 2, 7, 1, 3, 6, 9};
+    leetcode_226::invertTree(input[0]);
     const vector<int32_t> result{4, 7, 2, 9, 6, 3, 1, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
                                  TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    CHECK(TREE_NODE::judge_equal(numVecInput.front(), result));
-    const TreeNodeLink link{numVecInput.front()};
+    CHECK(TREE_NODE::judge_equal(input[0], result));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_226_TEST_HPP

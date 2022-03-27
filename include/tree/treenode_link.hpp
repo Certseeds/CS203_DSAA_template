@@ -22,11 +22,24 @@ private:
     vector<TreeNode < T> *> list{};
 public:
 
-    TreeNodeLink(std::initializer_list<int32_t> list_) : list(TreeNode<T>::numToTree(list_)) {}
+    TreeNodeLink(std::initializer_list<int32_t> list_) : list(TREE_NODE::numToTree<T>(list_)) {}
 
-    explicit TreeNodeLink(const vector<TreeNode < T> *>& list_): list (list_) {}
+    explicit TreeNodeLink(const vector<TreeNode < T> *>& list_):list (list_) {}
 
     explicit TreeNodeLink(TreeNode <T> *li) : root(li) {}
+
+    TreeNode <T> *operator[](size_t i) const {
+        if (i > list.size()) {
+            return nullptr;
+        }
+        return list.at(i);
+    }
+
+    TreeNode <T> *operator[](size_t i) {
+        return const_cast<TreeNode<T> *>(
+                static_cast<const TreeNodeLink <T> &>(*this)[i]
+        );
+    }
 
     virtual ~TreeNodeLink() {
         stack<const TreeNode<T> *> sta{{root}};

@@ -34,25 +34,21 @@ using TREE_NODE::numToTree;
 using Catch::Matchers::Equals;
 
 TEST_CASE("test_case 1-1 [test_so_32]", "[test_so_32]") {
-    const vector<int32_t> input{3,
+    const TreeNodeLink input{3,
                                 9, 20,
                                 TreeNode::No, TreeNode::No, 15, 7,};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    const TreeNodeLink link{numVecInput[0]};
     const vector<int32_t> results{3, 9, 20, 15, 7};
-    CHECK_THAT(results, Equals(leetcode_so_32::levelOrderFst(numVecInput[0])));
+    CHECK_THAT(results, Equals(leetcode_so_32::levelOrderFst(input[0])));
 }
 
 TEST_CASE("test_case 3-1 [test_so_32]", "[test_so_32]") {
-    const vector<int32_t> input{3,
+    const TreeNodeLink input{3,
                                 9, 20,
                                 TreeNode::No, TreeNode::No, 15, 7,};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    const TreeNodeLink link{numVecInput[0]};
     const vector<vector<int32_t>> results{{3},
                                           {20, 9},
                                           {15, 7}};
-    CHECK_THAT(results, Equals(leetcode_so_32::levelOrderTrd(numVecInput[0])));
+    CHECK_THAT(results, Equals(leetcode_so_32::levelOrderTrd(input[0])));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_SO_32_TEST_HPP

@@ -29,15 +29,13 @@ using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_617]", "[test_617]") {
-    const vector<int32_t> input1{1, 3, 2, 5, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
-    const vector<int32_t> input2{2, 1, 3, TreeNode::No, 4, TreeNode::No, 7, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No, TreeNode::No};
+    const TreeNodeLink input1{1, 3, 2, 5, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
+                              TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No};
+    const TreeNodeLink input2{2, 1, 3, TreeNode::No, 4, TreeNode::No, 7, TreeNode::No, TreeNode::No, TreeNode::No,
+                              TreeNode::No, TreeNode::No, TreeNode::No};
     const vector<int32_t> result{3, 4, 5, 5, 4, TreeNode::No, 7, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
-                                 TreeNode::No, TreeNode::No};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input1), numVecInput2 = numToTree<int32_t>(input2);
-    const TreeNodeLink link{numVecInput}, link2{numVecInput2};
-    const auto[resultPtr, resultNodes] = leetcode_617::mergeTrees(numVecInput[0], numVecInput2[0]);
+                              TreeNode::No, TreeNode::No};
+    const auto[resultPtr, resultNodes] = leetcode_617::mergeTrees(input1[0], input2[0]);
     CHECK(TREE_NODE::judge_equal(resultPtr, result));
     const TreeNodeLink link3{resultNodes};
 // 内存不太好管理,停掉测试

@@ -32,15 +32,13 @@ using Catch::Matchers::Equals;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 
 TEST_CASE("test_case 1 [test_199]", "[test_199]") {
-    const vector<int32_t> input{1,
+    const TreeNodeLink input{1,
                                 1, 4,
                                 5, 1, TreeNode::No, 4,
                                 1, TreeNode::No, 9
     };
     const vector<int32_t> result{1, 4, 4, 9};
-    const vector<TreeNode *> numVecInput = TREE_NODE::numToTree<int32_t>(input);
-    const TreeNodeLink link{numVecInput.front()};
-    CHECK_THAT(result, Equals(leetcode_199::rightSideView(numVecInput.front())));
+    CHECK_THAT(result, Equals(leetcode_199::rightSideView(input[0])));
 }
 
 TEST_CASE("test_case 2 [test_199]", "[test_199]") {

@@ -39,10 +39,10 @@ public:
         testout = file_paths + testout;
         this->strmin_buf = std::cin.rdbuf();
         this->strmout_buf = std::cout.rdbuf();
-        this->file_in.open(datain);
+        this->file_in.open(datain, std::ios_base::in);
         std::cin.rdbuf(file_in.rdbuf());
         if (!old_path2.empty()) {
-            this->file_out.open(testout);
+            this->file_out.open(testout, std::ios_base::binary | std::ios_base::out);
             std::cout.rdbuf(file_out.rdbuf());
         }
     }

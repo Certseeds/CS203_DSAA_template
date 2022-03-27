@@ -30,30 +30,25 @@ struct leetcode_530 {
 };
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_530]", "[test_530]") {
-    const vector<int32_t> input{4, 2, 6, 1, 3};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const TreeNodeLink input{4, 2, 6, 1, 3};
     static constexpr const auto result{1};
     THEN("case 1") {
-        CHECK(result == leetcode_530::getMinimumDifference(numVecInput[0]));
+        CHECK(result == leetcode_530::getMinimumDifference(input[0]));
     }THEN("case 2") {
-        CHECK(result == leetcode_530::getMinimumDifference2(numVecInput[0]));
+        CHECK(result == leetcode_530::getMinimumDifference2(input[0]));
     }
-    const TreeNodeLink link{numVecInput.front()};
 }
 
 TEST_CASE("test_case 2 [test_530]", "[test_530]") {
-    const vector<int32_t> input{1, 0, 48, TreeNode::No, TreeNode::No, 12, 49};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
+    const TreeNodeLink input{1, 0, 48, TreeNode::No, TreeNode::No, 12, 49};
     static constexpr const auto result{1};
     THEN("case 1") {
-        CHECK(result == leetcode_530::getMinimumDifference(numVecInput[0]));
+        CHECK(result == leetcode_530::getMinimumDifference(input[0]));
     }THEN("case 2") {
-        CHECK(result == leetcode_530::getMinimumDifference2(numVecInput[0]));
+        CHECK(result == leetcode_530::getMinimumDifference2(input[0]));
     }
-    const TreeNodeLink link{numVecInput.front()};
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_530_TEST_HPP

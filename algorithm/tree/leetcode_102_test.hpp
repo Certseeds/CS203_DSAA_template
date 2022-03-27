@@ -24,7 +24,6 @@ namespace leetcode_102 {
 
 using std::vector;
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
-using TREE_NODE::numToTree;
 
 struct leetcode_102 {
     static vector<vector<int>> levelOrder(TreeNode *root);
@@ -34,23 +33,19 @@ using Catch::Matchers::Equals;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 
 TEST_CASE("test_case 1 [test_102]", "[test_102]") {
-    const vector<int32_t> vec{3,
-                              9, 20,
-                              TreeNode::No, TreeNode::No, 15, 7};
+    const TreeNodeLink vec{3,
+                           9, 20,
+                           TreeNode::No, TreeNode::No, 15, 7};
     const vector<vector<int32_t>> result{{3},
                                          {9,  20},
                                          {15, 7}};
-    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
-    const TreeNodeLink link{numvec[0]};
-    CHECK_THAT(result, Equals(leetcode_102::levelOrder(numvec[0])));
+    CHECK_THAT(result, Equals(leetcode_102::levelOrder(vec[0])));
 }
 
 TEST_CASE("test_case 2 [test_102]", "[test_102]") {
-    const vector<int32_t> vec{1};
+    const TreeNodeLink vec{1};
     const vector<vector<int32_t>> result{{1},};
-    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
-    const TreeNodeLink link{numvec[0]};
-    CHECK_THAT(result, Equals(leetcode_102::levelOrder(numvec[0])));
+    CHECK_THAT(result, Equals(leetcode_102::levelOrder(vec[0])));
 }
 
 TEST_CASE("test_case 3 [test_102]", "[test_102]") {

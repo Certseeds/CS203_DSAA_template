@@ -30,15 +30,13 @@ using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using TREE_NODE::numToTree;
 
 TEST_CASE("test_case 1 [test_236]", "[test_236]") {
-    const vector<int32_t> input{3,
+    const TreeNodeLink input{3,
                                 5, 1,
                                 6, 2, 0, 8,
                                 TreeNode::No, TreeNode::No, 7, 4};
     const TreeNode p{5}, q{1};
     static constexpr const auto result{3};
-    const vector<TreeNode *> numVecInput = numToTree<int32_t>(input);
-    const TreeNodeLink link{numVecInput.front()};
-    CHECK(result == leetcode_236::lowestCommonAncestor(numVecInput.front(), &p, &q)->val);
+    CHECK(result == leetcode_236::lowestCommonAncestor(input[0], &p, &q)->val);
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_236_TEST_HPP

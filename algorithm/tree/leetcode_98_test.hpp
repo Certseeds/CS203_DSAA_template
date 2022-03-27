@@ -19,24 +19,19 @@ namespace leetcode_98 {
 
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
-using TREE_NODE::numToTree;
 
 struct leetcode_98 {
     static bool isValidBST(TreeNode *root);
 };
 
 TEST_CASE("test_case 1 [test_98]", "[test_98]") {
-    const vector<int32_t> vec{2, 1, 3};
-    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
-    CHECK(leetcode_98::isValidBST(numvec[0]));
-    const TreeNodeLink link{numvec[0]};
+    const TreeNodeLink vec{2, 1, 3};
+    CHECK(leetcode_98::isValidBST(vec[0]));
 }
 
 TEST_CASE("test_case 2 [test_98]", "[test_98]") {
-    const vector<int32_t> vec{5, 1, 4, TreeNode::No, TreeNode::No, 3, 6};
-    vector<TreeNode *> numvec = numToTree<int32_t>(vec);
-    CHECK_FALSE(leetcode_98::isValidBST(numvec[0]));
-    const TreeNodeLink link{numvec[0]};
+    const TreeNodeLink vec{5, 1, 4, TreeNode::No, TreeNode::No, 3, 6};
+    CHECK_FALSE(leetcode_98::isValidBST(vec[0]));
 }
 
 }
