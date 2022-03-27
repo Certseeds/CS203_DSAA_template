@@ -10,7 +10,7 @@ set(dependencies min_max_middle)
 set(leetcode_order 9 29 43 50 60)
 LIST(APPEND leetcode_order 118_119 169 217 263)
 LIST(APPEND leetcode_order 268 283 338 343 372)
-LIST(APPEND leetcode_order 401 414 461 728)
+LIST(APPEND leetcode_order 401 414 461 728 781)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})

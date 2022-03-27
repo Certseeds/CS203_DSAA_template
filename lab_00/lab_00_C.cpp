@@ -1,27 +1,9 @@
+// SPDX-License-Identifier: MIT
 /*
-MIT License
-
 CS203_DSAA_template
 
-Copyright (C) 2020-2022  nanoseeds
+Copyright (C) 2020-2022 nanoseeds
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
 */
 #include <iostream>
 #include <list>
@@ -93,7 +75,7 @@ inline input_type read() {
     num_t N{0};
     std::cin >> N;
     vector<vector<num_t>> will_return(N);
-    for (auto i = 0; i < N; i++) {
+    for (auto i = 0; i < N; ++i) {
         num_t X{0};
         std::cin >> X;
         will_return[i].resize(X);
@@ -107,11 +89,10 @@ inline input_type read() {
 output_type isBipartite(const input_type &graph) {
     const auto node_number = graph.size();
     vector<Color> color_vec(node_number, Color::uncolor);
-    for (size_t i = 0; i < node_number; ++i) {
+    for (size_t i{0}; i < node_number; ++i) {
         if (!graph[i].empty() && color_vec[i] == Color::uncolor) {
             color_vec[i] = Color::red;
-            queue<num_t> que{{static_cast<int32_t>(i)}};
-            while (!que.empty()) {
+            for (queue<num_t> que{{static_cast<int32_t>(i)}};!que.empty();) {
                 const num_t head = que.front();
                 que.pop();
                 const Color next_color = (color_vec[head] == Color::red) ? Color::black : Color::red;
