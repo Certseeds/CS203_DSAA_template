@@ -10,13 +10,13 @@ on:
       - '*-release'
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  test-ubuntu:
+  test:
     name: test for release
     # The type of runner that the job will run on
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
         gcc_v: [ 11 ] # Version of G++,GCC
     env:
       GCC_V: ${{ matrix.gcc_v }}
@@ -29,6 +29,7 @@ jobs:
 
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
+        if: ${{matrix.os != 'windows-latest'}}
 
       - name: Install GCC-11,G++-11
         run: |
@@ -36,10 +37,12 @@ jobs:
           sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V}
           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
+        if: ${{matrix.os != 'windows-latest'}}
 
       - name: prepare libopencv
         run: |
           sudo apt-get update && sudo apt-get install libopencv-dev
+        if: ${{matrix.os != 'windows-latest'}}
 
       - name: Use cmake
         run: cmake --version
@@ -78,54 +81,12 @@ jobs:
       - name: cmake test
         working-directory: ./CMAKE_DEBUG_PATH
         run: ctest  --parallel $(nproc)
-        if: ${{matrix.os != 'windows-latest'}}
-
-  test-windows:
-    name: test for release
-    runs-on: windows-latest
-    steps:
-      - name: checkout code
-        uses: actions/checkout@v2
-
-      - name: Use cmake
-        run: cmake --version
-
-      - name: prepare folder
-        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
-
-      - name: cmake prepare for compile
-        working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
-
-      - name: cmake compile lab_00
-        working-directory: ./CMAKE_DEBUG_PATH/lab_00
-        run: cmake --build . --config DEBUG --parallel
-
-      - name: cmake compile algorithm/2021F
-        working-directory: ./CMAKE_DEBUG_PATH/algorithm/2021F
-        run: cmake --build . --config DEBUG --parallel
-
-      - name: cmake compile algorithm/matrix
-        working-directory: ./CMAKE_DEBUG_PATH/algorithm/matrix
-        run: cmake --build . --config DEBUG --parallel
-
-      - name: cmake compile algorithm
-        working-directory: ./CMAKE_DEBUG_PATH/algorithm/
-        run: cmake --build .
-
-      - name: cmake compile basic
-        working-directory: ./CMAKE_DEBUG_PATH/basic
-        run: cmake --build . --config DEBUG --parallel
-
-      - name: cmake compile
-        working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake --build . --config DEBUG --parallel
 
   # This workflow contains a single job called "build"
   build:
     name: publish release
     if: github.repository == 'Certseeds/CS203_DSAA_template'
-    needs: [ test-ubuntu,test-windows ]
+    needs: test
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -179,7 +140,7 @@ jobs:
   release-branch:
     name: publish release-branch
     if: github.repository == 'Certseeds/CS203_DSAA_template'
-    needs: [ test-ubuntu,test-windows,build ]
+    needs: [ test, build ]
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     # Steps represent a sequence of tasks that will be executed as part of the job
