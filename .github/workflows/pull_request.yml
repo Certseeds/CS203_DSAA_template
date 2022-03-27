@@ -17,8 +17,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest ]
-        gcc_v: [11] # Version of G++,GCC
+        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
+        gcc_v: [ 11 ] # Version of G++,GCC
     env:
       GCC_V: ${{ matrix.gcc_v }}
     # Steps represent a sequence of tasks that will be executed as part of the job
@@ -100,7 +100,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest,windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
