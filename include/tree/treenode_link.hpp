@@ -17,34 +17,35 @@ using std::stack;
 
 template<typename T>
 class TreeNodeLink final : private nonCopyMoveAble {
+    using TreeNodeT = TreeNode<T>;
 private:
-    TreeNode <T> *root{nullptr};
-    vector<TreeNode < T> *> list{};
+    TreeNodeT *root{nullptr};
+    vector<TreeNodeT *> list{};
 public:
 
     TreeNodeLink(std::initializer_list<int32_t> list_) : list(TREE_NODE::numToTree<T>(list_)) {}
 
-    explicit TreeNodeLink(const vector<TreeNode < T> *>& list_):list (list_) {}
+    explicit TreeNodeLink(const vector<TreeNodeT *> &list_) : list(list_) {}
 
-    explicit TreeNodeLink(TreeNode <T> *li) : root(li) {}
+    explicit TreeNodeLink(TreeNodeT *li) : root(li) {}
 
-    TreeNode <T> *operator[](size_t i) const {
+    TreeNodeT *operator[](size_t i) const {
         if (i > list.size()) {
             return nullptr;
         }
         return list.at(i);
     }
 
-    TreeNode <T> *operator[](size_t i) {
-        return const_cast<TreeNode<T> *>(
-                static_cast<const TreeNodeLink <T> &>(*this)[i]
+    TreeNodeT *operator[](size_t i) {
+        return const_cast<TreeNodeT *>(
+                static_cast<const TreeNodeLink<T> &>(*this)[i]
         );
     }
 
     virtual ~TreeNodeLink() {
-        stack<const TreeNode<T> *> sta{{root}};
+        stack<const TreeNodeT *> sta{{root}};
         while (!sta.empty()) {
-            const TreeNode<T> *const head = sta.top();
+            const TreeNodeT *const head = sta.top();
             sta.pop();
             if (head == nullptr) { continue; }
             if (head->right != nullptr) {
