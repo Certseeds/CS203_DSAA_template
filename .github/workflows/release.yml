@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest]
         gcc_v: [ 11 ] # Version of G++,GCC
     env:
       GCC_V: ${{ matrix.gcc_v }}
@@ -30,6 +30,10 @@ jobs:
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
         if: ${{matrix.os != 'windows-latest'}}
+
+      - name: get ccache in windows
+        run: choco install ccache
+        if: ${{matrix.os == 'windows-latest'}}
 
       - name: Install GCC-11,G++-11
         run: |

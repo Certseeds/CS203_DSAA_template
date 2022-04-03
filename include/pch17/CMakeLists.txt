@@ -8,8 +8,6 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 add_library(${PROJECT_NAME} STATIC ${CMAKE_CURRENT_SOURCE_DIR}/pch.cpp)
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE CS203_DSAA_TEST_MACRO)
-target_link_libraries(${PROJECT_NAME} PRIVATE
-                      ${PARENT_TARGET_NAME}
-                      ${PARENT_TARGET_NAME}_MULTIPLY)
+target_link_libraries(${PROJECT_NAME} PRIVATE CS203_CATCH2_LIB)
 
 unset(PARENT_TARGET_NAME)
