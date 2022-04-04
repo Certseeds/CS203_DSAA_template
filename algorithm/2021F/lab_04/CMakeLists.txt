@@ -14,9 +14,6 @@ foreach (elementName IN LISTS dependencies)
     target_compile_definitions(${PROJECT_NAME}_${elementName}_test PRIVATE CS203_DSAA_TEST_MACRO)
     target_link_libraries(${PROJECT_NAME}_${elementName}_test PRIVATE
                           CS203_DSAA_template_INCLUDE)
-#    target_precompile_headers(${PROJECT_NAME}_${elementName}_test REUSE_FROM
-#                              CS203_DSAA_template_INCLUDE_PCH17
-#                              )
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${PROJECT_ORDER}_${elementName}.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName}_test)
     set(CMAKE_CXX_STANDARD 11)

@@ -51,12 +51,8 @@ jobs:
       - name: Use cmake
         run: cmake --version
 
-      - name: prepare folder
-        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
-
       - name: cmake prepare for compile
-        working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
+        run: cmake -S . -B ./CMAKE_DEBUG_PATH -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00
