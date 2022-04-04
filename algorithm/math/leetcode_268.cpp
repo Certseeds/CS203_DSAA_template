@@ -6,6 +6,7 @@ Copyright (C) 2020-2022 nanoseeds
 
 */
 #include "leetcode_268_test.hpp"
+#include <numeric>
 
 namespace leetcode_268 {
 

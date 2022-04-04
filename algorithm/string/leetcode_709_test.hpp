@@ -22,15 +22,16 @@ struct leetcode_709 {
     static string toLowerCase(const string &str);
 };
 
+using Catch::Matchers::Equals;
 
 TEST_CASE("1 [test_709]", "[test_709]") {
     static constexpr const char *const input{"UD"}, *const output{"ud"};
-    CHECK(output == leetcode_709::toLowerCase(input));
+    CHECK_THAT(output, Equals(leetcode_709::toLowerCase(input)));
 }
 
 TEST_CASE("2 [test_709]", "[test_709]") {
     static constexpr const char *const input{"LoL"}, *const output{"lol"};
-    CHECK(output == leetcode_709::toLowerCase(input));
+    CHECK_THAT(output, Equals(leetcode_709::toLowerCase(input)));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_709_TEST_HPP

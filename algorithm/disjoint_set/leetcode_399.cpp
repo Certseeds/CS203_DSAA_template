@@ -6,6 +6,7 @@ Copyright (C) 2020-2022 nanos
 
 */
 #include "leetcode_399_test.hpp"
+#include <numeric>
 #include <unordered_map>
 
 namespace disjoint_set_weight {

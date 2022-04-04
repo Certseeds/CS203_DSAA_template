@@ -14,6 +14,7 @@ Copyright (C) 2020-2022 nanoseeds
 */
 
 #include "traverse.cpp"
+#include <numeric>
 
 #include <tree/treenode_link.hpp>
 

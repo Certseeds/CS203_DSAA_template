@@ -15,6 +15,7 @@ Copyright (C) 2020-2022 nanos
 #include <cstddef>
 #include <vector>
 #include <string>
+#include <cmath>
 
 namespace leetcode_399 {
 using std::string;
@@ -34,8 +35,7 @@ TEST_CASE("1 [test_399]", "[test_399]") {
             {"a", "b"},
             {"b", "c"},
     };
-    const vector<double_t> values{2.0f,
-                                  3.0f};
+    const vector<double_t> values{2.0f, 3.0f};
     const vector<vector<string>> queries{
             {"a", "c"},
             {"b", "a"},

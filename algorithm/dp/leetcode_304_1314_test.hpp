@@ -22,6 +22,7 @@ Copyright (C) 2020-2022 nanos
 #include <cstdint>
 #include <cstddef>
 #include <vector>
+#include <memory>
 
 namespace leetcode_1314 {
 using std::vector;

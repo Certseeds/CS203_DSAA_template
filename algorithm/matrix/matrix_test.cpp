@@ -3,7 +3,8 @@
     Copyright (C) 2020-2022 nanoseeds Wjia wuyuhao
 */
 #include <catch_main.hpp>
-
+#include <catch2/catch_version.hpp>
+#include <catch2/catch_version_macros.hpp>
 #include <complex>
 #include <iostream>
 #include <random>

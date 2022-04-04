@@ -12,6 +12,8 @@ Copyright (C) 2020-2022 nanoseeds
 #define CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_50_TEST_HPP
 
 #include <catch_main.hpp>
+#include <catch2/catch_approx.hpp>
+
 #include <cassert>
 #include <cstdint>
 

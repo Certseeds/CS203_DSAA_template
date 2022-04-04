@@ -25,23 +25,23 @@ using std::string;
 struct leetcode_so_45 {
     static string minNumber(const vector<int32_t> &nums);
 };
-
+using Catch::Matchers::Equals;
 TEST_CASE("test case 1 [test_so_45]", "[test_so_45]") {
     const vector<int32_t> input{10, 2};
     static constexpr const char *const output{"102"};
-    CHECK(output == leetcode_so_45::minNumber(input));
+    CHECK_THAT(output,Equals(leetcode_so_45::minNumber(input)));
 }
 
 TEST_CASE("test case 2 [test_so_45]", "[test_so_45]") {
     const vector<int32_t> input{3, 30, 34, 5, 9};
     static constexpr const char *const output{"3033459"};
-    CHECK(output == leetcode_so_45::minNumber(input));
+    CHECK_THAT(output,Equals(leetcode_so_45::minNumber(input)));
 }
 
 TEST_CASE("test case 3 [test_so_45]", "[test_so_45]") {
     const vector<int32_t> input{12, 121};
     static constexpr const char *const output{"12112"};
-    CHECK(output == leetcode_so_45::minNumber(input));
+    CHECK_THAT(output,Equals(leetcode_so_45::minNumber(input)));
 }
 
 }

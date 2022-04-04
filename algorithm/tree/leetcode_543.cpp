@@ -6,9 +6,10 @@ Copyright (C) 2020-2022 nanoseeds
 
 */
 #include "leetcode_543_test.hpp"
+#include <memory>
 
 namespace leetcode_543 {
-int rec(TreeNode *base, int32_t num, std::shared_ptr<int32_t> max) {
+int rec(TreeNode *base, int32_t num, const std::shared_ptr<int32_t>& max) {
     if (base == nullptr) {
         return num;
     }
