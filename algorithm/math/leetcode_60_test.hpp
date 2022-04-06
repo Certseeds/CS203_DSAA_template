@@ -21,7 +21,9 @@ struct leetcode_60 {
 
     static string getPermutation_rec_out(int32_t n, int32_t k);
 };
+
 using Catch::Matchers::Equals;
+
 TEST_CASE("1 [test_60]", "[test_60]") {
     static constexpr const auto n{3}, k{3};
     static constexpr const char *const result{"213"};

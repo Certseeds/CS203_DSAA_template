@@ -28,47 +28,49 @@ struct leetcode_12 {
     static string intToRoman_2(int num);
 };
 
+using Catch::Matchers::Equals;
+
 TEST_CASE("test case 1 [test_12]", "[test_12]") {
     static constexpr const auto input{3};
     static constexpr const char *const result{"III"};
-    CHECK(result == leetcode_12::intToRoman(input));
-    CHECK(result == leetcode_12::intToRoman_2(input));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman(input)));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman_2(input)));
 }
 
 TEST_CASE("test case 2 [test_12]", "[test_12]") {
     static constexpr const auto input{4};
     static constexpr const char *const result{"IV"};
-    CHECK(result == leetcode_12::intToRoman(input));
-    CHECK(result == leetcode_12::intToRoman_2(input));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman(input)));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman_2(input)));
 }
 
 TEST_CASE("test case 3 [test_12]", "[test_12]") {
     static constexpr const auto input{9};
     static constexpr const char *const result{"IX"};
-    CHECK(result == leetcode_12::intToRoman(input));
-    CHECK(result == leetcode_12::intToRoman_2(input));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman(input)));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman_2(input)));
 }
 
 TEST_CASE("test case 4 [test_12]", "[test_12]") {
     static constexpr const auto input{58};
     static constexpr const char *const result{"LVIII"};
-    CHECK(result == leetcode_12::intToRoman(input));
-    CHECK(result == leetcode_12::intToRoman_2(input));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman(input)));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman_2(input)));
 }
 
 TEST_CASE("test case 5 [test_12]", "[test_12]") {
     static constexpr const auto input{1994};
     static constexpr const char *const result{"MCMXCIV"};
-    CHECK(result == leetcode_12::intToRoman(input));
-    CHECK(result == leetcode_12::intToRoman_2(input));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman(input)));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman_2(input)));
 }
 
 TEST_CASE("test case 6 [test_12]", "[test_12]") {
     static constexpr const auto input{114514};
     static constexpr const char *const result{
             "MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMDXIV"};
-    CHECK(result == leetcode_12::intToRoman(input));
-    CHECK(result == leetcode_12::intToRoman_2(input));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman(input)));
+    CHECK_THAT(result, Equals(leetcode_12::intToRoman_2(input)));
 }
 
 }
