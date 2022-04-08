@@ -30,4 +30,26 @@ bool leetcode_240::findNumberIn2DArray(const vector<vector<int32_t>> &matrix, in
     return false;
 }
 
+bool leetcode_240::findNumberIn2DArrayZ(const vector<vector<int32_t>> &matrix, int32_t target) {
+    const auto m = static_cast<int32_t>(matrix.size());
+    if (m == 0) {
+        return false;
+    }
+    const auto n = static_cast<int32_t>(matrix.front().size());
+    if (n == 0) {
+        return false;
+    }
+    for (int32_t x{0}, y = n - 1; x < m && y >= 0;) {
+        const auto find = matrix[x][y];
+        if (find == target) {
+            return true;
+        } else if (find > target) {
+            y--;
+        } else {
+            x++;
+        }
+    }
+    return false;
+}
+
 }

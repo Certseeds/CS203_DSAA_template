@@ -12,34 +12,27 @@ namespace leetcode_59 {
 vector<vector<int32_t>> leetcode_59::generateMatrix(int32_t n) {
     vector<vector<int32_t>> will_return(n, vector<int32_t>(n, 0));
     int32_t counter{1};
-    const auto rightDown = [&will_return, &counter](size_t x, size_t y, int32_t steps) -> std::pair<int32_t, int32_t> {
-        for (int32_t step{0}; step < steps + 1; ++counter, ++y, ++step) {
-            will_return[x][y] = counter;
-        }
-        y -= 1, x += 1;
-        for (int32_t step{0}; step < steps; ++counter, ++x, ++step) {
-            will_return[x][y] = counter;
-        }
-        return {x - 1, y - 1}; // 向左上角
+    using func_type = std::function<std::pair<int32_t, int32_t>(size_t, size_t, int32_t)>;
+    const func_type rightDown = [&will_return, &counter]
+            (size_t x, size_t y, int32_t steps) -> std::pair<int32_t, int32_t> {
+        will_return[x][y] = counter;
+        for (int32_t step{0}; step < steps; ++counter, ++y, will_return[x][y] = counter, ++step) {}
+        for (int32_t step{0}; step < steps; ++counter, ++x, will_return[x][y] = counter, ++step) {}
+        counter++;
+        return {x, y - 1}; // 到达右下角,左移一位
     };
-    const auto leftup = [&will_return, &counter](size_t x, size_t y, int32_t steps) -> std::pair<int32_t, int32_t> {
-        for (int32_t step{0}; step < steps + 1; ++counter, --y, ++step) {
-            will_return[x][y] = counter;
-        }
-        y += 1, x -= 1;
-        for (int32_t step{0}; step < steps; ++counter, --x, ++step) {
-            will_return[x][y] = counter;
-        }
-        return {x + 1, y + 1};// 向右下角
+    const func_type leftup = [&will_return, &counter]
+            (size_t x, size_t y, int32_t steps) -> std::pair<int32_t, int32_t> {
+        will_return[x][y] = counter;
+        for (int32_t step{0}; step < steps; ++counter, --y, will_return[x][y] = counter, ++step) {}
+        for (int32_t step{0}; step < steps; ++counter, --x, will_return[x][y] = counter, ++step) {}
+        counter++;
+        return {x, y + 1}; // 到达左上角,右移一位
     };
     for (int32_t i{0}, x{0}, y{0}; i < n; ++i) {
-        if (i % 2 == 0) {
-            const auto next = rightDown(x, y, n - i - 1);
-            x = next.first, y = next.second;
-        } else {
-            const auto next = leftup(x, y, n - i - 1);
-            x = next.first, y = next.second;
-        }
+        const auto func = (i % 2 == 0) ? rightDown : leftup;
+        const auto next = func(x, y, n - i - 1);
+        x = next.first, y = next.second;
     }
     return will_return;
 }

@@ -22,6 +22,7 @@ using std::vector;
 
 struct leetcode_240 {
     static bool findNumberIn2DArray(const vector<vector<int32_t>> &matrix, int32_t target);
+    static bool findNumberIn2DArrayZ(const vector<vector<int32_t>> &matrix, int32_t target);
 };
 
 TEST_CASE("test case 1 {test_240}", "{test_240}") {
@@ -34,6 +35,7 @@ TEST_CASE("test case 1 {test_240}", "{test_240}") {
     };
     static constexpr const auto k{5};
     CHECK(leetcode_240::findNumberIn2DArray(input, k));
+    CHECK(leetcode_240::findNumberIn2DArrayZ(input, k));
 }
 
 TEST_CASE("test case 2 {test_240}", "{test_240}") {
@@ -46,6 +48,7 @@ TEST_CASE("test case 2 {test_240}", "{test_240}") {
     };
     static constexpr const auto k{20};
     CHECK_FALSE(leetcode_240::findNumberIn2DArray(input, k));
+    CHECK_FALSE(leetcode_240::findNumberIn2DArrayZ(input, k));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_240_TEST_HPP
