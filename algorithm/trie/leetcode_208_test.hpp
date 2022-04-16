@@ -17,6 +17,7 @@ Copyright (C) 2020-2022 nanoseeds
 
 #include <catch_main.hpp>
 #include <tree/trie.hpp>
+#include <memory>
 
 namespace leetcode_208 {
 struct leetcode_208 {

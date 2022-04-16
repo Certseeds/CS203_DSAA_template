@@ -22,25 +22,27 @@ struct leetcode_60 {
     static string getPermutation_rec_out(int32_t n, int32_t k);
 };
 
+using Catch::Matchers::Equals;
+
 TEST_CASE("1 [test_60]", "[test_60]") {
     static constexpr const auto n{3}, k{3};
     static constexpr const char *const result{"213"};
-    CHECK(result == leetcode_60::getPermutation(n, k));
-    CHECK(result == leetcode_60::getPermutation_rec_out(n, k));
+    CHECK_THAT(result,Equals(leetcode_60::getPermutation(n, k)));
+    CHECK_THAT(result,Equals(leetcode_60::getPermutation_rec_out(n, k)));
 }
 
 TEST_CASE("2 [test_60]", "[test_60]") {
     static constexpr const auto n{4}, k{9};
     static constexpr const char *const result{"2314"};
-    CHECK(result == leetcode_60::getPermutation(n, k));
-    CHECK(result == leetcode_60::getPermutation_rec_out(n, k));
+    CHECK_THAT(result,Equals(leetcode_60::getPermutation(n, k)));
+    CHECK_THAT(result,Equals(leetcode_60::getPermutation_rec_out(n, k)));
 }
 
 TEST_CASE("3 [test_60]", "[test_60]") {
     static constexpr const auto n{3}, k{1};
     static constexpr const char *const result{"123"};
-    CHECK(result == leetcode_60::getPermutation(n, k));
-    CHECK(result == leetcode_60::getPermutation_rec_out(n, k));
+    CHECK_THAT(result,Equals(leetcode_60::getPermutation(n, k)));
+    CHECK_THAT(result,Equals(leetcode_60::getPermutation_rec_out(n, k)));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_LIST_LEETCODE_60_TEST_HPP

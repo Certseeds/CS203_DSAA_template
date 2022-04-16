@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.6)
 
 set(PROJECT_VERSION_MAJOR 0)
-set(PROJECT_VERSION_MINOR 7)
+set(PROJECT_VERSION_MINOR 8)
 set(PROJECT_VERSION_PATCH 1)
 project(CS203_DSAA_template
         VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
@@ -11,7 +11,6 @@ project(CS203_DSAA_template
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_VERBOSE_MAKEFILE ON)
-option(MULTIPLY_TIMES "This is a option for pre compile headers" ON) # 加速效果大约有1/3, 3s -> 2s左右
 
 string(TIMESTAMP time_str "%Y/%m/%d  %H:%M:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")

@@ -7,20 +7,11 @@ Copyright (C) 2020-2022 nanoseeds
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
-#ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-
 #include <catch_main.hpp>
-
-#pragma message("import catch_main.hpp")
-
-#else
-#pragma message("use pre-compiled")
-#endif
-
-
 #include <iostream>
 #include <tuple>
 #include <vector>
+#include <random>
 
 #include "lab_00_A.cpp"
 

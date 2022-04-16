@@ -6,10 +6,11 @@
 
 #include <catch_main.hpp>
 #include "cache_base.hpp"
-#include <memory>
+#include <set>
 #include <queue>
-#include <unordered_set>
+#include <memory>
 #include <vector>
+#include <unordered_set>
 
 namespace cache::min {
 using std::array;

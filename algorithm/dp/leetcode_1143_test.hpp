@@ -33,6 +33,8 @@ struct leetcode_1143 {
     static int32_t longestCommonSubsequence2(const string &text1, const string &text2);
 };
 
+using Catch::Matchers::Equals;
+
 TEST_CASE("1 [test_1143]", "[test_1143]") {
     static constexpr const char *const input1{"abcde"}, *const input2{"ace"};
     static constexpr const auto result{3};

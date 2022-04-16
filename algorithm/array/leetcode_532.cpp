@@ -7,6 +7,7 @@ Copyright (C) 2022  nanoseeds
 */
 #include "leetcode_532_test.hpp"
 #include <unordered_map>
+#include <numeric>
 
 namespace leetcode_532 {
 using std::unordered_map;

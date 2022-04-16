@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest]
         gcc_v: [ 11 ] # Version of G++,GCC
     env:
       GCC_V: ${{ matrix.gcc_v }}
@@ -29,7 +29,6 @@ jobs:
 
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
-        if: ${{matrix.os != 'windows-latest'}}
 
       - name: Install GCC-11,G++-11
         run: |
@@ -37,22 +36,16 @@ jobs:
           sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V}
           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
-        if: ${{matrix.os != 'windows-latest'}}
 
-      - name: prepare libopencv
+      - name: prepare libopencv ccache
         run: |
-          sudo apt-get update && sudo apt-get install libopencv-dev
-        if: ${{matrix.os != 'windows-latest'}}
+          sudo apt-get install libopencv-dev ccache
 
       - name: Use cmake
         run: cmake --version
 
-      - name: prepare folder
-        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
-
       - name: cmake prepare for compile
-        working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
+        run: cmake -S . -B ./CMAKE_DEBUG_PATH -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00

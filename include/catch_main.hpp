@@ -7,21 +7,22 @@ Copyright (C) 2020-2022 nanoseeds
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
 #define CS203_DSAA_TEMPLATE_INCLUDES_CATCH_MAIN_H
-//#define CATCH_CONFIG_MAIN
 
-#ifndef CATCH_AMALGAMATED_HPP_INCLUDED
+// #include <catch_amalgamated.hpp>
+#include <catch2/catch_test_macros.hpp>
+#include <catch2/matchers/catch_matchers.hpp>
+//#include <catch2/matchers/catch_matchers_container_properties.hpp>
+#include <catch2/matchers/catch_matchers_contains.hpp>
+// #include <catch2/matchers/catch_matchers_exception.hpp>
+// #include <catch2/matchers/catch_matchers_floating_point.hpp>
+// #include <catch2/matchers/catch_matchers_predicate.hpp>
+// #include <catch2/matchers/catch_matchers_quantifiers.hpp>
+#include <catch2/matchers/catch_matchers_string.hpp>
+// #include <catch2/matchers/catch_matchers_templated.hpp>
+#include <catch2/matchers/catch_matchers_vector.hpp>
+#include <catch2/matchers/internal/catch_matchers_impl.hpp>
 
-#include <catch_amalgamated.hpp>
-
-#pragma message("import catch_amalgamated.hpp")
-// find this in ide's autolight
-#else
-#pragma message("use pre-compiled")
-// output this while compile
-// 兼容MSVC
-#endif
-
-#include <public.hpp>
+#include <include/public.hpp>
 
 static const CS203_timer timer{};
 

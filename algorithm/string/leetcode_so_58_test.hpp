@@ -25,30 +25,30 @@ struct leetcode_so_58 {
     static string reverseLeftWords(const string &s, int32_t n);
 
     static string reverseWords(const string &s);
-
-    static string reverseWords2(const string &s);
 };
+
+using Catch::Matchers::Equals;
 
 TEST_CASE("2 [test_so_58 i]", "[test_so_58]") {
     static constexpr const char *const input{"  hello world!  "}, *const result{"world! hello"};
-    CHECK(result == leetcode_so_58::reverseWords(input));
+    CHECK_THAT(result, Equals(leetcode_so_58::reverseWords(input)));
 }
 
 TEST_CASE("1 [test_so_58 i]", "[test_so_58]") {
     static constexpr const char *const input{"I am a aritist."}, *const result{"aritist. a am I"};
-    CHECK(result == leetcode_so_58::reverseWords(input));
+    CHECK_THAT(result, Equals(leetcode_so_58::reverseWords(input)));
 }
 
 TEST_CASE("1 [test_so_58 ii]", "[test_so_58]") {
     static constexpr const char *const input{"We are happy."}, *const result{"are happy.We "};
     static constexpr const auto n{3};
-    CHECK(result == leetcode_so_58::reverseLeftWords(input, n));
+    CHECK_THAT(result, Equals(leetcode_so_58::reverseLeftWords(input, n)));
 }
 
 TEST_CASE("2 [test_so_58 ii]", "[test_so_58]") {
     static constexpr const char *const input{"We%20are%20happy."}, *const result{"20are%20happy.We%"};
     static constexpr const auto n{3};
-    CHECK(result == leetcode_so_58::reverseLeftWords(input, n));
+    CHECK_THAT(result, Equals(leetcode_so_58::reverseLeftWords(input, n)));
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_STRING_LEETCODE_SO_58_TEST_HPP

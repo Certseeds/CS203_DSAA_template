@@ -1,0 +1,91 @@
+name: daily build
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  schedule:
+    - cron: '0 15 * * *'
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test:
+    name: daily build
+    # The type of runner that the job will run on
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ ubuntu-18.04, ubuntu-latest ]
+        gcc_v: [ 11 ] # Version of G++,GCC
+    env:
+      GCC_V: ${{ matrix.gcc_v }}
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: dev
+      - uses: actions/cache@v3
+        env:
+          cache-name: cache-cmake-files
+        with:
+          path: ~/.ccache
+          key: ${{ matrix.os }}-cmake-build-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt', '**/*.cmake') }}
+          restore-keys: |
+            ${{ matrix.os }}-cmake-build
+            ${{ matrix.os }}
+
+      # ensure the path and files of project
+      - name: ensure the path and files of project
+        run: sudo apt-get install tree; tree
+
+      - name: Install GCC-11,G++-11, ccache
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V} ccache
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
+
+      - name: prepare libopencv
+        run: |
+          sudo apt-get update && sudo apt-get install libopencv-dev
+
+      - name: Use cmake
+        run: cmake --version
+
+      - name: cmake prepare for compile
+        run: cmake -S . -B ./CMAKE_DEBUG_PATH -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
+
+      - name: cmake compile lab_00
+        working-directory: ./CMAKE_DEBUG_PATH/lab_00
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile algorithm/2021F
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/2021F
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile algorithm/matrix
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/matrix
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile algorithm
+        working-directory: ./CMAKE_DEBUG_PATH/algorithm/
+        run: cmake --build .
+
+      - name: cmake compile basic
+        working-directory: ./CMAKE_DEBUG_PATH/basic
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake compile
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: cmake --build . --config DEBUG --parallel
+
+      - name: cmake test
+        working-directory: ./CMAKE_DEBUG_PATH
+        run: ctest  --parallel $(nproc)
+
+      - name: cache configs output
+        run: |
+          ccache -p
+          ccache -s

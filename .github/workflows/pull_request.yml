@@ -6,9 +6,7 @@ on:
   push:
     branches-ignore:
       - 'release'
-  pull_request:
-    branches-ignore:
-      - 'release'
+
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   test:
@@ -17,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest ]
         gcc_v: [ 11 ] # Version of G++,GCC
     env:
       GCC_V: ${{ matrix.gcc_v }}
@@ -27,6 +25,15 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
         uses: actions/checkout@v2
+      - uses: actions/cache@v3
+        env:
+          cache-name: cache-cmake-files
+        with:
+          path: ~/.ccache
+          key: ${{ matrix.os }}-cmake-build-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt', '**/*.cmake') }}
+          restore-keys: |
+            ${{ matrix.os }}-cmake-build
+            ${{ matrix.os }}
 
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
@@ -35,12 +42,11 @@ jobs:
       # ensure the path and files of project
       - name: ensure the path and files of project
         run: sudo apt-get install tree; tree
-        if: ${{matrix.os != 'windows-latest'}}
 
-      - name: Install GCC-11,G++-11
+      - name: Install GCC-11,G++-11, ccache
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V}
+          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V} ccache
           sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
           sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
         if: ${{matrix.os != 'windows-latest'}}
@@ -53,12 +59,8 @@ jobs:
       - name: Use cmake
         run: cmake --version
 
-      - name: prepare folder
-        run: cmake -E make_directory ./CMAKE_DEBUG_PATH
-
       - name: cmake prepare for compile
-        working-directory: ./CMAKE_DEBUG_PATH
-        run: cmake .. -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
+        run: cmake -S . -B ./CMAKE_DEBUG_PATH -DCMAKE_BUILD_TYPE=DEBUG -DMULTIPLY_TIMES=1
 
       - name: cmake compile lab_00
         working-directory: ./CMAKE_DEBUG_PATH/lab_00
@@ -92,6 +94,11 @@ jobs:
         run: tree
         if: ${{matrix.os != 'windows-latest'}}
 
+      - name: cache configs output
+        run: |
+          ccache -p
+          ccache -s
+
   # This workflow contains a single job called "build"
   build:
     name: test for the release script
@@ -100,7 +107,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest, windows-latest ]
+        os: [ ubuntu-18.04, ubuntu-latest ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:

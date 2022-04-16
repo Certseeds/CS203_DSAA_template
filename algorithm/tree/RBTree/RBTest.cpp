@@ -16,6 +16,7 @@ Copyright (C) 2020-2022 nanoseeds
 #include <random>
 #include <vector>
 #include "RBTree.hpp"
+#include <memory>
 
 namespace RED_BLACK_TREE {
 using std::cout, std::endl;

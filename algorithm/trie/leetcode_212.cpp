@@ -7,6 +7,7 @@ Copyright (C) 2020-2022 nanoseeds
 */
 
 #include "leetcode_212_test.hpp"
+#include <memory>
 
 #if 0
 #pragma GCC optimize(2)

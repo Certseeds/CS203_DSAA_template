@@ -12,6 +12,7 @@ Copyright (C) 2022 nanoseeds
 #define CS203_DSAA_TEMPLATE_ALGORITHM_QUEUE_LEETCODE_SO_30_TEST_HPP
 
 #include <catch_main.hpp>
+#include <memory>
 
 namespace leetcode_so_30 {
 

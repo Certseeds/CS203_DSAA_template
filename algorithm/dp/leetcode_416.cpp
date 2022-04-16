@@ -6,6 +6,7 @@ Copyright (C) 2020-2022 nanos
 
 */
 #include "leetcode_416_test.hpp"
+#include <numeric>
 
 namespace leetcode_416 {
 

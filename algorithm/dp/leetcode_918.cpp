@@ -6,6 +6,7 @@ Copyright (C) 2020-2022 nanos
 
 */
 #include "leetcode_918_test.hpp"
+#include <numeric>
 
 namespace leetcode_918 {
 int32_t maxSubArray2(const vector<int32_t> &nums) {

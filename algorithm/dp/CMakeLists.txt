@@ -17,7 +17,7 @@ LIST(APPEND leetcode_order 122 309 714 139 413)
 LIST(APPEND leetcode_order 91 264 931 304_1314 221)
 LIST(APPEND leetcode_order 516 300 174 376 643)
 LIST(APPEND leetcode_order 392 72 518 377 279)
-LIST(APPEND leetcode_order so_46)
+LIST(APPEND leetcode_order so_46 435)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})
@@ -29,9 +29,6 @@ foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName} ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName} CS203_DSAA_template_INCLUDE)
     target_compile_definitions(${PROJECT_NAME}_${elementName} PRIVATE CS203_DSAA_TEST_MACRO)
-    target_precompile_headers(${PROJECT_NAME}_${elementName} REUSE_FROM
-                              CS203_DSAA_template_INCLUDE_PCH17
-                              )
     MESSAGE(STATUS "${PROJECT_NAME}_${elementName} from ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}.cpp")
     add_test(${PROJECT_NAME}_${elementName}_CTEST ${PROJECT_NAME}_${elementName})
 endforeach ()

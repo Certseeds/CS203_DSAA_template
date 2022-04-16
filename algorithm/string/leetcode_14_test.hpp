@@ -25,10 +25,12 @@ struct leetcode_14 {
     static string longestCommonPrefix(const vector<string> &strs);
 };
 
+using Catch::Matchers::Equals;
+
 TEST_CASE("test case 1 [test_14]", "[test_14]") {
     const vector<string> strs{"flower", "flow", "flight"};
     static constexpr const char *const result{"fl"};
-    CHECK(result == leetcode_14::longestCommonPrefix(strs));
+    CHECK_THAT(result, Equals(leetcode_14::longestCommonPrefix(strs)));
 }
 
 TEST_CASE("test case 2 [test_14]", "[test_14]") {
