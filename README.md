@@ -17,7 +17,7 @@
 
   <p align="center">
     An awesome Algorithm Template for IO-Driven Single-File Problem(like Online-Judge Problem) ! </br>
-    分布式<sup title="由git保证">1</sup> 去中心化<sup title="推荐使用template生成仓库,不设置主库;没有易受打击的web页">2</sup> 跨平台<sup title="原生实现对拍功能">3</sup>的IO驱动型单文件问题<sup title="包括但不限于OJ平台题目">4</sup>解题模板
+    分布式<sup title="由git保证">1</sup> 去中心化<sup title="推荐使用template生成仓库,不设置主库;没有易受打击的web页">2</sup> 的IO驱动型单文件问题<sup title="包括但不限于OJ平台题目">4</sup>解题模板
     <br />
     <a href="https://github.com/Certseeds/CS203_DSAA_template/blob/dev/README.md"><strong>Explore the docs »</strong></a>
     <br />
@@ -86,15 +86,17 @@ This is an example of how to list things you need to use the software and how to
 
 #### Windows
 
-1. Visual-Studio,与C++开发组件
-2. WSL(推荐),`sudo apt install build-essential`
+1. WSL(推荐),`sudo apt install build-essential ccache`
 
 + 命令行检测gcc版本
 
 ``` bash
 # username @ ${pcName} in ${path}
 gcc --version
+# username @ ${pcName} in ${path}
 g++ --version
+# username @ ${pcName} in ${path}
+ccache --version
 ```
 
 ### Installation
@@ -299,14 +301,14 @@ static const auto faster_streams = [] {
     + [x] AVL-Tree
   + [x] Matrix
   + [ ] AND MORE...
-+ [x] 跨平台
-  + [x] Windows(some TestCase fails because of `\n`)
++ [ ] 跨平台
+  + [ ] Windows(No Support becuase ccache do not support MSVC, compile cost too much time and product size)
   + [x] Unix-Like
 + [x] CI-CD
   + [x] CI: GitHub-Actions提交触发
   + [x] CD: Tag触发的自动Release
 + [x] leetcode题目
-+ [x] 预编译头文件加速编译速度
++ [x] ~~预编译头文件~~ccache加速编译
 + [x] basic文件夹添加CS205内容,方便入门C++
   + [x] 以及一部分rust代码
 + [ ] Cyaron测试数据生成
