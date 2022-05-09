@@ -10,8 +10,7 @@ Copyright (C) 2022  nanoseeds
 namespace leetcode_852 {
 
 int32_t leetcode_852::peakIndexInMountainArray(const vector<int32_t> &A) {
-    int x1{0};
-    int x4 = A.size() - 1;
+    int x1{0}, x4 = static_cast<int32_t>(A.size() - 1);
     for (int x2{x1 + (x4 - x1) / 3}, x3{x1 + (x4 - x1) * 2 / 3}; x1 < x4;) {
         int temp1 = A[x2], temp2 = A[x3];
         if (temp1 > temp2) {
