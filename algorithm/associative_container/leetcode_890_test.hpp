@@ -6,7 +6,7 @@ Copyright (C) 2022  nanoseeds
 
 */
 //@Tag associative_container
-//@Tag 数组
+//@Tag array as hashmap
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ASSOCIATIVE_CONTAINER_LEETCODE_890_TEST_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ASSOCIATIVE_CONTAINER_LEETCODE_890_TEST_HPP
 
