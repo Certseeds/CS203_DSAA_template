@@ -43,8 +43,7 @@ public:
     }
 
     virtual ~TreeNodeLink() {
-        stack<const TreeNodeT *> sta{{root}};
-        while (!sta.empty()) {
+        for (stack<const TreeNodeT *> sta{{root}}; !sta.empty();) {
             const TreeNodeT *const head = sta.top();
             sta.pop();
             if (head == nullptr) { continue; }
