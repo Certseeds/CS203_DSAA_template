@@ -34,7 +34,7 @@ using Catch::Matchers::Equals;
 
 TEST_CASE("test case 1 {test_905}", "{test_905}") {
     const vector<int32_t> input{3, 1, 2, 4};
-    const vector<int32_t> result{2, 4, 3, 1};
+    const vector<int32_t> result{4, 2, 1, 3};
     CHECK_THAT(result, Equals(leetcode_905::sortArrayByParity2(input)));
 }
 
