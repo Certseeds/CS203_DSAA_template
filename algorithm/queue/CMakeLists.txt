@@ -8,7 +8,7 @@ enable_testing()
 set(dependencies)
 
 set(leetcode_order)
-LIST(APPEND leetcode_order so_09)
+LIST(APPEND leetcode_order so_09 933)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})
