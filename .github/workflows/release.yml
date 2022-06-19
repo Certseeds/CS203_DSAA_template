@@ -119,13 +119,12 @@ jobs:
           tree
 
       - name: release
-        uses: "marvinpinto/action-automatic-releases@latest"
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
         with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "${{steps.branch_name.outputs.SOURCE_TAG}}"
-          prerelease: false
-          title: "${{steps.branch_name.outputs.SOURCE_TAG}}"
           files: ./../script_no_need.zip
+          prerelease: false
+          generate_release_notes: true
 
       - name: tree
         run: tree
