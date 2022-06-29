@@ -14,11 +14,9 @@ Copyright (C) 2022  nanoseeds
 #include <cstdint>
 #include <cstddef>
 #include <vector>
-#include <string>
 
 namespace leetcode_986 {
 using std::vector;
-using std::string;
 
 struct leetcode_986 {
     static vector<vector<int>> intervalIntersection(const vector<vector<int>> &fst, const vector<vector<int>> &snd);

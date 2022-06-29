@@ -14,11 +14,9 @@ Copyright (C) 2022  nanoseeds
 #include <cstdint>
 #include <cstddef>
 #include <vector>
-#include <string>
 
 namespace leetcode_985 {
 using std::vector;
-using std::string;
 
 struct leetcode_985 {
     static vector<int32_t> sumEvenAfterQueries(const vector<int32_t> &nums, const vector<vector<int32_t>> &queries);

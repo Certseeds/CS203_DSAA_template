@@ -14,11 +14,9 @@ Copyright (C) 2022  nanoseeds
 #include <cstdint>
 #include <cstddef>
 #include <vector>
-#include <string>
 
 namespace leetcode_977 {
 using std::vector;
-using std::string;
 
 struct leetcode_977 {
     static vector<int32_t> sortedSquares(const vector<int32_t> &nums);
