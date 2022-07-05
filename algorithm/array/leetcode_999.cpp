@@ -9,10 +9,12 @@ Copyright (C) 2022  nanoseeds
 #include "leetcode_999_test.hpp"
 
 namespace leetcode_999 {
+static constexpr const size_t board_size{8};
+
 int32_t leetcode_999::numRookCaptures(const vector<vector<uint8_t>> &board) {
     size_t x{0}, y{0};
-    for (size_t i{0}; i < 8; ++i) {
-        for (size_t j{0}; j < 8; ++j) {
+    for (size_t i{0}; i < board_size; ++i) {
+        for (size_t j{0}; j < board_size; ++j) {
             if (board[i][j] == 'R') {
                 x = i;
                 y = j;
@@ -20,18 +22,18 @@ int32_t leetcode_999::numRookCaptures(const vector<vector<uint8_t>> &board) {
         }
     }
     std::array<bool, 4> judge{false, false, false, false};
-    for (size_t i{x + 1}; i < 8; ++i) {
+    for (size_t i{x + 1}; i < board_size; ++i) {
         //cout << board[i][y] << endl;
         switch (board[i][y]) {
             case 'B': {
-                i = 8;
+                i = board_size;
                 break;
             }
             case '.': {
                 break;
             }
             case 'p': {
-                i = 8;
+                i = board_size;
                 judge[0] = true;
                 break;
             }
@@ -74,10 +76,10 @@ int32_t leetcode_999::numRookCaptures(const vector<vector<uint8_t>> &board) {
             }
         }
     }
-    for (size_t i{y + 1}; i < 8; i++) {
+    for (size_t i{y + 1}; i < board_size; i++) {
         switch (board[x][i]) {
             case 'B': {
-                i = 8;
+                i = board_size;
                 break;
             }
             case '.': {
@@ -85,7 +87,7 @@ int32_t leetcode_999::numRookCaptures(const vector<vector<uint8_t>> &board) {
             }
             case 'p': {
                 judge[3] = true;
-                i = 8;
+                i = board_size;
                 break;
             }
 
