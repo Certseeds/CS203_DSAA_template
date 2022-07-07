@@ -47,7 +47,7 @@ TreeNode *rec(const vector<int32_t> &preorder, int32_t left, int32_t right) {
         root->left = rec(preorder, leftPlus, right);
         return root;
     }
-    // there vec[leftPlus] <= root->val <= vec[right]
+    // there vec[leftPlus] < root->val < vec[right]
     const auto bigger = binary_search(preorder, leftPlus, right, root->val);
     if (bigger == 0) {
         return root;
