@@ -9,12 +9,9 @@ Copyright (C) 2022 nanoseeds
 
 namespace leetcode_1038 {
 
-int32_t rec(TreeNode *root, int32_t sum) { // 最小和数大概是反过来?
+int32_t rec(TreeNode *const root, int32_t sum) { // 最小和数大概是反过来?
     if (root == nullptr) {
         return sum;
-    } else if (root->left == nullptr && root->right == nullptr) {
-        root->val += sum;
-        return root->val;
     }
     const auto rightMax{rec(root->right, sum)};
     root->val += rightMax;
