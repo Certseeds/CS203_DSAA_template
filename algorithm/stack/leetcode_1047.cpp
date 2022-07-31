@@ -32,7 +32,7 @@ string leetcode_1047::removeDuplicates(const string &s) {
     for (auto iter = cache.begin(); iter != cache.end(); ++iter, sta.pop()) {
         (*iter) = sta.top();
     }
-    return std::string(cache.crbegin(), cache.crend());
+    return {cache.crbegin(), cache.crend()};
 }
 
 }
