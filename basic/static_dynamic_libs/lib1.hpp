@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: MIT
+/*
+CS203_DSAA_template
+
+Copyright (C) 2022  nanoseeds
+
+*/
+
+#ifndef CS203_DSAA_TEMPLATE_BASIC_INSTALL_PACKAGES_LIB1_LIB1_HPP
+#define CS203_DSAA_TEMPLATE_BASIC_INSTALL_PACKAGES_LIB1_LIB1_HPP
+
+#include <cstdint>
+
+int32_t function1();
+
+#endif //CS203_DSAA_TEMPLATE_BASIC_INSTALL_PACKAGES_LIB1_LIB1_HPP
