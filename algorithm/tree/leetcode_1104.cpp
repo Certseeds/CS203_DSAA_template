@@ -34,8 +34,7 @@ vector<int32_t> leetcode_1104::pathInZigZagTree(int32_t label) {
     }
     // 一行一行的对应到数字
     vector<int32_t> will_return{};
-    auto iter = each_level.crbegin();
-    for (int32_t lev{0}, min{1}; lev < level; ++lev, ++iter) {
+    for (auto [lev, min, iter] {std::make_tuple(0, 1, each_level.crbegin())}; lev < level; ++lev, ++iter) {
         if (lev % 2 == 0) {
             will_return.push_back(min + *iter);
         } else {
