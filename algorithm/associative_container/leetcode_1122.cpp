@@ -7,8 +7,10 @@ Copyright (C) 2022  nanoseeds
 
 */
 #include "leetcode_1122_test.hpp"
+#include <array>
 
 namespace leetcode_1122 {
+using std::array;
 
 vector<int32_t> leetcode_1122::relativeSortArray(const vector<int32_t> &arr1, const vector<int32_t> &arr2) {
     std::array<int32_t, 1001> umap{0};
