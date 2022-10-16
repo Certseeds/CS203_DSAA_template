@@ -12,7 +12,8 @@ Copyright (C) 2020-2022 nanos
 
 namespace leetcode_200 {
 using std::string;
-using disjoint_set::disjoint_set;
+using ::disjoint_set::disjoint_set;
+using ::disjoint_set::getDisjointSet;
 using std::unordered_set;
 
 int leetcode_200::numIslands(const vector<vector<char>> &grid) {
@@ -30,24 +31,24 @@ int leetcode_200::numIslands(const vector<vector<char>> &grid) {
     const auto loca = [y_size2](auto x, auto y) {
         return x * y_size2 + y + 1;
     };
-    disjoint_set jset(grid_size2);
-    for (size_t i{0}; i < x_size; i++) {
-        for (size_t j{0}; j < y_size; j++) {
+    const auto jset = getDisjointSet(grid_size2);
+    for (size_t i{0}; i < x_size; ++i) {
+        for (size_t j{0}; j < y_size; ++j) {
             if (grids[i][j] == GRID::LAND) {
                 if (grids[i + 1][j] == GRID::LAND) {
-                    jset.merge(loca(i + 1, j), loca(i, j));
+                    jset->merge(loca(i + 1, j), loca(i, j));
                 }
                 if (grids[i][j + 1] == GRID::LAND) {
-                    jset.merge(loca(i, j + 1), loca(i, j));
+                    jset->merge(loca(i, j + 1), loca(i, j));
                 }
             }
         }
     }
     std::unordered_set<size_t> uset;
-    for (size_t i{0}; i < x_size; i++) {
-        for (size_t j{0}; j < y_size; j++) {
+    for (size_t i{0}; i < x_size; ++i) {
+        for (size_t j{0}; j < y_size; ++j) {
             if (grids[i][j] == GRID::LAND) {
-                uset.insert(jset.find(loca(i, j)));
+                uset.insert(jset->find(loca(i, j)));
             }
         }
     }

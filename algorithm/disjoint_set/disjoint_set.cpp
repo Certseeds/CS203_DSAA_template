@@ -10,43 +10,54 @@
 namespace disjoint_set {
 using std::string;
 using std::cout, std::endl;
-
-disjoint_set::disjoint_set(size_t size) : base(size) {
-    this->points = vector<size_t>(size + 1, 0);
-    // 0号元素弃用
-    // from 1 to ${size}
-    // value is 1 to ${size}
-    std::iota(fa.begin(), fa.end(), 0);
-}
-
-size_t disjoint_set::disjoint_set::find(size_t x) {
-    if (this->fa[x] != x) {
-        this->fa[x] = find(fa[x]);
+namespace impl {
+class set : public disjoint_set {
+protected:
+    std::vector<size_t> fa; // 记录father
+    std::vector<size_t> points; // 记录子节点
+public:
+    explicit set(size_t size) : fa(vector<size_t>(size + 1, -1)) {
+        this->points = vector<size_t>(size + 1, 0);
+        // 0号元素弃用
+        // from 1 to ${size}
+        // value is 1 to ${size}
+        std::iota(fa.begin(), fa.end(), 0);
     }
-    return this->fa[x];
-}
 
-void disjoint_set::merge(size_t x, size_t y) {
-    const auto xfa = find(x),
-            yfa = find(y);
-    if (xfa == yfa) {
-        return;
+    size_t find(size_t x) override {
+        if (this->fa[x] != x) {
+            this->fa[x] = find(fa[x]);
+        }
+        return this->fa[x];
     }
-    fa[xfa] = yfa;
-}
 
-void disjoint_set::mergeHeur(size_t x, size_t y) {
-    const auto xfa = find(x),
-            yfa = find(y);
-    if (xfa == yfa) {
-        return;
-    }
-    if (points[xfa] > points[yfa]) {
-        fa[yfa] = xfa;
-        points[xfa] = points[xfa] + points[yfa];
-    } else {
+    void merge(size_t x, size_t y) override {
+        const auto xfa = find(x), yfa = find(y);
+        if (xfa == yfa) {
+            return;
+        }
         fa[xfa] = yfa;
-        points[yfa] = points[xfa] + points[yfa];
     }
+
+    void mergeHeur(size_t x, size_t y) override {
+        const auto xfa = find(x),
+                yfa = find(y);
+        if (xfa == yfa) {
+            return;
+        }
+        if (points[xfa] > points[yfa]) {
+            fa[yfa] = xfa;
+            points[xfa] = points[xfa] + points[yfa];
+        } else {
+            fa[xfa] = yfa;
+            points[yfa] = points[xfa] + points[yfa];
+        }
+    }
+};
 }
+
+std::unique_ptr<disjoint_set> getDisjointSet(size_t x) {
+    return std::make_unique<impl::set>(x);
+}
+
 }
