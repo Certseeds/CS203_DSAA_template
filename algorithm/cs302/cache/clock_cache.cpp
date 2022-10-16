@@ -121,28 +121,27 @@ public:
         if (this->exists(page)) {
             umap[page] = true;
             return true;
-        } else {
-            for (;; pointer = pointer % cache_size) {
-                const auto key = que[pointer % cache_size];
-                const auto hadVisit = umap[key];
-                umap[key] = false;
-                if (hadVisit) {
-                    pointer++;
-                } else {
-                    que[pointer % cache_size] = std::numeric_limits<size_t>::max();
-                    umap.erase(key);
-                    break;
-                }
-            }
-            que[pointer % cache_size] = page;
-            umap[page] = init;
-            pointer++;
-            return false;
         }
+        for (;; pointer = pointer % cache_size) {
+            const auto key = que[pointer % cache_size];
+            const auto hadVisit = umap[key];
+            umap[key] = false;
+            if (hadVisit) {
+                pointer++;
+            } else {
+                que[pointer % cache_size] = std::numeric_limits<size_t>::max();
+                umap.erase(key);
+                break;
+            }
+        }
+        que[pointer % cache_size] = page;
+        umap[page] = init;
+        pointer++;
+        return false;
     }
 };
 
-TEST_CASE("clock test 1") {
+TEST_CASE("clock test 1","") {
     for (const auto &[result, file_name]: init ? initTrue::pairs : initFalse::pairs) {
         const CS203_redirect cr{file_name};
         const auto input = inputs::read_input();
