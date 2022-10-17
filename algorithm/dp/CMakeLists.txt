@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
 
-set(dependencies package divide_bar)
+set(dependencies package divide_bar matrix_multiply)
 
 set(leetcode_order 1143 5 10 44 45)
 LIST(APPEND leetcode_order 63 62 64 70_746)
