@@ -12,7 +12,8 @@ Copyright (C) 2020-2022 nanos
 #include <vector>
 
 
-namespace dp_divide_bar {
+namespace dp {
+namespace divide_bar { // Introduction to Algorithms Edition3 Chapter15.1
 namespace iter {
 int64_t maxProfit(const vector<int64_t> &divide_profits, size_t length) {
     const auto minIter{std::min(divide_profits.size(), length)};
@@ -38,7 +39,7 @@ std::tuple<int64_t, vector<int64_t>> maxProfit(const vector<int64_t> &divide_pro
     segment_table[0] = {};
     for (size_t i{0}; i < minIter; ++i) {
         profits_table[i + 1] = divide_profits[i];
-        segment_table[i + 1].push_back(static_cast<int64_t>(i+1));
+        segment_table[i + 1].push_back(static_cast<int64_t>(i + 1));
     }
     for (size_t i{2}; i <= length; ++i) {
         size_t left{0}, right{0};
@@ -50,22 +51,23 @@ std::tuple<int64_t, vector<int64_t>> maxProfit(const vector<int64_t> &divide_pro
                 right = i - j;
             }
         }
-        if(left != 0 && right != 0){
+        if (left != 0 && right != 0) {
             auto mid = segment_table[left];
-            mid.insert(mid.end(),segment_table[right].cbegin(),segment_table[right].cend());
+            mid.insert(mid.end(), segment_table[right].cbegin(), segment_table[right].cend());
             segment_table[i] = mid; // 操作完成之后赋值,防止操作自己
         }
     }
-    return std::make_tuple(profits_table.back(),segment_table.back());
+    return std::make_tuple(profits_table.back(), segment_table.back());
+}
 }
 
-}
 }
 namespace rec {
 int64_t maxProfit(const vector<int64_t> &divide_profits, size_t length) {
-
     return 0;
 }
+}
+
 }
 }
 

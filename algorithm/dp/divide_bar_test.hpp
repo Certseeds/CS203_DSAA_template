@@ -12,7 +12,8 @@ Copyright (C) 2020-2022 nanos
 #include "package.hpp"
 #include <catch_main.hpp>
 
-namespace dp_divide_bar {
+namespace dp {
+namespace divide_bar {
 namespace iter {
 int64_t maxProfit(const vector<int64_t> &divide_profits, size_t length);
 
@@ -61,5 +62,5 @@ int64_t maxProfit(const vector<int64_t> &divide_profits, size_t length);
 
 }
 }
-
+}
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_DIVIDE_BAR_TEST_HPP

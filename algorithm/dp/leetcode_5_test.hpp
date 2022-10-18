@@ -17,13 +17,15 @@ Copyright (C) 2020-2022 nanos
 #include <vector>
 #include <string>
 
+namespace leetcode_5 {
 namespace lcs_5 {
+
 using std::string;
 using std::vector;
 
-struct leetcode_5 {
-    static string longestPalindrome(const string &s);
-};
+namespace leetcode_5 {
+string longestPalindrome(const string &s);
+}
 
 template<typename Type, size_t length>
 constexpr size_t arr_length(const Type (&)[length]) {
@@ -97,6 +99,8 @@ TEST_CASE("8 [test_5]", "[test_5]") {
             "mozblnzrszxtdjmwvgeovtxoftpcsbnjryogrnibiiqfexljlfikfcxvrzrpfvugtdjrlkgvkmrqgeltifdehsewpdhpjpnuobmuozopmglnocqcozvratjpzrklexqdeuvvzfjkuknkkoynxptrgtzadmpfdkphfjhdulhzncoofmmrwqjxeyhodfavcgpjmohohuztezdxegqzbaaobzrqptuqsvwnfdneyccbkgkjafztytwuppvleukdqqzyeiltsvoqbxupbasiityganofxijucwzqgtdyxljociwwjdrnfnfbwyymmvbuvbrdnvcubzkohknbsneutrcukfiqqhfviqdsbtrldipenqifdcrenpuyaqvkparycksurhbtjppwhezbcgocamurdawimkzzkmiwadrumacogcbzehwppjtbhruskcyrapkvqayupnercdfiqnepidlrtbsdqivfhqqifkucrtuensbnkhokzbucvndrbvubvmmyywbfnfnrdjwwicojlxydtgqzwcujixfonagytiisabpuxbqovstlieyzqqdkuelvppuwtytzfajkgkbccyendfnwvsqutpqrzboaabzqgexdzetzuhohomjpgcvafdohyexjqwrmmfoocnzhludhjfhpkdfpmdaztgrtpxnyokknkukjfzvvuedqxelkrzpjtarvzocqconlgmpozoumbounpjphdpweshedfitlegqrmkvgklrjdtguvfprzrvxcfkifljlxefqiibinrgoyrjnbscptfoxtvoegvwmjdtxzsrznlbzom"};
     CHECK(arr_length(result) == leetcode_5::longestPalindrome(input).size());
     CHECK(result == leetcode_5::longestPalindrome(input));
+}
+
 }
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_DP_LEETCODE_5_TEST_CPP
