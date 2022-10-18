@@ -19,9 +19,10 @@ Copyright (C) 2020-2022 nanos
 namespace leetcode_516 {
 using std::string;
 
-struct leetcode_516 final {
-    static int32_t longestPalindromeSubseq(const string &s);
-};
+namespace leetcode_516 {
+// 最长回文子序列
+int32_t longestPalindromeSubseq(const string &s);
+}
 
 
 TEST_CASE("1 [test_516]", "[test_516]") {
