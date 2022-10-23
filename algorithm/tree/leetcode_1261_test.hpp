@@ -16,6 +16,7 @@ Copyright (C) 2022  nanoseeds
 #include <cstddef>
 #include <tree/treenode.hpp>
 #include <tree/treenode_link.hpp>
+#include <memory>
 
 namespace leetcode_1261 {
 using TreeNode = TREE_NODE::TreeNode<int32_t>;
@@ -25,9 +26,11 @@ constexpr const auto junk{-1};
 class findElements {
 public:
     [[nodiscard]] virtual bool find(int target) const = 0;
+
+    virtual ~findElements() = default;
 };
 
-findElements *init(TreeNode *root);
+std::unique_ptr<findElements> init(TreeNode *root);
 
 using TreeNodeLink = TREE_NODE::TreeNodeLink<int32_t>;
 using Catch::Matchers::Equals;
@@ -38,7 +41,7 @@ TEST_CASE("test_case 1 [test_1261]", "[test_1261]") {
             TreeNode::No, junk,
             TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
     };
-    const auto *const tree = init(input[0]);
+    const auto tree{init(input[0])};
     CHECK(tree->find(0));
     CHECK_FALSE(tree->find(1));
     CHECK(tree->find(2));
@@ -54,7 +57,7 @@ TEST_CASE("test_case 2 [test_1261]", "[test_1261]") {
             TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No, TreeNode::No,
             TreeNode::No,
     };
-    const auto *const tree = init(input[0]);
+    const auto tree{init(input[0])};
     CHECK(tree->find(0));
     CHECK(tree->find(1));
     CHECK(tree->find(2));

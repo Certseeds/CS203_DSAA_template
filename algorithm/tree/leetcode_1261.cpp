@@ -63,8 +63,9 @@ public:
     }
 };
 
-findElements *init(TreeNode *root) {
-    return new tree(root);
+
+std::unique_ptr<findElements> init(TreeNode *root) {
+    return std::make_unique<tree>(root);
 }
 
 }
