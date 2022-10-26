@@ -7,7 +7,6 @@ Copyright (C) 2022  nanoseeds
 */
 //@Tag tree
 //@Tag 树
-//@Tag 更大和数
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_1104_TEST_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_TREE_LEETCODE_1104_TEST_HPP
 
