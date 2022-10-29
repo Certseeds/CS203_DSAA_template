@@ -1,9 +1,3 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2021-04-03 10:15:42
- * @LastEditors: nanos
- */
 // SPDX-License-Identifier: MIT
 /*
 CS203_DSAA_template

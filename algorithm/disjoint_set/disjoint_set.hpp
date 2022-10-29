@@ -8,25 +8,27 @@ Copyright (C) 2020-2022 nanos
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DISJOINT_SET_DISJOINT_SET_HPP
 
-#include "disjoint_set_base.hpp"
 #include <string>
+#include <memory>
+
+#include "class_helper/nonable.hpp"
 
 namespace disjoint_set {
 using std::vector;
-using disjoint_set_base::DisjointSetBase;
 
-class disjoint_set final : public DisjointSetBase {
-private:
-    using base = disjoint_set_base::DisjointSetBase;
+class disjoint_set : private nonCopyMoveAble{
 public:
-    explicit disjoint_set(size_t x);
+    virtual ~disjoint_set() = default;
 
-    size_t find(size_t x) override;
+    virtual size_t find(size_t x) = 0;
 
-    void merge(size_t x, size_t y) override;
+    virtual void merge(size_t x, size_t y) = 0;
 
-    void mergeHeur(size_t x, size_t y) override;
+    virtual void mergeHeur(size_t x, size_t y) = 0;
 };
+
+std::unique_ptr<disjoint_set> getDisjointSet(size_t x);
+
 }
 
 

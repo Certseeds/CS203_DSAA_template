@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-18.04, ubuntu-latest]
+        os: [ ubuntu-20.04, ubuntu-latest]
         gcc_v: [ 11 ] # Version of G++,GCC
     env:
       GCC_V: ${{ matrix.gcc_v }}
@@ -25,7 +25,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
@@ -88,14 +88,14 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Branch name
         id: branch_name
         run: |
-          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
-          echo ::set-output name=SOURCE_BRANCH::${GITHUB_REF#refs/heads/}
-          echo ::set-output name=SOURCE_TAG::${GITHUB_REF#refs/tags/}
+          echo "SOURCE_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
+          echo "SOURCE_BRANCH=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+          echo "SOURCE_TAG=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
       - name: tag name output
         run: |
           echo ${SOURCE_NAME};echo ${SOURCE_BRANCH};echo ${SOURCE_TAG}
@@ -140,12 +140,12 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: Branch name
         id: branch_name
         run: |
-          echo ::set-output name=SOURCE_NAME::${GITHUB_REF#refs/*/}
+          echo "SOURCE_NAME=${GITHUB_REF#refs/*/}" >> $GITHUB_OUTPUT
       - name: tag name output
         run: |
           echo ${SOURCE_NAME};

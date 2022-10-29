@@ -7,6 +7,7 @@ Copyright (C) 2020-2022 nanos
 */
 #include "leetcode_5_test.hpp"
 
+namespace leetcode_5 {
 namespace lcs_5 {
 
 string leetcode_5::longestPalindrome(const string &s) {
@@ -43,5 +44,7 @@ string leetcode_5::longestPalindrome(const string &s) {
         }
     }
     return s.substr(begin_end.first, begin_end.second);
+}
+
 }
 }
