@@ -39,10 +39,8 @@ jobs:
             ${{ matrix.os }}-rust
             ${{ matrix.os }}
 
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          default: true
+      - name: cargo info output
+        run: cargo --version
 
       - name: rust build
         working-directory: ./basic/cs205_c_cpp_2020s
