@@ -7,6 +7,7 @@ Copyright (C) 2020-2022 nanoseeds
 */
 #include "leetcode_13_test.hpp"
 #include <array>
+#include <cstring>
 
 namespace leetcode_13 {
 using std::array;

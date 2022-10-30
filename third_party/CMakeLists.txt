@@ -3,5 +3,23 @@ project(CS203_CATCH2_LIB)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/catch2)
-
+Include(FetchContent)
+set(CATCH2_URL https://github.com/catchorg/Catch2/archive/refs/tags/v3.1.1.tar.gz)
+SET(CATCH2_HASH "1f3e0d8c3297252f77d643ff06d058cb")
+if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
+    FetchContent_Declare(
+            Catch2
+            URL ${CATCH2_URL}
+            URL_HASH MD5=${CATCH2_HASH}
+            SOURCE_DIR  ${CMAKE_CURRENT_SOURCE_DIR}/catch2
+    )
+else()
+    FetchContent_Declare(
+            Catch2
+            URL ${CATCH2_URL}
+            URL_HASH MD5=${CATCH2_HASH}
+            SOURCE_DIR  ${CMAKE_CURRENT_BINARY_DIR}/catch2
+    )
+endif ()
+unset(CATCH2_URL)
+FetchContent_MakeAvailable(Catch2)
