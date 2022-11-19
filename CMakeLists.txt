@@ -2,14 +2,16 @@ cmake_minimum_required(VERSION 3.16.6)
 
 set(PROJECT_VERSION_MAJOR 0)
 set(PROJECT_VERSION_MINOR 8)
-set(PROJECT_VERSION_PATCH 2)
+set(PROJECT_VERSION_PATCH 6-DEV) # delete endsWith strs when master merge dev
+
 project(CS203_DSAA_template
-        VERSION "${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}.${PROJECT_VERSION_PATCH}"
         DESCRIPTION "Template for Algorithm Based on C++11 and Modern CMake"
         HOMEPAGE_URL "https://github.com/Certseeds/CS203_DSAA_template"
         LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 
 string(TIMESTAMP time_str "%Y/%m/%d  %H:%M:%S")
