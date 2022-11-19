@@ -4,8 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 Include(FetchContent)
-set(CATCH2_URL https://github.com/catchorg/Catch2/archive/refs/tags/v3.1.1.tar.gz)
-SET(CATCH2_HASH "1f3e0d8c3297252f77d643ff06d058cb")
+set(CATCH2_URL https://github.com/catchorg/Catch2/archive/refs/tags/v3.2.0.tar.gz)
+SET(CATCH2_HASH "e09b0a36ceca0cdb92a0197abe20ea01")
 if (${CMAKE_BUILD_TYPE} STREQUAL "Debug")
     FetchContent_Declare(
             Catch2
