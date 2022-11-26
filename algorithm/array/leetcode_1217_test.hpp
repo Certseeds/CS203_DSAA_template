@@ -27,14 +27,14 @@ int32_t minCostToMoveChips(const vector<int32_t> &position);
 TEST_CASE("test case 1-1 {test_1217}", "{test_1217}") {
     const vector<int32_t> input{1, 4, 5,};
     const auto output = leetcode_1217::minCostToMoveChips(input);
-    const auto result = 1;
+    constexpr const auto result{1};
     CHECK(result == output);
 }
 
 TEST_CASE("test case 1-2 {test_1217}", "{test_1217}") {
     const vector<int32_t> input{1, 2, 3,};
     const auto output = leetcode_1217::minCostToMoveChips(input);
-    const auto result = 1;
+    constexpr const auto result{1};
     CHECK(result == output);
 }
 }
