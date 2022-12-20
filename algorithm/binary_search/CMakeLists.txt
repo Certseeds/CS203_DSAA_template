@@ -13,7 +13,7 @@ set(dependencies basic_test triple_search rotate_array)
 
 set(leetcode_order 35 4 33 162 34)
 LIST(APPEND leetcode_order 69 81 153_154 so_53ii)
-LIST(APPEND leetcode_order 1608 1237)
+LIST(APPEND leetcode_order 1608 1237 1760)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})
