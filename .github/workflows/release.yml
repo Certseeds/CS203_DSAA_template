@@ -135,6 +135,8 @@ jobs:
     needs: [ test, build ]
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
+    env:
+      GCC_V: 11
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -158,6 +160,17 @@ jobs:
           git config --global user.email '51754303+Certseeds@users.noreply.github.com'
           git checkout -b release
           mkdir cmake_build
+
+      - name: Install GCC-11,G++-11, ccache
+        run: |
+          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V} ccache
+          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
+          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
+
+      - name: prepare libopencv
+        run: |
+          sudo apt-get update && sudo apt-get install libopencv-dev
 
       - name: cmake install dependencies
         working-directory: ./cmake_build
