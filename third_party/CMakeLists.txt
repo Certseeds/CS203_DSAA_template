@@ -2,6 +2,7 @@ cmake_minimum_required(VERSION 3.16.6)
 project(CS203_CATCH2_LIB)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
+set("BUILD_${LIB_WAY}_LIBS" YES)
 
 Include(FetchContent)
 set(CATCH2_URL https://github.com/catchorg/Catch2/archive/refs/tags/v3.3.1.tar.gz)
