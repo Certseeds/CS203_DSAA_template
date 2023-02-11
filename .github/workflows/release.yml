@@ -159,7 +159,7 @@ jobs:
           git config --global user.name 'Certseeds'
           git config --global user.email '51754303+Certseeds@users.noreply.github.com'
           git checkout -b release
-          mkdir cmake_build
+          mkdir cmake_build_relase
 
       - name: Install GCC-11,G++-11, ccache
         run: |
@@ -173,12 +173,12 @@ jobs:
           sudo apt-get update && sudo apt-get install libopencv-dev
 
       - name: cmake install dependencies
-        run: cmake -S . -B ./cmake_build -DCMAKE_BUILD_TYPE=DEBUG
+        run: cmake -S . -B ./cmake_build_relase -DCMAKE_BUILD_TYPE=DEBUG
 
       - name: move cmake-fetchcontent to folder
         working-directory: ./third_party
         run: |
-          echo '' > ./gitignore
+          echo '**/.github/*' > ./.gitignore
           rm ./CMakeLists.txt
           mv ./CMakeLists.release.txt ./CMakeLists.txt
           git add .
