@@ -170,7 +170,7 @@ jobs:
           rm ./CMakeLists.txt
           mv ./CMakeLists.release.txt ./CMakeLists.txt
           git add .
-          git commits -am "dependencies: add dependencies to release branch"
+          git commit -am "dependencies: add dependencies to release branch"
 
       - name: run script
         working-directory: ./script
