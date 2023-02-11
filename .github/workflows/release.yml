@@ -173,7 +173,7 @@ jobs:
           sudo apt-get update && sudo apt-get install libopencv-dev
 
       - name: cmake install dependencies
-        run: cmake -S . -B ./cmake_build_relase -DCMAKE_BUILD_TYPE=DEBUG
+        run: cmake -S . -B ./cmake_build_relase -DCMAKE_BUILD_TYPE=Debug
 
       - name: move cmake-fetchcontent to folder
         working-directory: ./third_party
