@@ -111,7 +111,9 @@ jobs:
         run: sudo apt-get install tree; tree; mkdir -p ./cmake_build_release
 
       - name: cmake install dependencies
-        run: cmake -S . -B ./cmake_build_release -DCMAKE_BUILD_TYPE=Debug
+        run: |
+          cmake -S . -B ./cmake_build_release -DCMAKE_BUILD_TYPE=Debug
+          rm -rf ./cmake_build_release
 
       - name: move cmake-fetchcontent to folder
         working-directory: ./third_party
@@ -175,7 +177,9 @@ jobs:
           sudo apt-get update && sudo apt-get install libopencv-dev
 
       - name: cmake install dependencies
-        run: cmake -S . -B ./cmake_build_release -DCMAKE_BUILD_TYPE=Debug
+        run: |
+          cmake -S . -B ./cmake_build_release -DCMAKE_BUILD_TYPE=Debug
+          rm -rf ./cmake_build_release
 
       - name: move cmake-fetchcontent to folder
         working-directory: ./third_party
