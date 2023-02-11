@@ -7,6 +7,7 @@
 
 #include <tree/trie_base.hpp>
 #include <array>
+#include <cstring>
 #include <string>
 #include <unordered_set>
 

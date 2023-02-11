@@ -7,3 +7,5 @@ vcs.xml
 workspace.xml
 file.template.settings.xml
 .name
+other.xml
+sshConfigs.xml

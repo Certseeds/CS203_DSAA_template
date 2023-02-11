@@ -157,6 +157,20 @@ jobs:
           git config --global user.name 'Certseeds'
           git config --global user.email '51754303+Certseeds@users.noreply.github.com'
           git checkout -b release
+          mkdir cmake_build
+
+      - name: cmake install dependencies
+        working-directory: ./cmake_build
+        run: cmake ..
+
+      - name: move cmake-fetchcontent to folder
+        working-directory: ./third_party
+        run: |
+          echo '' > ./gitignore
+          rm ./CMakeLists.txt
+          mv ./CMakeLists.release.txt ./CMakeLists.txt
+          git add .
+          git commit -am "dependencies: add dependencies to release branch"
 
       - name: run script
         working-directory: ./script

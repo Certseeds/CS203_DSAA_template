@@ -6,6 +6,7 @@ Copyright (C) 2020-2022 nanoseeds
 
 */
 #include "leetcode_60_test.hpp"
+#include <cstring>
 
 namespace leetcode_60 {
 constexpr int32_t facts(int32_t t) {

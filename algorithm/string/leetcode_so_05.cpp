@@ -2,7 +2,7 @@
 /*
 CS203_DSAA_template
 
-Copyright (C) 2022  nanoseeds
+Copyright (C) 2022 nanoseeds
 
 */
 #include "leetcode_so_05_test.hpp"
