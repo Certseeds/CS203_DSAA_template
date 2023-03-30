@@ -4,11 +4,11 @@
  * @Date: 2020/9/19 21:42:36
  * @LastEditors: nanoseeds
  */
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 /*
 CS203_DSAA_template
 
-Copyright (C) 2020-2022 nanoseeds
+Copyright (C) 2020-2023 nanoseeds
 
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_SEQUENCE_HPP

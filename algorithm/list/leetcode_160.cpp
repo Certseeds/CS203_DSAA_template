@@ -1,9 +1,9 @@
 /*
-MIT License
+AGPL-3.0-or-later License
 
 CS160_DSAA_template
 
-Copyright (C) 2020-2022 nanoseeds
+Copyright (C) 2020-2023 nanoseeds
 
 */
 #include "leetcode_160_test.hpp"

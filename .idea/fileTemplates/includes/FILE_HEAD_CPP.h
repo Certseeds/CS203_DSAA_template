@@ -4,5 +4,5 @@
  * @Author: ${USER}
  * @Date: ${YEAR}-${MONTH}-${DAY} ${HOUR}:${MINUTE}:${SECOND} 
  * @LastEditors: ${USER}
- * @LICENSE: MIT
+ * SPDX-License-Identifier: AGPL-3.0-or-later
  */

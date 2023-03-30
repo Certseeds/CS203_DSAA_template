@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 /**
  * @Github: https://github.com/{0}/{1}
  * @Author: {2}

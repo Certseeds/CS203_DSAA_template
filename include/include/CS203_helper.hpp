@@ -1,18 +1,9 @@
-/**
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-15 21:48:30
- * @LastEditors: nanoseeds
- * @LICENSE: MIT
- * @LastEditTime: 2021-01-03 21:45:55
- */
 /*
-MIT License
-
+SPDX-License-Identifier: AGPL-3.0-or-later
 
 CS203_DSAA_template
 
-Copyright (C) 2020-2022 nanoseeds
+Copyright (C) 2020-2023 nanoseeds
 
 */
 #ifndef CS203_DSAA_TEMPLATE_INCLUDE_INCLUDE_CS203_HELPER_HPP

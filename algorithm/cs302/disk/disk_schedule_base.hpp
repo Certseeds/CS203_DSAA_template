@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /*  CS203_DSAA_template
-    Copyright (C) 2022  nanoseeds
+    Copyright (C) 2022-2023  nanoseeds
 */
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_DISK_SCHEDULE_BASE_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_DISK_SCHEDULE_BASE_HPP

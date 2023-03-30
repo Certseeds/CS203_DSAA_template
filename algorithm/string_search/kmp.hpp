@@ -4,11 +4,11 @@
  * @Date: 2021-04-02 10:12:44
  * @LastEditors: nanos
  */
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 /*
 CS203_DSAA_template
 
-Copyright (C) 2021  nanos
+Copyright (C) 2021-2023  nanos
 
 */
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_KMP_HPP
