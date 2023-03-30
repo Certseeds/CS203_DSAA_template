@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 /*
 CS203_DSAA_template
 
@@ -6,7 +6,7 @@ Copyright (C) 2022  nanoseeds
 
 */
 //@Tag array
-//@Tag 
+//@Tag
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_985_TEST_HPP
 #define CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_985_TEST_HPP
 

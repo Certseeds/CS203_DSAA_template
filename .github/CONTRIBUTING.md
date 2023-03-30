@@ -1,17 +1,8 @@
-<!--
- * @Github: https://github.com/Certseeds/CS203_DSAA_template
- * @Author: nanoseeds
- * @Date: 2020-07-26 16:34:11
- * @LastEditors: nanoseeds
- * @LastEditTime: 2020-07-26 16:35:14
- * @License: CC-BY-NC-SA_V4_0 or any later version 
- -->
-
 # Contributing
 
 欢迎向本Project贡献代码.
 
-请确认本Project使用的MIT协议与CC-BY-NC-SA-4.0(or any later version)协议符合预期.
+请确认本Project使用的AGPLV3+协议与CC-BY-NC-SA-4.0(or any later version)协议符合预期.
 
 ## What we want to Contribute
 

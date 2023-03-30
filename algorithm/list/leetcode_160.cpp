@@ -1,5 +1,5 @@
 /*
-MIT License
+AGPL-3.0-or-later License
 
 CS160_DSAA_template
 

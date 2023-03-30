@@ -4,7 +4,7 @@
  * @Date: 2020-08-01 17:33:49
  * @LastEditors: nanoseeds
  */
-// SPDX-License-Identifier: MIT
+// SPDX-License-Identifier: AGPL-3.0-or-later
 /*
 CS203_DSAA_template
 

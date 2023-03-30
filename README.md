@@ -1,6 +1,6 @@
 <div id="top"></div>
 
-[![MIT License][MIT-shield]][MIT_Link]
+[![AGPL License][AGPL-shield]][AGPL_Link]
 [![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_shield]][cc_by_nc_sa_4_0]
 [![CC BY-NC-SA 4.0][cc_by_nc_sa_4_0_image]][cc_by_nc_sa_4_0]
 
@@ -71,6 +71,7 @@ OJ系统存在着一些特殊要求-因此考虑到下面的因素,设计了一�
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 ## Getting Started
+
 
 1. 下载Release中的[压缩包][download_zip]或者[另一个压缩包][download_zip_refs],之后解压使用(简易)
 2. 使用绿色按钮[Use This Template][Use_This_Template],生成仓库,clone下来使用(推荐)
@@ -333,17 +334,12 @@ Don't forget to give the project a star! Thanks again!
 
 ## License
 
-### MIT LICENSE
-
-绝大多数代码(`*.cpp`,`*.hpp`,etc)基于MIT协议: 限制最少的主流开源协议
-
-+ 在署名的前提下,
-+ 允许他人以任何方式使用,  
-+ 同时原作者不承担任何风险.
-+ 具体内容请看[`LICENSE_MIT.md`](./LICENSE_MIT.md)
-
 ### AGPLv3.0+ LICENSE
 
+绝大多数代码(`*.cpp`,`*.hpp`,etc)基于 AGPLv3.0+协议: 限制最强的主流开源协议
+
++ 由于本仓库设计只包括"上交"源码这一种场景, 因此实际上不存在二进制分发以及被云服务使用这种场景.
++ 具体内容请看[`LICENSE_AGPL_V3_0.md`](./LICENSE_AGPL_V3_0.md)
 some code is based on this license
 
 ### CC-BY-NC-SA-4.0+ LICENSE
@@ -394,8 +390,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [pr_LINK]: https://github.com/Certseeds/CS203_DSAA_template/pulls
 [discussion_LINK]: https://github.com/Certseeds/CS203_DSAA_template/discussions
 [catch2_image]: https://raw.githubusercontent.com/catchorg/Catch2/v2.x/artwork/catch2-logo-small.png
-[MIT-shield]: https://img.shields.io/badge/License-MIT-orange?style=for-the-badge
-[MIT_Link]: http://opensource.org/licenses/MIT
+[AGPL-shield]: https://img.shields.io/badge/License-AGPL-orange?style=for-the-badge
+[AGPL_Link]: http://opensource.org/licenses/AGPL
 [cc_by_nc_sa_4_0_shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange?style=for-the-badge
 [cc_by_nc_sa_4_0]: https://creativecommons.org/licenses/by-nc-sa/4.0/
 [cc_by_nc_sa_4_0_image]: https://licensebuttons.net/l/by-nc-sa/4.0/88x31.png
