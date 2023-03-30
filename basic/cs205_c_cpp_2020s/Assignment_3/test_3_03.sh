@@ -2,7 +2,6 @@
 set -eoux pipefail
 ###
  # @Github: https://github.com/Certseeds
- # @Organization: SUSTech
  # @Author: nanoseeds
  # @Date: 2020-04-11 23:29:35
  # @LastEditors: nanoseeds

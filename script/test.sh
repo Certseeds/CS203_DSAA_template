@@ -2,7 +2,6 @@
 set -eoux pipefail
 ###
 # @Github: https://github.com/Certseeds/CS203_DSAA_template
-# @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
  # @LastEditors: nanoseeds

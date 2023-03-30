@@ -2,7 +2,7 @@
 /*
 CS203_DSAA_template
 
-Copyright (C) 2020-2022 nanos
+Copyright (C) 2020-2023 nanos
 
 */
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_BINARY_SEARCH_LEETCODE_TEST_69_TEST_HPP

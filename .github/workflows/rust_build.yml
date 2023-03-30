@@ -1,8 +1,7 @@
-# @Organization: SUSTech
 # @Author: nanoseeds
 # @Date: 2020-07-28 22:43:03
 # @LastEditors: nanoseeds
-#@LastEditTime: 2020-07-28 23:43:03
+# @LastEditTime: 2020-07-28 23:43:03
 # This is a basic workflow to help you get started with Actions
 
 name: Rust Build and Test

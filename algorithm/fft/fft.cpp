@@ -8,7 +8,7 @@
 /*
 CS203_DSAA_template
 
-Copyright (C) 2021  nanos
+Copyright (C) 2021-2023  nanos
 
 */
 #include "fft.hpp"

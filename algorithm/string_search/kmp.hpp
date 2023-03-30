@@ -8,7 +8,7 @@
 /*
 CS203_DSAA_template
 
-Copyright (C) 2021  nanos
+Copyright (C) 2021-2023  nanos
 
 */
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_STRING_SEARCH_KMP_HPP

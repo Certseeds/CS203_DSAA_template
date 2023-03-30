@@ -1,14 +1,12 @@
 /*
  * @Github: https://github.com/Certseeds
- * @Organization: SUSTech
- * @Author: nanoseeds
  * @Date: 2021-04-16 00:50:12
  * @LastEditors: nanoseeds
  * @LastEditTime: 2021-04-16 13:25:55
  */
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /*  CS205_C_CPP
-    Copyright (C) 2020-2022 nanoseeds
+    Copyright (C) 2020-2023 nanoseeds
 */
 #include <iostream>
 #include <vector>

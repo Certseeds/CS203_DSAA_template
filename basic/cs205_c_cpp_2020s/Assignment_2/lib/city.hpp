@@ -7,7 +7,7 @@
  */
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /*  CS205_C_CPP
-    Copyright (C) 2020-2022 nanoseeds
+    Copyright (C) 2020-2023 nanoseeds
 */
 #ifndef _ASSIGNMENT_2_CITY_
 #define _ASSIGNMENT_2_CITY_

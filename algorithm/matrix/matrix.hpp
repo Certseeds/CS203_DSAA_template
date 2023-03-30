@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /*  CS203_DSAA_template
-    Copyright (C) 2020-2022 nanoseeds Wjia wuyuhao
+    Copyright (C) 2020-2023 nanoseeds Wjia wuyuhao
 */
 
 #ifndef CS203_DSAA_TEMPLATE_ALGORITHM_CS205_PROJECT_2020S_SRC_MATRIX_HPP
