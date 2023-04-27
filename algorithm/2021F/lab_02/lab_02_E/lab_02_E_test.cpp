@@ -7,20 +7,20 @@ Copyright (C) 2020-2023 nanoseeds
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
-#include <catch_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
+#include <catch_main.hpp>
 
-#include "lab_02_D.cpp"
+#include "lab_02_E.cpp"
 
 std::string getFilePath() noexcept {
-    return "./../../lab_02/lab_02_D_data/";
+    return "./../../../../algorithm/2021F/lab_02/lab_02_E/resource/";
 }
 
 const std::string CS203_redirect::file_paths = getFilePath();
 
-namespace lab_02_D {
+namespace lab_02_E {
 
 using std::tie;
 using std::cin;
@@ -32,22 +32,16 @@ using Catch::Matchers::Equals;
 using Catch::Matchers::UnorderedEquals;
 using Catch::Matchers::Contains;
 
-TEST_CASE("test case 0", "[test 02 D]") {
-    const auto data = vector<int32_t>{1, 2, 3, 7};
-    CHECK(cal(data) == 2);
+TEST_CASE("test case 1", "[test 02 E]") {
+    const vector<int32_t> A{1, 3, 5, 7, 9};
+    const vector<int32_t> B{2, 4, 6, 8, 10};
+    const vector<std::pair<int32_t, int32_t>> pairs{{5, 5},
+                                                    {1, 5}};
+    const auto output_data = cal(std::make_tuple(A, B, pairs));
+    CHECK_THAT(output_data, Equals<int>({6, 4}));
 }
 
-TEST_CASE("test case 1", "[test 02 D]") {
-    const auto data = vector<int32_t>{1, 1, 2, 2, 3, 3, 7, 7};
-    CHECK(cal(data) == 10);
-}
-
-TEST_CASE("test case 2", "[test 02 D]") {
-    const auto data = vector<int32_t>{1, 1, 1, 2, 2, 2, 3, 3, 3, 7, 7, 7};
-    CHECK(cal(data) == 24);
-}
-// 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
-TEST_CASE("test case with sequence", "[test 02 D][.]") {
+TEST_CASE("test case with sequence", "[test 02 E]") {
     CS203_sequence sequence{1, 1, 0}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
