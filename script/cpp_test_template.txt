@@ -7,9 +7,7 @@
 
 #include "lab_{0}_{1}.cpp"
 
-std::string getFilePath() noexcept {{
-    return "./../../lab_{0}/lab_{0}_{1}_data/";
-}}
+std::string getFilePath() noexcept {{ return "./../../../lab_{0}/lab_{0}_{1}/resource/"; }}
 const std::string CS203_redirect::file_paths = getFilePath();
 
 namespace lab_{0}_{1} {{
@@ -35,9 +33,9 @@ TEST_CASE("test case 1", "[test {0}_{1}]") {{
         CHECK_THAT(vec, UnorderedEquals<int>({{15, 11, 7, 2}}));
     }}
 }}
-// 因为[.],所以下面这个被隐藏了,确保需要重定向输入输出时,请删除`[.]`
-TEST_CASE("test case with sequence", "[test {0}_{1}][.]") {{
-    CS203_sequence sequence{{1, 1, 0}}; // // 基础设定,[1,1]
+// CatchV3似乎不再支持[.]隐藏, 因此将sequence置为[1,0],隐藏输入
+TEST_CASE("test case with sequence", "[test {0}_{1}]") {{
+    CS203_sequence sequence{{1, 0, 0}}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
     sequence.set_postfix_of_testout("test.out"); // 测试输出数据后缀,默认为 test.out

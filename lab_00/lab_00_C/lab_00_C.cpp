@@ -20,7 +20,7 @@ Copyright (C) 2020-2023 nanoseeds
 图中没有自环和平行边： graph[i] 中不存在 i,并且 graph[i] 中没有重复的值.
 
 输入格式:
-The ﬁrst line contains a single integer N([1,10^6]) —— the number of the nodes in graph
+The 1st line contains a single integer N([1,10^6]) —— the number of the nodes in graph
 
 Then there will have N lines of number:
 

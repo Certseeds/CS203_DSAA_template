@@ -8,15 +8,11 @@ Copyright (C) 2020-2023 nanoseeds
 #ifdef CS203_DSAA_TEST_MACRO
 
 #include <catch_main.hpp>
-#include <cstdint>
-#include <cstddef>
 #include <vector>
 #include <iostream>
 #include "lab_00_C.cpp"
 
-std::string getFilePath() noexcept {
-    return "./../../lab_00/lab_00_C_data/";
-}
+std::string getFilePath() noexcept { return "./../../../lab_00/lab_00_C/resource/"; }
 
 const std::string CS203_redirect::file_paths = getFilePath();
 

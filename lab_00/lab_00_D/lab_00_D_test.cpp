@@ -12,9 +12,7 @@ Copyright (C) 2020-2023 nanoseeds
 #include <tuple>
 #include "lab_00_D.cpp"
 
-std::string getFilePath() noexcept {
-    return "./../../lab_00/lab_00_D_data/";
-}
+std::string getFilePath() noexcept { return "./../../../lab_00/lab_00_D/resource/"; }
 
 const std::string CS203_redirect::file_paths = getFilePath();
 
