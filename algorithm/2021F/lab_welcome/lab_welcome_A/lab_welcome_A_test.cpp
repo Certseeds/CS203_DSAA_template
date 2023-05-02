@@ -12,20 +12,31 @@ Copyright (C) 2020-2023 nanoseeds
 #include <vector>
 #include <iostream>
 
-#include "lab_02_A.cpp"
+#include "lab_welcome_A.cpp"
 
-std::string getFilePath() noexcept { return "./../../../../../algorithm/2021F/lab_02/lab_02_A/resource/"; }
+std::string getFilePath() noexcept { return "./../../../../../algorithm/2021F/lab_welcome/lab_welcome_A/resource/"; }
 
 const std::string CS203_redirect::file_paths = getFilePath();
 
-namespace lab_02_A {
+namespace lab_welcome_A {
+
 using std::tie;
 using std::cin;
 using std::cout;
 using std::tuple;
 using std::vector;
 
-TEST_CASE("test case with sequence", "[test 02 A]") {
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
+
+TEST_CASE("test case 1", "[test welcome A]") {
+    const auto output_data = cal(
+            std::make_tuple(std::unordered_set<int32_t>{2, 3, 999999, 1}, std::vector<int32_t>{3, 99}));
+    CHECK_THAT(output_data, Equals<TRUE_FALSE>({TRUE_FALSE::YES, TRUE_FALSE::NO}));
+}
+
+TEST_CASE("test case with sequence", "[test welcome A]") {
     CS203_sequence sequence{1, 1, 0}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out

@@ -12,21 +12,26 @@ Copyright (C) 2020-2023 nanoseeds
 #include <vector>
 #include <iostream>
 
-#include "lab_02_A.cpp"
+#include "lab_05_D.cpp"
 
-std::string getFilePath() noexcept { return "./../../../../../algorithm/2021F/lab_02/lab_02_A/resource/"; }
+std::string getFilePath() noexcept { return "./../../../../../algorithm/2021F/lab_05/lab_05_D/resource/"; }
 
 const std::string CS203_redirect::file_paths = getFilePath();
 
-namespace lab_02_A {
+namespace lab_05_D {
+
 using std::tie;
 using std::cin;
 using std::cout;
 using std::tuple;
 using std::vector;
 
-TEST_CASE("test case with sequence", "[test 02 A]") {
-    CS203_sequence sequence{1, 1, 0}; // // 基础设定,[1,1]
+using Catch::Matchers::Equals;
+using Catch::Matchers::UnorderedEquals;
+using Catch::Matchers::Contains;
+
+TEST_CASE("test case with sequence [test 05_D]", "[test 05_D]") {
+    CS203_sequence sequence{1, 9, 0}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
     sequence.set_postfix_of_testout("test.out"); // 测试输出数据后缀,默认为 test.out
