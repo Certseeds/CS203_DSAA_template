@@ -15,9 +15,9 @@ jobs:
     strategy:
       matrix:
         os: [ ubuntu-20.04, ubuntu-latest ]
-        gcc_v: [ 11 ] # Version of G++,GCC
     env:
-      GCC_V: ${{ matrix.gcc_v }}
+      CC:   gcc-10
+      CXX:  g++-10
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -40,12 +40,12 @@ jobs:
       - name: ensure the path and files of project
         run: sudo apt-get install tree; tree
 
-      - name: Install GCC-11,G++-11, ccache
+      - name: Install ccache, check gcc version
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V} ccache
-          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
-          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
+          sudo apt-get update && sudo apt-get install -y ccache
+          gcc --version
+          g++ --version
 
       - name: prepare libopencv
         run: |
