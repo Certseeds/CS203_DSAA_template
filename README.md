@@ -72,10 +72,9 @@ OJ系统存在着一些特殊要求-因此考虑到下面的因素,设计了一�
 
 ## Getting Started
 
-
 1. 下载Release中的[压缩包][download_zip]或者[另一个压缩包][download_zip_refs],之后解压使用(简易)
 2. 使用绿色按钮[Use This Template][Use_This_Template],生成仓库,clone下来使用(推荐)
-3. fork this repo,clone下来使用(不推荐,fork的仓库只有合入主仓库才被github计入提交图)
+3. fork repo, clone下来使用(不推荐,fork的仓库只有合入主仓库才被github计入提交图)
 
 [download_zip]: https://github.com/Certseeds/CS203_DSAA_template/releases/latest/download/script_no_need.zip
 [download_zip_refs]: https://github.com/Certseeds/CS203_DSAA_template/archive/refs/heads/release.zip
@@ -87,7 +86,7 @@ This is an example of how to list things you need to use the software and how to
 
 #### Windows
 
-1. WSL(推荐),`sudo apt install build-essential ccache`
+1. WSL(推荐ubuntu 22.04 | 20.04), `sudo apt install build-essential ccache`
 
 + 命令行检测gcc版本
 
@@ -117,9 +116,8 @@ git clone https://github.com/${YOUE_GITHUB_USER_NAME}/CS203_DSAA_template.git
 
 + 可选项:
   + 将脚本创建的版权声明中的所有者替换成自己:
-    1. `.idea`中的`#set( ${GITHUB_USER} = "Certseeds")` -> `#set( ${GITHUB_USER} = "YOUR_GITHUB_NAME")`
-    2. `.vscode/settings.json`中的`"Github": "https://github.com/Certseeds/CS203_DSAA_template"` -> `"Github": "https://github.com/YOUR_GITHUB_NAME/YOUR_REPO_NAME"`+
-    3. `Certseeds` to `YOUR_GITHUB_NAME`,`nanoseeds` to `YOUR_USER_NAME`,
+    1. `./.idea`中的`#set( ${GITHUB_USER} = "Certseeds")` -> `#set( ${GITHUB_USER} = "YOUR_GITHUB_NAME")`
+    2. `./script/file_template.py` 里面的 `Certseeds` to `YOUR_GITHUB_NAME`,`nanoseeds` to `YOUR_USER_NAME`,
   + 使用脚本产生自定义的文件(适合source.zip或者有bonuslab):
     使用命令行,进入`./script`下,编辑`file_template`的`labs` & `problem_orders`,
     `python3 ./file_template.py`,出现`produce files finish`提示,即为创建成功.
@@ -134,9 +132,9 @@ git clone https://github.com/${YOUE_GITHUB_USER_NAME}/CS203_DSAA_template.git
 
 `lab${order}_${ques_Order}`为对应题号,比如`lab07_01`对应lab_07的C1题.
 
-+ `CS203_lab07_01`将调用`lab_07\lab_07_C1.cpp`,为将要提交的源文件.
-+ `CS203_lab07_01_test`将调用`lab_07\lab_07_C1_test.cpp`,对其进行测试.
-+ `lab_*\lab_*_*_test.cpp`目的为方便测试,同时便于分享测试用例.
++ `CS203_lab07_01`将调用`lab_07\lab_07_C1\lab07_C1.cpp`,为将要提交的源文件.
++ `CS203_lab07_01_test`将调用`lab_07\lab_07_C1\lab07_C1_test.cpp`,对其进行测试.
++ `lab_*\lab_*_*\lab_*_*_test.cpp`目的为方便测试,同时便于分享测试用例.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -151,14 +149,14 @@ git clone https://github.com/${YOUE_GITHUB_USER_NAME}/CS203_DSAA_template.git
 
 ### 基本测试用例展示 A+B: lab_00_A ,测试样例
 
-+ 这个问题较为简单,见[A+B](./lab_00/lab_00_A.cpp).解决起来不复杂.
++ 这个问题较为简单,见[A+B](./lab_00/lab_00_A/lab_00_A.cpp).解决起来不复杂.
 + 虽然可以手工一个一个输入,然后观察输出. 但是如果我们希望严谨的测试,要100组测试数据,难道每次出新版本都要手动输入100次吗?
 
 显然,有更好的解决方式:使用测试框架.
 
 + 在本repo,使用`Catch2`测试框架.
   + 比如,我们有四组数据,第一组,第二组测试边界值,第三组使用随机数测试对偶性与正确性,第四组测试几个手动的随机值.
-  + 参见[test_for_lab00_A](./lab_00/lab_00_A_test.cpp).
+  + 参见[test_for_lab00_A](./lab_00/lab_00_A/lab_00_A_test.cpp).
 + 这样一来,我们只需要每次修改完主文件之后,run `CS203_DSAA_template_test`, 对其进行调用,就能验证其在所有的测试用例上的正确性.
 
 ### 多个输出值的检查:`Catch::Matchers`
@@ -167,7 +165,7 @@ git clone https://github.com/${YOUE_GITHUB_USER_NAME}/CS203_DSAA_template.git
 
 举例:[Crzay Plan](https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1250),输入可能有1.1*10^6个.
 
-这种情况下对这么多值进行直接的观察就很难,所以我们预先将期望的值直接写在测试文件里,用Catch2内置的Matcher比较(见[test_for_lab00_B](./lab_00/lab_00_B_test.cpp)的`CHECK_THAT()`部分.)
+这种情况下对这么多值进行直接的观察就很难,所以我们预先将期望的值直接写在测试文件里,用Catch2内置的Matcher比较(见[test_for_lab00_B](./lab_00/lab_00_B/lab_00_B_test.cpp)的`CHECK_THAT()`部分.)
 
 PS: 当然,这种情况也只适用于规模比较小的情况,规模再大的话,直接由人手动写在测试文件里也太占空间了.
 
@@ -175,7 +173,7 @@ PS: 当然,这种情况也只适用于规模比较小的情况,规模再大的�
 
 常见于tree,graph类的问题,debug需要的数据集都比较大,不方便直接写在代码中.
 
-比如[判断二分图](./lab_00/lab_00_C.cpp),一张图可以有几十上百个node,写在内部占用空间太大.
+比如[判断二分图](./lab_00/lab_00_C/lab_00_C.cpp),一张图可以有几十上百个node,写在内部占用空间太大.
 
 而在这里,使用`CS203_redirect`对象,便可以省去手动输入的方式.
 
@@ -197,7 +195,7 @@ TEST_CASE("test case 1", "[test 00 C]") {
 + test case with tuple 则最优雅,修改起来的难度最小.
 + test case with sequence 比tuple更优雅,输入,输出全为自动产生.
 
-PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_C_data/01.data.in`,
+PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_C/resource/01.data.in`,
 
 而是编译出的文件相对于测试数据的相对路径.
 
@@ -205,7 +203,7 @@ PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_
 
 ### 输入输出重定向-Stage 2: 从文件中读取输入,将输出定向到文件中
 
-+ 一般来说,题目的输出不会太复杂,但是反例也不是没有.:比如专门考输出的[立体图](lab_00/lab_00_D.cpp)
++ 一般来说,题目的输出不会太复杂,但是反例也不是没有.:比如专门考输出的[立体图](./lab_00/lab_00_D/lab_00_D.cpp)
 + 这种情况下,使用c++的重定向输出就可以较为方便的对输入进行处理,同时保存输出方便调试.
 
 ``` cpp
@@ -224,7 +222,7 @@ PS: 此处注意,引用文件的相对路径,不是直接的`test/lab_00/lab_00_
 
 PS: 至于比较文件之间的差异,可以使用内置的`compareFiles(string path1,string path2)`函数进行比较.
 
-参考[文本比对_test_case_2](lab_00/lab_00_D_test.cpp)
+参考[文本比对_test_case_2](./lab_00/lab_00_D/lab_00_D_test.cpp)
 
 ## Details
 
@@ -256,7 +254,7 @@ DSAA既然内含Data structure,就势必涉及到类似Node,Tree,Graph等等数�
 
 ### 如何手动开优化
 
-1. 将[magic_optimize](./includes/magic_macro.hpp)内的内容粘贴到代码最上方.
+1. 将[magic_optimize](./include/magic_macro/magic_macro.hpp)内的内容粘贴到代码最上方.
 2. 关闭同步,
 
 ``` cpp

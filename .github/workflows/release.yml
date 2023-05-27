@@ -16,10 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-20.04, ubuntu-latest]
-        gcc_v: [ 11 ] # Version of G++,GCC
+        os: [ ubuntu-20.04, ubuntu-latest ]
     env:
-      GCC_V: ${{ matrix.gcc_v }}
+      CC:   gcc-10
+      CXX:  g++-10
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -30,12 +30,12 @@ jobs:
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
 
-      - name: Install GCC-11,G++-11
+      - name: Install ccache, check gcc version
         run: |
           sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-          sudo apt-get update && sudo apt-get install -y gcc-${GCC_V} g++-${GCC_V}
-          sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-${GCC_V} 111
-          sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${GCC_V} 111
+          sudo apt-get update && sudo apt-get install -y ccache
+          gcc --version
+          g++ --version
 
       - name: prepare libopencv ccache
         run: |

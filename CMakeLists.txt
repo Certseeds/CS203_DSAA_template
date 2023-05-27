@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.16.6)
 
 set(PROJECT_VERSION_MAJOR 0)
-set(PROJECT_VERSION_MINOR 10)
+set(PROJECT_VERSION_MINOR 11)
 set(PROJECT_VERSION_PATCH 0) # delete endsWith strs when master merge dev
 
 project(CS203_DSAA_template
@@ -26,6 +26,10 @@ add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 enable_testing()
 file(GLOB USER_LIBS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lab_*) # regex to find libs, more flexibility
 foreach (elementName IN LISTS USER_LIBS_PATH)
-    add_subdirectory(${elementName})
+    if (EXISTS ${elementName}/CMakeLists.txt)
+        add_subdirectory(${elementName})
+    else()
+        MESSAGE("${elementName} is empty")
+    endif ()
 endforeach ()
 unset(USER_LIBS_PATH)

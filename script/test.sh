@@ -1,11 +1,9 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -eoux pipefail
 ###
 # @Github: https://github.com/Certseeds/CS203_DSAA_template
 # @Author: nanoseeds
 # @Date: 2020-07-27 21:48:41
- # @LastEditors: nanoseeds
- # @LastEditTime: 2021-05-14 12:30:27
 ###
 cmake_path="cmake_build_path"
 scratch=""
