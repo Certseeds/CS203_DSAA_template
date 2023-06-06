@@ -30,7 +30,9 @@ jobs:
         env:
           cache-name: cache-cmake-files
         with:
-          path: ~/.ccache
+          path: |
+            ~/.ccache
+            ~/.cache
           key: ${{ matrix.os }}-cmake-build-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt', '**/*.cmake') }}
           restore-keys: |
             ${{ matrix.os }}-cmake-build
