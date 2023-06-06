@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-20.04, ubuntu-latest ]
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
     env:
       CC:   gcc-10
       CXX:  g++-10
@@ -81,7 +81,7 @@ jobs:
     if: github.repository == 'Certseeds/CS203_DSAA_template'
     needs: test
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -147,7 +147,7 @@ jobs:
     if: github.repository == 'Certseeds/CS203_DSAA_template'
     needs: [ test, build ]
     # The type of runner that the job will run on
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     env:
       GCC_V: 11
     # Steps represent a sequence of tasks that will be executed as part of the job
