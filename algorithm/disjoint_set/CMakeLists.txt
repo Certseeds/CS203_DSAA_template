@@ -8,7 +8,7 @@ add_library(${PROJECT_NAME}_lib ${LIB_WAY} ${CMAKE_CURRENT_SOURCE_DIR}/disjoint_
 target_link_libraries(${PROJECT_NAME}_lib PRIVATE CS203_DSAA_template_INCLUDE)
 
 enable_testing()
-set(dependencies 684 200 130 399)
+set(dependencies 684 200 130 399 1361)
 LIST(TRANSFORM dependencies PREPEND leetcode_)
 
 LIST(APPEND dependencies disjoint_set_lnkedlist)
