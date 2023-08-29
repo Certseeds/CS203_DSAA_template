@@ -5,8 +5,8 @@ CS203_DSAA_template
 Copyright (C) 2022-2023  nanoseeds
 
 */
-#include <numeric>
 #include "leetcode_1360_test.hpp"
+#include <numeric>
 
 namespace leetcode_1360 {
 namespace leetcode_1360 {
@@ -26,9 +26,9 @@ int32_t daysBetweenDates(const string &date1, const string &date2) {
     if (value > 0) {
         return daysBetweenDates(date2, date1);
     }
-    const auto yy1{std::stoi(date1.substr(0, 4))},yy2{std::stoi(date2.substr(0, 4))};
-    const auto mm1{std::stoi(date1.substr(5, 7))},mm2{std::stoi(date2.substr(5, 7))};
-    const auto dd1{std::stoi(date1.substr(8, 10))},dd2{std::stoi(date2.substr(8, 10))};
+    const auto yy1{std::stoi(date1.substr(0, 4))}, yy2{std::stoi(date2.substr(0, 4))};
+    const auto mm1{std::stoi(date1.substr(5, 7))}, mm2{std::stoi(date2.substr(5, 7))};
+    const auto dd1{std::stoi(date1.substr(8, 10))}, dd2{std::stoi(date2.substr(8, 10))};
     const auto days_of_year1{year_days(yy1)}, days_of_year2{year_days(yy2)};
     const auto days_of_begin1{dd1 + std::accumulate(days_of_year1.begin(), days_of_year1.begin() + mm1 - 1, 0)};
     const auto days_of_begin2{dd2 + std::accumulate(days_of_year2.begin(), days_of_year2.begin() + mm2 - 1, 0)};

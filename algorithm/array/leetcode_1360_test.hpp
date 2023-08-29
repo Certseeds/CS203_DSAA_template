@@ -22,6 +22,7 @@ using std::string;
 
 namespace leetcode_1360 {
 int32_t daysBetweenDates(const string &date1, const string &date2);
+}
 
 using Catch::Matchers::Equals;
 
@@ -55,6 +56,5 @@ TEST_CASE("test case 1-4 {test_1360}", "{test_1360}") {
 
 
 
-}
 }
 #endif //CS203_DSAA_TEMPLATE_ALGORITHM_ARRAY_LEETCODE_1360_TEST_HPP
