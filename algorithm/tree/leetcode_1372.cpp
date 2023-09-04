@@ -45,10 +45,10 @@ int32_t leetcode_1372::longestZigZag(TreeNode *root) {
             maximum = std::max(maximum, v);
         }
         if (head->left != nullptr) {
-            que.push({head->left, true});
+            que.emplace(head->left, true);
         }
         if (head->right != nullptr) {
-            que.push({head->right, false});
+            que.emplace(head->right, false);
         }
     }
     return maximum;
