@@ -27,11 +27,11 @@ string longestPrefix(const string &s) {
 }
 namespace hash {
 string longestPrefix(const string &s) {
-    int32_t count{0};
+    size_t count{0};
     constexpr const auto prime{1000'000'007},prime2{1000'000'009};
     size_t hashPrefix{0}, hashPostfix{0}, hashMultiply{1};
     size_t hashPrefix2{0}, hashPostfix2{0}, hashMultiply2{1};
-    for (int32_t i{0}; i < s.size() - 1; i++) {
+    for (size_t i{0}; i < s.size() - 1; i++) {
         hashPrefix = (hashPrefix * 26 + s[i]) % prime;
         hashPrefix2 = (hashPrefix2 * 26 + s[i]) % prime2;
         hashPostfix = (hashPostfix + (s[s.size() - 1 - i]) * hashMultiply) % prime;
