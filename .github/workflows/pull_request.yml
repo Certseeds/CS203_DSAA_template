@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-20.04, ubuntu-latest ]
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
     env:
       CC:   gcc-10
       CXX:  g++-10
@@ -29,7 +29,9 @@ jobs:
         env:
           cache-name: cache-cmake-files
         with:
-          path: ~/.ccache
+          path: |
+            ~/.ccache
+            ~/.cache
           key: ${{ matrix.os }}-cmake-build-${{ hashFiles('CMakeLists.txt', '**/CMakeLists.txt', '**/*.cmake') }}
           restore-keys: |
             ${{ matrix.os }}-cmake-build
@@ -103,7 +105,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-20.04, ubuntu-latest ]
+        os: [ ubuntu-20.04, ubuntu-22.04 ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
