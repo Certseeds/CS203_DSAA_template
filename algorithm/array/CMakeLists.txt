@@ -24,7 +24,7 @@ list(APPEND leetcode_order 944 977 985 986 989)
 list(APPEND leetcode_order 999 1010 1013 1030 1051)
 list(APPEND leetcode_order 1089 1108 1170 1184 1200)
 list(APPEND leetcode_order 1217 1329 1360 1365 1371)
-list(APPEND leetcode_order 1391)
+list(APPEND leetcode_order 1391 golden_0812)
 LIST(TRANSFORM leetcode_order PREPEND leetcode_)
 
 set(dependencies ${dependencies} ${leetcode_order})
