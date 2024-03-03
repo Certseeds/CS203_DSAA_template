@@ -26,10 +26,10 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Cache Packages
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path:  ~/.cargo
           key: ${{ matrix.os }}-rust-toolchain-${{ hashFiles('**/*.toml') }}
