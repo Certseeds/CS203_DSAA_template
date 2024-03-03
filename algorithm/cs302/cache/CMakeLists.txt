@@ -6,7 +6,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 
 enable_testing()
-set(dependencies lru no fifo fifo_sc clock min)
+set(dependencies lru no fifo fifo_sc clock min s3fifo)
 foreach (elementName IN LISTS dependencies)
     add_executable(${PROJECT_NAME}_${elementName}_test ${CMAKE_CURRENT_SOURCE_DIR}/${elementName}_cache.cpp)
     target_link_libraries(${PROJECT_NAME}_${elementName}_test CS203_DSAA_template_INCLUDE)

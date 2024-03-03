@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /*  CS203_DSAA_template
-    Copyright (C) 2022-2023  nanoseeds
+    Copyright (C) 2022-2024  nanoseeds
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
@@ -21,27 +21,27 @@ static constexpr const auto init = true;
 namespace initFalse {
 static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
         {
-                {5, "4.data.in"},
                 {2, "sample.data.in"},
-                {1177, "1.data.in"},
-                {11848, "2.data.in"},
-                {82382, "3.data.in"},
+                {5, "4.data.in"},
                 {5, "5.data.in"},
                 {6, "6.data.in"},
                 {1, "7.data.in"},
+                {1177, "1.data.in"},
+                {11848, "2.data.in"},
+                {82382, "3.data.in"},
         }};
 }
 namespace initTrue {
 static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
         {
-                {2, "4.data.in"},
                 {1, "sample.data.in"},
-                {1193, "1.data.in"},
-                {11826, "2.data.in"},
-                {82382, "3.data.in"},
+                {2, "4.data.in"},
                 {5, "5.data.in"},
                 {4, "6.data.in"},
                 {2, "7.data.in"},
+                {1193, "1.data.in"},
+                {11826, "2.data.in"},
+                {82382, "3.data.in"},
         }};
 }
 namespace On {

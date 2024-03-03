@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: AGPL-3.0-or-later
 /*  CS203_DSAA_template
-    Copyright (C) 2022-2023  nanoseeds
+    Copyright (C) 2022-2024  nanoseeds
 */
 #ifdef CS203_DSAA_TEST_MACRO
 
@@ -17,13 +17,13 @@ using std::array;
 static constexpr const std::array<const std::pair<size_t, const char *const>, 8> pairs{
         {
                 {2, "sample.data.in"},
-                {4240, "1.data.in"},
-                {43265, "2.data.in"},
-                {88583, "3.data.in"},
                 {7, "4.data.in"},
                 {5, "5.data.in"},
                 {9, "6.data.in"},
                 {3, "7.data.in"},
+                {4240, "1.data.in"},
+                {43265, "2.data.in"},
+                {88583, "3.data.in"},
         }};
 
 /**
@@ -98,6 +98,7 @@ TEST_CASE("min test 1") {
         const auto input = inputs::read_input();
         const auto inputAll = [&input] {
             vector<size_t> vec{};
+            vec.reserve(input.querys.size());
             for (const auto ori: input.querys) {
                 vec.push_back(ori);
             }
