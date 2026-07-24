@@ -16,10 +16,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-24.04 ]
+        os: [ ubuntu-26.04 ]
     env:
-      CC:   gcc-13
-      CXX:  g++-13
+      CC:   gcc-15
+      CXX:  g++-15
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -32,14 +32,11 @@ jobs:
 
       - name: Install ccache, check gcc version
         run: |
-          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-          sudo apt-get update && sudo apt-get install -y ccache
+          yes | sudo apt-get update
+          yes | sudo apt-get install ccache
+          yes | sudo apt-get install libgtest-dev
           gcc --version
           g++ --version
-
-      - name: prepare deps
-        run: |
-          bash ./third_party/install.sh
 
       - name: Use cmake
         run: cmake --version
@@ -63,12 +60,12 @@ jobs:
   build:
     name: publish release
     env:
-      CC:   gcc-13
-      CXX:  g++-13
+      CC:   gcc-15
+      CXX:  g++-15
     if: github.repository == 'Certseeds/algorithm-template'
     needs: test
     # The type of runner that the job will run on
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -94,17 +91,6 @@ jobs:
       - name: ensure the path and files of project
         run: sudo apt-get install tree; tree; mkdir -p ./cmake_build_release
 
-      - name: prepare deps
-        run: |
-            bash ./third_party/install.sh
-            bash ./third_party/rename.sh
-
-      - name: move cmake-fetchcontent to folder
-        working-directory: ./third_party
-        run: |
-          rm ./CMakeLists.txt
-          mv ./CMakeLists.release.txt ./CMakeLists.txt
-
       - name: run script
         working-directory: ./script
         run: python3 file_template.py
@@ -129,12 +115,12 @@ jobs:
   release-branch:
     name: publish release-branch
     env:
-      CC:   gcc-13
-      CXX:  g++-13
+      CC:   gcc-15
+      CXX:  g++-15
     if: github.repository == 'Certseeds/algorithm-template'
     needs: [ test, build ]
     # The type of runner that the job will run on
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
@@ -152,24 +138,14 @@ jobs:
         env:
           SOURCE_NAME: ${{ steps.branch_name.outputs.SOURCE_NAME }}
 
-
-      - name: prepare deps
-        run: |
-            bash ./third_party/install.sh
-            bash ./third_party/rename.sh
-
       - name: git operations
         run: |
           git config --global user.name 'Certseeds'
           git config --global user.email '51754303+Certseeds@users.noreply.github.com'
           git checkout --orphan release
 
-      - name: move cmake-fetchcontent to folder
-        working-directory: ./third_party
+      - name: git cmt
         run: |
-          echo '**/.github/*' > ./.gitignore
-          rm ./CMakeLists.txt
-          mv ./CMakeLists.release.txt ./CMakeLists.txt
           git add -A
           git commit -am "init: with deps"
 

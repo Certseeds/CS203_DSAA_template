@@ -3,7 +3,7 @@
 #ifdef ALGORITHM_TEST_MACRO
 
 
-#include <catch_main.hpp>
+#include <gtest_main.hpp>
 #include <tuple>
 #include <vector>
 #include <iostream>
@@ -19,23 +19,19 @@ using std::cin;
 using std::cout;
 using std::tuple;
 using std::vector;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 
-TEST_CASE("test case 1", "[test 00 B]") {
+TEST(lab_00_B, test_case_1) {
     const auto vec1 = vector<num_type>{8, 1, 2, 3, 4, 5, 6, 7, 1100000};
     for (const auto &i: vec1) {
-        CHECK(cal(i) == brute_force(i));
+        EXPECT_EQ(cal(i), brute_force(i));
     }
 }
 
-TEST_CASE("test case 2", "[test 00 B]") {
+TEST(lab_00_B, test_case_2) {
     const auto vec1 = vector<num_type>{1, 2, 3, 4, 5, 6, 7, 1100000};
     const auto result = cal_warpper(vec1);
     const auto what_we_want = vector<num_type>{1, 4, 10, 20, 35, 56, 84, 221833938333700000};
-    CHECK_THAT(result, Equals<num_type>({1, 4, 10, 20, 35, 56, 84, 221833938333700000}));
-    CHECK_THAT(result, Equals(what_we_want));
+    EXPECT_EQ(result, what_we_want);
 }
 }
 #endif //ALGORITHM_TEST_MACRO

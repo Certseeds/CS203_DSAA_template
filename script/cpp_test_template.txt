@@ -1,6 +1,6 @@
 #ifdef ALGORITHM_TEST_MACRO
 
-#include <catch_main.hpp>
+#include <gtest_main.hpp>
 #include <tuple>
 #include <vector>
 #include <cstdint>
@@ -20,23 +20,15 @@ using std::cout;
 using std::tuple;
 using std::vector;
 
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
-
-TEST_CASE("test case 1", "[test {0}_{1}]") {{
+TEST(lab_{0}_{1}, test_case_1) {{
     const auto output_data = cal(std::make_tuple(114, 514));
-    CHECK(output_data == 628);
-    CHECK(1 + 2 == 3);
-    vector <int32_t> vec{{2, 7, 11, 15}};
-    SECTION("CHECK_THAT 1") {{
-        CHECK_THAT(vec, Contains<int>({{2}}));
-    }}SECTION("vec matcher") {{
-        CHECK_THAT(vec, UnorderedEquals<int>({{15, 11, 7, 2}}));
-    }}
+    EXPECT_EQ(output_data, 628);
+    EXPECT_EQ(1 + 2, 3);
+    vector<int32_t> vec{{2, 7, 11, 15}};
+    EXPECT_THAT(vec, ::testing::Contains(2));
+    EXPECT_THAT(vec, ::testing::UnorderedElementsAre(15, 11, 7, 2));
 }}
-// CatchV3似乎不再支持[.]隐藏, 因此将sequence置为[1,0],隐藏输入
-TEST_CASE("test case with sequence", "[test {0}_{1}]") {{
+TEST(lab_{0}_{1}, test_case_with_sequence) {{
     CS203_sequence sequence{{1, 0, 0}}; // // 基础设定,[1,1]
     sequence.set_postfix_of_datain("data.in"); // 输入数据后缀,默认为 data.in
     sequence.set_postfix_of_dataout("data.out"); // except输出数据后缀,默认为 data.out
@@ -52,7 +44,7 @@ TEST_CASE("test case with sequence", "[test {0}_{1}]") {{
             main();
             // 用括号括住是为了让CS203_redirect在这里被析构,停止重定向
         }}
-        CHECK(compareFiles(testout, dataout));
+        EXPECT_TRUE(compareFiles(testout, dataout));
     }}
 }}
 }}

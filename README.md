@@ -66,7 +66,7 @@ OJ系统存在着一些特殊要求-因此考虑到下面的因素, 设计了一
 
 ### Built With
 
-[![catch_2][catch2_image]](https://github.com/catchorg/Catch2)
+[![Google Test][gtest_image]](https://github.com/google/googletest)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,9 +93,14 @@ This is an example of how to list things you need to use the software and how to
 ``` bash
 yes | sudo apt-get update
 yes | sudo apt-get upgrade
-yes | sudo apt-get install build-essential ccache
-yes | sudo apt-get install libgtest-dev
+yes | sudo apt-get install build-essential ccache cmake
+yes | sudo apt-get install libgtest-dev libgmock-dev
 ```
+
+> **注意**: GTest 需要和编译器在**同一环境**下安装。
+> - 系统 GCC → `apt install libgtest-dev libgmock-dev`
+> - conda GCC → `conda install -c conda-forge gtest gmock`
+> - 若混用 (如 conda GCC + apt GTest)，CMake 可能找不到库或头文件。
 
 + 命令行检测gcc版本
 
@@ -160,18 +165,18 @@ git clone https://github.com/${YOUE_GITHUB_USER_NAME}/algorithm-template.git
 
 显然, 有更好的解决方式:使用测试框架.
 
-+ 在本repo, 使用`Catch2`测试框架.
++ 在本repo, 使用 `Google Test` 测试框架.
   + 比如, 我们有四组数据, 第一组, 第二组测试边界值, 第三组使用随机数测试对偶性与正确性, 第四组测试几个手动的随机值.
   + 参见[test_for_lab00_A](./lab_00/A/test.cpp)
 + 这样一来, 我们只需要每次修改完主文件之后, run `algorithm-template_test`, 对其进行调用, 就能验证其在所有的测试用例上的正确性.
 
-### 多个输出值的检查:`Catch::Matchers`
+### 多个输出值的检查: `EXPECT_EQ`
 
 上面的例子里, 输出值只是一个值, 所以手动检查的难度不大, 但是如果目标输出是一个数组, 那么手动检查的难度就非常大了.
 
 举例:[Crzay Plan](https://acm.sustech.edu.cn/onlinejudge/problem.php?id=1250), 输入可能有1.1*10^6个.
 
-这种情况下对这么多值进行直接的观察就很难, 所以我们预先将期望的值直接写在测试文件里, 用Catch2内置的Matcher比较(见[test_for_lab00_B](./lab_00/B/test.cpp)的`CHECK_THAT()`部分.)
+这种情况下对这么多值进行直接的观察就很难, 所以我们预先将期望的值直接写在测试文件里, 用Google Test内置的EXPECT_EQ比较(见[test_for_lab00_B](./lab_00/B/test.cpp)部分.)
 
 PS: 当然, 这种情况也只适用于规模比较小的情况, 规模再大的话, 直接由人手动写在测试文件里也太占空间了.
 
@@ -184,13 +189,13 @@ PS: 当然, 这种情况也只适用于规模比较小的情况, 规模再大的
 而在这里, 使用`CS203_redirect`对象, 便可以省去手动输入的方式.
 
 ``` cpp
-TEST_CASE("test case 1", "[test 00 C]") {
+TEST(lab_00_C, test_case_1) {
   const CS203_redirect cr{"01.data.in", ""};
   // 重定向开始, 开始run
   // or CS203_redirect cr{"01.data.in"};
   const auto output_data = isBipartite(read());
   // 重定向结束
-  CHECK_FALSE(output_data);
+  EXPECT_FALSE(output_data);
 }
 ```
 
@@ -213,14 +218,13 @@ PS: 此处注意, 引用文件的相对路径, 不是直接的`test/lab_00/C/res
 + 这种情况下, 使用c++的重定向输出就可以较为方便的对输入进行处理, 同时保存输出方便调试.
 
 ``` cpp
-  TEST_CASE("test case 2", "[test 00 D]") {
-    SECTION("do") {
+  TEST(lab_00_D, test_case_2) {
+    {
       const CS203_redirect cr{"01.data.in", "01.test.out"};
       auto input_data = read();
       cal(input_data);
-    } SECTION("compare files") {
-      CHECK(compareFiles("01.test.out", "01.data.out"));
     }
+    EXPECT_TRUE(compareFiles("01.test.out", "01.data.out"));
   }
 ```
 
@@ -283,7 +287,13 @@ static const auto faster_streams = [] {
 
 ### Why choose googletest
 
-自 Ubuntu *{WHICH-VERSION}* 开始, googletest 被打包进了官方的源中, 不再需要自行编译, 因此
+自 Ubuntu 22.04 开始, googletest的预编译包被打包进了官方的源中 (`libgtest-dev` 和 `libgmock-dev`), 不再需要自行编译. 因此可以直接通过系统的包管理器安装并使用.
+
+``` bash
+yes | sudo apt-get install libgtest-dev libgmock-dev
+```
+
+考虑到 windows, macos都可以使用容器来运行linux, 只需要近年的 ubuntu lts支持, 就是全平台支持.
 
 ## Roadmap
 
@@ -378,7 +388,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [issue_LINK]: https://github.com/Certseeds/algorithm-template/issues
 [pr_LINK]: https://github.com/Certseeds/algorithm-template/pulls
 [discussion_LINK]: https://github.com/Certseeds/algorithm-template/discussions
-[catch2_image]: https://raw.githubusercontent.com/catchorg/Catch2/v2.x/artwork/catch2-logo-small.png
+[gtest_image]: https://raw.githubusercontent.com/google/googletest/main/docs/images/googletest.png
 [AGPL-shield]: https://img.shields.io/badge/License-AGPL-orange?style=for-the-badge
 [AGPL_Link]: http://opensource.org/licenses/AGPL
 [cc_by_nc_sa_4_0_shield]: https://img.shields.io/badge/License-CC%20BY--NC--SA%204.0-orange?style=for-the-badge

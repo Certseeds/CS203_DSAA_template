@@ -297,3 +297,4 @@ $RECYCLE.BIN/
 # test files begin
 *.test.out
 *.zip
+node_modules

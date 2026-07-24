@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2020-2025 nanoseeds
 #ifdef ALGORITHM_TEST_MACRO
 
-#include <catch_main.hpp>
+#include <gtest_main.hpp>
 #include <vector>
 #include <iostream>
 #include "main.cpp"
@@ -17,47 +17,44 @@ using std::cin;
 using std::cout;
 using std::vector;
 
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-using Catch::Matchers::Contains;
 /*
  * Test case 1 -> Test case 5
  * 目的是为了展示只使用CS203_redirect的情况下
  * 应该如何只重定向输入,不重定向输出.
  * */
-TEST_CASE("test case 1", "[test 00 C]") {
+TEST(lab_00_C, test_case_1) {
     const CS203_redirect cr{"01.data.in", ""};
     // 重定向开始,开始run
     const auto output_data = isBipartite(read());
     // 重定向结束
-    CHECK_FALSE(output_data);
+    EXPECT_FALSE(output_data);
 }
 
-TEST_CASE("test case 2", "[test 00 C]") {
+TEST(lab_00_C, test_case_2) {
     const  CS203_redirect cr{"02.data.in"};
     const auto output_data = isBipartite(read());
-    CHECK(output_data);
+    EXPECT_TRUE(output_data);
 }
 
-TEST_CASE("test case 3", "[test 00 C]") {
+TEST(lab_00_C, test_case_3) {
     const CS203_redirect cr{"03.data.in"};
     const auto output_data = isBipartite(read());
-    CHECK(output_data);
+    EXPECT_TRUE(output_data);
 }
 
-TEST_CASE("test case 4", "[test 00 C]") {
+TEST(lab_00_C, test_case_4) {
     const  CS203_redirect cr{"04.data.in"};
     const auto output_data = isBipartite(read());
-    CHECK_FALSE(output_data);
+    EXPECT_FALSE(output_data);
 }
 
-TEST_CASE("test case 5", "[test 00 C]") {
+TEST(lab_00_C, test_case_5) {
     const  CS203_redirect cr{"05.data.in"};
     const auto output_data = isBipartite(read());
-    CHECK_FALSE(output_data);
+    EXPECT_FALSE(output_data);
 }
 /*目的在于展示,使用循环来精简Test case1~5中的工作量*/
-TEST_CASE("test case in loop", "[test 00 C]") {
+TEST(lab_00_C, test_case_in_loop) {
     const vector<string> strs{
             "01.data.in", "02.data.in",
             "03.data.in", "04.data.in",
@@ -67,11 +64,11 @@ TEST_CASE("test case in loop", "[test 00 C]") {
     for (int i = 0; i < 5; ++i) {
         const  CS203_redirect cr{strs[i]};
         const auto output_data = isBipartite(read());
-        CHECK(output_data == result[i]);
+        EXPECT_EQ(output_data, result[i]);
     }
 }
 /*目的在于展示,std::tuple的打包能力*/
-TEST_CASE("test case with tuple", "[test 00 C]") {
+TEST(lab_00_C, test_case_with_tuple) {
     const vector<std::tuple<string, output_type>> input_result{
             {"01.data.in", false},
             {"02.data.in", true},
@@ -85,12 +82,12 @@ TEST_CASE("test case with tuple", "[test 00 C]") {
         tie(path, result) = tup;
         const CS203_redirect cr{path};
         const auto output_data = isBipartite(read());
-        CHECK(output_data == result);
+        EXPECT_EQ(output_data, result);
     }
 }
 /* 目的在于展示 CS203_sequence 生成重定向相关文件名的能力
  * */
-TEST_CASE("test case with sequence", "[test 00 C]") {
+TEST(lab_00_C, test_case_with_sequence) {
 
     CS203_sequence sequence{1, 5, 2};
     // 前缀被默认设定为 空串 ""
@@ -108,7 +105,7 @@ TEST_CASE("test case with sequence", "[test 00 C]") {
             main();
             // 用括号括住是为了让CS203_redirect在这里被析构,停止重定向
         }
-        CHECK(compareFiles(testout, dataout));
+        EXPECT_TRUE(compareFiles(testout, dataout));
     }
 }
 }

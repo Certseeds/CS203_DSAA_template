@@ -18,8 +18,9 @@ string(TIMESTAMP time_str "%Y/%m/%d  %H:%M:%S")
 MESSAGE(STATUS "Compiler In \n ${time_str}")
 
 include(${CMAKE_CURRENT_SOURCE_DIR}/cmake/CMakeLists.txt)
+
+find_package(GTest REQUIRED)
 add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/include)
-add_subdirectory(${CMAKE_CURRENT_SOURCE_DIR}/third_party)
 
 enable_testing()
 file(GLOB USER_LIBS_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lab_*) # regex to find libs, more flexibility

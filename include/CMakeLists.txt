@@ -7,5 +7,5 @@ add_library(${PROJECT_NAME} INTERFACE)
 
 target_include_directories(${PROJECT_NAME} INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})
 
-target_link_libraries(${PROJECT_NAME} INTERFACE Catch2::Catch2WithMain)
+target_link_libraries(${PROJECT_NAME} INTERFACE GTest::gtest_main GTest::gmock)
 target_compile_definitions(${PROJECT_NAME} INTERFACE ALGORITHM_TEST_MACRO)
