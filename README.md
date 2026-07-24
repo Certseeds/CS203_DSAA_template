@@ -88,7 +88,14 @@ This is an example of how to list things you need to use the software and how to
 
 #### Windows
 
-1. WSL(推荐ubuntu 24.04), `sudo apt install build-essential ccache`
+推荐使用 windows subsystem linux 2, 换好apt源之后只需要
+
+``` bash
+yes | sudo apt-get update
+yes | sudo apt-get upgrade
+yes | sudo apt-get install build-essential ccache
+yes | sudo apt-get install libgtest-dev
+```
 
 + 命令行检测gcc版本
 
@@ -274,43 +281,24 @@ static const auto faster_streams = [] {
 
 通常情况下, 可以将运行时间缩短到1/2甚至更少.
 
-### Why choose Catch?
+### Why choose googletest
 
-1. 先来看可选项有哪些
-
-|        FrameWork         | Catch2 | Google Test | CPPUnit | Boost.Test |    Microsoft 单元测试框架    |
-| :----------------------: | :----: | :---------: | :-----: | :--------: | :--------------------------: |
-|          跨平台          |   √    |      √      |    √    |     √      |              X               |
-| 是否需要提前在系统内安装 |   X    |      √      |    √    |     √      | √(and visual studio make it) |
-|           语法           |  简单  |    简单     |  复杂   |    简单    |           Unknown            |
-
-先筛选跨平台, 去掉了Microsoft, 再筛选不需要安装, 只剩Catch2, 结束.
+自 Ubuntu *{WHICH-VERSION}* 开始, googletest 被打包进了官方的源中, 不再需要自行编译, 因此
 
 ## Roadmap
 
 + [x] 基础框架
-+ [x] Catch2 接入
++ [x] 测试框架接入
 + [x] 测试用例接入文件
-+ [x] 算法模块添加
-  + [x] FFT
-  + [x] Tree
-    + [x] Trie
-    + [x] RB-Tree
-    + [x] AVL-Tree
-  + [x] Matrix
-  + [ ] AND MORE...
-+ [ ] 跨平台
-  + [ ] Windows(No Support becuase ccache do not support MSVC, compile cost too much time and product size)
-  + [x] Unix-Like
 + [x] CI-CD
   + [x] CI: GitHub-Actions提交触发
   + [x] CD: Tag触发的自动Release
-+ [x] leetcode题目
++ [x] ~~leetcode题目~~
 + [x] ~~预编译头文件~~ccache加速编译
-+ [x] basic文件夹添加CS205内容, 方便入门C++
-  + [x] 以及一部分rust代码
-+ [ ] Cyaron测试数据生成
-+ [ ] WiKi Page
++ [x] ~~basic文件夹添加CS205内容, 方便入门C++~~
+  + [x] ~~以及一部分rust代码~~
++ [ ] ~~Cyaron测试数据生成~~
++ [ ] ~~WiKi Page~~
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -404,8 +392,6 @@ Use this space to list resources you find helpful and would like to give credit 
 [stars-url]: https://github.com/Certseeds/algorithm-template/stargazers
 [issues-shield]: https://img.shields.io/github/issues/Certseeds/algorithm-template.svg?style=for-the-badge
 [issues-url]: https://github.com/Certseeds/algorithm-template/issues
-[license-shield]: https://img.shields.io/github/license/Certseeds/algorithm-template.svg?style=for-the-badge
-[license-url]: https://github.com/Certseeds/algorithm-template/blob/master/LICENSE.md
 [release-shield]: https://img.shields.io/github/release/Certseeds/algorithm-template.svg?style=for-the-badge
 [release-url]: https://github.com/Certseeds/algorithm-template/releases
 [GitHub-Whexy]: https://github.com/whexy
