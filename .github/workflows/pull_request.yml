@@ -15,17 +15,16 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-24.04 ]
+        os: [ ubuntu-26.04 ]
     env:
-      CC:   gcc-13
-      CXX:  g++-13
+      CC:   gcc-15
+      CXX:  g++-15
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: checkout code
-        uses: actions/checkout@v5
-      - uses: actions/cache@v4
+      - uses: certseeds/common-actions/actions/checkout@v1
+      - uses: certseeds/common-actions/actions/cache@v1
         env:
           cache-name: cache-cmake-files
         with:
@@ -46,14 +45,11 @@ jobs:
 
       - name: Install ccache, check gcc version
         run: |
-          sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-          sudo apt-get update && sudo apt-get install -y ccache
+          sudo apt-get update
+          sudo apt-get install -y ccache
+          sudo apt-get install -y libgtest-dev libgmock-dev
           gcc --version
           g++ --version
-
-      - name: prepare deps
-        run: |
-          bash ./third_party/install.sh
 
       - name: Use cmake
         run: cmake --version
@@ -89,14 +85,14 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ ubuntu-24.04 ]
+        os: [ ubuntu-26.04 ]
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v5
+        uses: certseeds/common-actions/actions/checkout@v1
 
       # ensure the path and files of project
       - name: ensure the path and files of project

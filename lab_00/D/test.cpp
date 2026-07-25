@@ -2,7 +2,7 @@
 // SPDX-FileCopyrightText: 2020-2025 nanoseeds
 #ifdef ALGORITHM_TEST_MACRO
 
-#include <catch_main.hpp>
+#include <gtest_main.hpp>
 #include <iostream>
 #include <tuple>
 #include "main.cpp"
@@ -19,11 +19,7 @@ using std::tie;
 using std::tuple;
 using std::vector;
 
-using Catch::Matchers::Contains;
-using Catch::Matchers::Equals;
-using Catch::Matchers::UnorderedEquals;
-
-TEST_CASE("test case 1", "[test 00 D]") {
+TEST(lab_00_D, test_case_1) {
     const CS203_redirect cr{"01.data.in"};
     // 重定向开始,开始run
     auto input_data = read();
@@ -31,14 +27,13 @@ TEST_CASE("test case 1", "[test 00 D]") {
     // 重定向结束
 }
 
-TEST_CASE("test case 2", "[test 00 D]") {
-    SECTION("do") {
+TEST(lab_00_D, test_case_2) {
+    {
         const CS203_redirect cr{"01.data.in", "01.test.out"};
         auto input_data = read();
         cal(input_data);
-    }SECTION("compare files") {
-        CHECK(compareFiles("01.test.out", "01.data.out"));
     }
+    EXPECT_TRUE(compareFiles("01.test.out", "01.data.out"));
 }
 } // namespace lab_00_D
 
