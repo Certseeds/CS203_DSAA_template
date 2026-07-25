@@ -25,7 +25,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v5
+        uses: certseeds/common-actions/actions/checkout@v1
 
       - name: hardwares - cpu
         run: nproc; cat /proc/cpuinfo
@@ -71,7 +71,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v5
+        uses: certseeds/common-actions/actions/checkout@v1
 
       - name: Branch name
         id: branch_name
@@ -102,7 +102,7 @@ jobs:
           tree
 
       - name: release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: ./../script_no_need.zip
@@ -126,7 +126,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v5
+        uses: certseeds/common-actions/actions/checkout@v1
 
       - name: Branch name
         id: branch_name
@@ -142,12 +142,6 @@ jobs:
         run: |
           git config --global user.name 'Certseeds'
           git config --global user.email '51754303+Certseeds@users.noreply.github.com'
-          git checkout --orphan release
-
-      - name: git cmt
-        run: |
-          git add -A
-          git commit -am "init: with deps"
 
       - name: run script
         working-directory: ./script

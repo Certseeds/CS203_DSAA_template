@@ -23,9 +23,8 @@ jobs:
     steps:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: checkout code
-        uses: actions/checkout@v5
-      - uses: actions/cache@v4
+      - uses: certseeds/common-actions/actions/checkout@v1
+      - uses: certseeds/common-actions/actions/cache@v1
         env:
           cache-name: cache-cmake-files
         with:
@@ -93,7 +92,7 @@ jobs:
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: checkout code
-        uses: actions/checkout@v5
+        uses: certseeds/common-actions/actions/checkout@v1
 
       # ensure the path and files of project
       - name: ensure the path and files of project
