@@ -34,7 +34,7 @@ jobs:
         run: |
           yes | sudo apt-get update
           yes | sudo apt-get install ccache
-          yes | sudo apt-get install libgtest-dev
+          yes | sudo apt-get install libgtest-dev libgmock-dev
           gcc --version
           g++ --version
 
