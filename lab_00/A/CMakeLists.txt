@@ -7,7 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 
 enable_testing()
 add_executable(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp)
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 add_executable(${PROJECT_NAME}_test ${CMAKE_CURRENT_SOURCE_DIR}/test.cpp)
 target_compile_definitions(${PROJECT_NAME}_test PRIVATE ALGORITHM_TEST_MACRO)
 target_link_libraries(${PROJECT_NAME}_test PRIVATE algorithm_template_INCLUDE)
