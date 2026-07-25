@@ -152,4 +152,5 @@ jobs:
         run: |
           git add .
           git commit -am "release ${{ steps.branch_name.outputs.SOURCE_NAME }}"
+          git checkout -b release
           git push --set-upstream origin release --force
